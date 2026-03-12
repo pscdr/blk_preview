@@ -1,0 +1,51 @@
+{
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#15779B",
+    "accent": "#1A8C85",
+    "background": "#FFFFFF",
+    "textPrimary": "#1A8C85",
+    "link": "#1A8C85"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Poppins",
+      "heading": "Raleway"
+    },
+    "fontSizes": {
+      "h1": "80px",
+      "h2": "80px",
+      "body": "13px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#1A8C85",
+      "textColor": "#FFFFFF",
+      "borderRadius": "1300px",
+      "shadow": "none",
+      "label": "Jetzt beraten lassen"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#15779B",
+      "borderRadius": "5px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://www.sav.de/wp-content/uploads/2022/08/SAV-Logo-White_v2.png",
+    "favicon": "https://www.sav.de/wp-content/uploads/2023/11/cropped-SAV_favicon-green1-32x32.png",
+    "logoAlt": "SAV",
+    "logoHref": "https://www.sav.de/"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial professionals"
+  }
+}

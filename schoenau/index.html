@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fördertechnik – SCHÖNAU Förderanlagen</title>
+  <link rel="icon" href="https://schoenau.com/wp-content/uploads/2024/11/cropped-Schoenau-Website-favicon-1-32x32.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#005BB4',
+            ink: '#003F7D',
+          },
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.03em',
+            tighter: '-0.02em',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; background: #fff; color: #0a0a0a; }
+    h1, h2, h3, h4, h5 { font-family: 'Poppins', sans-serif; }
+
+.product-row {
+      display: grid;
+      grid-template-columns: 56px 1fr 240px;
+      gap: 0 2.5rem;
+      align-items: center;
+      padding: 2.25rem 0;
+      border-top: 1px solid #e5e7eb;
+      transition: background 0.2s;
+    }
+    .product-row:last-child { border-bottom: 1px solid #e5e7eb; }
+    .product-row:hover { background: #f9fafb; margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
+
+    .product-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #9ca3af;
+      letter-spacing: 0.05em;
+      align-self: start;
+      padding-top: 4px;
+    }
+    .product-img {
+      width: 240px;
+      height: 140px;
+      overflow: hidden;
+      background: #f3f4f6;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .product-row:hover .product-img img { transform: scale(1.04); }
+
+    .stueckgut-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+    .stueckgut-item::before {
+      content: '—';
+      color: #005BB4;
+      font-weight: 400;
+      flex-shrink: 0;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #d1d5db;
+      padding: 0.625rem 0;
+      font-size: 0.875rem;
+      font-family: 'Open Sans', sans-serif;
+      background: transparent;
+      outline: none;
+      transition: border-color 0.2s;
+      color: #0a0a0a;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-bottom-color: #005BB4;
+    }
+    .form-field textarea { resize: none; }
+    .form-field label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (max-width: 1023px) {
+      .product-row {
+        grid-template-columns: 40px 1fr;
+        gap: 0 1.5rem;
+      }
+      .product-img { display: none; }
+    }
+    @media (max-width: 767px) {
+      section[style*="grid-template-columns:1fr 44%"] {
+        grid-template-columns: 1fr !important;
+      }
+      section[style*="grid-template-columns:1fr 44%"] > div:last-child {
+        height: 280px;
+      }
+    }
+    @media (max-width: 767px) {
+      .two-col-section { grid-template-columns: 1fr !important; gap: 3rem !important; }
+      .two-col-section .right-col { padding: 0 !important; border: none !important; }
+      .two-col-section .left-col { padding: 0 !important; border: none !important; }
+      .contact-split { grid-template-columns: 1fr !important; }
+      .contact-split .contact-left { padding: 3rem 0 2rem !important; border-right: none !important; border-bottom: 1px solid #e5e7eb; }
+      .contact-split .contact-right { padding: 2rem 0 3rem !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Nav -->
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid #f3f4f6;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;">
+      <a href="https://schoenau.com/" target="_blank" rel="noopener">
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/Schoenau-Logo_DT_CMYK.jpg"
+             alt="SCHÖNAU Förderanlagen und Aufzüge GmbH"
+             style="height:30px;width:auto;object-fit:contain;display:block;" />
+      </a>
+      <nav style="display:flex;align-items:center;gap:2rem;">
+        <a href="tel:+49405400960"
+           style="font-family:'Open Sans',sans-serif;font-size:0.8125rem;color:#003F7D;text-decoration:none;letter-spacing:-0.01em;display:none;"
+           class="sm-show">
+          +49 40 5400960
+        </a>
+        <a href="#anfrage"
+           style="font-family:'Poppins',sans-serif;font-size:0.8125rem;font-weight:600;color:#fff;background:#005BB4;padding:0.5rem 1.25rem;text-decoration:none;letter-spacing:-0.01em;transition:background 0.2s;"
+           onmouseover="this.style.background='#003F7D'"
+           onmouseout="this.style.background='#005BB4'">
+          Anfrage stellen
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <style>
+    @media (min-width: 640px) { .sm-show { display: block !important; } }
+  </style>
+
+  <!-- Hero -->
+  <section style="padding-top:52px;min-height:92vh;display:grid;grid-template-columns:1fr 44%;overflow:hidden;">
+
+    <!-- Left: Text -->
+    <div style="display:flex;align-items:center;padding:5rem 3rem 5rem 2rem;max-width:680px;">
+      <div>
+        <p style="font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#005BB4;margin-bottom:1.75rem;">
+          Fördertechnik
+        </p>
+        <h1 style="font-family:'Poppins',sans-serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:#003F7D;margin-bottom:1.75rem;">
+          Förderanlagen<br />
+          <em style="font-style:italic;font-weight:300;color:#005BB4;">für jede Art</em><br />
+          von Stückgut.
+        </h1>
+        <p style="font-family:'Open Sans',sans-serif;font-size:1rem;line-height:1.75;color:#4b5563;margin-bottom:2.5rem;max-width:400px;">
+          Wir entwickeln und produzieren Förderanlagen auf Basis erprobter Komponenten – in intensiver Zusammenarbeit mit dem zukünftigen Betreiber.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+          <a href="#anfrage"
+             style="font-family:'Poppins',sans-serif;font-size:0.875rem;font-weight:600;color:#fff;background:#005BB4;padding:0.875rem 2rem;text-decoration:none;letter-spacing:-0.01em;transition:background 0.2s;"
+             onmouseover="this.style.background='#003F7D'"
+             onmouseout="this.style.background='#005BB4'">
+            Projekt anfragen
+          </a>
+          <a href="tel:+49405400960"
+             style="font-family:'Open Sans',sans-serif;font-size:0.875rem;color:#003F7D;text-decoration:none;border-bottom:1px solid #003F7D;padding-bottom:1px;letter-spacing:-0.01em;">
+            +49 40 5400960
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div style="overflow:hidden;">
+      <img src="https://schoenau.com/wp-content/uploads/2024/07/VE91371-768x1024.jpg"
+           alt="Fördertechnik SCHÖNAU"
+           style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+    </div>
+
+  </section>
+
+  <!-- Referenzkunden Logo-Leiste -->
+  <section style="border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:2rem 2rem;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p style="font-family:'Open Sans',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;text-align:center;margin-bottom:1.75rem;">
+        Referenzkunden
+      </p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2.5rem 3.5rem;">
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/bmw_logo_M.jpg"
+             alt="BMW" title="BMW"
+             style="height:52px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:0.45;transition:filter 0.3s,opacity 0.3s;"
+             onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'"
+             onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.45'" />
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/MAN-Logo_M.jpg"
+             alt="MAN" title="MAN"
+             style="height:52px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:0.45;transition:filter 0.3s,opacity 0.3s;"
+             onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'"
+             onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.45'" />
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/hella_M.jpg"
+             alt="HELLA" title="HELLA"
+             style="height:46px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:0.45;transition:filter 0.3s,opacity 0.3s;"
+             onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'"
+             onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.45'" />
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/deutz_logo_M.jpg"
+             alt="DEUTZ" title="DEUTZ"
+             style="height:48px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:0.45;transition:filter 0.3s,opacity 0.3s;"
+             onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'"
+             onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.45'" />
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/Johnson_Controls_klein_M.jpg"
+             alt="Johnson Controls" title="Johnson Controls"
+             style="height:44px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:0.45;transition:filter 0.3s,opacity 0.3s;"
+             onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'"
+             onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.45'" />
+        <img src="https://schoenau.com/wp-content/uploads/2024/01/land_rover_jaguar_logo_M.jpg"
+             alt="Jaguar Land Rover" title="Jaguar Land Rover"
+             style="height:46px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:0.45;transition:filter 0.3s,opacity 0.3s;"
+             onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'"
+             onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='0.45'" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Produkte (editorial rows) -->
+  <section style="padding:5rem 0;background:#fff;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:3rem;">
+        <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-0.025em;color:#003F7D;">
+          Produktbereiche
+        </h2>
+        <p style="font-family:'Open Sans',sans-serif;font-size:0.8125rem;color:#9ca3af;">4 Bereiche</p>
+      </div>
+
+      <div class="product-row">
+        <span class="product-num">01</span>
+        <div>
+          <h3 style="font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;color:#003F7D;margin-bottom:0.4rem;">
+            Palettenfördertechnik
+          </h3>
+          <p style="font-size:0.875rem;color:#6b7280;line-height:1.6;">
+            Staurollenförder­er, Hubtische und Palettenfördersysteme für erprobte Industrie­anwendungen.
+          </p>
+        </div>
+        <div class="product-img">
+          <img src="https://schoenau.com/wp-content/uploads/2024/09/Typenbild-Staurollenfoerderer.jpg"
+               alt="Palettenfördertechnik" />
+        </div>
+      </div>
+
+      <div class="product-row">
+        <span class="product-num">02</span>
+        <div>
+          <h3 style="font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;color:#003F7D;margin-bottom:0.4rem;">
+            Karton- &amp; Behälterfördertechnik
+          </h3>
+          <p style="font-size:0.875rem;color:#6b7280;line-height:1.6;">
+            Kommissionier­anlagen und Behälterförder­systeme – präzise auf den Materialfluss abgestimmt.
+          </p>
+        </div>
+        <div class="product-img">
+          <img src="https://schoenau.com/wp-content/uploads/2024/08/Kommissionieranlagen.jpg"
+               alt="Karton- und Behälterfördertechnik" />
+        </div>
+      </div>
+
+      <div class="product-row">
+        <span class="product-num">03</span>
+        <div>
+          <h3 style="font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;color:#003F7D;margin-bottom:0.4rem;">
+            Rollcontainer-Fördertechnik
+          </h3>
+          <p style="font-size:0.875rem;color:#6b7280;line-height:1.6;">
+            Maßgeschneiderte Systeme für Rollcontainer und Rollwagen in Logistik und Produktion.
+          </p>
+        </div>
+        <div class="product-img">
+          <img src="https://schoenau.com/wp-content/uploads/elementor/thumbs/20250515_071701403_iOS-scaled-r8erdvf5pfhvsfvcqrd6htm1m5koj7wiz7gzvn5ux8.jpg"
+               alt="Rollcontainer-Fördertechnik" />
+        </div>
+      </div>
+
+      <div class="product-row">
+        <span class="product-num">04</span>
+        <div>
+          <h3 style="font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;color:#003F7D;margin-bottom:0.4rem;">
+            Fassfördertechnik
+          </h3>
+          <p style="font-size:0.875rem;color:#6b7280;line-height:1.6;">
+            Förderanlagen für Fässer, Kanister und zylindrische Behälter – robust und prozesssicher.
+          </p>
+        </div>
+        <div class="product-img">
+          <img src="https://schoenau.com/wp-content/uploads/2024/09/fassfoerderer-cover-e1725426939244.jpg"
+               alt="Fassfördertechnik" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Typografisches Statement -->
+  <section style="padding:6rem 2rem;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;">
+    <div style="max-width:900px;margin:0 auto;text-align:center;">
+      <p style="font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,3.5vw,2.75rem);font-weight:300;line-height:1.3;letter-spacing:-0.025em;color:#003F7D;">
+        Wir verknüpfen das Wissen des Betreibers<br />
+        über seine Waren mit unserer Erfahrung –<br />
+        <em style="font-style:italic;color:#005BB4;">für maximierte Erfolgsaussichten.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- Stückgüter + Leistungen -->
+  <section style="padding:5rem 0;background:#fff;">
+    <div class="two-col-section" style="max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;">
+
+      <!-- Stückgüter -->
+      <div>
+        <h2 style="font-family:'Poppins',sans-serif;font-size:1.125rem;font-weight:600;letter-spacing:-0.015em;color:#003F7D;margin-bottom:0.25rem;">
+          Geförderte Stückgüter
+        </h2>
+        <p style="font-size:0.8125rem;color:#9ca3af;margin-bottom:1.75rem;">Synergien mit ähnlich gearteten Gütern</p>
+
+        <div>
+          <div class="stueckgut-item">IBC / Intermediate Bulk Container</div>
+          <div class="stueckgut-item">Getränkekisten</div>
+          <div class="stueckgut-item">Säcke</div>
+          <div class="stueckgut-item">Gitterboxen</div>
+          <div class="stueckgut-item">Kanister und Hobbocks</div>
+          <div class="stueckgut-item">Flaschen</div>
+          <div class="stueckgut-item">Kommissionierwagen / Rollwagen</div>
+          <div class="stueckgut-item" style="border-bottom:none;color:#005BB4;font-style:italic;">
+            + neue Stückgutarten nach Absprache
+          </div>
+        </div>
+      </div>
+
+      <!-- Leistungen -->
+      <div>
+        <h2 style="font-family:'Poppins',sans-serif;font-size:1.125rem;font-weight:600;letter-spacing:-0.015em;color:#003F7D;margin-bottom:0.25rem;">
+          Unser Ansatz
+        </h2>
+        <p style="font-size:0.8125rem;color:#9ca3af;margin-bottom:1.75rem;">Alles aus einer Hand</p>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-family:'Poppins',sans-serif;font-size:0.9375rem;font-weight:600;color:#003F7D;margin-bottom:0.5rem;letter-spacing:-0.01em;">
+            Neue Stückgutarten
+          </h3>
+          <p style="font-size:0.875rem;color:#4b5563;line-height:1.75;">
+            Wir widmen uns auch besonderen, bisher nicht geförderten Waren. In intensiver Zusammenarbeit mit dem zukünftigen Betreiber entsteht ein fördertechnisches Konzept mit maximierten Erfolgsaussichten.
+          </p>
+        </div>
+
+        <div style="padding-top:2rem;border-top:1px solid #f3f4f6;">
+          <h3 style="font-family:'Poppins',sans-serif;font-size:0.9375rem;font-weight:600;color:#003F7D;margin-bottom:0.5rem;letter-spacing:-0.01em;">
+            Ganzheitliche Lösung
+          </h3>
+          <p style="font-size:0.875rem;color:#4b5563;line-height:1.75;">
+            Wir binden spezielle Maschinen und Anlagenkomponenten aller Art in unser Anlagenkonzept mit ein – damit Sie nur einen Ansprechpartner haben.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ansprechpartner -->
+  <section style="padding:5rem 0;background:#fff;border-top:1px solid #e5e7eb;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+      <div style="margin-bottom:3rem;">
+        <p style="font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#005BB4;margin-bottom:0.5rem;">
+          Ihr direkter Kontakt
+        </p>
+        <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-0.025em;color:#003F7D;">
+          Ansprechpartner Neuanlagen
+        </h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:760px;">
+
+        <!-- Dirk Höxtermann -->
+        <div style="background:#f9fafb;padding:2.5rem;">
+          <div style="width:160px;height:200px;overflow:hidden;margin-bottom:1.5rem;background:#e5e7eb;">
+            <img src="https://schoenau.com/wp-content/uploads/2025/11/Hoextermann_R.jpg"
+                 alt="Dirk Höxtermann"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;" />
+          </div>
+          <p style="font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;letter-spacing:-0.015em;color:#003F7D;margin-bottom:0.2rem;">
+            Dirk Höxtermann
+          </p>
+          <p style="font-size:0.8125rem;color:#9ca3af;margin-bottom:1.5rem;">Vertriebsleiter</p>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <a href="tel:+494054009621"
+               style="font-family:'Open Sans',sans-serif;font-size:0.875rem;color:#003F7D;text-decoration:none;display:flex;align-items:center;gap:0.6rem;">
+              <svg width="14" height="14" fill="none" stroke="#005BB4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              040 – 540096-21
+            </a>
+            <a href="mailto:hoextermann@schoenau.com"
+               style="font-family:'Open Sans',sans-serif;font-size:0.875rem;color:#003F7D;text-decoration:none;display:flex;align-items:center;gap:0.6rem;">
+              <svg width="14" height="14" fill="none" stroke="#005BB4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              hoextermann@schoenau.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Christian Alms -->
+        <div style="background:#f9fafb;padding:2.5rem;border-left:2px solid #fff;">
+          <div style="width:160px;height:200px;overflow:hidden;margin-bottom:1.5rem;background:#e5e7eb;">
+            <img src="https://schoenau.com/wp-content/uploads/2024/11/Alms-Vertrieb-und-Service-scaled.jpg"
+                 alt="Christian Alms"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;" />
+          </div>
+          <p style="font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;letter-spacing:-0.015em;color:#003F7D;margin-bottom:0.2rem;">
+            Christian Alms
+          </p>
+          <p style="font-size:0.8125rem;color:#9ca3af;margin-bottom:1.5rem;">Vertrieb / Service</p>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <a href="tel:+494054009636"
+               style="font-family:'Open Sans',sans-serif;font-size:0.875rem;color:#003F7D;text-decoration:none;display:flex;align-items:center;gap:0.6rem;">
+              <svg width="14" height="14" fill="none" stroke="#005BB4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              040 – 540096-36
+            </a>
+            <a href="mailto:alms@schoenau.com"
+               style="font-family:'Open Sans',sans-serif;font-size:0.875rem;color:#003F7D;text-decoration:none;display:flex;align-items:center;gap:0.6rem;">
+              <svg width="14" height="14" fill="none" stroke="#005BB4" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              alms@schoenau.com
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bild + Kontakt Split -->
+  <section id="anfrage" style="background:#f9fafb;border-top:1px solid #e5e7eb;">
+    <div class="contact-split" style="max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;min-height:560px;">
+
+      <!-- Left: CTA text -->
+      <div style="padding:5rem 3rem 5rem 0;border-right:1px solid #e5e7eb;display:flex;flex-direction:column;justify-content:center;">
+        <p style="font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#005BB4;margin-bottom:1.25rem;">
+          Kontakt
+        </p>
+        <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.03em;color:#003F7D;margin-bottom:1.5rem;line-height:1.1;">
+          Beschreiben Sie<br />Ihr Stückgut –<br />wir lösen es.
+        </h2>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.75;margin-bottom:2.5rem;max-width:320px;">
+          Teilen Sie uns Ihr Förder­problem mit. Wir melden uns mit einem konkreten Konzeptvorschlag.
+        </p>
+        <a href="tel:+49405400960"
+           style="font-family:'Poppins',sans-serif;font-size:1.375rem;font-weight:600;color:#003F7D;text-decoration:none;letter-spacing:-0.025em;border-bottom:2px solid #005BB4;padding-bottom:2px;display:inline-block;width:fit-content;">
+          +49 40 5400960
+        </a>
+      </div>
+
+      <!-- Right: Form -->
+      <div style="padding:5rem 0 5rem 3rem;display:flex;flex-direction:column;justify-content:center;">
+        <form action="https://schoenau.com/ansprechpartner-neuanlagen/" target="_blank" style="display:flex;flex-direction:column;gap:1.75rem;">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+            <div class="form-field">
+              <label>Vorname</label>
+              <input type="text" placeholder="Max" />
+            </div>
+            <div class="form-field">
+              <label>Nachname</label>
+              <input type="text" placeholder="Mustermann" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Unternehmen</label>
+            <input type="text" placeholder="Muster GmbH" />
+          </div>
+
+          <div class="form-field">
+            <label>E-Mail</label>
+            <input type="email" placeholder="max@muster.de" />
+          </div>
+
+          <div class="form-field">
+            <label>Ihr Projekt</label>
+            <textarea rows="3" placeholder="Welches Stückgut soll gefördert werden?"></textarea>
+          </div>
+
+          <button type="submit"
+                  style="font-family:'Poppins',sans-serif;font-size:0.875rem;font-weight:600;color:#fff;background:#005BB4;border:none;padding:0.875rem 2rem;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:background 0.2s;letter-spacing:-0.01em;"
+                  onmouseover="this.style.background='#003F7D'"
+                  onmouseout="this.style.background='#005BB4'">
+            Anfrage absenden
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top:1px solid #e5e7eb;padding:1.25rem 2rem;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+      <img src="https://schoenau.com/wp-content/uploads/2024/01/Schoenau-Logo_DT_CMYK.jpg"
+           alt="SCHÖNAU" style="height:22px;width:auto;object-fit:contain;opacity:0.45;" />
+      <span style="font-size:0.75rem;color:#9ca3af;font-family:'Open Sans',sans-serif;">
+        SCHÖNAU Förderanlagen und Aufzüge GmbH
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>

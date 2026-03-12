@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anlagenbau – Schlüsselfertige Industrieanlagen | endeco GmbH</title>
+  <link rel="icon" href="https://endeco-gmbh.de/wp-content/uploads/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue:  '#006FBE',
+              green: '#75D69C',
+              dark:  '#003D69',
+              gray:  '#F4F7FA',
+            }
+          },
+          fontFamily: {
+            sans: ['Barlow', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Nav */
+    #nav { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    #nav.scrolled {
+      background-color: #ffffff;
+      box-shadow: 0 1px 10px rgba(0,111,190,0.10);
+    }
+    #nav.scrolled .nav-logo { filter: brightness(0) saturate(100%) invert(24%) sepia(94%) saturate(500%) hue-rotate(182deg) brightness(90%) contrast(101%); }
+    #nav.scrolled .nav-phone { color: #006FBE; }
+    #nav.scrolled .nav-cta { background-color: #006FBE; color: #ffffff; }
+
+    /* Hero */
+    .hero-bg {
+      background-image:
+        linear-gradient(to right, rgba(0,61,105,0.90) 45%, rgba(0,61,105,0.45) 100%),
+        url('https://endeco-gmbh.de/wp-content/uploads/2017/09/einstieg_slider_3.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* FAQ */
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-content { max-height: 260px; }
+    .faq-icon { transition: transform 0.3s ease; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+  </style>
+</head>
+<body class="font-sans bg-white text-brand-dark antialiased">
+
+  <!-- STICKY NAV -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero">
+        <img src="https://endeco-gmbh.de/wp-content/uploads/endeco-gmbh-logo.svg"
+             alt="endeco GmbH"
+             class="nav-logo h-8 w-auto brightness-0 invert transition-all duration-300" />
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="tel:+4926839431822"
+           class="nav-phone hidden md:flex items-center gap-2 text-white text-sm font-medium transition-colors duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          02683 / 94318-22
+        </a>
+        <a href="#kontakt"
+           class="nav-cta bg-white text-brand-blue text-sm font-semibold px-5 py-2 transition-all duration-300 hover:bg-brand-green hover:text-white">
+          Anfrage stellen
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero-bg min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto px-6 py-32">
+      <div class="max-w-2xl">
+        <p class="text-brand-green text-sm font-semibold uppercase tracking-widest mb-4 reveal">
+          Schüttgut- & Flüssigkeitsanlagen · Turn-Key
+        </p>
+        <h1 class="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 reveal">
+          Anlagenbau.<br />Schlüsselfertig.<br />Aus einer Hand.
+        </h1>
+        <p class="text-white/85 text-lg md:text-xl leading-relaxed mb-8 reveal">
+          Individuelle Komplettlösungen für die Industrie – von der ersten Beratung
+          bis zur Inbetriebnahme. Lebensmittel, Chemie, Pharmazie.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-10 reveal">
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1.5 text-white text-xs font-semibold uppercase tracking-wide">
+            <svg class="w-3 h-3 text-brand-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            DIN EN ISO 9001
+          </span>
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1.5 text-white text-xs font-semibold uppercase tracking-wide">
+            <svg class="w-3 h-3 text-brand-green" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            Inhabergeführt seit Gründung
+          </span>
+          <span class="text-white/50 text-xs">· Eigene Montageteams</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 reveal">
+          <a href="#kontakt"
+             class="bg-brand-blue text-white font-bold px-8 py-4 text-center hover:bg-brand-dark transition-colors">
+            Jetzt Anlage anfragen
+          </a>
+          <a href="tel:+4926839431822"
+             class="border border-white text-white font-bold px-8 py-4 text-center hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+            02683 / 94318-22
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENZEN -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-center text-xs uppercase tracking-widest text-brand-dark/35 font-semibold mb-12 reveal">
+        Kunden, die seit Jahren auf endeco bauen
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 reveal">
+        <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/150_lindt.jpg"
+             alt="Lindt" class="h-20 w-auto opacity-50 hover:opacity-80 transition-opacity grayscale" />
+        <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/150_frosta.jpg"
+             alt="FRoSTA" class="h-20 w-auto opacity-50 hover:opacity-80 transition-opacity grayscale" />
+        <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/150_meggle.jpg"
+             alt="Meggle" class="h-20 w-auto opacity-50 hover:opacity-80 transition-opacity grayscale" />
+        <img src="https://endeco-gmbh.de/wp-content/uploads/bayer-logo.jpg"
+             alt="Bayer" class="h-20 w-auto opacity-50 hover:opacity-80 transition-opacity grayscale" />
+        <img src="https://endeco-gmbh.de/wp-content/uploads/gea-logo.jpg"
+             alt="GEA" class="h-20 w-auto opacity-50 hover:opacity-80 transition-opacity grayscale" />
+        <img src="https://endeco-gmbh.de/wp-content/uploads/logo-zott.jpg"
+             alt="Zott" class="h-20 w-auto opacity-50 hover:opacity-80 transition-opacity grayscale" />
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-brand-green text-xs font-semibold uppercase tracking-widest mb-3">Leistungen</p>
+        <h2 class="text-brand-dark text-3xl md:text-4xl font-bold">Was wir für Sie umsetzen</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-0 border border-brand-blue/15">
+        <div class="p-10 border-b md:border-b-0 md:border-r border-brand-blue/15 reveal">
+          <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/engineering.jpg"
+               alt="Engineering" class="w-full h-44 object-contain p-6 mb-6" style="background-color: #396eb4;" />
+          <div class="w-8 h-1 bg-brand-green mb-5"></div>
+          <h3 class="text-brand-dark text-xl font-bold mb-3">Engineering</h3>
+          <p class="text-brand-dark/65 text-sm leading-relaxed">
+            Anlagenpotenziale erkennen und nutzen. Wir analysieren Ihre bestehende oder
+            neu zu errichtende verfahrenstechnische Anlage – von der Gebäudetechnik
+            bis zur Logistik – und zeigen im Handlungsplan konkrete Maßnahmen auf.
+          </p>
+        </div>
+        <div class="p-10 border-b border-brand-blue/15 reveal">
+          <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/anlagenbau.jpg"
+               alt="Anlagenbau" class="w-full h-44 object-contain p-6 mb-6" style="background-color: #396eb4;" />
+          <div class="w-8 h-1 bg-brand-green mb-5"></div>
+          <h3 class="text-brand-dark text-xl font-bold mb-3">Anlagenbau</h3>
+          <p class="text-brand-dark/65 text-sm leading-relaxed">
+            Die schlüsselfertige Komplettlösung aus einer Hand. Hochwertige Materialien,
+            hochaktuelle Technologien, professionelles Projektmanagement –
+            Ihre Anlage effizient und langlebig, genau nach Ihren Anforderungen.
+          </p>
+        </div>
+        <div class="p-10 border-b md:border-b-0 md:border-r border-brand-blue/15 reveal">
+          <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/beratung.jpg"
+               alt="Beratung" class="w-full h-44 object-contain p-6 mb-6" style="background-color: #396eb4;" />
+          <div class="w-8 h-1 bg-brand-green mb-5"></div>
+          <h3 class="text-brand-dark text-xl font-bold mb-3">Beratung</h3>
+          <p class="text-brand-dark/65 text-sm leading-relaxed">
+            Fundiert entscheiden, Anlagen gezielt optimieren. Gutachten, Machbarkeitsstudien,
+            IST-/SOLL-Analyse. Wir arbeiten dabei so, als ob wir die Anlage
+            selbst errichten müssten – unabhängig und auf Augenhöhe.
+          </p>
+        </div>
+        <div class="p-10 reveal">
+          <img src="https://endeco-gmbh.de/wp-content/uploads/2017/09/service.jpg"
+               alt="Fertigung & Montage" class="w-full h-44 object-contain p-6 mb-6" style="background-color: #396eb4;" />
+          <div class="w-8 h-1 bg-brand-green mb-5"></div>
+          <h3 class="text-brand-dark text-xl font-bold mb-3">Fertigung & Montage</h3>
+          <p class="text-brand-dark/65 text-sm leading-relaxed">
+            Einzelteil-Fertigung, Montage, Inbetriebnahme und Service durch unsere
+            Tochter indu-tech GmbH. Eigene Montageteams vor Ort –
+            inklusive Edelstahl in Foodgrade-Qualität.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORTEILE -->
+  <section class="bg-brand-dark py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-white text-2xl md:text-3xl font-bold text-center mb-14 reveal">
+        Ihre Vorteile im Anlagenbau mit endeco
+      </h2>
+      <div class="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 mt-0.5">
+            <svg class="text-brand-green w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">Komplettlösungen aus einer Hand – von der Planung bis zur Inbetriebnahme</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 mt-0.5">
+            <svg class="text-brand-green w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">Inhabergeführtes Familienunternehmen – flache Hierarchien, direkte Ansprechpartner</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 mt-0.5">
+            <svg class="text-brand-green w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">DIN EN ISO 9001 zertifiziert – langlebige, zukunftssichere Qualität</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 mt-0.5">
+            <svg class="text-brand-green w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">Langjährige Erfahrung im Flüssigkeits- und Schüttguthandling</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 mt-0.5">
+            <svg class="text-brand-green w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">Eigene Montageteams und Außendienst – Service direkt vor Ort</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 mt-0.5">
+            <svg class="text-brand-green w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80 text-sm leading-relaxed">Zuverlässige, faire Partnerschaft – langlebige Geschäftsbeziehungen weltweit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANCHEN -->
+  <section class="py-20 bg-brand-gray">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-12 reveal">
+        <p class="text-brand-green text-xs font-semibold uppercase tracking-widest mb-3">Branchen</p>
+        <h2 class="text-brand-dark text-3xl md:text-4xl font-bold">Anlagenbau für Ihre Industrie</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-0 border border-brand-blue/15">
+        <div class="p-8 border-b md:border-b-0 border-r border-brand-blue/15 reveal">
+          <div class="w-6 h-1 bg-brand-green mb-4"></div>
+          <h3 class="text-brand-dark font-semibold mb-2">Lebensmittel & Food</h3>
+          <p class="text-brand-dark/55 text-sm">Foodprocessing, Milchprodukte, Stärke/Protein – Foodgrade-Qualität inklusive</p>
+        </div>
+        <div class="p-8 border-b md:border-b-0 border-r border-brand-blue/15 reveal">
+          <div class="w-6 h-1 bg-brand-green mb-4"></div>
+          <h3 class="text-brand-dark font-semibold mb-2">Chemie & Kunststoffe</h3>
+          <p class="text-brand-dark/55 text-sm">Individuelle Schüttgut- und Flüssigkeitsanlagen für chemische Prozesse</p>
+        </div>
+        <div class="p-8 border-b md:border-b-0 reveal">
+          <div class="w-6 h-1 bg-brand-green mb-4"></div>
+          <h3 class="text-brand-dark font-semibold mb-2">Pharmazie</h3>
+          <p class="text-brand-dark/55 text-sm">Sonderanlagen nach höchsten Hygiene- und Qualitätsstandards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <section class="bg-brand-blue py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="reveal">
+          <div class="text-brand-green text-3xl font-bold mb-1">Turn-Key</div>
+          <div class="text-white/70 text-xs uppercase tracking-wide">Schlüsselfertige Anlagen</div>
+        </div>
+        <div class="reveal">
+          <div class="text-brand-green text-3xl font-bold mb-1">ISO 9001</div>
+          <div class="text-white/70 text-xs uppercase tracking-wide">Zertifiziert</div>
+        </div>
+        <div class="reveal">
+          <div class="text-brand-green text-3xl font-bold mb-1">4</div>
+          <div class="text-white/70 text-xs uppercase tracking-wide">Leistungsbereiche</div>
+        </div>
+        <div class="reveal">
+          <div class="text-brand-green text-3xl font-bold mb-1">weltweit</div>
+          <div class="text-white/70 text-xs uppercase tracking-wide">Projekte & Referenzen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-brand-gray">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-14 reveal">
+        <p class="text-brand-green text-xs font-semibold uppercase tracking-widest mb-3">FAQ</p>
+        <h2 class="text-brand-dark text-3xl md:text-4xl font-bold">Häufige Fragen</h2>
+      </div>
+      <div class="max-w-3xl divide-y divide-brand-blue/15">
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-dark">Für welche Branchen bauen Sie Anlagen?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-blue font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-dark/65 mt-4 leading-relaxed text-sm">
+              Wir errichten Schüttgut- und Flüssigkeitsanlagen für die Lebensmittelindustrie (Foodprocessing,
+              Milchprodukte, Stärke/Protein), Chemie, Kunststoffe und Pharmazie – angepasst an Ihre
+              spezifischen Produktionsanforderungen.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-dark">Was bedeutet „schlüsselfertig"?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-blue font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-dark/65 mt-4 leading-relaxed text-sm">
+              Sie erhalten Ihre fertige Anlage aus einer Hand – Beratung, Planung, Errichtung,
+              Inbetriebnahme und Service. Ein persönlicher Projektmanager begleitet Sie durch alle Phasen
+              und gibt Ihnen jederzeit volle Planungssicherheit.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-dark">Können Sie bestehende Anlagen optimieren?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-blue font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-dark/65 mt-4 leading-relaxed text-sm">
+              Ja. Im Rahmen unseres Engineering-Bereichs prüfen wir Wirtschaftlichkeit, Produktivität
+              und Materialfluss Ihrer bestehenden Anlage. Der Anlagen-Check liefert einen konkreten
+              Handlungsplan zur gezielten Verbesserung.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-dark">Bieten Sie auch Montage und Service vor Ort an?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-blue font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-dark/65 mt-4 leading-relaxed text-sm">
+              Ja. Über unsere Tochter indu-tech GmbH verfügen wir über eigene Montageteams und einen
+              eigenen Außendienst. Montage, Inbetriebnahme und Anlagenservice aus einer Hand – auch
+              kurzfristig und direkt bei Ihnen vor Ort.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+        <div class="reveal">
+          <p class="text-brand-green text-xs font-semibold uppercase tracking-widest mb-3">Kontakt</p>
+          <h2 class="text-brand-dark text-3xl md:text-4xl font-bold mb-6">
+            Anlage anfragen.<br />Wir melden uns schnell.
+          </h2>
+          <p class="text-brand-dark/65 leading-relaxed mb-8">
+            Schildern Sie uns kurz Ihr Vorhaben – ob Neubau, Optimierung oder Machbarkeitsstudie.
+            Wir prüfen Ihre Anfrage und melden uns zeitnah zurück.
+          </p>
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://endeco-gmbh.de/wp-content/uploads/Dennis-Joesten-endeco-anlagenbau-engineering-400x400.jpg"
+                 alt="Dennis Joesten" class="w-16 h-16 object-cover" />
+            <div>
+              <p class="font-semibold text-brand-dark">Dennis Joesten</p>
+              <p class="text-brand-dark/50 text-sm">Leiter Vertrieb</p>
+              <p class="text-brand-dark/50 text-sm">joesten@endeco-gmbh.de</p>
+            </div>
+          </div>
+          <a href="tel:+4926839431822"
+             class="flex items-center gap-3 text-brand-dark font-semibold hover:text-brand-blue transition-colors mb-4">
+            <div class="w-10 h-10 bg-brand-blue flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+              </svg>
+            </div>
+            02683 / 94318-22
+          </a>
+        </div>
+        <div class="reveal">
+          <form class="space-y-4" onsubmit="handleSubmit(event)">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-brand-dark uppercase tracking-wide mb-2">Name</label>
+                <input type="text" required placeholder="Max Mustermann"
+                       class="w-full border border-brand-blue/25 bg-brand-gray px-4 py-3 text-brand-dark placeholder-brand-dark/30 focus:outline-none focus:border-brand-blue transition-colors" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-brand-dark uppercase tracking-wide mb-2">Unternehmen</label>
+                <input type="text" placeholder="Musterfirma GmbH"
+                       class="w-full border border-brand-blue/25 bg-brand-gray px-4 py-3 text-brand-dark placeholder-brand-dark/30 focus:outline-none focus:border-brand-blue transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-brand-dark uppercase tracking-wide mb-2">Telefon</label>
+              <input type="tel" placeholder="+49 ..."
+                     class="w-full border border-brand-blue/25 bg-brand-gray px-4 py-3 text-brand-dark placeholder-brand-dark/30 focus:outline-none focus:border-brand-blue transition-colors" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-brand-dark uppercase tracking-wide mb-2">Ihr Vorhaben</label>
+              <textarea rows="4" placeholder="Neubau, Optimierung oder Beratung – kurze Beschreibung genügt..."
+                        class="w-full border border-brand-blue/25 bg-brand-gray px-4 py-3 text-brand-dark placeholder-brand-dark/30 focus:outline-none focus:border-brand-blue transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full bg-brand-blue text-white font-bold py-4 hover:bg-brand-dark transition-colors">
+              Anfrage absenden
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-dark py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <img src="https://endeco-gmbh.de/wp-content/uploads/endeco-gmbh-logo.svg"
+           alt="endeco GmbH" class="h-7 w-auto brightness-0 invert opacity-60" />
+      <div class="flex items-center gap-6 text-white/40 text-sm">
+        <a href="tel:+4926839431822" class="hover:text-white transition-colors">02683 / 94318-22</a>
+        <span>·</span>
+        <a href="https://endeco-gmbh.de/impressum/" class="hover:text-white transition-colors" target="_blank" rel="noopener">Impressum</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // FAQ
+    function toggleFaq(item) {
+      item.classList.toggle('open');
+    }
+
+    // Form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Anfrage gesendet – wir melden uns!';
+      btn.disabled = true;
+      btn.classList.add('bg-brand-green', 'text-brand-dark');
+      btn.classList.remove('bg-brand-blue', 'text-white');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magnetische Abschirmung nach Ihren Vorgaben – Marchandise</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Barlow', 'sans-serif'] },
+          colors: { brand: '#BE001E' }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; color: #222; background: #fff; }
+
+    .red-rule {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: #BE001E;
+      margin-top: 14px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #BE001E;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #9a0018; }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      border: 1.5px solid #fff;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: #fff; color: #BE001E; }
+
+    .btn-outline-red {
+      display: inline-block;
+      background: #fff;
+      color: #BE001E;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      border-radius: 9999px;
+      padding: 0.5rem 1.2rem;
+      border: 1.5px solid #BE001E;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline-red:hover { background: #BE001E; color: #fff; }
+
+    .form-input {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      padding: 0.75rem 1rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      color: #222;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .form-input:focus { border-color: #BE001E; box-shadow: 0 0 0 2px rgba(190,0,30,0.08); }
+
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .product-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+    .product-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: #BE001E;
+      z-index: 2;
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: #444;
+      line-height: 1.5;
+    }
+    .checklist-dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background: #BE001E;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+
+    .process-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #f0f0f0;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── STICKY NAV ──────────────────────────────────────────── -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100" style="height:64px;">
+    <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+      <img
+        src="https://marchandise.de/_next/static/media/marchandise_logo.0da87dbe.svg"
+        alt="Marchandise" class="h-10" />
+      <a href="#anfrage" class="btn-primary" style="font-size:0.8rem; padding:0.6rem 1.5rem;">anfrage stellen</a>
+    </div>
+  </header>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section style="padding-top:64px; min-height: calc(100vh - 64px); position:relative; display:flex; align-items:stretch;">
+
+    <!-- Background image -->
+    <div class="absolute inset-0" style="top:64px;">
+      <img
+        src="https://stage-marchandise-backend.mark2.dev/uploads/large_1_047_2d8917673d.jpg"
+        alt="" aria-hidden="true"
+        style="width:100%; height:100%; object-fit:cover; display:block;" />
+      <div class="absolute inset-0" style="background: rgba(10,10,10,0.70);"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-10 py-16">
+
+      <!-- Left: Headline + Trust -->
+      <div class="flex-1 text-white">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style="color:#BE001E;">Magnetische Abschirmung</p>
+        <h1 class="font-extrabold leading-tight mb-5" style="font-size: clamp(2rem, 4.5vw, 3.4rem);">
+          Magnetische Abschirmung<br />nach Ihren Vorgaben.
+        </h1>
+        <p class="leading-relaxed mb-10 max-w-lg" style="font-size:1.05rem; color: #d1d1d1;">
+          Kundenindividuelle Lösungen für niederfrequente Magnetfelder. Von der Null-Gauß-Kammer bis zur Großabschirmung – entwickelt für Ihre genauen Anforderungen.
+        </p>
+
+        <!-- Trust signals -->
+        <div class="space-y-3 mb-10">
+          <div class="flex items-center gap-3">
+            <div style="width:7px; height:7px; background:#BE001E; border-radius:50%; flex-shrink:0;"></div>
+            <span class="text-sm" style="color:#ccc;">Spezialist für niederfrequente Magnetfelder</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div style="width:7px; height:7px; background:#BE001E; border-radius:50%; flex-shrink:0;"></div>
+            <span class="text-sm" style="color:#ccc;">Jede Abschirmung kundenindividuell entwickelt</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div style="width:7px; height:7px; background:#BE001E; border-radius:50%; flex-shrink:0;"></div>
+            <span class="text-sm" style="color:#ccc;">Persönliche Expertenberatung</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-5 flex-wrap">
+          <a href="#anfrage" class="btn-primary" style="font-size:1rem; padding:0.9rem 2.5rem;">
+            jetzt anfrage stellen
+          </a>
+          <a href="#loesungen" style="font-size:0.85rem; color:#aaa; text-decoration:none; letter-spacing:0.03em;">
+            ↓ Lösungen ansehen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── LÖSUNGEN ───────────────────────────────────────────── -->
+  <section id="loesungen" style="background:#f5f5f5; padding: 5rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand mb-2">Produktkategorien</p>
+        <h2 class="font-extrabold text-3xl text-gray-900">Die richtige Lösung für jede Anforderung.</h2>
+        <span class="red-rule"></span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+
+        <div class="bg-white product-card">
+          <div class="product-img-wrap">
+            <img src="https://stage-marchandise-backend.mark2.dev/uploads/small_1_087_scaled_475e7753b2.jpg" alt="Cryophy Abschirmungen" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-base mb-2">Cryophy® Abschirmungen</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-5">Abschirmlösungen für kryogene Systeme bei extrem niedrigen Temperaturen.</p>
+            <a href="#anfrage" class="btn-outline-red">anfrage stellen</a>
+          </div>
+        </div>
+
+        <div class="bg-white product-card">
+          <div class="product-img-wrap">
+            <img src="https://stage-marchandise-backend.mark2.dev/uploads/small_led_south_wall_orig_c6adfa1376.jpg" alt="Raum und Großabschirmungen" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-base mb-2">Raum- & Großabschirmungen</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-5">Maßgeschneiderte Lösungen für Räume und industrielle Anlagen.</p>
+            <a href="#anfrage" class="btn-outline-red">anfrage stellen</a>
+          </div>
+        </div>
+
+        <div class="bg-white product-card">
+          <div class="product-img-wrap">
+            <img src="https://stage-marchandise-backend.mark2.dev/uploads/small_1_030_995fec27db.jpg" alt="Spezifische Abschirmungen" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-base mb-2">Spezifische Abschirmungen</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-5">Aus speziell entwickelten Materialien für präzise Störfeldreduktion.</p>
+            <a href="#anfrage" class="btn-outline-red">anfrage stellen</a>
+          </div>
+        </div>
+
+        <div class="bg-white product-card">
+          <div class="product-img-wrap">
+            <img src="https://stage-marchandise-backend.mark2.dev/uploads/small_1_038_1024x690_a686157634.jpg" alt="Null-Gauß-Kammern" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-base mb-2">Null-Gauß-Kammern</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-5">Abschirmung auf extrem niedrigen Restfeldniveaus für hochsensible Anwendungen.</p>
+            <a href="#anfrage" class="btn-outline-red">anfrage stellen</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VORGEHEN ───────────────────────────────────────────── -->
+  <section style="background:#fff; padding: 5rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand mb-2">So arbeiten wir</p>
+        <h2 class="font-extrabold text-3xl text-gray-900">Von der Anforderung zur fertigen Abschirmung.</h2>
+        <span class="red-rule"></span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div>
+          <div class="process-number">01</div>
+          <h3 class="font-bold text-lg mb-2">Anforderungen definieren</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Störfeldstärke, Frequenz, Richtung, gewünschte Dämpfung sowie Form und Abmessungen – die Grundlage für jede maßgeschneiderte Lösung.</p>
+        </div>
+        <div>
+          <div class="process-number">02</div>
+          <h3 class="font-bold text-lg mb-2">Lösung entwickeln</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Unsere Experten wählen Material, Schichtaufbau und Geometrie. Beide Abschirmmethoden – Absorption und Flussführung – stehen zur Verfügung.</p>
+        </div>
+        <div>
+          <div class="process-number">03</div>
+          <h3 class="font-bold text-lg mb-2">Fertigung & Lieferung</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Die Abschirmung wird aus Hochpermeabilitätslegierungen gefertigt und nach abschließender Wärmebehandlung geliefert – einsatzbereit für Ihren Anwendungsfall.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAS UNS AUSMACHT ──────────────────────────────────── -->
+  <section style="background:#f5f5f5; padding: 5rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand mb-2">Was uns ausmacht</p>
+        <h2 class="font-extrabold text-3xl text-gray-900">Spezialisierung, die man merkt.</h2>
+        <span class="red-rule"></span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-200">
+
+        <div class="bg-white p-8">
+          <p class="text-xs font-bold tracking-widest uppercase text-brand mb-4">Qualität</p>
+          <h3 class="font-bold text-lg text-gray-900 mb-3">ISO 9001 zertifiziert</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Unser Qualitätsmanagementsystem ist nach ISO 9001 zertifiziert. Jede Abschirmung wird nach dokumentierten Prozessen entwickelt und gefertigt – nachvollziehbar, reproduzierbar, verlässlich.</p>
+        </div>
+
+        <div class="bg-white p-8">
+          <p class="text-xs font-bold tracking-widest uppercase text-brand mb-4">Material</p>
+          <h3 class="font-bold text-lg text-gray-900 mb-3">MUMETAL® & Hochpermealibilitätslegierungen</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Wir arbeiten mit Legierungen wie MUMETAL® (2.4545) – bekannt für höchsten Schirmfaktor und überlegene Abschirmwirkung bei niederfrequenten Magnetfeldern. Das Material wird auf Ihre Anwendung abgestimmt.</p>
+        </div>
+
+        <div class="bg-white p-8">
+          <p class="text-xs font-bold tracking-widest uppercase text-brand mb-4">Zusammenarbeit</p>
+          <h3 class="font-bold text-lg text-gray-900 mb-3">Partner, nicht Lieferant</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Marchandise ist kein Katalogversand. Wir entwickeln gemeinsam mit Ihnen – von der Anforderungsaufnahme bis zur fertig gelieferten Abschirmung. Technisch, industriell oder wissenschaftlich.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────── -->
+  <section style="background:#fff; padding: 5rem 1.5rem;">
+    <div class="max-w-2xl mx-auto">
+      <div class="mb-12 text-center">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand mb-2">FAQ</p>
+        <h2 class="font-extrabold text-3xl text-gray-900">Häufige Fragen.</h2>
+        <span class="red-rule" style="margin: 14px auto 0;"></span>
+      </div>
+
+      <div class="divide-y divide-gray-200">
+
+        <div class="faq-item py-5">
+          <button class="faq-btn w-full text-left flex items-start justify-between gap-4" aria-expanded="false">
+            <span class="font-semibold text-gray-900 text-base leading-snug">Wie funktioniert eine magnetische Abschirmung?</span>
+            <span class="faq-icon flex-shrink-0 font-bold text-lg leading-none text-brand">+</span>
+          </button>
+          <div class="faq-body hidden pt-3 pb-1 text-sm text-gray-500 leading-relaxed">
+            Ein magnetisches Feld kann weder eine Quelle noch eine Senke aufweisen, an denen es beginnt oder endet. Anders als bei einem elektrischen Feld kann kein „magnetischer Isolator" verwendet werden, an dem die Feldlinien reflektiert oder enden würden. Stattdessen wird das magnetische Feld mit einem hochpermeablen Material dazu verleitet, lieber den Weg durch die Abschirmung zu nehmen.
+          </div>
+        </div>
+
+        <div class="faq-item py-5">
+          <button class="faq-btn w-full text-left flex items-start justify-between gap-4" aria-expanded="false">
+            <span class="font-semibold text-gray-900 text-base leading-snug">Was verbirgt sich hinter dem Begriff MUMETAL®?</span>
+            <span class="faq-icon flex-shrink-0 font-bold text-lg leading-none text-brand">+</span>
+          </button>
+          <div class="faq-body hidden pt-3 pb-1 text-sm text-gray-500 leading-relaxed">
+            MUMETAL® ist eine eingetragene Marke der Firma Carpenter Technology, die erstmals 1924 eingetragen wurde. Die Zusammensetzung der Nickellegierung hat sich im Laufe der Zeit geändert – heute ist eine der gebräuchlichsten Legierungen die Legierung 2.4545 oder 2.4596, insbesondere in Europa.
+          </div>
+        </div>
+
+        <div class="faq-item py-5">
+          <button class="faq-btn w-full text-left flex items-start justify-between gap-4" aria-expanded="false">
+            <span class="font-semibold text-gray-900 text-base leading-snug">Was ist die beste Form für eine Abschirmung?</span>
+            <span class="faq-icon flex-shrink-0 font-bold text-lg leading-none text-brand">+</span>
+          </button>
+          <div class="faq-body hidden pt-3 pb-1 text-sm text-gray-500 leading-relaxed">
+            Die effizienteste Form ist die Kugelform – diese ist jedoch schwieriger herzustellen und in den meisten Abschirmungsanwendungen weitgehend unpraktisch. Das nächstbeste ist ein Zylinder mit geschlossenen Enden.
+          </div>
+        </div>
+
+        <div class="faq-item py-5">
+          <button class="faq-btn w-full text-left flex items-start justify-between gap-4" aria-expanded="false">
+            <span class="font-semibold text-gray-900 text-base leading-snug">Ist es möglich, Magnetpole mithilfe einer Abschirmung zu isolieren?</span>
+            <span class="faq-icon flex-shrink-0 font-bold text-lg leading-none text-brand">+</span>
+          </button>
+          <div class="faq-body hidden pt-3 pb-1 text-sm text-gray-500 leading-relaxed">
+            Eine magnetische Abschirmung isoliert oder verhindert keine Wechselwirkung zwischen den Nord- und Südpolen eines Magneten. Die Abschirmung dient dazu, die Feldlinien zum offenen Ende hin zu schließen.
+          </div>
+        </div>
+
+        <div class="faq-item py-5">
+          <button class="faq-btn w-full text-left flex items-start justify-between gap-4" aria-expanded="false">
+            <span class="font-semibold text-gray-900 text-base leading-snug">Können Abschirmungen für ein Perpetuum Mobile verwendet werden?</span>
+            <span class="faq-icon flex-shrink-0 font-bold text-lg leading-none text-brand">+</span>
+          </button>
+          <div class="faq-body hidden pt-3 pb-1 text-sm text-gray-500 leading-relaxed">
+            Ein Perpetuum Mobile ist eine Maschine, die ohne Energiezufuhr in ständiger Bewegung ist. Sie sind durch grundlegende physikalische Gesetze ausgeschlossen und können nicht geschaffen werden.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ANFRAGE (Bottom Form) ──────────────────────────────── -->
+  <section id="anfrage" style="background:#f5f5f5; padding: 5rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: Context + guidance -->
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase text-brand mb-2">Anfrage stellen</p>
+          <h2 class="font-extrabold text-3xl text-gray-900 mb-2">Anforderungen mitteilen.</h2>
+          <span class="red-rule mb-8"></span>
+          <p class="text-gray-500 leading-relaxed mb-8" style="margin-top:1.5rem;">
+            Je präziser Ihre Angaben, desto schneller können unsere Experten eine passende Lösung entwickeln. Unsere Anfragen sind kostenlos und unverbindlich.
+          </p>
+
+          <p class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">Was hilfreich ist</p>
+          <div class="space-y-3">
+            <div class="checklist-item">
+              <div class="checklist-dot"></div>
+              <span>Stärke und Frequenz des Störfeldes</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-dot"></div>
+              <span>Gewünschte Dämpfung in dB oder Abschirmfaktor</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-dot"></div>
+              <span>Form und Abmessungen (grobe Schätzung genügt)</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-dot"></div>
+              <span>Richtung des Störfeldes (wenn bekannt)</span>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-dot"></div>
+              <span>Einsatzumgebung (z.B. kryogen, Reinraum, Industrie)</span>
+            </div>
+          </div>
+
+          <div style="margin-top:3rem; padding:1.5rem; border-left:3px solid #BE001E; background:#fff;">
+            <p class="text-sm text-gray-600 leading-relaxed">Nicht alle Parameter bekannt? Kein Problem. Unsere Experten beraten Sie im ersten Schritt und helfen Ihnen, die Anforderungen zu konkretisieren.</p>
+          </div>
+
+          <div style="margin-top:2.5rem;">
+            <p class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">Ihre Ansprechpartner</p>
+            <div class="grid grid-cols-2 gap-4">
+
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://stage-marchandise-backend.mark2.dev/uploads/small_processed_C868_A275_EA_5_C_4_F27_A2_F0_CC_223529_AE_55_small_b898d1a164.jpg"
+                  alt="Stefan Klein"
+                  style="width:48px; height:48px; object-fit:cover; flex-shrink:0; filter:grayscale(15%);" />
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm leading-tight">Stefan Klein</p>
+                  <p class="text-xs text-brand font-bold tracking-wide uppercase mb-1">Vertrieb & Technik</p>
+                  <a href="mailto:s.Klein@marchandise.de" class="text-xs text-gray-400 hover:text-brand" style="transition:color 0.2s;">s.Klein@marchandise.de</a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://stage-marchandise-backend.mark2.dev/uploads/small_processed_AB_10_BA_3_D_1_CB_6_42_AE_AF_1_B_D873_F45_AA_3_AD_small_6edef74142.jpg"
+                  alt="Sandra Görges"
+                  style="width:48px; height:48px; object-fit:cover; flex-shrink:0; filter:grayscale(15%);" />
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm leading-tight">Sandra Görges</p>
+                  <p class="text-xs text-brand font-bold tracking-wide uppercase mb-1">Vertrieb</p>
+                  <a href="mailto:s.goerges@marchandise.de" class="text-xs text-gray-400 hover:text-brand" style="transition:color 0.2s;">s.goerges@marchandise.de</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div>
+          <form class="bg-white p-8 space-y-5" id="bottom-form" onsubmit="handleSubmit(event, 'bottom-btn')">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label" for="b-name">Name</label>
+                <input type="text" id="b-name" name="name" autocomplete="name" placeholder="Max Mustermann" class="form-input" required />
+              </div>
+              <div>
+                <label class="form-label" for="b-company">Unternehmen</label>
+                <input type="text" id="b-company" name="company" autocomplete="organization" placeholder="Muster GmbH" class="form-input" required />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label" for="b-email">E-Mail</label>
+                <input type="email" id="b-email" name="email" autocomplete="email" placeholder="max@muster.de" class="form-input" required />
+              </div>
+              <div>
+                <label class="form-label" for="b-phone">Telefon <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span></label>
+                <input type="tel" id="b-phone" name="phone" autocomplete="tel" placeholder="+49 211 123456" class="form-input" />
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="b-req">Anforderung</label>
+              <textarea id="b-req" name="requirement" rows="6" placeholder="Störfeldstärke, Frequenz, gewünschte Dämpfung, Form und Abmessungen ..." class="form-input" style="resize:vertical;" required></textarea>
+            </div>
+            <button type="submit" id="bottom-btn" class="btn-primary" style="width:100%; text-align:center; font-size:1rem; padding:1rem;">
+              unverbindlich anfragen →
+            </button>
+            <p style="font-size:0.7rem; color:#bbb; text-align:center;">Kostenlos & unverbindlich. Kein Spam.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer style="background:#fff; border-top:1px solid #e5e7eb; padding: 2rem 1.5rem;">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <img
+        src="https://marchandise.de/_next/static/media/marchandise_logo.0da87dbe.svg"
+        alt="Marchandise" class="h-10" />
+      <p style="font-size:0.75rem; color:#aaa;">© Marchandise. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = !body.classList.contains('hidden');
+        body.classList.toggle('hidden', isOpen);
+        icon.textContent = isOpen ? '+' : '−';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    function handleSubmit(e, btnId) {
+      e.preventDefault();
+      const btn = document.getElementById(btnId);
+      btn.textContent = 'anfrage gesendet ✓';
+      btn.disabled = true;
+      btn.style.background = '#555';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#8D6411",
+    "accent": "#8D6411",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#FF0000"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Arial",
+      "heading": "Roboto Flex"
+    },
+    "fontStacks": {
+      "heading": ["Roboto Flex", "Arial", "Helvetica", "sans-serif"],
+      "body": ["Roboto Flex", "Arial", "Helvetica", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "42.24px",
+      "h2": "42.24px",
+      "body": "22.005px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#8D6411",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#F8F8F8",
+      "textColor": "#8D6411",
+      "borderColor": "#8D6411",
+      "borderRadius": "5px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://www.thiele-kg.de/files/cto_layout/themedesigner/uploads/logo-thiele-2024-rgb.svg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals seeking power solutions"
+  }
+}

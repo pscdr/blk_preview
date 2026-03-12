@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spannsysteme – SAV Spanntechnik</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: '#1A8C85',
+            dark: '#1a1a1a',
+            darker: '#111111',
+          },
+          fontFamily: {
+            heading: ['Raleway', 'sans-serif'],
+            body: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    .hero-bg {
+      background-color: #111;
+    }
+
+    .teal-line {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: #1A8C85;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-teal {
+      display: inline-block;
+      background: #1A8C85;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-teal:hover { background: #157a73; }
+
+    /* Dark section cards */
+    .solution-card {
+      background: #222;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .solution-card:hover { transform: translateY(-4px); }
+    .solution-card img { transition: transform 0.5s; }
+    .solution-card:hover img { transform: scale(1.05); }
+
+    /* Light section cards */
+    .solution-card-light {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .solution-card-light:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .solution-card-light img { transition: transform 0.5s; }
+    .solution-card-light:hover img { transform: scale(1.05); }
+
+    .quote-card-dark {
+      border-left: 3px solid #1A8C85;
+      background: #222;
+      padding: 2rem;
+    }
+
+    .quote-card-light {
+      border: 1px solid #e5e7eb;
+      border-left: 3px solid #1A8C85;
+      background: #fff;
+      padding: 2rem;
+    }
+
+    .branch-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.25rem;
+      background: #fff;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #374151;
+      letter-spacing: 0.01em;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      cursor: default;
+    }
+    .branch-pill svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: opacity 0.15s;
+    }
+    .branch-pill:hover {
+      border-color: #1A8C85;
+      color: #1A8C85;
+      background: #f0faf9;
+    }
+    .branch-pill:hover svg {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Sticky Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#111]/95 backdrop-blur-sm border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <img src="https://www.sav.de/wp-content/uploads/2022/08/SAV-Logo-White_v2.png" alt="SAV" class="h-7">
+      <a href="https://sav.de/kontakt/" class="btn-teal">Jetzt beraten lassen</a>
+    </div>
+  </nav>
+
+  <!-- Hero – dunkel -->
+  <section class="hero-bg min-h-screen flex items-center pt-16 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 py-20 w-full">
+      <div class="flex items-center gap-8 lg:gap-0">
+
+        <!-- Text -->
+        <div class="flex-1 max-w-xl">
+          <span class="teal-line"></span>
+          <h1 class="text-6xl lg:text-7xl leading-[1.0] mb-8">
+            <span class="font-black text-white">Spannsysteme,</span><br>
+            <span class="font-light text-white">die Ergebnisse liefern.</span>
+          </h1>
+          <p class="text-white/60 text-lg font-light leading-relaxed mb-10">
+            SAV entwickelt Spannsysteme für industrielle Fertigungsprozesse – präzise, prozesssicher, seit 1984. Das Ergebnis: messbar kürzere Durchlaufzeiten, niedrigere Kosten, gesicherte Qualität.
+          </p>
+          <a href="https://sav.de/kontakt/" class="btn-teal text-base px-8 py-4">
+            Kostenlose Beratung anfragen
+          </a>
+
+          <!-- Trust row -->
+          <div class="mt-16 pt-10 border-t border-white/10 flex gap-12">
+            <div>
+              <div class="text-4xl font-black text-white font-heading">40+</div>
+              <div class="text-xs text-white/40 mt-1 uppercase tracking-wider">Jahre Erfahrung</div>
+            </div>
+            <div>
+              <div class="text-4xl font-black text-white font-heading">9</div>
+              <div class="text-xs text-white/40 mt-1 uppercase tracking-wider">Branchen</div>
+            </div>
+            <div>
+              <div class="text-4xl font-black text-white font-heading">24/7</div>
+              <div class="text-xs text-white/40 mt-1 uppercase tracking-wider">Prozesssicherheit</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hidden lg:flex flex-1 justify-end items-center">
+          <img src="https://www.sav.de/wp-content/uploads/2022/09/Roboterhand_670x600px-groesser.png"
+               alt="SAV Spanntechnik"
+               class="w-full max-w-lg xl:max-w-xl object-contain drop-shadow-2xl">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props – weiß -->
+  <section class="bg-white py-20 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+        <div class="py-10 md:py-0 md:px-10 first:pl-0 last:pr-0">
+          <div class="text-[#1A8C85] mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Durchlaufzeiten halbieren</h3>
+          <p class="text-sm text-gray-500 leading-relaxed font-light">Präzise Spannsysteme reduzieren Rüst- und Bearbeitungszeiten spürbar und erhöhen die Maschinenauslastung.</p>
+        </div>
+        <div class="py-10 md:py-0 md:px-10">
+          <div class="text-[#1A8C85] mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Fertigungskosten senken</h3>
+          <p class="text-sm text-gray-500 leading-relaxed font-light">Optimierte Spannlösungen reduzieren Ausschuss, Nacharbeit und Stillstandzeiten – direkt messbar in der Kalkulation.</p>
+        </div>
+        <div class="py-10 md:py-0 md:px-10">
+          <div class="text-[#1A8C85] mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Prozessqualität sichern</h3>
+          <p class="text-sm text-gray-500 leading-relaxed font-light">Hohe Präzision und Wiederholgenauigkeit – die Basis für gleichbleibende Bauteilqualität, auch in der Vollautomatisierung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lösungen – dunkel -->
+  <section class="bg-[#111] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-14">
+        <span class="teal-line"></span>
+        <h2 class="text-4xl lg:text-5xl font-black text-white leading-tight">
+          Lösungen für jede<br>
+          <span class="font-light">Anforderung.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="solution-card rounded-xl">
+          <div class="aspect-[16/9] overflow-hidden">
+            <img src="https://www.sav.de/wp-content/uploads/2019/01/SAV-Werkzeugmaschinenbau-637x637.jpg"
+                 alt="Magnetsysteme Standard"
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="p-8">
+            <span class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest">Magnetsysteme</span>
+            <h3 class="text-xl font-bold text-white mt-2 mb-3">Standard-Systeme</h3>
+            <p class="text-sm text-white/40 leading-relaxed font-light">Permanent-, elektro- und elektro-permanent-magnetische Spannmittel. Große Auswahl, hohe Verfügbarkeit.</p>
+          </div>
+        </div>
+
+        <div class="solution-card rounded-xl">
+          <div class="aspect-[16/9] overflow-hidden">
+            <img src="https://www.sav.de/wp-content/uploads/2023/02/Praezisionteilehersteller-637x637.jpg"
+                 alt="Magnetsysteme Sonder"
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="p-8">
+            <span class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest">Magnetsysteme</span>
+            <h3 class="text-xl font-bold text-white mt-2 mb-3">Sonderlösungen</h3>
+            <p class="text-sm text-white/40 leading-relaxed font-light">Führend in umlaufender und stationärer Sonderspanntechnik – auch kombiniert mit konventionellen Prinzipien.</p>
+          </div>
+        </div>
+
+        <div class="solution-card rounded-xl">
+          <div class="aspect-[16/9] overflow-hidden">
+            <img src="https://www.sav.de/wp-content/uploads/2019/01/SAV-Automotive-637x637.jpg"
+                 alt="Vorrichtungsbau"
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="p-8">
+            <span class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest">Vorrichtungsbau</span>
+            <h3 class="text-xl font-bold text-white mt-2 mb-3">Stationäre Spannwerkzeuge</h3>
+            <p class="text-sm text-white/40 leading-relaxed font-light">Entwicklung und Konstruktion für Dreh-, Schleifmaschinen und CNC-Bearbeitungszentren. 24/7-Prozesssicherheit als Standard.</p>
+          </div>
+        </div>
+
+        <div class="solution-card rounded-xl">
+          <div class="aspect-[16/9] overflow-hidden">
+            <img src="https://www.sav.de/wp-content/uploads/2019/01/SAV-Luft-und-Raumfahrt-637x637.jpg"
+                 alt="Spannfutter"
+                 class="w-full h-full object-cover">
+          </div>
+          <div class="p-8">
+            <span class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest">Spannfutter</span>
+            <h3 class="text-xl font-bold text-white mt-2 mb-3">Rotative Spanntechnik</h3>
+            <p class="text-sm text-white/40 leading-relaxed font-light">Entwickelt für höchste Präzision und Wiederholgenauigkeit – für Bearbeitungstechnologien mit engen Toleranzen.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Praxis – weiß -->
+  <section class="bg-white py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-12">
+        <span class="teal-line"></span>
+        <h2 class="text-4xl font-black text-gray-900">SAV in der Praxis.</h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="relative rounded-lg overflow-hidden aspect-square group">
+          <img src="https://www.sav.de/wp-content/uploads/2024/02/video-cover_auto_fraesen.jpg"
+               alt="Automatisiertes Fräsen"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <p class="absolute bottom-3 left-3 right-3 text-white text-xs font-semibold leading-snug">Automatisiertes Fräsen mit Magnet-Spanntechnik</p>
+        </div>
+        <div class="relative rounded-lg overflow-hidden aspect-square group">
+          <img src="https://www.sav.de/wp-content/uploads/2024/02/video-cover_eisenbahnschienen.jpg"
+               alt="Eisenbahnschienen"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <p class="absolute bottom-3 left-3 right-3 text-white text-xs font-semibold leading-snug">Bearbeitung von Eisenbahnschienen</p>
+        </div>
+        <div class="relative rounded-lg overflow-hidden aspect-square group">
+          <img src="https://www.sav.de/wp-content/uploads/2024/02/video-cover_zahnstangen_fraesen.jpg"
+               alt="Zahnstangen"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <p class="absolute bottom-3 left-3 right-3 text-white text-xs font-semibold leading-snug">Fräsen von Zahnstangen</p>
+        </div>
+        <div class="relative rounded-lg overflow-hidden aspect-square group">
+          <img src="https://www.sav.de/wp-content/uploads/2024/02/video-cover_auto_dreharbeitung.jpg"
+               alt="Dreharbeitung"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <p class="absolute bottom-3 left-3 right-3 text-white text-xs font-semibold leading-snug">Automatisierung in der Dreharbeitung</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service & Qualität – dunkel -->
+  <section class="bg-[#111] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="mb-16">
+        <span class="teal-line"></span>
+        <h2 class="text-4xl lg:text-5xl font-black text-white leading-tight">
+          Service, der mitdenkt.<br>
+          <span class="font-light">Qualität, die bleibt.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+        <!-- Großes Bild + Service & Wartung -->
+        <div class="relative rounded-xl overflow-hidden min-h-[340px]">
+          <img src="https://www.sav.de/wp-content/uploads/2024/02/service_02_1920x1080px.jpg"
+               alt="SAV Service"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <span class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest">Service</span>
+            <h3 class="text-2xl font-bold text-white mt-2 mb-3">Wartung & Überprüfung</h3>
+            <p class="text-white/60 text-sm font-light leading-relaxed max-w-sm">Regelmäßige Prüfungen sichern Betriebssicherheit, Arbeitsschutz und Produktqualität – und verhindern ungeplante Produktionsausfälle.</p>
+          </div>
+        </div>
+
+        <!-- Rechte Spalte: zwei Karten -->
+        <div class="flex flex-col gap-6">
+
+          <div class="bg-[#1a1a1a] rounded-xl p-8 flex gap-6 items-start">
+            <div class="text-[#1A8C85] flex-shrink-0 mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">UVV-Prüfung</h3>
+              <p class="text-sm text-white/50 leading-relaxed font-light">Jährliche Prüfung magnetischer Lasthebemittel nach DIN EN 13155 / VDE 0580. Jeder Prüfling erhält ein qualifiziertes Prüfzeugnis mit offizieller Kennzeichnung – revisionssicher für QM-Audits.</p>
+            </div>
+          </div>
+
+          <div class="bg-[#1a1a1a] rounded-xl p-8 flex gap-6 items-start">
+            <div class="text-[#1A8C85] flex-shrink-0 mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Montage & Inbetriebnahme</h3>
+              <p class="text-sm text-white/50 leading-relaxed font-light">Mechanische und elektrische Montage direkt beim Endkunden – national und international. Service-Points in Europa, China, Indien und den USA für kurzfristige Einsätze vor Ort.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Prüfpunkte -->
+      <div class="bg-[#1a1a1a] rounded-xl p-8">
+        <p class="text-xs text-white/30 font-semibold uppercase tracking-widest mb-6">Wartungsumfang im Überblick</p>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4 gap-x-6">
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Betriebssicherheit</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Funktionale Sicherheit</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Elektrische Messung</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Haftkraftprüfung</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Isolationswiderstand</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Entmagnetisierung</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Arbeitsschutz</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1A8C85] flex-shrink-0"></span>
+            <span class="text-sm text-white/50 font-light">Unfall­verhütung</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quotes – dunkel -->
+  <section class="bg-[#1a1a1a] py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-14">
+        <span class="teal-line"></span>
+        <h2 class="text-4xl font-black text-white">
+          Ihr Anspruch in<br>
+          <span class="font-light">besten Händen.</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="quote-card-dark rounded-xl flex gap-5">
+          <img src="https://www.sav.de/wp-content/uploads/2024/07/sav_stefan-hamm_quadrat_2024_green-768x768.jpg"
+               alt="Stefan Hamm"
+               class="w-14 h-14 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="text-white/70 text-sm leading-relaxed mb-4 font-light italic">„Die Erfahrung allein macht uns nicht stark, sondern die Fähigkeit, sie immer wieder mit innovativen Ideen zu verbinden."</p>
+            <div class="text-white text-sm font-semibold">Stefan Hamm</div>
+            <div class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest mt-0.5">Geschäftsführer</div>
+          </div>
+        </div>
+
+        <div class="quote-card-dark rounded-xl flex gap-5">
+          <img src="https://www.sav.de/wp-content/uploads/2024/07/sav_patrick-rahn_quadrat_2024_green-768x768.jpg"
+               alt="Patrick Rahn"
+               class="w-14 h-14 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="text-white/70 text-sm leading-relaxed mb-4 font-light italic">„Ihre individuellen Anforderungen sind unser Antrieb."</p>
+            <div class="text-white text-sm font-semibold">Patrick Rahn</div>
+            <div class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest mt-0.5">Geschäftsführer</div>
+          </div>
+        </div>
+
+        <div class="quote-card-dark rounded-xl flex gap-5">
+          <img src="https://www.sav.de/wp-content/uploads/2024/07/sav_harald-leibold_quadrat_2024_green-768x768.jpg"
+               alt="Harald Leibold"
+               class="w-14 h-14 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="text-white/70 text-sm leading-relaxed mb-4 font-light italic">„Die Synergie zwischen Ihrer Erfahrung und unserer Expertise führt zur optimalen Lösung."</p>
+            <div class="text-white text-sm font-semibold">Harald Leibold</div>
+            <div class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest mt-0.5">Leitung stationäre Spanntechnik</div>
+          </div>
+        </div>
+
+        <div class="quote-card-dark rounded-xl flex gap-5">
+          <img src="https://www.sav.de/wp-content/uploads/2024/07/sav_klaus-krayl_quadrat_2024_green-768x768.jpg"
+               alt="Klaus Krayl"
+               class="w-14 h-14 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="text-white/70 text-sm leading-relaxed mb-4 font-light italic">„Vom Standard bis zur komplexen Integration: Wir finden für jede Anforderung die ideale Lösung."</p>
+            <div class="text-white text-sm font-semibold">Klaus Krayl</div>
+            <div class="text-[#1A8C85] text-xs font-semibold uppercase tracking-widest mt-0.5">Leitung umlaufende Spanntechnik</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Branchen – weiß -->
+  <section class="bg-white py-20 border-y border-gray-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <span class="teal-line mx-auto"></span>
+      <h2 class="text-3xl font-black text-gray-900 mb-2">9 Branchen. Ein Anspruch.</h2>
+      <p class="text-gray-400 text-sm font-light mb-12">Prozesssicherheit für jede Anforderung – vom Einzelteil bis zur Vollautomatisierung.</p>
+      <div class="flex flex-wrap justify-center gap-2.5">
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v5"/><circle cx="16" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M15 17H9"/></svg>
+          Automobilindustrie
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          Werkzeugmaschinenbau
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2"/></svg>
+          Präzisionsteilehersteller
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          Erneuerbare Energien
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M12 22V12M3.27 6.96L12 12.01l8.73-5.05"/></svg>
+          Luft- und Raumfahrt
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Medizintechnik
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          Schiene und Weiche
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Landtechnik
+        </span>
+
+        <span class="branch-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+          Öl und Gas
+        </span>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA – teal -->
+  <section class="bg-[#1A8C85] py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <span class="block w-12 h-0.5 bg-white/40 mx-auto mb-8"></span>
+      <h2 class="text-4xl lg:text-5xl font-black text-white leading-tight mb-6">
+        Kann man Spannsysteme<br>
+        <span class="font-light">neu denken?</span>
+      </h2>
+      <p class="text-white/70 text-lg font-light mb-10 max-w-xl mx-auto">
+        Sprechen Sie mit unseren Experten über Ihre Fertigungsprozesse. Kostenlos, unverbindlich, direkt.
+      </p>
+      <a href="https://sav.de/kontakt/"
+         class="inline-block bg-white text-[#1A8C85] font-bold px-10 py-4 rounded-full hover:bg-white/90 transition-colors text-base">
+        Jetzt beraten lassen
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer – dunkel -->
+  <footer class="bg-[#111] border-t border-white/5 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <span class="text-xs text-white/20">SAV · Spanntechnik in Perfektion · seit 1984</span>
+      <a href="https://www.sav.de/impressum/" class="text-xs text-white/20 hover:text-white/40">Impressum</a>
+    </div>
+  </footer>
+
+</body>
+</html>

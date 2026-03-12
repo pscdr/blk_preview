@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydrauliksysteme – Wolf Systemhydraulik</title>
+  <link rel="icon" href="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/cropped-Favicon-Wolf-Systemhydraulik-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#001973',
+            brand: '#DE3223',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    * { -webkit-font-smoothing: antialiased; }
+    .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.2s; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Nav -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="#hero">
+        <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Logo-Wolf-Systemhydraulik-1.jpg"
+             alt="Wolf Systemhydraulik" class="h-8 w-auto" />
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="tel:+4973828029679" class="hidden sm:flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          07382 / 802 96-79
+        </a>
+        <a href="#anfrage" class="bg-brand text-white text-sm font-medium px-4 py-2 hover:bg-brand/90 transition-colors">
+          Anfrage stellen
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="min-h-screen flex flex-col justify-center pt-14 px-6">
+    <div class="max-w-5xl mx-auto w-full py-24">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-8 h-px bg-navy"></div>
+          <span class="text-xs font-medium tracking-[0.15em] uppercase text-navy">Wolf Systemhydraulik</span>
+        </div>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-semibold text-gray-900 leading-[1.05] tracking-tight mb-8">
+          Hydrauliksysteme.<br />
+          <span class="text-navy">Von der Auslegung<br />bis zur Montage.</span>
+        </h1>
+        <p class="text-lg text-gray-500 leading-relaxed mb-12 max-w-xl">
+          Fahrzeugabstützsysteme, Gleichhubsysteme, Linearantriebe und Sonderausführungen –
+          entwickelt, geliefert und in Betrieb genommen aus einer Hand.
+        </p>
+        <div class="flex flex-col sm:flex-row items-start gap-4">
+          <a href="#anfrage"
+             class="inline-flex items-center gap-3 bg-navy text-white text-sm font-medium px-7 py-3.5 hover:bg-navy/90 transition-colors">
+            Jetzt Anfrage stellen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="tel:+4973828029679"
+             class="inline-flex items-center gap-3 text-sm text-gray-500 py-3.5 border-b border-gray-200 hover:text-gray-900 hover:border-gray-900 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            07382 / 802 96-79
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-5xl mx-auto w-full pb-8 flex items-center gap-4">
+      <div class="flex-1 h-px bg-gray-100"></div>
+      <span class="text-xs text-gray-300 tracking-widest uppercase">Systeme</span>
+      <div class="flex-1 h-px bg-gray-100"></div>
+    </div>
+  </section>
+
+  <!-- Produkte -->
+  <section id="produkte" class="px-6 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- 01 Fahrzeugabstützsysteme -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-16 border-b border-gray-100 items-center">
+        <div class="md:col-span-1 text-gray-200 text-4xl font-light select-none">01</div>
+        <div class="md:col-span-5">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Fahrzeugabstützsysteme</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Passende Lösungen mit automatischer Nivellierung für alle Fahrzeugklassen.
+            Optimal auf das jeweilige Fahrzeug ausgelegt, modular erweiterbar –
+            Ausschübe, Hubdächer und mehr.
+          </p>
+          <a href="#anfrage" class="inline-flex items-center gap-2 text-sm font-medium text-navy border-b border-navy pb-0.5 hover:opacity-70 transition-opacity">
+            Anfrage stellen
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="md:col-span-6 md:col-start-7 overflow-hidden bg-gray-50">
+          <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Fahrzeugabstuetzsysteme.jpg"
+               alt="Fahrzeugabstützsysteme" class="w-full h-72 object-cover object-center" />
+        </div>
+      </div>
+
+      <!-- 02 Linearantriebe -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-16 border-b border-gray-100 items-center">
+        <div class="md:col-span-1 text-gray-200 text-4xl font-light select-none">02</div>
+        <div class="md:col-span-5 md:row-start-1 md:col-start-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Elektrohydraulische Linearantriebe</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Kleiner Bauraum, große Kraft. Dezentral und ohne Hydraulikaggregat positionierbar –
+            die ideale Kombination aus elektrischer Aktorik und Hydraulikleistung.
+          </p>
+          <a href="#anfrage" class="inline-flex items-center gap-2 text-sm font-medium text-navy border-b border-navy pb-0.5 hover:opacity-70 transition-opacity">
+            Anfrage stellen
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="md:col-span-5 md:row-start-1 md:col-start-2 flex items-center justify-center h-72">
+          <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2025/03/Linearantrieb-Homepage-1-1024x1024.jpg"
+               alt="Elektrohydraulischer Linearantrieb" class="w-full h-full object-contain" />
+        </div>
+      </div>
+
+      <!-- 03 Gleichhubsysteme -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-16 border-b border-gray-100 items-center">
+        <div class="md:col-span-1 text-gray-200 text-4xl font-light select-none">03</div>
+        <div class="md:col-span-5">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Gleichhubsysteme</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Gleichmäßiges und synchrones Anheben auch großflächiger Anlagen.
+            Mehrere Zylinder synchronisiert – auch über größere Entfernungen.
+          </p>
+          <a href="#anfrage" class="inline-flex items-center gap-2 text-sm font-medium text-navy border-b border-navy pb-0.5 hover:opacity-70 transition-opacity">
+            Anfrage stellen
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="md:col-span-6 md:col-start-7 overflow-hidden">
+          <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Gleichhubsysteme.png"
+               alt="Gleichhubsysteme" class="w-full h-72 object-cover object-center" />
+        </div>
+      </div>
+
+      <!-- 04 Sonderausführungen -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-16 items-center">
+        <div class="md:col-span-1 text-gray-200 text-4xl font-light select-none">04</div>
+        <div class="md:col-span-5 md:row-start-1 md:col-start-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Sonderausführungen</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Komplette Hydrauliksysteme für Ihre spezifischen Anforderungen.
+            Von der Komponentenauslegung bis zur Inbetriebnahme vor Ort –
+            inkl. regelmäßigem Service.
+          </p>
+          <a href="#anfrage" class="inline-flex items-center gap-2 text-sm font-medium text-navy border-b border-navy pb-0.5 hover:opacity-70 transition-opacity">
+            Anfrage stellen
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="md:col-span-5 md:row-start-1 md:col-start-2 overflow-hidden">
+          <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Sonderausfuehrungen.png"
+               alt="Sonderausführungen" class="w-full h-72 object-cover object-center" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Referenzen -->
+  <section class="px-6 py-20 border-t border-gray-100 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-6 h-px bg-navy"></div>
+        <span class="text-xs font-medium tracking-[0.15em] uppercase text-navy">Referenzen</span>
+      </div>
+      <h2 class="text-2xl font-semibold text-gray-900 mb-12">Projekte, die für sich sprechen.</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- DLR Ushift -->
+        <div class="bg-white border border-gray-100 flex flex-col">
+          <div class="overflow-hidden">
+            <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Referenzen-Wolf-Systemhydraulik-e1697721364841-768x508.jpg"
+                 alt="DLR Ushift" class="w-full h-48 object-cover" />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-xs font-medium tracking-widest uppercase text-navy mb-2">DLR · E-Mobilität</p>
+            <h3 class="font-semibold text-gray-900 mb-3">Projekt Ushift</h3>
+            <p class="text-sm text-gray-500 leading-relaxed flex-1">
+              Elektrohydraulische Steuerung im Fahrzeugkonzept des Deutschen Zentrums für Luft- und Raumfahrt –
+              ermöglicht das sichere Anheben und Absenken des Driveboards.
+            </p>
+          </div>
+        </div>
+
+        <!-- SDS -->
+        <div class="bg-white border border-gray-100 flex flex-col">
+          <div class="overflow-hidden">
+            <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/SDS-Phase-1024x683.jpg"
+                 alt="SDS Reifenprüfmaschine" class="w-full h-48 object-cover" />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-xs font-medium tracking-widest uppercase text-navy mb-2">SDS · Industrie</p>
+            <h3 class="font-semibold text-gray-900 mb-3">Reifenprüfmaschine</h3>
+            <p class="text-sm text-gray-500 leading-relaxed flex-1">
+              Handling gigantischer Reifen von Baumaschinen: Unser elektrohydraulisches System
+              ermöglicht die präzise Positionierung der schweren Prüfobjekte.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stagemobil -->
+        <div class="bg-white border border-gray-100 flex flex-col">
+          <div class="overflow-hidden">
+            <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Stagemobil-Buehne.jpg"
+                 alt="Stagemobil mobile Bühne" class="w-full h-48 object-cover" />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-xs font-medium tracking-widest uppercase text-navy mb-2">Stagemobil · Veranstaltung</p>
+            <h3 class="font-semibold text-gray-900 mb-3">Mobile Bühne</h3>
+            <p class="text-sm text-gray-500 leading-relaxed flex-1">
+              Eine mobile Konzertbühne, die von einer einzelnen Person auf- und abgebaut werden kann –
+              möglich durch unser elektrohydraulisches System.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Ansprechpartner -->
+  <section class="px-6 py-20 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+
+        <!-- Visual -->
+        <div class="md:col-span-5">
+          <div class="max-w-sm overflow-hidden">
+            <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2025/06/LukasWolf.jpg"
+                 alt="Lukas Wolf" class="w-full h-80 object-cover object-center" />
+            <div class="bg-navy px-6 py-5">
+              <p class="text-white font-semibold">Lukas Wolf</p>
+              <p class="text-blue-200/60 text-xs mb-4">Technischer Vertrieb</p>
+              <div class="space-y-2">
+                <a href="tel:+4973828029679"
+                   class="flex items-center gap-2 text-white text-sm hover:text-blue-200 transition-colors">
+                  <svg class="w-3.5 h-3.5 text-blue-300/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  07382 / 802 96-79
+                </a>
+                <a href="mailto:lukas.wolf@wolf-systemhydraulik.de"
+                   class="flex items-center gap-2 text-blue-200/50 text-xs hover:text-blue-200 transition-colors">
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  lukas.wolf@wolf-systemhydraulik.de
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="md:col-span-6 md:col-start-7">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-6 h-px bg-navy"></div>
+            <span class="text-xs font-medium tracking-[0.15em] uppercase text-navy">Direktkontakt</span>
+          </div>
+          <h2 class="text-3xl font-semibold text-gray-900 leading-snug mb-6">
+            Kein Callcenter.<br />Kein Ticketsystem.
+          </h2>
+          <p class="text-gray-500 leading-relaxed mb-8">
+            Lukas Wolf ist direkt erreichbar – per Telefon oder E-Mail.
+            Er beantwortet Ihre technischen Fragen persönlich und erarbeitet
+            mit Ihnen die passende Hydrauliklösung für Ihre Anforderungen.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-sm text-gray-500">
+              <svg class="w-4 h-4 text-navy flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Technische Beratung direkt vom Vertrieb
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-500">
+              <svg class="w-4 h-4 text-navy flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Antwort in der Regel innerhalb von 24 Stunden
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-500">
+              <svg class="w-4 h-4 text-navy flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Auslegung, Lieferung und Montage aus einer Hand
+            </div>
+          </div>
+          <div class="mt-10">
+            <a href="#anfrage"
+               class="inline-flex items-center gap-3 bg-navy text-white text-sm font-medium px-7 py-3.5 hover:bg-navy/90 transition-colors">
+              Jetzt Anfrage stellen
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Anfrage Form -->
+  <section id="anfrage" class="bg-navy px-6 py-20 border-t border-navy/20">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <div class="w-6 h-px bg-blue-300/40"></div>
+          <span class="text-xs font-medium tracking-[0.15em] uppercase text-blue-300/60">Kontakt</span>
+          <div class="w-6 h-px bg-blue-300/40"></div>
+        </div>
+        <h2 class="text-3xl font-semibold text-white mb-3">Schreiben Sie uns.</h2>
+        <p class="text-blue-200/60 text-sm">Lukas Wolf meldet sich persönlich bei Ihnen.</p>
+      </div>
+
+      <form action="mailto:lukas.wolf@wolf-systemhydraulik.de" method="post" enctype="text/plain"
+            class="max-w-2xl mx-auto space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-blue-200/50 mb-1.5 uppercase tracking-wider">Name</label>
+            <input type="text" name="name" placeholder="Ihr Name"
+                   class="w-full bg-white/5 border border-white/10 text-white placeholder-white/20 px-4 py-3 text-sm focus:outline-none focus:border-white/30 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-blue-200/50 mb-1.5 uppercase tracking-wider">Unternehmen</label>
+            <input type="text" name="unternehmen" placeholder="Firma GmbH"
+                   class="w-full bg-white/5 border border-white/10 text-white placeholder-white/20 px-4 py-3 text-sm focus:outline-none focus:border-white/30 transition-colors" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-blue-200/50 mb-1.5 uppercase tracking-wider">Telefon oder E-Mail</label>
+          <input type="text" name="kontakt" placeholder="+49 ..."
+                 class="w-full bg-white/5 border border-white/10 text-white placeholder-white/20 px-4 py-3 text-sm focus:outline-none focus:border-white/30 transition-colors" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-blue-200/50 mb-1.5 uppercase tracking-wider">Ihre Anfrage</label>
+          <textarea name="anfrage" rows="4" placeholder="Welches Hydrauliksystem benötigen Sie?"
+                    class="w-full bg-white/5 border border-white/10 text-white placeholder-white/20 px-4 py-3 text-sm focus:outline-none focus:border-white/30 transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit"
+                class="w-full bg-brand text-white font-medium py-3.5 text-sm hover:bg-brand/90 transition-colors">
+          Anfrage absenden
+        </button>
+        <p class="text-xs text-blue-200/30 text-center">Antwort in der Regel innerhalb von 24 Stunden.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-6 py-20 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-6 h-px bg-navy"></div>
+          <span class="text-xs font-medium tracking-[0.15em] uppercase text-navy">FAQ</span>
+        </div>
+        <h2 class="text-2xl font-semibold text-gray-900">Häufige<br />Fragen</h2>
+      </div>
+      <div class="md:col-span-7 md:col-start-6 divide-y divide-gray-100">
+
+        <div class="faq-item py-5 cursor-pointer group" onclick="this.classList.toggle('open')">
+          <div class="flex items-start justify-between gap-4">
+            <p class="font-medium text-gray-900 group-hover:text-navy transition-colors">Wie funktioniert ein Hydrauliksystem?</p>
+            <svg class="faq-chevron w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="faq-answer mt-3 text-sm text-gray-500 leading-relaxed">
+            Eine Pumpe erzeugt Druck und fördert Hydraulikflüssigkeit zu Zylindern oder Motoren.
+            Der Druck versetzt den Kolben in Bewegung und verrichtet so mechanische Arbeit –
+            präzise steuerbar und mit hoher Kraft.
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer group" onclick="this.classList.toggle('open')">
+          <div class="flex items-start justify-between gap-4">
+            <p class="font-medium text-gray-900 group-hover:text-navy transition-colors">Welche Vorteile bieten Hydrauliksysteme?</p>
+            <svg class="faq-chevron w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="faq-answer mt-3 text-sm text-gray-500 leading-relaxed">
+            Hohe Leistungsdichte, präzise Kraftübertragung, einfache Steuerung.
+            Sie bewegen große Lasten zuverlässig und eignen sich für lineare wie rotatorische Bewegungen.
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer group" onclick="this.classList.toggle('open')">
+          <div class="flex items-start justify-between gap-4">
+            <p class="font-medium text-gray-900 group-hover:text-navy transition-colors">Was kosten Hydrauliksysteme?</p>
+            <svg class="faq-chevron w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="faq-answer mt-3 text-sm text-gray-500 leading-relaxed">
+            Die Kosten variieren stark je nach Produkt und Leistungsumfang.
+            Lukas Wolf erstellt Ihnen ein konkretes Angebot – einfach anrufen oder Formular ausfüllen.
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer group" onclick="this.classList.toggle('open')">
+          <div class="flex items-start justify-between gap-4">
+            <p class="font-medium text-gray-900 group-hover:text-navy transition-colors">Gibt es individuelle Sonderanfertigungen?</p>
+            <svg class="faq-chevron w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="faq-answer mt-3 text-sm text-gray-500 leading-relaxed">
+            Ja. Wolf Systemhydraulik realisiert komplette Systeme für spezielle Anforderungen –
+            von der Komponentenauslegung bis zur Inbetriebnahme und regelmäßigem Service.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-100 px-6 py-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <img src="https://www.wolf-systemhydraulik.de/wp-content/uploads/2023/10/Logo-Wolf-Systemhydraulik-1.jpg"
+           alt="Wolf Systemhydraulik" class="h-7 w-auto" />
+      <p class="text-xs text-gray-400">
+        Wolf Systemhydraulik GmbH &middot; 07382 / 802 96-79 &middot; lukas.wolf@wolf-systemhydraulik.de
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

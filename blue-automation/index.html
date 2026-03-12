@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPS Programmierung & Engineering – blue automation</title>
+  <link rel="icon" href="https://www.blue-automation.de/typo3conf/ext/blue_automation_lytpckg/Resources/Public/Icons/favicon_blue.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#002960',
+              light: '#B1D0D8',
+              white: '#FFFFFF',
+            }
+          },
+          fontFamily: {
+            sans: ['Oxanium', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Sticky nav transition */
+    #nav {
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #nav.scrolled {
+      background-color: #ffffff;
+      box-shadow: 0 1px 12px rgba(0,41,96,0.10);
+    }
+    #nav.scrolled .nav-logo { filter: brightness(0) saturate(100%) invert(12%) sepia(79%) saturate(600%) hue-rotate(199deg) brightness(90%) contrast(104%); }
+    #nav.scrolled .nav-phone { color: #002960; }
+    #nav.scrolled .nav-cta { background-color: #002960; color: #ffffff; }
+
+    /* Hero */
+    .hero-bg {
+      background-image: linear-gradient(to right, rgba(0,41,96,0.85) 40%, rgba(0,41,96,0.4) 100%), url('https://www.blue-automation.de/fileadmin/Images/Header/sps_software.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Accordion */
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-content {
+      max-height: 300px;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="font-sans bg-white text-brand-navy antialiased">
+
+  <!-- STICKY NAV -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero">
+        <img src="https://www.blue-automation.de/typo3conf/ext/blue_automation_lytpckg/Resources/Public/Images/blue-auomation-LOGO-White-CMYK.png"
+             alt="blue automation"
+             class="nav-logo h-8 w-auto transition-all duration-300" />
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="tel:+492664252420"
+           class="nav-phone hidden md:flex items-center gap-2 text-white text-sm font-medium transition-colors duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          +49 2664 25 242-0
+        </a>
+        <a href="#kontakt"
+           class="nav-cta bg-white text-brand-navy text-sm font-semibold px-5 py-2 transition-all duration-300 hover:bg-brand-light">
+          Anfrage stellen
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero-bg min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto px-6 py-32">
+      <div class="max-w-2xl">
+        <p class="text-brand-light text-sm font-semibold uppercase tracking-widest mb-4 reveal">SPS Programmierung & Engineering</p>
+        <h1 class="text-white text-4xl md:text-6xl font-bold leading-tight mb-6 reveal">
+          Ihre SPS-Anlage.<br />Fehlerfrei.<br />Zeitgenau.
+        </h1>
+        <p class="text-white/85 text-lg md:text-xl leading-relaxed mb-4 reveal">
+          Speicherprogrammierbare Steuerungen für Siemens, Rockwell, Beckhoff und B&R –
+          nach den höchsten Standards, mit über 10 Jahren Branchen-Expertise.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 mb-10 reveal">
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1.5 text-white text-xs font-semibold uppercase tracking-wide">
+            <svg class="w-3 h-3 text-brand-light" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Siemens Solution Partner
+          </span>
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1.5 text-white text-xs font-semibold uppercase tracking-wide">
+            <svg class="w-3 h-3 text-brand-light" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            #1 weltweit Machine Line & Simulation
+          </span>
+          <span class="text-white/50 text-xs">· 10+ Jahre Branchenerfahrung</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 reveal">
+          <a href="#kontakt"
+             class="bg-white text-brand-navy font-bold px-8 py-4 text-center hover:bg-brand-light transition-colors">
+            Jetzt Anfrage stellen
+          </a>
+          <a href="tel:+492664252420"
+             class="border border-white text-white font-bold px-8 py-4 text-center hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+            +49 2664 25 242-0
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER-LOGOS -->
+  <section class="bg-white border-b border-brand-light/40 py-10">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-center text-xs uppercase tracking-widest text-brand-navy/40 font-semibold mb-8 reveal">Zertifizierte Expertise – offizielle Partnerschaften</p>
+      <div class="flex flex-wrap items-center justify-center gap-10 md:gap-14 reveal">
+        <img src="https://www.blue-automation.de/fileadmin/Images/Footer/Siemens_Solution_Partner.svg" alt="Siemens Solution Partner" class="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+        <img src="https://www.blue-automation.de/fileadmin/Images/Partner/Allen_Bradley_logo_sw.png" alt="Allen Bradley" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+        <img src="https://www.blue-automation.de/fileadmin/Images/Partner/ABB_logo_sw.png" alt="ABB" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+        <img src="https://www.blue-automation.de/fileadmin/Images/Partner/Beckhoff_logo_sw.png" alt="Beckhoff" class="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+        <img src="https://www.blue-automation.de/fileadmin/user_upload/VDMA_log.jpg" alt="VDMA Mitglied" class="h-10 w-auto opacity-60 hover:opacity-100 transition-opacity" />
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Leistungen</p>
+        <h2 class="text-brand-navy text-3xl md:text-4xl font-bold">Was wir für Sie umsetzen</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-0 border border-brand-light/30">
+        <div class="p-10 border-b md:border-b-0 md:border-r border-brand-light/30 reveal">
+          <div class="w-8 h-1 bg-brand-light mb-6"></div>
+          <h3 class="text-brand-navy text-xl font-bold mb-4">SPS-Programmierung</h3>
+          <p class="text-brand-navy/70 leading-relaxed">
+            Individuelle Steuerungssoftware für voll- und teilautomatisierte Anlagen. Ob Siemens TIA-Portal,
+            Rockwell Studio5000 oder Beckhoff TwinCat – wir programmieren herstellerunabhängig auf höchstem Niveau.
+          </p>
+        </div>
+        <div class="p-10 border-b border-brand-light/30 reveal">
+          <div class="w-8 h-1 bg-brand-light mb-6"></div>
+          <h3 class="text-brand-navy text-xl font-bold mb-4">HMI & Visualisierung</h3>
+          <p class="text-brand-navy/70 leading-relaxed">
+            Individuell bedienbare Oberflächen für Ihre Maschinenbediener. Klare, logische Human-Machine-Interfaces
+            mit WinCC, FactoryTalkView oder anderen Visualisierungsplattformen.
+          </p>
+        </div>
+        <div class="p-10 border-b md:border-b-0 md:border-r border-brand-light/30 reveal">
+          <div class="w-8 h-1 bg-brand-light mb-6"></div>
+          <h3 class="text-brand-navy text-xl font-bold mb-4">Automatische Code-Generierung</h3>
+          <p class="text-brand-navy/70 leading-relaxed">
+            Durch modulare Bausteine und TIA Portal Openness erstellen wir transparente Programme zeitsparend.
+            Ein Code-Checker sichert die Qualität automatisch.
+          </p>
+        </div>
+        <div class="p-10 reveal">
+          <div class="w-8 h-1 bg-brand-light mb-6"></div>
+          <h3 class="text-brand-navy text-xl font-bold mb-4">Inbetriebnahme & Digitaler Zwilling</h3>
+          <p class="text-brand-navy/70 leading-relaxed">
+            Testen am digitalen Zwilling vor der realen Inbetriebnahme. Frühzeitige Problemerkennung –
+            Ihre Anlage läuft fehlerfrei und zeitgenau an.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP-BAND -->
+  <section class="bg-brand-navy py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="reveal">
+          <div class="text-brand-light text-4xl font-bold mb-2">10+</div>
+          <div class="text-white/70 text-sm uppercase tracking-wide">Jahre Erfahrung</div>
+        </div>
+        <div class="reveal">
+          <div class="text-brand-light text-4xl font-bold mb-2">5</div>
+          <div class="text-white/70 text-sm uppercase tracking-wide">SPS-Plattformen</div>
+        </div>
+        <div class="reveal">
+          <div class="text-brand-light text-4xl font-bold mb-2">100%</div>
+          <div class="text-white/70 text-sm uppercase tracking-wide">Individuallösungen</div>
+        </div>
+        <div class="reveal">
+          <div class="text-brand-light text-4xl font-bold mb-2">kurz&shy;fristig</div>
+          <div class="text-white/70 text-sm uppercase tracking-wide">verfügbar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEME / SPECS -->
+  <section class="py-24 bg-[#F5F8FA]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Know-How</p>
+        <h2 class="text-brand-navy text-3xl md:text-4xl font-bold">Systeme & Technologien</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="reveal">
+          <h3 class="text-brand-navy font-bold text-lg mb-4 pb-3 border-b-2 border-brand-light">Siemens</h3>
+          <ul class="space-y-2 text-brand-navy/70 text-sm">
+            <li>STEP 5 (SIMATIC S5)</li>
+            <li>STEP 7 (SIMATIC S7)</li>
+            <li>TIA-Portal</li>
+            <li>WinCC V7.X / flexible</li>
+            <li>Simotion</li>
+            <li>Safety CPU</li>
+            <li>ProDiag</li>
+            <li>TIA Portal Openness</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h3 class="text-brand-navy font-bold text-lg mb-4 pb-3 border-b-2 border-brand-light">Rockwell</h3>
+          <ul class="space-y-2 text-brand-navy/70 text-sm">
+            <li>Logix5000 / Studio5000</li>
+            <li>RSView 32</li>
+            <li>RSFactoryTalkView</li>
+            <li>RSMotion</li>
+            <li>GuardLogix</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h3 class="text-brand-navy font-bold text-lg mb-4 pb-3 border-b-2 border-brand-light">Beckhoff</h3>
+          <ul class="space-y-2 text-brand-navy/70 text-sm">
+            <li>TwinCat 2</li>
+            <li>TwinCat 3</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h3 class="text-brand-navy font-bold text-lg mb-4 pb-3 border-b-2 border-brand-light">Weitere</h3>
+          <ul class="space-y-2 text-brand-navy/70 text-sm">
+            <li>ABB</li>
+            <li>B&R</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROZESS -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Vorgehen</p>
+        <h2 class="text-brand-navy text-3xl md:text-4xl font-bold">So arbeiten wir</h2>
+      </div>
+      <div class="grid md:grid-cols-4 gap-0">
+        <div class="relative reveal">
+          <div class="flex items-start gap-4 p-8 md:p-0 md:pr-8">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 bg-brand-navy text-white flex items-center justify-center font-bold text-sm">01</div>
+            </div>
+            <div>
+              <h3 class="font-bold text-brand-navy mb-2">Baustein-Standardisierung</h3>
+              <p class="text-brand-navy/60 text-sm leading-relaxed">Modulare SPS-Bausteine als Grundlage für wiederverwendbare, wartbare Software.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative reveal">
+          <div class="flex items-start gap-4 p-8 md:p-0 md:pr-8">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 bg-brand-navy text-white flex items-center justify-center font-bold text-sm">02</div>
+            </div>
+            <div>
+              <h3 class="font-bold text-brand-navy mb-2">HMI-Entwicklung</h3>
+              <p class="text-brand-navy/60 text-sm leading-relaxed">Bedienerfreundliche Visualisierungen – parallel zur Software-Entwicklung.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative reveal">
+          <div class="flex items-start gap-4 p-8 md:p-0 md:pr-8">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 bg-brand-navy text-white flex items-center justify-center font-bold text-sm">03</div>
+            </div>
+            <div>
+              <h3 class="font-bold text-brand-navy mb-2">Code-Generierung & Prüfung</h3>
+              <p class="text-brand-navy/60 text-sm leading-relaxed">Automatische Codegenerierung + Code-Checker für qualitativ hochwertige Software.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative reveal">
+          <div class="flex items-start gap-4 p-8 md:p-0">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 bg-brand-light text-brand-navy flex items-center justify-center font-bold text-sm">04</div>
+            </div>
+            <div>
+              <h3 class="font-bold text-brand-navy mb-2">Inbetriebnahme</h3>
+              <p class="text-brand-navy/60 text-sm leading-relaxed">Test am digitalen Zwilling – dann fehlerfreie, zeitgenaue Inbetriebnahme.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORTEILE FULL-WIDTH -->
+  <section class="bg-brand-navy py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-white text-2xl md:text-3xl font-bold text-center mb-14 reveal">Ihre Vorteile auf einen Blick</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 w-6 h-6 mt-0.5">
+            <svg class="text-brand-light w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80">Innovative Programmierung und transparente Software</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 w-6 h-6 mt-0.5">
+            <svg class="text-brand-light w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80">Entwicklung Hard- und Software (fast) zeitgleich</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 w-6 h-6 mt-0.5">
+            <svg class="text-brand-light w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80">Implementierung zukunftssicherer Programmelemente</p>
+        </div>
+        <div class="flex items-start gap-4 reveal">
+          <div class="flex-shrink-0 w-6 h-6 mt-0.5">
+            <svg class="text-brand-light w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <p class="text-white/80">Leicht verständliche und logische Softwarestrukturen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIEMENS PARTNERSHIP SPOTLIGHT -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <p class="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Siemens Solution Partner</p>
+          <h2 class="text-brand-navy text-3xl md:text-4xl font-bold mb-6">
+            Weltweit erster Experte für Machine Line & Simulation
+          </h2>
+          <p class="text-brand-navy/70 leading-relaxed mb-6">
+            blue automation ist offizieller Siemens Solution Partner und weltweit der erste zertifizierte Experte
+            im Modul <strong>Machine Line & Simulation</strong>. Das ermöglicht virtuelle Inbetriebnahmen am
+            digitalen Zwilling – mit nachgewiesener Halbierung der Taktzeiten in realen Projekten.
+          </p>
+          <blockquote class="border-l-4 border-brand-light pl-6 mb-8">
+            <p class="text-brand-navy/80 italic leading-relaxed">
+              „Wir freuen uns auf eine weitere gute und langfristige Zusammenarbeit."
+            </p>
+            <cite class="text-brand-navy/50 text-sm mt-3 block not-italic">Thomas Grahl, Geschäftsführer blue automation GmbH</cite>
+          </blockquote>
+          <img src="https://www.blue-automation.de/fileadmin/Images/Footer/Siemens_Solution_Partner.svg"
+               alt="Siemens Solution Partner" class="h-14 w-auto opacity-80" />
+        </div>
+        <div class="reveal">
+          <div class="relative">
+            <img src="https://www.blue-automation.de/fileadmin/user_upload/Erfolgsmodell_Simulation_Vorab_simuliert__Effizienter_automatisiert.jpg"
+                 alt="blue automation Siemens Messe – digitaler Zwilling"
+                 class="w-full object-cover" />
+            <div class="absolute bottom-0 left-0 right-0 bg-brand-navy/85 px-6 py-4">
+              <p class="text-brand-light text-xs font-semibold uppercase tracking-wide mb-1">Erfolgsmodell Simulation</p>
+              <p class="text-white text-sm font-medium">Halbierung der Taktzeit einer Verpackungsanlage durch den digitalen Zwilling</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERTIFIZIERUNGEN & MITGLIEDSCHAFTEN -->
+  <section class="py-16 bg-[#F5F8FA]">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-center text-xs uppercase tracking-widest text-brand-navy/40 font-semibold mb-12 reveal">Mitgliedschaften & Gremien</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 reveal">
+          <img src="https://www.blue-automation.de/fileadmin/user_upload/VDMA_log.jpg"
+               alt="VDMA" class="h-10 w-auto mb-6 opacity-80" />
+          <h3 class="text-brand-navy font-bold mb-2">VDMA Mitglied</h3>
+          <p class="text-brand-navy/60 text-sm leading-relaxed">
+            Als Mitglied des Verbands Deutscher Maschinen- und Anlagenbau (VDMA) gestalten wir
+            aktiv Richtlinien, Standards und Trends für die Branche mit.
+          </p>
+        </div>
+        <div class="bg-white p-8 reveal">
+          <img src="https://www.blue-automation.de/fileadmin/user_upload/AHK_singapur_Desktop.svg.svg"
+               alt="AHK Singapur" class="h-10 w-auto mb-6 opacity-80" />
+          <h3 class="text-brand-navy font-bold mb-2">AHK Singapur</h3>
+          <p class="text-brand-navy/60 text-sm leading-relaxed">
+            Mitglied der Deutsch-Singapurischen Industrie- und Handelskammer – für globale Präsenz
+            und internationale Projektfähigkeit in Südostasien.
+          </p>
+        </div>
+        <div class="bg-white p-8 reveal">
+          <img src="https://www.blue-automation.de/fileadmin/user_upload/Logo_fmi_Functional_Mockup_Interface.png"
+               alt="FMI Advisory Committee" class="h-10 w-auto mb-6 opacity-80" />
+          <h3 class="text-brand-navy font-bold mb-2">FMI Advisory Committee</h3>
+          <p class="text-brand-navy/60 text-sm leading-relaxed">
+            Mitglied im Functional Mock-up Interface Advisory Committee – wir treiben den
+            FMI-Standard für Simulation und digitale Zwillinge aktiv voran.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-xl mb-14 reveal">
+        <p class="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">FAQ</p>
+        <h2 class="text-brand-navy text-3xl md:text-4xl font-bold">Häufige Fragen</h2>
+      </div>
+      <div class="max-w-3xl divide-y divide-brand-light/40">
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-navy">Für welche SPS-Hersteller bieten Sie Programmierung an?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-navy font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-navy/70 mt-4 leading-relaxed text-sm">
+              Wir sind herstellerunabhängig und bieten tiefes Know-How für Siemens (STEP 5/7, TIA-Portal, WinCC, Simotion),
+              Rockwell/Allen Bradley (Logix5000, Studio5000, GuardLogix), Beckhoff (TwinCat 2 & 3), ABB sowie B&R.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-navy">Können Sie auch kurzfristig einspringen?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-navy font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-navy/70 mt-4 leading-relaxed text-sm">
+              Ja – durch unsere Flexibilität und Dynamik können wir auch kurzfristig Aufträge annehmen.
+              Sprechen Sie uns direkt an, damit wir Ihre Verfügbarkeit prüfen können.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-navy">Was bedeutet Programmierung am digitalen Zwilling?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-navy font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-navy/70 mt-4 leading-relaxed text-sm">
+              Vor der realen Inbetriebnahme testen wir die Software am digitalen Abbild Ihrer Anlage.
+              Das ermöglicht frühzeitige Problemerkennung und spart Zeit – Ihre Anlage läuft beim ersten Start fehlerfrei.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item py-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-semibold text-brand-navy">Wird auch Safety-Programmierung angeboten?</h3>
+            <span class="faq-icon flex-shrink-0 text-brand-navy font-light text-2xl leading-none">+</span>
+          </div>
+          <div class="faq-content">
+            <p class="text-brand-navy/70 mt-4 leading-relaxed text-sm">
+              Ja. Wir verfügen über Expertise in Safety CPU (Siemens) und GuardLogix (Rockwell) – beides
+              sicherheitsrelevante Steuerungsplattformen für funktionale Sicherheit in der Industrie.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKTFORMULAR -->
+  <section id="kontakt" class="py-24 bg-[#F5F8FA]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+        <div class="reveal">
+          <p class="text-brand-light text-xs font-semibold uppercase tracking-widest mb-3">Kontakt</p>
+          <h2 class="text-brand-navy text-3xl md:text-4xl font-bold mb-6">
+            Projekt anfragen.<br />Wir melden uns schnell.
+          </h2>
+          <p class="text-brand-navy/70 leading-relaxed mb-8">
+            Schildern Sie uns kurz Ihr Vorhaben. Wir prüfen Ihre Anfrage und melden uns zeitnah –
+            auch bei kurzfristigem Bedarf.
+          </p>
+          <a href="tel:+492664252420"
+             class="flex items-center gap-3 text-brand-navy font-semibold hover:text-brand-light transition-colors">
+            <div class="w-10 h-10 bg-brand-navy flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+              </svg>
+            </div>
+            +49 2664 25 242-0
+          </a>
+          <p class="text-brand-navy/50 text-sm mt-3 ml-13">Tobias Willer · info@blue-automation.de</p>
+        </div>
+        <div class="reveal">
+          <form class="space-y-4" onsubmit="handleSubmit(event)">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-brand-navy uppercase tracking-wide mb-2">Name</label>
+                <input type="text" required placeholder="Max Mustermann"
+                       class="w-full border border-brand-light/60 bg-white px-4 py-3 text-brand-navy placeholder-brand-navy/30 focus:outline-none focus:border-brand-navy transition-colors" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-brand-navy uppercase tracking-wide mb-2">Unternehmen</label>
+                <input type="text" placeholder="Musterfirma GmbH"
+                       class="w-full border border-brand-light/60 bg-white px-4 py-3 text-brand-navy placeholder-brand-navy/30 focus:outline-none focus:border-brand-navy transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-brand-navy uppercase tracking-wide mb-2">Telefon</label>
+              <input type="tel" placeholder="+49 ..."
+                     class="w-full border border-brand-light/60 bg-white px-4 py-3 text-brand-navy placeholder-brand-navy/30 focus:outline-none focus:border-brand-navy transition-colors" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-brand-navy uppercase tracking-wide mb-2">Ihr Anliegen</label>
+              <textarea rows="4" placeholder="Kurze Beschreibung Ihres Projekts oder Ihrer Anfrage..."
+                        class="w-full border border-brand-light/60 bg-white px-4 py-3 text-brand-navy placeholder-brand-navy/30 focus:outline-none focus:border-brand-navy transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full bg-brand-navy text-white font-bold py-4 hover:bg-brand-navy/90 transition-colors">
+              Anfrage absenden
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-navy py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <img src="https://www.blue-automation.de/typo3conf/ext/blue_automation_lytpckg/Resources/Public/Images/blue-auomation-LOGO-White-CMYK.png"
+           alt="blue automation" class="h-7 w-auto opacity-70" />
+      <div class="flex items-center gap-6 text-white/50 text-sm">
+        <a href="tel:+492664252420" class="hover:text-white transition-colors">+49 2664 25 242-0</a>
+        <span>·</span>
+        <a href="https://www.blue-automation.de/de/impressum" class="hover:text-white transition-colors" target="_blank" rel="noopener">Impressum</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    function toggleFaq(item) {
+      item.classList.toggle('open');
+    }
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Anfrage gesendet – wir melden uns!';
+      btn.disabled = true;
+      btn.classList.add('bg-brand-light', 'text-brand-navy');
+      btn.classList.remove('bg-brand-navy', 'text-white');
+    }
+  </script>
+</body>
+</html>
