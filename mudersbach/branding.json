@@ -1,0 +1,47 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    { "family": "Open Sans", "role": "body" },
+    { "family": "Arial", "role": "fallback" }
+  ],
+  "colors": {
+    "primary": "#3A5388",
+    "accent": "#3E4651",
+    "background": "#262626",
+    "textPrimary": "#3E4651",
+    "link": "#3E4651"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Open Sans"
+    },
+    "fontSizes": {
+      "h1": "42px",
+      "h2": "26px",
+      "body": "28px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "images": {
+    "logo": "https://mudersbach.com/wp-content/uploads/2019/11/mudersbach-signet.png",
+    "logoAlt": "Mudersbach GmbH & Co. KG",
+    "logoHref": "https://mudersbach.com/",
+    "ogImage": "https://mudersbach.com/wp-content/uploads/2015/09/mudersbach_teaser2.jpg",
+    "favicon": "https://mudersbach.com/wp-content/uploads/2019/11/mudersbach-signet.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  },
+  "meta": {
+    "title": "Spezialist für Blechverarbeitung – Umformtechnik für Stahl und Blech",
+    "description": "Spezialist für Blechverarbeitung und Umformtechnik. Wir fertigen Konen und Übergangsstücke, Stahlverbundkonstruktionen sowie Maschinen- und Anlagenbau.",
+    "siteName": "Mudersbach GmbH & Co. KG",
+    "locale": "de_DE"
+  }
+}

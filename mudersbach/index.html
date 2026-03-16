@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudersbach GmbH & Co. KG – Spezialist für Umformtechnik</title>
+    <meta name="description" content="Spezialist für Blechverarbeitung und Umformtechnik. Wir fertigen Konen und Übergangsstücke, Stahlverbundkonstruktionen sowie Maschinen- und Anlagenbau.">
+    <link rel="icon" href="https://mudersbach.com/wp-content/uploads/2019/11/mudersbach-signet.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        steel: '#3A5388',
+                        graphite: '#3E4651',
+                        forge: '#262626',
+                        ember: '#D4752E',
+                        'ember-light': '#E8944A',
+                        'steel-light': '#4A6BA8',
+                        'forge-light': '#333333',
+                        'forge-dark': '#1A1A1A',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .bauhaus-circle { clip-path: circle(50%); }
+        .bauhaus-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        .bauhaus-diagonal-rev { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%); }
+        .service-card:hover { transform: translateY(-4px); }
+        .service-card { transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .geometric-border { border-left: 4px solid #D4752E; }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4752E;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .trust-logo { filter: brightness(0) invert(1); opacity: 0.7; transition: opacity 0.3s; }
+        .trust-logo:hover { opacity: 1; }
+    </style>
+</head>
+<body class="bg-forge text-gray-200 font-sans">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-forge-dark/95 backdrop-blur-sm border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="#hero" class="flex items-center gap-3">
+                    <img src="https://mudersbach.com/wp-content/uploads/2019/11/mudersbach-signet.png" alt="Mudersbach GmbH & Co. KG" class="h-10 md:h-12 w-auto">
+                    <span class="hidden sm:block text-white font-bold text-sm tracking-wide">MUDERSBACH</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#leistungen" class="nav-link text-sm text-gray-300 hover:text-white tracking-wide uppercase">Leistungen</a>
+                    <a href="#ueber-uns" class="nav-link text-sm text-gray-300 hover:text-white tracking-wide uppercase">Unternehmen</a>
+                    <a href="#projekte" class="nav-link text-sm text-gray-300 hover:text-white tracking-wide uppercase">Projekte</a>
+                    <a href="#kontakt" class="nav-link text-sm text-gray-300 hover:text-white tracking-wide uppercase">Kontakt</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="tel:+4927439335925" class="hidden sm:flex items-center gap-2 text-sm text-gray-300 hover:text-ember transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        +49 2743 93359-25
+                    </a>
+                    <a href="#kontakt" class="bg-ember hover:bg-ember-light text-white text-sm font-semibold px-5 py-2.5 transition-colors tracking-wide">
+                        Anfrage senden
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://mudersbach.com/wp-content/uploads/2015/09/mudersbach_teaser2.jpg" alt="Mudersbach Umformtechnik" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-forge-dark/95 via-forge-dark/80 to-forge-dark/50"></div>
+        </div>
+        <!-- Bauhaus Geometric Accent -->
+        <div class="absolute top-20 right-10 w-64 h-64 rounded-full border-2 border-ember/20 hidden lg:block"></div>
+        <div class="absolute bottom-32 right-32 w-32 h-32 bg-steel/10 hidden lg:block"></div>
+        <div class="absolute top-1/3 right-1/4 w-16 h-16 bg-ember/15 rotate-45 hidden lg:block"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+            <div class="max-w-3xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-1 bg-ember"></div>
+                    <span class="text-ember font-semibold text-sm tracking-[0.2em] uppercase">Seit 1965</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-6">
+                    Ihr Spezialist<br>
+                    <span class="text-steel-light">für Umformtechnik</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-xl mb-4 leading-relaxed">
+                    Vielseitiger und leistungsstarker Lohnfertiger für die Blechverarbeitung aus dem Westerwald.
+                </p>
+                <p class="text-base text-gray-400 max-w-lg mb-10 leading-relaxed">
+                    Konen und Übergangsstücke, Behälterbau, Anlagenbau und Stahlkonstruktionen &ndash; ohne Kompromisse bei der Qualität.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#leistungen" class="bg-ember hover:bg-ember-light text-white font-bold px-8 py-4 text-sm tracking-wide uppercase transition-colors">
+                        Leistungen entdecken
+                    </a>
+                    <a href="#kontakt" class="border-2 border-white/30 hover:border-white text-white font-semibold px-8 py-4 text-sm tracking-wide uppercase transition-colors">
+                        Kontakt aufnehmen
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500">
+            <span class="text-xs tracking-widest uppercase">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="bg-forge-dark border-y border-white/5 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+                <img src="https://mudersbach.com/wp-content/uploads/2025/11/mudersbach-logo-tuev-1090-1.png" alt="TÜV Rheinland EN 1090-1" class="trust-logo h-12 md:h-14 w-auto">
+                <img src="https://mudersbach.com/wp-content/uploads/2025/11/mudersbach_0000_mudersbach-logo-3-Kopie-2.png" alt="Zertifizierung" class="trust-logo h-12 md:h-14 w-auto">
+                <img src="https://mudersbach.com/wp-content/uploads/2025/11/mudersbach_0001_mudersbach-logo-2-Kopie-2.png" alt="Zertifizierung" class="trust-logo h-12 md:h-14 w-auto">
+                <img src="https://mudersbach.com/wp-content/uploads/2025/11/mudersbach-logo-1965-2-1.png" alt="Seit 1965" class="trust-logo h-12 md:h-14 w-auto">
+                <img src="https://mudersbach.com/wp-content/uploads/2025/11/mudersbach-logo-made-in-germany-2.png" alt="Made in Germany" class="trust-logo h-12 md:h-14 w-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- KENNZAHLEN -->
+    <section class="py-16 md:py-24 bg-forge relative overflow-hidden">
+        <!-- Bauhaus geometric background -->
+        <div class="absolute top-0 left-0 w-48 h-48 bg-steel/5 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full border border-ember/10 translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 animate-on-scroll">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold text-ember mb-2">60+</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Jahre Erfahrung</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold text-ember mb-2">8.000</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">m&sup2; Produktion</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold text-ember mb-2">100 t</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Krankapazität</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-extrabold text-ember mb-2">EXC 4</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">EN 1090 Zertifikat</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÜBER UNS -->
+    <section id="ueber-uns" class="py-16 md:py-24 bg-forge-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-1 bg-ember"></div>
+                        <span class="text-ember font-semibold text-sm tracking-[0.2em] uppercase">Unternehmen</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 leading-tight">
+                        Stahl ist unsere Passion
+                    </h2>
+                    <div class="geometric-border pl-6 mb-8">
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Willkommen bei der Mudersbach GmbH & Co. KG., dem vielseitigen und leistungsstarken Lohnfertiger für die Blechverarbeitung aus dem Westerwald.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Stahl besitzt eine hohe Stabilität, ist sehr formbar und daher bei der industriellen Blechverarbeitung besonders wirtschaftlich. Wir machen uns diese Eigenschaften bei der Herstellung von Konen und Übergangsstücken, im Behälterbau und Apparatebau oder auch im Anlagenbau zunutze.
+                        </p>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Wir verfügen über einen modernen CNC-Maschinenpark, gebündelt mit einem breit gefächerten Spektrum an Bearbeitungsmethoden. Wir garantieren präzise Ausführung &ndash; exakt terminiert, zum besten Preis-Leistungs-Verhältnis.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">Hardox&reg;</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">P265GH</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">S235</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">S355</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">S690</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">1.4301</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">Aluminium</span>
+                        <span class="text-xs bg-steel/20 text-steel-light px-3 py-1.5 font-semibold tracking-wide">Kesselbleche</span>
+                    </div>
+                </div>
+                <div class="animate-on-scroll relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-steel/20"></div>
+                    <img src="https://mudersbach.com/wp-content/uploads/2015/09/leistungen_umformtechnik.jpg" alt="Blechverarbeitung bei Mudersbach" class="relative w-full aspect-[4/3] object-cover">
+                    <!-- Bauhaus accent -->
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-ember flex items-center justify-center">
+                        <span class="text-white font-extrabold text-2xl">M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEISTUNGEN -->
+    <section id="leistungen" class="py-16 md:py-24 bg-forge relative">
+        <div class="absolute top-0 right-0 w-96 h-96 rounded-full border border-white/5 -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 animate-on-scroll">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="w-8 h-1 bg-ember"></div>
+                    <span class="text-ember font-semibold text-sm tracking-[0.2em] uppercase">Leistungen</span>
+                    <div class="w-8 h-1 bg-ember"></div>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                    Unsere Leistungen im Überblick
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Architektonischer Stahlbau, Hallen aus Stahl, Maschinen- und Anlagenbau und Stahlkonstruktionen für Industrie und Gewerbe.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-on-scroll">
+                <!-- Abkanten -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/abkanten-705x397.webp" alt="Abkanten" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Abkanten</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Bis 2.000 t Presskraft, 15.400 mm Arbeitsbreite, 150 mm Materialstärke.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>7 CNC-Pressen</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anlagenbau -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/anlagenbau3-710x375.jpg.webp" alt="Anlagenbau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Anlagenbau</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Vom Engineering bis zur komplexen Fertigung. Transport und Montage.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>Full-Service</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behälter- und Apparatebau -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/behaelter6-710x375.jpg.webp" alt="Behälter- und Apparatebau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Behälter- &amp; Apparatebau</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Wandstärken 3&ndash;170 mm, Durchmesser bis 7.000 mm.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>UP-Schweißen</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blechkonstruktionen -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/blechkonstruktionen1-710x375.jpg.webp" alt="Blechkonstruktionen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Blechkonstruktionen</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Schweißkonstruktionen, Verkleidungen, Gehäuse. WIG, MAG, UP.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>Formvielfalt</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Großteilfertigung -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/grossteilfertigung3-710x375.jpg.webp" alt="Großteilfertigung" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Großteilfertigung</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Einzelstückgewichte bis 100 t. EN 1090 EXC 4 zertifiziert.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>XXL-Format</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Konen -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/konen-uebergangsstuecke-2-710x375.jpg.webp" alt="Konen und Übergangsstücke" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Konen &amp; Übergangsstücke</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Grenzenlose Formenvielfalt. Bis 6.000 mm Durchmesser.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>Unsere Spezialität</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rundbiegen -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/rundwalzen5-710x375.webp" alt="Rundbiegen und Walzen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Rundbiegen &amp; Walzen</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">15 Maschinentypen. Arbeitsbreiten bis 4.000 mm, bis 300 mm Stärke.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>Präzise Radien</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maschinenbau -->
+                <div class="service-card bg-forge-dark border border-white/5 overflow-hidden group">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://mudersbach.com/wp-content/uploads/2019/05/karriere-mobile-710x375.jpg.webp" alt="Stahl- und Maschinenbau" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2">Stahl- &amp; Maschinenbau</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Schweißbaugruppen und Sondermaschinen. Lohnfertigung.</p>
+                        <div class="flex items-center gap-2 text-ember text-sm font-semibold">
+                            <span>Höchste Präzision</span>
+                            <div class="w-4 h-px bg-ember"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="relative py-20 md:py-28 overflow-hidden">
+        <div class="absolute inset-0 bg-steel"></div>
+        <!-- Bauhaus patterns -->
+        <div class="absolute top-0 left-0 w-72 h-72 rounded-full bg-white/5 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-48 h-48 bg-white/5 translate-x-1/4 translate-y-1/4 rotate-45"></div>
+        <div class="absolute top-1/2 right-1/3 w-20 h-20 rounded-full border-2 border-white/10 -translate-y-1/2"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Blechbearbeitung nach Maß &ndash;<br>
+                Ihr zuverlässiger Partner
+            </h2>
+            <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-10">
+                Handwerklich präzise, mit fundierter Erfahrung und einem hohen Qualitätsbewusstsein. Hochwertige Einzelstücke und Serienteile nach Maß sowie Sonderanfertigungen gemäß Ihren Wünschen.
+            </p>
+            <a href="#kontakt" class="inline-block bg-ember hover:bg-ember-light text-white font-bold px-10 py-4 text-sm tracking-wide uppercase transition-colors">
+                Jetzt Anfrage stellen
+            </a>
+        </div>
+    </section>
+
+    <!-- PROJEKTE / AKTUELLES -->
+    <section id="projekte" class="py-16 md:py-24 bg-forge-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="w-8 h-1 bg-ember"></div>
+                    <span class="text-ember font-semibold text-sm tracking-[0.2em] uppercase">Projekte</span>
+                    <div class="w-8 h-1 bg-ember"></div>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                    Aktuelles bei Mudersbach
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 animate-on-scroll">
+                <!-- Filtergehäuse -->
+                <div class="group relative overflow-hidden">
+                    <img src="https://mudersbach.com/wp-content/uploads/2026/03/Mudersbach_Filter_Herding_Linkedin1-bearbeitet-710x375.jpg" alt="Fertigung von Filtergehäusen" class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-forge-dark/90 via-forge-dark/30 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="text-white font-bold text-xl mb-2">Fertigung von Filtergehäusen</h3>
+                        <p class="text-gray-300 text-sm">Explosionsdruckfeste Rundfilteranlagen mit Kaminen für die Abscheidung explosionsfähiger, metallischer Stäube.</p>
+                    </div>
+                </div>
+
+                <!-- Fördermaschine -->
+                <div class="group relative overflow-hidden">
+                    <img src="https://mudersbach.com/wp-content/uploads/2026/03/Mudersbach-Bilder-Siemag_V26-bearbeitet.jpg.webp" alt="Probeaufbau der größten Fördermaschine weltweit" class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-forge-dark/90 via-forge-dark/30 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="text-white font-bold text-xl mb-2">Größte Fördermaschine weltweit</h3>
+                        <p class="text-gray-300 text-sm">Probeaufbau der größten Fördermaschine weltweit &ndash; ein Meilenstein-Projekt.</p>
+                    </div>
+                </div>
+
+                <!-- Skulptur -->
+                <div class="group relative overflow-hidden">
+                    <img src="https://mudersbach.com/wp-content/uploads/2025/11/Mudersbach_DNA_Website7-bearbeitet.jpg.webp" alt="Fertigung einer Skulptur" class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-forge-dark/90 via-forge-dark/30 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="text-white font-bold text-xl mb-2">Fertigung einer Skulptur</h3>
+                        <p class="text-gray-300 text-sm">Wenn Stahl zur Kunst wird &ndash; kreative Fertigung jenseits der Industrie.</p>
+                    </div>
+                </div>
+
+                <!-- Arbeitsproben Collage -->
+                <div class="grid grid-cols-2 gap-3">
+                    <img src="https://mudersbach.com/wp-content/uploads/2015/09/entrindungstrommel-gewicht-55-to-1030x687.jpg" alt="Entrindungstrommel 55t" class="w-full aspect-square object-cover">
+                    <img src="https://mudersbach.com/wp-content/uploads/2019/10/kone-1030x687.jpg" alt="Konus" class="w-full aspect-square object-cover">
+                    <img src="https://mudersbach.com/wp-content/uploads/2015/09/behaelter2-1030x687.jpg" alt="Gassättiger" class="w-full aspect-square object-cover">
+                    <img src="https://mudersbach.com/wp-content/uploads/2015/09/biegeteil-fuer-pressenrahmen-aus-baustahl-1030x687.jpg" alt="Biegeteil Pressenrahmen" class="w-full aspect-square object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANSPRECHPARTNER -->
+    <section class="py-16 md:py-24 bg-forge">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto animate-on-scroll">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-forge-dark border border-white/5 p-8 md:p-12">
+                    <!-- Photo -->
+                    <div class="flex-shrink-0 relative">
+                        <div class="absolute -top-3 -left-3 w-full h-full border-2 border-ember"></div>
+                        <img src="https://mudersbach.com/wp-content/uploads/2015/09/michel_mudersbach.jpg" alt="Michel Mudersbach" class="relative w-40 h-40 md:w-48 md:h-48 object-cover">
+                    </div>
+                    <!-- Info -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-6 h-1 bg-ember"></div>
+                            <span class="text-ember font-semibold text-sm tracking-[0.2em] uppercase">Ihr Ansprechpartner</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-1">Michel Mudersbach</h3>
+                        <p class="text-gray-400 mb-6">Geschäftsführung, Technische Beratung, Vertrieb und Einkauf</p>
+                        <div class="flex flex-col gap-3">
+                            <a href="tel:+4927439335925" class="flex items-center gap-3 text-gray-300 hover:text-ember transition-colors">
+                                <svg class="w-5 h-5 text-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                +49 2743 93359-25
+                            </a>
+                            <a href="mailto:m.mudersbach@mudersbach.com" class="flex items-center gap-3 text-gray-300 hover:text-ember transition-colors">
+                                <svg class="w-5 h-5 text-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                m.mudersbach@mudersbach.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="py-16 md:py-24 bg-forge-dark relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 rounded-full border border-ember/10 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-steel/5 -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-12 animate-on-scroll">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="w-8 h-1 bg-ember"></div>
+                    <span class="text-ember font-semibold text-sm tracking-[0.2em] uppercase">Kontakt</span>
+                    <div class="w-8 h-1 bg-ember"></div>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                    Lassen Sie uns über Ihre<br>Anforderungen sprechen
+                </h2>
+                <p class="text-gray-400">
+                    Wir beraten Sie gerne und erstellen Ihnen ein individuelles Angebot.
+                </p>
+            </div>
+
+            <form class="space-y-6 animate-on-scroll" onsubmit="event.preventDefault();">
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2 tracking-wide">Name *</label>
+                        <input type="text" required class="w-full bg-forge border border-white/10 text-white px-4 py-3 focus:border-ember focus:outline-none transition-colors placeholder-gray-500" placeholder="Ihr Name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2 tracking-wide">Firma</label>
+                        <input type="text" class="w-full bg-forge border border-white/10 text-white px-4 py-3 focus:border-ember focus:outline-none transition-colors placeholder-gray-500" placeholder="Ihre Firma">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2 tracking-wide">E-Mail *</label>
+                        <input type="email" required class="w-full bg-forge border border-white/10 text-white px-4 py-3 focus:border-ember focus:outline-none transition-colors placeholder-gray-500" placeholder="ihre@email.de">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2 tracking-wide">Telefon</label>
+                        <input type="tel" class="w-full bg-forge border border-white/10 text-white px-4 py-3 focus:border-ember focus:outline-none transition-colors placeholder-gray-500" placeholder="+49 ...">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-2 tracking-wide">Ihre Nachricht *</label>
+                    <textarea rows="5" required class="w-full bg-forge border border-white/10 text-white px-4 py-3 focus:border-ember focus:outline-none transition-colors placeholder-gray-500 resize-none" placeholder="Beschreiben Sie Ihre Anforderungen..."></textarea>
+                </div>
+                <div class="flex items-start gap-3">
+                    <input type="checkbox" required class="mt-1 accent-ember">
+                    <p class="text-sm text-gray-400">Ich stimme zu, dass meine Angaben zur Beantwortung meiner Anfrage erhoben und verarbeitet werden. <a href="https://mudersbach.com/datenschutzerklaerung/" class="text-steel-light hover:text-ember underline" target="_blank">Datenschutzerklärung</a></p>
+                </div>
+                <button type="submit" class="w-full bg-ember hover:bg-ember-light text-white font-bold py-4 text-sm tracking-wide uppercase transition-colors">
+                    Anfrage absenden
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-forge-dark border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10 mb-10">
+                <!-- Firma -->
+                <div>
+                    <img src="https://mudersbach.com/wp-content/uploads/2019/11/mudersbach-signet.png" alt="Mudersbach" class="h-12 w-auto mb-4">
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Mudersbach GmbH & Co. KG<br>
+                        Spezialist für Blechverarbeitung<br>und Umformtechnik seit 1965.
+                    </p>
+                </div>
+                <!-- Leistungen -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm tracking-wide uppercase">Leistungen</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Abkanten</li>
+                        <li>Anlagenbau</li>
+                        <li>Behälter- &amp; Apparatebau</li>
+                        <li>Blechkonstruktionen</li>
+                        <li>Großteilfertigung</li>
+                        <li>Konen &amp; Übergangsstücke</li>
+                        <li>Rundbiegen &amp; Walzen</li>
+                        <li>Stahl- &amp; Maschinenbau</li>
+                    </ul>
+                </div>
+                <!-- Kontakt -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm tracking-wide uppercase">Kontakt</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-ember flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            <a href="tel:+4927439335925" class="hover:text-ember transition-colors">+49 2743 93359-25</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-ember flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <a href="mailto:m.mudersbach@mudersbach.com" class="hover:text-ember transition-colors">m.mudersbach@mudersbach.com</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-ember flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            Friedewald, Westerwald
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Divider -->
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-gray-500">&copy; 2025 Mudersbach GmbH & Co. KG. Alle Rechte vorbehalten.</p>
+                <a href="https://mudersbach.com/datenschutzerklaerung/" target="_blank" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL ANIMATION -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
