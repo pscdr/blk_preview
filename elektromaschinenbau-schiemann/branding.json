@@ -1,0 +1,47 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Source Sans Pro", "role": "body" },
+    { "family": "Arial", "role": "fallback" }
+  ],
+  "colors": {
+    "primary": "#0000EE",
+    "accent": "#FF9900",
+    "background": "#FFFFFF",
+    "textPrimary": "#282425",
+    "link": "#FF9900"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Source Sans Pro",
+      "heading": "Source Sans Pro"
+    },
+    "fontStacks": {
+      "heading": ["Source Sans Pro", "Arial", "sans-serif"],
+      "body": ["Source Sans Pro", "Arial", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "32px",
+      "h2": "35px",
+      "body": "30px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "8px"
+  },
+  "images": {
+    "logo": "https://www.elektromaschinenbau-schiemann.de/wp-content/themes/theme_schiemann/images/design/Schiemann_Logo.png",
+    "favicon": "https://www.elektromaschinenbau-schiemann.de/apple-touch-icon.png",
+    "logoAlt": "Schiemann Elektromaschinenbau GmbH"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  },
+  "contact": {
+    "phone": "+49 (0) 26 23 / 95 13 12",
+    "email": "info@elektromaschinenbau-schiemann.de"
+  }
+}
