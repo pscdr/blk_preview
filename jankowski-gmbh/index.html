@@ -49,6 +49,56 @@
         .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(20,99,148,0.1); }
         .product-card img { transition: transform 0.4s ease; }
         .product-card:hover img { transform: scale(1.05); }
+
+        /* Hero animations */
+        @keyframes heroZoom {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes lineGrow {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+        @keyframes slideRight {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        .hero-img { animation: heroZoom 8s ease-out forwards; }
+        .hero-tagline { animation: fadeIn 0.8s ease 0.2s both; }
+        .hero-line { animation: lineGrow 0.6s ease 0.5s both; transform-origin: left; }
+        .hero-h1-1 { animation: fadeUp 0.7s ease 0.7s both; }
+        .hero-h1-2 { animation: fadeUp 0.7s ease 0.9s both; }
+        .hero-h1-3 { animation: fadeUp 0.7s ease 1.1s both; }
+        .hero-sub { animation: fadeUp 0.6s ease 1.4s both; }
+        .hero-cta { animation: fadeUp 0.6s ease 1.7s both; }
+        .hero-badge { animation: slideRight 0.5s ease 2s both; }
+        .hero-scroll { animation: fadeIn 0.5s ease 2.3s both; }
+        .hero-scroll-dot { animation: pulse 2s ease-in-out infinite; }
+
+        /* Animated grid lines in hero */
+        @keyframes gridFade {
+            0% { opacity: 0; }
+            100% { opacity: 0.08; }
+        }
+        .hero-grid-line { animation: gridFade 1.5s ease 0.3s both; }
+
+        /* Nav transparent on hero */
+        .nav-hero { background: transparent !important; border-color: transparent !important; }
+        .nav-hero a, .nav-hero button { color: white !important; }
+        .nav-hero .nav-cta { background: rgba(255,255,255,0.15) !important; backdrop-filter: blur(4px); }
+        .nav-hero .nav-cta:hover { background: #00ACAD !important; }
     </style>
 </head>
 <body class="bg-white text-black font-body">
@@ -67,7 +117,7 @@
                 <a href="#galerie" class="hover:text-steel transition-colors">Galerie</a>
                 <a href="#kontakt" class="hover:text-steel transition-colors">Kontakt</a>
             </div>
-            <a href="#kontakt" class="hidden lg:inline-block bg-steel text-white font-heading text-sm tracked px-6 py-2.5 hover:bg-teal transition-colors uppercase">
+            <a href="#kontakt" class="nav-cta hidden lg:inline-block bg-steel text-white font-heading text-sm tracked px-6 py-2.5 hover:bg-teal transition-colors uppercase">
                 Anfrage senden
             </a>
             <button id="menuBtn" class="lg:hidden text-slate" aria-label="Menü öffnen">
@@ -88,48 +138,83 @@
     </nav>
 
     <!-- HERO -->
-    <section id="hero" class="relative min-h-screen flex items-center grid-bg pt-20">
+    <section id="hero" class="relative min-h-screen flex items-end overflow-hidden">
+        <!-- Fullscreen Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2023/03/DSC08626-scaled.jpg" alt="Präzisionsfertigung bei Jankowski" class="hero-img w-full h-full object-cover">
+            <!-- Dark gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30"></div>
+            <!-- Brand color overlay -->
+            <div class="absolute inset-0 bg-steel/20 mix-blend-multiply"></div>
+        </div>
+
+        <!-- Animated grid lines -->
         <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 left-0 w-full h-px bg-steel/5"></div>
-            <div class="absolute top-2/4 left-0 w-full h-px bg-steel/5"></div>
-            <div class="absolute top-3/4 left-0 w-full h-px bg-steel/5"></div>
-            <div class="absolute top-0 left-1/4 w-px h-full bg-steel/5"></div>
-            <div class="absolute top-0 left-2/4 w-px h-full bg-steel/5"></div>
-            <div class="absolute top-0 left-3/4 w-px h-full bg-steel/5"></div>
+            <div class="hero-grid-line absolute top-1/4 left-0 w-full h-px bg-white"></div>
+            <div class="hero-grid-line absolute top-2/4 left-0 w-full h-px bg-white"></div>
+            <div class="hero-grid-line absolute top-3/4 left-0 w-full h-px bg-white"></div>
+            <div class="hero-grid-line absolute top-0 left-[10%] w-px h-full bg-white"></div>
+            <div class="hero-grid-line absolute top-0 left-[30%] w-px h-full bg-white"></div>
+            <div class="hero-grid-line absolute top-0 left-[70%] w-px h-full bg-white"></div>
+            <div class="hero-grid-line absolute top-0 left-[90%] w-px h-full bg-white"></div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
-            <div class="lg:col-span-6">
-                <p class="font-heading text-teal text-sm tracked uppercase mb-6">Zerspanungstechnik & Maschinenbau</p>
-                <div class="rule-accent mb-8"></div>
-                <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-slate leading-tight tracked-tight mb-6">
-                    Präzision<br>seit 1973
-                </h1>
-                <p class="text-lg text-slate/70 max-w-lg leading-relaxed mb-4">
-                    Wir sind der innovative Spezialist in der Zerspanungstechnik und fertigen hochpräzise Komponenten für den Maschinen- und Anlagenbau.
-                </p>
-                <p class="text-base text-slate/50 max-w-lg leading-relaxed mb-10">
-                    Fragen zu Fertigungstechnologie, Werkstoffauswahl oder Härteverfahren? Wir haben die Antwort.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#kontakt" class="bg-steel text-white font-heading text-sm tracked uppercase px-8 py-3.5 hover:bg-teal transition-colors">
-                        Kostenlos anfragen
-                    </a>
-                    <a href="#leistungen" class="border-2 border-steel text-steel font-heading text-sm tracked uppercase px-8 py-3.5 hover:bg-steel hover:text-white transition-colors">
-                        Leistungen entdecken
-                    </a>
+
+        <!-- Content -->
+        <div class="relative z-10 w-full pb-20 pt-40">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl">
+                    <p class="hero-tagline font-heading text-teal text-sm tracked uppercase mb-6">
+                        Zerspanungstechnik & Maschinenbau
+                    </p>
+                    <div class="hero-line rule-accent mb-8" style="width:80px;height:3px"></div>
+                    <h1 class="font-heading font-bold text-white leading-[1.05] tracked-tight mb-8">
+                        <span class="hero-h1-1 block text-5xl md:text-6xl lg:text-7xl xl:text-8xl">Präzision.</span>
+                        <span class="hero-h1-2 block text-5xl md:text-6xl lg:text-7xl xl:text-8xl">Innovation.</span>
+                        <span class="hero-h1-3 block text-3xl md:text-4xl lg:text-5xl text-teal mt-2">Seit 1973.</span>
+                    </h1>
+                    <p class="hero-sub text-lg md:text-xl text-white/70 max-w-xl leading-relaxed mb-10">
+                        Hochpräzise Komponenten für den Maschinen- und Anlagenbau. Drahtvorziehmaschinen, die Maßstäbe setzen.
+                    </p>
+                    <div class="hero-cta flex flex-wrap gap-4">
+                        <a href="#kontakt" class="bg-teal text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-white hover:text-slate transition-all duration-300">
+                            Kostenlos anfragen
+                        </a>
+                        <a href="#leistungen" class="border-2 border-white/30 text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-white hover:text-slate transition-all duration-300">
+                            Leistungen entdecken
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bottom badges -->
+                <div class="hero-badge flex flex-wrap gap-6 mt-16 pt-8 border-t border-white/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 border border-teal/40 flex items-center justify-center">
+                            <span class="font-heading text-teal text-xs font-bold">ISO</span>
+                        </div>
+                        <span class="text-white/50 text-sm">9001:2015 zertifiziert</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 border border-teal/40 flex items-center justify-center">
+                            <span class="font-heading text-teal text-xs font-bold">50+</span>
+                        </div>
+                        <span class="text-white/50 text-sm">Jahre Erfahrung</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 border border-teal/40 flex items-center justify-center">
+                            <span class="font-heading text-teal text-xs font-bold">3K</span>
+                        </div>
+                        <span class="text-white/50 text-sm">m² Produktionsfläche</span>
+                    </div>
                 </div>
             </div>
-            <div class="lg:col-span-6">
-                <div class="relative">
-                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-3 border-l-3 border-teal/30"></div>
-                    <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-3 border-r-3 border-steel/30"></div>
-                    <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2023/03/DSC08626-scaled.jpg" alt="Präzisionsfertigung bei Jankowski" class="w-full aspect-[4/3] object-cover">
-                </div>
-            </div>
         </div>
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-steel/40">
-            <span class="text-xs font-heading tracked uppercase">Scroll</span>
-            <div class="w-px h-8 bg-steel/30"></div>
+
+        <!-- Scroll indicator -->
+        <div class="hero-scroll absolute bottom-8 right-8 flex flex-col items-center gap-2">
+            <span class="text-xs font-heading tracked uppercase text-white/40 [writing-mode:vertical-lr]">Scroll</span>
+            <div class="w-px h-12 bg-white/20 relative overflow-hidden">
+                <div class="hero-scroll-dot absolute top-0 left-0 w-full h-4 bg-teal/80"></div>
+            </div>
         </div>
     </section>
 
@@ -610,9 +695,16 @@
 
     <script>
         const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('nav-scrolled', window.scrollY > 50);
-        });
+        const heroSection = document.getElementById('hero');
+        function updateNav() {
+            const heroBottom = heroSection.offsetHeight - 100;
+            const scrolled = window.scrollY > 50;
+            const inHero = window.scrollY < heroBottom;
+            nav.classList.toggle('nav-scrolled', scrolled && !inHero);
+            nav.classList.toggle('nav-hero', inHero);
+        }
+        updateNav();
+        window.addEventListener('scroll', updateNav);
 
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
