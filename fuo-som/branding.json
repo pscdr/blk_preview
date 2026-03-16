@@ -1,0 +1,40 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "PT Sans", "role": "body" },
+    { "family": "Arial", "role": "body" },
+    { "family": "Helvetica", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#005CAA",
+    "accent": "#A0CE4E",
+    "background": "#FFFFFF",
+    "textPrimary": "#333333",
+    "link": "#A0CE4E"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "PT Sans",
+      "heading": "PT Sans"
+    },
+    "fontSizes": {
+      "h1": "20px",
+      "h2": "50px",
+      "body": "20px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "images": {
+    "logo": "https://www.fuo-som.com/wp-content/uploads/2018/01/fuo-som.com_fuo_maschinenbau_logo_425x130_v2.png",
+    "favicon": "https://www.fuo-som.com/wp-content/uploads/2018/06/fuo-som.com_FundO_Maschinenbau_GmbH_56307_Dernbach_Fav.jpg",
+    "logoAlt": "F&O Maschinenbau Logo"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients and businesses"
+  }
+}

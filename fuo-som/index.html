@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F&O Maschinenbau – CNC Dreh- u. Frästeile | Dernbach</title>
+  <meta name="description" content="F&O Maschinenbau GmbH aus Dernbach bietet hochwertige CNC Dreh- u. Frästeile in Einzelfertigung und in verschiedensten Vergütungen und Veredelungen an.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://www.fuo-som.com/wp-content/uploads/2018/06/fuo-som.com_FundO_Maschinenbau_GmbH_56307_Dernbach_Fav.jpg">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#005CAA',
+            'brand-dark': '#004A8C',
+            accent: '#A0CE4E',
+            'accent-dark': '#8BBF3A',
+            dark: '#333333',
+          },
+          fontFamily: {
+            sans: ['PT Sans', 'Arial', 'Helvetica', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .geo-divider { clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%); }
+    .geo-divider-reverse { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%); }
+    .machine-card:hover img { transform: scale(1.05); }
+    .machine-card img { transition: transform 0.3s ease; }
+  </style>
+</head>
+<body class="font-sans text-dark bg-white antialiased">
+
+  <!-- Sticky Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-brand shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
+      <a href="#top">
+        <img src="https://www.fuo-som.com/wp-content/uploads/2018/01/fuo-som.com_fuo_maschinenbau_logo_425x130_v2.png" alt="F&O Maschinenbau Logo" class="h-10 sm:h-14">
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide">
+        <a href="#unternehmen" class="hover:text-brand transition-colors">Unternehmen</a>
+        <a href="#leistungen" class="hover:text-brand transition-colors">Leistungen</a>
+        <a href="#maschinen" class="hover:text-brand transition-colors">Maschinen</a>
+        <a href="#kontakt" class="hover:text-brand transition-colors">Kontakt</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+49268992599-0" class="hidden sm:flex items-center gap-2 text-sm font-bold text-brand">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          02689 / 92 599-0
+        </a>
+        <a href="#kontakt" class="bg-accent hover:bg-accent-dark text-white font-bold text-sm px-5 py-2.5 transition-colors">
+          Kontakt
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="top" class="relative pt-20 sm:pt-24 bg-brand overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-64 h-64 border-[6px] border-white rounded-full"></div>
+      <div class="absolute bottom-10 right-20 w-40 h-40 border-[6px] border-white"></div>
+      <div class="absolute top-1/2 left-1/3 w-20 h-20 bg-white rotate-45"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 lg:py-40">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-block bg-accent text-white font-bold text-xs uppercase tracking-widest px-4 py-2 mb-6">
+            Seit 1991
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Präzision<br>aus Dernbach.
+          </h1>
+          <p class="text-lg sm:text-xl text-blue-100 max-w-lg mb-8">
+            Hochwertige CNC Dreh- und Frästeile. Sondermaschinen. 5-Achsen-Bearbeitung. Ihr zuverlässiger Partner für höchste Fertigungsqualität.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#kontakt" class="bg-accent hover:bg-accent-dark text-white font-bold px-8 py-4 text-lg transition-colors">
+              Anfrage stellen
+            </a>
+            <a href="#leistungen" class="border-2 border-white text-white hover:bg-white hover:text-brand font-bold px-8 py-4 text-lg transition-colors">
+              Leistungen
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <img src="https://www.fuo-som.com/wp-content/uploads/2018/05/fuo-som.com_FundO_Maschinenbau_GmbH_56307_Dernbach_Unternehmen-800x477.jpg" alt="F&O Maschinenbau Produktionshalle" class="w-full shadow-2xl">
+        </div>
+      </div>
+    </div>
+    <div class="geo-divider bg-white h-16 sm:h-24"></div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="bg-white py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl sm:text-5xl font-bold text-brand">30+</div>
+          <div class="text-sm uppercase tracking-wide font-bold mt-2 text-gray-500">Jahre Erfahrung</div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-bold text-brand">~30</div>
+          <div class="text-sm uppercase tracking-wide font-bold mt-2 text-gray-500">Facharbeiter</div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-bold text-brand">5</div>
+          <div class="text-sm uppercase tracking-wide font-bold mt-2 text-gray-500">Achsen Bearbeitung</div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-bold text-brand">2</div>
+          <div class="text-sm uppercase tracking-wide font-bold mt-2 text-gray-500">Schicht-System</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geometric Divider -->
+  <div class="h-2 bg-accent"></div>
+
+  <!-- Unternehmen -->
+  <section id="unternehmen" class="py-20 sm:py-28 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-1 bg-accent"></div>
+            <span class="text-sm font-bold uppercase tracking-widest text-brand">Unternehmen</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand mb-8 leading-tight">
+            Innovativer Hersteller seit 1991
+          </h2>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            F & O Maschinenbau GmbH wurde 1991 als innovativer Hersteller für Sondermaschinen gegründet. Seit 1999 produzieren wir als mittelständiges Unternehmen hochwertige CNC Dreh- u. Frästeile für namhafte Firmen.
+          </p>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+            Um dem ständig wachsenden Aufgabengebiet und unserem eigenen Anspruch der höchsten Präzision und Flexibilität gerecht zu werden, erfolgte im Sommer 2006 der Umzug in unsere moderne Produktionshalle, die zwischenzeitlich um das Doppelte vergrößert wurde. Mit zurzeit rund dreißig qualifizierten Facharbeitern produzieren wir im 2-Schichtsystem.
+          </p>
+          <div class="bg-brand p-6 sm:p-8">
+            <p class="text-white text-lg font-bold leading-relaxed">
+              Persönlicher Kontakt, fachkompetente Beratung, langjährige Erfahrung, ein stets moderner Maschinenpark und unsere motivierten Facharbeiter sind unsere Stärke.
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -top-4 -left-4 w-full h-full border-4 border-accent"></div>
+          <img src="https://www.fuo-som.com/wp-content/uploads/2018/05/fuo-som.com_FundO_Maschinenbau_GmbH_56307_Dernbach_Unternehmen-800x477.jpg" alt="F&O Maschinenbau Produktionshalle" class="relative w-full">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="leistungen" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="w-12 h-1 bg-accent"></div>
+          <span class="text-sm font-bold uppercase tracking-widest text-brand">Leistungen</span>
+          <div class="w-12 h-1 bg-accent"></div>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand">
+          Unsere Kernkompetenzen
+        </h2>
+      </div>
+
+      <!-- Hauptleistungen -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="group bg-brand p-8 text-white hover:bg-brand-dark transition-colors">
+          <div class="w-14 h-14 border-3 border-accent flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Maschinenbau</h3>
+          <p class="text-blue-100 text-sm">Sondermaschinen und Vorrichtungen nach Ihren Anforderungen</p>
+        </div>
+        <div class="group bg-brand p-8 text-white hover:bg-brand-dark transition-colors">
+          <div class="w-14 h-14 border-3 border-accent flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">3D Vermessung</h3>
+          <p class="text-blue-100 text-sm">Präzise 3D-Koordinatenmessung für höchste Qualitätsansprüche</p>
+        </div>
+        <div class="group bg-brand p-8 text-white hover:bg-brand-dark transition-colors">
+          <div class="w-14 h-14 border-3 border-accent flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">5 Achsen Bearbeitung</h3>
+          <p class="text-blue-100 text-sm">Komplexe Geometrien in einer Aufspannung</p>
+        </div>
+        <div class="group bg-brand p-8 text-white hover:bg-brand-dark transition-colors">
+          <div class="w-14 h-14 border-3 border-accent flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">CNC Lohnfertigung</h3>
+          <p class="text-blue-100 text-sm">Dreh- und Frästeile in Einzel- und Serienfertigung</p>
+        </div>
+      </div>
+
+      <!-- Weitere Leistungen -->
+      <div class="bg-gray-50 p-8 sm:p-12">
+        <h3 class="text-xl font-bold text-brand mb-6 uppercase tracking-wide">Zudem bieten wir an</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-accent flex-shrink-0"></div>
+            <span class="font-bold">Projektierung</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-accent flex-shrink-0"></div>
+            <span class="font-bold">Konstruktion</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-accent flex-shrink-0"></div>
+            <span class="font-bold">Flammspritzen</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-accent flex-shrink-0"></div>
+            <span class="font-bold">Formenbau</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-accent flex-shrink-0"></div>
+            <span class="font-bold">Reparaturen</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-accent flex-shrink-0"></div>
+            <span class="font-bold">Oberflächen- und Wärmebehandlung</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geometric Divider -->
+  <div class="relative h-20 bg-brand">
+    <div class="absolute inset-0 flex items-center justify-center gap-6 opacity-30">
+      <div class="w-10 h-10 border-2 border-white rounded-full"></div>
+      <div class="w-10 h-10 border-2 border-white rotate-45"></div>
+      <div class="w-10 h-10 border-2 border-white rounded-full"></div>
+      <div class="w-10 h-10 border-2 border-white rotate-45"></div>
+      <div class="w-10 h-10 border-2 border-white rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- Maschinen -->
+  <section id="maschinen" class="py-20 sm:py-28 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="w-12 h-1 bg-accent"></div>
+          <span class="text-sm font-bold uppercase tracking-widest text-brand">Maschinenpark</span>
+          <div class="w-12 h-1 bg-accent"></div>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand mb-4">
+          Modernste Technik
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Ein stets moderner Maschinenpark für höchste Präzision und Flexibilität.
+        </p>
+      </div>
+
+      <!-- 5-Achs -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="bg-brand text-white font-bold text-sm uppercase tracking-widest px-4 py-2">5-Achs-Bearbeitungszentrum</div>
+          <div class="flex-1 h-0.5 bg-brand/20"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_5-Achs-Bearbeitungszentrum_DMU-60-eVo-1-800x783.jpg" alt="DMU 60 eVo" class="w-full h-56 object-cover">
+            </div>
+            <div class="p-5 border-l-4 border-accent">
+              <h4 class="font-bold text-lg">DMU 60 eVo</h4>
+              <p class="text-sm text-gray-500 mt-1">X 1525mm, Y 660mm, Z 610mm, B ±92, C 360°</p>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_5-Achs-Bearbeitungszentrum_Hurco-VMX-60-SRTi-1-800x511.jpg" alt="Hurco VMX 60 SRTi" class="w-full h-56 object-cover">
+            </div>
+            <div class="p-5 border-l-4 border-accent">
+              <h4 class="font-bold text-lg">Hurco VMX 60 SRTi</h4>
+              <p class="text-sm text-gray-500 mt-1">X 1525mm, Y 660mm, Z 610mm, B ±92, C 360°</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CNC-Bearbeitungszentren -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="bg-brand text-white font-bold text-sm uppercase tracking-widest px-4 py-2">CNC-Bearbeitungszentren</div>
+          <div class="flex-1 h-0.5 bg-brand/20"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Bearbeitungszentren_Mazak-Nexus-510-C-800x511.jpg" alt="Mazak Nexus 510 C" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Mazak Nexus 510 C</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Bearbeitungszentren_Hurco-VMX-30i-800x511.jpg" alt="Hurco VMX 30i" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Hurco VMX 30i</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Bearbeitungszentren_Mazak-Nexus-410A-II-mit-4-Achse-800x511.jpg" alt="Mazak Nexus 410A II" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Mazak Nexus 410A II</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Bearbeitungszentren_Hurco-VMX-60i-800x511.jpg" alt="Hurco VMX 60i" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Hurco VMX 60i</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Bearbeitungszentren_DMC-635-eco-800x576.jpg" alt="DMC 635 eco" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">DMC 635 eco</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Bearbeitungszentren_Hurco-HTX-500-800x552.jpg" alt="Hurco HTX 500" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Hurco HTX 500</h4>
+              <p class="text-xs text-gray-500 mt-1">Horizontal-Bearbeitungszentrum</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CNC-Drehen -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="bg-brand text-white font-bold text-sm uppercase tracking-widest px-4 py-2">CNC-Drehen</div>
+          <div class="flex-1 h-0.5 bg-brand/20"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Drehen_Gildemeister-CTX-beta-800-mit-C-Achse-800x511.jpg" alt="Gildemeister CTX beta 800" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">CTX beta 800 mit C Achse</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2025/12/CLX-450-TC.jpg" alt="CLX 450 TC" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">CLX 450 TC</h4>
+              <p class="text-xs text-gray-500 mt-1">mit Stangenlader und Roboter Robo2Go</p>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Drehen_Gildemeister-CTX-beta-800-mit-C-Achse-Y-Achse-800x511.jpg" alt="CTX beta 800 C+Y" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">CTX beta 800 mit C+Y Achse</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Drehen_Kern-Zyklendrehmaschine-CD-650x2000-800x511.jpg" alt="Kern CD 650x2000" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Kern CD 650x2000</h4>
+              <p class="text-xs text-gray-500 mt-1">Zyklendrehmaschine</p>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_CNC_Drehen_Gildemeister-CTX-alpha-500-mit-C-Achse-Y-Achse-800x511.jpg" alt="CTX alpha 500" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">CTX alpha 500 mit C+Y Achse</h4>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2024/12/IMG_5832" alt="Doosan Puma SMX 3100 S" class="w-full h-48 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold">Doosan Puma SMX 3100 S</h4>
+              <p class="text-xs text-gray-500 mt-1">Dreh- und Fräszentrum</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weitere Maschinen -->
+      <div>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="bg-brand text-white font-bold text-sm uppercase tracking-widest px-4 py-2">Weitere Ausstattung</div>
+          <div class="flex-1 h-0.5 bg-brand/20"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_Drahterodieren_Robocut-Alpha-0iC-800x533.jpg" alt="Drahterodieren" class="w-full h-40 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold text-sm">Drahterodieren</h4>
+              <p class="text-xs text-gray-500 mt-1">Robocut Alpha 0iC & 1iC</p>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_Flachschleifen-GH-FS-840-SC-Classic-800x560.jpg" alt="Flachschleifen" class="w-full h-40 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold text-sm">Flachschleifen</h4>
+              <p class="text-xs text-gray-500 mt-1">GH FS 840 SC Classic</p>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_Schweissen-800x511.jpg" alt="Schweißen" class="w-full h-40 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold text-sm">Schweißen</h4>
+              <p class="text-xs text-gray-500 mt-1">MIG/MAG, Elektroden, WIG</p>
+            </div>
+          </div>
+          <div class="machine-card bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="overflow-hidden">
+              <img src="https://www.fuo-som.com/wp-content/uploads/2018/04/fuo-som.com_Maschinen_3D-Koordinatenmessgeraet-600x900.jpg" alt="3D-Vermessung" class="w-full h-40 object-cover">
+            </div>
+            <div class="p-4 border-l-4 border-accent">
+              <h4 class="font-bold text-sm">3D-Vermessung</h4>
+              <p class="text-xs text-gray-500 mt-1">Koordinatenmessgerät</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAD-CAM -->
+      <div class="mt-8 bg-white p-6 shadow-sm flex flex-wrap items-center gap-6">
+        <span class="font-bold text-brand uppercase tracking-wide text-sm">CAD/CAM Software:</span>
+        <span class="bg-gray-100 px-4 py-2 font-bold text-sm">Autocad</span>
+        <span class="bg-gray-100 px-4 py-2 font-bold text-sm">Solid Works</span>
+        <span class="bg-gray-100 px-4 py-2 font-bold text-sm">Solid CAM</span>
+        <span class="bg-gray-100 px-4 py-2 font-bold text-sm">ONE CNC</span>
+        <span class="bg-gray-100 px-4 py-2 font-bold text-sm">Top Solid</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="relative bg-brand py-16 sm:py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-1/2 -translate-y-1/2 -left-20 w-80 h-80 border-[8px] border-white rounded-full"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 -right-10 w-60 h-60 border-[8px] border-white"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+        Ihr zuverlässiger Partner
+      </h2>
+      <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+        Schnell und flexibel auf die Bedürfnisse unserer Kunden reagieren — das ist unser Anspruch.
+      </p>
+      <a href="#kontakt" class="inline-block bg-accent hover:bg-accent-dark text-white font-bold text-lg px-10 py-5 transition-colors">
+        Jetzt Anfrage stellen
+      </a>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-1 bg-accent"></div>
+            <span class="text-sm font-bold uppercase tracking-widest text-brand">Kontakt</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand mb-8">
+            Sprechen Sie uns an
+          </h2>
+          <div class="space-y-6 mb-10">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-brand flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-lg">Adresse</div>
+                <div class="text-gray-600">Märkerstraße 8a<br>D-56307 Dernbach</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-brand flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-lg">Telefon</div>
+                <a href="tel:+492689925990" class="text-brand hover:text-brand-dark text-lg">0 26 89 / 92 599 – 0</a>
+                <div class="text-gray-500 text-sm">Fax: 0 26 89 / 92 599 – 20</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-brand flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-lg">E-Mail</div>
+                <a href="mailto:info@fuo-som.com" class="text-brand hover:text-brand-dark text-lg">info@fuo-som.com</a>
+              </div>
+            </div>
+          </div>
+          <img src="https://www.fuo-som.com/wp-content/uploads/2018/06/fuo-som.com_fuo_maschinenbau_logo_540x165_kontakt.png" alt="F&O Maschinenbau Logo" class="max-w-xs">
+        </div>
+        <div>
+          <form class="bg-gray-50 p-8 sm:p-10 space-y-6" onsubmit="event.preventDefault();">
+            <div>
+              <label class="block text-sm font-bold uppercase tracking-wide text-brand mb-2">Name *</label>
+              <input type="text" required class="w-full border-2 border-gray-200 focus:border-brand px-4 py-3 outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-bold uppercase tracking-wide text-brand mb-2">Unternehmen</label>
+              <input type="text" class="w-full border-2 border-gray-200 focus:border-brand px-4 py-3 outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-bold uppercase tracking-wide text-brand mb-2">E-Mail *</label>
+              <input type="email" required class="w-full border-2 border-gray-200 focus:border-brand px-4 py-3 outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-bold uppercase tracking-wide text-brand mb-2">Telefon</label>
+              <input type="tel" class="w-full border-2 border-gray-200 focus:border-brand px-4 py-3 outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-bold uppercase tracking-wide text-brand mb-2">Nachricht *</label>
+              <textarea rows="5" required class="w-full border-2 border-gray-200 focus:border-brand px-4 py-3 outline-none transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white font-bold text-lg py-4 transition-colors">
+              Nachricht senden
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid sm:grid-cols-3 gap-8 items-center">
+        <div>
+          <img src="https://www.fuo-som.com/wp-content/uploads/2018/01/fuo-som.com_fuo_maschinenbau_logo_425x130_v2.png" alt="F&O Maschinenbau Logo" class="h-12 brightness-0 invert">
+        </div>
+        <div class="text-center text-sm text-blue-200">
+          &copy; 2025 F&O Maschinenbau GmbH. Alle Rechte vorbehalten.
+        </div>
+        <div class="text-right text-sm">
+          <a href="https://www.fuo-som.com/impressum/" class="text-blue-200 hover:text-white transition-colors">Impressum</a>
+          <span class="mx-2 text-blue-300">|</span>
+          <a href="https://www.fuo-som.com/datenschutz/" class="text-blue-200 hover:text-white transition-colors">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
