@@ -70,34 +70,55 @@
   </nav>
 
   <!-- Hero -->
-  <section class="pt-20 md:pt-28 pb-16 md:pb-24 bg-white">
+  <section class="pt-20 md:pt-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl">
-        <div class="inline-flex items-center gap-2 border border-gray-300 px-4 py-2 mb-8">
-          <span class="w-2 h-2 bg-brand rounded-full"></span>
-          <span class="text-brand text-sm font-semibold uppercase tracking-widest">Meisterbetrieb seit 1958</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[80vh] py-12 md:py-20">
+        <!-- Text -->
+        <div>
+          <div class="inline-flex items-center gap-2 border border-gray-300 px-4 py-2 mb-8">
+            <span class="w-2 h-2 bg-brand rounded-full"></span>
+            <span class="text-brand text-sm font-semibold uppercase tracking-widest">Meisterbetrieb seit 1958</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-brand leading-[1.05] mb-6">
+            Ihr Experte für<br>
+            Elektromaschinen&shy;bau<br>
+            <span class="text-gray-400">und Antriebstechnik</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-500 max-w-xl mb-10 leading-relaxed">
+            Familienunternehmen in dritter Generation mit über 60 Jahren Fachkompetenz. Reparatur, Wartung und Instandsetzung — herstellerunabhängig, schnell und zuverlässig.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#kontakt" class="inline-flex items-center justify-center bg-brand hover:bg-mid text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+              Jetzt anfragen
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#leistungen" class="inline-flex items-center justify-center border-2 border-brand hover:bg-brand hover:text-white text-brand px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+              Leistungen entdecken
+            </a>
+          </div>
         </div>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-brand leading-[1.05] mb-6">
-          Ihr Experte für<br>
-          Elektromaschinen&shy;bau<br>
-          und Antriebstechnik
-        </h1>
-        <p class="text-lg md:text-xl text-gray-500 max-w-2xl mb-10 leading-relaxed">
-          Familienunternehmen in dritter Generation mit über 60 Jahren Fachkompetenz. Reparatur, Wartung und Instandsetzung — herstellerunabhängig, schnell und zuverlässig.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#kontakt" class="inline-flex items-center justify-center bg-brand hover:bg-mid text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
-            Jetzt anfragen
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="#leistungen" class="inline-flex items-center justify-center border-2 border-brand hover:bg-brand hover:text-white text-brand px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
-            Leistungen entdecken
-          </a>
+        <!-- Image Grid -->
+        <div class="relative">
+          <div class="grid grid-cols-12 grid-rows-6 gap-3 h-[500px] md:h-[600px]">
+            <div class="col-span-7 row-span-4 overflow-hidden">
+              <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/04/slide_1_schiemann.jpg" alt="Schiemann Werkstatt" class="w-full h-full object-cover">
+            </div>
+            <div class="col-span-5 row-span-3 overflow-hidden">
+              <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/04/Reparaturen_1200x800.jpg" alt="Reparaturen" class="w-full h-full object-cover">
+            </div>
+            <div class="col-span-5 row-span-3 overflow-hidden">
+              <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/04/Schiemann_Wickelei.jpg" alt="Wickelei" class="w-full h-full object-cover">
+            </div>
+            <div class="col-span-7 row-span-2 overflow-hidden">
+              <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/04/slide_3_schiemann.jpg" alt="Wuchtarbeiten" class="w-full h-full object-cover">
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Trust Strip -->
-      <div class="mt-16 pt-10 border-t border-gray-200">
+    </div>
+    <!-- Trust Strip -->
+    <div class="border-t border-gray-200 bg-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <span class="block text-4xl font-black text-brand">60+</span>
