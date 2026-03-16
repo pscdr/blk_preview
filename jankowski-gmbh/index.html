@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jankowski GmbH & Co. KG – Zerspanungstechnik & Maschinenbau</title>
-    <meta name="description" content="Wir sind der innovative Spezialist in der Zerspanungstechnik und fertigen hochpräzise Komponenten für den Maschinen- und Anlagenbau.">
+    <meta name="description" content="Innovativer Spezialist in der Zerspanungstechnik: hochpräzise Komponenten für den Maschinen- und Anlagenbau. Drahtvorziehgeräte, Drahtzuführung & Sonderleistungen seit 1973.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,46 +32,23 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'PT Sans', Arial, sans-serif; }
-
-        /* Grid background pattern */
         .grid-bg {
             background-image:
                 linear-gradient(rgba(20,99,148,0.04) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(20,99,148,0.04) 1px, transparent 1px);
             background-size: 40px 40px;
         }
-
-        /* Precise reveal animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Tracking for headings */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .tracked { letter-spacing: 0.15em; }
         .tracked-tight { letter-spacing: 0.05em; }
-
-        /* Horizontal rule accent */
-        .rule-accent {
-            width: 60px;
-            height: 3px;
-            background: #00ACAD;
-        }
-
-        /* Nav shrink */
-        .nav-scrolled {
-            padding-top: 0.5rem !important;
-            padding-bottom: 0.5rem !important;
-            box-shadow: 0 1px 0 rgba(20,99,148,0.1);
-        }
-
-        /* Counter animation */
+        .rule-accent { width: 60px; height: 3px; background: #00ACAD; }
+        .nav-scrolled { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; box-shadow: 0 1px 0 rgba(20,99,148,0.1); }
         .counter { font-variant-numeric: tabular-nums; }
+        .product-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(20,99,148,0.1); }
+        .product-card img { transition: transform 0.4s ease; }
+        .product-card:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-white text-black font-body">
@@ -82,25 +59,25 @@
             <a href="#hero">
                 <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2021/03/cropped-Logo-Jankowski.jpg" alt="Jankowski GmbH & Co. KG" class="h-10">
             </a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-heading tracking-wider uppercase text-slate">
+            <div class="hidden lg:flex items-center gap-7 text-sm font-heading tracking-wider uppercase text-slate">
                 <a href="#leistungen" class="hover:text-steel transition-colors">Leistungen</a>
+                <a href="#produkte" class="hover:text-steel transition-colors">Produkte</a>
                 <a href="#unternehmen" class="hover:text-steel transition-colors">Unternehmen</a>
                 <a href="#grundsaetze" class="hover:text-steel transition-colors">Grundsätze</a>
                 <a href="#galerie" class="hover:text-steel transition-colors">Galerie</a>
                 <a href="#kontakt" class="hover:text-steel transition-colors">Kontakt</a>
             </div>
-            <a href="#kontakt" class="hidden md:inline-block bg-steel text-white font-heading text-sm tracked px-6 py-2.5 hover:bg-teal transition-colors uppercase">
+            <a href="#kontakt" class="hidden lg:inline-block bg-steel text-white font-heading text-sm tracked px-6 py-2.5 hover:bg-teal transition-colors uppercase">
                 Anfrage senden
             </a>
-            <!-- Mobile menu button -->
-            <button id="menuBtn" class="md:hidden text-slate" aria-label="Menü öffnen">
+            <button id="menuBtn" class="lg:hidden text-slate" aria-label="Menü öffnen">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gridline">
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gridline">
             <div class="px-6 py-4 flex flex-col gap-3 text-sm font-heading tracking-wider uppercase text-slate">
                 <a href="#leistungen" class="py-2 border-b border-gridline">Leistungen</a>
+                <a href="#produkte" class="py-2 border-b border-gridline">Produkte</a>
                 <a href="#unternehmen" class="py-2 border-b border-gridline">Unternehmen</a>
                 <a href="#grundsaetze" class="py-2 border-b border-gridline">Grundsätze</a>
                 <a href="#galerie" class="py-2 border-b border-gridline">Galerie</a>
@@ -112,7 +89,6 @@
 
     <!-- HERO -->
     <section id="hero" class="relative min-h-screen flex items-center grid-bg pt-20">
-        <!-- Grid overlay lines -->
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute top-1/4 left-0 w-full h-px bg-steel/5"></div>
             <div class="absolute top-2/4 left-0 w-full h-px bg-steel/5"></div>
@@ -121,23 +97,25 @@
             <div class="absolute top-0 left-2/4 w-px h-full bg-steel/5"></div>
             <div class="absolute top-0 left-3/4 w-px h-full bg-steel/5"></div>
         </div>
-
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div class="lg:col-span-6">
                 <p class="font-heading text-teal text-sm tracked uppercase mb-6">Zerspanungstechnik & Maschinenbau</p>
                 <div class="rule-accent mb-8"></div>
-                <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-slate leading-tight tracked-tight mb-8">
+                <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-slate leading-tight tracked-tight mb-6">
                     Präzision<br>seit 1973
                 </h1>
-                <p class="text-lg text-slate/70 max-w-lg leading-relaxed mb-10">
+                <p class="text-lg text-slate/70 max-w-lg leading-relaxed mb-4">
                     Wir sind der innovative Spezialist in der Zerspanungstechnik und fertigen hochpräzise Komponenten für den Maschinen- und Anlagenbau.
                 </p>
+                <p class="text-base text-slate/50 max-w-lg leading-relaxed mb-10">
+                    Fragen zu Fertigungstechnologie, Werkstoffauswahl oder Härteverfahren? Wir haben die Antwort.
+                </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#leistungen" class="bg-steel text-white font-heading text-sm tracked uppercase px-8 py-3.5 hover:bg-teal transition-colors">
-                        Leistungen
+                    <a href="#kontakt" class="bg-steel text-white font-heading text-sm tracked uppercase px-8 py-3.5 hover:bg-teal transition-colors">
+                        Kostenlos anfragen
                     </a>
-                    <a href="#kontakt" class="border-2 border-steel text-steel font-heading text-sm tracked uppercase px-8 py-3.5 hover:bg-steel hover:text-white transition-colors">
-                        Kontakt
+                    <a href="#leistungen" class="border-2 border-steel text-steel font-heading text-sm tracked uppercase px-8 py-3.5 hover:bg-steel hover:text-white transition-colors">
+                        Leistungen entdecken
                     </a>
                 </div>
             </div>
@@ -149,8 +127,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-steel/40">
             <span class="text-xs font-heading tracked uppercase">Scroll</span>
             <div class="w-px h-8 bg-steel/30"></div>
@@ -187,50 +163,169 @@
                 <div class="rule-accent mb-6"></div>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate tracked-tight">Leistungen</h2>
             </div>
-
             <div class="grid md:grid-cols-2 gap-px bg-gridline">
                 <!-- Lohnfertigung -->
                 <div class="bg-white p-8 md:p-12 reveal group">
                     <div class="flex items-start gap-6">
                         <span class="font-heading text-5xl font-bold text-steel/10 group-hover:text-steel/20 transition-colors">01</span>
                         <div>
-                            <h3 class="font-heading text-xl font-bold text-slate tracked-tight mb-4">Lohnfertigung</h3>
+                            <h3 class="font-heading text-xl font-bold text-slate tracked-tight mb-4">Lohnfertigung / Zerspanungstechnik</h3>
                             <p class="text-slate/70 leading-relaxed mb-6">
                                 Wir sind der innovative Spezialist in der Zerspanungstechnik und fertigen hochpräzise Komponenten für den Maschinen- und Anlagenbau. Sie haben Fragen zu Fertigungstechnologie, Werkstoffauswahl oder Härteverfahren? Wir haben die Antwort!
                             </p>
-                            <div class="flex flex-wrap gap-3">
+                            <div class="flex flex-wrap gap-3 mb-6">
                                 <span class="text-xs font-heading tracked uppercase bg-steel/5 text-steel px-3 py-1.5">Zerspanungstechnik</span>
                                 <span class="text-xs font-heading tracked uppercase bg-steel/5 text-steel px-3 py-1.5">Sonderleistungen</span>
                             </div>
+                            <a href="zerspanungstechnik.html" class="inline-flex items-center gap-2 font-heading text-sm text-steel hover:text-teal transition-colors tracked uppercase">
+                                Mehr erfahren
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Maschinenbau -->
                 <div class="bg-white p-8 md:p-12 reveal group">
                     <div class="flex items-start gap-6">
                         <span class="font-heading text-5xl font-bold text-steel/10 group-hover:text-steel/20 transition-colors">02</span>
                         <div>
-                            <h3 class="font-heading text-xl font-bold text-slate tracked-tight mb-4">Maschinenbau</h3>
+                            <h3 class="font-heading text-xl font-bold text-slate tracked-tight mb-4">Maschinenbau / Drahtverarbeitung</h3>
                             <p class="text-slate/70 leading-relaxed mb-6">
                                 Seit mehr als 20 Jahren gehört das Entwickeln, Konstruieren und Montieren von Drahtvorziehmaschinen, Drahtzuführmaschinen, Drahtverbindungsmaschinen und Drahtbearbeitungsmaschinen zu unserer großen Leidenschaft und Kompetenz.
                             </p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="text-xs font-heading tracked uppercase bg-steel/5 text-steel px-3 py-1.5">Produkte</span>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <span class="text-xs font-heading tracked uppercase bg-steel/5 text-steel px-3 py-1.5">Drahtzuführung</span>
                                 <span class="text-xs font-heading tracked uppercase bg-steel/5 text-steel px-3 py-1.5">Drahtvorziehgeräte</span>
+                                <span class="text-xs font-heading tracked uppercase bg-steel/5 text-steel px-3 py-1.5">Drahtverbindung</span>
                             </div>
+                            <a href="#produkte" class="inline-flex items-center gap-2 font-heading text-sm text-steel hover:text-teal transition-colors tracked uppercase">
+                                Produkte ansehen
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Leistungen Bild -->
             <div class="mt-px grid md:grid-cols-2 gap-px bg-gridline">
                 <div class="bg-white">
                     <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2023/03/DSC08655-scaled.jpg" alt="CNC-Fertigung" class="w-full aspect-[3/2] object-cover">
                 </div>
                 <div class="bg-white">
                     <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2022/04/DVG-700-TOP-M-Nr.-431-13_Easy-Resize.com-2.jpg" alt="Drahtvorziehmaschine" class="w-full aspect-[3/2] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINI CTA -->
+    <section class="bg-teal py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="font-heading text-white text-lg md:text-xl font-bold tracked-tight text-center md:text-left">
+                „Wer zieht gewinnt!" – Überzeugen Sie sich von unseren Drahtvorziehmaschinen.
+            </p>
+            <a href="#kontakt" class="shrink-0 bg-white text-teal font-heading text-sm tracked uppercase px-8 py-3 hover:bg-slate hover:text-white transition-colors">
+                Prospekt anfordern
+            </a>
+        </div>
+    </section>
+
+    <!-- PRODUKTE MASCHINENBAU -->
+    <section id="produkte" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="reveal mb-6">
+                <p class="font-heading text-teal text-sm tracked uppercase mb-4">Maschinenbau</p>
+                <div class="rule-accent mb-6"></div>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate tracked-tight">Vom Coil zur Umformmaschine</h2>
+            </div>
+            <p class="text-slate/70 leading-relaxed max-w-2xl mb-16 reveal">
+                Der Fokus liegt neben dem Bau qualitativ hochwertiger Anlagen vor allem in der erlebbaren Anwenderfreundlichkeit – unter kompromissloser Einhaltung der geltenden Arbeitsschutzrichtlinien nach deutschem und europäischem Standard.
+            </p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Drahtzuführung -->
+                <a href="drahtzufuehrung.html" class="product-card block bg-white border border-gridline reveal group">
+                    <div class="overflow-hidden">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2021/04/Drahtzufuehrung.png" alt="Drahtzuführung" class="w-full aspect-[4/3] object-contain bg-gray-50 p-4">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-3">Drahtzuführung</h3>
+                        <p class="text-slate/60 text-sm leading-relaxed mb-4">
+                            In Abhängigkeit des Anwendungsbereichs bieten wir Ihnen verschiedene Optionen zur Drahtzuführung an.
+                        </p>
+                        <span class="inline-flex items-center gap-2 font-heading text-xs text-steel group-hover:text-teal transition-colors tracked uppercase">
+                            Details
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Drahtvorbereitung -->
+                <a href="drahtvorbereitung.html" class="product-card block bg-white border border-gridline reveal group">
+                    <div class="overflow-hidden">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2024/08/Drahtvorbereitung.png" alt="Drahtvorbereitung" class="w-full aspect-[4/3] object-contain bg-gray-50 p-4">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-3">Drahtvorbereitung</h3>
+                        <p class="text-slate/60 text-sm leading-relaxed mb-4">
+                            Bevor mit dem Ziehprozess gestartet werden kann, ist ein Anspitzen des Drahtes unbedingt notwendig.
+                        </p>
+                        <span class="inline-flex items-center gap-2 font-heading text-xs text-steel group-hover:text-teal transition-colors tracked uppercase">
+                            Details
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Drahtvorziehgeräte -->
+                <a href="drahtvorziehgeraete.html" class="product-card block bg-white border border-gridline reveal group">
+                    <div class="overflow-hidden">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2021/04/Drahtziehen.png" alt="Drahtvorziehgeräte" class="w-full aspect-[4/3] object-contain bg-gray-50 p-4">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-3">Drahtvorziehgeräte</h3>
+                        <p class="text-slate/60 text-sm leading-relaxed mb-4">
+                            Nutzen Sie die Kostenvorteile bei der Materialbeschaffung und ein „mehr" an Flexibilität durch Drahtvorziehgeräte.
+                        </p>
+                        <span class="inline-flex items-center gap-2 font-heading text-xs text-steel group-hover:text-teal transition-colors tracked uppercase">
+                            Details
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Drahtverbindung -->
+                <a href="drahtverbindung.html" class="product-card block bg-white border border-gridline reveal group">
+                    <div class="overflow-hidden">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2021/04/Drahtverbindung.png" alt="Drahtverbindung" class="w-full aspect-[4/3] object-contain bg-gray-50 p-4">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-3">Drahtverbindung</h3>
+                        <p class="text-slate/60 text-sm leading-relaxed mb-4">
+                            Mit unserem „Match-Master"-System: Drahtverbindungen zwischen 12–40 mm in fünf Minuten realisieren.
+                        </p>
+                        <span class="inline-flex items-center gap-2 font-heading text-xs text-steel group-hover:text-teal transition-colors tracked uppercase">
+                            Details
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Produkt-Inspirationen -->
+            <div class="mt-16 reveal">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gridline">
+                    <div class="bg-white">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2022/03/DVG-700-TOP-M-Nr.-431-13_Easy-Resize.com_.jpg" alt="DVG-700" class="w-full aspect-square object-cover hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="bg-white">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2022/12/DSC1443-scaled.jpg" alt="Maschinendetail" class="w-full aspect-square object-cover hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="bg-white">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2024/02/Anspitzgeraet-RBW-M-Nr.-472-42-scaled.jpg" alt="Anspitzgerät" class="w-full aspect-square object-cover hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="bg-white">
+                        <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2022/03/DSC1356_Easy-Resize.com_.jpg" alt="Fertigung" class="w-full aspect-square object-cover hover:opacity-80 transition-opacity">
+                    </div>
                 </div>
             </div>
         </div>
@@ -260,7 +355,6 @@
                     <p class="text-white/70 leading-relaxed mb-8">
                         Auf Grund der stetig wachsenden Nachfrage wurde 1986 der Grundstein für eine neue Produktionsstätte im Industriegebiet Horhausen gelegt. Dem folgten Erweiterungsbauten in den Jahren 1996, 2008 und 2019 so dass uns heute auf 3000 Quadratmeter Produktionsfläche ideale Voraussetzungen für eine professionelle und wirtschaftliche Fertigung zur Verfügung stehen.
                     </p>
-                    <!-- Timeline -->
                     <div class="grid grid-cols-4 gap-px">
                         <div class="bg-white/5 p-4 text-center">
                             <p class="font-heading text-teal text-lg font-bold">1973</p>
@@ -279,6 +373,10 @@
                             <p class="text-xs text-white/50 mt-1">Erweiterung</p>
                         </div>
                     </div>
+                    <a href="unternehmen.html" class="inline-flex items-center gap-2 font-heading text-sm text-teal hover:text-white transition-colors tracked uppercase mt-8">
+                        Mehr über uns
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -292,38 +390,32 @@
                 <div class="rule-accent mb-6"></div>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate tracked-tight">Unsere Grundsätze</h2>
             </div>
-
             <div class="grid md:grid-cols-3 gap-px bg-gridline">
-                <!-- Familienunternehmen -->
                 <div class="bg-white p-8 md:p-10 reveal">
                     <div class="w-12 h-12 bg-steel/5 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6 text-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     </div>
                     <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-4">Familienunternehmen</h3>
                     <p class="text-slate/70 leading-relaxed text-sm">
-                        Für uns sind als familiengeführtes Unternehmen Vision und Werte äußerst wichtig. Die Basis der Werte bilden eine ehrliche, transparente, respekt- und vertrauensvolle Zusammenarbeit, die dann letztlich im unternehmerischen Erfolg münden.
+                        Für uns sind als familiengeführtes Unternehmen Vision und Werte äußerst wichtig. Die Basis bilden ehrliche, transparente, respekt- und vertrauensvolle Zusammenarbeit. Wir unterstützen den fairen, freien Wettbewerb als Garant für unternehmerische Handlungsfreiheit.
                     </p>
                 </div>
-
-                <!-- Umweltschutz -->
                 <div class="bg-white p-8 md:p-10 reveal">
                     <div class="w-12 h-12 bg-steel/5 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6 text-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-4">Umweltschutz</h3>
                     <p class="text-slate/70 leading-relaxed text-sm">
-                        Wir bekennen uns zum Schutz der Umwelt sowie der Gesundheit und Sicherheit unserer Mitarbeiter. Grundlage hierfür ist der Einsatz einer 2500 Quadratmeter großen Photovoltaikanlage, mit der unser Unternehmen 25% des Energiebedarfs decken kann.
+                        Wir bekennen uns zum Schutz der Umwelt sowie der Gesundheit und Sicherheit unserer Mitarbeiter. 2.500 m² Photovoltaik decken 25% unseres Energiebedarfs. Dazu: hybride Antriebssysteme und modernste LED-Technik.
                     </p>
                 </div>
-
-                <!-- Qualitätsmanagement -->
                 <div class="bg-white p-8 md:p-10 reveal">
                     <div class="w-12 h-12 bg-steel/5 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6 text-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-4">Qualitätsmanagement</h3>
                     <p class="text-slate/70 leading-relaxed text-sm">
-                        Unser Unternehmen ist erfolgreich nach DIN EN ISO 9001:2015 zertifiziert. Ein wirkungsvolles Qualitätsmanagement ist unverzichtbar, um auf Veränderungen und Wünsche unserer Kunden flexibel und schnell zu reagieren.
+                        Erfolgreich zertifiziert nach DIN EN ISO 9001:2015. Ein wirkungsvolles Qualitätsmanagement ist die Grundlage für unseren hohen Qualitätsstandard und die damit verbundene Sicherheit der Produkte.
                     </p>
                 </div>
             </div>
@@ -338,7 +430,6 @@
                 <div class="rule-accent mb-6"></div>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate tracked-tight">Galerie</h2>
             </div>
-
             <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gridline reveal">
                 <div class="bg-white">
                     <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2023/03/DSC08936-scaled.jpg" alt="Fertigung" class="w-full aspect-square object-cover hover:opacity-80 transition-opacity">
@@ -370,14 +461,25 @@
 
     <!-- CTA BANNER -->
     <section class="bg-steel py-16 md:py-20">
-        <div class="max-w-7xl mx-auto px-6 text-center reveal">
-            <h2 class="font-heading text-2xl md:text-3xl font-bold text-white tracked-tight mb-4">
-                Sie haben Fragen zu Fertigungstechnologie, Werkstoffauswahl oder Härteverfahren?
-            </h2>
-            <p class="text-white/70 text-lg mb-8">Wir haben die Antwort.</p>
-            <a href="#kontakt" class="inline-block bg-teal text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-white hover:text-steel transition-colors">
-                Jetzt anfragen
-            </a>
+        <div class="max-w-7xl mx-auto px-6 reveal">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-white tracked-tight mb-4">
+                        Lassen Sie uns gemeinsam Ihre Prozesse optimieren.
+                    </h2>
+                    <p class="text-white/70 text-lg">
+                        Ob Zerspanungstechnik oder Drahtverarbeitung – wir freuen uns, wenn Sie uns die Möglichkeit geben, Ihre Anforderungen in Zusammenarbeit zu lösen.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 md:justify-end">
+                    <a href="#kontakt" class="bg-teal text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-white hover:text-steel transition-colors text-center">
+                        Jetzt anfragen
+                    </a>
+                    <a href="#kontakt" class="border-2 border-white/30 text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-white hover:text-steel transition-colors text-center">
+                        Prospekt anfordern
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -389,47 +491,74 @@
                     <p class="font-heading text-teal text-sm tracked uppercase mb-4">Kontakt</p>
                     <div class="rule-accent mb-6"></div>
                     <h2 class="font-heading text-3xl md:text-4xl font-bold text-slate tracked-tight mb-8">
-                        Ansprechpartner
+                        Sprechen Sie uns an
                     </h2>
                     <p class="text-slate/70 leading-relaxed mb-8">
                         Unsere Ansprechpartner stehen Ihnen für weitere Fragen zur Verfügung. Senden Sie uns eine Nachricht und wir melden uns schnellstmöglich bei Ihnen.
                     </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3 text-slate/70">
+                            <div class="w-10 h-10 bg-steel/5 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <span class="text-sm">Industriegebiet Horhausen</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate/70">
+                            <div class="w-10 h-10 bg-steel/5 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <span class="text-sm">DIN EN ISO 9001:2015 zertifiziert</span>
+                        </div>
+                    </div>
                     <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2021/04/DSC_1418_Easy-Resize.com_.jpg" alt="Ansprechpartner Jankowski" class="w-full aspect-[4/3] object-cover">
                 </div>
                 <div class="lg:col-span-7 reveal">
-                    <form class="space-y-6" onsubmit="event.preventDefault()">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Name *</label>
-                                <input type="text" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                    <div class="bg-white border border-gridline p-8 md:p-10">
+                        <h3 class="font-heading text-lg font-bold text-slate tracked-tight mb-6">Nachricht senden</h3>
+                        <form class="space-y-5" onsubmit="event.preventDefault()">
+                            <div class="grid md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Name *</label>
+                                    <input type="text" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                                </div>
+                                <div>
+                                    <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Unternehmen</label>
+                                    <input type="text" class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">E-Mail *</label>
+                                    <input type="email" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                                </div>
+                                <div>
+                                    <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Telefon</label>
+                                    <input type="tel" class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                                </div>
                             </div>
                             <div>
-                                <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Unternehmen</label>
-                                <input type="text" class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                                <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Interesse *</label>
+                                <select required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white text-slate/70">
+                                    <option value="">Bitte wählen...</option>
+                                    <option value="zerspanung">Lohnfertigung / Zerspanungstechnik</option>
+                                    <option value="drahtzufuehrung">Maschinenbau – Drahtzuführung</option>
+                                    <option value="drahtvorbereitung">Maschinenbau – Drahtvorbereitung</option>
+                                    <option value="drahtvorziehgeraete">Maschinenbau – Drahtvorziehgeräte</option>
+                                    <option value="drahtverbindung">Maschinenbau – Drahtverbindung</option>
+                                    <option value="prospekt">Prospektanforderung</option>
+                                    <option value="sonstiges">Sonstiges</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">E-Mail *</label>
-                                <input type="email" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
+                                <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Nachricht *</label>
+                                <textarea rows="5" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white resize-none"></textarea>
                             </div>
-                            <div>
-                                <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Telefon</label>
-                                <input type="tel" class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Betreff *</label>
-                            <input type="text" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white">
-                        </div>
-                        <div>
-                            <label class="block font-heading text-xs tracked uppercase text-slate/60 mb-2">Nachricht *</label>
-                            <textarea rows="5" required class="w-full border border-gridline px-4 py-3 text-sm focus:border-steel focus:outline-none transition-colors bg-white resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="bg-steel text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-teal transition-colors w-full md:w-auto">
-                            Nachricht senden
-                        </button>
-                    </form>
+                            <button type="submit" class="bg-steel text-white font-heading text-sm tracked uppercase px-10 py-4 hover:bg-teal transition-colors w-full">
+                                Nachricht senden
+                            </button>
+                            <p class="text-xs text-slate/40 text-center">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -438,57 +567,65 @@
     <!-- FOOTER -->
     <footer class="bg-slate text-white py-12 border-t-2 border-teal/30">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 items-center">
+            <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2021/03/cropped-Logo-Jankowski.jpg" alt="Jankowski Logo" class="h-10 brightness-0 invert mb-4">
                     <p class="text-white/50 text-sm">Jankowski GmbH & Co. KG</p>
-                    <p class="text-white/50 text-sm">Zerspanungstechnik &middot; Maschinenbau &middot; Sonderleistungen</p>
+                    <p class="text-white/40 text-xs mt-1">Industriegebiet Horhausen</p>
                 </div>
-                <div class="text-center">
-                    <div class="flex justify-center gap-8 font-heading text-xs tracked uppercase text-white/50">
-                        <a href="#leistungen" class="hover:text-teal transition-colors">Leistungen</a>
-                        <a href="#unternehmen" class="hover:text-teal transition-colors">Unternehmen</a>
-                        <a href="#grundsaetze" class="hover:text-teal transition-colors">Grundsätze</a>
-                        <a href="#kontakt" class="hover:text-teal transition-colors">Kontakt</a>
+                <div>
+                    <p class="font-heading text-xs tracked uppercase text-white/70 mb-4">Leistungen</p>
+                    <div class="flex flex-col gap-2 text-sm text-white/40">
+                        <a href="zerspanungstechnik.html" class="hover:text-teal transition-colors">Zerspanungstechnik</a>
+                        <a href="sonderleistungen.html" class="hover:text-teal transition-colors">Sonderleistungen</a>
                     </div>
                 </div>
-                <div class="text-right">
-                    <p class="text-white/50 text-sm">DIN EN ISO 9001:2015</p>
-                    <p class="text-white/30 text-xs mt-2">Industriegebiet Horhausen</p>
+                <div>
+                    <p class="font-heading text-xs tracked uppercase text-white/70 mb-4">Maschinenbau</p>
+                    <div class="flex flex-col gap-2 text-sm text-white/40">
+                        <a href="drahtzufuehrung.html" class="hover:text-teal transition-colors">Drahtzuführung</a>
+                        <a href="drahtvorbereitung.html" class="hover:text-teal transition-colors">Drahtvorbereitung</a>
+                        <a href="drahtvorziehgeraete.html" class="hover:text-teal transition-colors">Drahtvorziehgeräte</a>
+                        <a href="drahtverbindung.html" class="hover:text-teal transition-colors">Drahtverbindung</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="font-heading text-xs tracked uppercase text-white/70 mb-4">Unternehmen</p>
+                    <div class="flex flex-col gap-2 text-sm text-white/40">
+                        <a href="unternehmen.html" class="hover:text-teal transition-colors">Über uns</a>
+                        <a href="#kontakt" class="hover:text-teal transition-colors">Kontakt</a>
+                        <span>DIN EN ISO 9001:2015</span>
+                    </div>
                 </div>
             </div>
-            <div class="mt-8 pt-8 border-t border-white/10 text-center">
+            <div class="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-white/30 text-xs font-heading tracked">&copy; 2024 Jankowski GmbH & Co. KG. Alle Rechte vorbehalten.</p>
+                <div class="flex gap-6 text-xs text-white/30">
+                    <a href="impressum.html" class="hover:text-white/60 transition-colors">Impressum</a>
+                    <a href="datenschutz.html" class="hover:text-white/60 transition-colors">Datenschutz</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Nav scroll effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('nav-scrolled', window.scrollY > 50);
         });
 
-        // Mobile menu
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
