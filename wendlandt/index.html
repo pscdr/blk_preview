@@ -112,38 +112,53 @@
             <!-- Top rule -->
             <div class="h-px bg-dark/10 mb-12"></div>
 
-            <div class="grid grid-cols-12 gap-4">
-                <!-- Left: year column -->
-                <div class="col-span-12 md:col-span-3">
-                    <svg viewBox="0 0 240 320" fill="none" class="w-full max-w-[260px] opacity-[0.10] select-none" aria-hidden="true">
-                        <!-- Route lines -->
-                        <path d="M120,0 L120,80 L120,140 L180,180 L180,320" stroke="#236621" stroke-width="1.5"/>
-                        <path d="M40,0 L40,60 Q40,80 60,80 L120,80" stroke="#236621" stroke-width="1"/>
-                        <path d="M200,0 L200,40 Q200,60 180,60 L120,60 L120,80" stroke="#78B819" stroke-width="1"/>
-                        <path d="M120,140 L60,180 L60,240 Q60,260 80,260 L140,260" stroke="#236621" stroke-width="1"/>
-                        <path d="M180,180 L240,200" stroke="#78B819" stroke-width="0.8"/>
-                        <path d="M60,180 L0,200" stroke="#236621" stroke-width="0.8"/>
-                        <path d="M60,240 L60,320" stroke="#78B819" stroke-width="1"/>
-                        <path d="M140,260 L180,260 L180,320" stroke="#236621" stroke-width="0.8"/>
-                        <!-- Branch -->
-                        <path d="M120,110 L160,110 L200,130 L240,130" stroke="#236621" stroke-width="0.8"/>
-                        <path d="M200,130 L200,180" stroke="#78B819" stroke-width="0.7"/>
-                        <!-- Nodes / stops -->
-                        <circle cx="120" cy="80" r="5" fill="white" stroke="#236621" stroke-width="1.5"/>
-                        <circle cx="120" cy="140" r="5" fill="white" stroke="#236621" stroke-width="1.5"/>
-                        <circle cx="180" cy="180" r="4" fill="white" stroke="#236621" stroke-width="1.2"/>
-                        <circle cx="60" cy="180" r="4" fill="white" stroke="#236621" stroke-width="1.2"/>
-                        <circle cx="60" cy="240" r="3.5" fill="white" stroke="#78B819" stroke-width="1"/>
-                        <circle cx="140" cy="260" r="3.5" fill="white" stroke="#236621" stroke-width="1"/>
-                        <circle cx="120" cy="110" r="3" fill="white" stroke="#236621" stroke-width="1"/>
-                        <circle cx="200" cy="130" r="3" fill="white" stroke="#78B819" stroke-width="1"/>
-                        <circle cx="40" cy="60" r="2.5" fill="white" stroke="#236621" stroke-width="0.8"/>
-                        <circle cx="200" cy="40" r="2.5" fill="white" stroke="#78B819" stroke-width="0.8"/>
+            <div class="grid grid-cols-12 gap-4 relative">
+                <!-- Transit network overlay -->
+                <div class="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+                    <svg viewBox="0 0 900 500" fill="none" class="w-full h-full opacity-[0.06]" preserveAspectRatio="xMidYMid slice">
+                        <!-- Main vertical trunk -->
+                        <path d="M680,0 L680,120 L680,220 L760,300 L760,500" stroke="#236621" stroke-width="2"/>
+                        <!-- West branch -->
+                        <path d="M520,0 L520,80 Q520,110 550,110 L680,120" stroke="#236621" stroke-width="1.5"/>
+                        <!-- East feeder -->
+                        <path d="M850,0 L850,60 Q850,90 820,90 L680,100 L680,120" stroke="#78B819" stroke-width="1.5"/>
+                        <!-- South-west fork -->
+                        <path d="M680,220 L580,300 L580,380 Q580,410 610,410 L720,410" stroke="#236621" stroke-width="1.5"/>
+                        <path d="M580,300 L480,340" stroke="#78B819" stroke-width="1"/>
+                        <path d="M760,300 L860,330" stroke="#78B819" stroke-width="1"/>
+                        <path d="M580,380 L580,500" stroke="#78B819" stroke-width="1.2"/>
+                        <path d="M720,410 L760,410 L760,500" stroke="#236621" stroke-width="1"/>
+                        <!-- Cross branch -->
+                        <path d="M680,170 L740,170 L800,200 L900,200" stroke="#236621" stroke-width="1.2"/>
+                        <path d="M800,200 L800,280" stroke="#78B819" stroke-width="1"/>
+                        <!-- Far west line -->
+                        <path d="M300,0 L300,140 Q300,170 330,170 L520,170 L580,200" stroke="#236621" stroke-width="1"/>
+                        <path d="M580,200 L680,220" stroke="#78B819" stroke-width="0.8"/>
+                        <path d="M300,140 L200,180" stroke="#236621" stroke-width="0.8"/>
+                        <!-- Additional branch -->
+                        <path d="M520,170 L520,260 L460,320 L460,500" stroke="#78B819" stroke-width="1"/>
+                        <path d="M460,320 L380,340 L380,500" stroke="#236621" stroke-width="0.8"/>
+                        <!-- Hub nodes -->
+                        <circle cx="680" cy="120" r="7" fill="white" stroke="#236621" stroke-width="2"/>
+                        <circle cx="680" cy="220" r="7" fill="white" stroke="#236621" stroke-width="2"/>
+                        <circle cx="760" cy="300" r="5.5" fill="white" stroke="#236621" stroke-width="1.5"/>
+                        <circle cx="580" cy="300" r="5.5" fill="white" stroke="#236621" stroke-width="1.5"/>
+                        <!-- Secondary nodes -->
+                        <circle cx="580" cy="380" r="4" fill="white" stroke="#78B819" stroke-width="1.2"/>
+                        <circle cx="720" cy="410" r="4" fill="white" stroke="#236621" stroke-width="1.2"/>
+                        <circle cx="680" cy="170" r="4" fill="white" stroke="#236621" stroke-width="1.2"/>
+                        <circle cx="800" cy="200" r="4" fill="white" stroke="#78B819" stroke-width="1.2"/>
+                        <circle cx="520" cy="80" r="3.5" fill="white" stroke="#236621" stroke-width="1"/>
+                        <circle cx="850" cy="60" r="3.5" fill="white" stroke="#78B819" stroke-width="1"/>
+                        <circle cx="300" cy="140" r="3.5" fill="white" stroke="#236621" stroke-width="1"/>
+                        <circle cx="520" cy="170" r="4" fill="white" stroke="#236621" stroke-width="1.2"/>
+                        <circle cx="580" cy="200" r="3" fill="white" stroke="#78B819" stroke-width="1"/>
+                        <circle cx="460" cy="320" r="3.5" fill="white" stroke="#78B819" stroke-width="1"/>
                     </svg>
                 </div>
 
-                <!-- Right: content -->
-                <div class="col-span-12 md:col-span-9 md:col-start-4">
+                <!-- Content -->
+                <div class="col-span-12 md:col-span-9 md:col-start-4 relative">
                     <p class="text-xs font-medium tracking-[0.3em] uppercase text-primary mb-6">Verkehrsberatung seit 1976</p>
                     <h1 class="text-[clamp(32px,5vw,72px)] font-bold text-dark leading-[1.05] mb-8 max-w-4xl">
                         Führend in der<br>
