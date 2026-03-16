@@ -15,10 +15,8 @@
         extend: {
           colors: {
             brand: '#282425',
-            accent: '#FF9900',
-            'accent-dark': '#E68A00',
-            warm: '#F5F0EB',
-            'warm-dark': '#EDE5DC',
+            mid: '#4A4445',
+            light: '#F7F6F5',
           },
           fontFamily: {
             sans: ['"Source Sans 3"', 'Arial', 'sans-serif'],
@@ -39,35 +37,31 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    .service-card:hover .service-overlay {
-      opacity: 1;
-    }
-    .service-card:hover img {
-      transform: scale(1.05);
-    }
+    .service-card:hover .service-overlay { opacity: 1; }
+    .service-card:hover img { transform: scale(1.05); }
   </style>
 </head>
 <body class="font-sans text-brand bg-white antialiased">
 
   <!-- Sticky Navigation -->
-  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 md:h-20">
         <a href="#" class="flex-shrink-0">
           <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/themes/theme_schiemann/images/design/Schiemann_Logo.png" alt="Schiemann Elektromaschinenbau GmbH" class="h-10 md:h-14 w-auto">
         </a>
         <div class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider">
-          <a href="#leistungen" class="hover:text-accent transition-colors">Leistungen</a>
-          <a href="#ueber-uns" class="hover:text-accent transition-colors">Über uns</a>
-          <a href="#partner" class="hover:text-accent transition-colors">Partner</a>
-          <a href="#kontakt" class="hover:text-accent transition-colors">Kontakt</a>
+          <a href="#leistungen" class="hover:text-mid transition-colors">Leistungen</a>
+          <a href="#ueber-uns" class="hover:text-mid transition-colors">Über uns</a>
+          <a href="#partner" class="hover:text-mid transition-colors">Partner</a>
+          <a href="#kontakt" class="hover:text-mid transition-colors">Kontakt</a>
         </div>
         <div class="flex items-center gap-4">
-          <a href="tel:00492623951312" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-brand hover:text-accent transition-colors">
+          <a href="tel:00492623951312" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-brand hover:text-mid transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
             +49 2623 / 95 13 12
           </a>
-          <a href="#kontakt" class="bg-accent hover:bg-accent-dark text-white px-5 py-2.5 text-sm font-bold uppercase tracking-wider transition-colors">
+          <a href="#kontakt" class="bg-brand hover:bg-mid text-white px-5 py-2.5 text-sm font-bold uppercase tracking-wider transition-colors">
             Anfrage
           </a>
         </div>
@@ -76,54 +70,50 @@
   </nav>
 
   <!-- Hero -->
-  <section class="relative min-h-[90vh] flex items-center pt-20" style="background: linear-gradient(135deg, #282425 0%, #3a3536 100%);">
-    <div class="absolute inset-0 opacity-15">
-      <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Schiemann_collage_2020.jpg" alt="" class="w-full h-full object-cover">
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 px-4 py-2 mb-8">
-          <span class="w-2 h-2 bg-accent rounded-full"></span>
-          <span class="text-accent text-sm font-semibold uppercase tracking-widest">Meisterbetrieb seit 1958</span>
+  <section class="pt-20 md:pt-28 pb-16 md:pb-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 border border-gray-300 px-4 py-2 mb-8">
+          <span class="w-2 h-2 bg-brand rounded-full"></span>
+          <span class="text-brand text-sm font-semibold uppercase tracking-widest">Meisterbetrieb seit 1958</span>
         </div>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-900 text-white leading-[1.05] mb-6">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-brand leading-[1.05] mb-6">
           Ihr Experte für<br>
-          <span class="text-accent">Elektromaschinen&shy;bau</span><br>
+          Elektromaschinen&shy;bau<br>
           und Antriebstechnik
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
+        <p class="text-lg md:text-xl text-gray-500 max-w-2xl mb-10 leading-relaxed">
           Familienunternehmen in dritter Generation mit über 60 Jahren Fachkompetenz. Reparatur, Wartung und Instandsetzung — herstellerunabhängig, schnell und zuverlässig.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#kontakt" class="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+          <a href="#kontakt" class="inline-flex items-center justify-center bg-brand hover:bg-mid text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
             Jetzt anfragen
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#leistungen" class="inline-flex items-center justify-center border-2 border-white/30 hover:border-accent text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+          <a href="#leistungen" class="inline-flex items-center justify-center border-2 border-brand hover:bg-brand hover:text-white text-brand px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
             Leistungen entdecken
           </a>
         </div>
       </div>
-    </div>
-    <!-- Trust Strip -->
-    <div class="absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+      <!-- Trust Strip -->
+      <div class="mt-16 pt-10 border-t border-gray-200">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <span class="block text-3xl font-900 text-accent">60+</span>
-            <span class="text-sm text-gray-300 uppercase tracking-wider">Jahre Erfahrung</span>
+            <span class="block text-4xl font-black text-brand">60+</span>
+            <span class="text-sm text-gray-400 uppercase tracking-wider">Jahre Erfahrung</span>
           </div>
           <div>
-            <span class="block text-3xl font-900 text-accent">3.</span>
-            <span class="text-sm text-gray-300 uppercase tracking-wider">Generation</span>
+            <span class="block text-4xl font-black text-brand">3.</span>
+            <span class="text-sm text-gray-400 uppercase tracking-wider">Generation</span>
           </div>
           <div>
-            <span class="block text-3xl font-900 text-accent">10</span>
-            <span class="text-sm text-gray-300 uppercase tracking-wider">Fachkräfte</span>
+            <span class="block text-4xl font-black text-brand">10</span>
+            <span class="text-sm text-gray-400 uppercase tracking-wider">Fachkräfte</span>
           </div>
           <div>
-            <span class="block text-3xl font-900 text-accent">100%</span>
-            <span class="text-sm text-gray-300 uppercase tracking-wider">Herstellerunabhängig</span>
+            <span class="block text-4xl font-black text-brand">100%</span>
+            <span class="text-sm text-gray-400 uppercase tracking-wider">Herstellerunabhängig</span>
           </div>
         </div>
       </div>
@@ -131,12 +121,12 @@
   </section>
 
   <!-- Leistungen -->
-  <section id="leistungen" class="py-20 md:py-28 bg-white">
+  <section id="leistungen" class="py-20 md:py-28 bg-light">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mb-16">
-        <span class="text-accent text-sm font-bold uppercase tracking-widest">Was wir tun</span>
-        <h2 class="text-3xl md:text-5xl font-900 mt-3 mb-6">Unsere Leistungen</h2>
-        <p class="text-lg text-gray-600 leading-relaxed">Reparatur, Wartungsservice und Neuverkauf von Motoren, Getriebemotoren, Pumpen, Lüftern, Frequenzumrichtern, Servomotoren und vielem mehr.</p>
+        <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Was wir tun</span>
+        <h2 class="text-3xl md:text-5xl font-black mt-3 mb-6">Unsere Leistungen</h2>
+        <p class="text-lg text-gray-500 leading-relaxed">Reparatur, Wartungsservice und Neuverkauf von Motoren, Getriebemotoren, Pumpen, Lüftern, Frequenzumrichtern, Servomotoren und vielem mehr.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -148,7 +138,7 @@
           </div>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand/90 to-transparent p-6 group-hover:opacity-0 transition-opacity">
             <h3 class="text-xl font-bold text-white">Reparatur</h3>
-            <div class="w-8 h-0.5 bg-accent mt-2"></div>
+            <div class="w-8 h-0.5 bg-white mt-2"></div>
           </div>
         </div>
 
@@ -160,7 +150,7 @@
           </div>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand/90 to-transparent p-6 group-hover:opacity-0 transition-opacity">
             <h3 class="text-xl font-bold text-white">Wartungsarbeiten</h3>
-            <div class="w-8 h-0.5 bg-accent mt-2"></div>
+            <div class="w-8 h-0.5 bg-white mt-2"></div>
           </div>
         </div>
 
@@ -172,7 +162,7 @@
           </div>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand/90 to-transparent p-6 group-hover:opacity-0 transition-opacity">
             <h3 class="text-xl font-bold text-white">Wickelei</h3>
-            <div class="w-8 h-0.5 bg-accent mt-2"></div>
+            <div class="w-8 h-0.5 bg-white mt-2"></div>
           </div>
         </div>
 
@@ -184,7 +174,7 @@
           </div>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand/90 to-transparent p-6 group-hover:opacity-0 transition-opacity">
             <h3 class="text-xl font-bold text-white">Konstruktion</h3>
-            <div class="w-8 h-0.5 bg-accent mt-2"></div>
+            <div class="w-8 h-0.5 bg-white mt-2"></div>
           </div>
         </div>
 
@@ -196,7 +186,7 @@
           </div>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand/90 to-transparent p-6 group-hover:opacity-0 transition-opacity">
             <h3 class="text-xl font-bold text-white">Wuchtarbeiten</h3>
-            <div class="w-8 h-0.5 bg-accent mt-2"></div>
+            <div class="w-8 h-0.5 bg-white mt-2"></div>
           </div>
         </div>
 
@@ -208,7 +198,7 @@
           </div>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand/90 to-transparent p-6 group-hover:opacity-0 transition-opacity">
             <h3 class="text-xl font-bold text-white">Wellen drehen & aufarbeiten</h3>
-            <div class="w-8 h-0.5 bg-accent mt-2"></div>
+            <div class="w-8 h-0.5 bg-white mt-2"></div>
           </div>
         </div>
       </div>
@@ -216,44 +206,44 @@
   </section>
 
   <!-- Reparatur Detail -->
-  <section class="py-20 md:py-28 bg-warm">
+  <section class="py-20 md:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div>
-          <span class="text-accent text-sm font-bold uppercase tracking-widest">Kernkompetenz</span>
-          <h2 class="text-3xl md:text-4xl font-900 mt-3 mb-6">Fachgerechte Reparatur</h2>
-          <p class="text-lg text-gray-600 leading-relaxed mb-8">Bei Reparaturen setzen wir auf moderne Technik, unser umfangreiches Ersatzteillager und unsere jahrzehntelange Erfahrung, um Ihre Reparaturwünsche mit gleichbleibender und bester Qualität schnellstmöglich zu erfüllen.</p>
+          <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Kernkompetenz</span>
+          <h2 class="text-3xl md:text-4xl font-black mt-3 mb-6">Fachgerechte Reparatur</h2>
+          <p class="text-lg text-gray-500 leading-relaxed mb-8">Bei Reparaturen setzen wir auf moderne Technik, unser umfangreiches Ersatzteillager und unsere jahrzehntelange Erfahrung, um Ihre Reparaturwünsche mit gleichbleibender und bester Qualität schnellstmöglich zu erfüllen.</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Drehstrom-, Wechselstrom- & Gleichstrommotoren</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Servo- & Trommelmotoren</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Getriebe & Getriebemotoren</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Tauch-, Vakuum- & Kreiselpumpen</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Schmutz- & Abwasserpumpen</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Rührwerke & Hebeanlagen</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Stromerzeuger & Kompressoren</span>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
+              <div class="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0"></div>
               <span class="text-sm">Werkzeugmaschinen & vieles mehr</span>
             </div>
           </div>
@@ -269,23 +259,23 @@
   </section>
 
   <!-- Über uns -->
-  <section id="ueber-uns" class="py-20 md:py-28 bg-white">
+  <section id="ueber-uns" class="py-20 md:py-28 bg-light">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="order-2 lg:order-1">
           <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Schiemann_collage_2020.jpg" alt="Schiemann Collage" class="w-full">
         </div>
         <div class="order-1 lg:order-2">
-          <span class="text-accent text-sm font-bold uppercase tracking-widest">Seit 1958</span>
-          <h2 class="text-3xl md:text-4xl font-900 mt-3 mb-6">Wir über uns</h2>
-          <p class="text-lg text-gray-600 leading-relaxed mb-6">
+          <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Seit 1958</span>
+          <h2 class="text-3xl md:text-4xl font-black mt-3 mb-6">Wir über uns</h2>
+          <p class="text-lg text-gray-500 leading-relaxed mb-6">
             Die Firma Schiemann Elektromaschinenbau GmbH ist ein innovatives, leistungsfähiges Familienunternehmen, in dritter Generation, mit über 60jähriger Fachkompetenz im Elektromaschinenbau.
           </p>
-          <p class="text-gray-600 leading-relaxed mb-6">
+          <p class="text-gray-500 leading-relaxed mb-6">
             Unser Team besteht aus 10 fachlich kompetenten Mitarbeitern, die in den Bereichen Instandsetzung, Wartung und Vertrieb arbeiten. Unser Leistungsspektrum reicht von der Instandsetzung von Elektromotoren, Getriebemotoren, Pumpen, elektr. Werkzeugen, Generatoren und Schweißgeräten über die Wartung von Pumpenanlagen bis hin zu Wickelarbeiten, Wuchtarbeiten und Konstruktionen von Kupfersonderteilen.
           </p>
-          <div class="border-l-2 border-accent pl-6 mt-8">
-            <div class="space-y-4 text-sm text-gray-600">
+          <div class="border-l-2 border-brand pl-6 mt-8">
+            <div class="space-y-4 text-sm text-gray-500">
               <div class="flex gap-4">
                 <span class="font-bold text-brand w-12 flex-shrink-0">1958</span>
                 <span>Firmengründung durch Kurt Schiemann</span>
@@ -313,34 +303,34 @@
   <section class="py-20 md:py-28 bg-brand text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-accent text-sm font-bold uppercase tracking-widest">Warum Schiemann</span>
-        <h2 class="text-3xl md:text-4xl font-900 mt-3">Unsere Werte</h2>
+        <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Warum Schiemann</span>
+        <h2 class="text-3xl md:text-4xl font-black mt-3">Unsere Werte</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center md:text-left">
-          <div class="w-12 h-12 bg-accent/10 border border-accent/30 flex items-center justify-center mb-5 mx-auto md:mx-0">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <div class="w-12 h-12 border border-white/20 flex items-center justify-center mb-5 mx-auto md:mx-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-3">Kurze Reaktionszeiten</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Von Hand gemachte Qualitätsarbeit ist für uns kein Widerspruch, sondern gelebte Unternehmensphilosophie.</p>
         </div>
         <div class="text-center md:text-left">
-          <div class="w-12 h-12 bg-accent/10 border border-accent/30 flex items-center justify-center mb-5 mx-auto md:mx-0">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div class="w-12 h-12 border border-white/20 flex items-center justify-center mb-5 mx-auto md:mx-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-3">Partnerschaftlich</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Sie sind unsere Partner – damit garantieren wir Ihnen eine enge Zusammenarbeit für präzise und effiziente Ergebnisse.</p>
         </div>
         <div class="text-center md:text-left">
-          <div class="w-12 h-12 bg-accent/10 border border-accent/30 flex items-center justify-center mb-5 mx-auto md:mx-0">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <div class="w-12 h-12 border border-white/20 flex items-center justify-center mb-5 mx-auto md:mx-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-3">Herstellerunabhängig</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Weil wir jeden Elektromotor von Hand bearbeiten, können wir unsere Leistungen für absolut jedes Modell anbieten.</p>
         </div>
         <div class="text-center md:text-left">
-          <div class="w-12 h-12 bg-accent/10 border border-accent/30 flex items-center justify-center mb-5 mx-auto md:mx-0">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          <div class="w-12 h-12 border border-white/20 flex items-center justify-center mb-5 mx-auto md:mx-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
           </div>
           <h3 class="text-lg font-bold mb-3">60+ Jahre Erfahrung</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Wir bleiben nicht auf der Stelle stehen, sondern bilden uns weiter — Ihr idealer Ansprechpartner auch für die Industrie 4.0.</p>
@@ -350,71 +340,67 @@
   </section>
 
   <!-- Partner -->
-  <section id="partner" class="py-16 md:py-20 bg-warm overflow-hidden">
+  <section id="partner" class="py-16 md:py-20 bg-light overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
       <div class="text-center">
-        <span class="text-accent text-sm font-bold uppercase tracking-widest">Vertrieb & Service</span>
-        <h2 class="text-3xl md:text-4xl font-900 mt-3">Unsere Partner</h2>
+        <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Vertrieb & Service</span>
+        <h2 class="text-3xl md:text-4xl font-black mt-3">Unsere Partner</h2>
       </div>
     </div>
     <div class="overflow-hidden">
       <div class="partner-track">
         <div class="flex items-center gap-12 px-6">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/HOMA-Logos_de-affin.svg" alt="HOMA" class="h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Lenze_Gruppe_Logo.svg" alt="Lenze" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Logo_Herborner_Pumpen.svg" alt="Herborner Pumpen" class="h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/lowara-a-xylem-brand-logo-vector.svg" alt="Lowara" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Motovario_logo.png" alt="Motovario" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/nord-logo.png" alt="Nord" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Sulzer_AG_logo.svg" alt="Sulzer" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/VEM_logo_2000.svg" alt="VEM" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/WILO_Logo_2013.svg" alt="WILO" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Xylem_Logo.png" alt="Xylem" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Calpeda_horiz_cmyk.svg" alt="Calpeda" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Hitachi_logo.svg" alt="Hitachi" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/A_Endress_Power_Logo.svg" alt="Endress" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/SEEPEX-Logo-Claim_medium-ab10mm_rgb.svg" alt="SEEPEX" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/07/FLEX_Logo.svg" alt="FLEX" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/HOMA-Logos_de-affin.svg" alt="HOMA" class="h-10 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Lenze_Gruppe_Logo.svg" alt="Lenze" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Logo_Herborner_Pumpen.svg" alt="Herborner Pumpen" class="h-10 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/lowara-a-xylem-brand-logo-vector.svg" alt="Lowara" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Motovario_logo.png" alt="Motovario" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/nord-logo.png" alt="Nord" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Sulzer_AG_logo.svg" alt="Sulzer" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/VEM_logo_2000.svg" alt="VEM" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/WILO_Logo_2013.svg" alt="WILO" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Xylem_Logo.png" alt="Xylem" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Calpeda_horiz_cmyk.svg" alt="Calpeda" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Hitachi_logo.svg" alt="Hitachi" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/A_Endress_Power_Logo.svg" alt="Endress" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/SEEPEX-Logo-Claim_medium-ab10mm_rgb.svg" alt="SEEPEX" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/07/FLEX_Logo.svg" alt="FLEX" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
         </div>
-        <!-- Duplicate for seamless loop -->
         <div class="flex items-center gap-12 px-6">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/HOMA-Logos_de-affin.svg" alt="HOMA" class="h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Lenze_Gruppe_Logo.svg" alt="Lenze" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Logo_Herborner_Pumpen.svg" alt="Herborner Pumpen" class="h-10 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/lowara-a-xylem-brand-logo-vector.svg" alt="Lowara" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Motovario_logo.png" alt="Motovario" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/nord-logo.png" alt="Nord" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Sulzer_AG_logo.svg" alt="Sulzer" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/VEM_logo_2000.svg" alt="VEM" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/WILO_Logo_2013.svg" alt="WILO" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Xylem_Logo.png" alt="Xylem" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Calpeda_horiz_cmyk.svg" alt="Calpeda" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Hitachi_logo.svg" alt="Hitachi" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/A_Endress_Power_Logo.svg" alt="Endress" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/SEEPEX-Logo-Claim_medium-ab10mm_rgb.svg" alt="SEEPEX" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
-          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/07/FLEX_Logo.svg" alt="FLEX" class="h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/HOMA-Logos_de-affin.svg" alt="HOMA" class="h-10 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Lenze_Gruppe_Logo.svg" alt="Lenze" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Logo_Herborner_Pumpen.svg" alt="Herborner Pumpen" class="h-10 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/lowara-a-xylem-brand-logo-vector.svg" alt="Lowara" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Motovario_logo.png" alt="Motovario" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/nord-logo.png" alt="Nord" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Sulzer_AG_logo.svg" alt="Sulzer" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/VEM_logo_2000.svg" alt="VEM" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/WILO_Logo_2013.svg" alt="WILO" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/05/Xylem_Logo.png" alt="Xylem" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Calpeda_horiz_cmyk.svg" alt="Calpeda" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/Hitachi_logo.svg" alt="Hitachi" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/A_Endress_Power_Logo.svg" alt="Endress" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/06/SEEPEX-Logo-Claim_medium-ab10mm_rgb.svg" alt="SEEPEX" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
+          <img src="https://www.elektromaschinenbau-schiemann.de/wp-content/uploads/2020/07/FLEX_Logo.svg" alt="FLEX" class="h-8 w-auto grayscale opacity-50 hover:opacity-80 transition-all">
         </div>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-      <p class="text-center text-sm text-gray-500">Langjähriges Mitglied der Elektroinnung Rhein-Westerwald</p>
+      <p class="text-center text-sm text-gray-400">Langjähriges Mitglied der Elektroinnung Rhein-Westerwald</p>
     </div>
   </section>
 
   <!-- CTA Banner -->
-  <section class="relative py-20 md:py-28 overflow-hidden" style="background: linear-gradient(135deg, #FF9900 0%, #E68A00 100%);">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><g fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;><g fill=&quot;%23000&quot; fill-opacity=&quot;0.4&quot;><path d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/></g></g></svg>'); background-size: 30px 30px;"></div>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-5xl font-900 text-white mb-6">Motor defekt?<br>Wir helfen sofort.</h2>
-      <p class="text-lg text-white/90 mb-10 max-w-2xl mx-auto">Kurze Reaktionszeiten, herstellerunabhängige Reparatur und über 60 Jahre Erfahrung — rufen Sie uns an oder schreiben Sie uns.</p>
+  <section class="py-20 md:py-28 bg-brand">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-6">Motor defekt?<br>Wir helfen sofort.</h2>
+      <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">Kurze Reaktionszeiten, herstellerunabhängige Reparatur und über 60 Jahre Erfahrung — rufen Sie uns an oder schreiben Sie uns.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:00492623951312" class="inline-flex items-center justify-center bg-brand hover:bg-brand/90 text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+        <a href="tel:00492623951312" class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-brand px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           +49 2623 / 95 13 12
         </a>
-        <a href="mailto:info@elektromaschinenbau-schiemann.de" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border-2 border-white text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+        <a href="mailto:info@elektromaschinenbau-schiemann.de" class="inline-flex items-center justify-center border-2 border-white/30 hover:border-white text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-colors">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           E-Mail senden
         </a>
@@ -427,62 +413,62 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div>
-          <span class="text-accent text-sm font-bold uppercase tracking-widest">Kontakt</span>
-          <h2 class="text-3xl md:text-4xl font-900 mt-3 mb-6">Sprechen Sie uns an</h2>
-          <p class="text-lg text-gray-600 leading-relaxed mb-10">Wir unterstützen Sie gerne. Rufen Sie uns an oder senden Sie uns eine Nachricht — wir melden uns schnellstmöglich bei Ihnen.</p>
+          <span class="text-gray-400 text-sm font-bold uppercase tracking-widest">Kontakt</span>
+          <h2 class="text-3xl md:text-4xl font-black mt-3 mb-6">Sprechen Sie uns an</h2>
+          <p class="text-lg text-gray-500 leading-relaxed mb-10">Wir unterstützen Sie gerne. Rufen Sie uns an oder senden Sie uns eine Nachricht — wir melden uns schnellstmöglich bei Ihnen.</p>
 
           <div class="space-y-6">
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-warm flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <div class="w-12 h-12 bg-light flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
               </div>
               <div>
                 <h3 class="font-bold text-brand">Telefon</h3>
-                <a href="tel:00492623951312" class="text-accent hover:text-accent-dark text-lg font-semibold">+49 (0) 26 23 / 95 13 12</a>
+                <a href="tel:00492623951312" class="text-brand hover:text-mid text-lg font-semibold">+49 (0) 26 23 / 95 13 12</a>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-warm flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <div class="w-12 h-12 bg-light flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
               <div>
                 <h3 class="font-bold text-brand">E-Mail</h3>
-                <a href="mailto:info@elektromaschinenbau-schiemann.de" class="text-accent hover:text-accent-dark font-semibold">info@elektromaschinenbau-schiemann.de</a>
+                <a href="mailto:info@elektromaschinenbau-schiemann.de" class="text-brand hover:text-mid font-semibold">info@elektromaschinenbau-schiemann.de</a>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-warm flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <div class="w-12 h-12 bg-light flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </div>
               <div>
                 <h3 class="font-bold text-brand">Standort</h3>
-                <p class="text-gray-600">Mogendorf im Westerwald</p>
+                <p class="text-gray-500">Mogendorf im Westerwald</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Kontaktformular -->
-        <div class="bg-warm p-8 md:p-10">
+        <div class="bg-light p-8 md:p-10">
           <h3 class="text-xl font-bold mb-6">Anfrage senden</h3>
           <form action="#" method="POST" class="space-y-5">
             <div>
               <label for="name" class="block text-sm font-semibold mb-2">Name *</label>
-              <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-accent focus:outline-none transition-colors">
+              <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:outline-none transition-colors">
             </div>
             <div>
               <label for="email" class="block text-sm font-semibold mb-2">E-Mail *</label>
-              <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-accent focus:outline-none transition-colors">
+              <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:outline-none transition-colors">
             </div>
             <div>
               <label for="phone" class="block text-sm font-semibold mb-2">Telefon</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-accent focus:outline-none transition-colors">
+              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:outline-none transition-colors">
             </div>
             <div>
               <label for="message" class="block text-sm font-semibold mb-2">Ihre Nachricht *</label>
-              <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-accent focus:outline-none transition-colors resize-none"></textarea>
+              <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-white border border-gray-200 focus:border-brand focus:outline-none transition-colors resize-none"></textarea>
             </div>
-            <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white py-4 text-sm font-bold uppercase tracking-widest transition-colors">
+            <button type="submit" class="w-full bg-brand hover:bg-mid text-white py-4 text-sm font-bold uppercase tracking-widest transition-colors">
               Nachricht senden
             </button>
           </form>
@@ -504,8 +490,8 @@
           <p class="text-sm text-gray-400 mt-1">Mitglied der Elektroinnung Rhein-Westerwald</p>
         </div>
         <div class="md:text-right">
-          <a href="tel:00492623951312" class="block text-sm text-gray-400 hover:text-accent transition-colors">+49 (0) 26 23 / 95 13 12</a>
-          <a href="mailto:info@elektromaschinenbau-schiemann.de" class="block text-sm text-gray-400 hover:text-accent transition-colors">info@elektromaschinenbau-schiemann.de</a>
+          <a href="tel:00492623951312" class="block text-sm text-gray-400 hover:text-white transition-colors">+49 (0) 26 23 / 95 13 12</a>
+          <a href="mailto:info@elektromaschinenbau-schiemann.de" class="block text-sm text-gray-400 hover:text-white transition-colors">info@elektromaschinenbau-schiemann.de</a>
         </div>
       </div>
       <div class="border-t border-white/10 mt-8 pt-8 text-center">
@@ -515,16 +501,16 @@
   </footer>
 
   <!-- Mobile Menu Button -->
-  <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-accent text-white rounded-full shadow-lg flex items-center justify-center">
+  <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-brand text-white rounded-full shadow-lg flex items-center justify-center">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
   <div id="mobileMenu" class="hidden fixed inset-0 bg-brand/95 z-40 flex items-center justify-center md:hidden">
     <div class="text-center space-y-8">
-      <a href="#leistungen" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-accent">Leistungen</a>
-      <a href="#ueber-uns" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-accent">Über uns</a>
-      <a href="#partner" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-accent">Partner</a>
-      <a href="#kontakt" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-accent">Kontakt</a>
-      <a href="tel:00492623951312" class="block text-xl text-accent font-bold">+49 2623 / 95 13 12</a>
+      <a href="#leistungen" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-gray-300">Leistungen</a>
+      <a href="#ueber-uns" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-gray-300">Über uns</a>
+      <a href="#partner" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-gray-300">Partner</a>
+      <a href="#kontakt" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-2xl font-bold text-white hover:text-gray-300">Kontakt</a>
+      <a href="tel:00492623951312" class="block text-xl text-gray-300 font-bold">+49 2623 / 95 13 12</a>
     </div>
     <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="absolute top-6 right-6 text-white">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
