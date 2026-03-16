@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maschinenbau Wüst GmbH – Engineering, Fertigung, Montage & Wartung</title>
+  <meta name="description" content="Maschinenbau Wüst GmbH – Ihr Partner für individuelle Lösungen im Maschinen- und Anlagenbau. Über 40 Jahre Erfahrung. Zertifizierter Schweißfachbetrieb.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#03519B',
+            accent: '#32BDAE',
+            dark: '#0a0a0a',
+            grey: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              600: '#525252',
+              800: '#1a1a1a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Source Sans 3"', 'Arial', 'Helvetica', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', Arial, Helvetica, sans-serif; color: #0a0a0a; background: #fff; -webkit-font-smoothing: antialiased; }
+
+    /* Bauhaus geometric accents */
+    .bauhaus-circle {
+      width: 320px; height: 320px; border-radius: 50%;
+      position: absolute; z-index: 0; opacity: 0.07;
+    }
+    .bauhaus-rect {
+      position: absolute; z-index: 0; opacity: 0.05;
+    }
+
+    /* Horizontal rule – Bauhaus style */
+    .bh-rule {
+      height: 3px; background: #03519B; width: 64px;
+    }
+
+    /* Process connector line */
+    .process-line {
+      position: absolute; top: 50%; left: 0; right: 0;
+      height: 2px; background: #e5e5e5; z-index: 0;
+    }
+
+    /* Number badge */
+    .step-num {
+      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 18px; color: #fff; background: #03519B;
+      border-radius: 0; /* Bauhaus: square */
+      position: relative; z-index: 1;
+    }
+
+    /* CTA button */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; background: #03519B; color: #fff;
+      font-weight: 700; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+      border: none; cursor: pointer;
+    }
+    .cta-btn:hover { background: #024080; transform: translateY(-1px); }
+    .cta-btn-accent {
+      background: #32BDAE;
+    }
+    .cta-btn-accent:hover { background: #28a899; }
+
+    .cta-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 34px; background: transparent; color: #03519B;
+      font-weight: 700; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase;
+      text-decoration: none; border: 2px solid #03519B; transition: all 0.2s;
+      cursor: pointer;
+    }
+    .cta-outline:hover { background: #03519B; color: #fff; }
+
+    /* Sticky nav */
+    .sticky-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e5e5;
+      transition: box-shadow 0.3s;
+    }
+    .sticky-nav.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+
+    /* Grid pattern overlay for hero */
+    .grid-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(3,81,155,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(3,81,155,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    /* Section fade-in */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Trust badge */
+    .trust-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; background: #f5f5f5; font-size: 14px; font-weight: 600;
+      color: #525252; letter-spacing: 0.02em;
+    }
+
+    /* Form */
+    .form-input {
+      width: 100%; padding: 14px 16px; border: 1px solid #d4d4d4; background: #fff;
+      font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #0a0a0a;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: #03519B; }
+    .form-input::placeholder { color: #a3a3a3; }
+
+    /* Cert grid */
+    .cert-card {
+      padding: 24px; border: 1px solid #e5e5e5; transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: #03519B; }
+  </style>
+</head>
+<body>
+
+<!-- ===================== STICKY NAV ===================== -->
+<nav class="sticky-nav" id="nav">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+    <img src="https://maschinenbau-wuest.de/wp-content/uploads/2025/04/Maschinenbau-Wuest-Logo.webp" alt="Maschinenbau Wüst GmbH Logo" class="h-9">
+    <div class="flex items-center gap-6">
+      <a href="tel:026021068990" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-grey-600 hover:text-primary transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        02602 / 106 899 0
+      </a>
+      <a href="#kontakt" class="cta-btn text-sm !py-2.5 !px-6">Beratung anfordern</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="relative min-h-[92vh] flex items-center overflow-hidden pt-16" style="background: #fff;">
+  <!-- Bauhaus geometric shapes -->
+  <div class="bauhaus-circle" style="background: #03519B; top: -80px; right: -60px;"></div>
+  <div class="bauhaus-circle" style="background: #32BDAE; width: 200px; height: 200px; bottom: 60px; left: -50px;"></div>
+  <div class="bauhaus-rect" style="background: #03519B; width: 400px; height: 6px; bottom: 200px; right: 10%; transform: rotate(-3deg);"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left -->
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="trust-badge">
+            <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Zertifizierter Schweißfachbetrieb
+          </div>
+          <div class="trust-badge">
+            <span class="text-primary font-bold">40+</span> Jahre Erfahrung
+          </div>
+        </div>
+
+        <p class="text-sm font-semibold tracking-widest text-accent uppercase mb-4">Maschinen- und Anlagenbau</p>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-900 leading-[1.05] tracking-tight text-dark mb-6">
+          Wir fördern<br>Produktivität.<br>
+          <span class="text-primary">Anders als<br>die Anderen.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-grey-600 max-w-lg mb-10 leading-relaxed">
+          Ihr Partner für individuelle Lösungen im Maschinen- und Anlagenbau. Von der Situationsanalyse bis zur Inbetriebnahme – alles aus einer Hand.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#kontakt" class="cta-btn">
+            Beratung anfordern
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="tel:026021068990" class="cta-outline">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            02602 / 106 899 0
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Betriebsgelände -->
+      <div class="relative hidden lg:block">
+        <div class="absolute -top-4 -left-4 w-full h-full border-2 border-primary opacity-20"></div>
+        <img src="https://maschinenbau-wuest.de/wp-content/uploads/2025/07/betriebsgelaende.webp" alt="Betriebsgelände Maschinenbau Wüst GmbH" class="relative w-full aspect-[4/3] object-cover">
+        <div class="absolute -bottom-3 -right-3 bg-accent text-white px-6 py-3 font-bold text-sm tracking-wider uppercase">
+          Ötzingen / Westerwald
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BRANCHEN-LEISTE ===================== -->
+<section class="bg-grey-100 border-y border-grey-200">
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm font-semibold text-grey-600 tracking-wide uppercase">
+      <span>Schüttguttechnik</span>
+      <span class="text-grey-300">|</span>
+      <span>Keramik- & Feuerfestindustrie</span>
+      <span class="text-grey-300">|</span>
+      <span>Recycling- & Aufbereitungstechnik</span>
+      <span class="text-grey-300">|</span>
+      <span>Verpackungsindustrie</span>
+      <span class="text-grey-300">|</span>
+      <span>Steine-Erden-Industrie</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEISTUNGEN – 4 SÄULEN ===================== -->
+<section class="py-24 md:py-32 relative overflow-hidden" id="leistungen">
+  <div class="bauhaus-rect" style="background: #32BDAE; width: 6px; height: 300px; top: 80px; left: 8%;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="reveal mb-20">
+      <p class="text-sm font-semibold tracking-widest text-accent uppercase mb-3">Ganzheitliche Prozesskette</p>
+      <h2 class="text-4xl md:text-5xl font-900 tracking-tight text-dark mb-4">Vier Säulen.<br>Ein Versprechen.</h2>
+      <div class="bh-rule mt-6"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 relative">
+      <!-- Connector (desktop) -->
+      <div class="hidden lg:block absolute top-[60px] left-[12.5%] right-[12.5%] h-[2px] bg-grey-200 z-0"></div>
+
+      <!-- 1 Engineering -->
+      <div class="reveal relative border-r border-grey-200 last:border-r-0 p-8 lg:p-10 group hover:bg-grey-50 transition-colors">
+        <div class="step-num mb-8">01</div>
+        <h3 class="text-xl font-bold text-dark mb-3">Engineering</h3>
+        <p class="text-grey-600 leading-relaxed">Situationsanalyse & maßgeschneiderte Beratung für Ihre Anlage.</p>
+        <div class="mt-6 w-8 h-[3px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      </div>
+
+      <!-- 2 Fertigung -->
+      <div class="reveal relative border-r border-grey-200 last:border-r-0 p-8 lg:p-10 group hover:bg-grey-50 transition-colors" style="transition-delay: 0.1s;">
+        <div class="step-num mb-8">02</div>
+        <h3 class="text-xl font-bold text-dark mb-3">Fertigung</h3>
+        <p class="text-grey-600 leading-relaxed">Stahl- und Sonderkonstruktionen vom Profi-Team – termintreu & zertifiziert.</p>
+        <div class="mt-6 w-8 h-[3px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      </div>
+
+      <!-- 3 Montage -->
+      <div class="reveal relative border-r border-grey-200 last:border-r-0 p-8 lg:p-10 group hover:bg-grey-50 transition-colors" style="transition-delay: 0.2s;">
+        <div class="step-num mb-8">03</div>
+        <h3 class="text-xl font-bold text-dark mb-3">Montage</h3>
+        <p class="text-grey-600 leading-relaxed">Pünktliche und präzise Inbetriebnahme vor Ort.</p>
+        <div class="mt-6 w-8 h-[3px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      </div>
+
+      <!-- 4 Wartung -->
+      <div class="reveal relative p-8 lg:p-10 group hover:bg-grey-50 transition-colors" style="transition-delay: 0.3s;">
+        <div class="step-num bg-accent mb-8" style="background: #32BDAE;">04</div>
+        <h3 class="text-xl font-bold text-dark mb-3">Wartung & After-Sales</h3>
+        <p class="text-grey-600 leading-relaxed">Vorbeugende Wartung, Reparatur und schneller Ersatzteilservice.</p>
+        <div class="mt-6 w-8 h-[3px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÜBER UNS ===================== -->
+<section class="py-24 md:py-32 bg-dark text-white relative overflow-hidden" id="unternehmen" style="background: #0a0a0a;">
+  <!-- Bauhaus shapes -->
+  <div class="bauhaus-circle" style="background: #32BDAE; width: 400px; height: 400px; top: -150px; right: -100px; opacity: 0.04;"></div>
+  <div class="bauhaus-rect" style="background: #03519B; width: 200px; height: 4px; bottom: 120px; left: 5%; opacity: 0.15;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="text-sm font-semibold tracking-widest text-accent uppercase mb-3">Über 40 Jahre Kompetenz</p>
+        <h2 class="text-4xl md:text-5xl font-900 tracking-tight mb-6">Willkommen bei<br>Maschinenbau Wüst</h2>
+        <div class="bh-rule mb-8" style="background: #32BDAE;"></div>
+        <p class="text-lg text-grey-400 leading-relaxed mb-6">
+          Mit über 40 Jahren Erfahrung in Engineering, Fertigung, Montage und After-Sales-Service bieten wir Ihnen ganzheitliche Anlagenlösungen – von der ersten Situationsanalyse bis zur Inbetriebnahme.
+        </p>
+        <p class="text-lg text-grey-400 leading-relaxed mb-8">
+          Als zertifizierter Schweißfachbetrieb (EN1090-2, ISO 3834-3) garantieren wir Qualität auf höchstem Niveau – und reparieren selbst alte, komplexe Maschinen, für die kaum noch jemand anderes eine Lösung parat hat.
+        </p>
+        <p class="text-lg text-grey-400 leading-relaxed">
+          Ob Schüttgut-, Keramik- oder Recyclingtechnik – wir entwickeln passgenaue Konzepte für Ihre Branche.
+        </p>
+      </div>
+      <div class="reveal relative" style="transition-delay: 0.15s;">
+        <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-accent opacity-30"></div>
+        <img src="https://maschinenbau-wuest.de/wp-content/uploads/2025/07/betriebsgelaende.webp" alt="Betriebsgelände Maschinenbau Wüst" class="w-full aspect-[4/3] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+        <!-- Stats overlay -->
+        <div class="grid grid-cols-3 gap-0 mt-0">
+          <div class="bg-primary p-6 text-center">
+            <span class="block text-3xl font-900 text-white">40+</span>
+            <span class="text-sm text-blue-200 uppercase tracking-wide">Jahre</span>
+          </div>
+          <div class="bg-primary/90 p-6 text-center">
+            <span class="block text-3xl font-900 text-white">5</span>
+            <span class="text-sm text-blue-200 uppercase tracking-wide">Branchen</span>
+          </div>
+          <div class="p-6 text-center" style="background: #32BDAE;">
+            <span class="block text-3xl font-900 text-white">4</span>
+            <span class="text-sm text-emerald-100 uppercase tracking-wide">Leistungen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ZERTIFIKATE ===================== -->
+<section class="py-24 md:py-32 relative" id="zertifikate">
+  <div class="bauhaus-rect" style="background: #03519B; width: 4px; height: 200px; top: 40px; right: 6%; opacity: 0.08;"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <p class="text-sm font-semibold tracking-widest text-accent uppercase mb-3">Qualität auf höchstem Niveau</p>
+      <h2 class="text-4xl md:text-5xl font-900 tracking-tight text-dark mb-4">Zertifizierte Kompetenz</h2>
+      <div class="bh-rule mx-auto mt-6"></div>
+    </div>
+
+    <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="cert-card">
+        <div class="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold mb-4">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h4 class="font-bold text-dark mb-2">EN 1090-2</h4>
+        <p class="text-sm text-grey-600">Schweißen von Stahltragwerken nach DIN EN 1090-2</p>
+      </div>
+      <div class="cert-card">
+        <div class="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold mb-4">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h4 class="font-bold text-dark mb-2">ISO 3834-3</h4>
+        <p class="text-sm text-grey-600">Schweißtechnische Qualitätsanforderungen nach ISO 3834</p>
+      </div>
+      <div class="cert-card">
+        <div class="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold mb-4">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h4 class="font-bold text-dark mb-2">Werkseigene Produktionskontrolle</h4>
+        <p class="text-sm text-grey-600">Konformität der werkseigenen Produktionskontrolle</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA BANNER ===================== -->
+<section class="py-20 relative overflow-hidden" style="background: #03519B;">
+  <div class="bauhaus-circle" style="background: #fff; width: 500px; height: 500px; top: -200px; right: -150px; opacity: 0.04;"></div>
+  <div class="bauhaus-rect" style="background: #32BDAE; width: 120px; height: 120px; bottom: -30px; left: 8%; opacity: 0.15;"></div>
+
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <h2 class="text-3xl md:text-5xl font-900 text-white tracking-tight mb-4">Ihre Projekte – unser Anspruch</h2>
+    <p class="text-lg text-blue-200 mb-10 max-w-2xl mx-auto">
+      Von der Situationsanalyse bis zum After-Sales-Service – profitieren Sie von über 40 Jahren Erfahrung und zertifizierter Qualität.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#kontakt" class="cta-btn" style="background: #32BDAE;">
+        Jetzt Beratung anfordern
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="tel:026021068990" class="cta-outline !border-white !text-white hover:!bg-white hover:!text-primary">
+        02602 / 106 899 0
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KONTAKT / FORMULAR ===================== -->
+<section class="py-24 md:py-32 bg-grey-50" id="kontakt">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16">
+      <!-- Left: Info -->
+      <div class="reveal">
+        <p class="text-sm font-semibold tracking-widest text-accent uppercase mb-3">Kontakt</p>
+        <h2 class="text-4xl md:text-5xl font-900 tracking-tight text-dark mb-4">Sprechen wir über<br>Ihr Projekt.</h2>
+        <div class="bh-rule mt-6 mb-10"></div>
+
+        <div class="space-y-8">
+          <div>
+            <h4 class="font-bold text-dark mb-1">Adresse</h4>
+            <p class="text-grey-600">Maschinenbau Wüst GmbH<br>Neubitz 2<br>56244 Ötzingen</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-dark mb-1">Telefon</h4>
+            <a href="tel:026021068990" class="text-primary font-semibold text-lg hover:underline">02602 / 106 899 0</a>
+            <p class="text-sm text-grey-400 mt-1">Werktags 07:30 – 16:30 Uhr</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-dark mb-1">E-Mail</h4>
+            <a href="mailto:info@maschinenbau-wuest.de" class="text-primary font-semibold hover:underline">info@maschinenbau-wuest.de</a>
+          </div>
+          <div>
+            <h4 class="font-bold text-dark mb-1">Anfahrt</h4>
+            <p class="text-grey-600">Nur 15 Fahrminuten von A3 Montabaur entfernt.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal" style="transition-delay: 0.1s;">
+        <form class="bg-white p-8 md:p-10 border border-grey-200" onsubmit="event.preventDefault(); this.querySelector('.form-success').classList.remove('hidden'); this.querySelector('button').disabled=true;">
+          <h3 class="text-2xl font-bold text-dark mb-6">Beratung anfordern</h3>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-dark mb-1.5">Vorname *</label>
+              <input type="text" required class="form-input" placeholder="Max">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-dark mb-1.5">Nachname *</label>
+              <input type="text" required class="form-input" placeholder="Mustermann">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-dark mb-1.5">Firma</label>
+            <input type="text" class="form-input" placeholder="Ihre Firma GmbH">
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-dark mb-1.5">E-Mail *</label>
+              <input type="email" required class="form-input" placeholder="max@firma.de">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-dark mb-1.5">Telefon</label>
+              <input type="tel" class="form-input" placeholder="+49 ...">
+            </div>
+          </div>
+          <div class="mb-6">
+            <label class="block text-sm font-semibold text-dark mb-1.5">Ihre Nachricht *</label>
+            <textarea required rows="4" class="form-input" placeholder="Beschreiben Sie kurz Ihr Projekt oder Anliegen ..."></textarea>
+          </div>
+          <button type="submit" class="cta-btn w-full justify-center">
+            Anfrage absenden
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </button>
+          <p class="form-success hidden mt-4 text-accent font-semibold text-center">Vielen Dank! Wir melden uns zeitnah bei Ihnen.</p>
+          <p class="text-xs text-grey-400 mt-4 text-center">Ihre Daten werden vertraulich behandelt und nicht an Dritte weitergegeben.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-dark text-grey-400 py-10" style="background: #0a0a0a;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <img src="https://maschinenbau-wuest.de/wp-content/uploads/2025/04/Maschinenbau-Wuest-Logo.webp" alt="Logo" class="h-8 brightness-200">
+        <span class="text-sm">&copy; 2026 Maschinenbau Wüst GmbH</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm">
+        <span>Neubitz 2, 56244 Ötzingen</span>
+        <a href="tel:026021068990" class="hover:text-white transition-colors">02602 / 106 899 0</a>
+        <a href="mailto:info@maschinenbau-wuest.de" class="hover:text-white transition-colors">info@maschinenbau-wuest.de</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+  // Sticky nav shadow on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

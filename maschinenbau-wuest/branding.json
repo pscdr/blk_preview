@@ -1,0 +1,45 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Source Sans 3", "role": "body" },
+    { "family": "Roboto", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#03519B",
+    "accent": "#32BDAE",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#32BDAE"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Source Sans 3",
+      "heading": "Source Sans 3"
+    },
+    "fontStacks": {
+      "heading": ["Source Sans 3", "Arial", "Helvetica", "sans-serif"],
+      "body": ["Source Sans 3", "Arial", "Helvetica", "sans-serif"],
+      "paragraph": ["Source Sans 3", "Arial", "Helvetica", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "64px",
+      "h2": "23px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {},
+  "images": {
+    "logo": "https://maschinenbau-wuest.de/wp-content/uploads/2025/04/Maschinenbau-Wuest-Logo.webp",
+    "favicon": null,
+    "ogImage": null
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  }
+}
