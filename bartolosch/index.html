@@ -17,9 +17,10 @@
           colors: {
             'barto-deep': '#015085',
             'barto-steel': '#276A97',
-            'barto-light': '#F7F8FA',
-            'barto-slate': '#2D3748',
+            'barto-light': '#F5F7FA',
+            'barto-slate': '#1A2332',
             'barto-grey': '#E2E8F0',
+            'barto-ice': '#EBF2F8',
           },
           fontFamily: {
             'sans': ['Noto Sans', 'system-ui', '-apple-system', 'sans-serif'],
@@ -30,298 +31,490 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans', sans-serif; }
+    body { font-family: 'Noto Sans', sans-serif; overflow-x: hidden; }
 
-    /* Scroll-triggered fade-in */
+    /* Reveal animations */
     .reveal {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(48px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Staggered children */
+    .stagger > * { transition-delay: calc(var(--i, 0) * 120ms); }
+
+    /* Parallax image */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+    @supports (-webkit-overflow-scrolling: touch) {
+      .parallax-bg { background-attachment: scroll; }
     }
 
-    /* Process chain connector */
-    .process-step::after {
+    /* Image hover zoom */
+    .img-zoom { overflow: hidden; }
+    .img-zoom img {
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .img-zoom:hover img { transform: scale(1.06); }
+
+    /* Counter animation */
+    .counter { display: inline-block; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #015085 0%, #276A97 50%, #3B8EC4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Hero line animation */
+    .hero-line {
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+    }
+    .hero-line.visible { width: 120px; }
+
+    /* Process connector */
+    .process-card {
+      position: relative;
+    }
+    .process-card:not(:last-child)::after {
       content: '';
       position: absolute;
-      top: 50%;
-      right: -2rem;
-      width: 2rem;
-      height: 2px;
-      background: #276A97;
+      top: 40px;
+      right: -16px;
+      width: 32px;
+      height: 3px;
+      background: linear-gradient(90deg, #015085, #276A97);
     }
-    .process-step:last-child::after {
-      display: none;
+    @media (max-width: 768px) {
+      .process-card:not(:last-child)::after { display: none; }
     }
 
-    @media (max-width: 768px) {
-      .process-step::after {
-        top: auto;
-        bottom: -1.5rem;
-        right: 50%;
-        width: 2px;
-        height: 1.5rem;
-        transform: translateX(50%);
-      }
+    /* Floating badge */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+
+    /* Nav active state */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #015085;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
   </style>
 </head>
 <body class="bg-white text-barto-slate antialiased">
 
   <!-- ============ STICKY NAV ============ -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-barto-grey transition-shadow duration-300">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-      <a href="#hero">
-        <img src="https://bartolosch.de/wp-content/uploads/2024/06/bartolosch_logo.png" alt="Bartolosch Maschinen GmbH" class="h-12">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl transition-all duration-500">
+    <div class="max-w-[1400px] mx-auto px-8 flex items-center justify-between h-20">
+      <a href="#hero" class="shrink-0">
+        <img src="https://bartolosch.de/wp-content/uploads/2024/06/bartolosch_logo.png" alt="Bartolosch Maschinen GmbH" class="h-11 transition-transform hover:scale-105">
       </a>
-      <div class="hidden lg:flex items-center gap-10 text-sm font-medium text-barto-slate">
-        <a href="#unternehmen" class="hover:text-barto-deep transition-colors">Unternehmen</a>
-        <a href="#fertigung" class="hover:text-barto-deep transition-colors">Fertigung</a>
-        <a href="#montage" class="hover:text-barto-deep transition-colors">Montage</a>
-        <a href="#qualitaet" class="hover:text-barto-deep transition-colors">Qualität</a>
-        <a href="#prozesskette" class="hover:text-barto-deep transition-colors">Prozesskette</a>
-        <a href="#geschichte" class="hover:text-barto-deep transition-colors">Geschichte</a>
+      <div class="hidden lg:flex items-center gap-10 text-[13px] font-semibold tracking-wide uppercase text-barto-slate/70">
+        <a href="#unternehmen" class="nav-link hover:text-barto-deep transition-colors">Unternehmen</a>
+        <a href="#fertigung" class="nav-link hover:text-barto-deep transition-colors">Fertigung</a>
+        <a href="#montage" class="nav-link hover:text-barto-deep transition-colors">Montage</a>
+        <a href="#qualitaet" class="nav-link hover:text-barto-deep transition-colors">Qualit&auml;t</a>
+        <a href="#prozesskette" class="nav-link hover:text-barto-deep transition-colors">Prozesskette</a>
+        <a href="#geschichte" class="nav-link hover:text-barto-deep transition-colors">Geschichte</a>
       </div>
-      <div class="flex items-center gap-6">
-        <a href="tel:+4906749140" class="hidden md:flex items-center gap-2 text-sm font-medium text-barto-slate hover:text-barto-deep transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      <div class="flex items-center gap-5">
+        <a href="tel:+4906749140" class="hidden md:flex items-center gap-2 text-sm font-medium text-barto-slate/70 hover:text-barto-deep transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           06741 / 9140
         </a>
-        <a href="#kontakt" class="bg-barto-deep text-white px-6 py-2.5 text-sm font-semibold hover:bg-barto-steel transition-colors">
-          Kontakt aufnehmen
+        <a href="#kontakt" class="bg-barto-deep text-white px-7 py-3 text-sm font-bold tracking-wide hover:bg-barto-steel transition-all duration-300 hover:shadow-lg hover:shadow-barto-deep/20 hover:-translate-y-0.5">
+          Kontakt
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- ============ HERO ============ -->
-  <section id="hero" class="relative pt-20">
-    <div class="relative h-[85vh] min-h-[600px] overflow-hidden">
-      <img src="https://bartolosch.de/wp-content/uploads/2023/11/fraesen22-768x576.jpg" alt="CNC Fräsmaschine bei Bartolosch" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/30"></div>
-      <div class="relative max-w-7xl mx-auto px-6 h-full flex items-center">
-        <div class="max-w-2xl">
-          <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-4">Bartolosch GmbH – seit 1979</p>
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-900 text-barto-deep leading-[1.05] mb-6">
-            Effiziente Zerspanungs&shy;techniken für jede Anforderung
-          </h1>
-          <p class="text-lg text-barto-slate/80 leading-relaxed mb-10 max-w-lg">
-            Auf 10.000 m² fertigen wir mit 90 Dreh- und Fräsmaschinen präzise Teile für die Agrar-, Bau- und Nutzfahrzeugindustrie. Als Tier&nbsp;1 Anbieter steuern wir die gesamte Supply Chain.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="#fertigung" class="bg-barto-deep text-white px-8 py-4 font-semibold text-sm hover:bg-barto-steel transition-colors">
-              Unsere Fertigung
-            </a>
-            <a href="#unternehmen" class="border-2 border-barto-deep text-barto-deep px-8 py-4 font-semibold text-sm hover:bg-barto-deep hover:text-white transition-colors">
-              Mehr erfahren
-            </a>
-          </div>
+  <!-- ============ HERO – FULL SCREEN ============ -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background image with overlay -->
+    <div class="absolute inset-0">
+      <img src="https://bartolosch.de/wp-content/uploads/2023/11/fraesen22-768x576.jpg" alt="CNC Fräsmaschine" class="w-full h-full object-cover scale-105" id="hero-img">
+      <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60"></div>
+    </div>
+
+    <div class="relative max-w-[1400px] mx-auto px-8 pt-20 w-full">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="hero-line h-[3px] bg-barto-deep"></div>
+          <p class="text-barto-steel font-bold text-sm tracking-[0.25em] uppercase">Seit 1979</p>
+        </div>
+
+        <h1 class="text-[clamp(3rem,6vw,5.5rem)] font-black leading-[1.02] tracking-tight mb-8">
+          <span class="gradient-text">Effiziente</span><br>
+          <span class="text-barto-slate">Zerspanungs&shy;techniken</span><br>
+          <span class="text-barto-slate/50 font-light text-[0.65em]">f&uuml;r jede Anforderung</span>
+        </h1>
+
+        <p class="text-xl text-barto-slate/60 leading-relaxed mb-12 max-w-xl font-light">
+          Auf 10.000&nbsp;m&sup2; fertigen wir mit 90 Dreh- und Fr&auml;smaschinen pr&auml;zise Teile f&uuml;r die Agrar-, Bau- und Nutzfahrzeugindustrie.
+        </p>
+
+        <div class="flex flex-wrap gap-5">
+          <a href="#fertigung" class="group bg-barto-deep text-white px-10 py-5 font-bold text-sm tracking-wide hover:bg-barto-steel transition-all duration-300 hover:shadow-2xl hover:shadow-barto-deep/30 hover:-translate-y-1 flex items-center gap-3">
+            Unsere Fertigung
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#unternehmen" class="border-2 border-barto-slate/20 text-barto-slate px-10 py-5 font-bold text-sm tracking-wide hover:border-barto-deep hover:text-barto-deep transition-all duration-300">
+            Mehr erfahren
+          </a>
         </div>
       </div>
     </div>
+
+    <!-- Floating stats on right side -->
+    <div class="hidden xl:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col gap-6 float-anim">
+      <div class="bg-white/90 backdrop-blur-lg shadow-2xl shadow-barto-deep/10 p-6 w-44 text-center">
+        <p class="text-4xl font-black gradient-text" data-count="200">0</p>
+        <p class="text-[11px] text-barto-slate/50 font-semibold uppercase tracking-wider mt-1">Mitarbeiter</p>
+      </div>
+      <div class="bg-white/90 backdrop-blur-lg shadow-2xl shadow-barto-deep/10 p-6 w-44 text-center">
+        <p class="text-4xl font-black gradient-text" data-count="90">0</p>
+        <p class="text-[11px] text-barto-slate/50 font-semibold uppercase tracking-wider mt-1">CNC-Maschinen</p>
+      </div>
+      <div class="bg-white/90 backdrop-blur-lg shadow-2xl shadow-barto-deep/10 p-6 w-44 text-center">
+        <p class="text-4xl font-black gradient-text">10K</p>
+        <p class="text-[11px] text-barto-slate/50 font-semibold uppercase tracking-wider mt-1">m&sup2; Fl&auml;che</p>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-barto-slate/30">Scroll</span>
+      <svg class="w-5 h-5 text-barto-slate/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7"/></svg>
+    </div>
   </section>
 
-  <!-- ============ TRUST STRIP ============ -->
-  <section class="bg-barto-light border-y border-barto-grey">
-    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="flex items-center gap-5 reveal">
-        <img src="https://bartolosch.de/wp-content/uploads/2023/11/friends-icon-1.png" alt="Bedienerfreundlich" class="w-14 h-14 object-contain">
-        <div>
-          <p class="font-bold text-barto-deep text-lg">Bedienerfreundlich</p>
-          <p class="text-sm text-barto-slate/70">Maßgeschneiderte Lösungen für jedes Projekt</p>
+  <!-- ============ TRUST STRIP – BIG NUMBERS ============ -->
+  <section class="relative bg-barto-deep py-0 -mt-1">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div class="flex items-center gap-6 px-10 py-10 reveal" style="--i:0">
+          <img src="https://bartolosch.de/wp-content/uploads/2023/11/friends-icon-1.png" alt="Bedienerfreundlich" class="w-16 h-16 object-contain brightness-0 invert opacity-80">
+          <div>
+            <p class="font-black text-white text-xl">Bedienerfreundlich</p>
+            <p class="text-sm text-white/50 mt-1">Ma&szlig;geschneiderte L&ouml;sungen f&uuml;r jedes Projekt</p>
+          </div>
         </div>
-      </div>
-      <div class="flex items-center gap-5 reveal">
-        <img src="https://bartolosch.de/wp-content/uploads/2023/11/speedometer-icon-1.png" alt="Leistungsstark" class="w-14 h-14 object-contain">
-        <div>
-          <p class="font-bold text-barto-deep text-lg">Leistungsstark</p>
-          <p class="text-sm text-barto-slate/70">90 CNC-Maschinen auf 10.000 m²</p>
+        <div class="flex items-center gap-6 px-10 py-10 reveal" style="--i:1">
+          <img src="https://bartolosch.de/wp-content/uploads/2023/11/speedometer-icon-1.png" alt="Leistungsstark" class="w-16 h-16 object-contain brightness-0 invert opacity-80">
+          <div>
+            <p class="font-black text-white text-xl">Leistungsstark</p>
+            <p class="text-sm text-white/50 mt-1">90 CNC-Maschinen auf 10.000&nbsp;m&sup2;</p>
+          </div>
         </div>
-      </div>
-      <div class="flex items-center gap-5 reveal">
-        <img src="https://bartolosch.de/wp-content/uploads/2023/11/goal-icon-1.png" alt="Höchste Präzision" class="w-14 h-14 object-contain">
-        <div>
-          <p class="font-bold text-barto-deep text-lg">Höchste Präzision</p>
-          <p class="text-sm text-barto-slate/70">ISO 9001:2015 zertifizierte Qualität</p>
+        <div class="flex items-center gap-6 px-10 py-10 reveal" style="--i:2">
+          <img src="https://bartolosch.de/wp-content/uploads/2023/11/goal-icon-1.png" alt="Höchste Präzision" class="w-16 h-16 object-contain brightness-0 invert opacity-80">
+          <div>
+            <p class="font-black text-white text-xl">H&ouml;chste Pr&auml;zision</p>
+            <p class="text-sm text-white/50 mt-1">ISO 9001:2015 zertifizierte Qualit&auml;t</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ UNTERNEHMEN ============ -->
-  <section id="unternehmen" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="reveal">
-          <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Wir sind Bartolosch</p>
-          <h2 class="text-4xl md:text-5xl font-800 text-barto-deep leading-tight mb-6">Das Unternehmen</h2>
-          <p class="text-lg font-semibold text-barto-slate mb-4">Erfahrung. Zuverlässigkeit. Qualität.</p>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Wir sind bundesweit einer der führenden Bearbeitungs- und Zerspanungsbetriebe und Zulieferer von montagefertigen Maschinenbauteilen und Baugruppen. Dabei werden montagefertige Maschinenbauteile und Baugruppen aus verschiedensten Metallen und Legierungen mittels CNC-Bearbeitungszentren in den Bereichen Dreh- und Frästechnik bearbeitet und hergestellt.
+  <section id="unternehmen" class="py-32 bg-white">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-20 items-center">
+        <div class="lg:col-span-5 reveal-left">
+          <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">Wir sind Bartolosch</p>
+          <h2 class="text-5xl md:text-6xl font-black text-barto-slate leading-[1.05] mb-8">
+            Das<br><span class="gradient-text">Unternehmen</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-barto-deep to-barto-steel mb-8"></div>
+          <p class="text-xl font-bold text-barto-slate/80 mb-5">Erfahrung. Zuverl&auml;ssigkeit. Qualit&auml;t.</p>
+          <p class="text-barto-slate/55 leading-[1.85] mb-6">
+            Wir sind bundesweit einer der f&uuml;hrenden Bearbeitungs- und Zerspanungsbetriebe und Zulieferer von montagefertigen Maschinenbauteilen und Baugruppen aus verschiedensten Metallen und Legierungen mittels CNC-Bearbeitungszentren.
           </p>
-          <p class="text-barto-slate/80 leading-relaxed mb-8">
-            Höchstmögliche Maßgenauigkeit wird durch unsere ca. 200 erfahrenen Mitarbeiter, erprobte Zulieferer und den Einsatz multifunktionaler Fertigungssysteme garantiert. Die Bartolosch GmbH fertigt und liefert Vor- oder Kleinserien bis hin zu Großserien an vielfältige Branchen des deutschen Maschinenbaus sowie für die Automobil-, Landmaschinen- oder Baumaschinenindustrie.
+          <p class="text-barto-slate/55 leading-[1.85]">
+            H&ouml;chstm&ouml;gliche Ma&szlig;genauigkeit wird durch unsere ca. 200 erfahrenen Mitarbeiter, erprobte Zulieferer und den Einsatz multifunktionaler Fertigungssysteme garantiert. Von Vor- und Kleinserien bis hin zu Gro&szlig;serien f&uuml;r den Automobil-, Landmaschinen- und Baumaschinenmarkt.
           </p>
-          <div class="grid grid-cols-2 gap-6">
-            <div class="border-l-2 border-barto-steel pl-4">
-              <p class="text-3xl font-800 text-barto-deep">200+</p>
-              <p class="text-sm text-barto-slate/70">Erfahrene Mitarbeiter</p>
+        </div>
+        <div class="lg:col-span-7 reveal-right">
+          <div class="relative">
+            <div class="img-zoom rounded-sm shadow-2xl shadow-barto-slate/10">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_unternehmen_standort.jpg" alt="Bartolosch Standort" class="w-full">
             </div>
-            <div class="border-l-2 border-barto-steel pl-4">
-              <p class="text-3xl font-800 text-barto-deep">10.000 m²</p>
-              <p class="text-sm text-barto-slate/70">Produktionsfläche</p>
-            </div>
-            <div class="border-l-2 border-barto-steel pl-4">
-              <p class="text-3xl font-800 text-barto-deep">90+</p>
-              <p class="text-sm text-barto-slate/70">CNC-Maschinen</p>
-            </div>
-            <div class="border-l-2 border-barto-steel pl-4">
-              <p class="text-3xl font-800 text-barto-deep">Seit 1979</p>
-              <p class="text-sm text-barto-slate/70">Familienunternehmen</p>
+            <!-- Overlapping stats card -->
+            <div class="absolute -bottom-12 -left-8 bg-white shadow-2xl shadow-barto-deep/15 p-8 grid grid-cols-2 gap-6 w-80">
+              <div>
+                <p class="text-4xl font-black gradient-text" data-count="200">0</p>
+                <p class="text-[11px] text-barto-slate/40 font-bold uppercase tracking-wider mt-1">Mitarbeiter</p>
+              </div>
+              <div>
+                <p class="text-4xl font-black gradient-text">10K</p>
+                <p class="text-[11px] text-barto-slate/40 font-bold uppercase tracking-wider mt-1">m&sup2; Fl&auml;che</p>
+              </div>
+              <div>
+                <p class="text-4xl font-black gradient-text" data-count="90">0</p>
+                <p class="text-[11px] text-barto-slate/40 font-bold uppercase tracking-wider mt-1">Maschinen</p>
+              </div>
+              <div>
+                <p class="text-4xl font-black gradient-text">1979</p>
+                <p class="text-[11px] text-barto-slate/40 font-bold uppercase tracking-wider mt-1">Gegr&uuml;ndet</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="reveal">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_unternehmen_standort.jpg" alt="Bartolosch Standort" class="w-full shadow-lg">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ PHILOSOPHIE ============ -->
-  <section class="py-20 bg-barto-deep text-white">
-    <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <h2 class="text-3xl md:text-4xl font-800 mb-6">Alles aus einer Hand</h2>
-      <p class="text-lg text-white/85 leading-relaxed">
-        Bei uns wird auch heute noch nach dem Motto „Alles aus einer Hand" gearbeitet. Planung, Konstruktion, Einkauf, Fertigung und der weltweite Verkauf finden unter einem Dach statt. Nur so können wir unserem Eigenanspruch als Hersteller von qualitativ hochwertigen und zuverlässigen Maschinen und Maschinenbauteilen gerecht werden.
+  <!-- ============ FULL-WIDTH IMAGE BREAK: PHILOSOPHIE ============ -->
+  <section class="relative py-40 parallax-bg" style="background-image: url('https://bartolosch.de/wp-content/uploads/2024/09/Bartolosch_fertigung_produkte_1-768x576.jpg')">
+    <div class="absolute inset-0 bg-barto-deep/85"></div>
+    <div class="relative max-w-4xl mx-auto px-8 text-center reveal-scale">
+      <p class="text-white/40 font-bold text-xs tracking-[0.4em] uppercase mb-6">Unsere Philosophie</p>
+      <h2 class="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-8">
+        Alles aus<br>einer Hand
+      </h2>
+      <div class="w-16 h-1 bg-white/40 mx-auto mb-8"></div>
+      <p class="text-xl text-white/70 leading-relaxed max-w-2xl mx-auto font-light">
+        Planung, Konstruktion, Einkauf, Fertigung und der weltweite Verkauf finden unter einem Dach statt. Nur so k&ouml;nnen wir unserem Eigenanspruch als Hersteller von qualitativ hochwertigen und zuverl&auml;ssigen Maschinenbauteilen gerecht werden.
       </p>
     </div>
   </section>
 
   <!-- ============ FERTIGUNG: DREHEN/FRÄSEN ============ -->
-  <section id="fertigung" class="py-24 bg-barto-light">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 reveal">
-        <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Fertigung</p>
-        <h2 class="text-4xl md:text-5xl font-800 text-barto-deep">Drehen / Fräsen</h2>
+  <section id="fertigung" class="py-32 bg-barto-light">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="text-center mb-20 reveal">
+        <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">Fertigung</p>
+        <h2 class="text-5xl md:text-7xl font-black text-barto-slate leading-[1.05]">
+          Drehen <span class="gradient-text">/</span> Fr&auml;sen
+        </h2>
       </div>
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="grid grid-cols-2 gap-4 reveal">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_4-768x432.jpg" alt="Bartolosch Fertigung" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Bartolosch_fertigung_2-768x432.jpg" alt="Bartolosch Fertigung" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_3-768x432.jpg" alt="Bartolosch Fertigung" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Bartolosch_fertigung_1-1-768x432.jpg" alt="Bartolosch Fertigung" class="w-full shadow-md">
+
+      <!-- Masonry-style image grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 reveal-scale">
+        <div class="img-zoom row-span-2 shadow-lg">
+          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_4-768x432.jpg" alt="Bartolosch Fertigung" class="w-full h-full object-cover">
         </div>
-        <div class="reveal">
-          <h3 class="text-2xl font-700 text-barto-deep mb-6">Präzisionsfertigung auf höchstem Niveau</h3>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Auf einer großzügigen Unternehmensfläche von ca. 10.000 m² setzen wir modernste Technologie ein, um auf etwa 90 Dreh- und Fräsmaschinen eine breite Vielfalt an Teilen mit unterschiedlichsten Anforderungen und Komplexitätsstufen in Lohnfertigung herzustellen. Besonders stolz sind wir auf unsere maßgenauen Produkte, die in der Agrar-, Bau- und Nutzfahrzeugeindustrie Verwendung finden.
+        <div class="img-zoom shadow-lg">
+          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Bartolosch_fertigung_2-768x432.jpg" alt="Bartolosch Fertigung" class="w-full h-full object-cover">
+        </div>
+        <div class="img-zoom shadow-lg col-span-2">
+          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Bartolosch_fertigung_1-1-768x432.jpg" alt="Bartolosch Fertigung" class="w-full object-cover">
+        </div>
+        <div class="img-zoom shadow-lg col-span-3">
+          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_3-768x432.jpg" alt="Bartolosch Fertigung" class="w-full h-56 object-cover">
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-20 items-start">
+        <div class="reveal-left">
+          <h3 class="text-3xl font-black text-barto-slate mb-6">Pr&auml;zisionsfertigung auf h&ouml;chstem Niveau</h3>
+          <p class="text-barto-slate/55 leading-[1.85] mb-6">
+            Auf einer gro&szlig;z&uuml;gigen Unternehmensfl&auml;che von ca. 10.000&nbsp;m&sup2; setzen wir modernste Technologie ein, um auf etwa 90 Dreh- und Fr&auml;smaschinen eine breite Vielfalt an Teilen mit unterschiedlichsten Anforderungen und Komplexit&auml;tsstufen in Lohnfertigung herzustellen.
           </p>
-          <p class="text-barto-slate/80 leading-relaxed mb-8">
-            Als führender Tier 1 Anbieter steuern wir bei einigen dieser Teilegruppen die gesamte Supply Chain, angefangen von der Beschaffung über die Fertigung bis hin zur Qualitätssicherung und Koordination eines Netzwerkes von Oberflächenbeschichtern.
+          <p class="text-barto-slate/55 leading-[1.85]">
+            Als f&uuml;hrender Tier&nbsp;1 Anbieter steuern wir die gesamte Supply Chain, von der Beschaffung &uuml;ber die Fertigung bis zur Qualit&auml;tssicherung und Koordination eines Netzwerkes von Oberfl&auml;chenbeschichtern.
           </p>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <div class="w-2 h-2 bg-barto-steel rounded-full shrink-0"></div>
-              <span class="text-barto-slate/80">Vor- und Kleinserien bis Großserien</span>
+        </div>
+        <div class="reveal-right">
+          <div class="space-y-4 stagger">
+            <div class="bg-white p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5" style="--i:0">
+              <div class="w-12 h-12 bg-barto-deep/10 flex items-center justify-center shrink-0">
+                <div class="w-3 h-3 bg-barto-deep"></div>
+              </div>
+              <span class="text-barto-slate/70 font-medium">Vor- und Kleinserien bis Gro&szlig;serien</span>
             </div>
-            <div class="flex items-center gap-3">
-              <div class="w-2 h-2 bg-barto-steel rounded-full shrink-0"></div>
-              <span class="text-barto-slate/80">Verschiedenste Metalle und Legierungen</span>
+            <div class="bg-white p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5" style="--i:1">
+              <div class="w-12 h-12 bg-barto-deep/10 flex items-center justify-center shrink-0">
+                <div class="w-3 h-3 bg-barto-deep"></div>
+              </div>
+              <span class="text-barto-slate/70 font-medium">Verschiedenste Metalle und Legierungen</span>
             </div>
-            <div class="flex items-center gap-3">
-              <div class="w-2 h-2 bg-barto-steel rounded-full shrink-0"></div>
-              <span class="text-barto-slate/80">Komplette Supply-Chain-Steuerung als Tier 1</span>
+            <div class="bg-white p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5" style="--i:2">
+              <div class="w-12 h-12 bg-barto-deep/10 flex items-center justify-center shrink-0">
+                <div class="w-3 h-3 bg-barto-deep"></div>
+              </div>
+              <span class="text-barto-slate/70 font-medium">Komplette Supply-Chain-Steuerung als Tier&nbsp;1</span>
             </div>
-            <div class="flex items-center gap-3">
-              <div class="w-2 h-2 bg-barto-steel rounded-full shrink-0"></div>
-              <span class="text-barto-slate/80">Multifunktionale CNC-Bearbeitungszentren</span>
+            <div class="bg-white p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-5" style="--i:3">
+              <div class="w-12 h-12 bg-barto-deep/10 flex items-center justify-center shrink-0">
+                <div class="w-3 h-3 bg-barto-deep"></div>
+              </div>
+              <span class="text-barto-slate/70 font-medium">Multifunktionale CNC-Bearbeitungszentren</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Produktbilder -->
-      <div class="mt-20 reveal">
-        <h3 class="text-center text-xl font-700 text-barto-deep mb-10">Unsere Produkte</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_1_1280_853.png" alt="Bartolosch Produkt 1" class="w-full bg-white shadow-md p-4">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_2_1280_853.png" alt="Bartolosch Produkt 2" class="w-full bg-white shadow-md p-4">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_3_1280_853.png" alt="Bartolosch Produkt 3" class="w-full bg-white shadow-md p-4">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_4_1280_853.png" alt="Bartolosch Produkt 4" class="w-full bg-white shadow-md p-4">
+      <!-- Products showcase -->
+      <div class="mt-24 reveal">
+        <h3 class="text-center text-2xl font-black text-barto-slate mb-12">Unsere Produkte</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="bg-white p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+            <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_1_1280_853.png" alt="Bartolosch Produkt" class="w-full transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="bg-white p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+            <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_2_1280_853.png" alt="Bartolosch Produkt" class="w-full transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="bg-white p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+            <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_3_1280_853.png" alt="Bartolosch Produkt" class="w-full transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="bg-white p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+            <img src="https://bartolosch.de/wp-content/uploads/2024/07/Produkt_4_1280_853.png" alt="Bartolosch Produkt" class="w-full transition-transform duration-500 group-hover:scale-105">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ MONTAGE ============ -->
-  <section id="montage" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="reveal">
-          <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Fertigung</p>
-          <h2 class="text-4xl md:text-5xl font-800 text-barto-deep leading-tight mb-6">Montage</h2>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Für unsere Kunden sowie Partnerunternehmen leisten wir weltweit die Fertigung von verschiedenen Dreh- und Frästeilen sowie die Montage von Baugruppen bis hin zur kompletten Maschine. Dabei gehen wir bei der Bartolosch GmbH über die reine Produktion hinaus und verantworten die gesamte Wertschöpfungskette von der Bauteilentwicklung bis zur Just-in-Time-Lieferung.
+  <section id="montage" class="py-32 bg-white">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-20 items-center">
+        <div class="lg:col-span-5 reveal-left">
+          <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">Fertigung</p>
+          <h2 class="text-5xl md:text-6xl font-black text-barto-slate leading-[1.05] mb-8">
+            <span class="gradient-text">Montage</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-barto-deep to-barto-steel mb-8"></div>
+          <p class="text-barto-slate/55 leading-[1.85] mb-6">
+            F&uuml;r unsere Kunden sowie Partnerunternehmen leisten wir weltweit die Fertigung von verschiedenen Dreh- und Fr&auml;steilen sowie die Montage von Baugruppen bis hin zur kompletten Maschine. Wir verantworten die gesamte Wertsch&ouml;pfungskette von der Bauteilentwicklung bis zur Just-in-Time-Lieferung.
           </p>
-          <p class="text-barto-slate/80 leading-relaxed">
-            Unsere enge Zusammenarbeit mit Kunden und Partnern ermöglicht es uns, maßgeschneiderte Lösungen anzubieten, die den individuellen Anforderungen und Bedürfnissen jedes Projekts gerecht werden. Durch unsere Expertise und unser Engagement gewährleisten wir eine reibungslose und effiziente Abwicklung vom ersten Konzept bis zur Auslieferung, immer mit dem Ziel höchster Kundenzufriedenheit im Blick.
+          <p class="text-barto-slate/55 leading-[1.85]">
+            Durch unsere Expertise gew&auml;hrleisten wir eine reibungslose und effiziente Abwicklung vom ersten Konzept bis zur Auslieferung, immer mit dem Ziel h&ouml;chster Kundenzufriedenheit.
           </p>
         </div>
-        <div class="grid grid-cols-2 gap-4 reveal">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_4-768x432.jpg" alt="Bartolosch Montage" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_3-768x432.jpg" alt="Bartolosch Montage" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_2-768x432.jpg" alt="Bartolosch Montage" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_1-768x432.jpg" alt="Bartolosch Montage" class="w-full shadow-md">
+        <div class="lg:col-span-7 reveal-right">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="img-zoom shadow-lg">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_4-768x432.jpg" alt="Montage" class="w-full h-full object-cover">
+            </div>
+            <div class="img-zoom shadow-lg translate-y-8">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_3-768x432.jpg" alt="Montage" class="w-full h-full object-cover">
+            </div>
+            <div class="img-zoom shadow-lg">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_2-768x432.jpg" alt="Montage" class="w-full h-full object-cover">
+            </div>
+            <div class="img-zoom shadow-lg translate-y-8">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_montage_1-768x432.jpg" alt="Montage" class="w-full h-full object-cover">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ FULL-WIDTH IMAGE BREAK ============ -->
+  <section class="relative py-32 parallax-bg" style="background-image: url('https://bartolosch.de/wp-content/uploads/2024/09/Bartolosch_fertigung_produkte_2-768x576.jpg')">
+    <div class="absolute inset-0 bg-barto-slate/80"></div>
+    <div class="relative max-w-[1400px] mx-auto px-8 grid md:grid-cols-4 gap-12 text-center reveal">
+      <div>
+        <p class="text-6xl font-black text-white mb-2" data-count="200">0</p>
+        <p class="text-white/40 font-bold text-xs tracking-[0.3em] uppercase">Mitarbeiter</p>
+      </div>
+      <div>
+        <p class="text-6xl font-black text-white mb-2" data-count="90">0</p>
+        <p class="text-white/40 font-bold text-xs tracking-[0.3em] uppercase">CNC-Maschinen</p>
+      </div>
+      <div>
+        <p class="text-6xl font-black text-white mb-2" data-count="45">0</p>
+        <p class="text-white/40 font-bold text-xs tracking-[0.3em] uppercase">Jahre Erfahrung</p>
+      </div>
+      <div>
+        <p class="text-6xl font-black text-white mb-2">10K</p>
+        <p class="text-white/40 font-bold text-xs tracking-[0.3em] uppercase">m&sup2; Produktion</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ QUALITÄT ============ -->
-  <section id="qualitaet" class="py-24 bg-barto-light">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="grid grid-cols-2 gap-4 reveal">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_qs_2-768x432.jpg" alt="Bartolosch Qualitätssicherung" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_qs_1-768x432.jpg" alt="Bartolosch Qualitätssicherung" class="w-full shadow-md">
-          <div class="col-span-2 bg-white shadow-md p-8 flex items-center gap-6">
-            <img src="https://bartolosch.de/wp-content/uploads/2022/12/Bildschirmfoto-2024-09-19-um-16.14.20-768x1087.png" alt="ISO 9001:2015 Zertifikat" class="h-32 object-contain">
+  <section id="qualitaet" class="py-32 bg-white">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-20 items-center">
+        <div class="lg:col-span-7 reveal-left">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="img-zoom shadow-lg">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_qs_2-768x432.jpg" alt="Qualit&auml;tssicherung" class="w-full object-cover">
+            </div>
+            <div class="img-zoom shadow-lg translate-y-8">
+              <img src="https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_qs_1-768x432.jpg" alt="Qualit&auml;tssicherung" class="w-full object-cover">
+            </div>
+          </div>
+          <!-- ISO Badge -->
+          <div class="mt-6 bg-barto-ice p-8 flex items-center gap-8 shadow-sm">
+            <img src="https://bartolosch.de/wp-content/uploads/2022/12/Bildschirmfoto-2024-09-19-um-16.14.20-768x1087.png" alt="ISO Zertifikat" class="h-36 object-contain">
             <div>
-              <p class="font-bold text-barto-deep text-lg">ISO 9001:2015</p>
-              <p class="text-sm text-barto-slate/70">Zertifiziertes Qualitätsmanagement</p>
+              <p class="text-3xl font-black gradient-text">ISO 9001:2015</p>
+              <p class="text-barto-slate/50 mt-2">Zertifiziertes Qualit&auml;tsmanagement</p>
             </div>
           </div>
         </div>
-        <div class="reveal">
-          <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Fertigung</p>
-          <h2 class="text-4xl md:text-5xl font-800 text-barto-deep leading-tight mb-6">Qualitätssicherung</h2>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Wir verfügen über einen breit aufgestellten Messmaschinenpark mit modernsten Prüfverfahren. Unsere qualifizierten Mitarbeiter garantieren uns aussagekräftige Ergebnisse und tragen einen wesentlichen Teil zu unserer Kundenzufriedenheit bei. Bei uns stehen kundenspezifische Anforderungen im Fokus.
+        <div class="lg:col-span-5 reveal-right">
+          <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">Fertigung</p>
+          <h2 class="text-5xl md:text-6xl font-black text-barto-slate leading-[1.05] mb-8">
+            Qualit&auml;ts&shy;<span class="gradient-text">sicherung</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-barto-deep to-barto-steel mb-8"></div>
+          <p class="text-barto-slate/55 leading-[1.85] mb-6">
+            Wir verf&uuml;gen &uuml;ber einen breit aufgestellten Messmaschinenpark mit modernsten Pr&uuml;fverfahren. Durch umfassende Risikoanalysen sowie stetige System- und Prozessoptimierungsverfahren stellen wir sicher, dass die Qualit&auml;t unserer Produkte jederzeit h&ouml;chsten Anspr&uuml;chen gen&uuml;gt.
           </p>
-          <p class="text-barto-slate/80 leading-relaxed mb-8">
-            Durch umfassende Risikoanalysen sowie stetige System- und Prozessoptimierungsverfahren stellen wir sicher, dass die Qualität unserer Produkte jederzeit höchsten Ansprüchen genügt.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white p-5 shadow-sm">
-              <p class="font-bold text-barto-deep mb-1">Unsere Qualität</p>
-              <ul class="text-sm text-barto-slate/80 space-y-1.5">
-                <li>Gut ausgebildetes Qualitätsmanagement</li>
-                <li>Dokumentation der Prozessabläufe</li>
+          <div class="grid grid-cols-1 gap-4 mt-8">
+            <div class="bg-barto-light p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <p class="font-black text-barto-deep mb-3">Unsere Qualit&auml;t</p>
+              <ul class="text-sm text-barto-slate/55 space-y-2 leading-relaxed">
+                <li>Gut ausgebildetes Qualit&auml;tsmanagement</li>
+                <li>Dokumentation der Prozessabl&auml;ufe</li>
                 <li>Hochmodernes QM-System</li>
                 <li>Konstruktion & Entwicklung im Hause</li>
               </ul>
             </div>
-            <div class="bg-white p-5 shadow-sm">
-              <p class="font-bold text-barto-deep mb-1">Unsere Werte</p>
-              <ul class="text-sm text-barto-slate/80 space-y-1.5">
-                <li>Zukunfts- und qualitätsorientiert</li>
-                <li>Verantwortung und Loyalität</li>
+            <div class="bg-barto-light p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <p class="font-black text-barto-deep mb-3">Unsere Werte</p>
+              <ul class="text-sm text-barto-slate/55 space-y-2 leading-relaxed">
+                <li>Zukunfts- und qualit&auml;tsorientiert</li>
+                <li>Verantwortung und Loyalit&auml;t</li>
                 <li>Offenheit und Vertrauen</li>
-                <li>Zuverlässig und glaubwürdig</li>
+                <li>Zuverl&auml;ssig und glaubw&uuml;rdig</li>
               </ul>
             </div>
           </div>
@@ -331,102 +524,129 @@
   </section>
 
   <!-- ============ PROZESSKETTE ============ -->
-  <section id="prozesskette" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 reveal">
-        <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Von der Idee bis zur Lieferung</p>
-        <h2 class="text-4xl md:text-5xl font-800 text-barto-deep">Unsere Prozesskette</h2>
+  <section id="prozesskette" class="py-32 bg-barto-light">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="text-center mb-20 reveal">
+        <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">Von der Idee bis zur Lieferung</p>
+        <h2 class="text-5xl md:text-7xl font-black text-barto-slate leading-[1.05]">
+          Unsere <span class="gradient-text">Prozesskette</span>
+        </h2>
       </div>
+
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8 reveal">
-        <!-- Step 1 -->
-        <div class="relative process-step text-center group">
-          <div class="w-20 h-20 mx-auto mb-5 bg-barto-deep text-white rounded-full flex items-center justify-center text-2xl font-800">1</div>
-          <h4 class="font-700 text-barto-deep mb-2">Entwicklung</h4>
-          <p class="text-sm text-barto-slate/70">Entwicklung des Rohteils und dessen Beschaffung</p>
-          <span class="inline-block mt-3 text-[10px] font-semibold tracking-wider uppercase text-barto-steel bg-barto-light px-3 py-1">Eigenleistung</span>
+        <div class="process-card bg-white p-8 text-center shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-barto-deep to-barto-steel text-white flex items-center justify-center text-3xl font-black transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">1</div>
+          <h4 class="font-black text-barto-deep text-lg mb-2">Entwicklung</h4>
+          <p class="text-sm text-barto-slate/50 leading-relaxed">Rohteilentwicklung und Beschaffung</p>
+          <span class="inline-block mt-4 text-[10px] font-bold tracking-[0.2em] uppercase text-barto-deep bg-barto-ice px-4 py-1.5">Eigen</span>
         </div>
-        <!-- Step 2 -->
-        <div class="relative process-step text-center group">
-          <div class="w-20 h-20 mx-auto mb-5 bg-barto-deep text-white rounded-full flex items-center justify-center text-2xl font-800">2</div>
-          <h4 class="font-700 text-barto-deep mb-2">Bearbeitung</h4>
-          <p class="text-sm text-barto-slate/70">Bearbeitung der Teile mittels CNC</p>
-          <span class="inline-block mt-3 text-[10px] font-semibold tracking-wider uppercase text-barto-steel bg-barto-light px-3 py-1">Eigenleistung</span>
+        <div class="process-card bg-white p-8 text-center shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group md:translate-y-6">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-barto-deep to-barto-steel text-white flex items-center justify-center text-3xl font-black transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">2</div>
+          <h4 class="font-black text-barto-deep text-lg mb-2">Bearbeitung</h4>
+          <p class="text-sm text-barto-slate/50 leading-relaxed">CNC Dreh- und Fr&auml;sbearbeitung</p>
+          <span class="inline-block mt-4 text-[10px] font-bold tracking-[0.2em] uppercase text-barto-deep bg-barto-ice px-4 py-1.5">Eigen</span>
         </div>
-        <!-- Step 3 -->
-        <div class="relative process-step text-center group">
-          <div class="w-20 h-20 mx-auto mb-5 bg-barto-steel text-white rounded-full flex items-center justify-center text-2xl font-800">3</div>
-          <h4 class="font-700 text-barto-deep mb-2">Beschichtung</h4>
-          <p class="text-sm text-barto-slate/70">Oberflächen&shy;beschichtung der Teile</p>
-          <span class="inline-block mt-3 text-[10px] font-semibold tracking-wider uppercase text-white bg-barto-steel px-3 py-1">Partnerleistung</span>
+        <div class="process-card bg-white p-8 text-center shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-barto-steel to-barto-steel/60 text-white flex items-center justify-center text-3xl font-black transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">3</div>
+          <h4 class="font-black text-barto-deep text-lg mb-2">Beschichtung</h4>
+          <p class="text-sm text-barto-slate/50 leading-relaxed">Oberfl&auml;chen&shy;beschichtung</p>
+          <span class="inline-block mt-4 text-[10px] font-bold tracking-[0.2em] uppercase text-white bg-barto-steel px-4 py-1.5">Partner</span>
         </div>
-        <!-- Step 4 -->
-        <div class="relative process-step text-center group">
-          <div class="w-20 h-20 mx-auto mb-5 bg-barto-deep text-white rounded-full flex items-center justify-center text-2xl font-800">4</div>
-          <h4 class="font-700 text-barto-deep mb-2">Vormontage</h4>
-          <p class="text-sm text-barto-slate/70">Zusammenbau der Baugruppen</p>
-          <span class="inline-block mt-3 text-[10px] font-semibold tracking-wider uppercase text-barto-steel bg-barto-light px-3 py-1">Eigenleistung</span>
+        <div class="process-card bg-white p-8 text-center shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group md:translate-y-6">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-barto-deep to-barto-steel text-white flex items-center justify-center text-3xl font-black transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">4</div>
+          <h4 class="font-black text-barto-deep text-lg mb-2">Vormontage</h4>
+          <p class="text-sm text-barto-slate/50 leading-relaxed">Baugruppen&shy;zusammenbau</p>
+          <span class="inline-block mt-4 text-[10px] font-bold tracking-[0.2em] uppercase text-barto-deep bg-barto-ice px-4 py-1.5">Eigen</span>
         </div>
-        <!-- Step 5 -->
-        <div class="relative process-step text-center group">
-          <div class="w-20 h-20 mx-auto mb-5 bg-barto-deep text-white rounded-full flex items-center justify-center text-2xl font-800">5</div>
-          <h4 class="font-700 text-barto-deep mb-2">Transport</h4>
-          <p class="text-sm text-barto-slate/70">Verpackung und Transport bis zum Endkunden</p>
-          <span class="inline-block mt-3 text-[10px] font-semibold tracking-wider uppercase text-barto-steel bg-barto-light px-3 py-1">Eigenleistung</span>
+        <div class="process-card bg-white p-8 text-center shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-barto-deep to-barto-steel text-white flex items-center justify-center text-3xl font-black transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">5</div>
+          <h4 class="font-black text-barto-deep text-lg mb-2">Transport</h4>
+          <p class="text-sm text-barto-slate/50 leading-relaxed">Verpackung & Lieferung</p>
+          <span class="inline-block mt-4 text-[10px] font-bold tracking-[0.2em] uppercase text-barto-deep bg-barto-ice px-4 py-1.5">Eigen</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ GESCHICHTE / ERFOLGSGESCHICHTE ============ -->
-  <section id="geschichte" class="py-24 bg-barto-light">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-start">
-        <div class="reveal">
-          <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Über 40 Jahre Erfahrung</p>
-          <h2 class="text-4xl md:text-5xl font-800 text-barto-deep leading-tight mb-6">Unsere Erfolgsgeschichte</h2>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Beständigkeit und Wachstum prägen das Bild von Bartolosch. Jahrzehntelang hat sich Bartolosch zu einem führenden Anbieter von montagefertigen Maschinenbauteilen und Baugruppen entwickelt. Das fundierte Know-how unserer rund 200 hochqualifizierten Mitarbeiter, unsere klaren Unternehmensziele und die kontinuierliche Kundenzufriedenheit bilden die Grundlage unseres Erfolgs.
-          </p>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Auf höchstem Niveau aktiv – so lautet die Unternehmensphilosophie von Bartolosch. Diese Philosophie hat uns zu einer Spitzenstellung im Markt geführt. Unsere geschulten Fachkräfte in Beratung, Planung, Produktion und Qualitätskontrolle gewährleisten ein herausragendes Endprodukt.
-          </p>
-          <p class="text-barto-slate/80 leading-relaxed">
-            Willkommen in der Zukunft – bei Bartolosch. Unsere Investitionen sind gezielt auf modernste Maschinentechnik und Bearbeitungszentren ausgerichtet. Die Integration neuester CNC-Technologie in den Produktionsprozess ist ein zentraler Bestandteil unserer Zukunftsstrategie.
-          </p>
-        </div>
-        <div class="space-y-6 reveal">
-          <img src="https://bartolosch.de/wp-content/uploads/2022/12/schelbach-hauptsitz-768x511.jpg" alt="Bartolosch Hauptsitz Schelbach" class="w-full shadow-md">
-          <img src="https://bartolosch.de/wp-content/uploads/2022/12/schelbach-lager-768x511.jpg" alt="Bartolosch Lager" class="w-full shadow-md">
+  <!-- ============ GESCHICHTE ============ -->
+  <section id="geschichte" class="py-32 bg-white">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="text-center mb-20 reveal">
+        <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">&Uuml;ber 40 Jahre Erfahrung</p>
+        <h2 class="text-5xl md:text-7xl font-black text-barto-slate leading-[1.05]">
+          Unsere <span class="gradient-text">Geschichte</span>
+        </h2>
+      </div>
 
-          <!-- Timeline Highlights -->
-          <div class="bg-white p-8 shadow-sm">
-            <h4 class="font-700 text-barto-deep mb-4">Meilensteine</h4>
-            <div class="space-y-4 text-sm">
-              <div class="flex gap-4">
-                <span class="font-800 text-barto-deep whitespace-nowrap">1979</span>
-                <span class="text-barto-slate/80">Gründung der Bartolosch-Maschinen GmbH in Friedewald, Westerwald</span>
+      <div class="grid lg:grid-cols-2 gap-20 items-start">
+        <div class="reveal-left">
+          <p class="text-xl text-barto-slate/55 leading-[1.85] mb-8">
+            Best&auml;ndigkeit und Wachstum pr&auml;gen das Bild von Bartolosch. Jahrzehntelang hat sich Bartolosch zu einem f&uuml;hrenden Anbieter von montagefertigen Maschinenbauteilen und Baugruppen entwickelt. Das fundierte Know-how unserer rund 200 hochqualifizierten Mitarbeiter bildet die Grundlage unseres Erfolgs.
+          </p>
+          <p class="text-barto-slate/55 leading-[1.85] mb-8">
+            Auf h&ouml;chstem Niveau aktiv &ndash; so lautet die Unternehmensphilosophie von Bartolosch. Diese Philosophie hat uns zu einer Spitzenstellung im Markt gef&uuml;hrt. Unsere Investitionen sind gezielt auf modernste Maschinentechnik und Bearbeitungszentren ausgerichtet.
+          </p>
+
+          <!-- Timeline -->
+          <div class="space-y-0 mt-12">
+            <div class="flex gap-6 group">
+              <div class="flex flex-col items-center">
+                <div class="w-4 h-4 bg-barto-deep rounded-full shrink-0 group-hover:scale-125 transition-transform"></div>
+                <div class="w-0.5 h-full bg-barto-grey"></div>
               </div>
-              <div class="flex gap-4">
-                <span class="font-800 text-barto-deep whitespace-nowrap">1981</span>
-                <span class="text-barto-slate/80">Durchbruch mit der ersten breitenverstellbaren Profiliermaschine</span>
-              </div>
-              <div class="flex gap-4">
-                <span class="font-800 text-barto-deep whitespace-nowrap">1985</span>
-                <span class="text-barto-slate/80">Entwicklung der Rundblechformmaschine</span>
-              </div>
-              <div class="flex gap-4">
-                <span class="font-800 text-barto-deep whitespace-nowrap">1989</span>
-                <span class="text-barto-slate/80">EHA-Stanzeinheit</span>
-              </div>
-              <div class="flex gap-4">
-                <span class="font-800 text-barto-deep whitespace-nowrap">1997</span>
-                <span class="text-barto-slate/80">QUADRO Profiliermaschine</span>
-              </div>
-              <div class="flex gap-4">
-                <span class="font-800 text-barto-deep whitespace-nowrap">Heute</span>
-                <span class="text-barto-slate/80">Ca. 200 Mitarbeiter, 10.000 m², Geschäftsführung Patric Meeth & Christoph Gerigk</span>
+              <div class="pb-10">
+                <p class="text-2xl font-black gradient-text">1979</p>
+                <p class="text-barto-slate/55 mt-1">Gr&uuml;ndung der Bartolosch-Maschinen GmbH in Friedewald, Westerwald</p>
               </div>
             </div>
+            <div class="flex gap-6 group">
+              <div class="flex flex-col items-center">
+                <div class="w-4 h-4 bg-barto-deep rounded-full shrink-0 group-hover:scale-125 transition-transform"></div>
+                <div class="w-0.5 h-full bg-barto-grey"></div>
+              </div>
+              <div class="pb-10">
+                <p class="text-2xl font-black gradient-text">1981</p>
+                <p class="text-barto-slate/55 mt-1">Durchbruch mit der ersten breitenverstellbaren Profiliermaschine</p>
+              </div>
+            </div>
+            <div class="flex gap-6 group">
+              <div class="flex flex-col items-center">
+                <div class="w-4 h-4 bg-barto-steel rounded-full shrink-0 group-hover:scale-125 transition-transform"></div>
+                <div class="w-0.5 h-full bg-barto-grey"></div>
+              </div>
+              <div class="pb-10">
+                <p class="text-2xl font-black gradient-text">1985</p>
+                <p class="text-barto-slate/55 mt-1">Entwicklung der Rundblechformmaschine</p>
+              </div>
+            </div>
+            <div class="flex gap-6 group">
+              <div class="flex flex-col items-center">
+                <div class="w-4 h-4 bg-barto-steel rounded-full shrink-0 group-hover:scale-125 transition-transform"></div>
+                <div class="w-0.5 h-full bg-barto-grey"></div>
+              </div>
+              <div class="pb-10">
+                <p class="text-2xl font-black gradient-text">1997</p>
+                <p class="text-barto-slate/55 mt-1">QUADRO Profiliermaschine</p>
+              </div>
+            </div>
+            <div class="flex gap-6 group">
+              <div class="flex flex-col items-center">
+                <div class="w-4 h-4 bg-barto-deep rounded-full shrink-0 group-hover:scale-125 transition-transform"></div>
+              </div>
+              <div>
+                <p class="text-2xl font-black gradient-text">Heute</p>
+                <p class="text-barto-slate/55 mt-1">Ca. 200 Mitarbeiter, 10.000&nbsp;m&sup2;, Gesch&auml;ftsf&uuml;hrung Patric Meeth & Christoph Gerigk</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6 reveal-right">
+          <div class="img-zoom shadow-2xl shadow-barto-slate/10">
+            <img src="https://bartolosch.de/wp-content/uploads/2022/12/schelbach-hauptsitz-768x511.jpg" alt="Hauptsitz" class="w-full">
+          </div>
+          <div class="img-zoom shadow-2xl shadow-barto-slate/10">
+            <img src="https://bartolosch.de/wp-content/uploads/2022/12/schelbach-lager-768x511.jpg" alt="Lager" class="w-full">
           </div>
         </div>
       </div>
@@ -434,143 +654,193 @@
   </section>
 
   <!-- ============ BRANCHEN ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6 reveal">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-800 text-barto-deep">Branchen, die wir bedienen</h2>
+  <section class="py-24 bg-barto-light">
+    <div class="max-w-[1400px] mx-auto px-8 reveal">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black text-barto-slate">Branchen, die wir <span class="gradient-text">bedienen</span></h2>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="bg-barto-light p-8 text-center">
-          <svg class="w-10 h-10 mx-auto mb-4 text-barto-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h.01M12 7h.01M16 7h.01M3 12h18M3 7h18M3 17h18"/></svg>
-          <p class="font-700 text-barto-deep text-sm">Agrar&shy;industrie</p>
+        <div class="bg-white p-10 text-center shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+          <div class="w-16 h-16 mx-auto mb-5 bg-barto-ice flex items-center justify-center group-hover:bg-barto-deep transition-colors duration-300">
+            <svg class="w-8 h-8 text-barto-steel group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12h18M3 7h18M3 17h18"/></svg>
+          </div>
+          <p class="font-black text-barto-deep">Agrar&shy;industrie</p>
         </div>
-        <div class="bg-barto-light p-8 text-center">
-          <svg class="w-10 h-10 mx-auto mb-4 text-barto-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          <p class="font-700 text-barto-deep text-sm">Bau&shy;industrie</p>
+        <div class="bg-white p-10 text-center shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+          <div class="w-16 h-16 mx-auto mb-5 bg-barto-ice flex items-center justify-center group-hover:bg-barto-deep transition-colors duration-300">
+            <svg class="w-8 h-8 text-barto-steel group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <p class="font-black text-barto-deep">Bau&shy;industrie</p>
         </div>
-        <div class="bg-barto-light p-8 text-center">
-          <svg class="w-10 h-10 mx-auto mb-4 text-barto-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          <p class="font-700 text-barto-deep text-sm">Nutzfahrzeug&shy;industrie</p>
+        <div class="bg-white p-10 text-center shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+          <div class="w-16 h-16 mx-auto mb-5 bg-barto-ice flex items-center justify-center group-hover:bg-barto-deep transition-colors duration-300">
+            <svg class="w-8 h-8 text-barto-steel group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <p class="font-black text-barto-deep">Nutzfahrzeuge</p>
         </div>
-        <div class="bg-barto-light p-8 text-center">
-          <svg class="w-10 h-10 mx-auto mb-4 text-barto-steel" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <p class="font-700 text-barto-deep text-sm">Maschinen&shy;bau</p>
+        <div class="bg-white p-10 text-center shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+          <div class="w-16 h-16 mx-auto mb-5 bg-barto-ice flex items-center justify-center group-hover:bg-barto-deep transition-colors duration-300">
+            <svg class="w-8 h-8 text-barto-steel group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <p class="font-black text-barto-deep">Maschinenbau</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CTA BANNER ============ -->
-  <section id="kontakt" class="py-24 bg-barto-deep">
-    <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <h2 class="text-4xl md:text-5xl font-800 text-white mb-6">Präzise. Effizient. Maßgeschneidert.</h2>
-      <p class="text-lg text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto">
-        Seit mehreren Jahrzehnten setzen wir Maßstäbe mit fortschrittlicher Bearbeitungstechnologie und modernster Produktionsausstattung. Kontaktieren Sie uns noch heute, um mehr darüber zu erfahren, wie Bartolosch Ihnen mit maßgeschneiderten Lösungen und erstklassigem Service helfen kann.
+  <!-- ============ CTA ============ -->
+  <section id="kontakt" class="relative py-40 parallax-bg" style="background-image: url('https://bartolosch.de/wp-content/uploads/2024/04/Bartolosch_fertigung_4-768x432.jpg')">
+    <div class="absolute inset-0 bg-gradient-to-br from-barto-deep via-barto-deep/95 to-barto-steel/90"></div>
+    <div class="relative max-w-4xl mx-auto px-8 text-center reveal-scale">
+      <h2 class="text-5xl md:text-8xl font-black text-white leading-[1.02] mb-4">
+        Pr&auml;zise.
+      </h2>
+      <h2 class="text-5xl md:text-8xl font-black text-white/60 leading-[1.02] mb-4">
+        Effizient.
+      </h2>
+      <h2 class="text-5xl md:text-8xl font-black text-white/30 leading-[1.02] mb-12">
+        Ma&szlig;geschneidert.
+      </h2>
+      <p class="text-xl text-white/60 leading-relaxed mb-14 max-w-2xl mx-auto font-light">
+        Kontaktieren Sie uns noch heute und erfahren Sie, wie Bartolosch Ihnen mit erstklassigem Service helfen kann.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://bartolosch.de/kontakt/" class="bg-white text-barto-deep px-10 py-4 font-semibold text-sm hover:bg-barto-light transition-colors">
+      <div class="flex flex-wrap justify-center gap-5">
+        <a href="https://bartolosch.de/kontakt/" class="bg-white text-barto-deep px-12 py-5 font-black text-sm tracking-wide hover:bg-barto-light transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
           Kontakt aufnehmen
         </a>
-        <a href="tel:+4906749140" class="border-2 border-white text-white px-10 py-4 font-semibold text-sm hover:bg-white/10 transition-colors">
+        <a href="tel:+4906749140" class="border-2 border-white/30 text-white px-12 py-5 font-bold text-sm tracking-wide hover:border-white hover:bg-white/10 transition-all duration-300">
           06741 / 9140
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ KARRIERE TEASER ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
-        <div>
-          <p class="text-barto-steel font-semibold text-sm tracking-widest uppercase mb-3">Karriere</p>
-          <h2 class="text-4xl font-800 text-barto-deep mb-4">Komm ins Team!</h2>
-          <p class="text-barto-slate/80 leading-relaxed mb-6">
-            Werden Sie Teil eines innovativen Familienunternehmens mit über 200 Mitarbeitern im Westerwald. Wir suchen qualifizierte Fachkräfte, die gemeinsam mit uns die Zukunft der Zerspanungstechnik gestalten.
+  <!-- ============ KARRIERE ============ -->
+  <section class="py-32 bg-white">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-20 items-center">
+        <div class="lg:col-span-5 reveal-left">
+          <p class="text-barto-steel font-bold text-xs tracking-[0.3em] uppercase mb-5">Karriere</p>
+          <h2 class="text-5xl md:text-6xl font-black text-barto-slate leading-[1.05] mb-8">
+            Komm ins<br><span class="gradient-text">Team!</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-barto-deep to-barto-steel mb-8"></div>
+          <p class="text-barto-slate/55 leading-[1.85] mb-10">
+            Werden Sie Teil eines innovativen Familienunternehmens mit &uuml;ber 200 Mitarbeitern im Westerwald. Wir suchen qualifizierte Fachkr&auml;fte, die gemeinsam mit uns die Zukunft der Zerspanungstechnik gestalten.
           </p>
-          <a href="https://bartolosch.de/karriere/" class="inline-block bg-barto-deep text-white px-8 py-4 font-semibold text-sm hover:bg-barto-steel transition-colors">
+          <a href="https://bartolosch.de/karriere/" class="group inline-flex items-center gap-3 bg-barto-deep text-white px-10 py-5 font-bold text-sm tracking-wide hover:bg-barto-steel transition-all duration-300 hover:shadow-2xl hover:shadow-barto-deep/20 hover:-translate-y-1">
             Jetzt bewerben
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
-        <div>
-          <img src="https://bartolosch.de/wp-content/uploads/2024/07/Bartolosch_Karriere_startseite-768x576.jpg" alt="Karriere bei Bartolosch" class="w-full shadow-md">
+        <div class="lg:col-span-7 reveal-right">
+          <div class="img-zoom shadow-2xl shadow-barto-slate/10">
+            <img src="https://bartolosch.de/wp-content/uploads/2024/07/Bartolosch_Karriere_startseite-768x576.jpg" alt="Karriere bei Bartolosch" class="w-full">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="bg-barto-slate text-white/70">
-    <div class="max-w-7xl mx-auto px-6 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-        <!-- Logo & Info -->
-        <div class="md:col-span-2">
-          <img src="https://bartolosch.de/wp-content/uploads/2024/06/bartolosch_logo.png" alt="Bartolosch" class="h-10 mb-6 brightness-0 invert opacity-80">
-          <p class="text-sm leading-relaxed max-w-sm">
-            Bartolosch GmbH – Einer der führenden Bearbeitungs- und Zerspanungsbetriebe Deutschlands. Seit 1979 fertigen wir präzise Maschinenbauteile und Baugruppen für die Industrie.
+  <footer class="bg-barto-slate text-white/50">
+    <div class="max-w-[1400px] mx-auto px-8 pt-20 pb-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="md:col-span-5">
+          <img src="https://bartolosch.de/wp-content/uploads/2024/06/bartolosch_logo.png" alt="Bartolosch" class="h-12 mb-8 brightness-0 invert opacity-60">
+          <p class="text-sm leading-[1.85] max-w-sm">
+            Bartolosch GmbH &ndash; Einer der f&uuml;hrenden Bearbeitungs- und Zerspanungsbetriebe Deutschlands. Seit 1979 fertigen wir pr&auml;zise Maschinenbauteile und Baugruppen f&uuml;r die Industrie.
           </p>
         </div>
-        <!-- Navigation -->
-        <div>
-          <h4 class="font-700 text-white mb-4 text-sm tracking-wider uppercase">Navigation</h4>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="#unternehmen" class="hover:text-white transition-colors">Unternehmen</a></li>
-            <li><a href="#fertigung" class="hover:text-white transition-colors">Drehen / Fräsen</a></li>
-            <li><a href="#montage" class="hover:text-white transition-colors">Montage</a></li>
-            <li><a href="#qualitaet" class="hover:text-white transition-colors">Qualität</a></li>
-            <li><a href="#prozesskette" class="hover:text-white transition-colors">Prozesskette</a></li>
-            <li><a href="#geschichte" class="hover:text-white transition-colors">Geschichte</a></li>
+        <div class="md:col-span-3">
+          <h4 class="font-black text-white text-xs tracking-[0.3em] uppercase mb-6">Navigation</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#unternehmen" class="hover:text-white transition-colors duration-300">Unternehmen</a></li>
+            <li><a href="#fertigung" class="hover:text-white transition-colors duration-300">Drehen / Fr&auml;sen</a></li>
+            <li><a href="#montage" class="hover:text-white transition-colors duration-300">Montage</a></li>
+            <li><a href="#qualitaet" class="hover:text-white transition-colors duration-300">Qualit&auml;t</a></li>
+            <li><a href="#prozesskette" class="hover:text-white transition-colors duration-300">Prozesskette</a></li>
+            <li><a href="#geschichte" class="hover:text-white transition-colors duration-300">Geschichte</a></li>
           </ul>
         </div>
-        <!-- Kontakt -->
-        <div>
-          <h4 class="font-700 text-white mb-4 text-sm tracking-wider uppercase">Kontakt</h4>
-          <ul class="space-y-2.5 text-sm">
+        <div class="md:col-span-4">
+          <h4 class="font-black text-white text-xs tracking-[0.3em] uppercase mb-6">Kontakt</h4>
+          <ul class="space-y-3 text-sm">
             <li>Bartolosch GmbH</li>
             <li>Friedewald, Westerwald</li>
-            <li>
-              <a href="tel:+4906749140" class="hover:text-white transition-colors">Tel: 06741 / 9140</a>
-            </li>
-            <li>
-              <a href="https://bartolosch.de/kontakt/" class="hover:text-white transition-colors">Kontaktformular</a>
-            </li>
+            <li><a href="tel:+4906749140" class="hover:text-white transition-colors duration-300">Tel: 06741 / 9140</a></li>
+            <li><a href="https://bartolosch.de/kontakt/" class="hover:text-white transition-colors duration-300">Kontaktformular &rarr;</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap justify-between items-center text-xs text-white/40">
-        <p>&copy; 2024 Bartolosch Maschinen GmbH. Alle Rechte vorbehalten.</p>
-        <div class="flex gap-6">
-          <a href="https://bartolosch.de/impressum/" class="hover:text-white/70 transition-colors">Impressum</a>
-          <a href="https://bartolosch.de/datenschutz/" class="hover:text-white/70 transition-colors">Datenschutz</a>
+    <div class="border-t border-white/5">
+      <div class="max-w-[1400px] mx-auto px-8 py-6 flex flex-wrap justify-between items-center text-xs text-white/25">
+        <p>&copy; 2024 Bartolosch Maschinen GmbH</p>
+        <div class="flex gap-8">
+          <a href="https://bartolosch.de/impressum/" class="hover:text-white/50 transition-colors">Impressum</a>
+          <a href="https://bartolosch.de/datenschutz/" class="hover:text-white/50 transition-colors">Datenschutz</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ============ SCROLL REVEAL JS ============ -->
+  <!-- ============ SCRIPTS ============ -->
   <script>
-    // Scroll reveal
+    // Scroll reveal with stagger support
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+
+          // Trigger counters
+          entry.target.querySelectorAll('[data-count]').forEach(counter => {
+            if (counter.dataset.counted) return;
+            counter.dataset.counted = 'true';
+            const target = parseInt(counter.dataset.count);
+            const duration = 2000;
+            const start = performance.now();
+            const animate = (now) => {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 4);
+              counter.textContent = Math.floor(target * eased) + '+';
+              if (progress < 1) requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+          });
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .hero-line').forEach(el => observer.observe(el));
 
-    // Navbar shadow on scroll
+    // Navbar: solid on scroll
     const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        navbar.classList.add('shadow-md');
+      const y = window.scrollY;
+      if (y > 80) {
+        navbar.classList.add('shadow-xl', 'shadow-barto-slate/5');
+        navbar.classList.remove('bg-white/80');
+        navbar.classList.add('bg-white/95');
       } else {
-        navbar.classList.remove('shadow-md');
+        navbar.classList.remove('shadow-xl', 'shadow-barto-slate/5');
+        navbar.classList.add('bg-white/80');
+        navbar.classList.remove('bg-white/95');
       }
+      lastScroll = y;
     });
+
+    // Subtle hero parallax
+    const heroImg = document.getElementById('hero-img');
+    if (heroImg && window.innerWidth > 768) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          heroImg.style.transform = `scale(1.05) translateY(${y * 0.15}px)`;
+        }
+      }, { passive: true });
+    }
   </script>
 
 </body>
