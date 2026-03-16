@@ -115,43 +115,53 @@
             <div class="grid grid-cols-12 gap-4">
                 <!-- Left: year column -->
                 <div class="col-span-12 md:col-span-3">
-                    <svg viewBox="0 0 280 140" fill="none" stroke="#236621" stroke-linecap="round" stroke-linejoin="round" class="w-full max-w-[300px] opacity-[0.08] select-none" aria-hidden="true">
-                        <!-- Coach body – single continuous profile -->
-                        <path d="M12,98 L12,36 Q12,22 26,22 L230,22 Q254,22 258,38 L264,58 Q268,68 268,78 L268,98" stroke-width="1"/>
-                        <!-- Roofline accent -->
-                        <path d="M26,22 Q26,16 36,16 L220,16 Q232,16 234,22" stroke-width="0.6"/>
-                        <!-- Window band – continuous strip -->
-                        <path d="M28,38 L250,38 L254,54 L28,54 Z" stroke-width="0.7"/>
+                    <svg viewBox="0 0 300 220" fill="none" stroke="#236621" stroke-linecap="round" stroke-linejoin="round" class="w-full max-w-[320px] opacity-[0.09] select-none" aria-hidden="true">
+                        <!-- 3/4 perspective coach bus -->
+                        <!-- Front face -->
+                        <path d="M60,68 L60,152 L108,168 L108,78 Z" stroke-width="1.2"/>
+                        <!-- Front windshield -->
+                        <path d="M64,74 L64,110 L104,120 L104,82 Z" stroke-width="0.8"/>
+                        <!-- Windshield divider -->
+                        <line x1="84" y1="78" x2="84" y2="115" stroke-width="0.5"/>
+                        <!-- Front bumper -->
+                        <path d="M58,148 L58,158 L110,174 L110,164" stroke-width="0.8"/>
+                        <!-- Headlights -->
+                        <ellipse cx="76" cy="132" rx="6" ry="5" stroke-width="0.7"/>
+                        <ellipse cx="96" cy="136" rx="5" ry="4" stroke-width="0.7"/>
+                        <!-- Roof -->
+                        <path d="M60,68 L108,78 L272,48 L224,38 Z" stroke-width="1"/>
+                        <!-- Side body -->
+                        <path d="M108,78 L108,168 L272,138 L272,48 Z" stroke-width="1.2"/>
+                        <!-- Side windows band -->
+                        <path d="M112,84 L112,118 L268,90 L268,56 Z" stroke-width="0.7"/>
                         <!-- Window dividers -->
-                        <line x1="62" y1="38" x2="62" y2="54" stroke-width="0.5"/>
-                        <line x1="94" y1="38" x2="94" y2="54" stroke-width="0.5"/>
-                        <line x1="126" y1="38" x2="126" y2="54" stroke-width="0.5"/>
-                        <line x1="158" y1="38" x2="158" y2="54" stroke-width="0.5"/>
-                        <line x1="190" y1="38" x2="190" y2="54" stroke-width="0.5"/>
-                        <line x1="222" y1="38" x2="224" y2="54" stroke-width="0.5"/>
-                        <!-- Windshield wrap -->
-                        <path d="M250,38 Q260,38 262,48 L264,58 L254,54" stroke-width="0.7"/>
-                        <!-- Door -->
-                        <path d="M232,62 L232,94 M244,62 L244,94" stroke-width="0.5"/>
-                        <line x1="232" y1="62" x2="244" y2="62" stroke-width="0.5"/>
+                        <line x1="138" y1="81" x2="138" y2="114" stroke-width="0.5"/>
+                        <line x1="164" y1="77" x2="164" y2="110" stroke-width="0.5"/>
+                        <line x1="190" y1="73" x2="190" y2="106" stroke-width="0.5"/>
+                        <line x1="216" y1="69" x2="216" y2="102" stroke-width="0.5"/>
+                        <line x1="242" y1="65" x2="242" y2="98" stroke-width="0.5"/>
                         <!-- Side trim line -->
-                        <line x1="16" y1="72" x2="264" y2="72" stroke-width="0.4"/>
-                        <!-- Undercarriage -->
-                        <line x1="8" y1="98" x2="272" y2="98" stroke-width="0.8"/>
-                        <!-- Wheel wells -->
-                        <path d="M40,98 Q40,82 56,82 Q72,82 72,98" stroke-width="0.7"/>
-                        <path d="M196,98 Q196,82 212,82 Q228,82 228,98" stroke-width="0.7"/>
-                        <!-- Wheels -->
-                        <circle cx="56" cy="100" r="10" stroke-width="0.8"/>
-                        <circle cx="56" cy="100" r="4" stroke-width="0.5"/>
-                        <circle cx="212" cy="100" r="10" stroke-width="0.8"/>
-                        <circle cx="212" cy="100" r="4" stroke-width="0.5"/>
-                        <!-- Headlight -->
-                        <path d="M266,74 Q272,74 272,80 L272,88 Q272,92 266,92" stroke-width="0.6"/>
-                        <!-- Rear light -->
-                        <line x1="12" y1="70" x2="12" y2="82" stroke-width="1.2"/>
+                        <line x1="108" y1="132" x2="272" y2="104" stroke-width="0.4"/>
+                        <!-- Rear edge -->
+                        <path d="M272,48 L272,138" stroke-width="1"/>
+                        <!-- Front wheel -->
+                        <ellipse cx="126" cy="164" rx="16" ry="14" stroke-width="1"/>
+                        <ellipse cx="126" cy="164" rx="7" ry="6" stroke-width="0.6"/>
+                        <!-- Rear wheel -->
+                        <ellipse cx="244" cy="136" rx="14" ry="12" stroke-width="1"/>
+                        <ellipse cx="244" cy="136" rx="6" ry="5" stroke-width="0.6"/>
+                        <!-- Wheel arches -->
+                        <path d="M108,156 Q108,146 118,144 Q126,142 134,144 Q144,146 144,156" stroke-width="0.7"/>
+                        <path d="M228,128 Q228,120 236,118 Q244,116 252,118 Q260,120 260,128" stroke-width="0.7"/>
+                        <!-- Ground shadow -->
+                        <path d="M70,178 L280,148 L276,150 L66,180 Z" fill="#236621" fill-opacity="0.04" stroke="none"/>
+                        <!-- Ground line -->
+                        <path d="M50,180 L284,148" stroke-width="0.5"/>
                         <!-- Mirror -->
-                        <path d="M268,36 L276,34 L276,42 L268,40" stroke-width="0.5"/>
+                        <path d="M56,82 L48,80 L48,90 L56,92" stroke-width="0.6"/>
+                        <!-- Wipers -->
+                        <line x1="74" y1="108" x2="82" y2="82" stroke-width="0.4"/>
+                        <line x1="90" y1="112" x2="96" y2="88" stroke-width="0.4"/>
                     </svg>
                 </div>
 
