@@ -1,0 +1,55 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Noto Sans", "role": "body" },
+    { "family": "Roboto", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#276A97",
+    "accent": "#015085",
+    "background": "#FFFFFF",
+    "textPrimary": "#015085",
+    "link": "#015085"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Noto Sans",
+      "heading": "Noto Sans"
+    },
+    "fontSizes": {
+      "h1": "48px",
+      "h2": "32px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#015085",
+      "textColor": "#FFFFFF",
+      "borderColor": "#015085",
+      "borderRadius": "0px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "borderRadius": "0px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://bartolosch.de/wp-content/uploads/2024/06/bartolosch_logo.png",
+    "favicon": "https://bartolosch.de/wp-content/uploads/2024/09/cropped-bartolosch_favicon-32x32.png",
+    "logoAlt": "Bartolosch Maschinen GmbH"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients and businesses"
+  }
+}
