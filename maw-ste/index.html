@@ -59,6 +59,14 @@
 
     /* Number ticker */
     .ticker { font-variant-numeric: tabular-nums; }
+
+    /* Horizontal scroll gallery */
+    .gallery-scroll {
+      display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px;
+    }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+    .gallery-scroll > * { scroll-snap-align: start; flex-shrink: 0; }
   </style>
 </head>
 <body class="bg-white text-ink antialiased">
@@ -71,7 +79,8 @@
       </a>
       <div class="hidden lg:flex items-center gap-10">
         <a href="#leistungen" class="nav-link text-[13px] font-medium text-grey tracking-wide hover:text-ink transition-colors">Leistungen</a>
-        <a href="#projekte" class="nav-link text-[13px] font-medium text-grey tracking-wide hover:text-ink transition-colors">Projekte</a>
+        <a href="#geschaeftsbereiche" class="nav-link text-[13px] font-medium text-grey tracking-wide hover:text-ink transition-colors">Geschäftsbereiche</a>
+        <a href="#referenzen" class="nav-link text-[13px] font-medium text-grey tracking-wide hover:text-ink transition-colors">Referenzen</a>
         <a href="#unternehmen" class="nav-link text-[13px] font-medium text-grey tracking-wide hover:text-ink transition-colors">Unternehmen</a>
         <a href="#kontakt" class="nav-cta text-[13px] font-semibold bg-ink text-white px-5 py-2 hover:bg-blue transition-all">Kontakt</a>
       </div>
@@ -82,7 +91,8 @@
     <div id="mobile-nav" class="hidden lg:hidden border-t border-grey/10 bg-white">
       <div class="px-6 py-4 flex flex-col gap-3">
         <a href="#leistungen" class="text-sm font-medium py-2">Leistungen</a>
-        <a href="#projekte" class="text-sm font-medium py-2">Projekte</a>
+        <a href="#geschaeftsbereiche" class="text-sm font-medium py-2">Geschäftsbereiche</a>
+        <a href="#referenzen" class="text-sm font-medium py-2">Referenzen</a>
         <a href="#unternehmen" class="text-sm font-medium py-2">Unternehmen</a>
         <a href="#kontakt" class="text-sm font-semibold bg-ink text-white text-center py-3 mt-2">Kontakt</a>
       </div>
@@ -224,6 +234,173 @@
     </div>
   </section>
 
+  <!-- Geschäftsbereiche — Detail mit Galerien -->
+  <section id="geschaeftsbereiche" class="py-24 md:py-32">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+
+      <div class="fade-up mb-20">
+        <span class="text-blue font-display text-xs font-semibold tracking-[0.25em] uppercase">Geschäftsbereiche</span>
+        <h2 class="font-display text-3xl md:text-[2.75rem] font-bold leading-tight mt-3 max-w-2xl">Stahl &mdash; zeitlos, elegant, vielseitig, wirtschaftlich.</h2>
+      </div>
+
+      <!-- Stahl- und Hallenbau -->
+      <div class="fade-up mb-20">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="font-display text-5xl md:text-6xl font-bold text-grey-mid/40">01</span>
+          <h3 class="font-display text-xl md:text-2xl font-bold">Stahl- und Hallenbau</h3>
+        </div>
+        <p class="text-grey max-w-2xl mb-6 leading-relaxed">Wir fertigen und montieren Stahlhallen und Schweißsonderkonstruktionen nach Ihren Anforderungen aus C-Stählen und Edelstählen in roher, feuerverzinkter oder lackierter Ausführung.</p>
+        <div class="gallery-scroll">
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Stahlbau_6-1024x768.jpg" alt="Stahlbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Stahlbau_15-1024x768.jpg" alt="Stahlbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Stahlbau_5-1024x768.jpg" alt="Stahlbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Stahlbau_4-1024x768.jpg" alt="Stahlbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Stahlbau_10-1024x768.jpg" alt="Stahlbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/08/Stahlbaumontage_5-1024x764.jpg" alt="Stahlbaumontage" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Stahlbau_3-1024x768.jpg" alt="Stahlbau" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+      <!-- Behälter- und Anlagenbau -->
+      <div class="fade-up mb-20">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="font-display text-5xl md:text-6xl font-bold text-grey-mid/40">02</span>
+          <h3 class="font-display text-xl md:text-2xl font-bold">Behälter- und Anlagenbau</h3>
+        </div>
+        <p class="text-grey max-w-2xl mb-6 leading-relaxed">Wir planen und fertigen drucklose und Druckbehälter, Rohrleitungen, Wärmetauscher und Anlagen, sowohl als eigenständige Funktionseinheiten, als auch als Komponenten.</p>
+        <div class="gallery-scroll">
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Behaelter_Anlagenbau_7-1024x819.jpg" alt="Anlagenbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Behaelter_Anlagenbau_8-1024x768.jpg" alt="Anlagenbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Behaelter_Anlagenbau_1-1024x931.jpg" alt="Anlagenbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Behaelter_Anlagenbau_4-1024x819.jpg" alt="Anlagenbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Behaelter_Anlagenbau_5-1024x819.jpg" alt="Anlagenbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/08/hydro2-1024x576.jpg" alt="Anlagenbau" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+      <!-- Metallbau -->
+      <div class="fade-up mb-20">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="font-display text-5xl md:text-6xl font-bold text-grey-mid/40">03</span>
+          <h3 class="font-display text-xl md:text-2xl font-bold">Metallbau</h3>
+        </div>
+        <p class="text-grey max-w-2xl mb-6 leading-relaxed">Treppenanlagen, Geländer, Fassaden — mit der Erfahrung von über 50 Jahren planen, fertigen und montieren wir Metallbau.</p>
+        <div class="gallery-scroll">
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_13-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_10-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_8-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_2-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_7-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_6-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_5-1024x768.jpg" alt="Metallbau" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+      <!-- Projektbau -->
+      <div class="fade-up">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="font-display text-5xl md:text-6xl font-bold text-grey-mid/40">04</span>
+          <h3 class="font-display text-xl md:text-2xl font-bold">Projektbau</h3>
+        </div>
+        <p class="text-grey max-w-2xl mb-6 leading-relaxed">Zusammen mit erfahrenen Partnerunternehmen realisieren wir für Sie schlüsselfertige Lösungen. Wir geben Ihren Vorstellungen Raum — von der Planung bis zur Schlüsselübergabe.</p>
+        <div class="gallery-scroll">
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/08/Projektbau_2-Kopie-1024x768.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/08/Projektbau_3-Kopie-1024x768.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Projektbau_1-1024x768.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Projektbau_4-1024x764.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/07/Projektbau_2-1-1024x768.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/08/neu-030-Kopie-1024x768.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+          <div class="img-wrap w-[340px] md:w-[420px] aspect-[4/3] overflow-hidden"><img src="https://maw-ste.de/wp-content/uploads/2016/08/Projektbau-Kopie-1024x768.jpg" alt="Projektbau" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Referenzen -->
+  <section id="referenzen" class="py-24 md:py-32 bg-grey-light">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="fade-up mb-16">
+        <span class="text-blue font-display text-xs font-semibold tracking-[0.25em] uppercase">Referenzen</span>
+        <h2 class="font-display text-3xl md:text-[2.75rem] font-bold leading-tight mt-3">Ausgewählte Projekte</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="fade-up group block" href="https://maw-ste.de/neubau-einer-produktionshalle-mit-trennwaenden-und-buero/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/IMG-20260113-WA0002-1200x480.jpg" alt="Produktionshalle" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Neubau Produktionshalle mit Trennwänden und Büro</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/neubau-bauhof/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/20250708_100942-1200x480.jpg" alt="Bauhof" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Neubau Bauhof</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/treppenkonstruktion/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/Gemuenden-Phoenix-900x480.jpg" alt="Treppenkonstruktion" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Treppenkonstruktion</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/neubau-einer-kfz-werkstatt/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/IMG-20250506-WA0009-1200x480.jpg" alt="KFZ-Werkstatt" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Neubau einer KFZ-Werkstatt</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/neubau-einer-kfz-werkstatt-mit-buerogebaeude/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/KFZ1-1200x480.jpg" alt="KFZ-Werkstatt mit Büro" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">KFZ-Werkstatt mit Bürogebäude</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/neubau-einer-produktionshalle-in-eschweiler-3/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2017/09/Eschweiler_3-1040x480.jpg" alt="Produktionshalle Eschweiler" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Neubau Produktionshalle</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/fussgaengerbruecke-ueber-die-nidda/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2016/10/Aug17-111-1024x480.jpg" alt="Fußgängerbrücke" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Fußgängerbrücke über die Nidda</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/erneuerung-mischtanks-einer-oelaufbereitung/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2016/10/IMG_3737-1024x480.jpg" alt="Mischtanks" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Erneuerung Mischtanks</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/neubau-einer-tonlagerhalle/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2017/07/DJI_0090-800x480.jpg" alt="Tonlagerhalle" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Neubau einer Tonlagerhalle</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/rohrleitung-trocknerabluft/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/Dyckerhoff-Rohrleitung-Trocknerabluft-1200x480.jpg" alt="Rohrleitung" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Rohrleitung Trocknerabluft</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/errichtung-einer-hofueberdachung-in-mengerskirchen/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2016/12/IMG_5062-1200x480.jpg" alt="Hofüberdachung" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Errichtung einer Hofüberdachung</p>
+        </a>
+        <a class="fade-up group block" href="https://maw-ste.de/anbau-einer-produktionshalle/" target="_blank">
+          <div class="img-wrap overflow-hidden aspect-[5/3]">
+            <img src="https://maw-ste.de/wp-content/uploads/2026/02/Metsae-1200x480.jpg" alt="Anbau Produktionshalle" class="w-full h-full object-cover">
+          </div>
+          <p class="font-display text-sm font-semibold mt-3 group-hover:text-blue transition-colors">Anbau einer Produktionshalle</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Detail: Stahl-/Hallenbau + Anlagenbau deep dive -->
   <section id="unternehmen" class="py-24 md:py-32">
     <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -325,7 +502,8 @@
       <img src="https://maw-ste.de/wp-content/uploads/2016/07/logo100.png" alt="MAW Stahlbau" class="h-7 brightness-0 invert opacity-60">
       <div class="flex gap-8 text-xs text-white/40">
         <a href="#leistungen" class="hover:text-white transition-colors">Leistungen</a>
-        <a href="#unternehmen" class="hover:text-white transition-colors">Unternehmen</a>
+        <a href="#geschaeftsbereiche" class="hover:text-white transition-colors">Geschäftsbereiche</a>
+        <a href="#referenzen" class="hover:text-white transition-colors">Referenzen</a>
         <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
         <a href="https://maw-ste.de" class="hover:text-white transition-colors">maw-ste.de</a>
       </div>
