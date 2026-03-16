@@ -75,7 +75,31 @@
             0%, 100% { opacity: 0.4; }
             50% { opacity: 1; }
         }
-        .hero-img { animation: heroZoom 8s ease-out forwards; }
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 20px) scale(1.05); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -30px) scale(1.08); }
+        }
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, -20px); }
+        }
+        @keyframes markerSlide {
+            0% { transform: scaleX(0); opacity: 0; }
+            100% { transform: scaleX(1); opacity: 1; }
+        }
+        @keyframes cornerReveal {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .hero-float-1 { animation: float1 12s ease-in-out infinite; }
+        .hero-float-2 { animation: float2 15s ease-in-out infinite; }
+        .hero-float-3 { animation: float3 10s ease-in-out infinite; }
+        .hero-marker { animation: markerSlide 1s ease 1.5s both; transform-origin: left; }
+        .hero-corner { animation: cornerReveal 1.5s ease 0.5s both; }
         .hero-tagline { animation: fadeIn 0.8s ease 0.2s both; }
         .hero-line { animation: lineGrow 0.6s ease 0.5s both; transform-origin: left; }
         .hero-h1-1 { animation: fadeUp 0.7s ease 0.7s both; }
@@ -138,14 +162,31 @@
     </nav>
 
     <!-- HERO -->
-    <section id="hero" class="relative min-h-screen flex items-end overflow-hidden">
-        <!-- Fullscreen Background Image -->
+    <section id="hero" class="relative min-h-screen flex items-end overflow-hidden bg-slate">
+        <!-- Animated abstract background -->
         <div class="absolute inset-0">
-            <img src="https://www.jankowski-gmbh.de/wp-content/uploads/2023/03/DSC08626-scaled.jpg" alt="Präzisionsfertigung bei Jankowski" class="hero-img w-full h-full object-cover">
-            <!-- Dark gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30"></div>
-            <!-- Brand color overlay -->
-            <div class="absolute inset-0 bg-steel/20 mix-blend-multiply"></div>
+            <!-- Base gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-slate via-[#0d2847] to-[#0a1628]"></div>
+            <!-- Floating geometric shapes -->
+            <div class="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full bg-steel/8 blur-3xl hero-float-1"></div>
+            <div class="absolute bottom-[10%] left-[5%] w-[400px] h-[400px] rounded-full bg-teal/6 blur-3xl hero-float-2"></div>
+            <div class="absolute top-[40%] left-[40%] w-[300px] h-[300px] rounded-full bg-steel/5 blur-2xl hero-float-3"></div>
+            <!-- Precision lines - diagonal -->
+            <svg class="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="diag" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+                        <line x1="0" y1="0" x2="0" y2="60" stroke="white" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#diag)"/>
+            </svg>
+            <!-- Accent corner shapes -->
+            <div class="absolute top-0 right-0 w-[40vw] h-[40vh] border-b border-l border-teal/10 hero-corner"></div>
+            <div class="absolute bottom-0 left-0 w-[30vw] h-[30vh] border-t border-r border-steel/10 hero-corner"></div>
+            <!-- Horizontal precision markers -->
+            <div class="absolute top-[25%] left-0 w-[120px] h-px bg-teal/30 hero-marker"></div>
+            <div class="absolute top-[75%] right-0 w-[180px] h-px bg-steel/20 hero-marker"></div>
+            <div class="absolute top-[50%] right-[15%] w-[80px] h-px bg-teal/20 hero-marker"></div>
         </div>
 
         <!-- Animated grid lines -->
@@ -185,26 +226,9 @@
                     </div>
                 </div>
 
-                <!-- Bottom badges -->
-                <div class="hero-badge flex flex-wrap gap-6 mt-16 pt-8 border-t border-white/10">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 border border-teal/40 flex items-center justify-center">
-                            <span class="font-heading text-teal text-xs font-bold">ISO</span>
-                        </div>
-                        <span class="text-white/50 text-sm">9001:2015 zertifiziert</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 border border-teal/40 flex items-center justify-center">
-                            <span class="font-heading text-teal text-xs font-bold">50+</span>
-                        </div>
-                        <span class="text-white/50 text-sm">Jahre Erfahrung</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 border border-teal/40 flex items-center justify-center">
-                            <span class="font-heading text-teal text-xs font-bold">3K</span>
-                        </div>
-                        <span class="text-white/50 text-sm">m² Produktionsfläche</span>
-                    </div>
+                <!-- Bottom tagline -->
+                <div class="hero-badge mt-16 pt-8 border-t border-white/10">
+                    <p class="text-white/30 text-sm font-heading tracked uppercase">Horhausen &middot; Westerwald &middot; Made in Germany</p>
                 </div>
             </div>
         </div>
