@@ -1,0 +1,40 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "PT Sans", "role": "body" },
+    { "family": "PT Sans Caption", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#146394",
+    "accent": "#00ACAD",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#00ACAD"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "PT Sans",
+      "heading": "PT Sans Caption"
+    },
+    "fontSizes": {
+      "h1": "45px",
+      "h2": "30px",
+      "body": "17px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "images": {
+    "logo": "https://www.jankowski-gmbh.de/wp-content/uploads/2021/03/cropped-Logo-Jankowski.jpg",
+    "favicon": "https://www.jankowski-gmbh.de/wp-content/uploads/2018/06/cropped-2018-Logo-mit-webadresse-001-1-32x32.jpg",
+    "ogImage": "https://www.jankowski-gmbh.de/wp-content/uploads/2023/12/Solar_web-scaled.jpg",
+    "logoAlt": "Jankowski GmbH & Co. KG Zerspanungstechnik - Maschinenbau - Sonderleistungen"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  }
+}
