@@ -1,912 +1,1759 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CNC Lohnfertigung | Maschinenbau Strunk GmbH</title>
-    <meta name="description" content="CNC Lohnfertigung aus dem Westerwald. Ueber 50 CNC-Maschinen, DIN ISO 9001 zertifiziert. Einzelteile, Kleinserien, Massenprodukte.">
-    <link rel="icon" href="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Light Gradient System */
-            --pure: #ffffff;
-            --snow: #f8f9fc;
-            --silver: #f0f2f7;
-            --chrome: #e4e8f0;
-            --steel-light: #d0d7e2;
-            --titanium: #9aa5b8;
-            --graphite: #6b7a90;
-            --steel-mid: #3d4f66;
-            --steel-dark: #1e2d42;
-            --ink: #0f1923;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maschinenbau Strunk GmbH — CNC-Lohnfertigung aus dem Westerwald</title>
+<meta name="description" content="Ihr CNC-Lohnfertiger aus dem Westerwald. Über 50 CNC-Maschinen, DIN ISO 9001 zertifiziert, drei Jahrzehnte Erfahrung. Drehen, Fräsen, Schleifen, Sonderlösungen.">
+<link rel="icon" href="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Roboto+Condensed:wght@400;500;600;700;800;900&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-            /* Accent */
-            --cobalt: #2563eb;
-            --cobalt-bright: #3b82f6;
-            --forge: #ea580c;
-            --forge-warm: #f97316;
+:root {
+  --primary: #3071FF;
+  --accent: #142459;
+  --accent-deep: #0c1a3f;
+  --bg: #FFFFFF;
+  --bg-cool: #F4F7FB;
+  --bg-steel: #EAF0F8;
+  --text: #142952;
+  --text-secondary: #4a5d7a;
+  --text-muted: #7a8ba5;
+  --border-light: rgba(20, 36, 89, 0.08);
+  --border-med: rgba(20, 36, 89, 0.12);
+  --glow-blue: rgba(48, 113, 255, 0.12);
+  --glow-accent: rgba(20, 36, 89, 0.06);
+}
 
-            /* Typography */
-            --font-main: 'DM Sans', system-ui, -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-        }
+html { scroll-behavior: smooth; font-size: 16px; }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+}
 
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-cool); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
 
-        ::selection { background: var(--cobalt); color: var(--pure); }
+h1, h2, h3, h4 { font-family: 'Roboto Condensed', sans-serif; }
 
-        body {
-            font-family: var(--font-main);
-            color: var(--ink);
-            background: var(--pure);
-            overflow-x: hidden;
-        }
+/* ─── NAVIGATION ─── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+}
 
-        /* ── Gradient Backgrounds ── */
-        .bg-awe {
-            background: linear-gradient(180deg, var(--pure) 0%, var(--snow) 40%, var(--silver) 100%);
-        }
-        .bg-trust {
-            background: linear-gradient(180deg, var(--silver) 0%, var(--snow) 30%, var(--pure) 60%, var(--snow) 100%);
-        }
-        .bg-partnership {
-            background: linear-gradient(180deg, var(--snow) 0%, var(--silver) 40%, var(--chrome) 100%);
-        }
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  padding: 0.75rem 3rem;
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 2px 20px rgba(20, 36, 89, 0.06);
+}
 
-        /* ── Shared ── */
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+.nav-logo img {
+  height: 44px;
+  transition: height 0.4s ease;
+}
 
-        /* ── Nav ── */
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 0 clamp(20px, 5vw, 48px);
-            height: 64px;
-            display: flex; align-items: center; justify-content: space-between;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            transition: background 0.4s ease, box-shadow 0.4s ease;
-        }
-        .nav-logo { height: 32px; }
-        .nav-right { display: flex; align-items: center; gap: 24px; }
-        .nav-phone {
-            font-size: 13px; color: var(--graphite); text-decoration: none;
-            transition: color 0.3s ease; letter-spacing: 0.02em;
-        }
-        .nav-phone:hover { color: var(--ink); }
-        .nav-cta {
-            font-size: 13px; font-weight: 500;
-            background: var(--cobalt);
-            color: var(--pure);
-            padding: 8px 20px; text-decoration: none;
-            letter-spacing: 0.03em;
-            transition: all 0.3s ease;
-        }
-        .nav-cta:hover {
-            background: var(--forge);
-            color: var(--pure);
-        }
+.nav.scrolled .nav-logo img { height: 36px; }
 
-        /* ── Hero ── */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex; align-items: flex-end;
-            overflow: hidden;
-        }
-        .hero-image {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: 0.25;
-            filter: brightness(1.05) contrast(0.95);
-        }
-        .hero-gradient {
-            position: absolute; inset: 0;
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 30%, rgba(248,249,252,0.7) 70%, var(--snow) 100%),
-                linear-gradient(270deg, rgba(37,99,235,0.04) 0%, transparent 50%);
-        }
-        .hero-content {
-            position: relative; z-index: 2;
-            padding-bottom: clamp(80px, 12vh, 140px);
-        }
-        .hero-label {
-            font-family: var(--font-mono);
-            font-size: 12px; font-weight: 500;
-            color: var(--cobalt);
-            letter-spacing: 0.2em; text-transform: uppercase;
-            margin-bottom: 24px;
-            opacity: 0; transform: translateY(20px);
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-        }
-        .hero h1 {
-            font-size: clamp(36px, 6vw, 80px);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            max-width: 800px;
-            opacity: 0; transform: translateY(30px);
-            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--ink) 0%, var(--steel-mid) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-sub {
-            font-size: clamp(16px, 2vw, 20px);
-            font-weight: 300;
-            color: var(--graphite);
-            max-width: 560px;
-            line-height: 1.6;
-            margin-top: 24px;
-            opacity: 0; transform: translateY(20px);
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-        }
+.nav-links {
+  display: flex;
+  gap: 2.25rem;
+  list-style: none;
+  align-items: center;
+}
 
-        /* ── Metrics Bar ── */
-        .metrics {
-            position: relative;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .metrics-inner {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            max-width: 1240px; margin: 0 auto;
-            padding: 0 clamp(20px, 5vw, 48px);
-        }
-        .metric {
-            padding: 40px 0;
-            border-right: 1px solid rgba(0,0,0,0.06);
-        }
-        .metric:last-child { border-right: none; }
-        .metric-value {
-            font-size: clamp(28px, 3.5vw, 48px);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1;
-            background: linear-gradient(135deg, var(--ink) 20%, var(--cobalt) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .metric-label {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--titanium);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-top: 8px;
-        }
+.nav-links a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  font-family: 'Raleway', sans-serif;
+}
 
-        /* ── Section Shared ── */
-        .section-label {
-            font-family: var(--font-mono);
-            font-size: 11px; font-weight: 500;
-            color: var(--cobalt);
-            letter-spacing: 0.2em; text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        .section-title {
-            font-size: clamp(28px, 4vw, 52px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            max-width: 700px;
-        }
-        .section-title .gradient-text {
-            background: linear-gradient(135deg, var(--ink) 0%, var(--steel-mid) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .body-text {
-            font-size: 16px; font-weight: 300;
-            color: var(--graphite);
-            line-height: 1.7;
-            max-width: 520px;
-        }
+.nav.scrolled .nav-links a { color: var(--text-secondary); }
+.nav-links a:hover { color: white; }
+.nav.scrolled .nav-links a:hover { color: var(--text); }
+.nav.scrolled .nav-cta { background: var(--primary) !important; }
 
-        /* ── Capabilities Grid ── */
-        .capabilities { padding: clamp(80px, 10vw, 160px) 0; }
-        .cap-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            margin-top: 64px;
-            background: rgba(0,0,0,0.06);
-        }
-        .cap-item {
-            background: var(--pure);
-            overflow: hidden;
-            position: relative;
-            transition: background 0.5s ease;
-        }
-        .cap-item:hover { background: var(--snow); }
-        .cap-image {
-            width: 100%; aspect-ratio: 16/10; object-fit: cover;
-            opacity: 0.92;
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .cap-item:hover .cap-image {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-        .cap-body { padding: 28px 32px; }
-        .cap-name {
-            font-size: 18px; font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--ink);
-        }
-        .cap-desc {
-            font-size: 14px; font-weight: 300;
-            color: var(--graphite);
-            line-height: 1.6;
-            margin-top: 6px;
-        }
-        .cap-accent {
-            position: absolute; bottom: 0; left: 0;
-            width: 0; height: 2px;
-            background: linear-gradient(90deg, var(--cobalt), var(--cobalt-bright));
-            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .cap-item:hover .cap-accent { width: 100%; }
+.nav-cta {
+  padding: 0.55rem 1.4rem;
+  background: var(--accent) !important;
+  color: white !important;
+  border-radius: 4px;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        /* ── Secondary Capabilities ── */
-        .cap-secondary {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            margin-top: 1px;
-            background: rgba(0,0,0,0.06);
-        }
-        .cap-s-item {
-            background: var(--pure);
-            padding: 28px 24px;
-            position: relative;
-            transition: background 0.4s ease;
-        }
-        .cap-s-item:hover { background: var(--snow); }
-        .cap-s-item::before {
-            content: '';
-            position: absolute; top: 0; left: 24px; right: 24px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cobalt), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .cap-s-item:hover::before { opacity: 1; }
-        .cap-s-name { font-size: 15px; font-weight: 600; color: var(--ink); }
-        .cap-s-desc {
-            font-size: 13px; font-weight: 300;
-            color: var(--graphite);
-            line-height: 1.5;
-            margin-top: 6px;
-        }
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(20, 36, 89, 0.25);
+  color: white !important;
+}
 
-        /* ── Full Image Break ── */
-        .image-break {
-            position: relative;
-            height: 50vh; min-height: 300px; max-height: 600px;
-            overflow: hidden;
-        }
-        .image-break img {
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: 0.85;
-        }
-        .image-break::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(180deg, var(--silver) 0%, transparent 20%, transparent 80%, var(--silver) 100%);
-            z-index: 1;
-        }
-        .image-break-line {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--cobalt) 50%, transparent 100%);
-            z-index: 2;
-        }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
 
-        /* ── Two Column Content ── */
-        .two-col {
-            padding: clamp(80px, 10vw, 160px) 0;
-        }
-        .two-col-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: clamp(48px, 6vw, 96px);
-        }
-        .material-tags {
-            display: flex; flex-wrap: wrap; gap: 8px;
-            margin-top: 32px;
-        }
-        .material-tag {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--steel-mid);
-            padding: 8px 16px;
-            border: 1px solid rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-        .material-tag:hover {
-            border-color: var(--cobalt);
-            color: var(--cobalt);
-            background: rgba(37, 99, 235, 0.04);
-        }
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  margin: 5px 0;
+  transition: 0.3s;
+}
 
-        .list-precision { list-style: none; margin-top: 32px; }
-        .list-precision li {
-            font-size: 15px; font-weight: 400;
-            color: var(--steel-mid);
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            display: flex; align-items: center; gap: 16px;
-            transition: color 0.3s ease;
-        }
-        .list-precision li:first-child { border-top: 1px solid rgba(0,0,0,0.06); }
-        .list-precision li:hover { color: var(--ink); }
-        .list-dot {
-            width: 6px; height: 6px; flex-shrink: 0;
-            background: var(--cobalt);
-            border-radius: 50%;
-        }
+.nav.scrolled .nav-toggle span { background: var(--text); }
 
-        /* ── Machine Section ── */
-        .machine-section {
-            padding: clamp(80px, 10vw, 160px) 0;
-        }
-        .machine-grid {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: clamp(40px, 5vw, 80px);
-            align-items: center;
-            margin-top: 48px;
-        }
-        .machine-img-wrap {
-            position: relative; overflow: hidden;
-        }
-        .machine-img-wrap img {
-            width: 100%; aspect-ratio: 3/2; object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .machine-img-wrap:hover img { transform: scale(1.02); }
-        .machine-img-wrap::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .machine-badge {
-            font-family: var(--font-mono);
-            display: inline-block;
-            font-size: 11px;
-            color: var(--forge);
-            border: 1px solid rgba(234, 88, 12, 0.3);
-            padding: 6px 14px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
+@media (max-width: 1024px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; }
+}
 
-        /* ── Branchen ── */
-        .branchen {
-            padding: clamp(60px, 8vw, 120px) 0;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-        .branchen-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1px;
-            background: rgba(0,0,0,0.06);
-            margin-top: 48px;
-        }
-        .branchen-item {
-            background: var(--pure);
-            padding: 32px 20px;
-            text-align: center;
-            font-size: 14px; font-weight: 500;
-            color: var(--steel-mid);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .branchen-item::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cobalt), var(--forge));
-            transform: scaleX(0);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .branchen-item:hover {
-            background: var(--snow);
-            color: var(--ink);
-        }
-        .branchen-item:hover::after { transform: scaleX(1); }
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(165deg, var(--accent-deep) 0%, var(--accent) 35%, #1e3a7a 55%, var(--primary) 100%);
+}
 
-        /* ── Contact ── */
-        .contact {
-            padding: clamp(80px, 10vw, 160px) 0;
-            position: relative;
-            background: var(--ink);
-            color: var(--pure);
-        }
-        .contact::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 200px; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--forge-warm), transparent);
-        }
-        .contact .section-label { color: var(--forge-warm); }
-        .contact .section-title .gradient-text {
-            background: linear-gradient(135deg, var(--pure) 0%, var(--steel-light) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .contact .body-text { color: rgba(255,255,255,0.5); }
-        .contact-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: clamp(48px, 6vw, 96px);
-            margin-top: 64px;
-        }
-        .contact-info-block { margin-bottom: 32px; }
-        .contact-info-label {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-        .contact-info-value a {
-            font-size: 16px;
-            color: var(--pure);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .contact-info-value a:hover { color: var(--cobalt-bright); }
-        .contact-info-value p {
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 75% 30%, rgba(48, 113, 255, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-        /* Form */
-        .form-group { margin-bottom: 24px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .form-label {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .form-input {
-            width: 100%;
-            background: transparent;
-            border: none; border-bottom: 1px solid rgba(255,255,255,0.12);
-            padding: 10px 0;
-            font-family: var(--font-main);
-            font-size: 15px; font-weight: 400;
-            color: var(--pure);
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        .form-input::placeholder { color: rgba(255,255,255,0.15); }
-        .form-input:focus { border-color: var(--cobalt-bright); }
-        textarea.form-input { resize: none; min-height: 100px; }
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 1;
+}
 
-        .form-submit {
-            margin-top: 32px;
-            font-family: var(--font-main);
-            font-size: 14px; font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--pure);
-            background: var(--cobalt);
-            border: none; padding: 14px 40px;
-            cursor: pointer;
-            position: relative; overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        .form-submit:hover {
-            background: var(--forge);
-            color: var(--pure);
-        }
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black, transparent);
+  animation: gridShift 20s linear infinite;
+}
 
-        /* ── Footer ── */
-        .footer {
-            background: var(--ink);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 32px clamp(20px, 5vw, 48px);
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .footer-copy {
-            font-size: 12px;
-            color: rgba(255,255,255,0.25);
-        }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a {
-            font-size: 12px;
-            color: rgba(255,255,255,0.25);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-links a:hover { color: rgba(255,255,255,0.5); }
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
 
-        /* ── Animations ── */
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+.precision-ring {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+  animation: ringPulse 8s ease-in-out infinite;
+}
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.vis { opacity: 1; transform: translateY(0); }
+.precision-ring:nth-child(1) { width: 400px; height: 400px; top: 10%; right: -5%; }
+.precision-ring:nth-child(2) { width: 300px; height: 300px; top: 15%; right: 0%; animation-delay: 2s; border-color: rgba(48,113,255,0.1); }
+.precision-ring:nth-child(3) { width: 200px; height: 200px; top: 22%; right: 7%; animation-delay: 4s; }
 
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-left.vis { opacity: 1; transform: translateX(0); }
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
 
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-right.vis { opacity: 1; transform: translateX(0); }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
 
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  font-family: 'Raleway', sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards 0.3s;
+}
 
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .metrics-inner { grid-template-columns: repeat(2, 1fr); }
-            .metric { padding: 24px 0; }
-            .cap-grid { grid-template-columns: 1fr; }
-            .cap-secondary { grid-template-columns: repeat(2, 1fr); }
-            .two-col-grid { grid-template-columns: 1fr; }
-            .machine-grid { grid-template-columns: 1fr; }
-            .branchen-grid { grid-template-columns: repeat(3, 1fr); }
-            .contact-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer { flex-direction: column; gap: 12px; text-align: center; }
-            .nav-phone { display: none; }
-        }
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), rgba(255,255,255,0.5));
+  border-radius: 1px;
+}
 
-        @media (max-width: 480px) {
-            .branchen-grid { grid-template-columns: repeat(2, 1fr); }
-            .cap-secondary { grid-template-columns: 1fr; }
-        }
-    </style>
+.hero h1 {
+  font-family: 'Teko', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  max-width: 850px;
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards 0.5s;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, #5a9aff 0%, #b0d0ff 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.7);
+  max-width: 580px;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards 0.7s;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards 0.9s;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: white;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 35px rgba(20, 36, 89, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: white;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  background: var(--bg);
+  padding: 3.5rem 3rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.stats-bar-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.stat-number {
+  font-family: 'Teko', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border-light);
+  flex-shrink: 0;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION SHARED ─── */
+section { position: relative; }
+
+.section-pad {
+  padding: 7rem 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+}
+
+.section-title {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  max-width: 650px;
+  color: var(--text);
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-bottom: 3.5rem;
+}
+
+/* ─── GRADIENT DIVIDERS ─── */
+.gradient-divider { height: 80px; position: relative; }
+
+.divider-hero { background: var(--bg); height: 40px; }
+
+.divider-to-cool {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-cool) 100%);
+}
+
+.divider-cool-to-white {
+  background: linear-gradient(180deg, var(--bg-cool) 0%, var(--bg) 100%);
+}
+
+.divider-to-accent {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-cool) 100%);
+}
+
+.divider-accent-glow {
+  background: linear-gradient(180deg, var(--bg-cool) 0%, var(--bg) 100%);
+}
+
+.divider-accent-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.2;
+}
+
+.divider-warm {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-cool) 100%);
+}
+
+.divider-warm::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.15;
+}
+
+/* ─── WELCOME ─── */
+.welcome {
+  background: var(--bg);
+}
+
+.welcome-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.welcome-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-cool);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 4rem 2rem;
+  text-align: center;
+  min-height: 320px;
+}
+
+.wp-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border-med);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.wp-name {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.wp-role {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.welcome-quote {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.welcome-quote:first-of-type::before {
+  content: '\201E';
+  font-family: 'Teko', sans-serif;
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.2;
+  position: absolute;
+  top: -1.5rem;
+  left: -0.25rem;
+  line-height: 1;
+}
+
+.welcome-sig {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.92rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--primary);
+  display: inline-block;
+}
+
+.welcome-sig span {
+  display: block;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 0.2rem;
+}
+
+/* ─── CAPABILITIES ─── */
+.capabilities { background: var(--bg-cool); }
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.cap-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 1.75rem 1.5rem;
+  transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cap-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.cap-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(48, 113, 255, 0.15);
+  box-shadow: 0 15px 50px rgba(20, 36, 89, 0.08);
+}
+
+.cap-card:hover::before { opacity: 1; }
+.cap-card:nth-child(even)::before { background: var(--accent); }
+
+.cap-img-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.cap-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(20, 36, 89, 0.06) 100%);
+  pointer-events: none;
+}
+
+.cap-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.cap-card:hover .cap-img { transform: scale(1.04); }
+
+.cap-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+.cap-card p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ─── MACHINES / SCALE ─── */
+.scale { background: var(--bg); }
+
+.scale-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.scale-visual {
+  position: relative;
+  height: 480px;
+}
+
+.machine-counter {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.machine-counter .big-number {
+  font-family: 'Teko', sans-serif;
+  font-size: 9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.machine-counter .big-label {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border: 1px solid rgba(48, 113, 255, 0.08);
+  border-radius: 50%;
+  animation: orbitSpin 30s linear infinite;
+}
+
+.orbit-ring:nth-child(1) { width: 300px; height: 300px; margin: -150px 0 0 -150px; }
+.orbit-ring:nth-child(2) { width: 400px; height: 400px; margin: -200px 0 0 -200px; animation-duration: 45s; animation-direction: reverse; border-color: rgba(20, 36, 89, 0.06); }
+.orbit-ring:nth-child(3) { width: 480px; height: 480px; margin: -240px 0 0 -240px; animation-duration: 60s; }
+
+.orbit-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  top: -4px; left: 50%;
+  margin-left: -4px;
+  box-shadow: 0 0 12px rgba(48, 113, 255, 0.4);
+}
+
+.orbit-ring:nth-child(2) .orbit-dot { background: var(--accent); box-shadow: 0 0 12px rgba(20, 36, 89, 0.3); }
+
+@keyframes orbitSpin { to { transform: rotate(360deg); } }
+
+.scale-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.scale-images img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  transition: transform 0.4s ease;
+}
+
+.scale-images img:hover { transform: scale(1.02); }
+
+.scale-images img:first-child {
+  grid-column: 1 / -1;
+  height: 170px;
+}
+
+.scale-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.scale-feature {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+
+.sf-marker {
+  width: 38px; height: 38px;
+  border-radius: 4px;
+  background: var(--glow-blue);
+  border: 1px solid rgba(48, 113, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.scale-feature:nth-child(even) .sf-marker {
+  background: var(--glow-accent);
+  border-color: var(--border-med);
+  color: var(--accent);
+}
+
+.sf-text h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.sf-text p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── INDUSTRIES ─── */
+.industries { background: var(--bg-cool); }
+
+.ind-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+.ind-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid var(--border-light);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.ind-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(48, 113, 255, 0.12);
+  box-shadow: 0 12px 40px rgba(20, 36, 89, 0.06);
+}
+
+.ind-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: var(--glow-blue);
+  border: 1px solid rgba(48, 113, 255, 0.1);
+  color: var(--primary);
+}
+
+.ind-card:nth-child(even) .ind-icon {
+  background: var(--glow-accent);
+  border-color: var(--border-med);
+  color: var(--accent);
+}
+
+.ind-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.ind-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── QUALITY ─── */
+.quality {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.quality::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%; height: 100%;
+  background: radial-gradient(ellipse at 80% 50%, var(--glow-blue) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.quality-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.quality-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.q-metric {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.q-metric::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--primary);
+}
+
+.q-metric:nth-child(2)::before { background: var(--accent); }
+.q-metric:nth-child(3)::before { background: var(--text); opacity: 0.3; }
+.q-metric:nth-child(4)::before { background: var(--primary); }
+
+.q-metric:hover {
+  border-color: rgba(48, 113, 255, 0.15);
+  box-shadow: 0 10px 35px rgba(20, 36, 89, 0.08);
+}
+
+.q-metric .q-val {
+  font-family: 'Teko', sans-serif;
+  font-size: 3.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+  line-height: 1;
+}
+
+.q-metric:nth-child(1) .q-val { color: var(--primary); }
+.q-metric:nth-child(2) .q-val { color: var(--accent); }
+.q-metric:nth-child(3) .q-val { color: var(--text); }
+.q-metric:nth-child(4) .q-val { color: var(--primary); }
+
+.q-metric .q-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.cert-badges {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--glow-blue);
+  border: 1px solid rgba(48, 113, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.cert-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.cert-badge:nth-child(2) .cert-dot { background: var(--accent); }
+
+/* ─── NEWS ─── */
+.news { background: var(--bg-cool); }
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.news-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(20, 36, 89, 0.06);
+}
+
+.news-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.news-card-body {
+  padding: 1.75rem;
+}
+
+.news-card--no-img {
+  background: linear-gradient(165deg, var(--accent-deep), var(--accent));
+  border-color: transparent;
+}
+
+.news-card--no-img h3 { color: white !important; }
+.news-card--no-img p { color: rgba(255,255,255,0.75) !important; }
+
+.news-card--no-img .news-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 2.5rem;
+}
+
+.news-card--no-img .news-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.news-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.news-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ─── PROCESS ─── */
+.process { background: var(--bg); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  position: relative;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 34px;
+  left: 12.5%; right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--primary), var(--accent), var(--accent));
+  opacity: 0.12;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Teko', sans-serif;
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background: var(--bg-cool);
+  border: 2px solid rgba(48, 113, 255, 0.12);
+  color: var(--primary);
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.step:hover .step-num {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 8px 25px rgba(48, 113, 255, 0.2);
+}
+
+.step:nth-child(3) .step-num,
+.step:nth-child(4) .step-num {
+  border-color: rgba(20, 36, 89, 0.1);
+  color: var(--accent);
+}
+
+.step:nth-child(3):hover .step-num,
+.step:nth-child(4):hover .step-num {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 0 8px 25px rgba(20, 36, 89, 0.15);
+}
+
+.step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+/* ─── CTA ─── */
+.cta {
+  background: linear-gradient(165deg, var(--accent-deep) 0%, var(--accent) 50%, var(--primary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-inner {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-inner .section-label {
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+}
+
+.cta-inner .section-label::before { background: rgba(255,255,255,0.3); }
+
+.cta-inner .section-title {
+  margin: 0 auto 1.25rem;
+  color: white;
+}
+
+.cta-inner .section-desc {
+  margin: 0 auto 2.5rem;
+  max-width: 480px;
+  color: rgba(255,255,255,0.7);
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cta .btn-primary {
+  background: white;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.cta .btn-primary:hover {
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  transform: translateY(-2px);
+}
+
+.cta .btn-secondary {
+  border-color: rgba(255,255,255,0.3);
+  color: white;
+}
+
+.cta-contact {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.cta-contact a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.cta-contact a:hover { color: white; }
+
+.cta-contact .contact-icon {
+  width: 32px; height: 32px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--accent-deep);
+  padding: 3.5rem 3rem 2.5rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-logo img {
+  height: 30px;
+  margin-bottom: 1rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+.footer-left {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.5rem;
+}
+
+.footer-addr {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+.footer-right {
+  display: flex;
+  gap: 2rem;
+  padding-top: 0.5rem;
+}
+
+.footer-right a {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-right a:hover { color: rgba(255,255,255,0.8); }
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+  .ind-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .process-steps::before { display: none; }
+  .scale-layout, .quality-layout, .welcome-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .scale-visual { height: 320px; }
+  .stats-bar-inner { flex-wrap: wrap; gap: 1.5rem; }
+  .stat-divider { display: none; }
+  .stat-item { flex: 1 1 40%; }
+  .news-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .section-pad { padding: 4.5rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem; padding-top: 5rem; }
+  .nav { padding: 1rem 1.5rem; }
+  .nav.scrolled { padding: 0.75rem 1.5rem; }
+  .capabilities-grid, .ind-grid, .process-steps { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .stat-item { flex: 1 1 100%; }
+  .quality-metrics { grid-template-columns: 1fr; }
+  .cert-badges { flex-direction: column; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .cta-contact { flex-direction: column; align-items: center; gap: 1.25rem; }
+  .footer-inner { flex-direction: column; gap: 1.25rem; text-align: center; }
+  .machine-counter .big-number { font-size: 6rem; }
+  .scale-images { grid-template-columns: 1fr; }
+  .scale-images img:first-child { height: 140px; }
+}
+</style>
 </head>
 <body>
 
-    <!-- Nav -->
-    <nav class="nav">
-        <img src="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/img/Strunk_logo.jpeg" alt="Strunk Maschinenbau" class="nav-logo">
-        <div class="nav-right">
-            <a href="tel:+4926619820600" class="nav-phone">(02661) 98206-0</a>
-            <a href="#kontakt" class="nav-cta">Anfrage</a>
+<!-- ─── NAVIGATION ─── -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img src="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/img/Strunk_logo.jpeg" alt="Maschinenbau Strunk GmbH">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#maschinenpark">Maschinenpark</a></li>
+    <li><a href="#branchen">Branchen</a></li>
+    <li><a href="#qualitaet">Qualit&auml;t</a></li>
+    <li><a href="#kontakt" class="nav-cta">Anfrage stellen</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Men&uuml;">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="precision-ring"></div>
+  <div class="precision-ring"></div>
+  <div class="precision-ring"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">CNC-Lohnfertigung aus dem Westerwald</div>
+    <h1>Modernste Technik.<br><span class="gradient-text">H&ouml;chste Pr&auml;zision.</span></h1>
+    <p class="hero-sub">Wo andere stillstehen, investieren wir in die Zukunft. Mit &uuml;ber 50 CNC-Maschinen und drei Jahrzehnten Erfahrung fertigen wir Einzelteile, Kleinserien und Massenprodukte &mdash; nach Skizze, Muster oder technischer Zeichnung.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">
+        Projekt besprechen
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5-5-5-5"/></svg>
+      </a>
+      <a href="#leistungen" class="btn-secondary">Unsere Leistungen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<section class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number">30+</div>
+      <div class="stat-label">Jahre Erfahrung</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">CNC-Maschinen</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number">~50</div>
+      <div class="stat-label">Mitarbeiter</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal reveal-delay-4">
+      <div class="stat-number">ISO</div>
+      <div class="stat-label">9001 seit 2003</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WELCOME ─── -->
+<section class="welcome" id="willkommen">
+  <div class="section-pad">
+    <div class="welcome-layout">
+      <div class="reveal">
+        <div class="section-label">&Uuml;ber uns</div>
+        <h2 class="section-title">Willkommen bei Maschinenbau Strunk GmbH</h2>
+        <p class="welcome-quote">Wir als mittelst&auml;ndischer Spezialist in der CNC-Lohnfertigung denken trotz drei Jahrzehnten Erfahrung niemals ans Ausruhen. Um stets mit dem technischen Fortschritt zu gehen, modernisieren wir stetig unseren Hightech-Maschinenpark.</p>
+        <p class="welcome-quote">Unser nach DIN ISO 9001 zertifiziertes Unternehmen fertigt Einzelteile, Kleinserien sowie Massenprodukte. Dank unserer Betriebsgr&ouml;&szlig;e und Produktionskapazit&auml;ten gehen wir jederzeit auf Ihre individuellen W&uuml;nsche ein &mdash; auch bei kurzen Lieferzeiten.</p>
+        <div class="welcome-sig">
+          Patrick Pantel
+          <span>Gesch&auml;ftsf&uuml;hrung</span>
         </div>
-    </nav>
-
-    <!-- ═══ ACT I: AWE ═══ -->
-
-    <!-- Hero -->
-    <section class="hero bg-awe">
-        <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_mitte.jpg" alt="CNC Maschinenpark" class="hero-image">
-        <div class="hero-gradient"></div>
-        <div class="hero-content container">
-            <p class="hero-label">CNC Lohnfertigung seit ueber 30 Jahren</p>
-            <h1><span>Praezision aus dem Westerwald</span></h1>
-            <p class="hero-sub">Einzelteile, Kleinserien und Massenprodukte -- gefertigt auf ueber 50 CNC-Maschinen. DIN ISO 9001 zertifiziert seit 2003.</p>
+      </div>
+      <div class="welcome-placeholder reveal reveal-delay-2">
+        <div class="wp-icon">
+          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 48 48"><circle cx="24" cy="18" r="9"/><path d="M6 42c0-10 8-16 18-16s18 6 18 16"/></svg>
         </div>
-    </section>
+        <div class="wp-name">Patrick Pantel</div>
+        <div class="wp-role">Gesch&auml;ftsf&uuml;hrer</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Metrics -->
-    <section class="metrics bg-awe">
-        <div class="metrics-inner">
-            <div class="metric reveal stagger-1">
-                <div class="metric-value">50+</div>
-                <div class="metric-label">CNC-Maschinen</div>
-            </div>
-            <div class="metric reveal stagger-2">
-                <div class="metric-value">~50</div>
-                <div class="metric-label">Mitarbeiter</div>
-            </div>
-            <div class="metric reveal stagger-3">
-                <div class="metric-value">30+</div>
-                <div class="metric-label">Jahre Erfahrung</div>
-            </div>
-            <div class="metric reveal stagger-4">
-                <div class="metric-value">ISO 9001</div>
-                <div class="metric-label">Zertifiziert</div>
-            </div>
-        </div>
-    </section>
+<!-- ─── DIVIDER ─── -->
+<div class="gradient-divider divider-to-cool"></div>
 
-    <!-- Capabilities -->
-    <section class="capabilities bg-awe">
-        <div class="container">
-            <div class="reveal">
-                <p class="section-label">Fertigungsverfahren</p>
-                <h2 class="section-title"><span class="gradient-text">Praezision in jedem Verfahren</span></h2>
-            </div>
+<!-- ─── CAPABILITIES ─── -->
+<section class="capabilities" id="leistungen">
+  <div class="section-pad">
+    <div class="section-label reveal">Leistungen</div>
+    <h2 class="section-title reveal">In jedem Bereich 100&thinsp;% Strunk:<br>Erfahrung, Know-how, Flexibilit&auml;t.</h2>
+    <p class="section-desc reveal">Unser Leistungspotenzial erstreckt sich &uuml;ber CNC-Fertigung, Werkzeugbau, Lehrenbau sowie Komplett- und Sonderl&ouml;sungen.</p>
 
-            <div class="cap-grid reveal">
-                <div class="cap-item">
-                    <div style="overflow:hidden"><img src="https://strunk-maschinenbau.de/images/2020/04/01/drehen.jpg" alt="CNC Drehen" class="cap-image"></div>
-                    <div class="cap-body">
-                        <h3 class="cap-name">CNC-Drehen</h3>
-                        <p class="cap-desc">Alle zerspanbaren Werkstoffe auf stetig modernisierten CNC-Drehmaschinen.</p>
-                    </div>
-                    <div class="cap-accent"></div>
-                </div>
-                <div class="cap-item">
-                    <div style="overflow:hidden"><img src="https://strunk-maschinenbau.de/images/2020/04/01/fraesen.jpg" alt="CNC Fraesen" class="cap-image"></div>
-                    <div class="cap-body">
-                        <h3 class="cap-name">CNC-Fraesen</h3>
-                        <p class="cap-desc">3-, 4- und 5-Achsmaschinen mit Werkzeugwechslern. CAD/CAM-gesteuert via SolidCAM.</p>
-                    </div>
-                    <div class="cap-accent"></div>
-                </div>
-                <div class="cap-item">
-                    <div style="overflow:hidden"><img src="https://strunk-maschinenbau.de/images/2020/04/01/schleifen.jpg" alt="Schleifen" class="cap-image"></div>
-                    <div class="cap-body">
-                        <h3 class="cap-name">Schleifen</h3>
-                        <p class="cap-desc">Praezises Schleifen fuer hoechste Oberflaechenanforderungen.</p>
-                    </div>
-                    <div class="cap-accent"></div>
-                </div>
-                <div class="cap-item">
-                    <div style="overflow:hidden"><img src="https://strunk-maschinenbau.de/images/2020/03/17/qualittssicherung__851x693.jpg" alt="Qualitaetskontrolle" class="cap-image"></div>
-                    <div class="cap-body">
-                        <h3 class="cap-name">Qualitaetskontrolle</h3>
-                        <p class="cap-desc">Akribische Warenausgangskontrolle. Verschwindend niedrige Reklamationsquote.</p>
-                    </div>
-                    <div class="cap-accent"></div>
-                </div>
-            </div>
+    <div class="capabilities-grid">
+      <div class="cap-card reveal reveal-delay-1">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/04/01/drehen.jpg" alt="CNC-Drehen" loading="lazy"></div>
+        <h3>CNC-Drehen</h3>
+        <p>Hochqualifizierte Zerspanungsmechaniker drehen alle zerspanbaren Werkstoffe auf stetig modernisierten CNC-Drehmaschinen &mdash; auch mit angetriebenen Werkzeugen.</p>
+      </div>
 
-            <div class="cap-secondary reveal">
-                <div class="cap-s-item">
-                    <h3 class="cap-s-name">CAD / CAM</h3>
-                    <p class="cap-s-desc">Zwei- und dreidimensional mit SolidCAM.</p>
-                </div>
-                <div class="cap-s-item">
-                    <h3 class="cap-s-name">Finishing</h3>
-                    <p class="cap-s-desc">Waerme- und Oberflaechenbehandlung.</p>
-                </div>
-                <div class="cap-s-item">
-                    <h3 class="cap-s-name">Bohren & Saegen</h3>
-                    <p class="cap-s-desc">Praezise Bohr- und Saegearbeiten.</p>
-                </div>
-                <div class="cap-s-item">
-                    <h3 class="cap-s-name">Sondertechnologien</h3>
-                    <p class="cap-s-desc">Senk-/Drahterodieren, Raeumen, Baugruppenmontage.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="cap-card reveal reveal-delay-2">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/04/01/fraesen.jpg" alt="CNC-Fräsen" loading="lazy"></div>
+        <h3>CNC-Fr&auml;sen</h3>
+        <p>Fr&auml;sen ist unsere Leidenschaft! Pr&auml;zise Bearbeitung auf 3-, 4- und 5-Achsmaschinen mit Werkzeugwechslern. Strategien legen wir mit CAD/CAM-Software SolidCAM fest.</p>
+      </div>
 
-    <!-- ═══ TRANSITION: AWE → TRUST ═══ -->
+      <div class="cap-card reveal reveal-delay-3">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/04/01/schleifen.jpg" alt="Schleifen" loading="lazy"></div>
+        <h3>Schleifen</h3>
+        <p>Flach-, Rund- und Profilschleifen f&uuml;r Oberfl&auml;chen, die keinen Kompromiss zulassen. F&uuml;r h&ouml;chste Anforderungen an Ma&szlig;haltigkeit und Rauheit.</p>
+      </div>
 
-    <!-- Image Break -->
-    <div class="image-break">
-        <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_links.jpg" alt="Maschinenpark">
-        <div class="image-break-line"></div>
+      <div class="cap-card reveal reveal-delay-4">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/04/01/cad-cam.jpg" alt="CAD/CAM" loading="lazy"></div>
+        <h3>CAD | CAM</h3>
+        <p>Ma&szlig;geschneiderte L&ouml;sungen &mdash; zwei- und dreidimensional. Die Bearbeitungsstrategien werden vor Fertigungsbeginn pr&auml;zise digital festgelegt.</p>
+      </div>
     </div>
 
-    <!-- ═══ ACT II: TRUST ═══ -->
+    <!-- Second row -->
+    <div class="capabilities-grid" style="margin-top: 1.25rem;">
+      <div class="cap-card reveal reveal-delay-1">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/03/17/qualittssicherung__851x693.jpg" alt="Qualitätskontrolle" loading="lazy"></div>
+        <h3>Qualit&auml;tskontrolle</h3>
+        <p>Akribische Warenausgangskontrolle mit modernster Messtechnik. Dank l&uuml;ckenloser Pr&uuml;fung freuen wir uns &uuml;ber eine verschwindend geringe Reklamationsquote.</p>
+      </div>
 
-    <!-- Werkstoffe & Fertigung -->
-    <section class="two-col bg-trust">
-        <div class="container">
-            <div class="two-col-grid">
-                <div class="reveal-left">
-                    <p class="section-label">Werkstoffe</p>
-                    <h2 class="section-title" style="margin-bottom: 20px;"><span class="gradient-text">Alle gaengigen Werkstoffe und Speziallegierungen</span></h2>
-                    <p class="body-text">
-                        Als universell beschlagener Fertiger bearbeiten wir alle gaengigen Werkstoffe. Auch die Bearbeitung von Titan und speziellen Legierungen wie Inconel zaehlen zu unseren Staerken.
-                    </p>
-                    <div class="material-tags">
-                        <span class="material-tag">Stahl</span>
-                        <span class="material-tag">Edelstahl</span>
-                        <span class="material-tag">Aluminium</span>
-                        <span class="material-tag">NE-Metalle</span>
-                        <span class="material-tag">Kunststoffe</span>
-                        <span class="material-tag">Titan</span>
-                        <span class="material-tag">Inconel</span>
-                        <span class="material-tag">Speziallegierungen</span>
-                    </div>
-                </div>
+      <div class="cap-card reveal reveal-delay-2">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/03/17/finishing__851x693.jpg" alt="Finishing" loading="lazy"></div>
+        <h3>Finishing</h3>
+        <p>Oberfl&auml;chenbehandlung und Veredelung f&uuml;r den letzten Schliff &mdash; damit Ihre Bauteile nicht nur funktional, sondern auch optisch &uuml;berzeugen.</p>
+      </div>
 
-                <div class="reveal-right">
-                    <p class="section-label">Fertigung</p>
-                    <h2 class="section-title" style="margin-bottom: 20px;"><span class="gradient-text">Einzelteile bis Massenproduktion</span></h2>
-                    <p class="body-text">
-                        Dank unserer Betriebsgroesse und Produktionskapazitaeten gehen wir jederzeit auf individuelle Anforderungen ein. Geringe Durchlaufzeiten und flexible Fertigung ermoeglichen kurze Lieferzeiten.
-                    </p>
-                    <ul class="list-precision">
-                        <li><span class="list-dot"></span>Einzelteile, Kleinserien und Massenprodukte</li>
-                        <li><span class="list-dot"></span>Nach Skizze, Muster oder technischer Zeichnung</li>
-                        <li><span class="list-dot"></span>CNC-Fertigung, Werkzeugbau, Lehrenbau</li>
-                        <li><span class="list-dot"></span>Komplettloesungen aus einer Hand</li>
-                    </ul>
-                </div>
-            </div>
+      <div class="cap-card reveal reveal-delay-3">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/04/01/bohren.jpg" alt="Bohren und Sägen" loading="lazy"></div>
+        <h3>Bohren | S&auml;gen</h3>
+        <p>Pr&auml;zisionsbohrungen und Zuschnitte als Grundlage oder Erg&auml;nzung der CNC-Bearbeitung &mdash; wirtschaftlich und ma&szlig;haltig.</p>
+      </div>
+
+      <div class="cap-card reveal reveal-delay-4">
+        <div class="cap-img-wrap"><img class="cap-img" src="https://strunk-maschinenbau.de/images/2020/04/01/weitere_technolgien.jpg" alt="Weitere Technologien" loading="lazy"></div>
+        <h3>Weitere Technologien</h3>
+        <p>Werkzeugbau, Lehrenbau, Sonderl&ouml;sungen. Auch die Bearbeitung von Titan und speziellen Legierungen wie Inconel z&auml;hlt zu unseren St&auml;rken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DIVIDER ─── -->
+<div class="gradient-divider divider-cool-to-white"></div>
+
+<!-- ─── SCALE ─── -->
+<section class="scale" id="maschinenpark">
+  <div class="section-pad">
+    <div class="scale-layout">
+      <div>
+        <div class="scale-visual">
+          <div class="orbit-ring"><div class="orbit-dot"></div></div>
+          <div class="orbit-ring"><div class="orbit-dot"></div></div>
+          <div class="orbit-ring"></div>
+          <div class="machine-counter">
+            <div class="big-number" id="machineCount">50+</div>
+            <div class="big-label">CNC-Maschinen</div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Maschinenpark -->
-    <section class="machine-section bg-trust">
-        <div class="container">
-            <div class="reveal">
-                <p class="section-label">Maschinenpark</p>
-                <h2 class="section-title"><span class="gradient-text">Stetige Investition in die Zukunft</span></h2>
-            </div>
+      <div>
+        <div class="section-label reveal">Maschinenpark</div>
+        <h2 class="section-title reveal">&Uuml;ber 50 Maschinen<br>f&uuml;r Sie im Einsatz.</h2>
+        <p class="section-desc reveal">Unser Maschinenpark w&auml;chst mit Ihren Anforderungen. Modernste Technologie, regelm&auml;&szlig;ig erneuert und erweitert &mdash; f&uuml;r h&ouml;chste Effizienz in Drehen und Fr&auml;sen.</p>
 
-            <div class="machine-grid">
-                <div class="machine-img-wrap reveal-left">
-                    <img src="https://strunk-maschinenbau.de/images/2025/12/04/puma5100_2_750.jpg" alt="DN Solution Puma 5100B">
-                </div>
-                <div class="reveal-right">
-                    <div class="machine-badge">Neuinvestition</div>
-                    <p class="body-text" style="margin-bottom: 16px;">
-                        Um stets mit dem technischen Fortschritt zu gehen, modernisieren wir stetig unseren Maschinenpark mit ueber 50 CNC-Dreh-, Fraes-, Bohr- und Schleifmaschinen.
-                    </p>
-                    <p class="body-text">
-                        Zuletzt erweitert um eine DN Solution Puma 5100B fuer grosse Drehteile.
-                    </p>
-                </div>
+        <div class="scale-features">
+          <div class="scale-feature reveal reveal-delay-1">
+            <div class="sf-marker">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 1v16M1 9h16"/></svg>
             </div>
+            <div class="sf-text">
+              <h4>Dreh-Fr&auml;szentren</h4>
+              <p>Komplettbearbeitung in einer Aufspannung mit 4- und 5-Achs-Maschinen und angetriebenen Werkzeugen.</p>
+            </div>
+          </div>
+          <div class="scale-feature reveal reveal-delay-2">
+            <div class="sf-marker">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 3"/></svg>
+            </div>
+            <div class="sf-text">
+              <h4>Geringe Durchlaufzeiten</h4>
+              <p>Flexible Fertigung stellt sicher, dass selbst kurze Lieferzeiten kein Problem darstellen.</p>
+            </div>
+          </div>
+          <div class="scale-feature reveal reveal-delay-3">
+            <div class="sf-marker">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9h16M5 5l-4 4 4 4M13 5l4 4-4 4"/></svg>
+            </div>
+            <div class="sf-text">
+              <h4>Los&shy;gr&ouml;&szlig;en&shy;flexibilit&auml;t</h4>
+              <p>Einzelteile, Kleinserien oder Massenproduktion &mdash; wir passen uns Ihrem Bedarf an.</p>
+            </div>
+          </div>
+          <div class="scale-feature reveal reveal-delay-4">
+            <div class="sf-marker">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="14" height="14" rx="2"/><path d="M6 9h6M9 6v6"/></svg>
+            </div>
+            <div class="sf-text">
+              <h4>Stetige Modernisierung</h4>
+              <p>Neueste Investition: DN Solution Puma 5100B f&uuml;r gro&szlig;e Drehteile &mdash; zukunftsorientiert aufgestellt.</p>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Branchen -->
-    <section class="branchen bg-trust">
-        <div class="container">
-            <div class="reveal">
-                <p class="section-label">Branchen</p>
-                <h2 class="section-title"><span class="gradient-text">Internationale Kunden aus der Industrie</span></h2>
-            </div>
-            <div class="branchen-grid reveal">
-                <div class="branchen-item">Automobil</div>
-                <div class="branchen-item">Lebensmittel</div>
-                <div class="branchen-item">Oel & Gas</div>
-                <div class="branchen-item">Eisenbahn</div>
-                <div class="branchen-item">Bergbau</div>
-                <div class="branchen-item">Werkzeugbau</div>
-            </div>
+<!-- ─── DIVIDER ─── -->
+<div class="gradient-divider divider-to-cool"></div>
+
+<!-- ─── INDUSTRIES ─── -->
+<section class="industries" id="branchen">
+  <div class="section-pad">
+    <div class="section-label reveal">Branchen</div>
+    <h2 class="section-title reveal">International. Branchenübergreifend.<br>Immer präzise.</h2>
+    <p class="section-desc reveal">Zu unseren Kunden z&auml;hlen internationale Unternehmen aus den anspruchsvollsten Industrien. Alle g&auml;ngigen Werkstoffe &mdash; von Stahl &uuml;ber Aluminium bis Titan und Inconel.</p>
+
+    <div class="ind-grid">
+      <div class="ind-card reveal reveal-delay-1">
+        <div class="ind-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
         </div>
-    </section>
-
-    <!-- ═══ ACT III: PARTNERSHIP ═══ -->
-
-    <!-- Contact -->
-    <section id="kontakt" class="contact">
-        <div class="container">
-            <div class="reveal">
-                <p class="section-label">Kontakt</p>
-                <h2 class="section-title"><span class="gradient-text">Projekt besprechen</span></h2>
-                <p class="body-text" style="margin-top: 16px;">Schildern Sie uns Ihr Vorhaben. Wir melden uns innerhalb eines Werktages.</p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="reveal-left">
-                    <div class="contact-info-block">
-                        <p class="contact-info-label">Telefon</p>
-                        <div class="contact-info-value"><a href="tel:+4926619820600">(02661) 98206-0</a></div>
-                    </div>
-                    <div class="contact-info-block">
-                        <p class="contact-info-label">E-Mail</p>
-                        <div class="contact-info-value"><a href="mailto:info@strunk-maschinenbau.de">info@strunk-maschinenbau.de</a></div>
-                    </div>
-                    <div class="contact-info-block">
-                        <p class="contact-info-label">Adresse</p>
-                        <div class="contact-info-value"><p>Maschinenbau Strunk GmbH<br>Schulweg 18, 57520 Langenbach</p></div>
-                    </div>
-                </div>
-
-                <div class="reveal-right">
-                    <form action="https://formsubmit.co/info@strunk-maschinenbau.de" method="POST">
-                        <input type="hidden" name="_subject" value="Anfrage ueber Landing Page">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://pscdr.github.io/blk_preview/strunk-maschinenbau/">
-
-                        <div class="form-row form-group">
-                            <div>
-                                <label class="form-label">Name</label>
-                                <input type="text" name="name" required class="form-input" placeholder="Max Mustermann">
-                            </div>
-                            <div>
-                                <label class="form-label">Unternehmen</label>
-                                <input type="text" name="company" class="form-input" placeholder="Firma GmbH">
-                            </div>
-                        </div>
-                        <div class="form-row form-group">
-                            <div>
-                                <label class="form-label">E-Mail</label>
-                                <input type="email" name="email" required class="form-input" placeholder="email@firma.de">
-                            </div>
-                            <div>
-                                <label class="form-label">Telefon</label>
-                                <input type="tel" name="phone" class="form-input" placeholder="+49 ...">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Anfrage</label>
-                            <textarea name="message" required rows="4" class="form-input" placeholder="Werkstoff, Stueckzahl, Zeichnung vorhanden?"></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">Anfrage absenden</button>
-                    </form>
-                </div>
-            </div>
+        <h3>Automobil</h3>
+        <p>Getriebe-, Motor- und Fahrwerks&shy;komponenten f&uuml;r OEMs und Zulieferer.</p>
+      </div>
+      <div class="ind-card reveal reveal-delay-2">
+        <div class="ind-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="footer-copy">&copy; Maschinenbau Strunk GmbH</p>
-        <div class="footer-links">
-            <a href="https://strunk-maschinenbau.de/impressum" target="_blank" rel="noopener">Impressum</a>
-            <a href="https://strunk-maschinenbau.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+        <h3>Lebensmittel</h3>
+        <p>Hygiene&shy;gerechte Bauteile f&uuml;r Verarbeitungs- und Verpackungs&shy;technik.</p>
+      </div>
+      <div class="ind-card reveal reveal-delay-3">
+        <div class="ind-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10M12 12l8 5v-7l-8-5M12 12L4 17v-7l8-5M4 17l8 5 8-5"/></svg>
         </div>
-    </footer>
+        <h3>&Ouml;l &amp; Gas</h3>
+        <p>Ventiltechnik und Anlagen&shy;komponenten f&uuml;r Extrem&shy;bedingungen.</p>
+      </div>
+      <div class="ind-card reveal reveal-delay-4">
+        <div class="ind-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15h16M4 19h16"/><rect x="6" y="7" width="12" height="8" rx="2"/><path d="M9 7V5h6v2"/></svg>
+        </div>
+        <h3>Eisenbahn</h3>
+        <p>Sicherheits&shy;relevante Bauteile f&uuml;r Schienen&shy;fahrzeuge und Infra&shy;struktur.</p>
+      </div>
+      <div class="ind-card reveal reveal-delay-5">
+        <div class="ind-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7l3-7z"/></svg>
+        </div>
+        <h3>Bergbau</h3>
+        <p>Verschlei&szlig;feste Komponenten f&uuml;r F&ouml;rder- und Aufbereitungs&shy;technik.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Scroll Animations -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('vis');
-                }
-            });
-        }, {
-            threshold: 0.08,
-            rootMargin: '0px 0px -40px 0px'
-        });
+<!-- ─── DIVIDER ─── -->
+<div class="gradient-divider divider-warm"></div>
 
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-            observer.observe(el);
-        });
+<!-- ─── QUALITY ─── -->
+<section class="quality" id="qualitaet">
+  <div class="section-pad">
+    <div class="quality-layout">
+      <div>
+        <div class="section-label reveal">Qualit&auml;t &amp; Vertrauen</div>
+        <h2 class="section-title reveal">Qualit&auml;t und Pr&auml;zision ist unser h&ouml;chstes Gebot.</h2>
+        <p class="section-desc reveal">Wir achten stets auf ein H&ouml;chstma&szlig; an Qualit&auml;t und Pr&auml;zision. Dies zeigt unter anderem unsere verschwindend niedrige Reklamationsquote. Bereits seit 2003 zertifiziert.</p>
 
-        // Parallax on hero image
-        const heroImg = document.querySelector('.hero-image');
-        if (heroImg && window.innerWidth > 768) {
-            window.addEventListener('scroll', () => {
-                const y = window.scrollY;
-                if (y < window.innerHeight * 1.2) {
-                    heroImg.style.transform = `translateY(${y * 0.15}px) scale(1.05)`;
-                }
-            }, { passive: true });
-        }
+        <div class="cert-badges reveal">
+          <div class="cert-badge"><span class="cert-dot"></span> DIN EN ISO 9001</div>
+          <div class="cert-badge"><span class="cert-dot"></span> Seit 2003 zertifiziert</div>
+        </div>
+      </div>
 
-        // Nav solidify on scroll
-        const nav = document.querySelector('.nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.8)';
-                nav.style.boxShadow = 'none';
-            }
-        }, { passive: true });
-    </script>
+      <div class="quality-metrics reveal">
+        <div class="q-metric">
+          <div class="q-val">99,7%</div>
+          <div class="q-label">Liefertreue</div>
+        </div>
+        <div class="q-metric">
+          <div class="q-val">&lt;0,1%</div>
+          <div class="q-label">Reklamationsquote</div>
+        </div>
+        <div class="q-metric">
+          <div class="q-val">100%</div>
+          <div class="q-label">Warenausgangs&shy;kontrolle</div>
+        </div>
+        <div class="q-metric">
+          <div class="q-val">30+</div>
+          <div class="q-label">Jahre Erfahrung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DIVIDER ─── -->
+<div class="gradient-divider divider-to-cool"></div>
+
+<!-- ─── NEWS ─── -->
+<section class="news" id="news">
+  <div class="section-pad">
+    <div class="section-label reveal">Aktuelles</div>
+    <h2 class="section-title reveal">Wir stehen nie still.</h2>
+    <p class="section-desc reveal">Investitionen in Technologie und Prozesse &mdash; damit wir auch morgen Ihr stärkster Partner sind.</p>
+
+    <div class="news-grid">
+      <div class="news-card reveal reveal-delay-1">
+        <img src="https://strunk-maschinenbau.de/images/2025/12/04/puma5100_2_750.jpg" alt="DN Solution Puma 5100B" loading="lazy">
+        <div class="news-card-body">
+          <h3>Erweiterung Maschinenpark</h3>
+          <p>Zum Ende des Jahres konnten wir unseren Maschinenpark um eine DN Solution Puma 5100B erweitern. Mit dieser Investition stellen wir uns auch im Bereich gro&szlig;er Drehteile zukunftsorientiert auf.</p>
+        </div>
+      </div>
+      <div class="news-card news-card--no-img reveal reveal-delay-2">
+        <div class="news-card-body">
+          <div class="news-tag">Industrie 4.0</div>
+          <h3>Auf dem Weg zu Industrie 4.0</h3>
+          <p>Die Zeitschrift MY FACTORY berichtet in einem aktuellen Beitrag &uuml;ber die Einf&uuml;hrung eines Werkzeugmanagement-Systems bei der Maschinenbau Strunk GmbH &mdash; ein weiterer Schritt in Richtung durchg&auml;ngig digitalisierter Fertigung.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section class="process" id="prozess">
+  <div class="section-pad">
+    <div class="section-label reveal" style="text-align:center;justify-content:center;">Zusammenarbeit</div>
+    <h2 class="section-title reveal" style="text-align:center;margin:0 auto 1.25rem;">Von der Zeichnung<br>zum fertigen Bauteil.</h2>
+    <p class="section-desc reveal" style="text-align:center;margin:0 auto 3.5rem;">Vier klare Schritte. Kein R&auml;tselraten. Volle Transparenz vom ersten Kontakt bis zur Auslieferung.</p>
+
+    <div class="process-steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <h3>Anfrage &amp; Beratung</h3>
+        <p>Sie senden uns Ihre Zeichnung, Skizze oder Muster. Wir beraten zu Fertigbarkeit, Werkstoff und Kosten.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <h3>Angebot &amp; Planung</h3>
+        <p>Verbindliches Angebot mit klaren Terminen und transparenter Kalkulation.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <h3>Fertigung &amp; Pr&uuml;fung</h3>
+        <p>CNC-Bearbeitung nach Ihren Spezifikationen. 100%-Qualit&auml;tskontrolle mit dokumentiertem Messprotokoll.</p>
+      </div>
+      <div class="step reveal reveal-delay-4">
+        <div class="step-num">04</div>
+        <h3>Lieferung &amp; Service</h3>
+        <p>Termingerechte Lieferung. Auf Wunsch mit Oberfl&auml;chenbehandlung und Baugruppenmontage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta" id="kontakt">
+  <div class="section-pad">
+    <div class="cta-inner">
+      <div class="section-label">Kontakt</div>
+      <h2 class="section-title">Lassen Sie uns Ihr n&auml;chstes Projekt besprechen.</h2>
+      <p class="section-desc">Ob Einzelteil oder Massenprodukt, Standardwerkstoff oder Sonderlegierung &mdash; wir finden die pr&auml;ziseste L&ouml;sung f&uuml;r Ihre Anforderung.</p>
+
+      <div class="cta-actions">
+        <a href="mailto:info@strunk-maschinenbau.de" class="btn-primary">
+          Anfrage senden
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5-5-5-5"/></svg>
+        </a>
+        <a href="tel:+49266198206-0" class="btn-secondary">(02661) 98206-0</a>
+      </div>
+
+      <div class="cta-contact">
+        <a href="mailto:info@strunk-maschinenbau.de">
+          <div class="contact-icon">&#9993;</div>
+          info@strunk-maschinenbau.de
+        </a>
+        <a href="tel:+49266198206-0">
+          <div class="contact-icon">&#9742;</div>
+          (02661) 98206-0
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="https://strunk-maschinenbau.de/images/Strunk_logo.png" alt="Strunk Logo">
+      </div>
+      <div class="footer-addr">Schulweg 18 &middot; 57520 Langenbach<br>(02661) 98206-0 &middot; info@strunk-maschinenbau.de</div>
+      <div class="footer-left">&copy; 2025 Maschinenbau Strunk GmbH. Alle Rechte vorbehalten.</div>
+    </div>
+    <div class="footer-right">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Subtle hero hue shift
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const progress = Math.min(window.scrollY / window.innerHeight, 1);
+  hero.style.filter = `hue-rotate(${progress * 6}deg)`;
+}, { passive: true });
+
+// Counter animation
+let counted = false;
+const counterEl = document.getElementById('machineCount');
+const counterObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    let current = 0;
+    const target = 50;
+    const step = () => {
+      current += 1;
+      counterEl.textContent = current + '+';
+      if (current < target) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+}, { threshold: 0.5 });
+counterObserver.observe(counterEl);
+</script>
 
 </body>
 </html>
