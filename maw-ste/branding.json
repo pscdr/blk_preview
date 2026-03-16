@@ -1,0 +1,33 @@
+{
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#2991D6",
+    "accent": "#0089F7",
+    "background": "#FCFCFC",
+    "textPrimary": "#444444",
+    "link": "#0089F7"
+  },
+  "fonts": {
+    "heading": "Segoe UI",
+    "body": "Segoe UI",
+    "paragraph": "Poppins"
+  },
+  "typography": {
+    "h1": "16px",
+    "h2": "30px",
+    "body": "17px"
+  },
+  "images": {
+    "logo": "https://maw-ste.de/wp-content/uploads/2016/07/logo100.png",
+    "favicon": "https://maw-ste.de/wp-content/uploads/2016/07/favicon.jpg",
+    "hero1": "https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-9-1.jpg",
+    "hero2": "https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-2-1.jpg",
+    "hydrogas": "https://maw-ste.de/wp-content/uploads/2015/04/hydro_gas.jpg",
+    "metallbau": "https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_5.jpg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients and businesses"
+  }
+}
