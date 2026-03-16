@@ -1,0 +1,52 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Roboto", "role": "body" },
+    { "family": "Times New Roman", "role": "unknown" }
+  ],
+  "colors": {
+    "primary": "#236621",
+    "accent": "#78B819",
+    "background": "#E3E3E3",
+    "textPrimary": "#236621",
+    "link": "#236621"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "heading": "Roboto"
+    },
+    "fontSizes": {
+      "h1": "38.25px",
+      "h2": "36px",
+      "body": "18px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#236621",
+      "textColor": "#FFFFFF",
+      "borderRadius": "30px"
+    },
+    "buttonSecondary": {
+      "background": "#78B819",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.wendlandt.de/images/wendlandt_Logo_mit_Rabe_neu.jpg",
+    "logoText": "https://www.wendlandt.de/images/wendlandt_Logo.jpg",
+    "favicon": "https://www.wendlandt.de/favicon.png",
+    "bduLogo": "https://www.wendlandt.de/images/BDU_Logo_Darkmode.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "transportation and logistics companies"
+  }
+}
