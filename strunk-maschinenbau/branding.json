@@ -1,0 +1,53 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Raleway", "role": "body" },
+    { "family": "Roboto Condensed", "role": "heading" },
+    { "family": "Teko", "role": "display" }
+  ],
+  "colors": {
+    "primary": "#3071FF",
+    "accent": "#142459",
+    "background": "#FFFFFF",
+    "textPrimary": "#142952",
+    "link": "#142952"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Raleway",
+      "heading": "Roboto Condensed"
+    },
+    "fontSizes": {
+      "h1": "32px",
+      "h2": "60px",
+      "body": "13.5px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#142459",
+      "textColor": "#FFFFFF",
+      "borderRadius": "4px"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://strunk-maschinenbau.de/templates/strunk-maschinenbau/img/Strunk_logo.jpeg",
+    "favicon": "https://strunk-maschinenbau.de/templates/strunk-maschinenbau/favicon.ico",
+    "footerLogo": "https://strunk-maschinenbau.de/images/Strunk_logo.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial professionals"
+  }
+}
