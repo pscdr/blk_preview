@@ -4,451 +4,366 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CNC Lohnfertigung | Maschinenbau Strunk GmbH</title>
-    <meta name="description" content="CNC Lohnfertigung aus dem Westerwald. Über 50 CNC-Maschinen, DIN ISO 9001 zertifiziert. Einzelteile, Kleinserien & Massenprodukte. Jetzt Anfrage stellen.">
+    <meta name="description" content="CNC Lohnfertigung aus dem Westerwald. Ueber 50 CNC-Maschinen, DIN ISO 9001 zertifiziert. Einzelteile, Kleinserien, Massenprodukte.">
     <link rel="icon" href="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        brand: {
-                            primary: '#3071FF',
-                            accent: '#142459',
-                            dark: '#142952',
-                            light: '#F7F9FC',
-                            muted: '#6B7A99',
-                        }
-                    },
                     fontFamily: {
-                        body: ['Raleway', 'sans-serif'],
-                        heading: ['Roboto Condensed', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        ink: '#111111',
+                        mid: '#555555',
+                        pale: '#999999',
+                        rule: '#E5E5E5',
+                        surface: '#F5F5F5',
+                        blue: '#3071FF',
+                    },
+                    maxWidth: {
+                        page: '1200px',
                     }
                 }
             }
         }
     </script>
     <style>
-        * { font-family: 'Raleway', sans-serif; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Roboto Condensed', sans-serif; }
         html { scroll-behavior: smooth; }
+        ::selection { background: #3071FF; color: #fff; }
 
-        .fade-in {
+        .reveal {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .fade-in.visible {
+        .reveal.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-white text-brand-dark antialiased">
+<body class="bg-white text-ink antialiased">
 
-    <!-- Sticky Nav -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <img src="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/img/Strunk_logo.jpeg" alt="Strunk Maschinenbau Logo" class="h-10">
-            <div class="flex items-center gap-4 sm:gap-6">
-                <a href="tel:+4926619820600" class="hidden sm:flex items-center gap-2 text-sm font-medium text-brand-dark hover:text-brand-primary transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    (02661) 98206 0
-                </a>
-                <a href="#anfrage" class="inline-flex items-center px-5 py-2.5 rounded text-sm font-semibold text-white bg-brand-accent hover:bg-brand-primary transition-colors">
-                    Anfrage stellen
-                </a>
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-rule">
+        <div class="max-w-page mx-auto px-6 h-14 flex items-center justify-between">
+            <img src="https://strunk-maschinenbau.de/templates/strunk-maschinenbau/img/Strunk_logo.jpeg" alt="Strunk Maschinenbau" class="h-8">
+            <div class="flex items-center gap-6">
+                <a href="tel:+4926619820600" class="hidden sm:block text-[13px] text-mid hover:text-ink transition-colors">(02661) 98206-0</a>
+                <a href="#kontakt" class="text-[13px] font-medium text-white bg-ink hover:bg-ink/80 px-4 py-2 transition-colors">Anfrage</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-16 sm:pb-20">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-brand-light text-brand-accent border border-brand-accent/10">
-                            DIN ISO 9001 zertifiziert
-                        </span>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-brand-light text-brand-accent border border-brand-accent/10">
-                            Seit 2003
-                        </span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.1] tracking-tight text-brand-accent mb-6">
+    <section class="pt-14">
+        <div class="w-full aspect-[21/9] max-h-[75vh] overflow-hidden relative">
+            <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_mitte.jpg" alt="CNC Maschinenpark" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 px-6 pb-12 sm:pb-16">
+                <div class="max-w-page mx-auto">
+                    <h1 class="text-white text-3xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-[-0.02em] max-w-2xl">
                         CNC Lohnfertigung<br>aus dem Westerwald
                     </h1>
-                    <p class="text-lg sm:text-xl text-brand-muted leading-relaxed mb-8 max-w-lg">
-                        Einzelteile, Kleinserien und Massenprodukte -- gefertigt auf ueber 50 CNC-Maschinen mit hoechster Praezision und kurzen Lieferzeiten.
+                    <p class="text-white/70 text-base sm:text-lg mt-4 max-w-xl leading-relaxed font-light">
+                        Einzelteile, Kleinserien und Massenprodukte. Ueber 50 CNC-Maschinen. DIN ISO 9001 zertifiziert seit 2003.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="#anfrage" class="inline-flex items-center justify-center px-8 py-4 rounded text-base font-semibold text-white bg-brand-accent hover:bg-brand-primary transition-colors">
-                            Jetzt Anfrage stellen
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                        <a href="tel:+4926619820600" class="inline-flex items-center justify-center px-8 py-4 rounded text-base font-semibold text-brand-accent border-2 border-brand-accent/20 hover:border-brand-accent/40 transition-colors">
-                            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            (02661) 98206 0
-                        </a>
-                    </div>
-                </div>
-                <div class="relative">
-                    <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_mitte.jpg" alt="CNC Maschinenpark Strunk Maschinenbau" class="w-full rounded-lg shadow-2xl shadow-brand-accent/10">
-                    <div class="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg px-5 py-3 border border-gray-100">
-                        <p class="text-sm font-semibold text-brand-accent">50+ CNC-Maschinen</p>
-                        <p class="text-xs text-brand-muted">im Einsatz</p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Bar -->
-    <section class="border-y border-gray-100 bg-brand-light/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <p class="text-3xl font-bold text-brand-accent">30+</p>
-                    <p class="text-sm text-brand-muted mt-1">Jahre Erfahrung</p>
+    <!-- Kennzahlen -->
+    <section class="border-b border-rule">
+        <div class="max-w-page mx-auto px-6 py-10 grid grid-cols-2 sm:grid-cols-4 gap-8">
+            <div>
+                <p class="text-2xl sm:text-3xl font-semibold tracking-tight">50+</p>
+                <p class="text-[13px] text-pale mt-1">CNC-Maschinen</p>
+            </div>
+            <div>
+                <p class="text-2xl sm:text-3xl font-semibold tracking-tight">~50</p>
+                <p class="text-[13px] text-pale mt-1">Mitarbeiter</p>
+            </div>
+            <div>
+                <p class="text-2xl sm:text-3xl font-semibold tracking-tight">30+</p>
+                <p class="text-[13px] text-pale mt-1">Jahre Erfahrung</p>
+            </div>
+            <div>
+                <p class="text-2xl sm:text-3xl font-semibold tracking-tight">ISO 9001</p>
+                <p class="text-[13px] text-pale mt-1">Zertifiziert</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section class="py-20 sm:py-32">
+        <div class="max-w-page mx-auto px-6">
+            <div class="max-w-lg mb-16 reveal">
+                <p class="text-[13px] text-pale uppercase tracking-[0.15em] mb-3">Fertigungsverfahren</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">Praezision in jedem Verfahren</h2>
+            </div>
+
+            <!-- Grosses Bild-Grid: 2x2 -->
+            <div class="grid sm:grid-cols-2 gap-px bg-rule reveal">
+                <div class="bg-white group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/drehen.jpg" alt="CNC Drehen" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
+                    </div>
+                    <div class="px-6 py-5">
+                        <h3 class="text-base font-semibold">CNC-Drehen</h3>
+                        <p class="text-[13px] text-mid mt-1 leading-relaxed">Alle zerspanbaren Werkstoffe auf stetig modernisierten CNC-Drehmaschinen.</p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-3xl font-bold text-brand-accent">50+</p>
-                    <p class="text-sm text-brand-muted mt-1">CNC-Maschinen</p>
+                <div class="bg-white group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/fraesen.jpg" alt="CNC Fraesen" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
+                    </div>
+                    <div class="px-6 py-5">
+                        <h3 class="text-base font-semibold">CNC-Fraesen</h3>
+                        <p class="text-[13px] text-mid mt-1 leading-relaxed">3-, 4- und 5-Achsmaschinen mit Werkzeugwechslern. CAD/CAM-gesteuert via SolidCAM.</p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-3xl font-bold text-brand-accent">~50</p>
-                    <p class="text-sm text-brand-muted mt-1">Mitarbeiter</p>
+                <div class="bg-white group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/schleifen.jpg" alt="Schleifen" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
+                    </div>
+                    <div class="px-6 py-5">
+                        <h3 class="text-base font-semibold">Schleifen</h3>
+                        <p class="text-[13px] text-mid mt-1 leading-relaxed">Praezises Schleifen fuer hoechste Oberflaechenanforderungen.</p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-3xl font-bold text-brand-accent">ISO 9001</p>
-                    <p class="text-sm text-brand-muted mt-1">Zertifiziert seit 2003</p>
+                <div class="bg-white group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://strunk-maschinenbau.de/images/2020/03/17/qualittssicherung__851x693.jpg" alt="Qualitaetskontrolle" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
+                    </div>
+                    <div class="px-6 py-5">
+                        <h3 class="text-base font-semibold">Qualitaetskontrolle</h3>
+                        <p class="text-[13px] text-mid mt-1 leading-relaxed">Akribische Warenausgangskontrolle. Verschwindend niedrige Reklamationsquote.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weitere Verfahren als kompakte Liste -->
+            <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                <div class="border-t border-rule pt-4">
+                    <h3 class="text-sm font-semibold">CAD / CAM</h3>
+                    <p class="text-[13px] text-mid mt-1">Zwei- und dreidimensional mit SolidCAM.</p>
+                </div>
+                <div class="border-t border-rule pt-4">
+                    <h3 class="text-sm font-semibold">Finishing</h3>
+                    <p class="text-[13px] text-mid mt-1">Waerme- und Oberflaechenbehandlung.</p>
+                </div>
+                <div class="border-t border-rule pt-4">
+                    <h3 class="text-sm font-semibold">Bohren & Saegen</h3>
+                    <p class="text-[13px] text-mid mt-1">Praezise Bohr- und Saegearbeiten.</p>
+                </div>
+                <div class="border-t border-rule pt-4">
+                    <h3 class="text-sm font-semibold">Sondertechnologien</h3>
+                    <p class="text-[13px] text-mid mt-1">Senk-/Drahterodieren, Raeumen, Baugruppenmontage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fullwidth Image Break -->
+    <section class="reveal">
+        <div class="w-full aspect-[21/7] max-h-[50vh] overflow-hidden">
+            <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_links.jpg" alt="Maschinenpark" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+    <!-- Werkstoffe & Fertigung -->
+    <section class="py-20 sm:py-32">
+        <div class="max-w-page mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                <!-- Werkstoffe -->
+                <div class="reveal">
+                    <p class="text-[13px] text-pale uppercase tracking-[0.15em] mb-3">Werkstoffe</p>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-6">Alle gaengigen Werkstoffe und Speziallegierungen</h2>
+                    <p class="text-[15px] text-mid leading-relaxed mb-8">
+                        Als universell beschlagener Fertiger bearbeiten wir alle gaengigen Werkstoffe. Auch die Bearbeitung von Titan und speziellen Legierungen wie Inconel zaehlen zu unseren Staerken.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Stahl</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Edelstahl</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Aluminium</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">NE-Metalle</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Kunststoffe</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Titan</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Inconel</span>
+                        <span class="text-[13px] text-mid border border-rule px-3 py-1.5">Speziallegierungen</span>
+                    </div>
+                </div>
+
+                <!-- Fertigung -->
+                <div class="reveal">
+                    <p class="text-[13px] text-pale uppercase tracking-[0.15em] mb-3">Fertigung</p>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-6">Einzelteile bis Massenproduktion</h2>
+                    <p class="text-[15px] text-mid leading-relaxed mb-8">
+                        Dank unserer Betriebsgroesse und Produktionskapazitaeten gehen wir jederzeit auf individuelle Anforderungen ein. Geringe Durchlaufzeiten und flexible Fertigung ermoeglichen kurze Lieferzeiten.
+                    </p>
+                    <ul class="space-y-3 text-[14px]">
+                        <li class="flex items-start gap-3">
+                            <span class="w-1 h-1 rounded-full bg-ink mt-2 flex-shrink-0"></span>
+                            Einzelteile, Kleinserien und Massenprodukte
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1 h-1 rounded-full bg-ink mt-2 flex-shrink-0"></span>
+                            Nach Skizze, Muster oder technischer Zeichnung
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1 h-1 rounded-full bg-ink mt-2 flex-shrink-0"></span>
+                            CNC-Fertigung, Werkzeugbau, Lehrenbau
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1 h-1 rounded-full bg-ink mt-2 flex-shrink-0"></span>
+                            Komplettloesungen aus einer Hand
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maschinenpark -->
+    <section class="bg-surface py-20 sm:py-32">
+        <div class="max-w-page mx-auto px-6">
+            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center reveal">
+                <div class="lg:col-span-3">
+                    <img src="https://strunk-maschinenbau.de/images/2025/12/04/puma5100_2_750.jpg" alt="DN Solution Puma 5100B" class="w-full aspect-[3/2] object-cover">
+                </div>
+                <div class="lg:col-span-2">
+                    <p class="text-[13px] text-pale uppercase tracking-[0.15em] mb-3">Maschinenpark</p>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-6">Stetige Investition in die Zukunft</h2>
+                    <p class="text-[15px] text-mid leading-relaxed mb-4">
+                        Um stets mit dem technischen Fortschritt zu gehen, modernisieren wir stetig unseren Maschinenpark mit ueber 50 CNC-Dreh-, Fraes-, Bohr- und Schleifmaschinen.
+                    </p>
+                    <p class="text-[15px] text-mid leading-relaxed">
+                        Zuletzt erweitert um eine DN Solution Puma 5100B fuer grosse Drehteile.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Branchen -->
-    <section class="py-20 sm:py-28">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16 fade-in">
-                <p class="text-sm font-semibold tracking-widest uppercase text-brand-primary mb-3">Branchenerfahrung</p>
-                <h2 class="text-3xl sm:text-4xl font-bold text-brand-accent leading-tight">Internationale Kunden vertrauen auf unsere Fertigung</h2>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 fade-in">
-                <div class="bg-brand-light rounded-lg p-5 text-center">
-                    <p class="text-sm font-semibold text-brand-accent">Automobil</p>
+    <section class="py-20 sm:py-32">
+        <div class="max-w-page mx-auto px-6 reveal">
+            <p class="text-[13px] text-pale uppercase tracking-[0.15em] mb-3">Branchen</p>
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-10">Internationale Kunden aus der Industrie</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 border-t border-l border-rule">
+                <div class="border-b border-r border-rule px-5 py-6">
+                    <p class="text-sm font-medium">Automobil</p>
                 </div>
-                <div class="bg-brand-light rounded-lg p-5 text-center">
-                    <p class="text-sm font-semibold text-brand-accent">Lebensmittel</p>
+                <div class="border-b border-r border-rule px-5 py-6">
+                    <p class="text-sm font-medium">Lebensmittel</p>
                 </div>
-                <div class="bg-brand-light rounded-lg p-5 text-center">
-                    <p class="text-sm font-semibold text-brand-accent">Oel & Gas</p>
+                <div class="border-b border-r border-rule px-5 py-6">
+                    <p class="text-sm font-medium">Oel & Gas</p>
                 </div>
-                <div class="bg-brand-light rounded-lg p-5 text-center">
-                    <p class="text-sm font-semibold text-brand-accent">Eisenbahn</p>
+                <div class="border-b border-r border-rule px-5 py-6">
+                    <p class="text-sm font-medium">Eisenbahn</p>
                 </div>
-                <div class="bg-brand-light rounded-lg p-5 text-center">
-                    <p class="text-sm font-semibold text-brand-accent">Bergbau</p>
+                <div class="border-b border-r border-rule px-5 py-6">
+                    <p class="text-sm font-medium">Bergbau</p>
                 </div>
-                <div class="bg-brand-light rounded-lg p-5 text-center">
-                    <p class="text-sm font-semibold text-brand-accent">Werkzeugbau</p>
+                <div class="border-b border-r border-rule px-5 py-6">
+                    <p class="text-sm font-medium">Werkzeugbau</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leistungen -->
-    <section class="py-20 sm:py-28 bg-brand-light/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-16 fade-in">
-                <p class="text-sm font-semibold tracking-widest uppercase text-brand-primary mb-3">Leistungen</p>
-                <h2 class="text-3xl sm:text-4xl font-bold text-brand-accent leading-tight">100 Prozent Strunk: Erfahrung, Know-how und Flexibilitaet</h2>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/drehen.jpg" alt="CNC Drehen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">CNC-Drehen</h3>
-                        <p class="text-sm text-brand-muted mt-2">Alle zerspanbaren Werkstoffe auf stetig modernisierten CNC-Drehmaschinen.</p>
-                    </div>
-                </div>
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/fraesen.jpg" alt="CNC Fräsen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">CNC-Fraesen</h3>
-                        <p class="text-sm text-brand-muted mt-2">3-, 4- und 5-Achsmaschinen mit Werkzeugwechslern. CAD/CAM-gesteuert via SolidCAM.</p>
-                    </div>
-                </div>
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/schleifen.jpg" alt="Schleifen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">Schleifen</h3>
-                        <p class="text-sm text-brand-muted mt-2">Praezises Schleifen fuer hoechste Oberflaechenanforderungen.</p>
-                    </div>
-                </div>
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/03/17/qualittssicherung__851x693.jpg" alt="Qualitätskontrolle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">Qualitaetskontrolle</h3>
-                        <p class="text-sm text-brand-muted mt-2">Akribische Warenausgangskontrolle. Verschwindend niedrige Reklamationsquote.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 fade-in">
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/cad-cam.jpg" alt="CAD CAM" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">CAD / CAM</h3>
-                        <p class="text-sm text-brand-muted mt-2">Massgeschneiderte Loesungen -- zwei- und dreidimensional mit SolidCAM.</p>
-                    </div>
-                </div>
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/03/17/finishing__851x693.jpg" alt="Finishing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">Finishing</h3>
-                        <p class="text-sm text-brand-muted mt-2">Waerme- und Oberflaechenbehandlung fuer optimale Ergebnisse.</p>
-                    </div>
-                </div>
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/bohren.jpg" alt="Bohren und Sägen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">Bohren & Saegen</h3>
-                        <p class="text-sm text-brand-muted mt-2">Praezise Bohr- und Saegearbeiten fuer vielfaeltige Anforderungen.</p>
-                    </div>
-                </div>
-                <div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://strunk-maschinenbau.de/images/2020/04/01/weitere_technolgien.jpg" alt="Weitere Technologien" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold text-brand-accent">Weitere Technologien</h3>
-                        <p class="text-sm text-brand-muted mt-2">Senk- und Drahterodieren, Raeumen, Montage kleiner Baugruppen.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Werkstoffe -->
-    <section class="py-20 sm:py-28">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in">
-                    <p class="text-sm font-semibold tracking-widest uppercase text-brand-primary mb-3">Werkstoffe</p>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-accent leading-tight mb-6">Alle gaengigen Werkstoffe -- und darueber hinaus</h2>
-                    <p class="text-brand-muted leading-relaxed mb-8">
-                        Als universell beschlagener Fertiger bearbeiten wir alle gaengigen Werkstoffe. Auch die Bearbeitung von Titan und speziellen Legierungen wie z.B. Inconel zaehlen zu unseren Staerken.
+    <!-- Kontakt -->
+    <section id="kontakt" class="bg-ink text-white py-20 sm:py-32">
+        <div class="max-w-page mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                <div class="reveal">
+                    <p class="text-[13px] text-white/40 uppercase tracking-[0.15em] mb-3">Kontakt</p>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-6">Projekt besprechen</h2>
+                    <p class="text-[15px] text-white/60 leading-relaxed mb-10">
+                        Schildern Sie uns Ihr Vorhaben. Wir melden uns innerhalb eines Werktages.
                     </p>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Stahl</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Edelstahl</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Aluminium</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">NE-Metalle</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Kunststoffe</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Titan</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Inconel</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm font-medium">Speziallegierungen</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="fade-in">
-                    <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_rechts.jpg" alt="CNC Bearbeitungszentrum" class="w-full rounded-lg shadow-xl">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Fertigung -->
-    <section class="py-20 sm:py-28 bg-brand-accent text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 fade-in">
-                    <img src="https://strunk-maschinenbau.de/images/2019/09/04/maschine_links.jpg" alt="CNC Maschinenpark" class="w-full rounded-lg">
+                    <div class="space-y-6 text-[15px]">
+                        <div>
+                            <p class="text-white/40 text-[13px] uppercase tracking-[0.1em] mb-1">Telefon</p>
+                            <a href="tel:+4926619820600" class="text-white hover:text-blue transition-colors">(02661) 98206-0</a>
+                        </div>
+                        <div>
+                            <p class="text-white/40 text-[13px] uppercase tracking-[0.1em] mb-1">E-Mail</p>
+                            <a href="mailto:info@strunk-maschinenbau.de" class="text-white hover:text-blue transition-colors">info@strunk-maschinenbau.de</a>
+                        </div>
+                        <div>
+                            <p class="text-white/40 text-[13px] uppercase tracking-[0.1em] mb-1">Adresse</p>
+                            <p class="text-white/80">Maschinenbau Strunk GmbH<br>Schulweg 18, 57520 Langenbach</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="order-1 lg:order-2 fade-in">
-                    <p class="text-sm font-semibold tracking-widest uppercase text-brand-primary mb-3">Fertigung</p>
-                    <h2 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">Einzelteile bis Massenproduktion -- flexibel und termingerecht</h2>
-                    <p class="text-white/70 leading-relaxed mb-6">
-                        Dank unserer Betriebsgroesse und unseren Produktionskapazitaeten sind wir in der Lage, jederzeit auf Ihre individuellen Wuensche einzugehen. Dank geringer Durchlaufzeiten und einer flexiblen Fertigung stellen selbst kurze Lieferzeiten kein Problem dar.
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Einzelteile, Kleinserien und Massenprodukte</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Nach Skizze, Muster oder technischer Zeichnung</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>Geringe Durchlaufzeiten, kurze Lieferzeiten</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span>CNC-Fertigung, Werkzeugbau, Lehrenbau, Komplettloesungen</span>
-                        </li>
-                    </ul>
-                    <a href="#anfrage" class="inline-flex items-center mt-8 px-8 py-4 rounded text-base font-semibold bg-white text-brand-accent hover:bg-brand-light transition-colors">
-                        Unverbindlich anfragen
-                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Maschinenpark Highlight -->
-    <section class="py-20 sm:py-28">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in">
-                    <p class="text-sm font-semibold tracking-widest uppercase text-brand-primary mb-3">Aktuell</p>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-accent leading-tight mb-6">Stetig modernisierter Maschinenpark</h2>
-                    <p class="text-brand-muted leading-relaxed mb-6">
-                        Wo andere stillstehen, investieren wir in die Zukunft. Um stets mit dem technischen Fortschritt zu gehen, modernisieren wir stetig unseren Hightech-Maschinenpark mit ueber 50 CNC-Dreh-, -Fraes-, -Bohr- und -Schleifmaschinen.
-                    </p>
-                    <div class="bg-brand-light rounded-lg p-6 border border-brand-accent/5">
-                        <h3 class="font-bold text-brand-accent mb-2">Neu: DN Solution Puma 5100B</h3>
-                        <p class="text-sm text-brand-muted">Zum Ende des Jahres konnten wir unseren Maschinenpark um eine DN Solution Puma 5100B erweitern. Mit dieser Investition stellen wir uns auch im Bereich grosser Drehteile zukunftsorientiert auf.</p>
-                    </div>
-                </div>
-                <div class="fade-in">
-                    <img src="https://strunk-maschinenbau.de/images/2025/12/04/puma5100_2_750.jpg" alt="DN Solution Puma 5100B" class="w-full rounded-lg shadow-xl">
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="reveal">
+                    <form action="https://formsubmit.co/info@strunk-maschinenbau.de" method="POST" class="space-y-5">
+                        <input type="hidden" name="_subject" value="Anfrage ueber Landing Page">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://pscdr.github.io/blk_preview/strunk-maschinenbau/">
 
-    <!-- CTA / Anfrage -->
-    <section id="anfrage" class="py-20 sm:py-28 bg-brand-light">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl sm:text-4xl font-bold text-brand-accent leading-tight mb-4">Jetzt unverbindlich anfragen</h2>
-                <p class="text-brand-muted text-lg">Schildern Sie uns Ihr Projekt. Wir melden uns innerhalb eines Werktages bei Ihnen.</p>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-[13px] text-white/40 mb-2">Name</label>
+                                <input type="text" name="name" required class="w-full bg-transparent border-b border-white/20 focus:border-white pb-2 text-[15px] text-white outline-none transition-colors placeholder:text-white/20" placeholder="Max Mustermann">
+                            </div>
+                            <div>
+                                <label class="block text-[13px] text-white/40 mb-2">Unternehmen</label>
+                                <input type="text" name="company" class="w-full bg-transparent border-b border-white/20 focus:border-white pb-2 text-[15px] text-white outline-none transition-colors placeholder:text-white/20" placeholder="Firma GmbH">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-[13px] text-white/40 mb-2">E-Mail</label>
+                                <input type="email" name="email" required class="w-full bg-transparent border-b border-white/20 focus:border-white pb-2 text-[15px] text-white outline-none transition-colors placeholder:text-white/20" placeholder="email@firma.de">
+                            </div>
+                            <div>
+                                <label class="block text-[13px] text-white/40 mb-2">Telefon</label>
+                                <input type="tel" name="phone" class="w-full bg-transparent border-b border-white/20 focus:border-white pb-2 text-[15px] text-white outline-none transition-colors placeholder:text-white/20" placeholder="+49 ...">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[13px] text-white/40 mb-2">Anfrage</label>
+                            <textarea name="message" required rows="4" class="w-full bg-transparent border-b border-white/20 focus:border-white pb-2 text-[15px] text-white outline-none transition-colors resize-none placeholder:text-white/20" placeholder="Werkstoff, Stueckzahl, Zeichnung vorhanden?"></textarea>
+                        </div>
+
+                        <button type="submit" class="mt-4 text-[14px] font-medium text-ink bg-white hover:bg-white/90 px-8 py-3 transition-colors">
+                            Anfrage absenden
+                        </button>
+                    </form>
+                </div>
             </div>
-            <form class="bg-white rounded-xl shadow-lg p-8 sm:p-10 space-y-6 fade-in" action="https://formsubmit.co/info@strunk-maschinenbau.de" method="POST">
-                <input type="hidden" name="_subject" value="Neue Anfrage ueber Landing Page">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://pscdr.github.io/blk_preview/strunk-maschinenbau/">
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-brand-accent mb-2">Name *</label>
-                        <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-sm" placeholder="Ihr Name">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-brand-accent mb-2">Unternehmen</label>
-                        <input type="text" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-sm" placeholder="Ihr Unternehmen">
-                    </div>
-                </div>
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-brand-accent mb-2">E-Mail *</label>
-                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-sm" placeholder="ihre@email.de">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-brand-accent mb-2">Telefon</label>
-                        <input type="tel" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-sm" placeholder="Ihre Telefonnummer">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-brand-accent mb-2">Ihre Anfrage *</label>
-                    <textarea name="message" required rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-sm resize-none" placeholder="Beschreiben Sie Ihr Projekt: Werkstoff, Stueckzahl, Zeichnung vorhanden? ..."></textarea>
-                </div>
-                <button type="submit" class="w-full px-8 py-4 rounded-lg text-base font-semibold text-white bg-brand-accent hover:bg-brand-primary transition-colors">
-                    Anfrage absenden
-                </button>
-                <p class="text-xs text-brand-muted text-center">Oder rufen Sie direkt an: <a href="tel:+4926619820600" class="font-semibold text-brand-accent hover:text-brand-primary">(02661) 98206 0</a></p>
-            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-accent text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div>
-                    <img src="https://strunk-maschinenbau.de/images/Strunk_logo.png" alt="Strunk Maschinenbau Logo" class="h-10 mb-4 brightness-0 invert">
-                    <p class="text-white/60 text-sm leading-relaxed">Ihr CNC Lohnfertiger aus dem Westerwald. Seit ueber drei Jahrzehnten Ihr Partner fuer praezise Fertigung.</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-3">Kontakt</h4>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Maschinenbau Strunk GmbH<br>
-                        Schulweg 18<br>
-                        57520 Langenbach
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-3">Erreichbarkeit</h4>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Tel: <a href="tel:+4926619820600" class="text-white hover:text-brand-primary transition-colors">(02661) 98206 0</a><br>
-                        Fax: (02661) 98206 16<br>
-                        E-Mail: <a href="mailto:info@strunk-maschinenbau.de" class="text-white hover:text-brand-primary transition-colors">info@strunk-maschinenbau.de</a>
-                    </p>
-                </div>
-            </div>
-            <div class="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p class="text-white/40 text-xs">&copy; 2024 Maschinenbau Strunk GmbH. Alle Rechte vorbehalten.</p>
-                <div class="flex gap-4 text-xs">
-                    <a href="https://strunk-maschinenbau.de/impressum" class="text-white/40 hover:text-white transition-colors" target="_blank" rel="noopener">Impressum</a>
-                    <a href="https://strunk-maschinenbau.de/datenschutz" class="text-white/40 hover:text-white transition-colors" target="_blank" rel="noopener">Datenschutz</a>
-                </div>
+    <footer class="bg-ink border-t border-white/10 py-8">
+        <div class="max-w-page mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-[12px] text-white/30">&copy; Maschinenbau Strunk GmbH</p>
+            <div class="flex gap-6 text-[12px]">
+                <a href="https://strunk-maschinenbau.de/impressum" class="text-white/30 hover:text-white/60 transition-colors" target="_blank" rel="noopener">Impressum</a>
+                <a href="https://strunk-maschinenbau.de/datenschutz" class="text-white/30 hover:text-white/60 transition-colors" target="_blank" rel="noopener">Datenschutz</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll Animation -->
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
 
 </body>
