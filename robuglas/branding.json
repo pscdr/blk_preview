@@ -1,0 +1,39 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Source Sans Pro", "role": "body" },
+    { "family": "Helvetica", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#666977",
+    "accent": "#FF0000",
+    "background": "#F4F4F4",
+    "textPrimary": "#2C2C2C",
+    "link": "#FF0000"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Source Sans Pro",
+      "heading": "Source Sans Pro"
+    },
+    "fontSizes": {
+      "h1": "26px",
+      "h2": "27px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "images": {
+    "logo": "https://www.robuglas.com/fileadmin/site_images/robusterlogo.png",
+    "stereonLogo": "https://www.robuglas.com/fileadmin/site_images/stereonlogo.png",
+    "favicon": "https://www.robuglas.com/fileadmin/site_images/favicon.ico"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial and scientific professionals"
+  }
+}
