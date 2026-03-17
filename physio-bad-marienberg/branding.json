@@ -1,0 +1,35 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Roboto", "role": "body" },
+    { "family": "Istok Web", "role": "heading" },
+    { "family": "Exo 2", "role": "display" }
+  ],
+  "colors": {
+    "primary": "#FF0000",
+    "accent": "#C7017F",
+    "background": "#FFFFFF",
+    "textPrimary": "#C7017F",
+    "link": "#C7017F"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "heading": "Istok Web"
+    },
+    "fontStacks": {
+      "heading": ["Arial", "Helvetica", "sans-serif"],
+      "body": ["Arial", "Helvetica", "sans-serif"],
+      "paragraph": ["Exo 2", "sans-serif"]
+    }
+  },
+  "images": {
+    "logo": "https://www.physio-bad-marienberg.de/wp-content/uploads/2023/10/cropped-Logo-Physio-Atelier-1.png",
+    "favicon": "https://www.physio-bad-marienberg.de/wp-content/uploads/2019/10/cropped-favicon-1-32x32.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "health and wellness clients"
+  }
+}
