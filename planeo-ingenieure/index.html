@@ -211,6 +211,7 @@
                 </a>
                 <div class="hidden lg:flex items-center gap-10">
                     <a href="#leistungen" class="nav-link text-[13px] font-bold text-white/80 hover:text-white transition-colors tracking-[0.15em] uppercase">Leistungen</a>
+                    <a href="#referenzen" class="nav-link text-[13px] font-bold text-white/80 hover:text-white transition-colors tracking-[0.15em] uppercase">Referenzen</a>
                     <a href="#ueber-uns" class="nav-link text-[13px] font-bold text-white/80 hover:text-white transition-colors tracking-[0.15em] uppercase">Über uns</a>
                     <a href="#kontakt" class="nav-link text-[13px] font-bold text-white/80 hover:text-white transition-colors tracking-[0.15em] uppercase px-6 py-3 border border-white/40 hover:bg-white hover:text-teal">Kontakt</a>
                 </div>
@@ -225,6 +226,7 @@
         <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 bg-teal-dark/98 z-40 flex items-center justify-center">
             <div class="text-center space-y-8">
                 <a href="#leistungen" class="mobile-link block text-2xl font-bold text-white tracking-widest uppercase">Leistungen</a>
+                <a href="#referenzen" class="mobile-link block text-2xl font-bold text-white tracking-widest uppercase">Referenzen</a>
                 <a href="#ueber-uns" class="mobile-link block text-2xl font-bold text-white tracking-widest uppercase">Über uns</a>
                 <a href="#kontakt" class="mobile-link block text-2xl font-bold text-white tracking-widest uppercase">Kontakt</a>
             </div>
@@ -534,17 +536,83 @@
         </div>
     </section>
 
-    <!-- ====== FULL-WIDTH IMAGE BREAK ====== -->
-    <div class="relative h-[50vh] min-h-[400px] overflow-hidden">
-        <img src="https://www.planeo-ingenieure.de/customers/_processed_/0/9/csm_Leistungen_Staedtebau-und-Bauleitplanung_Planeo-Ingenieure_100_62adb77735.webp" alt="Städtebau" class="w-full h-full object-cover parallax-bg">
-        <div class="absolute inset-0 bg-teal-dark/40"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-            <p class="reveal text-white text-3xl lg:text-5xl font-extrabold text-center leading-tight max-w-3xl px-6">
-                Wir bieten komplette Planungsleistungen<br>
-                <span class="text-outline text-white" style="-webkit-text-stroke-color: white;">aus einer Hand.</span>
-            </p>
+    <!-- ====== REFERENZEN ====== -->
+    <section id="referenzen" class="py-28 lg:py-40 bg-grey-warm">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+                <div class="reveal">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-[2px] bg-teal"></div>
+                        <span class="text-xs font-bold text-teal uppercase tracking-[0.25em]">Referenzen</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-teal-dark leading-[1.1]">Beispielhafte<br>Projekte.</h2>
+                </div>
+                <p class="reveal stagger-1 text-grey text-lg max-w-lg leading-relaxed">
+                    Unsere langjährige Erfahrung zeigt sich in zahlreichen erfolgreich umgesetzten Projekten im Bereich der technischen Infrastrukturplanung.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Projekt 1 -->
+                <div class="group reveal stagger-1">
+                    <div class="relative aspect-[4/3] overflow-hidden mb-5">
+                        <img src="https://www.planeo-ingenieure.de/customers/_processed_/4/1/csm_Referenzen_2024_Verkehrsanlagen_Niederahr_OD3_2f719a587e.webp" alt="Ortsdurchfahrt Niederahr" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-0 left-0 bg-teal px-4 py-2">
+                            <span class="text-white text-[10px] font-bold uppercase tracking-[0.2em]">Verkehrsanlagen</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-teal-dark mb-2 group-hover:text-teal transition-colors">Ortsdurchfahrt Niederahr</h3>
+                    <p class="text-grey text-sm leading-relaxed">Ausbau der Hauptstraße (ca. 620 m) inkl. barrierefreier ÖPNV-Haltestelle mit Anbindung an den neu gestalteten Rathausplatz.</p>
+                </div>
+
+                <!-- Projekt 2 -->
+                <div class="group reveal stagger-2">
+                    <div class="relative aspect-[4/3] overflow-hidden mb-5">
+                        <img src="https://www.planeo-ingenieure.de/customers/_processed_/8/5/csm_Referenzen_2024_Verkehrsanlagen_Niederfischbach_Ortsmitte2_65191e765d.webp" alt="Ortsmitte Niederfischbach" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-0 left-0 bg-teal px-4 py-2">
+                            <span class="text-white text-[10px] font-bold uppercase tracking-[0.2em]">Städtebau</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-teal-dark mb-2 group-hover:text-teal transition-colors">Ortsmitte Niederfischbach</h3>
+                    <p class="text-grey text-sm leading-relaxed">Neugestaltung mit Parkplatzfläche und multifunktionalem Aufenthaltsplatz an der Kirche St. Mauritius.</p>
+                </div>
+
+                <!-- Projekt 3 -->
+                <div class="group reveal stagger-3">
+                    <div class="relative aspect-[4/3] overflow-hidden mb-5">
+                        <img src="https://www.planeo-ingenieure.de/customers/_processed_/d/f/csm_Referenzen_2024_Verkehrsanlagen_Puderbach_Schulzentrum_18b8226bc1.webp" alt="Schulzentrum Puderbach" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-0 left-0 bg-teal px-4 py-2">
+                            <span class="text-white text-[10px] font-bold uppercase tracking-[0.2em]">Barrierefreiheit</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-teal-dark mb-2 group-hover:text-teal transition-colors">Schulzentrum Puderbach</h3>
+                    <p class="text-grey text-sm leading-relaxed">Verkehrsplanung mit Buswendeanlage und Herstellung barrierefreier Zugänge und Bushaltestellen.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- ====== MITGLIEDSCHAFTEN ====== -->
+    <section class="py-16 bg-white border-y border-grey-lighter">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+                <p class="reveal text-sm font-bold text-grey uppercase tracking-[0.2em] flex-shrink-0">Engagements &amp; Mitgliedschaften</p>
+                <div class="flex flex-wrap items-center justify-center lg:justify-end gap-12 lg:gap-16 reveal stagger-1">
+                    <div class="flex items-center gap-4 group" title="Forschungsgesellschaft für Straßen- & Verkehrswesen e.V.">
+                        <img src="https://www.planeo-ingenieure.de/customers/_processed_/1/0/csm_fgsv_76a26b801f.webp" alt="FGSV" class="h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="w-px h-10 bg-grey-lighter hidden lg:block"></div>
+                    <div class="flex items-center gap-4 group" title="Ingenieurkammer Rheinland-Pfalz">
+                        <img src="https://www.planeo-ingenieure.de/customers/_processed_/5/f/csm_ing_8dad3b0b31.webp" alt="Ingenieurkammer Rheinland-Pfalz" class="h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="w-px h-10 bg-grey-lighter hidden lg:block"></div>
+                    <div class="flex items-center gap-4 group" title="VSVI Rheinland-Pfalz/Saar e.V.">
+                        <img src="https://www.planeo-ingenieure.de/customers/_processed_/f/9/csm_vsvi_1dafd2d962.webp" alt="VSVI Rheinland-Pfalz/Saar" class="h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ====== CONTACT CTA ====== -->
     <section id="kontakt" class="py-28 lg:py-40 bg-teal-dark relative overflow-hidden">
