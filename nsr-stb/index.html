@@ -8,16 +8,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             primary: '#002DB7',
+            'primary-dark': '#001E7A',
             accent: '#4465C8',
+            'accent-light': '#6B85D9',
             surface: '#F4F4F4',
-            text: '#333333',
+            text: '#1a1a2e',
+            muted: '#64748b',
           },
           fontFamily: {
             heading: ['Raleway', 'sans-serif'],
@@ -29,359 +32,678 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'PT Sans', sans-serif; color: #333; }
+    body { font-family: 'PT Sans', sans-serif; color: #1a1a2e; overflow-x: hidden; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Raleway', sans-serif; }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 100;
+      background: linear-gradient(90deg, #002DB7, #4465C8, #6B85D9);
+      transform-origin: left; transform: scaleX(0);
     }
-    .fade-in.visible {
-      opacity: 1;
+
+    /* Hero Ken Burns */
+    .hero-bg {
+      animation: kenburns 25s ease infinite alternate;
+    }
+    @keyframes kenburns {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.08) translate(-1%, -1%); }
+      100% { transform: scale(1.04) translate(1%, 0); }
+    }
+
+    /* Text reveal */
+    .reveal-line {
+      overflow: hidden;
+    }
+    .reveal-line span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-line.visible span {
       transform: translateY(0);
     }
 
-    .hero-slide {
+    /* Fade up staggered */
+    .fade-up {
       opacity: 0;
-      transition: opacity 1.2s ease;
-      position: absolute;
-      inset: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hero-slide.active {
-      opacity: 1;
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+    .delay-4 { transition-delay: 0.6s; }
+
+    /* Scale in */
+    .scale-in {
+      opacity: 0; transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scale-in.visible { opacity: 1; transform: scale(1); }
+
+    /* Marquee */
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
+    /* Service card hover */
     .service-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #002DB7, #4465C8);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 45, 183, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(0, 45, 183, 0.12);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card .card-icon {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+    }
+    .service-card:hover .card-icon {
+      transform: scale(1.1) rotate(-5deg);
+      background: #002DB7;
+    }
+    .service-card:hover .card-icon svg { color: white; }
+
+    /* Diagonal divider */
+    .diagonal-top {
+      clip-path: polygon(0 8vw, 100% 0, 100% 100%, 0 100%);
+    }
+    @media (max-width: 768px) {
+      .diagonal-top { clip-path: polygon(0 4vw, 100% 0, 100% 100%, 0 100%); }
     }
 
-    .step-line {
-      background: linear-gradient(90deg, #002DB7 0%, #4465C8 100%);
+    /* Glow effect */
+    .glow-ring {
+      box-shadow: 0 0 0 0 rgba(0, 45, 183, 0.3);
+      animation: glow-pulse 2.5s ease-in-out infinite;
     }
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 45, 183, 0.3); }
+      50% { box-shadow: 0 0 0 16px rgba(0, 45, 183, 0); }
+    }
+
+    /* Counter animation */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Nav shrink */
+    .nav-scrolled {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* Floating badge */
+    .float-badge {
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+
+    /* CTA shimmer */
+    .cta-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-shimmer::after {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Parallax helper */
+    [data-parallax] {
+      will-change: transform;
+    }
+
+    /* Step connector */
+    .step-connector {
+      background: linear-gradient(90deg, #002DB7, #4465C8);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .step-connector.visible { transform: scaleX(1); }
   </style>
 </head>
 <body class="bg-white">
 
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#top">
-        <img src="https://nsr-stb.de/wp-content/uploads/nsr-Logo-website.jpg" alt="NSR Steuerberatungsgesellschaft Logo" class="h-10">
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 group">
+        <img src="https://nsr-stb.de/wp-content/uploads/nsr-Logo-website.jpg" alt="NSR Steuerberatungsgesellschaft" class="h-10 transition-transform duration-300 group-hover:scale-105">
       </a>
-      <div class="hidden md:flex items-center gap-8 font-heading text-sm font-medium tracking-wide">
-        <a href="#leistungen" class="text-text hover:text-primary transition-colors">Leistungen</a>
-        <a href="#digital" class="text-text hover:text-primary transition-colors">Digital</a>
-        <a href="#warum-wir" class="text-text hover:text-primary transition-colors">Warum wir</a>
-        <a href="#kontakt" class="bg-primary text-white px-5 py-2.5 rounded hover:bg-accent transition-colors">Termin vereinbaren</a>
+      <div class="hidden lg:flex items-center gap-10">
+        <a href="#leistungen" class="font-heading text-sm font-semibold tracking-wide text-text/70 hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Leistungen</a>
+        <a href="#digital" class="font-heading text-sm font-semibold tracking-wide text-text/70 hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Digital</a>
+        <a href="#warum-wir" class="font-heading text-sm font-semibold tracking-wide text-text/70 hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Warum wir</a>
+        <a href="#kontakt" class="cta-shimmer bg-primary text-white font-heading font-bold text-sm px-7 py-3 rounded-full hover:bg-primary-dark transition-colors duration-300 shadow-lg shadow-primary/25">Termin vereinbaren</a>
       </div>
-      <button id="mobile-toggle" class="md:hidden text-text" aria-label="Menu">
+      <button id="mobile-toggle" class="lg:hidden text-text p-2" aria-label="Menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
-      <a href="#leistungen" class="block py-2 text-text hover:text-primary font-heading text-sm font-medium">Leistungen</a>
-      <a href="#digital" class="block py-2 text-text hover:text-primary font-heading text-sm font-medium">Digital</a>
-      <a href="#warum-wir" class="block py-2 text-text hover:text-primary font-heading text-sm font-medium">Warum wir</a>
-      <a href="#kontakt" class="block py-2 text-primary font-heading text-sm font-bold">Termin vereinbaren</a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100/50 px-6 py-6 space-y-4">
+      <a href="#leistungen" class="block font-heading text-base font-semibold text-text hover:text-primary transition-colors">Leistungen</a>
+      <a href="#digital" class="block font-heading text-base font-semibold text-text hover:text-primary transition-colors">Digital</a>
+      <a href="#warum-wir" class="block font-heading text-base font-semibold text-text hover:text-primary transition-colors">Warum wir</a>
+      <a href="#kontakt" class="block bg-primary text-white font-heading font-bold text-center px-6 py-3 rounded-full">Termin vereinbaren</a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section id="top" class="relative h-[90vh] min-h-[600px] overflow-hidden">
-    <div class="hero-slide active" id="slide-0">
-      <img src="https://nsr-stb.com/wp-content/uploads/revslider/slider9/denken.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
-      <div class="relative z-10 h-full flex items-center">
-        <div class="max-w-6xl mx-auto px-6">
-          <h1 class="font-heading text-4xl md:text-6xl font-bold text-white leading-tight max-w-2xl">
-            Vorausdenken für eine<br>erfolgreiche Zukunft!
+  <!-- ===== HERO ===== -->
+  <section id="top" class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background image with Ken Burns -->
+    <div class="absolute inset-0">
+      <img src="https://nsr-stb.com/wp-content/uploads/revslider/slider9/denken.jpg" alt="" class="hero-bg absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary-dark/90 via-primary/75 to-accent/50"></div>
+      <!-- Decorative grid overlay -->
+      <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <!-- Eyebrow -->
+          <div class="fade-up mb-6">
+            <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 text-white/90 font-heading text-sm font-medium tracking-wider">
+              <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              Ihr digitaler Steuerberater im Westerwald
+            </span>
+          </div>
+
+          <!-- Main headline -->
+          <h1 class="mb-8">
+            <div class="reveal-line"><span class="font-heading text-5xl md:text-6xl lg:text-7xl font-900 text-white leading-[1.05] tracking-tight">Vorausdenken</span></div>
+            <div class="reveal-line delay-1"><span class="font-heading text-5xl md:text-6xl lg:text-7xl font-900 text-white leading-[1.05] tracking-tight">für eine</span></div>
+            <div class="reveal-line delay-2"><span class="font-heading text-5xl md:text-6xl lg:text-7xl font-900 leading-[1.05] tracking-tight" style="background: linear-gradient(135deg, #ffffff 0%, #a8c0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">erfolgreiche Zukunft.</span></div>
           </h1>
-          <p class="mt-6 text-lg md:text-xl text-white/90 max-w-xl font-body leading-relaxed">
+
+          <p class="fade-up delay-2 text-lg md:text-xl text-white/75 max-w-lg leading-relaxed font-body">
             Wir haben den Anspruch, stets einen Schritt für Sie voraus zu denken und gemeinsam mit unseren Mandanten neue Wege zu gehen.
           </p>
-          <a href="#kontakt" class="inline-block mt-8 bg-white text-primary font-heading font-semibold px-8 py-3.5 rounded hover:bg-surface transition-colors">
-            Beratungstermin vereinbaren
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-slide" id="slide-1">
-      <img src="https://nsr-stb.com/wp-content/uploads/revslider/slider9/light_bg26.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
-      <div class="relative z-10 h-full flex items-center">
-        <div class="max-w-6xl mx-auto px-6">
-          <h1 class="font-heading text-4xl md:text-6xl font-bold text-white leading-tight max-w-2xl">
-            Herausforderungen der Zukunft als Anspruch
-          </h1>
-          <p class="mt-6 text-lg md:text-xl text-white/90 max-w-xl font-body leading-relaxed">
-            Wir möchten gemeinsam eine erfolgreiche Zukunft möglich machen und nicht nur die Vergangenheit verwalten.
-          </p>
-          <a href="#kontakt" class="inline-block mt-8 bg-white text-primary font-heading font-semibold px-8 py-3.5 rounded hover:bg-surface transition-colors">
-            Jetzt Kontakt aufnehmen
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-slide" id="slide-2">
-      <img src="https://nsr-stb.com/wp-content/uploads/revslider/slider9/hand.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
-      <div class="relative z-10 h-full flex items-center">
-        <div class="max-w-6xl mx-auto px-6">
-          <h1 class="font-heading text-4xl md:text-6xl font-bold text-white leading-tight max-w-2xl">
-            Partnerschaft mit Vertrauen
-          </h1>
-          <p class="mt-6 text-lg md:text-xl text-white/90 max-w-xl font-body leading-relaxed">
-            Kommunikation, Vertrauen und gegenseitige Wertschätzung – verbunden mit fachlicher und unternehmerischer Kompetenz.
-          </p>
-          <a href="#kontakt" class="inline-block mt-8 bg-white text-primary font-heading font-semibold px-8 py-3.5 rounded hover:bg-surface transition-colors">
-            Termin vereinbaren
-          </a>
-        </div>
-      </div>
-    </div>
-    <!-- Slide indicators -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-      <button class="slide-dot w-3 h-3 rounded-full bg-white/80 transition-all" data-slide="0"></button>
-      <button class="slide-dot w-3 h-3 rounded-full bg-white/40 transition-all" data-slide="1"></button>
-      <button class="slide-dot w-3 h-3 rounded-full bg-white/40 transition-all" data-slide="2"></button>
-    </div>
-  </section>
 
-  <!-- Leistungen -->
-  <section id="leistungen" class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="fade-in text-center mb-16">
-        <p class="font-heading text-sm font-semibold tracking-widest text-accent uppercase mb-3">Unsere Leistungen</p>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-text">Kompetenz in allen Bereichen</h2>
+          <div class="fade-up delay-3 flex flex-wrap gap-4 mt-10">
+            <a href="#kontakt" class="cta-shimmer bg-white text-primary font-heading font-bold px-8 py-4 rounded-full hover:shadow-2xl hover:shadow-white/20 transition-all duration-300 text-lg">
+              Beratungstermin vereinbaren
+            </a>
+            <a href="#leistungen" class="group flex items-center gap-2 text-white/80 font-heading font-semibold px-6 py-4 rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300">
+              Leistungen entdecken
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right side: Stats card -->
+        <div class="lg:col-span-5 fade-up delay-4">
+          <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 md:p-10">
+            <div class="grid grid-cols-2 gap-8">
+              <div class="text-center">
+                <div class="counter font-heading text-4xl md:text-5xl font-900 text-white" data-target="5">0</div>
+                <p class="text-white/60 text-sm mt-2 font-heading font-medium tracking-wide">Mal in Folge<br>Digitale Kanzlei</p>
+              </div>
+              <div class="text-center">
+                <div class="counter font-heading text-4xl md:text-5xl font-900 text-white" data-target="2" data-suffix="+">0</div>
+                <p class="text-white/60 text-sm mt-2 font-heading font-medium tracking-wide">Standorte im<br>Westerwald</p>
+              </div>
+              <div class="col-span-2 pt-6 border-t border-white/10">
+                <div class="flex items-center gap-4">
+                  <img src="https://i1.wp.com/nsr-stb.de/wp-content/uploads/digitale-kanzlei2023.png?resize=300%2C284&ssl=1" alt="Digitale Kanzlei Badge" class="w-16 h-auto float-badge">
+                  <p class="text-white/70 text-sm leading-relaxed">Ausgezeichnet als Digitale DATEV-Kanzlei – Ihr Partner für moderne Steuerberatung</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="fade-in service-card bg-surface rounded-lg p-8">
-          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-text mb-3">Finanz- und Lohnbuchhaltung</h3>
-          <p class="text-text/70 leading-relaxed">Auf Grundlage einer aussagekräftigen Finanzbuchführung, ist es unser Anspruch eine effiziente, kaufmännische und betriebswirtschaftliche Steuerung des Unternehmens anbieten zu können.</p>
-        </div>
-        <div class="fade-in service-card bg-surface rounded-lg p-8">
-          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-text mb-3">Betriebswirtschaftliche Beratung</h3>
-          <p class="text-text/70 leading-relaxed">Durch Hilfe in allen betrieblichen Phasen bieten wir unseren Mandanten tatkräftige Unterstützung bei der Umsetzung ihrer Vorhaben.</p>
-        </div>
-        <div class="fade-in service-card bg-surface rounded-lg p-8">
-          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-text mb-3">Steuerliche Beratung und Gestaltung</h3>
-          <p class="text-text/70 leading-relaxed">Wir wollen nicht nur auf gesetzliche Bestimmungen reagieren, sondern im Sinne unserer Mandanten agieren.</p>
-        </div>
-        <div class="fade-in service-card bg-surface rounded-lg p-8">
-          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-text mb-3">Unternehmensgründung und -nachfolge</h3>
-          <p class="text-text/70 leading-relaxed">Wir lassen Sie nicht ins kalte Wasser fallen – Ausführliche Beratungen bei Gründung und Nachfolge sind das A und O für eine erfolgreiche Unternehmung.</p>
-        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+      <span class="text-white/40 font-heading text-xs tracking-widest uppercase">Scroll</span>
+      <div class="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2">
+        <div class="w-1 h-2.5 bg-white/60 rounded-full animate-bounce"></div>
       </div>
     </div>
   </section>
 
-  <!-- Digitale Kanzlei -->
-  <section id="digital" class="py-24 bg-surface">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="fade-in grid md:grid-cols-5 gap-12 items-center">
-        <div class="md:col-span-3">
-          <p class="font-heading text-sm font-semibold tracking-widest text-accent uppercase mb-3">Digitale Kanzlei</p>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-text mb-6">Mit uns in die digitale Zukunft</h2>
-          <p class="text-text/70 leading-relaxed text-lg">
-            Die Digitalisierung von Geschäftsprozessen schreitet unaufhaltsam voran. Seitens der Finanzbehörden wird zunehmend verlangt, Arbeitsabläufe kontrolliert zu digitalisieren. Gut, mit uns eine Kanzlei an Ihrer Seite zu haben, die Sie sicher und fachgerecht durch die digitale Welt der Steuern begleitet und bereits zum 5. Mal in Folge als "Digitale Kanzlei" ausgezeichnet wurde.
-          </p>
-          <p class="text-text/70 leading-relaxed mt-4">
-            Wir bieten Ihnen umfangreiche Leistungen im Bereich des elektronischen Daten- und Belegaustauschs, der Pflicht zur digitalen Buchhaltung und Archivierung, der Installation und Einrichtung der benötigten Systeme und unterstützen Sie kompetent und verlässlich bei der Umstellung.
+  <!-- ===== MARQUEE STRIP ===== -->
+  <div class="bg-primary py-4 overflow-hidden">
+    <div class="marquee-track">
+      <div class="flex items-center gap-12 px-6 text-white/60 font-heading text-sm font-semibold tracking-widest uppercase whitespace-nowrap">
+        <span>Finanzbuchhaltung</span><span class="text-accent-light">&#9670;</span>
+        <span>Lohnbuchhaltung</span><span class="text-accent-light">&#9670;</span>
+        <span>Steuerberatung</span><span class="text-accent-light">&#9670;</span>
+        <span>Betriebswirtschaft</span><span class="text-accent-light">&#9670;</span>
+        <span>Existenzgr&uuml;ndung</span><span class="text-accent-light">&#9670;</span>
+        <span>Unternehmensnachfolge</span><span class="text-accent-light">&#9670;</span>
+        <span>Digitale Buchhaltung</span><span class="text-accent-light">&#9670;</span>
+        <span>Steuergestaltung</span><span class="text-accent-light">&#9670;</span>
+      </div>
+      <div class="flex items-center gap-12 px-6 text-white/60 font-heading text-sm font-semibold tracking-widest uppercase whitespace-nowrap">
+        <span>Finanzbuchhaltung</span><span class="text-accent-light">&#9670;</span>
+        <span>Lohnbuchhaltung</span><span class="text-accent-light">&#9670;</span>
+        <span>Steuerberatung</span><span class="text-accent-light">&#9670;</span>
+        <span>Betriebswirtschaft</span><span class="text-accent-light">&#9670;</span>
+        <span>Existenzgr&uuml;ndung</span><span class="text-accent-light">&#9670;</span>
+        <span>Unternehmensnachfolge</span><span class="text-accent-light">&#9670;</span>
+        <span>Digitale Buchhaltung</span><span class="text-accent-light">&#9670;</span>
+        <span>Steuergestaltung</span><span class="text-accent-light">&#9670;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEISTUNGEN ===== -->
+  <section id="leistungen" class="py-28 md:py-36 bg-white relative">
+    <!-- Decorative element -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/[0.02] rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+      <!-- Section header - asymmetric -->
+      <div class="grid lg:grid-cols-12 gap-8 mb-20">
+        <div class="lg:col-span-5 fade-up">
+          <span class="font-heading text-sm font-bold tracking-[0.2em] text-primary uppercase">Was wir tun</span>
+          <h2 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-800 text-text mt-4 leading-[1.1]">
+            Kompetenz,<br>die wirkt.
+          </h2>
+        </div>
+        <div class="lg:col-span-5 lg:col-start-8 flex items-end fade-up delay-1">
+          <p class="text-muted text-lg leading-relaxed">
+            Von der Finanzbuchführung bis zur Nachfolgeplanung – wir verbinden fachliche Tiefe mit unternehmerischem Weitblick. Immer einen Schritt voraus.
           </p>
         </div>
-        <div class="md:col-span-2 flex justify-center">
-          <img src="https://i1.wp.com/nsr-stb.de/wp-content/uploads/digitale-kanzlei2023.png?resize=300%2C284&ssl=1" alt="Digitale Kanzlei 2023 Auszeichnung" class="w-56">
-        </div>
       </div>
-      <div class="fade-in mt-16">
-        <img src="https://i2.wp.com/nsr-stb.de/wp-content/uploads/software-steuerberater-nsr.jpg?resize=1101%2C346&ssl=1" alt="Neueste Software für Ihre Steuern" class="w-full rounded-lg shadow-sm">
-        <p class="text-center text-text/50 text-sm mt-4 font-heading">Mithilfe der neusten Software erstellen wir Ihre Dokumente – immer auf dem aktuellen Stand.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Warum wir -->
-  <section id="warum-wir" class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="fade-in text-center mb-16">
-        <p class="font-heading text-sm font-semibold tracking-widest text-accent uppercase mb-3">Ihre Vorteile</p>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-text">Warum gerade wir?</h2>
-      </div>
-      <div class="fade-in grid md:grid-cols-3 gap-8">
-        <div class="text-center px-4">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      <!-- Service cards - asymmetric grid -->
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div class="service-card fade-up bg-surface rounded-2xl p-8 lg:p-10 group cursor-default">
+          <div class="flex items-start justify-between mb-8">
+            <div class="card-icon w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center transition-all duration-500">
+              <svg class="w-7 h-7 text-primary transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="font-heading text-7xl font-900 text-primary/[0.06] leading-none select-none">01</span>
           </div>
-          <h3 class="font-heading text-lg font-bold text-text mb-3">Vertrauen & Wertschätzung</h3>
-          <p class="text-text/70 leading-relaxed">Durch steten Kontakt auf einer gemeinsamen Basis kennen wir die individuellen Ansprüche unserer Mandanten und bieten Hilfestellung – sowohl in unternehmerischen als auch privaten Entscheidungen.</p>
+          <h3 class="font-heading text-2xl font-bold text-text mb-4">Finanz- und Lohnbuchhaltung</h3>
+          <p class="text-muted leading-relaxed text-[15px]">Auf Grundlage einer aussagekräftigen Finanzbuchführung, ist es unser Anspruch eine effiziente, kaufmännische und betriebswirtschaftliche Steuerung des Unternehmens anbieten zu können.</p>
         </div>
-        <div class="text-center px-4">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-          </div>
-          <h3 class="font-heading text-lg font-bold text-text mb-3">Kommunikation</h3>
-          <p class="text-text/70 leading-relaxed">Das Geheimnis einer erfolgreichen Partnerschaft ist Kommunikation, Vertrauen und gegenseitige Wertschätzung – lassen Sie uns Ihr Partner sein.</p>
-        </div>
-        <div class="text-center px-4">
-          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="font-heading text-lg font-bold text-text mb-3">Zukunftsorientiert</h3>
-          <p class="text-text/70 leading-relaxed">Die Herausforderungen der Zukunft sehen wir als Anspruch. Wir möchten gemeinsam eine erfolgreiche Zukunft möglich machen und nicht nur die Vergangenheit verwalten.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Der schnelle Weg -->
-  <section class="py-24 bg-primary">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="fade-in text-center mb-16">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Der schnelle Weg zum Erfolg</h2>
-      </div>
-      <div class="fade-in grid md:grid-cols-3 gap-8 relative">
-        <!-- Connection line -->
-        <div class="hidden md:block absolute top-12 left-[20%] right-[20%] h-0.5 step-line"></div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
-            <span class="font-heading text-3xl font-bold text-primary">1</span>
+        <div class="service-card fade-up delay-1 bg-surface rounded-2xl p-8 lg:p-10 md:translate-y-8 group cursor-default">
+          <div class="flex items-start justify-between mb-8">
+            <div class="card-icon w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center transition-all duration-500">
+              <svg class="w-7 h-7 text-primary transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <span class="font-heading text-7xl font-900 text-primary/[0.06] leading-none select-none">02</span>
           </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-3">Termin vereinbaren</h3>
-          <p class="text-white/70 leading-relaxed">Wann haben Sie Zeit? Wir nehmen sie uns für Sie!</p>
+          <h3 class="font-heading text-2xl font-bold text-text mb-4">Betriebswirtschaftliche Beratung</h3>
+          <p class="text-muted leading-relaxed text-[15px]">Durch Hilfe in allen betrieblichen Phasen bieten wir unseren Mandanten tatkräftige Unterstützung bei der Umsetzung ihrer Vorhaben.</p>
         </div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
-            <span class="font-heading text-3xl font-bold text-primary">2</span>
+
+        <div class="service-card fade-up delay-2 bg-surface rounded-2xl p-8 lg:p-10 group cursor-default">
+          <div class="flex items-start justify-between mb-8">
+            <div class="card-icon w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center transition-all duration-500">
+              <svg class="w-7 h-7 text-primary transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <span class="font-heading text-7xl font-900 text-primary/[0.06] leading-none select-none">03</span>
           </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-3">Ziele besprechen</h3>
-          <p class="text-white/70 leading-relaxed">Wir beraten Sie unverbindlich und ausführlich, analysieren Ihre Möglichkeiten und setzen uns gemeinsame Ziele.</p>
+          <h3 class="font-heading text-2xl font-bold text-text mb-4">Steuerliche Beratung und Gestaltung</h3>
+          <p class="text-muted leading-relaxed text-[15px]">Wir wollen nicht nur auf gesetzliche Bestimmungen reagieren, sondern im Sinne unserer Mandanten agieren.</p>
         </div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
-            <span class="font-heading text-3xl font-bold text-primary">3</span>
+
+        <div class="service-card fade-up delay-3 bg-surface rounded-2xl p-8 lg:p-10 md:translate-y-8 group cursor-default">
+          <div class="flex items-start justify-between mb-8">
+            <div class="card-icon w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center transition-all duration-500">
+              <svg class="w-7 h-7 text-primary transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <span class="font-heading text-7xl font-900 text-primary/[0.06] leading-none select-none">04</span>
           </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-3">Entspannt arbeiten</h3>
-          <p class="text-white/70 leading-relaxed">Unsere Fachabteilungen kümmern sich darum – sicher, effizient und schnell. Denn unsere Arbeit ist Ihr Erfolg!</p>
+          <h3 class="font-heading text-2xl font-bold text-text mb-4">Unternehmensgründung & -nachfolge</h3>
+          <p class="text-muted leading-relaxed text-[15px]">Wir lassen Sie nicht ins kalte Wasser fallen – Ausführliche Beratungen bei Gründung und Nachfolge sind das A und O für eine erfolgreiche Unternehmung.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Kontakt -->
-  <section id="kontakt" class="py-24 bg-surface">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="fade-in text-center mb-12">
-        <p class="font-heading text-sm font-semibold tracking-widest text-accent uppercase mb-3">Kontakt</p>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-text">Vereinbaren Sie Ihren unverbindlichen Beratungstermin</h2>
-      </div>
-      <form class="fade-in bg-white rounded-lg p-8 md:p-12 shadow-sm space-y-6">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <label class="block font-heading text-sm font-medium text-text mb-2">Anrede *</label>
-            <select class="w-full border border-gray-200 rounded px-4 py-3 text-text bg-white focus:outline-none focus:border-primary transition-colors">
-              <option value="">Bitte wählen</option>
-              <option>Frau</option>
-              <option>Herr</option>
-            </select>
-          </div>
-          <div>
-            <label class="block font-heading text-sm font-medium text-text mb-2">Vor- und Nachname *</label>
-            <input type="text" class="w-full border border-gray-200 rounded px-4 py-3 text-text focus:outline-none focus:border-primary transition-colors" placeholder="Max Mustermann">
-          </div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <label class="block font-heading text-sm font-medium text-text mb-2">E-Mail-Adresse *</label>
-            <input type="email" class="w-full border border-gray-200 rounded px-4 py-3 text-text focus:outline-none focus:border-primary transition-colors" placeholder="ihre@email.de">
-          </div>
-          <div>
-            <label class="block font-heading text-sm font-medium text-text mb-2">Telefon *</label>
-            <input type="tel" class="w-full border border-gray-200 rounded px-4 py-3 text-text focus:outline-none focus:border-primary transition-colors" placeholder="+49 ...">
-          </div>
-        </div>
+  <!-- ===== DIGITALE KANZLEI – Full-width immersive ===== -->
+  <section id="digital" class="relative">
+    <!-- Full-width image band -->
+    <div class="relative h-[50vh] min-h-[400px] overflow-hidden">
+      <img src="https://nsr-stb.com/wp-content/uploads/revslider/slider9/light_bg26.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" data-parallax>
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/80 to-primary/70"></div>
+      <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
         <div>
-          <label class="block font-heading text-sm font-medium text-text mb-2">Betreff *</label>
-          <select class="w-full border border-gray-200 rounded px-4 py-3 text-text bg-white focus:outline-none focus:border-primary transition-colors">
-            <option>Erstgespräch</option>
-            <option>Anfrage</option>
-            <option>Bitte um Rückruf</option>
-            <option>Sonstiges</option>
-          </select>
+          <span class="fade-up inline-block font-heading text-sm font-bold tracking-[0.2em] text-white/60 uppercase mb-4">5-fach ausgezeichnet</span>
+          <h2 class="fade-up delay-1 font-heading text-4xl md:text-5xl lg:text-6xl font-900 text-white leading-[1.1]">
+            Mit uns in die<br>digitale Zukunft.
+          </h2>
         </div>
-        <div>
-          <label class="block font-heading text-sm font-medium text-text mb-2">Ihre Nachricht</label>
-          <textarea rows="4" class="w-full border border-gray-200 rounded px-4 py-3 text-text focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Wie können wir Ihnen helfen?"></textarea>
+      </div>
+    </div>
+
+    <!-- Content card overlapping -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 -mt-20 relative z-10 pb-28">
+      <div class="scale-in bg-white rounded-3xl shadow-2xl shadow-primary/[0.06] p-8 md:p-14 lg:p-16">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-8">
+            <p class="text-text text-lg md:text-xl leading-relaxed">
+              Die Digitalisierung von Geschäftsprozessen schreitet unaufhaltsam voran. Seitens der Finanzbehörden wird zunehmend verlangt, Arbeitsabläufe kontrolliert zu digitalisieren.
+            </p>
+            <p class="text-muted leading-relaxed mt-4">
+              Gut, mit uns eine Kanzlei an Ihrer Seite zu haben, die Sie sicher und fachgerecht durch die digitale Welt der Steuern begleitet und bereits zum <strong class="text-primary font-bold">5. Mal in Folge</strong> als "Digitale Kanzlei" ausgezeichnet wurde. Wir bieten Ihnen umfangreiche Leistungen im Bereich des elektronischen Daten- und Belegaustauschs, der Pflicht zur digitalen Buchhaltung und Archivierung, der Installation und Einrichtung der benötigten Systeme und unterstützen Sie kompetent und verlässlich bei der Umstellung.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex justify-center">
+            <img src="https://i1.wp.com/nsr-stb.de/wp-content/uploads/digitale-kanzlei2023.png?resize=300%2C284&ssl=1" alt="Digitale Kanzlei 2023" class="w-48 float-badge">
+          </div>
         </div>
-        <div class="flex items-start gap-3">
-          <input type="checkbox" class="mt-1 accent-primary" id="consent">
-          <label for="consent" class="text-sm text-text/60 leading-relaxed">Ja, ich bin damit einverstanden, dass meine hier eingegebenen personenbezogenen Daten elektronisch erhoben und gespeichert werden. Meine Daten werden nur zum Zweck der Beantwortung meiner Anfrage verwendet.</label>
+
+        <!-- Software strip -->
+        <div class="mt-12 pt-10 border-t border-gray-100">
+          <p class="font-heading text-xs font-bold tracking-[0.2em] text-muted uppercase mb-6">Neueste Software &mdash; immer auf dem aktuellen Stand</p>
+          <img src="https://i2.wp.com/nsr-stb.de/wp-content/uploads/software-steuerberater-nsr.jpg?resize=1101%2C346&ssl=1" alt="Software-Partner" class="w-full rounded-xl opacity-80 hover:opacity-100 transition-opacity duration-500">
         </div>
-        <button type="submit" class="w-full bg-primary text-white font-heading font-semibold py-4 rounded hover:bg-accent transition-colors text-lg">
-          Nachricht senden
-        </button>
-        <p class="text-xs text-text/40 text-center">Diese Einwilligung können Sie jederzeit widerrufen: <a href="mailto:info@nsr-stb.de" class="text-accent hover:underline">info@nsr-stb.de</a></p>
-      </form>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-text py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <img src="https://nsr-stb.de/wp-content/uploads/nsr-Logo-website.jpg" alt="NSR Logo" class="h-8 brightness-200">
-        <p class="text-white/40 text-sm font-heading">NSR GmbH & Co. KG Steuerberatungsgesellschaft – Ihr digitaler Steuerberater im Westerwald</p>
-        <div class="flex gap-6 text-sm">
-          <a href="https://nsr-stb.de/datenschutz/" class="text-white/40 hover:text-white transition-colors font-heading">Datenschutz</a>
-          <a href="https://nsr-stb.de/impressum/" class="text-white/40 hover:text-white transition-colors font-heading">Impressum</a>
+  <!-- ===== WARUM WIR – Bold statement section ===== -->
+  <section id="warum-wir" class="py-28 md:py-36 bg-surface relative overflow-hidden">
+    <!-- Large decorative text -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
+      <span class="font-heading text-[12rem] md:text-[20rem] font-900 text-primary/[0.02] leading-none whitespace-nowrap">NSR</span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+      <!-- Statement -->
+      <div class="max-w-4xl mb-20">
+        <span class="fade-up font-heading text-sm font-bold tracking-[0.2em] text-primary uppercase">Warum gerade wir</span>
+        <h2 class="fade-up delay-1 font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-800 text-text mt-4 leading-[1.1]">
+          Partnerschaft bedeutet Kommunikation, Vertrauen und gegenseitige Wertschätzung.
+        </h2>
+      </div>
+
+      <!-- Three pillars -->
+      <div class="grid md:grid-cols-3 gap-0 md:gap-0">
+        <div class="fade-up p-8 lg:p-12 border-b md:border-b-0 md:border-r border-gray-200/60 group">
+          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-8 glow-ring">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-text mb-4">Vertrauen &<br>Wertschätzung</h3>
+          <p class="text-muted leading-relaxed">Durch steten Kontakt auf einer gemeinsamen Basis kennen wir die individuellen Ansprüche unserer Mandanten und bieten Hilfestellung – sowohl in unternehmerischen als auch privaten Entscheidungen.</p>
         </div>
+        <div class="fade-up delay-1 p-8 lg:p-12 border-b md:border-b-0 md:border-r border-gray-200/60 group">
+          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-8 glow-ring" style="animation-delay: 0.8s;">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-text mb-4">Offene<br>Kommunikation</h3>
+          <p class="text-muted leading-relaxed">Das Geheimnis einer erfolgreichen Partnerschaft ist Kommunikation, Vertrauen und gegenseitige Wertschätzung – lassen Sie uns Ihr Partner sein.</p>
+        </div>
+        <div class="fade-up delay-2 p-8 lg:p-12 group">
+          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-8 glow-ring" style="animation-delay: 1.6s;">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-text mb-4">Zukunfts-<br>orientiert</h3>
+          <p class="text-muted leading-relaxed">Wir verbinden fachliche, unternehmerische und kommunikative Kompetenzen, die durch ständige Weiterbildungen und Erweiterungen unseres Teams auf dem aktuellsten Stand sind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS – 3 Steps ===== -->
+  <section class="relative overflow-hidden">
+    <!-- Full-width background image -->
+    <div class="absolute inset-0">
+      <img src="https://nsr-stb.com/wp-content/uploads/revslider/slider9/hand.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" data-parallax>
+      <div class="absolute inset-0 bg-gradient-to-br from-primary-dark/95 via-primary/90 to-accent/80"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-28 md:py-36">
+      <div class="text-center mb-20">
+        <span class="fade-up font-heading text-sm font-bold tracking-[0.2em] text-white/50 uppercase">So einfach geht&rsquo;s</span>
+        <h2 class="fade-up delay-1 font-heading text-4xl md:text-5xl lg:text-6xl font-900 text-white mt-4">
+          Drei Schritte<br>zum Erfolg.
+        </h2>
+      </div>
+
+      <div class="relative">
+        <!-- Animated connector line -->
+        <div class="hidden lg:block absolute top-[4.5rem] left-[16%] right-[16%] h-[2px] bg-white/10">
+          <div class="step-connector absolute inset-0"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-12 lg:gap-8">
+          <div class="fade-up text-center relative">
+            <div class="relative inline-flex mb-8">
+              <div class="w-[90px] h-[90px] bg-white rounded-2xl flex items-center justify-center shadow-2xl shadow-black/20 rotate-3 hover:rotate-0 transition-transform duration-500">
+                <span class="font-heading text-4xl font-900 text-primary">1</span>
+              </div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white mb-4">Termin vereinbaren</h3>
+            <p class="text-white/60 leading-relaxed max-w-xs mx-auto">Wann haben Sie Zeit? Wir nehmen sie uns für Sie!</p>
+          </div>
+          <div class="fade-up delay-1 text-center relative">
+            <div class="relative inline-flex mb-8">
+              <div class="w-[90px] h-[90px] bg-white rounded-2xl flex items-center justify-center shadow-2xl shadow-black/20 -rotate-2 hover:rotate-0 transition-transform duration-500">
+                <span class="font-heading text-4xl font-900 text-primary">2</span>
+              </div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white mb-4">Ziele besprechen</h3>
+            <p class="text-white/60 leading-relaxed max-w-xs mx-auto">Wir beraten Sie unverbindlich und ausführlich, analysieren Ihre Möglichkeiten und setzen uns gemeinsame Ziele.</p>
+          </div>
+          <div class="fade-up delay-2 text-center relative">
+            <div class="relative inline-flex mb-8">
+              <div class="w-[90px] h-[90px] bg-white rounded-2xl flex items-center justify-center shadow-2xl shadow-black/20 rotate-1 hover:rotate-0 transition-transform duration-500">
+                <span class="font-heading text-4xl font-900 text-primary">3</span>
+              </div>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white mb-4">Entspannt arbeiten</h3>
+            <p class="text-white/60 leading-relaxed max-w-xs mx-auto">Unsere Fachabteilungen kümmern sich darum – sicher, effizient und schnell. Denn unsere Arbeit ist Ihr Erfolg!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="kontakt" class="py-28 md:py-36 bg-white relative overflow-hidden">
+    <!-- Decorative -->
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/[0.02] rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <!-- Left: Statement -->
+        <div class="lg:col-span-5 flex flex-col justify-center">
+          <span class="fade-up font-heading text-sm font-bold tracking-[0.2em] text-primary uppercase">Kontakt</span>
+          <h2 class="fade-up delay-1 font-heading text-4xl md:text-5xl font-800 text-text mt-4 leading-[1.1]">
+            Lassen Sie uns gemeinsam starten.
+          </h2>
+          <p class="fade-up delay-2 text-muted text-lg leading-relaxed mt-6">
+            Vereinbaren Sie jetzt Ihren unverbindlichen Beratungstermin. Wir freuen uns darauf, Sie kennenzulernen.
+          </p>
+          <div class="fade-up delay-3 mt-8 flex items-center gap-4">
+            <a href="mailto:info@nsr-stb.de" class="text-primary font-heading font-bold hover:text-accent transition-colors text-lg">info@nsr-stb.de</a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="lg:col-span-7">
+          <form class="scale-in bg-surface rounded-3xl p-8 md:p-12 space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block font-heading text-xs font-bold tracking-wider text-text/50 uppercase mb-2">Anrede *</label>
+                <select class="w-full bg-white border-0 rounded-xl px-5 py-3.5 text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+                  <option value="">Bitte wählen</option>
+                  <option>Frau</option>
+                  <option>Herr</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-heading text-xs font-bold tracking-wider text-text/50 uppercase mb-2">Name *</label>
+                <input type="text" class="w-full bg-white border-0 rounded-xl px-5 py-3.5 text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Vor- und Nachname">
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block font-heading text-xs font-bold tracking-wider text-text/50 uppercase mb-2">E-Mail *</label>
+                <input type="email" class="w-full bg-white border-0 rounded-xl px-5 py-3.5 text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="ihre@email.de">
+              </div>
+              <div>
+                <label class="block font-heading text-xs font-bold tracking-wider text-text/50 uppercase mb-2">Telefon *</label>
+                <input type="tel" class="w-full bg-white border-0 rounded-xl px-5 py-3.5 text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="+49 ...">
+              </div>
+            </div>
+            <div>
+              <label class="block font-heading text-xs font-bold tracking-wider text-text/50 uppercase mb-2">Betreff *</label>
+              <select class="w-full bg-white border-0 rounded-xl px-5 py-3.5 text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+                <option>Erstgespräch</option>
+                <option>Anfrage</option>
+                <option>Bitte um Rückruf</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-heading text-xs font-bold tracking-wider text-text/50 uppercase mb-2">Nachricht</label>
+              <textarea rows="4" class="w-full bg-white border-0 rounded-xl px-5 py-3.5 text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none" placeholder="Wie können wir Ihnen helfen?"></textarea>
+            </div>
+            <div class="flex items-start gap-3 pt-2">
+              <input type="checkbox" class="mt-1 accent-primary w-4 h-4" id="consent">
+              <label for="consent" class="text-sm text-muted leading-relaxed">Ja, ich bin damit einverstanden, dass meine personenbezogenen Daten zum Zweck der Beantwortung meiner Anfrage erhoben und gespeichert werden.</label>
+            </div>
+            <button type="submit" class="cta-shimmer w-full bg-primary text-white font-heading font-bold py-4 rounded-xl hover:bg-primary-dark transition-colors duration-300 text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30">
+              Nachricht senden
+            </button>
+            <p class="text-xs text-muted/60 text-center">Widerruf jederzeit möglich: <a href="mailto:info@nsr-stb.de" class="text-accent hover:underline">info@nsr-stb.de</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-text py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-3 gap-10 items-center">
+        <div>
+          <img src="https://nsr-stb.de/wp-content/uploads/nsr-Logo-website.jpg" alt="NSR" class="h-10 brightness-[2]">
+        </div>
+        <div class="text-center">
+          <p class="text-white/30 text-sm font-heading">NSR GmbH & Co. KG Steuerberatungsgesellschaft</p>
+          <p class="text-white/20 text-xs font-heading mt-1">Ihr digitaler Steuerberater im Westerwald</p>
+        </div>
+        <div class="flex justify-start md:justify-end gap-8">
+          <a href="https://nsr-stb.de/datenschutz/" class="text-white/30 hover:text-white transition-colors font-heading text-sm">Datenschutz</a>
+          <a href="https://nsr-stb.de/impressum/" class="text-white/30 hover:text-white transition-colors font-heading text-sm">Impressum</a>
+        </div>
+      </div>
+      <div class="mt-10 pt-8 border-t border-white/5 text-center">
+        <p class="text-white/15 text-xs font-heading">&copy; NSR Steuerberatungsgesellschaft. Alle Rechte vorbehalten.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Hero slider
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.slide-dot');
-    let current = 0;
-    function showSlide(n) {
-      slides.forEach(s => s.classList.remove('active'));
-      dots.forEach(d => { d.classList.remove('bg-white/80'); d.classList.add('bg-white/40'); });
-      slides[n].classList.add('active');
-      dots[n].classList.remove('bg-white/40');
-      dots[n].classList.add('bg-white/80');
-      current = n;
-    }
-    dots.forEach(dot => dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.slide))));
-    setInterval(() => showSlide((current + 1) % slides.length), 6000);
+    // ===== Scroll progress bar =====
+    const scrollProg = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      scrollProg.style.transform = `scaleX(${Math.min(pct, 1)})`;
+    });
 
-    // Fade in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    // ===== Nav shrink on scroll =====
+    const nav = document.getElementById('mainNav');
+    const navInner = nav.querySelector('div');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navInner.classList.add('nav-scrolled');
+      } else {
+        navInner.classList.remove('nav-scrolled');
+      }
+    });
+
+    // ===== Intersection Observer for animations =====
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    // Mobile menu
+    document.querySelectorAll('.fade-up, .scale-in, .reveal-line, .step-connector').forEach(el => obs.observe(el));
+
+    // Trigger hero reveals immediately
+    setTimeout(() => {
+      document.querySelectorAll('#top .reveal-line').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 300 + i * 200);
+      });
+      document.querySelectorAll('#top .fade-up').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 600 + i * 200);
+      });
+    }, 200);
+
+    // ===== Counter animation =====
+    const counters = document.querySelectorAll('.counter');
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.animated) {
+          e.target.dataset.animated = 'true';
+          const target = parseInt(e.target.dataset.target);
+          const suffix = e.target.dataset.suffix || '';
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 30));
+          const interval = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(interval);
+            }
+            e.target.textContent = current + suffix;
+          }, 50);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObs.observe(c));
+
+    // ===== Simple parallax =====
+    const parallaxEls = document.querySelectorAll('[data-parallax]');
+    window.addEventListener('scroll', () => {
+      parallaxEls.forEach(el => {
+        const rect = el.parentElement.getBoundingClientRect();
+        const speed = 0.15;
+        el.style.transform = `translateY(${rect.top * speed}px) scale(1.1)`;
+      });
+    });
+
+    // ===== Mobile menu =====
     document.getElementById('mobile-toggle').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });
