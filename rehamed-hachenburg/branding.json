@@ -1,0 +1,34 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Tahoma", "role": "body" },
+    { "family": "Times New Roman", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#FFFFAE",
+    "accent": "#800000",
+    "background": "#FFFFFF",
+    "textPrimary": "#800000",
+    "link": "#800000"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Tahoma",
+      "heading": "Times New Roman"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "images": {
+    "logo": "https://www.rehamed-hachenburg.de/gallery/Rehamed1_iusodu7l_7eizrs6c.png",
+    "favicon": "https://www.rehamed-hachenburg.de/favicon.ico",
+    "ogImage": "https://www.rehamed-hachenburg.de/favImage.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "healthcare professionals and patients"
+  }
+}
