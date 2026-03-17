@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notar Dr. Stefan Braun — Persönlich. Neutral. Rechtssicher.</title>
+    <meta name="description" content="Notar Dr. Stefan Braun — Kompetente und neutrale Beratung in sämtlichen notariellen Fragen. Persönliche Beratung, individuelle Vertragsgestaltung und zügige Vertragsabwicklung.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brass: '#B8975A',
+                        'brass-light': '#D4B87A',
+                        'brass-dark': '#8A6F3E',
+                        ink: '#111111',
+                        paper: '#FAFAF7',
+                        'paper-warm': '#F5F3EE',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Source Sans 3', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            margin-right: 0.5rem;
+            margin-top: 0.15rem;
+            color: #B8975A;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #B8975A;
+            transition: width 0.4s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-lift {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .card-lift:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .rule-ornament {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .rule-ornament::before,
+        .rule-ornament::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #B8975A;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-paper/95 backdrop-blur-sm z-50 border-b border-black/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="font-serif text-lg tracking-wide">Dr. Stefan Braun</a>
+            <div class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase font-light">
+                <a href="#willkommen" class="nav-link">Willkommen</a>
+                <a href="#leistungen" class="nav-link">Leistungen</a>
+                <a href="#aktuelles" class="nav-link">Aktuelles</a>
+                <a href="#kontakt" class="nav-link">Kontakt</a>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menü öffnen">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-paper">
+            <div class="px-6 py-4 flex flex-col gap-4 text-sm tracking-widest uppercase font-light">
+                <a href="#willkommen" class="nav-link">Willkommen</a>
+                <a href="#leistungen" class="nav-link">Leistungen</a>
+                <a href="#aktuelles" class="nav-link">Aktuelles</a>
+                <a href="#kontakt" class="nav-link">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://www.braun.notare-net.de/inhalte/themes/rdts-gulp/frontend/img/header_01.jpg"
+                 alt="Notariat Dr. Braun"
+                 class="w-full h-full object-cover opacity-20">
+        </div>
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <div class="mb-8">
+                <span class="text-brass text-sm tracking-[0.3em] uppercase font-sans font-light">Notariat</span>
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-8">
+                Dr. Stefan<br>Braun
+            </h1>
+            <div class="w-16 h-px bg-brass mx-auto mb-8"></div>
+            <p class="font-serif text-xl md:text-2xl italic text-ink/70 tracking-wide">
+                Persönlich. Neutral. Rechtssicher.
+            </p>
+            <div class="mt-16">
+                <a href="#willkommen" class="inline-block border border-ink/20 px-8 py-3 text-sm tracking-widest uppercase font-light hover:bg-ink hover:text-paper transition-all duration-500">
+                    Mehr erfahren
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-5 h-5 text-brass/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Willkommen -->
+    <section id="willkommen" class="py-24 md:py-32">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="fade-in">
+                <span class="rule-ornament text-brass text-xs tracking-[0.4em] uppercase font-sans mb-12 block">Willkommen</span>
+
+                <h2 class="font-serif text-3xl md:text-5xl font-medium leading-snug mb-12">
+                    Herzlich willkommen
+                </h2>
+
+                <div class="grid md:grid-cols-12 gap-12 items-start">
+                    <div class="md:col-span-7">
+                        <p class="drop-cap text-lg leading-relaxed text-ink/80 mb-6">
+                            Wir stehen Ihnen als kompetente und neutrale Berater in sämtlichen notariellen Fragen zur Seite. Persönliche Beratung, individuelle Vertragsgestaltung und zügige Vertragsabwicklung gehören für uns selbstverständlich dazu.
+                        </p>
+                        <p class="text-lg leading-relaxed text-ink/80">
+                            Kontaktieren Sie uns und vereinbaren Sie Ihren persönlichen Termin!
+                        </p>
+                    </div>
+                    <div class="md:col-span-5">
+                        <img src="https://www.braun.notare-net.de/inhalte/themes/rdts-gulp/frontend/img/header_02.jpg"
+                             alt="Notariat"
+                             class="w-full aspect-[4/5] object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen / Beratung inklusive -->
+    <section id="leistungen" class="py-24 md:py-32 bg-paper-warm">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="fade-in">
+                <span class="rule-ornament text-brass text-xs tracking-[0.4em] uppercase font-sans mb-12 block">Wissenswertes</span>
+
+                <div class="grid md:grid-cols-12 gap-12 items-start">
+                    <div class="md:col-span-5">
+                        <img src="https://www.braun.notare-net.de/inhalte/themes/rdts-gulp/frontend/img/tipp_skaliert.jpg"
+                             alt="Beratung beim Notar"
+                             class="w-full aspect-[4/5] object-cover">
+                    </div>
+                    <div class="md:col-span-7">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium leading-snug mb-4">
+                            Notarinnen und Notare
+                        </h2>
+                        <p class="font-serif text-xl italic text-brass mb-8">Beratung inklusive</p>
+
+                        <p class="text-base leading-relaxed text-ink/75 mb-6">
+                            Notarinnen und Notare sind Träger eines öffentlichen Amtes und stehen Bürgerinnen und Bürgern als unabhängige Berater zur Seite, insbesondere wenn es um Immobilien, Ehe- und Familie, Unternehmen, Vollmachten oder Erbe und Schenkungen geht.
+                        </p>
+                        <p class="text-base leading-relaxed text-ink/75 mb-6">
+                            Die Notarinnen und Notare setzen deren Vorhaben rechtlich um, machen Lösungsvorschläge, zeigen Alternativen auf und beraten über die jeweilige rechtliche Angelegenheit. Sie bereiten dann die notwendigen Erklärungen, Entwürfe oder Urkunden vor.
+                        </p>
+
+                        <div class="border-l-2 border-brass/40 pl-6 mt-8">
+                            <p class="font-serif text-lg italic text-ink/70 leading-relaxed">
+                                Die Leistungen der Notarinnen und Notare werden ausschließlich gemäß dem Gerichts- und Notarkostengesetz abgerechnet. Die Beratung führt neben den Gebühren, die für die Beurkundung erhoben werden, zu keinen weiteren Kosten.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tätigkeitsfelder -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20">
+                    <div class="card-lift bg-white p-8 text-center">
+                        <div class="text-brass mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-sm tracking-wide">Immobilien</h3>
+                    </div>
+                    <div class="card-lift bg-white p-8 text-center">
+                        <div class="text-brass mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-sm tracking-wide">Ehe &amp; Familie</h3>
+                    </div>
+                    <div class="card-lift bg-white p-8 text-center">
+                        <div class="text-brass mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                                <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-sm tracking-wide">Unternehmen</h3>
+                    </div>
+                    <div class="card-lift bg-white p-8 text-center">
+                        <div class="text-brass mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-sm tracking-wide">Vollmachten</h3>
+                    </div>
+                    <div class="card-lift bg-white p-8 text-center">
+                        <div class="text-brass mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                                <path d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-sm tracking-wide">Erbe &amp; Schenkung</h3>
+                    </div>
+                    <div class="card-lift bg-white p-8 text-center">
+                        <div class="text-brass mb-4">
+                            <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.2">
+                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-sm tracking-wide">Beurkundungen</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aktuelles / News -->
+    <section id="aktuelles" class="py-24 md:py-32">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="fade-in">
+                <span class="rule-ornament text-brass text-xs tracking-[0.4em] uppercase font-sans mb-12 block">Aktuelles</span>
+
+                <h2 class="font-serif text-3xl md:text-5xl font-medium leading-snug mb-16">
+                    Neuigkeiten
+                </h2>
+
+                <div class="space-y-16">
+                    <!-- News 1 -->
+                    <article class="grid md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-3">
+                            <time class="text-xs tracking-[0.3em] uppercase text-ink/40 font-sans">02. März 2026</time>
+                        </div>
+                        <div class="md:col-span-9">
+                            <h3 class="font-serif text-2xl font-medium mb-4 leading-snug">
+                                Was gehört zu den Aufgaben eines Notars?
+                            </h3>
+                            <p class="text-base leading-relaxed text-ink/70">
+                                Der Kauf eines Eigenheims, die Errichtung eines Ehevertrags, der Adoptionsantrag – manche Rechtsgeschäfte sind so wichtig, dass das Gesetz eine notarielle Beurkundung vorschreibt. Doch wie ist der Weg zur Urkunde? Was passiert „hinter den Kulissen", wenn alle unterschrieben haben? Notarinnen und Notare beraten und unterstützen von der ersten Idee bis zur Umsetzung.
+                            </p>
+                        </div>
+                    </article>
+
+                    <div class="w-full h-px bg-ink/10"></div>
+
+                    <!-- News 2 -->
+                    <article class="grid md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-3">
+                            <time class="text-xs tracking-[0.3em] uppercase text-ink/40 font-sans">03. Februar 2026</time>
+                        </div>
+                        <div class="md:col-span-9">
+                            <h3 class="font-serif text-2xl font-medium mb-4 leading-snug">
+                                Die elektronische Präsenzurkunde als Meilenstein der Digitalisierung
+                            </h3>
+                            <p class="text-base leading-relaxed text-ink/70">
+                                Seit dem 29. Dezember 2025 ist es möglich, notarielle Urkunden in einem elektronischen Präsenzverfahren zu errichten. Dabei sind die Urkundsbeteiligten persönlich im Notarbüro anwesend, die Urkunde selbst wird jedoch originär elektronisch errichtet und von den Beteiligten elektronisch unterzeichnet.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt / CTA -->
+    <section id="kontakt" class="py-24 md:py-32 bg-ink text-paper">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <span class="text-brass text-xs tracking-[0.4em] uppercase font-sans mb-8 block">Kontakt</span>
+
+                <h2 class="font-serif text-3xl md:text-5xl font-medium leading-snug mb-8">
+                    Vereinbaren Sie Ihren persönlichen Termin
+                </h2>
+
+                <div class="w-16 h-px bg-brass mx-auto mb-8"></div>
+
+                <p class="text-lg text-paper/70 leading-relaxed mb-12 max-w-xl mx-auto">
+                    Wir freuen uns darauf, Sie persönlich zu beraten. Kontaktieren Sie uns für ein unverbindliches Erstgespräch zu Ihrem Anliegen.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:" class="inline-block border border-brass text-brass px-10 py-4 text-sm tracking-widest uppercase font-light hover:bg-brass hover:text-ink transition-all duration-500">
+                        Anrufen
+                    </a>
+                    <a href="mailto:" class="inline-block border border-paper/30 px-10 py-4 text-sm tracking-widest uppercase font-light hover:bg-paper hover:text-ink transition-all duration-500">
+                        E-Mail senden
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-ink/10 bg-paper">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="font-serif text-sm text-ink/50">
+                    Notar Dr. Stefan Braun
+                </div>
+                <div class="flex gap-8 text-xs tracking-widest uppercase text-ink/40 font-light">
+                    <span>Persönlich. Neutral. Rechtssicher.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
