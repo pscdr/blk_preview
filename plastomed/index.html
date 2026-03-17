@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEM-Plastomed – Innovative Kunststoffprodukte für Medizin & Technik</title>
-    <meta name="description" content="Ihr Partner für innovative Kunststoffprodukte und Systeme für Medizin und Technik. Seit 1985 am Standort Deutschland.">
+    <meta name="description" content="Ihr Partner für innovative Kunststoffprodukte und Systeme für Medizin und Technik. Seit 1985 am Standort Deutschland. Spritzguss, Extrusion, Reinraumfertigung.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,6 @@
     <style>
         * { font-family: 'Roboto Condensed', sans-serif; }
         html { scroll-behavior: smooth; }
-        .grid-line { background: repeating-linear-gradient(90deg, transparent, transparent calc(100% / 12 - 1px), rgba(189,11,48,0.04) calc(100% / 12 - 1px), rgba(189,11,48,0.04) calc(100% / 12)); }
     </style>
 </head>
 <body class="bg-white text-sem-gray antialiased">
@@ -42,25 +41,25 @@
                 <a href="#hero">
                     <img src="https://www.plastomed.de/img/sem-plastomed.svg" alt="SEM-Plastomed GmbH" class="h-8 lg:h-10">
                 </a>
-                <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider">
+                <div class="hidden lg:flex items-center gap-8 text-sm font-bold uppercase tracking-wider">
                     <a href="#medizintechnik" class="hover:text-sem-red transition-colors duration-200">Medizintechnik</a>
                     <a href="#technische-produkte" class="hover:text-sem-red transition-colors duration-200">Technische Produkte</a>
+                    <a href="#kompetenzen" class="hover:text-sem-red transition-colors duration-200">Kompetenzen</a>
                     <a href="#unternehmen" class="hover:text-sem-red transition-colors duration-200">Unternehmen</a>
                     <a href="#kontakt" class="bg-sem-red text-white px-5 py-2.5 hover:bg-sem-red-dark transition-colors duration-200">Kontakt</a>
                 </div>
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menü">
+                <button id="mobile-menu-btn" class="lg:hidden p-2" aria-label="Menü">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4">
             <div class="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider">
                 <a href="#medizintechnik" class="hover:text-sem-red">Medizintechnik</a>
                 <a href="#technische-produkte" class="hover:text-sem-red">Technische Produkte</a>
+                <a href="#kompetenzen" class="hover:text-sem-red">Kompetenzen</a>
                 <a href="#unternehmen" class="hover:text-sem-red">Unternehmen</a>
                 <a href="#kontakt" class="bg-sem-red text-white px-5 py-2.5 text-center hover:bg-sem-red-dark">Kontakt</a>
             </div>
@@ -112,37 +111,71 @@
     <!-- Medizintechnik -->
     <section id="medizintechnik" class="py-20 lg:py-28">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5">
-                    <div class="aspect-[4/3] overflow-hidden">
+                    <div class="aspect-[4/3] overflow-hidden mb-4">
                         <img src="https://www.plastomed.de/img/start/medizintechnik.jpg" alt="Medizintechnik" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://www.plastomed.de/img/medizintechnik/absaugsysteme.jpg" alt="Absaugsysteme" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://www.plastomed.de/img/medizintechnik/op-saugsets.jpg" alt="OP-Saugsets" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://www.plastomed.de/img/medizintechnik/adapter-konnektoren.jpg" alt="Adapter/Konnektoren" class="w-full h-full object-cover">
+                        </div>
                     </div>
                 </div>
                 <div class="lg:col-span-7">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-1 bg-sem-red"></div>
-                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">01</span>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">01 — Geschäftsfeld</span>
                     </div>
                     <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">Medizintechnik</h2>
-                    <p class="text-sem-gray/80 mb-8 leading-relaxed">Sie suchen einen zuverlässigen Partner für medizinische Komponenten? SEM-Plastomed bietet Ihnen:</p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
-                            <span>Zuverlässige Fertigung Ihrer medizinischen Komponenten</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
-                            <span>Lohnherstellung nach Ihren Bedürfnissen und Spezifikationen</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
-                            <span>Konfektionierung, Verpackung und Sterilisation Ihrer Komponenten</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
-                            <span>Lieferung auf dem Markt befindlicher Medizinprodukte</span>
-                        </li>
-                    </ul>
+                    <p class="text-lg text-sem-gray/80 mb-6 leading-relaxed">Die Herstellung von medizinischen Kunststoffprodukten erlaubt keine Kompromisse! Vollstes Vertrauen in das medizinische Produkt ist durch seine Qualität und Zuverlässigkeit unumgänglich.</p>
+                    <p class="text-sem-gray/80 mb-8 leading-relaxed">Gerne bringen wir unsere langjährige Erfahrung bereits in der Entwicklungsphase Ihres Produktes ein und minimieren somit von Beginn an die Risiken.</p>
+
+                    <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-bold text-sem-dark mb-3 text-sm uppercase tracking-wider">Eigene Medizinprodukte</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start gap-2">
+                                    <div class="w-1.5 h-1.5 bg-sem-red mt-1.5 flex-shrink-0"></div>
+                                    <span>Absaug- und Verbindungsschläuche</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <div class="w-1.5 h-1.5 bg-sem-red mt-1.5 flex-shrink-0"></div>
+                                    <span>Blasenschläuche</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <div class="w-1.5 h-1.5 bg-sem-red mt-1.5 flex-shrink-0"></div>
+                                    <span>Verbinder / Konnektoren</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sem-dark mb-3 text-sm uppercase tracking-wider">Leistungen & Services</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start gap-2">
+                                    <div class="w-1.5 h-1.5 bg-sem-red mt-1.5 flex-shrink-0"></div>
+                                    <span>Lohnherstellung nach Spezifikation</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <div class="w-1.5 h-1.5 bg-sem-red mt-1.5 flex-shrink-0"></div>
+                                    <span>Komponentenherstellung</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <div class="w-1.5 h-1.5 bg-sem-red mt-1.5 flex-shrink-0"></div>
+                                    <span>Konfektionierung, Verpackung &amp; Sterilisation</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-sem-gray/60 mb-6">Kunden: Medizinproduktehersteller, Medizingerätehersteller, Krankenhäuser, Ästhetische und plastische Chirurgen</p>
+
                     <a href="https://www.plastomed.de/medizintechnik/" class="inline-flex items-center gap-2 text-sem-red font-bold uppercase text-sm tracking-wider hover:gap-4 transition-all duration-200">
                         Mehr erfahren
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -155,15 +188,17 @@
     <!-- Technische Produkte -->
     <section id="technische-produkte" class="py-20 lg:py-28 bg-sem-gray-light">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-7 order-2 lg:order-1">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-1 bg-sem-red"></div>
-                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">02</span>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">02 — Geschäftsfeld</span>
                     </div>
                     <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">Technische Produkte / Spunde</h2>
-                    <p class="text-sem-gray/80 mb-8 leading-relaxed">Sie suchen einen kompetenten Partner für technische Kunststoffprodukte? Wir bieten Ihnen:</p>
-                    <ul class="space-y-4 mb-8">
+                    <p class="text-lg text-sem-gray/80 mb-6 leading-relaxed">Die Herstellung von technischen Kunststoffprodukten verlangt Erfahrung und Know-how! Eine Vielzahl von Produkten wird heute aus Kunststoffen hergestellt, um Bauteileigenschaften gegenüber anderen Materialien zu verbessern.</p>
+                    <p class="text-sem-gray/80 mb-8 leading-relaxed">Durch geeignete Verfahren lassen sich Kunststoffprodukte wie beispielsweise Spunde für Secarerollen der Papierindustrie in der Massenfertigung kostengünstig herstellen. Dazu stehen die Verfahren Spritzguss und Extrusion in unserem Hause zur Verfügung.</p>
+
+                    <ul class="space-y-3 mb-8">
                         <li class="flex items-start gap-3">
                             <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
                             <span>Werkzeugerstellung und Produktion Ihrer Bauteile</span>
@@ -181,29 +216,249 @@
                             <span>Neue Bauteile, Baugruppen und Unterstützung bei der Bauteilauslegung</span>
                         </li>
                     </ul>
+
+                    <p class="text-sm text-sem-gray/60 mb-6">Branchen: Papierindustrie, Klimatechnik, Haushaltsprodukte, Maschinenbau, Landmaschinen, Elektroindustrie</p>
+
                     <a href="https://www.plastomed.de/technische-produkte/" class="inline-flex items-center gap-2 text-sem-red font-bold uppercase text-sm tracking-wider hover:gap-4 transition-all duration-200">
                         Mehr erfahren
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 </div>
                 <div class="lg:col-span-5 order-1 lg:order-2">
-                    <div class="aspect-[4/3] overflow-hidden">
+                    <div class="aspect-[4/3] overflow-hidden mb-4">
                         <img src="https://www.plastomed.de/img/start/technische-produkte.jpg" alt="Technische Produkte" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://www.plastomed.de/img/technische-produkte/technische-kunststoffprodukte.jpg" alt="Technische Kunststoffprodukte" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://www.plastomed.de/img/technische-produkte/kunstoffspunde-secarerollen.jpg" alt="Kunststoffspunde für Secarerollen" class="w-full h-full object-cover">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Unternehmen -->
-    <section id="unternehmen" class="py-20 lg:py-28">
+    <!-- Kompetenzen -->
+    <section id="kompetenzen" class="py-20 lg:py-28">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
-                <div class="lg:col-span-8">
+            <div class="max-w-3xl mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-1 bg-sem-red"></div>
+                    <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Kompetenzen</span>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">
+                    Vom Werkzeugbau bis zur Sterilisation
+                </h2>
+                <p class="text-sem-gray/80 leading-relaxed">
+                    Unter einem Dach vereinen wir alle Prozessschritte — von der Entwicklung über die Fertigung bis zur sterilen Verpackung. So sichern wir durchgängig höchste Qualität.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+                <!-- Spritzguss -->
+                <div class="bg-white p-8 group">
+                    <div class="w-10 h-10 bg-sem-red/10 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-sem-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 2h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 8.172V3L8 2z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sem-dark mb-3 text-lg">Spritzguss</h3>
+                    <p class="text-sm text-sem-gray/70 leading-relaxed mb-3">Komplizierte Geometrien mit höchster Präzision aus Einfach-, Mehrfach- und Mehrfarbenwerkzeugen.</p>
+                    <ul class="text-xs text-sem-gray/60 space-y-1">
+                        <li>Ein- und Zweikomponenten</li>
+                        <li>Medizin unter Reinraum ISO 8</li>
+                        <li>Einlegen, Entnehmen, Umspritzen</li>
+                    </ul>
+                </div>
+
+                <!-- Extrusion -->
+                <div class="bg-white p-8 group">
+                    <div class="w-10 h-10 bg-sem-red/10 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-sem-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sem-dark mb-3 text-lg">Extrusion</h3>
+                    <p class="text-sm text-sem-gray/70 leading-relaxed mb-3">Schlauchprodukte in unterschiedlichen Dimensionen und Längen — als Fix-Längen oder Rollenware.</p>
+                    <ul class="text-xs text-sem-gray/60 space-y-1">
+                        <li>Ein- und Mehrlumenschläuche</li>
+                        <li>Markierung und Beschriftung</li>
+                        <li>Fertigung unter Reinraumbedingungen</li>
+                    </ul>
+                </div>
+
+                <!-- Montage/Konfektionierung -->
+                <div class="bg-white p-8 group">
+                    <div class="w-10 h-10 bg-sem-red/10 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-sem-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sem-dark mb-3 text-lg">Montage & Konfektionierung</h3>
+                    <p class="text-sm text-sem-gray/70 leading-relaxed mb-3">Montage und Konfektionierung Ihrer Kunststoffprodukte in Klein- und Großserien.</p>
+                    <ul class="text-xs text-sem-gray/60 space-y-1">
+                        <li>Baugruppen-Montage</li>
+                        <li>Veredelung</li>
+                        <li>Flexible Seriengrößen</li>
+                    </ul>
+                </div>
+
+                <!-- Verpackung & Sterilisation -->
+                <div class="bg-white p-8 group">
+                    <div class="w-10 h-10 bg-sem-red/10 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-sem-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-sem-dark mb-3 text-lg">Verpackung & Sterilisation</h3>
+                    <p class="text-sm text-sem-gray/70 leading-relaxed mb-3">Verpackung nach Kundenwunsch gelabelt. Sterilisation in Zusammenarbeit mit zertifizierten Partnern.</p>
+                    <ul class="text-xs text-sem-gray/60 space-y-1">
+                        <li>Kundenspezifisches Labeling</li>
+                        <li>Sterile und unsterile Lieferung</li>
+                        <li>Zertifizierte Sterilisationspartner</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kompetenz-Bilder -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-2">
+                <div class="aspect-[16/9] overflow-hidden">
+                    <img src="https://www.plastomed.de/img/kompetenz/spritzguss/spritzgiessmaschinen-medizin.jpg" alt="Spritzgießmaschinen Medizin" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-[16/9] overflow-hidden">
+                    <img src="https://www.plastomed.de/img/kompetenz/spritzguss/spritzgiessmaschinen-technik.jpg" alt="Spritzgießmaschinen Technik" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-[16/9] overflow-hidden">
+                    <img src="https://www.plastomed.de/images/8.jpg" alt="Extrusionsanlage" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-[16/9] overflow-hidden">
+                    <img src="https://www.plastomed.de/images/24.jpg" alt="Reinraum" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reinraum & Qualität -->
+    <section class="py-20 lg:py-28 bg-sem-dark text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-1 bg-sem-red"></div>
-                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Über uns</span>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Reinraumfertigung</span>
                     </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6 tracking-tight">ISO Klasse 7 Reinräume</h2>
+                    <p class="text-white/70 leading-relaxed mb-6">
+                        Unsere medizinischen Produkte und Komponenten werden ausschließlich in Reinräumen der ISO Klasse 7 gemäß DIN EN ISO 14644-1 und nach GMP-C konfektioniert und verpackt.
+                    </p>
+                    <p class="text-white/70 leading-relaxed mb-8">
+                        Nach Qualifizierung der Reinräume werden die Umgebungsbedingungen in festgelegten Zyklen kontinuierlich überwacht und dokumentiert. In Kombination mit entsprechender Personal- und Oberflächenhygiene stellen wir hygienisch einwandfreie und qualitativ hochwertige Medizinprodukte her.
+                    </p>
+                    <div class="flex gap-8">
+                        <div>
+                            <span class="text-3xl font-bold text-sem-red block">275 m²</span>
+                            <span class="text-xs uppercase tracking-wider text-white/50">Kontrollierter Bereich</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-bold text-sem-red block">150 m²</span>
+                            <span class="text-xs uppercase tracking-wider text-white/50">Reinraum 2</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-bold text-sem-red block">250 m²</span>
+                            <span class="text-xs uppercase tracking-wider text-white/50">Reinraum 3</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-1 bg-sem-red"></div>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Qualitätssicherung</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6 tracking-tight">Zertifizierte Qualität</h2>
+                    <p class="text-white/70 leading-relaxed mb-6">
+                        Durch prozessübergreifende Qualitätsvorausplanung, moderne Messmethoden, produktspezifische Arbeitsanweisungen und geschultes Personal setzen wir die Anforderungen zur Fertigung hochwertiger Einzelprodukte sowie komplexer Baugruppen um.
+                    </p>
+                    <p class="text-white/70 leading-relaxed mb-8">
+                        Die zu fertigenden Produkte unterliegen während der gesamten Produktentstehungsphase einer ständigen Kontrolle durch eigenverantwortlich agierende Mitarbeiter.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="border border-white/20 px-4 py-2 text-sm text-white/80">EN ISO 13485</span>
+                        <span class="border border-white/20 px-4 py-2 text-sm text-white/80">EN ISO 9001</span>
+                        <span class="border border-white/20 px-4 py-2 text-sm text-white/80">93/42/EWG</span>
+                        <span class="border border-white/20 px-4 py-2 text-sm text-white/80">MDR (EU) 2017/745</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kennzahlen -->
+    <section class="bg-sem-red py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-white text-center">
+                <div>
+                    <span class="text-3xl lg:text-4xl font-bold block mb-2">1985</span>
+                    <span class="text-xs uppercase tracking-wider text-white/70">Gegründet</span>
+                </div>
+                <div>
+                    <span class="text-3xl lg:text-4xl font-bold block mb-2">4.000</span>
+                    <span class="text-xs uppercase tracking-wider text-white/70">m² Grundfläche</span>
+                </div>
+                <div>
+                    <span class="text-3xl lg:text-4xl font-bold block mb-2">12</span>
+                    <span class="text-xs uppercase tracking-wider text-white/70">Spritzgießmaschinen</span>
+                </div>
+                <div>
+                    <span class="text-3xl lg:text-4xl font-bold block mb-2">1.500</span>
+                    <span class="text-xs uppercase tracking-wider text-white/70">KN Schließkraft</span>
+                </div>
+                <div>
+                    <span class="text-3xl lg:text-4xl font-bold block mb-2">2</span>
+                    <span class="text-xs uppercase tracking-wider text-white/70">Extrusionsanlagen</span>
+                </div>
+                <div>
+                    <span class="text-3xl lg:text-4xl font-bold block mb-2">675</span>
+                    <span class="text-xs uppercase tracking-wider text-white/70">m² Reinraumfläche</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophie & Unternehmen -->
+    <section id="unternehmen" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Quote -->
+            <div class="max-w-4xl mx-auto text-center mb-20">
+                <div class="w-12 h-1 bg-sem-red mx-auto mb-8"></div>
+                <blockquote class="text-2xl lg:text-3xl font-light text-sem-dark leading-relaxed mb-6 italic">
+                    &laquo;Um Lösungen zu ermöglichen, versuche ich das scheinbar Unmögliche.&raquo;
+                </blockquote>
+                <p class="text-sem-gray/60 text-sm uppercase tracking-wider">Dipl.-Ing. (FH) Holger Schmid — Geschäftsleitung</p>
+            </div>
+
+            <!-- Three Pillars -->
+            <div class="grid md:grid-cols-3 gap-12 mb-20">
+                <div>
+                    <div class="w-8 h-8 bg-sem-red text-white flex items-center justify-center font-bold text-sm mb-5">01</div>
+                    <h3 class="font-bold text-sem-dark text-lg mb-3">Dem Kunden verpflichtet</h3>
+                    <p class="text-sem-gray/70 text-sm leading-relaxed">
+                        Ihre Zufriedenheit ist Antrieb und Inspiration für unsere Arbeit! Wir finden innovative Lösungen für Ihre Anforderungen und garantieren Spitzentechnologie. Eine nachhaltige und partnerschaftliche Zusammenarbeit mit Ihnen ist unser Ansporn.
+                    </p>
+                </div>
+                <div>
+                    <div class="w-8 h-8 bg-sem-red text-white flex items-center justify-center font-bold text-sm mb-5">02</div>
+                    <h3 class="font-bold text-sem-dark text-lg mb-3">Der Leistung verpflichtet</h3>
+                    <p class="text-sem-gray/70 text-sm leading-relaxed">
+                        In der Projektierung und Umsetzung stehen wir für Präzision, Zuverlässigkeit und Schnelligkeit. Datenbasierte Analysen unserer Prozesse ermöglichen eine hohe Qualität und sind die Voraussetzung für kontinuierliche Verbesserungen.
+                    </p>
+                </div>
+                <div>
+                    <div class="w-8 h-8 bg-sem-red text-white flex items-center justify-center font-bold text-sm mb-5">03</div>
+                    <h3 class="font-bold text-sem-dark text-lg mb-3">Der Verantwortung verpflichtet</h3>
+                    <p class="text-sem-gray/70 text-sm leading-relaxed">
+                        Wir übernehmen Verantwortung für unser Handeln als Hersteller von medizinischen und technischen Produkten. Ein sparsamer und verantwortungsvoller Umgang mit Energien und sämtlichen Rohstoffen ist für uns selbstverständlich.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Über uns Text -->
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+                <div class="lg:col-span-8">
                     <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-8 tracking-tight">
                         Hochwertige und individuelle Lösungen aus Kunststoff
                     </h2>
@@ -248,26 +503,17 @@
         </div>
     </section>
 
-    <!-- Kennzahlen -->
-    <section class="bg-sem-red py-16">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center">
-                <div>
-                    <span class="text-4xl lg:text-5xl font-bold block mb-2">1985</span>
-                    <span class="text-sm uppercase tracking-wider text-white/70">Gegründet</span>
-                </div>
-                <div>
-                    <span class="text-4xl lg:text-5xl font-bold block mb-2">DE</span>
-                    <span class="text-sm uppercase tracking-wider text-white/70">Standort Deutschland</span>
-                </div>
-                <div>
-                    <span class="text-4xl lg:text-5xl font-bold block mb-2">2</span>
-                    <span class="text-sm uppercase tracking-wider text-white/70">Geschäftsbereiche</span>
-                </div>
-                <div>
-                    <span class="text-4xl lg:text-5xl font-bold block mb-2">40+</span>
-                    <span class="text-sm uppercase tracking-wider text-white/70">Jahre Erfahrung</span>
-                </div>
+    <!-- Firmengebäude -->
+    <section class="relative">
+        <div class="aspect-[21/9] max-h-[400px] overflow-hidden">
+            <img src="https://www.plastomed.de/images/19.png" alt="SEM-Plastomed Firmengebäude in Obererbach" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-sem-dark/70 to-transparent flex items-center">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                <p class="text-white text-2xl lg:text-3xl font-bold max-w-md leading-tight">
+                    Standort Deutschland.<br>
+                    <span class="font-light">Obererbach im Westerwald.</span>
+                </p>
             </div>
         </div>
     </section>
@@ -309,9 +555,19 @@
                     <p class="text-sem-gray/80 leading-relaxed mb-6">
                         Nutzen Sie die Möglichkeit einer schnellen Produktionsanfrage und senden Sie uns anschließend die Zeichnungen in einer separaten E-Mail.
                     </p>
-                    <p class="text-sem-gray/80 leading-relaxed mb-10">
+                    <p class="text-sem-gray/80 leading-relaxed mb-6">
                         Für ausführliche Informationen, eine optimale und individuelle Beratung bitten wir um Kontaktaufnahme per Telefon oder via E-Mail.
                     </p>
+
+                    <div class="bg-sem-gray-light p-6 mb-8">
+                        <p class="font-bold text-sem-dark mb-2">SEM-Plastomed GmbH</p>
+                        <p class="text-sm text-sem-gray/70 leading-relaxed">
+                            Schulstraße 6 · D-57612 Obererbach<br>
+                            Telefon: +49 (0)2681 95078-0<br>
+                            Telefax: +49 (0)2681 95078-18
+                        </p>
+                    </div>
+
                     <div class="flex flex-wrap gap-4">
                         <a href="https://www.plastomed.de/kontakt/" class="bg-sem-red text-white px-8 py-3.5 font-bold uppercase text-sm tracking-wider hover:bg-sem-red-dark transition-colors duration-200">
                             Kontaktübersicht
@@ -358,13 +614,11 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => menu.classList.toggle('hidden'));
         menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
