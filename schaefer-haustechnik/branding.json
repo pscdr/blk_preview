@@ -1,0 +1,34 @@
+{
+  "colorScheme": "light",
+  "fonts": {
+    "heading": "Raleway",
+    "body": "Roboto",
+    "display": "Allerta Stencil"
+  },
+  "colors": {
+    "primary": "#337AB7",
+    "accent": "#E2001A",
+    "background": "#FFFFFF",
+    "textPrimary": "#E2001A",
+    "button": "#4B453F",
+    "buttonText": "#FFFFFF"
+  },
+  "typography": {
+    "h1": "36px",
+    "h2": "36px",
+    "body": "15px"
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "images": {
+    "logo": "http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Schaefer_Start_Logo.jpg",
+    "favicon": "http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/cropped-favicon-min-32x32.jpg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "homeowners and businesses seeking electrical, heating, and sanitary services"
+  }
+}

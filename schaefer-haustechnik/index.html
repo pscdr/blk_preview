@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schäfer Haustechnik GmbH & Co. KG – Elektro – Heizung – Sanitär</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: { brand: '#337AB7' },
+                        red: { brand: '#E2001A' },
+                        charcoal: '#4B453F',
+                    },
+                    fontFamily: {
+                        heading: ['Raleway', 'sans-serif'],
+                        body: ['Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-slide { transition: opacity 0.8s ease-in-out; }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+        .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .advantage-card { border-left: 4px solid #337AB7; }
+        .advantage-card:hover { border-left-color: #E2001A; }
+    </style>
+</head>
+<body class="font-body text-gray-800 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex-shrink-0">
+                    <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Schaefer_Start_Logo.jpg" alt="Schäfer Haustechnik GmbH & Co. KG" class="h-14">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#leistungen" class="font-heading text-sm font-600 tracking-wide text-charcoal hover:text-blue-brand transition-colors">Leistungen</a>
+                    <a href="#vorteile" class="font-heading text-sm font-600 tracking-wide text-charcoal hover:text-blue-brand transition-colors">Vorteile</a>
+                    <a href="#ueber-uns" class="font-heading text-sm font-600 tracking-wide text-charcoal hover:text-blue-brand transition-colors">Über uns</a>
+                    <a href="#partner" class="font-heading text-sm font-600 tracking-wide text-charcoal hover:text-blue-brand transition-colors">Partner</a>
+                    <a href="#kontakt" class="font-heading text-sm font-600 tracking-wide text-charcoal hover:text-blue-brand transition-colors">Kontakt</a>
+                </div>
+                <a href="tel:0274122418" class="hidden sm:flex items-center gap-2 bg-red-brand text-white px-5 py-2.5 font-heading font-bold text-sm tracking-wide hover:bg-red-700 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    02741 / 22418
+                </a>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-charcoal">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#leistungen" class="block font-heading text-sm font-semibold text-charcoal">Leistungen</a>
+                <a href="#vorteile" class="block font-heading text-sm font-semibold text-charcoal">Vorteile</a>
+                <a href="#ueber-uns" class="block font-heading text-sm font-semibold text-charcoal">Über uns</a>
+                <a href="#partner" class="block font-heading text-sm font-semibold text-charcoal">Partner</a>
+                <a href="#kontakt" class="block font-heading text-sm font-semibold text-charcoal">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 bg-gray-50">
+        <div class="relative h-[70vh] min-h-[500px] overflow-hidden">
+            <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Elektro_Fotolia_90349896_XL-min.jpg" alt="Elektroinstallation" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 to-charcoal/40"></div>
+            <div class="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+                <div class="max-w-2xl">
+                    <div class="inline-block bg-blue-brand/90 px-4 py-1.5 mb-6">
+                        <span class="font-heading text-sm font-bold text-white tracking-widest uppercase">Elektro &middot; Heizung &middot; Sanitär</span>
+                    </div>
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-800 text-white leading-tight mb-6">
+                        3 Gewerke.<br>
+                        <span class="text-red-brand">Ein Team.</span><br>
+                        Ihr Partner vor Ort.
+                    </h1>
+                    <p class="text-lg text-gray-200 mb-8 max-w-lg font-light leading-relaxed">
+                        Bei Bauvorhaben und Modernisierungen arbeiten Sie mit einer Firma, die Ihnen umfassenden Service bietet und alle Absprachen ideal koordiniert.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="tel:0274122418" class="inline-flex items-center justify-center gap-2 bg-red-brand text-white px-8 py-4 font-heading font-bold text-base tracking-wide hover:bg-red-700 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            Jetzt anrufen: 02741 / 22418
+                        </a>
+                        <a href="#leistungen" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 font-heading font-bold text-base tracking-wide hover:bg-white/20 transition-colors">
+                            Unsere Leistungen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="bg-blue-brand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 text-white text-sm font-heading font-semibold tracking-wide">
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Mo–Fr 7:30 – 16:00 Uhr
+                </span>
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    02741 / 22418
+                </span>
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    3 Gewerke – 1 Ansprechpartner
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="leistungen" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="font-heading text-sm font-bold text-blue-brand tracking-widest uppercase">Unsere Bereiche</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-800 text-charcoal mt-3">Drei Gewerke. Ein starkes Team.</h2>
+                <div class="w-16 h-1 bg-red-brand mx-auto mt-6"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Elektro -->
+                <div class="service-card group bg-white border border-gray-100 overflow-hidden cursor-default">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Elektro_Fotolia_90349896_XL-min.jpg" alt="Elektro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-blue-brand px-3 py-1">
+                            <span class="font-heading text-xs font-bold text-white tracking-widest uppercase">Elektro</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold text-charcoal mb-3">Elektroinstallation</h3>
+                        <p class="text-gray-600 leading-relaxed">Fachgerechter & umfassender Service rund um Ihre Elektrik. Ob Heimnetzwerke, Alarmanlagen oder Sicherheitsprüfung von elektrischen Anlagen, Geräten und Maschinen nach DGUV Vorschrift.</p>
+                    </div>
+                </div>
+                <!-- Heizung -->
+                <div class="service-card group bg-white border border-gray-100 overflow-hidden cursor-default">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Heizung_Fotolia_155307900_L-min.jpg" alt="Heizung" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-blue-brand px-3 py-1">
+                            <span class="font-heading text-xs font-bold text-white tracking-widest uppercase">Heizung</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold text-charcoal mb-3">Heizungstechnik</h3>
+                        <p class="text-gray-600 leading-relaxed">Verschenken Sie beim Heizen kein Geld. Denn durch eine schlecht gewartete oder nicht optimal eingestellte Heizung wird das mögliche Heizpotenzial nicht erreicht.</p>
+                    </div>
+                </div>
+                <!-- Sanitär -->
+                <div class="service-card group bg-white border border-gray-100 overflow-hidden cursor-default">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Sanitaer_Fotolia_199811356_L-min.jpg" alt="Sanitär" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-blue-brand px-3 py-1">
+                            <span class="font-heading text-xs font-bold text-white tracking-widest uppercase">Sanitär</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold text-charcoal mb-3">Sanitäre Einrichtungen</h3>
+                        <p class="text-gray-600 leading-relaxed">Ob Sanierung, Renovierung oder Neubau – mit uns haben Sie einen kompetenten Partner an der Hand, wenn es um den Bereich Sanitäre Einrichtungen geht.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section id="vorteile" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="font-heading text-sm font-bold text-blue-brand tracking-widest uppercase">Warum wir?</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-800 text-charcoal mt-3 mb-6">Ihr Vorteil liegt auf der Hand!</h2>
+                    <p class="text-gray-600 leading-relaxed mb-10 text-lg">
+                        3 Gewerke mit einem starken Team stehen hinter der Firma Schäfer Haustechnik. Bei Bauvorhaben und Modernisierungen arbeiten Sie mit einer Firma, die Ihnen umfassenden Service bietet und alle Absprachen und Ausführungen ideal plant und zeitlich koordiniert.
+                    </p>
+                    <div class="space-y-5">
+                        <div class="advantage-card bg-white p-5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-blue-brand/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-charcoal">Erreichbar</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Werktags von 7:30 – 16:00 Uhr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="advantage-card bg-white p-5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-blue-brand/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-charcoal">3 Gewerke</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Vor Ort für anfallende Arbeiten in Ihrem Haus oder Firma</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="advantage-card bg-white p-5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-blue-brand/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-charcoal">Top Team</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Unser Handwerkerteam für Ihre Bedürfnisse zusammengestellt</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="advantage-card bg-white p-5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-blue-brand/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-charcoal">Termingerecht</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Individuelle Absprache mit Ihnen vor Ort!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative hidden lg:block">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Heizung_Fotolia_155307900_L-min.jpg" alt="Heizungstechnik" class="w-full h-64 object-cover">
+                        <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Sanitaer_Fotolia_199811356_L-min.jpg" alt="Sanitärtechnik" class="w-full h-64 object-cover mt-8">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-blue-brand p-6 text-white">
+                        <span class="font-heading text-4xl font-800 block">3</span>
+                        <span class="font-heading text-sm font-bold tracking-widest uppercase">Gewerke</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="ueber-uns" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <span class="font-heading text-sm font-bold text-blue-brand tracking-widest uppercase">Über uns</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-800 text-charcoal mt-3 mb-6">Vom Elektrofachbetrieb zum Partner für Haustechnik</h2>
+                <div class="w-16 h-1 bg-red-brand mx-auto mb-8"></div>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    Lesen Sie hier, wie ein kleiner mittelständischer Elektrofachbetrieb zu einem zuverlässigen Handwerksbetrieb in der Region geworden ist. Heute vereint Schäfer Haustechnik drei Gewerke unter einem Dach und bietet Ihnen kompetente Beratung und Ausführung aus einer Hand.
+                </p>
+                <a href="tel:0274122418" class="inline-flex items-center justify-center gap-2 bg-charcoal text-white px-8 py-4 font-heading font-bold text-base tracking-wide hover:bg-gray-700 transition-colors mt-10">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    Kontaktieren Sie uns
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partner" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="font-heading text-sm font-bold text-blue-brand tracking-widest uppercase">Qualität</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-800 text-charcoal mt-3">Unsere Hersteller-Partner</h2>
+                <div class="w-16 h-1 bg-red-brand mx-auto mt-6 mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Qualität liegt uns am Herzen. Neben Langlebigkeit stehen diese Firmen auch mit Qualität und Zuverlässigkeit ihrer Produkte, welche wir individuell für Sie zusammenstellen und verbauen.</p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-12">
+                <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Bildschirmfoto-2018-09-29-um-11.38.32.png" alt="Hersteller-Partner" class="h-16 object-contain grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Bildschirmfoto-2018-09-29-um-11.39.57.png" alt="Hersteller-Partner" class="h-16 object-contain grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/image_10_1.jpg" alt="Hersteller-Partner" class="h-16 object-contain grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section id="kontakt" class="py-20 lg:py-28 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-3xl sm:text-4xl font-800 text-white mb-4">Bereit für Ihr Projekt?</h2>
+            <p class="text-gray-300 text-lg mb-10 max-w-xl mx-auto">Rufen Sie uns an oder kommen Sie vorbei. Wir beraten Sie gerne persönlich und unverbindlich.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="tel:0274122418" class="inline-flex items-center justify-center gap-3 bg-red-brand text-white px-10 py-5 font-heading font-bold text-lg tracking-wide hover:bg-red-700 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    02741 / 22418
+                </a>
+                <div class="text-gray-400 font-heading text-sm">
+                    Werktags 7:30 – 16:00 Uhr
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <img src="http://www.xn--schfer-haustechnik-ntb.de/wp-content/uploads/2018/09/Schaefer_Start_Logo.jpg" alt="Schäfer Haustechnik" class="h-10 brightness-200">
+                <p class="text-gray-500 text-sm font-heading">&copy; 2024 Schäfer Haustechnik GmbH &amp; Co. KG – Alle Rechte vorbehalten</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu toggle -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
