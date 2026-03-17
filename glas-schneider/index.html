@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glas Schneider – Glas ist unsere Leidenschaft</title>
+    <meta name="description" content="Die Glas Schneider GmbH & Co KG ist für ihre Marktpartner ein leistungsorientierter und innovativer Lieferant für alle Glasprodukte.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#00B0F0',
+                        'accent-dark': '#0090C8',
+                        steel: '#6C757D',
+                        'steel-light': '#ADB5BD',
+                    },
+                    fontFamily: {
+                        lato: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Lato', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+        }
+        .glass-card {
+            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.85);
+        }
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: #00B0F0;
+        }
+        .stat-number {
+            background: linear-gradient(135deg, #00B0F0, #0090C8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+        .service-card:hover .service-title {
+            color: #00B0F0;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-lato">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#">
+                <img src="https://glas-schneider.de/assets/images/f/Schneider_logo-4a5a90c8.svg" alt="Glas Schneider Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-steel">
+                <a href="#ueber-uns" class="hover:text-accent transition-colors">Über uns</a>
+                <a href="#leistungen" class="hover:text-accent transition-colors">Leistungen</a>
+                <a href="#qualitaet" class="hover:text-accent transition-colors">Qualität</a>
+                <a href="#nachhaltigkeit" class="hover:text-accent transition-colors">Nachhaltigkeit</a>
+                <a href="#kontakt" class="bg-accent text-white px-5 py-2.5 rounded hover:bg-accent-dark transition-colors">Kontakt</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-toggle" class="md:hidden text-steel" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
+            <div class="flex flex-col gap-4 text-sm font-medium text-steel">
+                <a href="#ueber-uns" class="hover:text-accent transition-colors">Über uns</a>
+                <a href="#leistungen" class="hover:text-accent transition-colors">Leistungen</a>
+                <a href="#qualitaet" class="hover:text-accent transition-colors">Qualität</a>
+                <a href="#nachhaltigkeit" class="hover:text-accent transition-colors">Nachhaltigkeit</a>
+                <a href="#kontakt" class="bg-accent text-white px-5 py-2.5 rounded text-center hover:bg-accent-dark transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[600px] flex items-center">
+        <div class="absolute inset-0">
+            <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/headerbilder/Schneider%20shooting_Header-368.jpg"
+                 alt="Glas Schneider Produktion" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl">
+                <div class="section-divider mb-8"></div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-6">
+                    Glas ist unsere<br><span class="font-bold">Leidenschaft</span>
+                </h1>
+                <p class="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-xl">
+                    Die Glas Schneider GmbH & Co KG ist für ihre Marktpartner ein leistungsorientierter und innovativer Lieferant für alle Glasprodukte.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#leistungen" class="bg-accent text-white px-8 py-4 rounded text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-colors text-center">
+                        Unsere Leistungen
+                    </a>
+                    <a href="#kontakt" class="border-2 border-white/40 text-white px-8 py-4 rounded text-sm font-bold tracking-wider uppercase hover:border-white hover:bg-white/10 transition-all text-center">
+                        Kontakt aufnehmen
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Über uns -->
+    <section id="ueber-uns" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-accent font-bold text-sm tracking-widest uppercase mb-4">Über uns</p>
+                    <h2 class="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-6">
+                        Zeitloses Design auf dem Stand des <span class="font-bold">21. Jahrhunderts</span>
+                    </h2>
+                    <div class="section-divider mb-8"></div>
+                    <p class="text-steel leading-relaxed mb-6">
+                        Der Verkauf, die Montage sowie der Reparaturservice sind unverzichtbare Komponenten unseres Dienstleistungsangebotes. Der Fuhrpark sowie die regionale Nähe garantieren zuverlässige Lieferung und unkomplizierte Auftragsabwicklung.
+                    </p>
+                    <p class="text-steel leading-relaxed">
+                        Strenge Qualitätsvorschriften gewährleisten unseren Kunden Spitzenqualitäten. Umfassende Branchenkenntnisse sowie ein hohes Beratungs-Know-how unserer Mitarbeiter gewährleisten ein gleichbleibend hohes Qualitätsniveau.
+                    </p>
+                </div>
+                <div class="relative">
+                    <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Schneider%20shooting-82.jpg"
+                         alt="Glas Schneider Werkstatt" class="w-full rounded shadow-lg">
+                    <div class="absolute -bottom-6 -left-6 bg-accent text-white p-6 rounded shadow-lg hidden md:block">
+                        <p class="text-3xl font-bold">Seit 1982</p>
+                        <p class="text-sm text-white/80">Gütesiegel ift Rosenheim</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="py-24 md:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-accent font-bold text-sm tracking-widest uppercase mb-4">Leistungen</p>
+                <h2 class="text-3xl md:text-4xl font-light text-gray-900 mb-4">
+                    Unsere <span class="font-bold">Kernbereiche</span>
+                </h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-steel max-w-2xl mx-auto">
+                    Wir suchen für Sie nach der besseren, innovativsten und umweltgerechtesten Lösung für Ihren Produkt- und Umsetzungswunsch.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Glas Schneider -->
+                <div class="service-card group bg-white rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="overflow-hidden aspect-[4/3]">
+                        <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Schneider%20shooting-82.jpg"
+                             alt="Glas Schneider" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="service-title text-xl font-bold text-gray-900 mb-3 transition-colors">Glas Schneider</h3>
+                        <p class="text-steel text-sm leading-relaxed">Leistungsorientierter und innovativer Lieferant für alle Glasprodukte – Verkauf, Montage und Reparaturservice.</p>
+                        <div class="mt-6 flex items-center text-accent text-sm font-bold">
+                            <span>Mehr erfahren</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Glasbau -->
+                <div class="service-card group bg-white rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="overflow-hidden aspect-[4/3]">
+                        <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Glasbau.jpg"
+                             alt="Glasbau" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="service-title text-xl font-bold text-gray-900 mb-3 transition-colors">Glasbau</h3>
+                        <p class="text-steel text-sm leading-relaxed">Professionelle Glasbauprojekte – von der Planung bis zur fachgerechten Umsetzung.</p>
+                        <div class="mt-6 flex items-center text-accent text-sm font-bold">
+                            <span>Mehr erfahren</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vitrodur -->
+                <div class="service-card group bg-white rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="overflow-hidden aspect-[4/3]">
+                        <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Schneider%20shooting_VitroDur-169.jpg"
+                             alt="Vitrodur" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="service-title text-xl font-bold text-gray-900 mb-3 transition-colors">Vitrodur</h3>
+                        <p class="text-steel text-sm leading-relaxed">Innovative Glaslösungen mit höchsten Qualitätsstandards für anspruchsvolle Projekte.</p>
+                        <div class="mt-6 flex items-center text-accent text-sm font-bold">
+                            <span>Mehr erfahren</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualität -->
+    <section id="qualitaet" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/headerbilder/Schneider%20shooting_Header-368.jpg"
+                         alt="Glas Schneider Qualitätskontrolle" class="w-full rounded shadow-lg">
+                </div>
+                <div class="order-1 md:order-2">
+                    <p class="text-accent font-bold text-sm tracking-widest uppercase mb-4">Qualität</p>
+                    <h2 class="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-6">
+                        Geprüfte Qualität <span class="font-bold">seit 1982</span>
+                    </h2>
+                    <div class="section-divider mb-8"></div>
+                    <p class="text-steel leading-relaxed mb-6">
+                        Die Isolierglasproduktion wird laufend in unserem Hause eigenüberwacht und von unabhängigen Instituten fremdüberwacht. So führen wir bereits seit 1982 das Gütesiegel des Institutes für Fenstertechnik Rosenheim.
+                    </p>
+                    <p class="text-steel leading-relaxed mb-8">
+                        Wir suchen für Sie nach der besseren, innovativsten und umweltgerechtesten Lösung für Ihren Produkt- und Umsetzungswunsch.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">ift Rosenheim Gütesiegel</p>
+                            <p class="text-steel text-sm">Unabhängig geprüft und zertifiziert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nachhaltigkeit -->
+    <section id="nachhaltigkeit" class="py-24 md:py-32 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-accent font-bold text-sm tracking-widest uppercase mb-4">Nachhaltigkeit</p>
+                <h2 class="text-3xl md:text-4xl font-light leading-tight mb-4">
+                    Nachhaltigkeit <span class="font-bold">in Serie</span>
+                </h2>
+                <div class="section-divider mx-auto mb-6"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Bei Glas Schneider ist ökologisches Handeln keine Randnotiz, sondern Teil unserer täglichen Arbeit.
+                </p>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center p-8 border border-gray-700 rounded">
+                    <p class="stat-number text-5xl md:text-6xl font-bold mb-2">775</p>
+                    <p class="text-sm text-gray-400 uppercase tracking-wider">Tonnen Altglas recycelt</p>
+                </div>
+                <div class="text-center p-8 border border-gray-700 rounded">
+                    <p class="stat-number text-5xl md:text-6xl font-bold mb-2">930</p>
+                    <p class="text-sm text-gray-400 uppercase tracking-wider">Tonnen Rohstoffe aufbereitet</p>
+                </div>
+                <div class="text-center p-8 border border-gray-700 rounded">
+                    <p class="stat-number text-5xl md:text-6xl font-bold mb-2">543</p>
+                    <p class="text-sm text-gray-400 uppercase tracking-wider">Tonnen CO₂ eingespart</p>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Im Jahr 2024 konnten wir durch konsequentes Glasrecycling 775 Tonnen Altglas in den Produktionskreislauf zurückführen. Das Ergebnis: 930 Tonnen wertvolle Rohstoffe wurden aufbereitet und erneut nutzbar gemacht.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        543 Tonnen CO₂ konnten eingespart werden – das entspricht dem jährlichen Ausstoß von über 50 durchschnittlichen PKW.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Glas lässt sich beliebig oft und ohne Qualitätsverlust recyceln. Als Teil der UNIGLAS®-Gruppe verbinden wir erstklassige Isolierglasqualität mit einem nachhaltigen Produktionsansatz. Recycling ist ein zentraler Baustein unserer Unternehmensphilosophie.
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/GS%20Signatur_CO2.jpg"
+                         alt="CO₂ Klimaschutzzertifikat" class="max-w-sm w-full rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt / CTA -->
+    <section id="kontakt" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-accent font-bold text-sm tracking-widest uppercase mb-4">Kontakt</p>
+            <h2 class="text-3xl md:text-4xl font-light text-gray-900 mb-4">
+                Haben Sie ein <span class="font-bold">Projekt?</span>
+            </h2>
+            <div class="section-divider mx-auto mb-8"></div>
+            <p class="text-steel max-w-xl mx-auto mb-10 leading-relaxed">
+                Wir beraten Sie gerne zu allen Fragen rund um Glas – von der innovativsten bis zur umweltgerechtesten Lösung für Ihren Produkt- und Umsetzungswunsch.
+            </p>
+            <a href="https://glas-schneider.de/kontakt.html" class="inline-block bg-accent text-white px-10 py-4 rounded text-sm font-bold tracking-wider uppercase hover:bg-accent-dark transition-colors">
+                Jetzt Kontakt aufnehmen
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <img src="https://glas-schneider.de/assets/images/f/Schneider_logo-4a5a90c8.svg" alt="Glas Schneider Logo" class="h-8 brightness-0 invert mb-6">
+                    <p class="text-sm leading-relaxed">
+                        Glas Schneider GmbH & Co KG – leistungsorientierter und innovativer Lieferant für alle Glasprodukte. Teil der UNIGLAS®-Gruppe.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Bereiche</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#ueber-uns" class="hover:text-accent transition-colors">Über uns</a></li>
+                        <li><a href="#leistungen" class="hover:text-accent transition-colors">Leistungen</a></li>
+                        <li><a href="#qualitaet" class="hover:text-accent transition-colors">Qualität</a></li>
+                        <li><a href="#nachhaltigkeit" class="hover:text-accent transition-colors">Nachhaltigkeit</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Rechtliches</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="https://glas-schneider.de/impressum.html" class="hover:text-accent transition-colors">Impressum</a></li>
+                        <li><a href="https://glas-schneider.de/datenschutz.html" class="hover:text-accent transition-colors">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-sm text-center">
+                <p>&copy; 2025 Glas Schneider GmbH & Co KG. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

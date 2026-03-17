@@ -1,0 +1,48 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Lato",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#6C757D",
+    "accent": "#00B0F0",
+    "background": "#FFFFFF",
+    "textPrimary": "#00B0F0",
+    "link": "#00B0F0"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Lato",
+      "heading": "Lato"
+    },
+    "fontStacks": {
+      "heading": ["Lato", "sans-serif"],
+      "body": ["Lato", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "40px",
+      "h2": "16px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "images": {
+    "logo": "https://glas-schneider.de/assets/images/f/Schneider_logo-4a5a90c8.svg",
+    "header": "https://glas-schneider.de/files/xgesellschafter/glas-schneider/headerbilder/Schneider%20shooting_Header-368.jpg",
+    "glasSchneider": "https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Schneider%20shooting-82.jpg",
+    "glasbau": "https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Glasbau.jpg",
+    "vitrodur": "https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/Schneider%20shooting_VitroDur-169.jpg",
+    "co2": "https://glas-schneider.de/files/xgesellschafter/glas-schneider/img/GS%20Signatur_CO2.jpg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "businesses and individuals looking for glass solutions"
+  }
+}
