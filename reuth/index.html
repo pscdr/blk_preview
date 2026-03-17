@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuth GmbH – Exzellenz in Werkzeugbau & Zerspanung</title>
-    <meta name="description" content="Werkzeugbau, Hightech-Lohnfertigung, Spritzguss und Formen- und Sondermaschinenbau. Hightech-Fertigung und viel Spritzgusskompetenz.">
+    <meta name="description" content="Werkzeugbau, Hightech-Lohnfertigung, Spritzguss und Formen- und Sondermaschinenbau seit 1964.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" href="https://reuth.de/wp-content/uploads/2018/03/cropped-favicon.png">
     <script>
         tailwind.config = {
@@ -16,12 +16,14 @@
                 extend: {
                     colors: {
                         reuth: {
-                            teal: '#1ABC9C',
-                            'teal-dark': '#159B80',
                             orange: '#EF7900',
                             'orange-dark': '#D56B00',
-                            bg: '#F6F6F6',
-                            text: '#262626',
+                            'orange-light': '#FF9A33',
+                            dark: '#1A1A1A',
+                            'dark-mid': '#2A2A2A',
+                            slate: '#3D4F5F',
+                            bg: '#F5F5F0',
+                            text: '#1A1A1A',
                         }
                     },
                     fontFamily: {
@@ -33,578 +35,722 @@
         }
     </script>
     <style>
-        body { font-family: 'Dosis', sans-serif; color: #262626; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Dosis', sans-serif; color: #1A1A1A; overflow-x: hidden; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Raleway', sans-serif; }
 
-        /* Geometric decorative elements */
-        .geo-pattern {
-            background-image:
-                linear-gradient(30deg, rgba(26,188,156,0.06) 12%, transparent 12.5%, transparent 87%, rgba(26,188,156,0.06) 87.5%),
-                linear-gradient(150deg, rgba(26,188,156,0.06) 12%, transparent 12.5%, transparent 87%, rgba(26,188,156,0.06) 87.5%),
-                linear-gradient(30deg, rgba(26,188,156,0.06) 12%, transparent 12.5%, transparent 87%, rgba(26,188,156,0.06) 87.5%),
-                linear-gradient(150deg, rgba(26,188,156,0.06) 12%, transparent 12.5%, transparent 87%, rgba(26,188,156,0.06) 87.5%);
-            background-size: 80px 140px;
-            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
-        }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
 
-        /* Angled section divider */
-        .divider-angle {
-            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
-        }
-        .divider-angle-reverse {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
-        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb { background: #EF7900; border-radius: 4px; }
 
-        /* Scroll animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Hero parallax layers */
+        .hero-parallax { will-change: transform; }
 
-        /* Geometric grid overlay for hero */
-        .hero-grid {
-            background-image:
-                linear-gradient(rgba(26,188,156,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(26,188,156,0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
+        /* Magnetic hover for buttons */
+        .btn-magnetic {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
         }
-
-        /* Counter animation */
-        .counter { font-variant-numeric: tabular-nums; }
-
-        /* Competency card hover */
-        .comp-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .comp-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(26,188,156,0.15);
-        }
-
-        /* Geometric accent shapes */
-        .geo-hex::before {
+        .btn-magnetic::before {
             content: '';
             position: absolute;
-            width: 120px;
-            height: 120px;
-            background: rgba(26,188,156,0.08);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        .btn-magnetic:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+        .btn-magnetic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(239,121,0,0.35);
         }
 
-        /* Nav scroll effect */
+        /* Reveal animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) translateX(0) scale(1) !important;
+        }
+
+        /* Stagger children */
+        .stagger-children > * { transition-delay: calc(var(--i, 0) * 0.12s); }
+
+        /* Competency card with dramatic hover */
+        .comp-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+        }
+        .comp-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #EF7900, #FF9A33);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .comp-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+        }
+        .comp-card:hover::after {
+            transform: scaleX(1);
+        }
+        .comp-card:hover .comp-img {
+            transform: scale(1.08);
+        }
+        .comp-card .comp-img {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Counter number styling */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* Floating geometric shapes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-5deg); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+        .float-reverse { animation: float-reverse 7s ease-in-out infinite; }
+        .spin-slow { animation: spin-slow 30s linear infinite; }
+
+        /* Nav */
         .nav-scrolled {
-            background: rgba(255,255,255,0.97) !important;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            background: rgba(26,26,26,0.97) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Image mask shapes */
+        .mask-hexagon { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+        .mask-diamond { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #EF7900, #FF9A33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track { animation: marquee 25s linear infinite; }
+
+        /* Team card */
+        .team-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+        .team-card:hover .team-ring {
+            border-color: #EF7900;
+            transform: scale(1.05);
+        }
+        .team-ring {
+            transition: border-color 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Section divider line */
+        .section-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #EF7900, transparent);
+        }
+
+        /* Value image overlay */
+        .value-img-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(239,121,0,0.15), transparent 60%);
+            z-index: 1;
+            transition: opacity 0.5s ease;
+            border-radius: 0.75rem;
+        }
+        .value-img-wrapper:hover::before {
+            opacity: 0;
         }
     </style>
 </head>
 <body class="bg-reuth-bg">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#hero">
-                <img src="https://reuth.de/wp-content/uploads/2019/10/Reuth-logo-svg.svg" alt="Reuth GmbH" class="h-10">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-reuth-dark/0">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+            <a href="#hero" class="relative z-10">
+                <img src="https://reuth.de/wp-content/uploads/2019/10/Reuth-logo-svg.svg" alt="Reuth GmbH" class="h-9 brightness-0 invert" id="nav-logo">
             </a>
-            <div class="hidden md:flex items-center gap-8 font-body text-base font-medium">
-                <a href="#kompetenzen" class="text-reuth-text hover:text-reuth-teal transition-colors">Kompetenzen</a>
-                <a href="#ueber-uns" class="text-reuth-text hover:text-reuth-teal transition-colors">Über uns</a>
-                <a href="#werte" class="text-reuth-text hover:text-reuth-teal transition-colors">Werte</a>
-                <a href="#team" class="text-reuth-text hover:text-reuth-teal transition-colors">Team</a>
-                <a href="#kontakt" class="bg-reuth-orange text-white px-5 py-2.5 rounded hover:bg-reuth-orange-dark transition-colors font-semibold">Kontakt</a>
+            <div class="hidden md:flex items-center gap-10 font-body text-[15px] font-semibold tracking-wide">
+                <a href="#kompetenzen" class="text-white/80 hover:text-reuth-orange transition-colors duration-300">Kompetenzen</a>
+                <a href="#ueber-uns" class="text-white/80 hover:text-reuth-orange transition-colors duration-300">Über uns</a>
+                <a href="#werte" class="text-white/80 hover:text-reuth-orange transition-colors duration-300">Werte</a>
+                <a href="#team" class="text-white/80 hover:text-reuth-orange transition-colors duration-300">Team</a>
+                <a href="#kontakt" class="btn-magnetic bg-reuth-orange text-white px-7 py-2.5 rounded-sm font-bold uppercase tracking-wider text-sm">
+                    Kontakt
+                </a>
             </div>
-            <!-- Mobile menu button -->
-            <button id="mobile-toggle" class="md:hidden text-reuth-text" aria-label="Menü">
+            <button id="mobile-toggle" class="md:hidden text-white z-10" aria-label="Menü">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 pb-4">
-            <a href="#kompetenzen" class="block py-3 text-reuth-text font-medium border-b border-gray-50">Kompetenzen</a>
-            <a href="#ueber-uns" class="block py-3 text-reuth-text font-medium border-b border-gray-50">Über uns</a>
-            <a href="#werte" class="block py-3 text-reuth-text font-medium border-b border-gray-50">Werte</a>
-            <a href="#team" class="block py-3 text-reuth-text font-medium border-b border-gray-50">Team</a>
-            <a href="#kontakt" class="block py-3 text-reuth-orange font-semibold">Kontakt</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-reuth-dark px-6 pb-6">
+            <a href="#kompetenzen" class="block py-3 text-white/80 font-semibold border-b border-white/10">Kompetenzen</a>
+            <a href="#ueber-uns" class="block py-3 text-white/80 font-semibold border-b border-white/10">Über uns</a>
+            <a href="#werte" class="block py-3 text-white/80 font-semibold border-b border-white/10">Werte</a>
+            <a href="#team" class="block py-3 text-white/80 font-semibold border-b border-white/10">Team</a>
+            <a href="#kontakt" class="block py-3 text-reuth-orange font-bold">Kontakt</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-        <!-- Background image with overlay -->
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-reuth-dark">
+        <!-- Background -->
         <div class="absolute inset-0">
-            <img src="https://reuth.de/wp-content/uploads/2018/03/slider-reuth.png" alt="" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-reuth-text/90 via-reuth-text/75 to-reuth-text/50"></div>
+            <img src="https://reuth.de/wp-content/uploads/2018/03/slider-reuth.png" alt="" class="w-full h-full object-cover opacity-40" style="filter: saturate(0.3);">
+            <div class="absolute inset-0 bg-gradient-to-br from-reuth-dark via-reuth-dark/80 to-transparent"></div>
         </div>
-        <!-- Geometric grid overlay -->
-        <div class="absolute inset-0 hero-grid opacity-30"></div>
-        <!-- Geometric accent shapes -->
-        <div class="absolute top-20 right-10 w-48 h-48 border-2 border-reuth-teal/20 rotate-45 hidden lg:block"></div>
-        <div class="absolute bottom-32 right-32 w-24 h-24 bg-reuth-teal/10 rotate-12 hidden lg:block"></div>
-        <div class="absolute top-1/3 right-1/4 w-16 h-16 border border-reuth-orange/20 rotate-[30deg] hidden lg:block"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 py-32">
+        <!-- Floating geometric shapes -->
+        <div class="absolute top-[15%] right-[8%] w-72 h-72 border border-reuth-orange/20 rotate-45 float hidden lg:block"></div>
+        <div class="absolute bottom-[20%] right-[15%] w-40 h-40 border border-white/5 rotate-12 float-reverse hidden lg:block"></div>
+        <div class="absolute top-[40%] right-[5%] w-5 h-5 bg-reuth-orange rounded-full float hidden lg:block" style="animation-delay: -2s;"></div>
+        <div class="absolute top-[25%] right-[25%] w-3 h-3 bg-reuth-orange/50 rounded-full float-reverse hidden lg:block"></div>
+        <!-- Large rotating ring -->
+        <div class="absolute -right-32 top-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/[0.03] rounded-full spin-slow hidden xl:block"></div>
+        <div class="absolute -right-16 top-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-reuth-orange/[0.06] rounded-full spin-slow hidden xl:block" style="animation-direction: reverse; animation-duration: 45s;"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-32">
             <div class="max-w-3xl">
-                <!-- Geometric accent line -->
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-12 h-0.5 bg-reuth-teal"></div>
-                    <span class="text-reuth-teal font-body font-semibold tracking-widest uppercase text-sm">Seit 1964</span>
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-3 mb-8 reveal-up">
+                    <div class="w-14 h-[2px] bg-reuth-orange"></div>
+                    <span class="text-reuth-orange font-body font-bold tracking-[0.25em] uppercase text-xs">Seit 1964 · Inhabergeführt</span>
                 </div>
-                <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] mb-8 reveal-up" style="transition-delay: 0.1s;">
                     Exzellenz in<br>
-                    <span class="text-reuth-teal">Werkzeugbau</span> &<br>
-                    Zerspanung
+                    <span class="gradient-text">Werkzeugbau</span><br>
+                    <span class="text-white/60">&amp; Zerspanung</span>
                 </h1>
-                <p class="font-body text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed">
-                    Höchste Präzision gepaart mit maximalem Kundennutzen. Inhabergeführt, innovativ und seit über 60 Jahren Ihr zuverlässiger Partner.
+
+                <p class="font-body text-lg md:text-xl text-white/50 mb-12 max-w-lg leading-relaxed reveal-up" style="transition-delay: 0.2s;">
+                    Höchste Präzision gepaart mit maximalem Kundennutzen. Über 60 Jahre Erfahrung, 50 Experten, 6.134 Formen.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#kompetenzen" class="bg-reuth-orange text-white px-8 py-3.5 rounded font-heading font-semibold text-base hover:bg-reuth-orange-dark transition-colors">
-                        Unsere Kompetenzen
+
+                <div class="flex flex-wrap gap-5 reveal-up" style="transition-delay: 0.3s;">
+                    <a href="#kompetenzen" class="btn-magnetic bg-reuth-orange text-white px-10 py-4 rounded-sm font-heading font-bold text-base uppercase tracking-wider">
+                        Kompetenzen entdecken
                     </a>
-                    <a href="#kontakt" class="border-2 border-white/30 text-white px-8 py-3.5 rounded font-heading font-semibold text-base hover:border-reuth-teal hover:text-reuth-teal transition-colors">
+                    <a href="#kontakt" class="group flex items-center gap-3 text-white/60 hover:text-white font-heading font-semibold text-base transition-colors duration-300">
+                        <span class="w-12 h-12 rounded-full border-2 border-white/20 group-hover:border-reuth-orange flex items-center justify-center transition-colors duration-300">
+                            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
                         Kontakt aufnehmen
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Geometric bottom edge -->
-        <div class="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 80" class="w-full" preserveAspectRatio="none">
-                <polygon fill="#F6F6F6" points="0,80 1440,80 1440,20 0,80"/>
-                <polygon fill="rgba(26,188,156,0.1)" points="0,80 720,30 1440,60 1440,80"/>
-            </svg>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 reveal-up" style="transition-delay: 0.5s;">
+            <span class="font-body text-xs tracking-widest uppercase">Scroll</span>
+            <div class="w-[1px] h-10 bg-gradient-to-b from-white/30 to-transparent"></div>
         </div>
     </section>
 
-    <!-- Kompetenzen Section -->
-    <section id="kompetenzen" class="py-24 bg-reuth-bg relative">
-        <!-- Subtle geometric pattern -->
-        <div class="absolute top-0 left-0 w-32 h-32 border-l-4 border-t-4 border-reuth-teal/10 ml-8 mt-8"></div>
-        <div class="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-reuth-teal/10 mr-8 mb-8"></div>
-
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <div class="flex items-center justify-center gap-3 mb-4">
-                    <div class="w-8 h-0.5 bg-reuth-orange"></div>
-                    <span class="text-reuth-orange font-body font-semibold tracking-widest uppercase text-sm">Was wir tun</span>
-                    <div class="w-8 h-0.5 bg-reuth-orange"></div>
-                </div>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-reuth-text">Unsere Kompetenzen</h2>
-            </div>
-
-            <!-- Competency cards grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1: Werkzeugbau -->
-                <div class="comp-card bg-white rounded-lg overflow-hidden reveal">
-                    <div class="relative">
-                        <img src="https://reuth.de/wp-content/uploads/2020/03/Werkzeugbau2-300x200.jpg" alt="Werkzeugbau" class="w-full h-52 object-cover">
-                        <div class="absolute top-4 left-4 w-8 h-8 border-2 border-reuth-teal/60 rotate-45"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="w-10 h-0.5 bg-reuth-teal mb-4"></div>
-                        <h3 class="font-heading text-xl font-bold text-reuth-text mb-3">Werkzeugbau in Perfektion</h3>
-                        <p class="font-body text-gray-600 leading-relaxed">Höchste Präzision gepaart mit maximalem Kundennutzen – unser Werkzeugbau setzt Maßstäbe. Qualität made in Germany.</p>
-                    </div>
-                </div>
-
-                <!-- Card 2: Silikonformen -->
-                <div class="comp-card bg-white rounded-lg overflow-hidden reveal">
-                    <div class="relative">
-                        <img src="https://reuth.de/wp-content/uploads/2025/03/IMG_0125reuth-300x200.jpg" alt="Silikon- / LSR-Formen" class="w-full h-52 object-cover">
-                        <div class="absolute top-4 left-4 w-8 h-8 border-2 border-reuth-teal/60 rotate-45"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="w-10 h-0.5 bg-reuth-teal mb-4"></div>
-                        <h3 class="font-heading text-xl font-bold text-reuth-text mb-3">Silikon- / LSR-Formen</h3>
-                        <p class="font-body text-gray-600 leading-relaxed">Ihr Ansprechpartner für anspruchsvolle Silikon-Bauteile.</p>
-                    </div>
-                </div>
-
-                <!-- Card 3: High-Tech Lohnfertigung -->
-                <div class="comp-card bg-white rounded-lg overflow-hidden reveal">
-                    <div class="relative">
-                        <img src="https://reuth.de/wp-content/uploads/2019/07/Hightechlohnfertigung2-300x200.jpg" alt="High-Tech Lohnfertigung" class="w-full h-52 object-cover">
-                        <div class="absolute top-4 left-4 w-8 h-8 border-2 border-reuth-teal/60 rotate-45"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="w-10 h-0.5 bg-reuth-teal mb-4"></div>
-                        <h3 class="font-heading text-xl font-bold text-reuth-text mb-3">High-Tech Lohnfertigung</h3>
-                        <p class="font-body text-gray-600 leading-relaxed">Mit modernster Technologie und effizienten Prozessen erfüllen wir Ihre Fertigungsanforderungen.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4: Systempartner -->
-                <div class="comp-card bg-white rounded-lg overflow-hidden reveal">
-                    <div class="relative">
-                        <img src="https://reuth.de/wp-content/uploads/2020/03/Sondermaschinenbau-300x200.jpg" alt="Systempartner" class="w-full h-52 object-cover">
-                        <div class="absolute top-4 left-4 w-8 h-8 border-2 border-reuth-teal/60 rotate-45"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="w-10 h-0.5 bg-reuth-teal mb-4"></div>
-                        <h3 class="font-heading text-xl font-bold text-reuth-text mb-3">Ihr verlässlicher Systempartner</h3>
-                        <p class="font-body text-gray-600 leading-relaxed">Wir bieten mehr als nur Fertigung – von der Entwicklung über die Produktion, Prüfung und Lagerung bis hin zur Lieferung.</p>
-                    </div>
-                </div>
-
-                <!-- Card 5: Spritzguss -->
-                <div class="comp-card bg-white rounded-lg overflow-hidden reveal">
-                    <div class="relative">
-                        <img src="https://reuth.de/wp-content/uploads/2020/03/Spritzguss5-300x200.jpg" alt="Spritzguss" class="w-full h-52 object-cover">
-                        <div class="absolute top-4 left-4 w-8 h-8 border-2 border-reuth-teal/60 rotate-45"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="w-10 h-0.5 bg-reuth-teal mb-4"></div>
-                        <h3 class="font-heading text-xl font-bold text-reuth-text mb-3">Ganzheitlicher Spritzguss-Service</h3>
-                        <p class="font-body text-gray-600 leading-relaxed">Alles aus einer Hand: von den detailgenauen Spritzgussformen bis zum qualitätsgeprüften Endprodukt.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- ==================== MARQUEE STRIP ==================== -->
+    <div class="bg-reuth-dark py-4 overflow-hidden border-y border-white/5">
+        <div class="flex whitespace-nowrap marquee-track">
+            <span class="inline-flex items-center gap-12 text-white/20 font-heading font-bold text-sm tracking-[0.3em] uppercase px-6">
+                <span>Werkzeugbau</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Silikon- / LSR-Formen</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>High-Tech Lohnfertigung</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Systempartner</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Spritzguss</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Sondermaschinenbau</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Formenbau</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>CNC-Zerspanung</span><span class="text-reuth-orange/40">&#9670;</span>
+            </span>
+            <span class="inline-flex items-center gap-12 text-white/20 font-heading font-bold text-sm tracking-[0.3em] uppercase px-6">
+                <span>Werkzeugbau</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Silikon- / LSR-Formen</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>High-Tech Lohnfertigung</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Systempartner</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Spritzguss</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Sondermaschinenbau</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>Formenbau</span><span class="text-reuth-orange/40">&#9670;</span>
+                <span>CNC-Zerspanung</span><span class="text-reuth-orange/40">&#9670;</span>
+            </span>
         </div>
-    </section>
-
-    <!-- Geometric divider -->
-    <div class="relative h-20 bg-reuth-bg">
-        <svg viewBox="0 0 1440 80" class="absolute bottom-0 w-full" preserveAspectRatio="none">
-            <polygon fill="#262626" points="0,80 1440,80 1440,40 720,0 0,40"/>
-        </svg>
     </div>
 
-    <!-- Über uns Section -->
-    <section id="ueber-uns" class="bg-reuth-text py-24 relative overflow-hidden">
-        <!-- Geometric accents -->
-        <div class="absolute top-12 right-12 w-40 h-40 border border-reuth-teal/10 rotate-45 hidden lg:block"></div>
-        <div class="absolute bottom-12 left-12 w-24 h-24 bg-reuth-teal/5 rotate-12 hidden lg:block"></div>
+    <!-- ==================== KOMPETENZEN ==================== -->
+    <section id="kompetenzen" class="py-28 lg:py-36 bg-reuth-bg relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <!-- Section header -->
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20">
+                <div class="reveal-left">
+                    <span class="text-reuth-orange font-body font-bold tracking-[0.3em] uppercase text-xs">Was wir tun</span>
+                    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-reuth-dark mt-3 leading-tight">
+                        Unsere<br>Kompetenzen
+                    </h2>
+                </div>
+                <p class="font-body text-lg text-gray-500 max-w-md leading-relaxed reveal-right">
+                    Fünf Kernbereiche, ein Versprechen: Höchste Präzision und maximaler Kundennutzen in jedem Projekt.
+                </p>
+            </div>
 
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-8 h-0.5 bg-reuth-teal"></div>
-                        <span class="text-reuth-teal font-body font-semibold tracking-widest uppercase text-sm">Seit 1964</span>
+            <!-- Cards: 2-col + 3-col layout -->
+            <div class="grid lg:grid-cols-2 gap-6 mb-6">
+                <!-- Card 1: Werkzeugbau (featured, large) -->
+                <div class="comp-card bg-white rounded-xl overflow-hidden reveal-up group" style="--i:0">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://reuth.de/wp-content/uploads/2020/03/Werkzeugbau2-300x200.jpg" alt="Werkzeugbau" class="comp-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-reuth-orange font-body font-bold text-xs tracking-[0.2em] uppercase">Kernkompetenz</span>
+                            <h3 class="font-heading text-2xl font-bold text-white mt-1">Werkzeugbau in Perfektion</h3>
+                        </div>
                     </div>
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">Tradition trifft Innovation im Werkzeugbau</h2>
-                    <div class="space-y-4 font-body text-gray-300 text-lg leading-relaxed">
+                    <div class="p-7">
+                        <p class="font-body text-gray-500 text-[16px] leading-relaxed">Höchste Präzision gepaart mit maximalem Kundennutzen – unser Werkzeugbau setzt Maßstäbe. Qualität made in Germany.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Silikonformen (featured, large) -->
+                <div class="comp-card bg-white rounded-xl overflow-hidden reveal-up group" style="--i:1">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://reuth.de/wp-content/uploads/2025/03/IMG_0125reuth-300x200.jpg" alt="Silikon- / LSR-Formen" class="comp-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-reuth-orange font-body font-bold text-xs tracking-[0.2em] uppercase">Spezialgebiet</span>
+                            <h3 class="font-heading text-2xl font-bold text-white mt-1">Silikon- / LSR-Formen</h3>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <p class="font-body text-gray-500 text-[16px] leading-relaxed">Ihr Ansprechpartner für anspruchsvolle Silikon-Bauteile.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 3 -->
+                <div class="comp-card bg-white rounded-xl overflow-hidden reveal-up" style="--i:2">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://reuth.de/wp-content/uploads/2019/07/Hightechlohnfertigung2-300x200.jpg" alt="High-Tech Lohnfertigung" class="comp-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-reuth-dark mb-2">High-Tech Lohnfertigung</h3>
+                        <p class="font-body text-gray-500 text-[15px] leading-relaxed">Mit modernster Technologie und effizienten Prozessen erfüllen wir Ihre Fertigungsanforderungen.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="comp-card bg-white rounded-xl overflow-hidden reveal-up" style="--i:3">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://reuth.de/wp-content/uploads/2020/03/Sondermaschinenbau-300x200.jpg" alt="Systempartner" class="comp-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-reuth-dark mb-2">Ihr Systempartner</h3>
+                        <p class="font-body text-gray-500 text-[15px] leading-relaxed">Von der Entwicklung über die Produktion, Prüfung und Lagerung bis hin zur Lieferung.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="comp-card bg-white rounded-xl overflow-hidden reveal-up" style="--i:4">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://reuth.de/wp-content/uploads/2020/03/Spritzguss5-300x200.jpg" alt="Spritzguss" class="comp-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-lg font-bold text-reuth-dark mb-2">Spritzguss-Service</h3>
+                        <p class="font-body text-gray-500 text-[15px] leading-relaxed">Alles aus einer Hand: von den detailgenauen Spritzgussformen bis zum qualitätsgeprüften Endprodukt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ZAHLEN (dark strip) ==================== -->
+    <section class="bg-reuth-dark py-20 lg:py-24 relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('https://reuth.de/wp-content/uploads/2018/03/slider-reuth.png'); background-size: cover; background-position: center; filter: grayscale(1);"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x md:divide-white/10">
+                <div class="text-center reveal-up" style="--i:0">
+                    <span class="counter font-heading text-6xl md:text-7xl lg:text-8xl font-black gradient-text" data-target="67">0</span>
+                    <p class="font-body text-white/40 mt-3 text-lg tracking-wider uppercase">Jahre Erfahrung</p>
+                </div>
+                <div class="text-center reveal-up" style="--i:1">
+                    <span class="counter font-heading text-6xl md:text-7xl lg:text-8xl font-black gradient-text" data-target="50">0</span>
+                    <p class="font-body text-white/40 mt-3 text-lg tracking-wider uppercase">Mitarbeiter</p>
+                </div>
+                <div class="text-center reveal-up" style="--i:2">
+                    <span class="counter font-heading text-6xl md:text-7xl lg:text-8xl font-black gradient-text" data-target="6134">0</span>
+                    <p class="font-body text-white/40 mt-3 text-lg tracking-wider uppercase">Formen gefertigt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ÜBER UNS ==================== -->
+    <section id="ueber-uns" class="py-28 lg:py-36 bg-reuth-bg relative overflow-hidden">
+        <!-- Decorative large number -->
+        <div class="absolute -left-16 top-1/2 -translate-y-1/2 font-heading text-[300px] font-black text-black/[0.02] leading-none select-none hidden xl:block">1964</div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <!-- Image side -->
+                <div class="lg:col-span-5 relative reveal-left">
+                    <div class="relative">
+                        <!-- Orange accent frame -->
+                        <div class="absolute -top-5 -left-5 w-2/3 h-2/3 border-2 border-reuth-orange/30 rounded-xl"></div>
+                        <img src="https://reuth.de/wp-content/uploads/2021/01/Collage.jpg" alt="Reuth GmbH" class="relative rounded-xl shadow-2xl w-full">
+                        <!-- Stats badge -->
+                        <div class="absolute -bottom-6 -right-6 bg-reuth-orange text-white px-6 py-4 rounded-xl shadow-xl">
+                            <span class="font-heading text-3xl font-black">60+</span>
+                            <span class="font-body text-sm block text-white/80">Jahre</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text side -->
+                <div class="lg:col-span-7 reveal-right">
+                    <span class="text-reuth-orange font-body font-bold tracking-[0.3em] uppercase text-xs">Über uns</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-black text-reuth-dark mt-3 mb-8 leading-tight">
+                        Tradition trifft<br><span class="gradient-text">Innovation</span>
+                    </h2>
+
+                    <div class="space-y-5 font-body text-gray-500 text-[17px] leading-relaxed">
                         <p>Seit unserer Gründung im Jahr 1964 bieten wir unseren Kunden aus der Industrie und Produktion modernste Lösungen in den Bereichen Werkzeugbau, Sondermaschinenbau, Spritzguss und High-Tech Lohnfertigung.</p>
                         <p>Als engagierter mittelständischer Betrieb sind wir innovativ und inhabergeführt. Mit rund 50 kompetenten Mitarbeitern sind wir dynamisch genug, um flexibel und schnell auf Ihre individuellen Anforderungen einzugehen, und gleichzeitig verfügen wir über ausreichende Kapazitäten, um auch umfangreichere Aufträge wirtschaftlich und zuverlässig abzuwickeln.</p>
                         <p>Um dies zu gewährleisten, investieren wir bei Reuth kontinuierlich: in die Fortbildung unserer Teams, in modernste Technologie und in schlanke, kundenorientierte Prozesse.</p>
-                        <p class="text-reuth-teal font-semibold">Ihr Erfolg ist unser Antrieb – gestern, heute und auch in der Zukunft.</p>
                     </div>
-                </div>
-                <div class="relative reveal">
-                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-reuth-teal/20 rounded-lg"></div>
-                    <img src="https://reuth.de/wp-content/uploads/2021/01/Collage.jpg" alt="Reuth GmbH – Tradition trifft Innovation" class="relative rounded-lg shadow-2xl w-full">
-                </div>
-            </div>
 
-            <!-- Stats counters -->
-            <div class="grid grid-cols-3 gap-8 mt-20 reveal">
-                <div class="text-center">
-                    <div class="relative inline-block">
-                        <span class="counter font-heading text-5xl md:text-6xl font-bold text-reuth-teal" data-target="67">0</span>
-                        <div class="absolute -top-2 -right-6 w-4 h-4 border border-reuth-orange/40 rotate-45"></div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-14 h-[2px] bg-reuth-orange"></div>
+                        <span class="font-heading font-bold text-reuth-dark text-lg">Ihr Erfolg ist unser Antrieb.</span>
                     </div>
-                    <p class="font-body text-gray-400 mt-2 text-lg">Jahre Erfahrung</p>
-                </div>
-                <div class="text-center">
-                    <div class="relative inline-block">
-                        <span class="counter font-heading text-5xl md:text-6xl font-bold text-reuth-teal" data-target="50">0</span>
-                        <div class="absolute -top-2 -right-6 w-4 h-4 border border-reuth-orange/40 rotate-45"></div>
-                    </div>
-                    <p class="font-body text-gray-400 mt-2 text-lg">Mitarbeiter</p>
-                </div>
-                <div class="text-center">
-                    <div class="relative inline-block">
-                        <span class="counter font-heading text-5xl md:text-6xl font-bold text-reuth-teal" data-target="6134">0</span>
-                        <div class="absolute -top-2 -right-6 w-4 h-4 border border-reuth-orange/40 rotate-45"></div>
-                    </div>
-                    <p class="font-body text-gray-400 mt-2 text-lg">Formen</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Geometric divider -->
-    <div class="relative h-20 bg-reuth-text">
-        <svg viewBox="0 0 1440 80" class="absolute bottom-0 w-full" preserveAspectRatio="none">
-            <polygon fill="#F6F6F6" points="0,80 1440,80 720,0"/>
-        </svg>
-    </div>
-
-    <!-- Werte Section -->
-    <section id="werte" class="py-24 bg-reuth-bg geo-pattern relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <div class="flex items-center justify-center gap-3 mb-4">
-                    <div class="w-8 h-0.5 bg-reuth-orange"></div>
-                    <span class="text-reuth-orange font-body font-semibold tracking-widest uppercase text-sm">Unsere Werte</span>
-                    <div class="w-8 h-0.5 bg-reuth-orange"></div>
-                </div>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-reuth-text">Was uns antreibt</h2>
+    <!-- ==================== WERTE ==================== -->
+    <section id="werte" class="py-28 lg:py-36 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <!-- Section header -->
+            <div class="text-center mb-20 reveal-up">
+                <span class="text-reuth-orange font-body font-bold tracking-[0.3em] uppercase text-xs">Unsere Werte</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-reuth-dark mt-3">Was uns antreibt</h2>
             </div>
 
             <!-- Value 1 -->
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20 reveal">
-                <div class="relative">
-                    <div class="absolute -top-3 -left-3 w-full h-full bg-reuth-teal/10 rounded-lg"></div>
-                    <img src="https://reuth.de/wp-content/uploads/2019/05/Detailliebe.jpg" alt="Der Fokus auf den Menschen" class="relative rounded-lg shadow-lg w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+                <div class="value-img-wrapper relative reveal-left">
+                    <img src="https://reuth.de/wp-content/uploads/2019/05/Detailliebe.jpg" alt="Der Fokus auf den Menschen" class="rounded-xl shadow-xl w-full">
                 </div>
-                <div>
-                    <div class="w-12 h-1 bg-reuth-teal mb-6"></div>
-                    <h3 class="font-heading text-2xl md:text-3xl font-bold text-reuth-text mb-4">Der Fokus auf den Menschen</h3>
-                    <p class="font-body text-gray-600 text-lg leading-relaxed">Technik ist nicht alles. Wenn Menschen motiviert und engagiert für Menschen arbeiten, entstehen die besten Lösungen. Bei Reuth sehen wir deshalb immer den Menschen hinter allem, im eigenen Haus und auf Kundenseite. So entsteht ein konstruktives und vertrauensvolles Miteinander – für uns die beste Voraussetzung, dauerhaft echte Mehrwerte für Sie zu generieren.</p>
+                <div class="reveal-right">
+                    <span class="font-heading text-8xl font-black text-black/[0.04] leading-none">01</span>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-reuth-dark -mt-8 mb-5">Der Fokus auf<br>den Menschen</h3>
+                    <div class="section-line mb-6"></div>
+                    <p class="font-body text-gray-500 text-[17px] leading-relaxed">Technik ist nicht alles. Wenn Menschen motiviert und engagiert für Menschen arbeiten, entstehen die besten Lösungen. Bei Reuth sehen wir deshalb immer den Menschen hinter allem, im eigenen Haus und auf Kundenseite. So entsteht ein konstruktives und vertrauensvolles Miteinander – für uns die beste Voraussetzung, dauerhaft echte Mehrwerte für Sie zu generieren.</p>
                 </div>
             </div>
 
             <!-- Value 2 -->
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20 reveal">
-                <div class="order-2 lg:order-1">
-                    <div class="w-12 h-1 bg-reuth-orange mb-6"></div>
-                    <h3 class="font-heading text-2xl md:text-3xl font-bold text-reuth-text mb-4">Blick fürs Detail, Augen aufs Ganze</h3>
-                    <p class="font-body text-gray-600 text-lg leading-relaxed">Ein erfolgreiches Produkt ist jenes, das Ihren Anforderungen vollständig gerecht wird. Daher betrachten wir nicht nur die kleinsten Details, sondern auch das Gesamtbild. Unser Ziel ist die Perfektion in der Harmonie aller Elemente – um Ihnen die optimale Lösung zu bieten.</p>
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+                <div class="order-2 lg:order-1 reveal-left">
+                    <span class="font-heading text-8xl font-black text-black/[0.04] leading-none">02</span>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-reuth-dark -mt-8 mb-5">Blick fürs Detail,<br>Augen aufs Ganze</h3>
+                    <div class="section-line mb-6"></div>
+                    <p class="font-body text-gray-500 text-[17px] leading-relaxed">Ein erfolgreiches Produkt ist jenes, das Ihren Anforderungen vollständig gerecht wird. Daher betrachten wir nicht nur die kleinsten Details, sondern auch das Gesamtbild. Unser Ziel ist die Perfektion in der Harmonie aller Elemente – um Ihnen die optimale Lösung zu bieten.</p>
                 </div>
-                <div class="relative order-1 lg:order-2">
-                    <div class="absolute -bottom-3 -right-3 w-full h-full bg-reuth-orange/10 rounded-lg"></div>
-                    <img src="https://reuth.de/wp-content/uploads/2024/08/Konstante1a.jpg" alt="Blick fürs Detail" class="relative rounded-lg shadow-lg w-full">
+                <div class="value-img-wrapper relative order-1 lg:order-2 reveal-right">
+                    <img src="https://reuth.de/wp-content/uploads/2024/08/Konstante1a.jpg" alt="Blick fürs Detail" class="rounded-xl shadow-xl w-full">
                 </div>
             </div>
 
             <!-- Value 3 -->
-            <div class="grid lg:grid-cols-2 gap-16 items-center reveal">
-                <div class="relative">
-                    <div class="absolute -top-3 -left-3 w-full h-full bg-reuth-teal/10 rounded-lg"></div>
-                    <img src="https://reuth.de/wp-content/uploads/2021/01/Collage.jpg" alt="Dauerhafte Partnerschaften" class="relative rounded-lg shadow-lg w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="value-img-wrapper relative reveal-left">
+                    <img src="https://reuth.de/wp-content/uploads/2021/01/Collage.jpg" alt="Dauerhafte Partnerschaften" class="rounded-xl shadow-xl w-full">
                 </div>
-                <div>
-                    <div class="w-12 h-1 bg-reuth-teal mb-6"></div>
-                    <h3 class="font-heading text-2xl md:text-3xl font-bold text-reuth-text mb-4">Dauerhafte Partnerschaften</h3>
-                    <p class="font-body text-gray-600 text-lg leading-relaxed">Unsere dauerhaften Kundenbeziehungen spiegeln unseren konstanten Einsatz für den gemeinsamen Erfolg wider. Reuth wird als vorausschauender Partner geschätzt, der sich stetig für Erfolge engagiert. Die kommende Generation ist bereits begeistert, in die Maschinenbauwelt einzusteigen.</p>
+                <div class="reveal-right">
+                    <span class="font-heading text-8xl font-black text-black/[0.04] leading-none">03</span>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-reuth-dark -mt-8 mb-5">Dauerhafte<br>Partnerschaften</h3>
+                    <div class="section-line mb-6"></div>
+                    <p class="font-body text-gray-500 text-[17px] leading-relaxed">Unsere dauerhaften Kundenbeziehungen spiegeln unseren konstanten Einsatz für den gemeinsamen Erfolg wider. Reuth wird als vorausschauender Partner geschätzt, der sich stetig für Erfolge engagiert. Die kommende Generation ist bereits begeistert, in die Maschinenbauwelt einzusteigen.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Geometric divider -->
-    <div class="relative h-20 bg-reuth-bg">
-        <svg viewBox="0 0 1440 80" class="absolute bottom-0 w-full" preserveAspectRatio="none">
-            <polygon fill="#FFFFFF" points="0,80 1440,80 1440,0 0,40"/>
-        </svg>
-    </div>
-
-    <!-- Team Section -->
-    <section id="team" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <div class="flex items-center justify-center gap-3 mb-4">
-                    <div class="w-8 h-0.5 bg-reuth-teal"></div>
-                    <span class="text-reuth-teal font-body font-semibold tracking-widest uppercase text-sm">Direktkontakt</span>
-                    <div class="w-8 h-0.5 bg-reuth-teal"></div>
+    <!-- ==================== TEAM ==================== -->
+    <section id="team" class="py-28 lg:py-36 bg-reuth-bg relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20">
+                <div class="reveal-left">
+                    <span class="text-reuth-orange font-body font-bold tracking-[0.3em] uppercase text-xs">Direktkontakt</span>
+                    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-reuth-dark mt-3 leading-tight">
+                        Ihre<br>Ansprechpartner
+                    </h2>
                 </div>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-reuth-text">Ihre Ansprechpartner</h2>
+                <p class="font-body text-lg text-gray-500 max-w-md leading-relaxed reveal-right">
+                    Kurze Wege, direkte Kommunikation. Mit dem Chef sprechen? Kein Problem.
+                </p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
                 <!-- Team member 1 -->
-                <div class="text-center reveal">
-                    <div class="relative inline-block mb-5">
-                        <div class="absolute inset-0 bg-reuth-teal/10 rounded-full scale-110 -rotate-6"></div>
-                        <img src="https://reuth.de/wp-content/uploads/2025/09/Stefan-150x150.png" alt="Stefan Böhm" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto">
+                <div class="team-card bg-white rounded-xl p-8 text-center reveal-up" style="--i:0">
+                    <div class="relative inline-block mb-6">
+                        <div class="team-ring w-36 h-36 rounded-full border-4 border-gray-100 p-1 mx-auto">
+                            <img src="https://reuth.de/wp-content/uploads/2025/09/Stefan-150x150.png" alt="Stefan Böhm" class="w-full h-full rounded-full object-cover">
+                        </div>
                     </div>
-                    <h4 class="font-heading text-lg font-bold text-reuth-text">Stefan Böhm</h4>
-                    <p class="font-body text-reuth-teal font-semibold text-sm mb-2">Inhaber, Geschäftsführer</p>
-                    <a href="mailto:stefan.boehm@reuth.de" class="font-body text-gray-500 hover:text-reuth-orange transition-colors text-sm">stefan.boehm@reuth.de</a>
-                    <p class="font-body text-gray-400 italic mt-2 text-sm">„Mit dem Chef sprechen? Kein Problem!"</p>
+                    <h4 class="font-heading text-xl font-bold text-reuth-dark">Stefan Böhm</h4>
+                    <p class="font-body text-reuth-orange font-bold text-sm mt-1 mb-3 tracking-wide uppercase">Inhaber & Geschäftsführer</p>
+                    <a href="mailto:stefan.boehm@reuth.de" class="font-body text-gray-400 hover:text-reuth-orange transition-colors text-sm">stefan.boehm@reuth.de</a>
+                    <p class="font-body text-gray-300 italic mt-4 text-sm">„Mit dem Chef sprechen? Kein Problem!"</p>
                 </div>
 
                 <!-- Team member 2 -->
-                <div class="text-center reveal">
-                    <div class="relative inline-block mb-5">
-                        <div class="absolute inset-0 bg-reuth-teal/10 rounded-full scale-110 -rotate-6"></div>
-                        <img src="https://reuth.de/wp-content/uploads/2019/07/KevinSiewert-1-150x150.jpg" alt="Kevin Siewert" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto">
+                <div class="team-card bg-white rounded-xl p-8 text-center reveal-up" style="--i:1">
+                    <div class="relative inline-block mb-6">
+                        <div class="team-ring w-36 h-36 rounded-full border-4 border-gray-100 p-1 mx-auto">
+                            <img src="https://reuth.de/wp-content/uploads/2019/07/KevinSiewert-1-150x150.jpg" alt="Kevin Siewert" class="w-full h-full rounded-full object-cover">
+                        </div>
                     </div>
-                    <h4 class="font-heading text-lg font-bold text-reuth-text">Kevin Siewert</h4>
-                    <p class="font-body text-reuth-teal font-semibold text-sm mb-2">Betriebsleiter</p>
-                    <a href="mailto:kevin.siewert@reuth.de" class="font-body text-gray-500 hover:text-reuth-orange transition-colors text-sm">kevin.siewert@reuth.de</a>
-                    <p class="font-body text-gray-400 italic mt-2 text-sm">„Ich bin zufrieden, wenn Sie es sind."</p>
+                    <h4 class="font-heading text-xl font-bold text-reuth-dark">Kevin Siewert</h4>
+                    <p class="font-body text-reuth-orange font-bold text-sm mt-1 mb-3 tracking-wide uppercase">Betriebsleiter</p>
+                    <a href="mailto:kevin.siewert@reuth.de" class="font-body text-gray-400 hover:text-reuth-orange transition-colors text-sm">kevin.siewert@reuth.de</a>
+                    <p class="font-body text-gray-300 italic mt-4 text-sm">„Ich bin zufrieden, wenn Sie es sind."</p>
                 </div>
 
                 <!-- Team member 3 -->
-                <div class="text-center reveal">
-                    <div class="relative inline-block mb-5">
-                        <div class="absolute inset-0 bg-reuth-teal/10 rounded-full scale-110 -rotate-6"></div>
-                        <img src="https://reuth.de/wp-content/uploads/2019/07/NicoleWirtz-150x150.jpg" alt="Nicole Wirtz" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto">
+                <div class="team-card bg-white rounded-xl p-8 text-center reveal-up" style="--i:2">
+                    <div class="relative inline-block mb-6">
+                        <div class="team-ring w-36 h-36 rounded-full border-4 border-gray-100 p-1 mx-auto">
+                            <img src="https://reuth.de/wp-content/uploads/2019/07/NicoleWirtz-150x150.jpg" alt="Nicole Wirtz" class="w-full h-full rounded-full object-cover">
+                        </div>
                     </div>
-                    <h4 class="font-heading text-lg font-bold text-reuth-text">Nicole Wirtz</h4>
-                    <p class="font-body text-reuth-teal font-semibold text-sm mb-2">Kaufmännische Leitung</p>
-                    <a href="mailto:nicole.wirtz@reuth.de" class="font-body text-gray-500 hover:text-reuth-orange transition-colors text-sm">nicole.wirtz@reuth.de</a>
-                    <p class="font-body text-gray-400 italic mt-2 text-sm">„Verwaltung und Finanzen? Mein Ding."</p>
+                    <h4 class="font-heading text-xl font-bold text-reuth-dark">Nicole Wirtz</h4>
+                    <p class="font-body text-reuth-orange font-bold text-sm mt-1 mb-3 tracking-wide uppercase">Kaufmännische Leitung</p>
+                    <a href="mailto:nicole.wirtz@reuth.de" class="font-body text-gray-400 hover:text-reuth-orange transition-colors text-sm">nicole.wirtz@reuth.de</a>
+                    <p class="font-body text-gray-300 italic mt-4 text-sm">„Verwaltung und Finanzen? Mein Ding."</p>
                 </div>
 
                 <!-- Team member 4 -->
-                <div class="text-center reveal">
-                    <div class="relative inline-block mb-5">
-                        <div class="absolute inset-0 bg-reuth-teal/10 rounded-full scale-110 -rotate-6"></div>
-                        <img src="https://reuth.de/wp-content/uploads/2019/07/JulienMeurer-150x150.jpg" alt="Julien Meurer" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto">
+                <div class="team-card bg-white rounded-xl p-8 text-center reveal-up" style="--i:3">
+                    <div class="relative inline-block mb-6">
+                        <div class="team-ring w-36 h-36 rounded-full border-4 border-gray-100 p-1 mx-auto">
+                            <img src="https://reuth.de/wp-content/uploads/2019/07/JulienMeurer-150x150.jpg" alt="Julien Meurer" class="w-full h-full rounded-full object-cover">
+                        </div>
                     </div>
-                    <h4 class="font-heading text-lg font-bold text-reuth-text">Julien Meurer</h4>
-                    <p class="font-body text-reuth-teal font-semibold text-sm mb-2">Fertigungsleiter</p>
-                    <a href="mailto:julien.meurer@reuth.de" class="font-body text-gray-500 hover:text-reuth-orange transition-colors text-sm">julien.meurer@reuth.de</a>
-                    <p class="font-body text-gray-400 italic mt-2 text-sm">„Beste Qualität ist unser Anspruch."</p>
+                    <h4 class="font-heading text-xl font-bold text-reuth-dark">Julien Meurer</h4>
+                    <p class="font-body text-reuth-orange font-bold text-sm mt-1 mb-3 tracking-wide uppercase">Fertigungsleiter</p>
+                    <a href="mailto:julien.meurer@reuth.de" class="font-body text-gray-400 hover:text-reuth-orange transition-colors text-sm">julien.meurer@reuth.de</a>
+                    <p class="font-body text-gray-300 italic mt-4 text-sm">„Beste Qualität ist unser Anspruch."</p>
                 </div>
 
                 <!-- Team member 5 -->
-                <div class="text-center reveal">
-                    <div class="relative inline-block mb-5">
-                        <div class="absolute inset-0 bg-reuth-teal/10 rounded-full scale-110 -rotate-6"></div>
-                        <img src="https://reuth.de/wp-content/uploads/2019/07/PeterBermel-150x150.jpg" alt="Peter Bermel" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto">
+                <div class="team-card bg-white rounded-xl p-8 text-center reveal-up" style="--i:4">
+                    <div class="relative inline-block mb-6">
+                        <div class="team-ring w-36 h-36 rounded-full border-4 border-gray-100 p-1 mx-auto">
+                            <img src="https://reuth.de/wp-content/uploads/2019/07/PeterBermel-150x150.jpg" alt="Peter Bermel" class="w-full h-full rounded-full object-cover">
+                        </div>
                     </div>
-                    <h4 class="font-heading text-lg font-bold text-reuth-text">Peter Bermel</h4>
-                    <p class="font-body text-reuth-teal font-semibold text-sm mb-2">Leiter Konstruktion</p>
-                    <a href="mailto:peter.bermel@reuth.de" class="font-body text-gray-500 hover:text-reuth-orange transition-colors text-sm">peter.bermel@reuth.de</a>
-                    <p class="font-body text-gray-400 italic mt-2 text-sm">„Ihre Ideen und unser Know-how – passt"</p>
+                    <h4 class="font-heading text-xl font-bold text-reuth-dark">Peter Bermel</h4>
+                    <p class="font-body text-reuth-orange font-bold text-sm mt-1 mb-3 tracking-wide uppercase">Leiter Konstruktion</p>
+                    <a href="mailto:peter.bermel@reuth.de" class="font-body text-gray-400 hover:text-reuth-orange transition-colors text-sm">peter.bermel@reuth.de</a>
+                    <p class="font-body text-gray-300 italic mt-4 text-sm">„Ihre Ideen und unser Know-how – passt"</p>
                 </div>
 
                 <!-- Team member 6 -->
-                <div class="text-center reveal">
-                    <div class="relative inline-block mb-5">
-                        <div class="absolute inset-0 bg-reuth-teal/10 rounded-full scale-110 -rotate-6"></div>
-                        <img src="https://reuth.de/wp-content/uploads/2021/01/guidokramer_rund-150x150-1.jpg" alt="Guido Kramer" class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg mx-auto">
+                <div class="team-card bg-white rounded-xl p-8 text-center reveal-up" style="--i:5">
+                    <div class="relative inline-block mb-6">
+                        <div class="team-ring w-36 h-36 rounded-full border-4 border-gray-100 p-1 mx-auto">
+                            <img src="https://reuth.de/wp-content/uploads/2021/01/guidokramer_rund-150x150-1.jpg" alt="Guido Kramer" class="w-full h-full rounded-full object-cover">
+                        </div>
                     </div>
-                    <h4 class="font-heading text-lg font-bold text-reuth-text">Guido Kramer</h4>
-                    <p class="font-body text-reuth-teal font-semibold text-sm mb-2">Projektleiter</p>
-                    <a href="mailto:guido.kramer@reuth.de" class="font-body text-gray-500 hover:text-reuth-orange transition-colors text-sm">guido.kramer@reuth.de</a>
-                    <p class="font-body text-gray-400 italic mt-2 text-sm">„Kreative Lösungen in Sachen Spritzguss"</p>
+                    <h4 class="font-heading text-xl font-bold text-reuth-dark">Guido Kramer</h4>
+                    <p class="font-body text-reuth-orange font-bold text-sm mt-1 mb-3 tracking-wide uppercase">Projektleiter</p>
+                    <a href="mailto:guido.kramer@reuth.de" class="font-body text-gray-400 hover:text-reuth-orange transition-colors text-sm">guido.kramer@reuth.de</a>
+                    <p class="font-body text-gray-300 italic mt-4 text-sm">„Kreative Lösungen in Sachen Spritzguss"</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA / Kontakt Section -->
-    <section id="kontakt" class="relative py-24 bg-reuth-teal overflow-hidden">
-        <!-- Geometric decorations -->
-        <div class="absolute top-0 left-0 w-64 h-64 border border-white/10 rotate-45 -translate-x-32 -translate-y-32"></div>
-        <div class="absolute bottom-0 right-0 w-48 h-48 border border-white/10 rotate-12 translate-x-16 translate-y-16"></div>
-        <div class="absolute top-1/2 left-1/4 w-20 h-20 bg-white/5 rotate-45 hidden lg:block"></div>
+    <!-- ==================== CTA ==================== -->
+    <section id="kontakt" class="relative py-28 lg:py-36 bg-reuth-dark overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute inset-0 opacity-[0.04]" style="background-image: url('https://reuth.de/wp-content/uploads/2018/03/slider-reuth.png'); background-size: cover; background-position: center; filter: grayscale(1);"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-reuth-orange/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-reuth-orange/5 rounded-full blur-[80px]"></div>
 
-        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <div class="reveal">
-                <div class="flex items-center justify-center gap-3 mb-6">
-                    <div class="w-8 h-0.5 bg-white/50"></div>
-                    <span class="text-white/70 font-body font-semibold tracking-widest uppercase text-sm">Jetzt durchstarten</span>
-                    <div class="w-8 h-0.5 bg-white/50"></div>
-                </div>
-                <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                    Warten Sie nicht,<br>rufen Sie uns an
+        <!-- Floating shapes -->
+        <div class="absolute top-[10%] right-[10%] w-32 h-32 border border-reuth-orange/10 rotate-45 float hidden lg:block"></div>
+        <div class="absolute bottom-[15%] left-[8%] w-20 h-20 border border-white/5 rotate-12 float-reverse hidden lg:block"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-10 text-center">
+            <div class="reveal-up">
+                <span class="text-reuth-orange font-body font-bold tracking-[0.3em] uppercase text-xs">Jetzt durchstarten</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-white mt-4 mb-6 leading-tight">
+                    Warten Sie nicht,<br>
+                    <span class="gradient-text">rufen Sie uns an</span>
                 </h2>
-                <a href="tel:+4926899868-0" class="inline-block font-heading text-2xl md:text-3xl font-bold text-white hover:text-reuth-orange transition-colors mb-8">
+                <a href="tel:+4926899868-0" class="inline-block font-heading text-3xl md:text-4xl font-black text-white hover:text-reuth-orange transition-colors duration-300 mb-6">
                     +49 2689 9868-0
                 </a>
-                <p class="font-body text-white/80 text-lg mb-10">Oder schreiben Sie uns eine Nachricht.</p>
-                <a href="mailto:stefan.boehm@reuth.de" class="inline-block bg-reuth-orange text-white px-10 py-4 rounded font-heading font-bold text-lg hover:bg-reuth-orange-dark transition-colors shadow-lg">
+                <p class="font-body text-white/40 text-lg mb-12">Oder schreiben Sie uns eine Nachricht.</p>
+                <a href="mailto:stefan.boehm@reuth.de" class="btn-magnetic inline-block bg-reuth-orange text-white px-12 py-5 rounded-sm font-heading font-bold text-base uppercase tracking-wider">
                     Kontakt aufnehmen
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-reuth-text py-10">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-reuth-dark border-t border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <img src="https://reuth.de/wp-content/uploads/2018/03/reuth_weiss_300pxh.png" alt="Reuth GmbH" class="h-10">
-                <div class="flex items-center gap-6 font-body text-gray-400 text-sm">
-                    <a href="https://reuth.de/impressum/" class="hover:text-white transition-colors">Impressum</a>
-                    <a href="https://reuth.de/datenschutzerklaerung/" class="hover:text-white transition-colors">Datenschutz</a>
+                <img src="https://reuth.de/wp-content/uploads/2018/03/reuth_weiss_300pxh.png" alt="Reuth GmbH" class="h-8 opacity-60">
+                <div class="flex items-center gap-8 font-body text-white/30 text-sm">
+                    <a href="https://reuth.de/impressum/" class="hover:text-white/60 transition-colors">Impressum</a>
+                    <a href="https://reuth.de/datenschutzerklaerung/" class="hover:text-white/60 transition-colors">Datenschutz</a>
                 </div>
-                <p class="font-body text-gray-500 text-sm">&copy; Reuth GmbH. Alle Rechte vorbehalten.</p>
+                <p class="font-body text-white/20 text-sm">&copy; Reuth GmbH</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript: Scroll animations + Counter -->
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // Navbar scroll effect
+        // Navbar scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 60);
         });
 
-        // Mobile menu toggle
+        // Mobile menu
         document.getElementById('mobile-toggle').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-
-        // Close mobile menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
+            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
         });
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Intersection Observer for reveal animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+        // Intersection Observer for reveals
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    observer.unobserve(entry.target);
+                    // Stagger delay based on CSS variable --i
+                    const i = getComputedStyle(entry.target).getPropertyValue('--i') || 0;
+                    setTimeout(() => entry.target.classList.add('visible'), parseInt(i) * 120);
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
 
         // Counter animation
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = parseInt(counter.dataset.target);
-                    const duration = 2000;
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const duration = 2200;
                     const start = performance.now();
 
-                    function update(now) {
+                    function tick(now) {
                         const elapsed = now - start;
                         const progress = Math.min(elapsed / duration, 1);
-                        const eased = 1 - Math.pow(1 - progress, 3);
-                        const current = Math.floor(eased * target);
-                        counter.textContent = current.toLocaleString('de-DE');
-                        if (progress < 1) {
-                            requestAnimationFrame(update);
-                        } else {
-                            counter.textContent = target.toLocaleString('de-DE');
-                        }
+                        const eased = 1 - Math.pow(1 - progress, 4);
+                        el.textContent = Math.floor(eased * target).toLocaleString('de-DE');
+                        if (progress < 1) requestAnimationFrame(tick);
+                        else el.textContent = target.toLocaleString('de-DE');
                     }
-                    requestAnimationFrame(update);
-                    counterObserver.unobserve(counter);
+                    requestAnimationFrame(tick);
+                    counterObserver.unobserve(el);
                 }
             });
         }, { threshold: 0.5 });
 
         document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+        // Smooth parallax on hero shapes (subtle mouse follow)
+        const hero = document.getElementById('hero');
+        if (window.innerWidth > 1024) {
+            hero.addEventListener('mousemove', (e) => {
+                const shapes = hero.querySelectorAll('.float, .float-reverse');
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                shapes.forEach((s, i) => {
+                    const factor = (i + 1) * 0.3;
+                    s.style.transform += ` translate(${x * factor}px, ${y * factor}px)`;
+                });
+            });
+        }
     </script>
 </body>
 </html>
