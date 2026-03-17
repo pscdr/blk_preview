@@ -15,12 +15,14 @@
                 extend: {
                     colors: {
                         steel: '#354B6A',
-                        'steel-dark': '#2A3D56',
+                        'steel-dark': '#1E2D42',
+                        'steel-mid': '#2A3D56',
                         'steel-light': '#4A6488',
                         accent: '#6B8DB5',
                         'accent-light': '#8AAAD0',
-                        surface: '#F6F6F6',
+                        surface: '#F4F5F7',
                         ink: '#2D2D2D',
+                        warm: '#E8E4DF',
                     },
                     fontFamily: {
                         heading: ['Rajdhani', 'sans-serif'],
@@ -32,79 +34,125 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Rubik', sans-serif; color: #2D2D2D; }
+        body { font-family: 'Rubik', sans-serif; color: #2D2D2D; overflow-x: hidden; }
         h1, h2, h3, h4, h5 { font-family: 'Rajdhani', sans-serif; }
 
-        /* Bauhaus geometric decorations */
-        .bauhaus-circle {
-            width: 64px; height: 64px; border-radius: 50%;
-            background: #6B8DB5; opacity: 0.15; position: absolute;
-        }
-        .bauhaus-rect {
-            width: 120px; height: 8px;
-            background: #354B6A; opacity: 0.2; position: absolute;
-        }
-
-        /* Hero slider */
+        /* ── Hero ── */
         .hero-slide {
-            opacity: 0; transition: opacity 1s ease; position: absolute; inset: 0;
+            opacity: 0; position: absolute; inset: 0;
             background-size: cover; background-position: center;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1.05);
         }
-        .hero-slide.active { opacity: 1; }
+        .hero-slide.active { opacity: 1; transform: scale(1); transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 8s cubic-bezier(0.4,0,0.2,1); }
 
-        /* Service card hover */
-        .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(53,75,106,0.15); }
+        /* ── Headline character animation ── */
+        .char { display: inline-block; opacity: 0; transform: translateY(40px) rotateX(-40deg); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .char.visible { opacity: 1; transform: translateY(0) rotateX(0); }
 
-        /* Scroll reveal */
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        /* ── Scroll-triggered reveals ── */
+        .reveal { opacity: 0; transform: translateY(48px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
-        /* Grid line pattern */
-        .grid-pattern {
-            background-image:
-                linear-gradient(rgba(53,75,106,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(53,75,106,0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
+        /* Stagger children */
+        .stagger > *:nth-child(1) { transition-delay: 0ms; }
+        .stagger > *:nth-child(2) { transition-delay: 120ms; }
+        .stagger > *:nth-child(3) { transition-delay: 240ms; }
+        .stagger > *:nth-child(4) { transition-delay: 360ms; }
+        .stagger > *:nth-child(5) { transition-delay: 480ms; }
+
+        /* ── Service showcase ── */
+        .service-panel { cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .service-panel:hover { transform: translateY(-6px); }
+        .service-panel:hover .service-img { transform: scale(1.08); }
+        .service-panel:hover .service-overlay { opacity: 1; }
+        .service-panel:hover .service-number { transform: translateX(8px); opacity: 1; }
+        .service-img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .service-overlay { opacity: 0; transition: opacity 0.5s ease; }
+        .service-number { opacity: 0.5; transition: all 0.4s ease; }
+
+        /* ── Parallax ── */
+        .parallax-section { background-attachment: fixed; background-size: cover; background-position: center; }
+        @media (max-width: 768px) { .parallax-section { background-attachment: scroll; } }
+
+        /* ── Counter animation ── */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* ── Diagonal clip ── */
+        .diagonal-top { clip-path: polygon(0 6vw, 100% 0, 100% 100%, 0 100%); margin-top: -6vw; padding-top: calc(6vw + 4rem); }
+        @media (max-width: 768px) { .diagonal-top { clip-path: polygon(0 3vw, 100% 0, 100% 100%, 0 100%); margin-top: -3vw; padding-top: calc(3vw + 3rem); } }
+
+        /* ── Marquee ── */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-track { animation: marquee 30s linear infinite; }
+
+        /* ── Floating Bauhaus geometry ── */
+        @keyframes float1 { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(12px,-18px) rotate(6deg); } }
+        @keyframes float2 { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-15px,10px) rotate(-4deg); } }
+        @keyframes float3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(8px,14px); } }
+        .geo-float-1 { animation: float1 7s ease-in-out infinite; }
+        .geo-float-2 { animation: float2 9s ease-in-out infinite; }
+        .geo-float-3 { animation: float3 6s ease-in-out infinite; }
+
+        /* ── Progress bar on nav ── */
+        #scroll-progress { transform-origin: left; transform: scaleX(0); transition: transform 0.1s linear; }
+
+        /* ── News card ── */
+        .news-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .news-card:hover { transform: translateY(-8px); }
+        .news-card:hover img { transform: scale(1.1); }
+        .news-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        /* ── Big outline text ── */
+        .text-outline {
+            -webkit-text-stroke: 1.5px rgba(53,75,106,0.12);
+            color: transparent;
+            user-select: none;
         }
-
-        /* News card */
-        .news-card img { transition: transform 0.4s ease; }
-        .news-card:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-surface">
 
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-[3px] bg-accent z-[60]"></div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-steel/10">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-            <a href="#">
-                <img src="https://infra-tec.de/wp-content/uploads/2018/10/infra_tec_logo_neu.svg" alt="infra-tec GmbH" class="h-12">
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+            <a href="#" class="relative z-10">
+                <img src="https://infra-tec.de/wp-content/uploads/2018/10/infra_tec_logo_neu.svg" alt="infra-tec GmbH" class="h-11 transition-all duration-300" id="nav-logo">
             </a>
-            <div class="hidden md:flex items-center gap-8 font-heading text-sm font-600 uppercase tracking-wider">
-                <a href="#leistungen" class="text-steel hover:text-accent transition-colors">Leistungen</a>
-                <a href="#kompetenz" class="text-steel hover:text-accent transition-colors">Kompetenz</a>
-                <a href="#news" class="text-steel hover:text-accent transition-colors">News</a>
-                <a href="#kontakt" class="bg-steel text-white px-5 py-2.5 hover:bg-steel-dark transition-colors">Kontakt</a>
+            <div class="hidden md:flex items-center gap-10 font-heading text-[13px] font-600 uppercase tracking-[0.15em]">
+                <a href="#leistungen" class="nav-link text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all hover:after:w-full">Leistungen</a>
+                <a href="#kompetenz" class="nav-link text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all hover:after:w-full">Kompetenz</a>
+                <a href="#news" class="nav-link text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all hover:after:w-full">News</a>
+                <a href="#kontakt" class="bg-white/10 backdrop-blur-sm text-white px-6 py-2.5 border border-white/20 hover:bg-white hover:text-steel transition-all duration-300">Kontakt</a>
             </div>
-            <!-- Mobile menu button -->
-            <button id="mobile-toggle" class="md:hidden text-steel" aria-label="Menü">
+            <button id="mobile-toggle" class="md:hidden text-white z-10" aria-label="Menü">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-steel/10 px-6 pb-4">
-            <a href="#leistungen" class="block py-3 font-heading text-sm font-600 uppercase tracking-wider text-steel">Leistungen</a>
-            <a href="#kompetenz" class="block py-3 font-heading text-sm font-600 uppercase tracking-wider text-steel">Kompetenz</a>
-            <a href="#news" class="block py-3 font-heading text-sm font-600 uppercase tracking-wider text-steel">News</a>
-            <a href="#kontakt" class="block py-3 font-heading text-sm font-600 uppercase tracking-wider text-accent">Kontakt</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-steel-dark/95 backdrop-blur-lg px-6 pb-6 pt-2">
+            <a href="#leistungen" class="block py-4 font-heading text-sm font-600 uppercase tracking-wider text-white/80 border-b border-white/10">Leistungen</a>
+            <a href="#kompetenz" class="block py-4 font-heading text-sm font-600 uppercase tracking-wider text-white/80 border-b border-white/10">Kompetenz</a>
+            <a href="#news" class="block py-4 font-heading text-sm font-600 uppercase tracking-wider text-white/80 border-b border-white/10">News</a>
+            <a href="#kontakt" class="block py-4 font-heading text-sm font-600 uppercase tracking-wider text-accent">Kontakt</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen min-h-[600px] overflow-hidden">
+    <!-- ═══════════════════════════════════════════
+         HERO – Full viewport, cinematic
+         ═══════════════════════════════════════════ -->
+    <section class="relative h-screen min-h-[700px] overflow-hidden bg-steel-dark">
+        <!-- Slider background -->
         <div id="hero-slider" class="absolute inset-0">
             <div class="hero-slide active" style="background-image: url('https://infra-tec.de/wp-content/uploads/2024/09/20240903_084944-1920x1080.jpg')"></div>
             <div class="hero-slide" style="background-image: url('https://infra-tec.de/wp-content/uploads/2024/09/24-03-15-SSW-Duisburg_fertige-LSW-e1726658701560-1920x1080.jpg')"></div>
@@ -112,35 +160,49 @@
             <div class="hero-slide" style="background-image: url('https://infra-tec.de/wp-content/uploads/2024/09/Bahnhof-Freilassing-2024-Foto-Strauss-13-1920x1080.jpg')"></div>
             <div class="hero-slide" style="background-image: url('https://infra-tec.de/wp-content/uploads/2018/10/SSD-Schienenstegdaempfer-fertig-montiert-Wachenheim-2020neu-scaled-e1725884614405-1920x1080.jpg')"></div>
         </div>
-        <!-- Dark overlay -->
-        <div class="absolute inset-0 bg-gradient-to-r from-steel-dark/80 via-steel/60 to-transparent"></div>
 
-        <!-- Bauhaus geometric accents -->
-        <div class="absolute top-32 right-16 w-24 h-24 border-4 border-white/20 rounded-full hidden lg:block"></div>
-        <div class="absolute bottom-48 right-32 w-16 h-16 bg-accent/30 hidden lg:block"></div>
-        <div class="absolute top-1/2 right-24 w-32 h-1 bg-white/20 hidden lg:block"></div>
+        <!-- Cinematic overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-steel-dark/70 via-steel-dark/40 to-steel-dark/90"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-steel-dark/60 via-transparent to-transparent"></div>
+
+        <!-- Animated Bauhaus geometry -->
+        <div class="absolute inset-0 pointer-events-none hidden lg:block">
+            <div class="geo-float-1 absolute top-[15%] right-[12%] w-28 h-28 border-[3px] border-white/10 rounded-full"></div>
+            <div class="geo-float-2 absolute top-[25%] right-[8%] w-5 h-5 bg-accent/30"></div>
+            <div class="geo-float-3 absolute bottom-[30%] right-[15%] w-40 h-[2px] bg-white/10"></div>
+            <div class="geo-float-2 absolute bottom-[20%] right-[22%] w-16 h-16 border-2 border-accent/20 rotate-45"></div>
+            <div class="geo-float-1 absolute top-[60%] right-[6%] w-3 h-3 bg-white/20 rounded-full"></div>
+            <!-- Vertical line -->
+            <div class="absolute top-0 bottom-0 right-[30%] w-[1px] bg-gradient-to-b from-transparent via-white/[0.06] to-transparent"></div>
+        </div>
 
         <!-- Hero content -->
         <div class="relative z-10 h-full flex items-center">
-            <div class="max-w-7xl mx-auto px-6 w-full">
-                <div class="max-w-2xl">
-                    <!-- Bauhaus label -->
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-1 bg-accent"></div>
-                        <span class="font-heading text-sm font-600 uppercase tracking-[0.2em] text-white/80">infra-tec GmbH</span>
+            <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
+                <div class="max-w-3xl">
+                    <!-- Subtle top line -->
+                    <div class="flex items-center gap-4 mb-8 opacity-0" id="hero-label" style="animation: fadeSlideUp 0.8s 0.3s forwards">
+                        <div class="w-16 h-[2px] bg-accent"></div>
+                        <span class="font-heading text-xs font-600 uppercase tracking-[0.3em] text-white/50">Stahllösungen rund um die Infrastruktur</span>
                     </div>
-                    <h1 id="hero-headline" class="font-heading text-5xl md:text-7xl font-700 text-white leading-tight mb-6">
-                        INNOVATIONEN SIND UNSER METIER
+
+                    <!-- Main headline – character animation -->
+                    <h1 id="hero-headline" class="font-heading text-[clamp(2.8rem,7vw,6rem)] font-700 text-white leading-[0.95] mb-8 tracking-tight">
+                        <span class="block">INNOVATIONEN</span>
+                        <span class="block text-accent">SIND UNSER</span>
+                        <span class="block">METIER</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed mb-10 max-w-lg">
-                        Wir sind Ihr Partner für Stahllösungen rund um die Infrastruktur.
+
+                    <p class="text-lg md:text-xl text-white/60 font-light leading-relaxed mb-12 max-w-xl opacity-0" id="hero-sub" style="animation: fadeSlideUp 0.8s 0.8s forwards">
+                        Wir sind Ihr Partner für Stahllösungen rund um die Infrastruktur — von der Planung bis zum Bau.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#leistungen" class="inline-flex items-center gap-2 bg-accent text-white font-heading font-600 uppercase tracking-wider text-sm px-8 py-4 hover:bg-accent-light transition-colors">
+
+                    <div class="flex flex-wrap gap-5 opacity-0" id="hero-cta" style="animation: fadeSlideUp 0.8s 1s forwards">
+                        <a href="#leistungen" class="group inline-flex items-center gap-3 bg-white text-steel font-heading font-700 uppercase tracking-wider text-sm px-8 py-4 hover:bg-accent hover:text-white transition-all duration-300">
                             Leistungen entdecken
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                         </a>
-                        <a href="#kontakt" class="inline-flex items-center gap-2 border-2 border-white/40 text-white font-heading font-600 uppercase tracking-wider text-sm px-8 py-4 hover:border-white hover:bg-white/10 transition-all">
+                        <a href="#kontakt" class="inline-flex items-center gap-3 border border-white/30 text-white font-heading font-600 uppercase tracking-wider text-sm px-8 py-4 hover:border-white hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                             Kontakt aufnehmen
                         </a>
                     </div>
@@ -148,326 +210,499 @@
             </div>
         </div>
 
-        <!-- Slide indicators -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-3">
-            <button class="slide-dot w-3 h-3 bg-white/80 transition-all" data-index="0"></button>
-            <button class="slide-dot w-3 h-3 bg-white/30 transition-all" data-index="1"></button>
-            <button class="slide-dot w-3 h-3 bg-white/30 transition-all" data-index="2"></button>
-            <button class="slide-dot w-3 h-3 bg-white/30 transition-all" data-index="3"></button>
-            <button class="slide-dot w-3 h-3 bg-white/30 transition-all" data-index="4"></button>
+        <!-- Slide counter -->
+        <div class="absolute bottom-10 left-6 lg:left-10 z-10 flex items-end gap-4">
+            <span id="slide-current" class="font-heading text-5xl font-700 text-white leading-none">01</span>
+            <div class="flex flex-col gap-1 mb-2">
+                <div class="w-8 h-[1px] bg-white/30"></div>
+                <span class="font-heading text-sm text-white/40">05</span>
+            </div>
+        </div>
+
+        <!-- Slide progress dots -->
+        <div class="absolute bottom-10 right-6 lg:right-10 z-10 flex gap-2 items-center">
+            <button class="slide-dot h-[3px] w-8 bg-white/80 transition-all duration-500" data-index="0"></button>
+            <button class="slide-dot h-[3px] w-4 bg-white/20 transition-all duration-500" data-index="1"></button>
+            <button class="slide-dot h-[3px] w-4 bg-white/20 transition-all duration-500" data-index="2"></button>
+            <button class="slide-dot h-[3px] w-4 bg-white/20 transition-all duration-500" data-index="3"></button>
+            <button class="slide-dot h-[3px] w-4 bg-white/20 transition-all duration-500" data-index="4"></button>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 opacity-0" style="animation: fadeSlideUp 0.8s 1.4s forwards">
+            <span class="font-heading text-[10px] uppercase tracking-[0.3em] text-white/30">Scroll</span>
+            <div class="w-[1px] h-8 bg-gradient-to-b from-white/40 to-transparent animate-pulse"></div>
+        </div>
+
+        <style>
+            @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        </style>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         LEISTUNGS-MARQUEE – Horizontal scrolling text
+         ═══════════════════════════════════════════ -->
+    <div class="bg-steel py-5 overflow-hidden">
+        <div class="flex whitespace-nowrap marquee-track">
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Lärmschutz</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Signalausleger</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Dachsysteme</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Planung</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Schienenstegdämpfer</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Stahlsonderkonstruktionen</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Masten</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Lärmschutz</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Signalausleger</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Dachsysteme</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Planung</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Schienenstegdämpfer</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Stahlsonderkonstruktionen</span>
+            <span class="text-accent/40 mx-4">/</span>
+            <span class="font-heading text-sm font-600 uppercase tracking-[0.3em] text-white/30 mx-8">Masten</span>
+            <span class="text-accent/40 mx-4">/</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRO STATEMENT
+         ═══════════════════════════════════════════ -->
+    <section class="py-24 md:py-36 bg-white relative overflow-hidden">
+        <!-- Giant background text -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[18vw] font-700 text-outline leading-none whitespace-nowrap pointer-events-none select-none">
+            STAHL
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center relative z-10">
+            <div class="reveal">
+                <h2 class="font-heading text-4xl md:text-6xl lg:text-7xl font-700 text-steel leading-[1.05] mb-8">
+                    Wir sind Ihr Partner für<br>
+                    <span class="text-accent">Stahllösungen</span> rund um<br>
+                    die Infrastruktur.
+                </h2>
+                <div class="w-20 h-[2px] bg-steel/20 mx-auto"></div>
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="leistungen" class="py-24 md:py-32 bg-white grid-pattern relative">
-        <!-- Bauhaus decoration -->
-        <div class="absolute top-12 left-8 w-20 h-20 border-4 border-steel/10 rounded-full hidden lg:block"></div>
-        <div class="absolute bottom-16 right-12 w-8 h-8 bg-accent/10 hidden lg:block"></div>
-
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Section header -->
-            <div class="reveal max-w-2xl mb-20">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-1 bg-accent"></div>
-                    <span class="font-heading text-sm font-600 uppercase tracking-[0.2em] text-steel/60">Unsere Leistungen</span>
+    <!-- ═══════════════════════════════════════════
+         LEISTUNGEN – Dramatic showcase
+         ═══════════════════════════════════════════ -->
+    <section id="leistungen" class="bg-surface relative">
+        <!-- Section header -->
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 md:pt-28 pb-16">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div class="reveal-left">
+                    <span class="font-heading text-xs font-600 uppercase tracking-[0.3em] text-steel/40 block mb-3">01 — Leistungen</span>
+                    <h2 class="font-heading text-5xl md:text-6xl font-700 text-steel leading-[0.95]">
+                        Was wir<br>bewegen.
+                    </h2>
                 </div>
-                <h2 class="font-heading text-4xl md:text-5xl font-700 text-steel leading-tight">
-                    Stahllösungen für die Infrastruktur
-                </h2>
+                <div class="reveal-right max-w-md">
+                    <p class="text-ink/60 leading-relaxed">
+                        Unser Leistungsspektrum umfasst Produkte und Dienstleistungen für die Infrastruktur aus Stahl — Bauen unter rollendem Rad in den verschiedensten Einbausituationen.
+                    </p>
+                </div>
             </div>
+        </div>
 
-            <!-- Service cards grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Lärmschutz -->
-                <div class="reveal service-card bg-surface group">
-                    <div class="overflow-hidden">
-                        <img src="https://infra-tec.de/wp-content/uploads/2024/09/24-03-15-SSW-Duisburg_fertige-LSW-e1726658701560-1024x679.jpg" alt="Lärmschutz" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="w-8 h-1 bg-accent mb-4"></div>
-                        <h3 class="font-heading text-2xl font-700 text-steel mb-3 uppercase">Lärmschutz</h3>
-                        <p class="text-ink/70 text-sm leading-relaxed">
-                            Wir sind Ihr Partner für diese Aufgaben und bieten Lärmschutzlösungen aus einer Hand – von der Planung bis zum Bau.
-                        </p>
+        <!-- Service 1 – Lärmschutz (full-width hero) -->
+        <div class="reveal-scale">
+            <div class="service-panel relative group overflow-hidden">
+                <div class="relative h-[70vh] min-h-[500px]">
+                    <img src="https://infra-tec.de/wp-content/uploads/2024/09/24-03-15-SSW-Duisburg_fertige-LSW-e1726658701560-1920x1080.jpg" alt="Lärmschutz" class="service-img absolute inset-0 w-full h-full object-cover">
+                    <div class="service-overlay absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/30 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/80 via-transparent to-transparent"></div>
+                    <!-- Content overlay -->
+                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-14">
+                        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                            <div>
+                                <span class="service-number font-heading text-8xl md:text-9xl font-700 text-white/10 block leading-none">01</span>
+                                <h3 class="font-heading text-4xl md:text-5xl font-700 text-white uppercase -mt-4">Lärmschutz</h3>
+                            </div>
+                            <p class="text-white/70 max-w-md text-sm md:text-base leading-relaxed">
+                                Wir sind Ihr Partner für diese Aufgaben und bieten Lärmschutzlösungen aus einer Hand — von der Planung bis zum Bau.
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Signalausleger -->
-                <div class="reveal service-card bg-surface group">
-                    <div class="overflow-hidden">
-                        <img src="https://infra-tec.de/wp-content/uploads/2024/09/VDE_8-Zapfendorf_2017-zugeschnitten-3-e1726658676867.jpg" alt="Signalausleger" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="w-8 h-1 bg-accent mb-4"></div>
-                        <h3 class="font-heading text-2xl font-700 text-steel mb-3 uppercase">Signalausleger</h3>
-                        <p class="text-ink/70 text-sm leading-relaxed">
+        <!-- Services 2+3 – Side by side -->
+        <div class="grid md:grid-cols-2 stagger">
+            <!-- Signalausleger -->
+            <div class="reveal service-panel relative group overflow-hidden">
+                <div class="relative h-[50vh] min-h-[400px]">
+                    <img src="https://infra-tec.de/wp-content/uploads/2024/09/VDE_8-Zapfendorf_2017-zugeschnitten-3-e1726658676867.jpg" alt="Signalausleger" class="service-img absolute inset-0 w-full h-full object-cover">
+                    <div class="service-overlay absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                        <span class="service-number font-heading text-7xl font-700 text-white/10 block leading-none">02</span>
+                        <h3 class="font-heading text-3xl md:text-4xl font-700 text-white uppercase -mt-2 mb-3">Signalausleger</h3>
+                        <p class="text-white/60 text-sm leading-relaxed max-w-sm">
                             Eines unserer Spezialgebiete: Fertigung und Montage von Signalbrücken und Signalauslegern. Wir garantieren eine effiziente und professionelle Projektabwicklung!
                         </p>
                     </div>
                 </div>
-
-                <!-- Dachsysteme -->
-                <div class="reveal service-card bg-surface group">
-                    <div class="overflow-hidden">
-                        <img src="https://infra-tec.de/wp-content/uploads/2024/09/Bahnhof-Freilassing-2024-Foto-Strauss-13-1024x683.jpg" alt="Dachsysteme" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="w-8 h-1 bg-accent mb-4"></div>
-                        <h3 class="font-heading text-2xl font-700 text-steel mb-3 uppercase">Dachsysteme</h3>
-                        <p class="text-ink/70 text-sm leading-relaxed">
+            </div>
+            <!-- Dachsysteme -->
+            <div class="reveal service-panel relative group overflow-hidden">
+                <div class="relative h-[50vh] min-h-[400px]">
+                    <img src="https://infra-tec.de/wp-content/uploads/2024/09/Bahnhof-Freilassing-2024-Foto-Strauss-13-1920x1080.jpg" alt="Dachsysteme" class="service-img absolute inset-0 w-full h-full object-cover">
+                    <div class="service-overlay absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                        <span class="service-number font-heading text-7xl font-700 text-white/10 block leading-none">03</span>
+                        <h3 class="font-heading text-3xl md:text-4xl font-700 text-white uppercase -mt-2 mb-3">Dachsysteme</h3>
+                        <p class="text-white/60 text-sm leading-relaxed max-w-sm">
                             Evolution 2020 bildet den Baustandard für Bahnsteigdächer bei der Deutschen Bahn AG.
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Planung -->
-                <div class="reveal service-card bg-surface group">
-                    <div class="overflow-hidden">
-                        <img src="https://infra-tec.de/wp-content/uploads/2024/09/20240903_084944-neu-1024x659.jpg" alt="Planung" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="w-8 h-1 bg-accent mb-4"></div>
-                        <h3 class="font-heading text-2xl font-700 text-steel mb-3 uppercase">Planung</h3>
-                        <p class="text-ink/70 text-sm leading-relaxed">
+        <!-- Services 4+5 – Side by side -->
+        <div class="grid md:grid-cols-2 stagger">
+            <!-- Planung -->
+            <div class="reveal service-panel relative group overflow-hidden">
+                <div class="relative h-[50vh] min-h-[400px]">
+                    <img src="https://infra-tec.de/wp-content/uploads/2024/09/20240903_084944-neu-1024x659.jpg" alt="Planung" class="service-img absolute inset-0 w-full h-full object-cover">
+                    <div class="service-overlay absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                        <span class="service-number font-heading text-7xl font-700 text-white/10 block leading-none">04</span>
+                        <h3 class="font-heading text-3xl md:text-4xl font-700 text-white uppercase -mt-2 mb-3">Planung</h3>
+                        <p class="text-white/60 text-sm leading-relaxed max-w-sm">
                             Das Planungsbüro der infra-tec umfasst die Tragwerksplanung im Brücken- und Ingenieurbau, Spezialtiefbau sowie die Stahlbauplanung einschließlich Werkstattzeichnungen.
                         </p>
                     </div>
                 </div>
-
-                <!-- Schienenstegdämpfer -->
-                <div class="reveal service-card bg-surface group">
-                    <div class="overflow-hidden">
-                        <img src="https://infra-tec.de/wp-content/uploads/2018/10/SSD-Schienenstegdaempfer-fertig-montiert-Wachenheim-2020neu-scaled-e1725884614405-1024x670.jpg" alt="Schienenstegdämpfer" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="w-8 h-1 bg-accent mb-4"></div>
-                        <h3 class="font-heading text-2xl font-700 text-steel mb-3 uppercase">Schienenstegdämpfer</h3>
-                        <p class="text-ink/70 text-sm leading-relaxed">
+            </div>
+            <!-- Schienenstegdämpfer -->
+            <div class="reveal service-panel relative group overflow-hidden">
+                <div class="relative h-[50vh] min-h-[400px]">
+                    <img src="https://infra-tec.de/wp-content/uploads/2018/10/SSD-Schienenstegdaempfer-fertig-montiert-Wachenheim-2020neu-scaled-e1725884614405-1920x1080.jpg" alt="Schienenstegdämpfer" class="service-img absolute inset-0 w-full h-full object-cover">
+                    <div class="service-overlay absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                        <span class="service-number font-heading text-7xl font-700 text-white/10 block leading-none">05</span>
+                        <h3 class="font-heading text-3xl md:text-4xl font-700 text-white uppercase -mt-2 mb-3">Schienenstegdämpfer</h3>
+                        <p class="text-white/60 text-sm leading-relaxed max-w-sm">
                             Wir sind Ihr Partner für effizienten Lärmschutz und bieten einen hohen Wirkungsgrad durch gleisnahen Lärmschutz.
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Kompetenz-Überblick Card -->
-                <div class="reveal service-card bg-steel text-white group flex flex-col justify-center p-8">
-                    <div class="w-8 h-1 bg-accent mb-6"></div>
-                    <h3 class="font-heading text-2xl font-700 mb-4 uppercase">Unser Leistungsspektrum</h3>
-                    <ul class="space-y-2 text-sm text-white/80">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Lärmschutzwände</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Signalausleger</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Dachsysteme</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Schienenstegdämpfer</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Planung</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Niedrige Lärmschutzwände</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Stahlsonderkonstruktionen</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent inline-block"></span> Masten</li>
-                    </ul>
+    <!-- ═══════════════════════════════════════════
+         KOMPETENZ – Parallax + Stats
+         ═══════════════════════════════════════════ -->
+    <section id="kompetenz" class="parallax-section relative" style="background-image: url('https://infra-tec.de/wp-content/uploads/2024/09/SSW-Duisburg_Jens-3075_061-bearbeitet-komprimiert-1024x683.jpg')">
+        <div class="absolute inset-0 bg-steel-dark/85"></div>
+        <div class="relative z-10 py-28 md:py-40">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    <!-- Left: text -->
+                    <div class="reveal-left">
+                        <span class="font-heading text-xs font-600 uppercase tracking-[0.3em] text-white/30 block mb-4">02 — Kompetenz</span>
+                        <h2 class="font-heading text-5xl md:text-6xl lg:text-7xl font-700 text-white leading-[0.95] mb-8">
+                            Bauen unter<br>
+                            <span class="text-accent">rollendem Rad.</span>
+                        </h2>
+                        <p class="text-white/50 leading-relaxed text-lg max-w-lg mb-12">
+                            Unser Leistungsspektrum umfasst Produkte und Dienstleistungen für die Infrastruktur aus Stahl — in den verschiedensten Einbausituationen.
+                        </p>
+
+                        <!-- Competence list -->
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-3 stagger">
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Lärmschutzwände
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Signalausleger
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Dachsysteme
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Schienenstegdämpfer
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Planung
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Niedrige LSW
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Sonderkonstruktionen
+                            </div>
+                            <div class="reveal flex items-center gap-3 text-white/70 text-sm">
+                                <div class="w-2 h-[2px] bg-accent"></div> Masten
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: stats -->
+                    <div class="reveal-right">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10">
+                                <div class="font-heading text-5xl md:text-6xl font-700 text-white counter" data-target="5">0</div>
+                                <div class="w-8 h-[2px] bg-accent mt-4 mb-3"></div>
+                                <div class="text-white/40 text-xs uppercase tracking-[0.2em] font-heading font-600">Kernbereiche</div>
+                            </div>
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10">
+                                <div class="font-heading text-5xl md:text-6xl font-700 text-white counter" data-target="8">0</div>
+                                <div class="w-8 h-[2px] bg-accent mt-4 mb-3"></div>
+                                <div class="text-white/40 text-xs uppercase tracking-[0.2em] font-heading font-600">Produktlinien</div>
+                            </div>
+                            <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10 col-span-2">
+                                <div class="font-heading text-5xl md:text-6xl font-700 text-accent counter" data-target="100">0</div>
+                                <span class="font-heading text-2xl text-accent/60">%</span>
+                                <div class="w-8 h-[2px] bg-accent mt-4 mb-3"></div>
+                                <div class="text-white/40 text-xs uppercase tracking-[0.2em] font-heading font-600">Aus einer Hand — Planung bis Bau</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kompetenz Section -->
-    <section id="kompetenz" class="py-24 md:py-32 bg-surface relative overflow-hidden">
-        <!-- Bauhaus geometry -->
-        <div class="absolute -right-16 top-1/2 -translate-y-1/2 w-64 h-64 border-[6px] border-steel/5 rounded-full hidden lg:block"></div>
-        <div class="absolute left-8 bottom-16 w-12 h-12 bg-accent/8 hidden lg:block"></div>
+    <!-- ═══════════════════════════════════════════
+         NEWS – Magazine layout
+         ═══════════════════════════════════════════ -->
+    <section id="news" class="py-24 md:py-36 bg-white relative overflow-hidden">
+        <!-- Background text -->
+        <div class="absolute top-12 right-0 font-heading text-[12vw] font-700 text-outline leading-none pointer-events-none select-none">
+            NEWS
+        </div>
 
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-1 bg-accent"></div>
-                        <span class="font-heading text-sm font-600 uppercase tracking-[0.2em] text-steel/60">Unsere Kompetenz</span>
-                    </div>
-                    <h2 class="font-heading text-4xl md:text-5xl font-700 text-steel leading-tight mb-6">
-                        Bauen unter rollendem Rad
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div class="reveal-left">
+                    <span class="font-heading text-xs font-600 uppercase tracking-[0.3em] text-steel/40 block mb-3">03 — Aktuelles</span>
+                    <h2 class="font-heading text-5xl md:text-6xl font-700 text-steel leading-[0.95]">
+                        News &<br>Projekte.
                     </h2>
-                    <p class="text-ink/70 leading-relaxed mb-8">
-                        Unser Leistungsspektrum umfasst Produkte und Dienstleistungen für die Infrastruktur aus Stahl — in den verschiedensten Einbausituationen.
-                    </p>
+                </div>
+            </div>
 
-                    <!-- Bauhaus-style stat blocks -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white p-6 border-l-4 border-steel">
-                            <div class="font-heading text-3xl font-700 text-steel">5</div>
-                            <div class="text-xs text-ink/60 uppercase tracking-wider mt-1">Kernbereiche</div>
-                        </div>
-                        <div class="bg-white p-6 border-l-4 border-accent">
-                            <div class="font-heading text-3xl font-700 text-accent">8</div>
-                            <div class="text-xs text-ink/60 uppercase tracking-wider mt-1">Produktlinien</div>
+            <!-- News grid – magazine style -->
+            <div class="grid md:grid-cols-12 gap-6 stagger">
+                <!-- Featured news (large) -->
+                <div class="reveal md:col-span-7 news-card group relative overflow-hidden">
+                    <div class="relative h-[400px] md:h-[500px] overflow-hidden">
+                        <img src="https://infra-tec.de/wp-content/uploads/2026/02/IMG20260123152059-2-1024x768.jpg" alt="Schallschutzkonstruktion Duisburg" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                            <span class="inline-block font-heading text-xs font-600 uppercase tracking-[0.2em] text-accent bg-white/10 backdrop-blur-sm px-3 py-1 mb-4">Februar 2026</span>
+                            <h3 class="font-heading text-2xl md:text-3xl font-700 text-white leading-snug">
+                                Präzisionsarbeit unter Hochspannung: Neue 48,5 Meter Schallschutzkonstruktion erfolgreich montiert
+                            </h3>
+                            <p class="text-white/50 text-sm mt-3">Lärmschutzwand Duisburg-Duissern</p>
                         </div>
                     </div>
                 </div>
-                <div class="reveal">
-                    <div class="relative">
-                        <img src="https://infra-tec.de/wp-content/uploads/2024/09/SSW-Duisburg_Jens-3075_061-bearbeitet-komprimiert-1024x683.jpg" alt="infra-tec Kompetenz" class="w-full shadow-xl">
-                        <!-- Bauhaus frame accent -->
-                        <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-steel/20 -z-10"></div>
-                        <div class="absolute -top-3 -left-3 w-16 h-16 bg-accent/20"></div>
+
+                <!-- Side stack -->
+                <div class="md:col-span-5 flex flex-col gap-6">
+                    <div class="reveal news-card group relative overflow-hidden flex-1">
+                        <div class="relative h-[240px] overflow-hidden">
+                            <img src="https://infra-tec.de/wp-content/uploads/2026/01/Foto-Rampenbauwerk-SIA-Frankfurt.jpg" alt="Signalausleger Frankfurt" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-block font-heading text-xs font-600 uppercase tracking-[0.2em] text-accent bg-white/10 backdrop-blur-sm px-3 py-1 mb-3">Januar 2026</span>
+                                <h3 class="font-heading text-xl font-700 text-white leading-snug">
+                                    Signalausleger und Rampenbauwerk Frankfurt am Main West
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal news-card group relative overflow-hidden flex-1">
+                        <div class="relative h-[240px] overflow-hidden">
+                            <img src="https://infra-tec.de/wp-content/uploads/2025/10/IMG_2382-bearbeitet-1024x576.jpg" alt="Standort Fellbach" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-steel-dark/90 via-steel-dark/20 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="inline-block font-heading text-xs font-600 uppercase tracking-[0.2em] text-accent bg-white/10 backdrop-blur-sm px-3 py-1 mb-3">Oktober 2025</span>
+                                <h3 class="font-heading text-xl font-700 text-white leading-snug">
+                                    Ein Grund zum Feiern: Neueröffnung des gemeinsamen Standortes in Fellbach
+                                </h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section id="news" class="py-24 md:py-32 bg-white grid-pattern relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="reveal max-w-2xl mb-16">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-1 bg-accent"></div>
-                    <span class="font-heading text-sm font-600 uppercase tracking-[0.2em] text-steel/60">Aktuelles</span>
-                </div>
-                <h2 class="font-heading text-4xl md:text-5xl font-700 text-steel leading-tight">
-                    News
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- News 1 -->
-                <div class="reveal news-card group">
-                    <div class="overflow-hidden bg-surface">
-                        <img src="https://infra-tec.de/wp-content/uploads/2026/02/IMG20260123152059-2-1024x768.jpg" alt="Schallschutzkonstruktion Duisburg" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="pt-4">
-                        <span class="font-heading text-xs font-600 uppercase tracking-wider text-accent">Februar 2026</span>
-                        <h3 class="font-heading text-lg font-600 text-steel mt-2 leading-snug">
-                            Präzisionsarbeit unter Hochspannung: Neue 48,5 Meter Schallschutzkonstruktion erfolgreich montiert
-                        </h3>
-                        <p class="text-ink/50 text-xs mt-2">Lärmschutzwand Duisburg-Duissern</p>
-                    </div>
-                </div>
-
-                <!-- News 2 -->
-                <div class="reveal news-card group">
-                    <div class="overflow-hidden bg-surface">
-                        <img src="https://infra-tec.de/wp-content/uploads/2026/01/Foto-Rampenbauwerk-SIA-Frankfurt.jpg" alt="Signalausleger Frankfurt" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="pt-4">
-                        <span class="font-heading text-xs font-600 uppercase tracking-wider text-accent">Januar 2026</span>
-                        <h3 class="font-heading text-lg font-600 text-steel mt-2 leading-snug">
-                            Signalausleger und Rampenbauwerk Frankfurt am Main West
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- News 3 -->
-                <div class="reveal news-card group">
-                    <div class="overflow-hidden bg-surface">
-                        <img src="https://infra-tec.de/wp-content/uploads/2025/10/IMG_2382-bearbeitet-1024x576.jpg" alt="Standort Fellbach" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="pt-4">
-                        <span class="font-heading text-xs font-600 uppercase tracking-wider text-accent">Oktober 2025</span>
-                        <h3 class="font-heading text-lg font-600 text-steel mt-2 leading-snug">
-                            Ein Grund zum Feiern: Neueröffnung des gemeinsamen Standortes in Fellbach
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- News 4 -->
-                <div class="reveal news-card group">
-                    <div class="overflow-hidden bg-surface">
-                        <img src="https://infra-tec.de/wp-content/uploads/2025/06/Bauhof-Hachenburg-1024x683.jpg" alt="Neue Abstellfläche" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="pt-4">
-                        <span class="font-heading text-xs font-600 uppercase tracking-wider text-accent">Juni 2025</span>
-                        <h3 class="font-heading text-lg font-600 text-steel mt-2 leading-snug">
-                            Mehr Platz für weiteres Wachstum – neue Abstellfläche erweitert unsere Lagerkapazitäten
-                        </h3>
-                    </div>
-                </div>
-            </div>
+    <!-- ═══════════════════════════════════════════
+         CTA – Bold, full-bleed
+         ═══════════════════════════════════════════ -->
+    <section id="kontakt" class="relative py-32 md:py-44 bg-steel-dark overflow-hidden">
+        <!-- Bauhaus geometry -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="geo-float-1 absolute top-[10%] right-[10%] w-40 h-40 border-2 border-white/[0.04] rounded-full"></div>
+            <div class="geo-float-2 absolute bottom-[15%] left-[8%] w-24 h-24 border border-accent/10 rotate-45"></div>
+            <div class="geo-float-3 absolute top-[40%] left-[20%] w-3 h-3 bg-accent/20 rounded-full"></div>
+            <div class="absolute top-0 bottom-0 left-[15%] w-[1px] bg-gradient-to-b from-transparent via-white/[0.03] to-transparent"></div>
+            <div class="absolute top-0 bottom-0 right-[25%] w-[1px] bg-gradient-to-b from-transparent via-white/[0.03] to-transparent"></div>
         </div>
-    </section>
 
-    <!-- CTA / Kontakt Section -->
-    <section id="kontakt" class="py-24 md:py-32 bg-steel relative overflow-hidden">
-        <!-- Bauhaus decorations -->
-        <div class="absolute top-8 right-16 w-32 h-32 border-4 border-white/10 rounded-full hidden lg:block"></div>
-        <div class="absolute bottom-12 left-24 w-16 h-16 bg-accent/20 hidden lg:block"></div>
-        <div class="absolute top-1/2 right-1/3 w-48 h-1 bg-white/5 hidden lg:block"></div>
-
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="reveal max-w-2xl mx-auto">
-                <div class="flex items-center justify-center gap-3 mb-6">
-                    <div class="w-12 h-1 bg-accent"></div>
-                    <span class="font-heading text-sm font-600 uppercase tracking-[0.2em] text-white/60">Kontakt</span>
-                    <div class="w-12 h-1 bg-accent"></div>
-                </div>
-                <h2 class="font-heading text-4xl md:text-5xl font-700 text-white leading-tight mb-6">
-                    Ihr Projekt. Unsere Kompetenz.
+        <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
+            <div class="reveal">
+                <span class="font-heading text-xs font-600 uppercase tracking-[0.3em] text-white/20 block mb-6">04 — Kontakt</span>
+                <h2 class="font-heading text-5xl md:text-7xl lg:text-8xl font-700 text-white leading-[0.9] mb-8">
+                    Ihr Projekt.<br>
+                    <span class="text-accent">Unsere Kompetenz.</span>
                 </h2>
-                <p class="text-white/70 text-lg leading-relaxed mb-10">
+                <p class="text-white/40 text-lg leading-relaxed mb-14 max-w-lg mx-auto">
                     Wir sind Ihr Partner für Stahllösungen rund um die Infrastruktur — von der Planung bis zum Bau.
                 </p>
-                <a href="https://infra-tec.de/kontakt/" class="inline-flex items-center gap-3 bg-accent text-white font-heading font-600 uppercase tracking-wider text-sm px-10 py-5 hover:bg-accent-light transition-colors">
+                <a href="https://infra-tec.de/kontakt/" class="group inline-flex items-center gap-4 bg-white text-steel font-heading font-700 uppercase tracking-wider text-sm px-12 py-5 hover:bg-accent hover:text-white transition-all duration-300">
                     Jetzt Kontakt aufnehmen
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    <svg class="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-steel-dark py-12">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════ -->
+    <footer class="bg-steel-dark border-t border-white/[0.06] py-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <img src="https://infra-tec.de/wp-content/uploads/2018/10/infra_tec_logo_neu.svg" alt="infra-tec GmbH" class="h-10 brightness-0 invert opacity-60">
-                <p class="text-white/40 text-xs font-heading uppercase tracking-wider">
+                <img src="https://infra-tec.de/wp-content/uploads/2018/10/infra_tec_logo_neu.svg" alt="infra-tec GmbH" class="h-9 brightness-0 invert opacity-40">
+                <p class="text-white/20 text-xs font-heading uppercase tracking-[0.15em]">
                     &copy; 2026 infra-tec GmbH — Stahllösungen rund um die Infrastruktur
                 </p>
             </div>
         </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════════
+         SCRIPTS
+         ═══════════════════════════════════════════ -->
     <script>
-        // Hero slider
+        // ── Hero slider with Ken Burns ──
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slide-dot');
         const headlines = [
-            'INNOVATIONEN SIND UNSER METIER',
-            'HERAUSFORDERUNGEN ALS MOTIVATION',
-            'MOBILITÄT DER ZUKUNFT',
-            'INNOVATIONEN SIND UNSER METIER',
-            'HERAUSFORDERUNGEN ALS MOTIVATION'
+            ['INNOVATIONEN', 'SIND UNSER', 'METIER'],
+            ['HERAUSFORDERUNGEN', 'ALS', 'MOTIVATION'],
+            ['MOBILITÄT', 'DER', 'ZUKUNFT'],
+            ['INNOVATIONEN', 'SIND UNSER', 'METIER'],
+            ['HERAUSFORDERUNGEN', 'ALS', 'MOTIVATION']
         ];
         let current = 0;
 
         function goToSlide(index) {
             slides[current].classList.remove('active');
-            dots[current].classList.replace('bg-white/80', 'bg-white/30');
+            dots[current].style.width = '16px';
+            dots[current].style.background = 'rgba(255,255,255,0.2)';
             current = index;
             slides[current].classList.add('active');
-            dots[current].classList.replace('bg-white/30', 'bg-white/80');
-            document.getElementById('hero-headline').textContent = headlines[current];
+            dots[current].style.width = '32px';
+            dots[current].style.background = 'rgba(255,255,255,0.8)';
+            document.getElementById('slide-current').textContent = String(current + 1).padStart(2, '0');
+
+            const h1 = document.getElementById('hero-headline');
+            const [line1, line2, line3] = headlines[current];
+            h1.innerHTML = `<span class="block">${line1}</span><span class="block text-accent">${line2}</span><span class="block">${line3}</span>`;
         }
 
-        setInterval(() => goToSlide((current + 1) % slides.length), 5000);
+        setInterval(() => goToSlide((current + 1) % slides.length), 6000);
         dots.forEach(dot => dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index))));
 
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
+        // ── Scroll progress bar ──
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            document.getElementById('scroll-progress').style.transform = `scaleX(${scrolled})`;
+        });
+
+        // ── Nav background on scroll ──
+        const nav = document.getElementById('nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navLogo = document.getElementById('nav-logo');
+        let navScrolled = false;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80 && !navScrolled) {
+                navScrolled = true;
+                nav.style.background = 'rgba(255,255,255,0.97)';
+                nav.style.backdropFilter = 'blur(12px)';
+                nav.style.borderBottom = '1px solid rgba(53,75,106,0.1)';
+                navLinks.forEach(l => { l.style.color = '#354B6A'; });
+                document.querySelector('#nav a[href="#kontakt"]').style.background = '#354B6A';
+                document.querySelector('#nav a[href="#kontakt"]').style.color = '#fff';
+                document.querySelector('#nav a[href="#kontakt"]').style.borderColor = '#354B6A';
+                document.getElementById('mobile-toggle').style.color = '#354B6A';
+            } else if (window.scrollY <= 80 && navScrolled) {
+                navScrolled = false;
+                nav.style.background = 'transparent';
+                nav.style.backdropFilter = 'none';
+                nav.style.borderBottom = 'none';
+                navLinks.forEach(l => { l.style.color = 'rgba(255,255,255,0.8)'; });
+                document.querySelector('#nav a[href="#kontakt"]').style.background = 'rgba(255,255,255,0.1)';
+                document.querySelector('#nav a[href="#kontakt"]').style.color = '#fff';
+                document.querySelector('#nav a[href="#kontakt"]').style.borderColor = 'rgba(255,255,255,0.2)';
+                document.getElementById('mobile-toggle').style.color = '#fff';
+            }
+        });
+
+        // ── Scroll reveal (IntersectionObserver) ──
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
 
-        // Mobile menu
+        // ── Counter animation ──
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    let count = 0;
+                    const duration = 1500;
+                    const step = target / (duration / 16);
+                    const timer = setInterval(() => {
+                        count += step;
+                        if (count >= target) { count = target; clearInterval(timer); }
+                        el.textContent = Math.round(count);
+                    }, 16);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+        // ── Mobile menu ──
         document.getElementById('mobile-toggle').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-
-        // Close mobile menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
+            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
         });
     </script>
 </body>
