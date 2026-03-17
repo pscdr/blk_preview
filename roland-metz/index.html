@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="https://rolandmetz.de/wp-content/uploads/2016/10/fav_rolandmetz.png">
     <script>
         tailwind.config = {
@@ -17,8 +17,9 @@
                         primary: '#4A525F',
                         accent: '#BFD72F',
                         'accent-dark': '#a8bf1a',
-                        warm: '#F8F7F4',
-                        'warm-mid': '#F0EDE8',
+                        warm: '#FAF9F6',
+                        'warm-mid': '#F2F0EB',
+                        'warm-dark': '#E8E5DE',
                     },
                     fontFamily: {
                         heading: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
@@ -30,202 +31,375 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Open Sans', sans-serif; }
+        body { font-family: 'Open Sans', sans-serif; -webkit-font-smoothing: antialiased; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; }
+
+        /* Scroll-triggered animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* Service cards */
         .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(74, 82, 95, 0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(74, 82, 95, 0.12);
         }
+        .service-card .icon-wrap {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .service-card:hover .icon-wrap {
+            background-color: #BFD72F;
+            transform: scale(1.08);
+        }
+        .service-card:hover .icon-wrap svg {
+            color: white;
+        }
+
+        /* Nav */
         .nav-link {
+            position: relative;
             transition: color 0.2s ease;
         }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #BFD72F;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* CTA */
         .cta-btn {
-            transition: background-color 0.2s ease, transform 0.15s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .cta-btn:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(191, 215, 47, 0.3);
+        }
+        .cta-btn-outline:hover {
+            box-shadow: 0 8px 24px rgba(74, 82, 95, 0.1);
+        }
+
+        /* Image parallax-like depth */
+        .img-showcase {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .img-showcase img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-showcase:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Accent line */
+        .accent-line {
+            width: 48px;
+            height: 3px;
+            background: #BFD72F;
+            border-radius: 2px;
+        }
+
+        /* Form focus glow */
+        input:focus, textarea:focus {
+            box-shadow: 0 0 0 3px rgba(191, 215, 47, 0.15);
+        }
+
+        /* Quote decorative */
+        .quote-mark {
+            font-size: 120px;
+            line-height: 1;
+            color: rgba(191, 215, 47, 0.15);
+            font-family: Georgia, serif;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+        }
+
+        /* Scrolled nav state */
+        .nav-scrolled {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            max-height: 300px;
+        }
+
+        /* Diagonal section divider */
+        .diagonal-top {
+            clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+            margin-top: -40px;
+            padding-top: 80px;
         }
     </style>
 </head>
-<body class="bg-warm text-primary">
+<body class="bg-warm text-primary overflow-x-hidden">
 
     <!-- Sticky Nav -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-            <a href="#hero">
-                <img src="https://rolandmetz.de/wp-content/uploads/2016/10/logo_rolandmetz.png" alt="Roland Metz" class="h-10">
+    <nav id="navbar" class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 transition-shadow duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+            <a href="#hero" class="flex-shrink-0">
+                <img src="https://rolandmetz.de/wp-content/uploads/2016/10/logo_rolandmetz.png" alt="Roland Metz" class="h-9">
             </a>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#leistungen" class="nav-link text-sm font-medium text-primary/70 hover:text-accent-dark">Leistungen</a>
-                <a href="#trendputz" class="nav-link text-sm font-medium text-primary/70 hover:text-accent-dark">Trendputz</a>
-                <a href="#ueber-uns" class="nav-link text-sm font-medium text-primary/70 hover:text-accent-dark">Über uns</a>
-                <a href="#kontakt" class="nav-link text-sm font-medium text-primary/70 hover:text-accent-dark">Kontakt</a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#leistungen" class="nav-link text-sm font-medium text-primary/70 hover:text-primary">Leistungen</a>
+                <a href="#trendputz" class="nav-link text-sm font-medium text-primary/70 hover:text-primary">Trendputz</a>
+                <a href="#ueber-uns" class="nav-link text-sm font-medium text-primary/70 hover:text-primary">Über uns</a>
+                <a href="#kontakt" class="nav-link text-sm font-medium text-primary/70 hover:text-primary">Kontakt</a>
             </div>
-            <a href="tel:015121265333" class="cta-btn bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2.5 rounded-md">
-                0151 212 65 333
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="tel:015121265333" class="cta-btn bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg hidden sm:inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    0151 212 65 333
+                </a>
+                <!-- Mobile menu button -->
+                <button id="mobileToggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-warm-mid transition-colors">
+                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="mobile-menu md:hidden bg-white border-t border-primary/5">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#leistungen" class="block text-sm font-medium text-primary/70 hover:text-primary py-2">Leistungen</a>
+                <a href="#trendputz" class="block text-sm font-medium text-primary/70 hover:text-primary py-2">Trendputz</a>
+                <a href="#ueber-uns" class="block text-sm font-medium text-primary/70 hover:text-primary py-2">Über uns</a>
+                <a href="#kontakt" class="block text-sm font-medium text-primary/70 hover:text-primary py-2">Kontakt</a>
+                <a href="tel:015121265333" class="block text-sm font-semibold text-accent py-2">0151 212 65 333</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section id="hero" class="pt-28 pb-20 md:pt-40 md:pb-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-4">Malermeister im Westerwald</p>
-            <h1 class="font-heading font-bold text-4xl md:text-6xl text-primary leading-tight mb-6">
-                Ihr Spezialist für<br>
-                <span class="text-accent">Trendputz &bull; Tapeten &bull; Wanddesign</span><br>
-                Böden &bull; Fassaden
-            </h1>
-            <p class="text-lg md:text-xl text-primary/60 max-w-2xl mx-auto mb-10 font-light">
-                Termingerecht, erstklassig, kreativ – Ihr „Lieblingsmaler" rund um Hachenburg und Bad Marienberg.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#kontakt" class="cta-btn bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md text-lg">
-                    Projekt anfragen
-                </a>
-                <a href="#leistungen" class="cta-btn border-2 border-primary/20 hover:border-accent text-primary font-semibold px-8 py-3.5 rounded-md text-lg">
-                    Leistungen entdecken
-                </a>
+    <section id="hero" class="relative pt-32 pb-24 md:pt-44 md:pb-36 bg-white overflow-hidden">
+        <!-- Subtle decorative shapes -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-warm-mid rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 bg-accent/8 border border-accent/15 rounded-full px-5 py-2 mb-8">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-primary/60 text-sm font-medium">Malermeister im Westerwald</span>
+                    </div>
+                </div>
+
+                <h1 class="reveal reveal-delay-1 font-heading font-bold text-4xl sm:text-5xl md:text-7xl text-primary leading-[1.1] mb-8 tracking-tight">
+                    Ihr Spezialist für<br>
+                    <span class="relative inline-block">
+                        <span class="text-accent">Wandgestaltung</span>
+                        <svg class="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none"><path d="M1 5.5C47 2 153 2 199 5.5" stroke="#BFD72F" stroke-width="3" stroke-linecap="round" opacity="0.4"/></svg>
+                    </span>
+                    <span class="text-primary/30 font-light">&</span> Design
+                </h1>
+
+                <p class="reveal reveal-delay-2 text-lg md:text-xl text-primary/50 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                    Termingerecht, erstklassig, kreativ – Ihr „Lieblingsmaler" rund um Hachenburg und Bad Marienberg. Trendputz, Tapeten, Böden und Fassaden.
+                </p>
+
+                <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#kontakt" class="cta-btn bg-accent hover:bg-accent-dark text-white font-semibold px-9 py-4 rounded-xl text-lg inline-flex items-center justify-center gap-2">
+                        Projekt anfragen
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <a href="#leistungen" class="cta-btn cta-btn-outline border-2 border-primary/12 hover:border-primary/25 text-primary font-semibold px-9 py-4 rounded-xl text-lg">
+                        Leistungen entdecken
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Trust Bar -->
-    <section class="bg-warm-mid py-8">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center">
-                <div>
-                    <p class="font-heading font-bold text-2xl text-primary">Meisterbetrieb</p>
-                    <p class="text-sm text-primary/50 mt-1">Qualität vom Malermeister</p>
+    <section class="bg-warm-mid/60 py-10 border-y border-primary/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="reveal flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 text-center">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12z"/></svg>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-heading font-bold text-primary text-lg">Meisterbetrieb</p>
+                        <p class="text-xs text-primary/40 mt-0.5">Qualität vom Malermeister</p>
+                    </div>
                 </div>
-                <div class="hidden md:block w-px h-10 bg-primary/10"></div>
-                <div>
-                    <p class="font-heading font-bold text-2xl text-primary">Westerwald</p>
-                    <p class="text-sm text-primary/50 mt-1">Hachenburg & Bad Marienberg</p>
+                <div class="hidden md:block w-px h-12 bg-primary/8"></div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/></svg>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-heading font-bold text-primary text-lg">Westerwald</p>
+                        <p class="text-xs text-primary/40 mt-0.5">Hachenburg & Bad Marienberg</p>
+                    </div>
                 </div>
-                <div class="hidden md:block w-px h-10 bg-primary/10"></div>
-                <div>
-                    <p class="font-heading font-bold text-2xl text-primary">Komplett-Service</p>
-                    <p class="text-sm text-primary/50 mt-1">Beratung bis Ausführung</p>
+                <div class="hidden md:block w-px h-12 bg-primary/8"></div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11.42 15.17l-5.1-3.26a.25.25 0 0 1 0-.42l5.1-3.26a.25.25 0 0 1 .38.21v6.52a.25.25 0 0 1-.38.21zM20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/></svg>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-heading font-bold text-primary text-lg">Komplett-Service</p>
+                        <p class="text-xs text-primary/40 mt-0.5">Beratung bis Ausführung</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Echtes Handwerk -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
+    <section class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary mb-6">Echtes Handwerk</h2>
-                <p class="text-primary/60 text-lg leading-relaxed mb-4">
+                <div class="reveal flex justify-center mb-6">
+                    <div class="accent-line"></div>
+                </div>
+                <h2 class="reveal font-heading font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Echtes Handwerk</h2>
+                <p class="reveal reveal-delay-1 text-primary/50 text-lg md:text-xl leading-relaxed mb-5">
                     Wir machen keine Kompromisse, wenn es um die Qualität unserer Arbeit geht, denn wir sind stolz auf unsere Handwerkskunst.
                 </p>
-                <p class="text-primary/60 text-lg leading-relaxed">
-                    Räume gestalten, Farben und Formen definieren, Oberflächen kreieren – gutes Design und frische Ideen sind unser Handwerk als Maler. <strong class="text-primary">Mit Erfahrung und Klasse.</strong>
+                <p class="reveal reveal-delay-2 text-primary/50 text-lg md:text-xl leading-relaxed">
+                    Räume gestalten, Farben und Formen definieren, Oberflächen kreieren – gutes Design und frische Ideen sind unser Handwerk als Maler. <strong class="text-primary font-semibold">Mit Erfahrung und Klasse.</strong>
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Leistungen -->
-    <section id="leistungen" class="py-20 md:py-28 bg-warm">
-        <div class="max-w-6xl mx-auto px-6">
-            <p class="text-accent font-semibold text-sm tracking-widest uppercase text-center mb-3">Was wir tun</p>
-            <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary text-center mb-16">Unsere Leistungen</h2>
+    <section id="leistungen" class="py-24 md:py-32 bg-warm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-16">
+                <div class="reveal flex justify-center mb-6">
+                    <div class="accent-line"></div>
+                </div>
+                <p class="reveal text-accent font-semibold text-sm tracking-widest uppercase mb-3">Was wir tun</p>
+                <h2 class="reveal reveal-delay-1 font-heading font-bold text-3xl md:text-5xl text-primary tracking-tight">Unsere Leistungen</h2>
+            </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Trendputz -->
-                <div class="service-card bg-white rounded-lg p-8">
-                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zm0 8a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2zm0 8a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2z"/></svg>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="reveal service-card bg-white rounded-2xl p-8 lg:p-10 border border-primary/5">
+                    <div class="icon-wrap w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 transition-all">
+                        <svg class="w-7 h-7 text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"/></svg>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-primary mb-3">Trendputz</h3>
-                    <p class="text-primary/60 leading-relaxed">Kalkputz – natürlicher Rohstoff für ein gesundes Raumklima. Individuelles Design inklusive.</p>
+                    <p class="text-primary/50 leading-relaxed text-[15px]">Kalkputz – natürlicher Rohstoff für ein gesundes Raumklima. Individuelles Design inklusive.</p>
                 </div>
 
-                <!-- Tapeten -->
-                <div class="service-card bg-white rounded-lg p-8">
-                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18"/></svg>
+                <div class="reveal reveal-delay-1 service-card bg-white rounded-2xl p-8 lg:p-10 border border-primary/5">
+                    <div class="icon-wrap w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 transition-all">
+                        <svg class="w-7 h-7 text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6zm0 9.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25zm9.75-9.75A2.25 2.25 0 0 1 15.75 3.75H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6zm0 9.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25z"/></svg>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-primary mb-3">Tapeten</h3>
-                    <p class="text-primary/60 leading-relaxed">Wandgestaltung mit Stil und Farbe. Ausgefallene Design-Tapeten, moderne Muster- und Farbkombinationen.</p>
+                    <p class="text-primary/50 leading-relaxed text-[15px]">Wandgestaltung mit Stil und Farbe. Ausgefallene Design-Tapeten, moderne Muster- und Farbkombinationen.</p>
                 </div>
 
-                <!-- Fassade -->
-                <div class="service-card bg-white rounded-lg p-8">
-                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+                <div class="reveal reveal-delay-2 service-card bg-white rounded-2xl p-8 lg:p-10 border border-primary/5">
+                    <div class="icon-wrap w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 transition-all">
+                        <svg class="w-7 h-7 text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5M10.5 21H3m13.5-18H6.75a2.25 2.25 0 0 0-2.25 2.25v13.5"/></svg>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-primary mb-3">Fassade</h3>
-                    <p class="text-primary/60 leading-relaxed">Putz, Farbe, Design – Handwerksqualität vom Meister für eine perfekt gestaltete Fassade.</p>
+                    <p class="text-primary/50 leading-relaxed text-[15px]">Putz, Farbe, Design – Handwerksqualität vom Meister für eine perfekt gestaltete Fassade.</p>
                 </div>
 
-                <!-- Boden -->
-                <div class="service-card bg-white rounded-lg p-8">
-                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 20h16M4 20V10l4-4h8l4 4v10M8 20v-4h8v4"/></svg>
+                <div class="reveal service-card bg-white rounded-2xl p-8 lg:p-10 border border-primary/5">
+                    <div class="icon-wrap w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 transition-all">
+                        <svg class="w-7 h-7 text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/></svg>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-primary mb-3">Bodengestaltung</h3>
-                    <p class="text-primary/60 leading-relaxed">Parkett, fugenloser Spachtelboden, Vinyl, Teppichboden, Laminat – wir realisieren Ihre Wohnträume.</p>
+                    <p class="text-primary/50 leading-relaxed text-[15px]">Parkett, fugenloser Spachtelboden, Vinyl, Teppichboden, Laminat – wir realisieren Ihre Wohnträume.</p>
                 </div>
 
-                <!-- LED -->
-                <div class="service-card bg-white rounded-lg p-8">
-                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21h6M12 3a6 6 0 0 1 4 10.5V17H8v-3.5A6 6 0 0 1 12 3z"/></svg>
+                <div class="reveal reveal-delay-1 service-card bg-white rounded-2xl p-8 lg:p-10 border border-primary/5">
+                    <div class="icon-wrap w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 transition-all">
+                        <svg class="w-7 h-7 text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-primary mb-3">LED-Lichtgestaltung</h3>
-                    <p class="text-primary/60 leading-relaxed">Integriertes Lichtdesign mit LED-Systemen in Stuckprofilen, Fußleisten und Gipskarton.</p>
+                    <p class="text-primary/50 leading-relaxed text-[15px]">Integriertes Lichtdesign mit LED-Systemen in Stuckprofilen, Fußleisten und Gipskarton.</p>
                 </div>
 
-                <!-- Maler -->
-                <div class="service-card bg-white rounded-lg p-8">
-                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <div class="reveal reveal-delay-2 service-card bg-white rounded-2xl p-8 lg:p-10 border border-primary/5">
+                    <div class="icon-wrap w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 transition-all">
+                        <svg class="w-7 h-7 text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z"/></svg>
                     </div>
                     <h3 class="font-heading font-bold text-xl text-primary mb-3">Maler- & Lackierarbeiten</h3>
-                    <p class="text-primary/60 leading-relaxed">Lackieren, streichen, lasieren, spachteln. Klassische Handwerksleistung in bester Meisterqualität.</p>
+                    <p class="text-primary/50 leading-relaxed text-[15px]">Lackieren, streichen, lasieren, spachteln. Klassische Handwerksleistung in bester Meisterqualität.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Trendputz Detail -->
-    <section id="trendputz" class="py-20 md:py-28 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
+    <section id="trendputz" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal">
                     <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-3">Highlight</p>
-                    <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary mb-6">Trendputz</h2>
-                    <p class="text-primary/60 text-lg leading-relaxed mb-6">
+                    <div class="accent-line mb-6"></div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Trendputz</h2>
+                    <p class="text-primary/50 text-lg leading-relaxed mb-6">
                         Moderner Kalkputz bietet echte Individualität: Beton-, Rost- und Steinoptik oder puristischer Kalkmarmorputz. Moderne Gestaltung mit natürlichen Rohstoffen für ein gesundes Raumklima – für Wand und Boden.
                     </p>
-                    <p class="text-primary/60 leading-relaxed">
-                        Kalkputz – natürlicher Rohstoff für ein gesundes Raumklima. Individuelles Design inklusive.
-                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-primary/60">
+                            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                            Natürlicher Rohstoff für gesundes Raumklima
+                        </li>
+                        <li class="flex items-center gap-3 text-primary/60">
+                            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                            Beton-, Rost- und Steinoptik
+                        </li>
+                        <li class="flex items-center gap-3 text-primary/60">
+                            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                            Puristischer Kalkmarmorputz
+                        </li>
+                    </ul>
                 </div>
-                <div>
-                    <img src="https://rolandmetz.de/wp-content/uploads/2021/02/Sumpfkalk-Wohlfuehlputz%C2%A9Kalkkind-1210x423.jpg" alt="Kalkkind Sumpfkalk Wohlfühlputz" class="rounded-lg shadow-lg w-full object-cover">
+                <div class="reveal reveal-delay-2 img-showcase shadow-2xl shadow-primary/8">
+                    <img src="https://rolandmetz.de/wp-content/uploads/2021/02/Sumpfkalk-Wohlfuehlputz%C2%A9Kalkkind-1210x423.jpg" alt="Kalkkind Sumpfkalk Wohlfühlputz" class="w-full h-80 md:h-96 object-cover">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Tapeten Detail -->
-    <section class="py-20 md:py-28 bg-warm">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1">
-                    <img src="https://rolandmetz.de/wp-content/uploads/2016/10/1920x1080_Tapeten_Collage-1210x423.jpg" alt="Tapeten Collage" class="rounded-lg shadow-lg w-full object-cover">
+    <section class="py-24 md:py-32 bg-warm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal order-2 md:order-1 img-showcase shadow-2xl shadow-primary/8">
+                    <img src="https://rolandmetz.de/wp-content/uploads/2016/10/1920x1080_Tapeten_Collage-1210x423.jpg" alt="Tapeten Collage" class="w-full h-80 md:h-96 object-cover">
                 </div>
-                <div class="order-1 md:order-2">
+                <div class="reveal reveal-delay-2 order-1 md:order-2">
                     <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-3">Wanddesign</p>
-                    <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary mb-6">Tapeten</h2>
-                    <p class="text-primary/60 text-lg leading-relaxed">
+                    <div class="accent-line mb-6"></div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Tapeten</h2>
+                    <p class="text-primary/50 text-lg leading-relaxed">
                         Ausgefallene Design-Tapeten, moderne Muster- und Farbkombinationen, Foto-Tapeten, Vliestapeten, klassische und florale Muster, Tapeten in Stoff-Optik: Der Kreativität sind hier definitiv keine Grenzen gesetzt!
                     </p>
                 </div>
@@ -234,12 +408,15 @@
     </section>
 
     <!-- Beratung -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
+    <section class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="max-w-3xl mx-auto text-center">
-                <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-3">Unser Ansatz</p>
-                <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary mb-6">Beratung</h2>
-                <p class="text-primary/60 text-lg leading-relaxed">
+                <div class="reveal flex justify-center mb-6">
+                    <div class="accent-line"></div>
+                </div>
+                <p class="reveal text-accent font-semibold text-sm tracking-widest uppercase mb-3">Unser Ansatz</p>
+                <h2 class="reveal reveal-delay-1 font-heading font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Beratung</h2>
+                <p class="reveal reveal-delay-2 text-primary/50 text-lg md:text-xl leading-relaxed">
                     Farbe, Form, Struktur – wir beraten Sie mit der Kompetenz unserer langjährigen Erfahrung, viel Kreativität und noch mehr Leidenschaft für unseren Beruf. So finden wir gemeinsam die richtige Harmonie für Ihre Räume, Ihre Fassade, Ihr Projekt.
                 </p>
             </div>
@@ -247,15 +424,21 @@
     </section>
 
     <!-- CTA Banner -->
-    <section class="py-16 bg-primary">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="font-heading font-bold text-3xl md:text-4xl text-white mb-4">Fordern Sie uns – wir freuen uns auf Ihr Projekt!</h2>
-            <p class="text-white/60 text-lg mb-8">Termintreu, sauber und natürlich in bester Meisterqualität.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:015121265333" class="cta-btn bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md text-lg">
+    <section class="relative py-20 md:py-24 bg-primary overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+            <h2 class="reveal font-heading font-bold text-3xl md:text-5xl text-white mb-5 tracking-tight">
+                Fordern Sie uns –<br class="hidden md:block"> wir freuen uns auf Ihr Projekt!
+            </h2>
+            <p class="reveal reveal-delay-1 text-white/50 text-lg mb-10 max-w-2xl mx-auto">Termintreu, sauber und natürlich in bester Meisterqualität.</p>
+            <div class="reveal reveal-delay-2 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:015121265333" class="cta-btn bg-accent hover:bg-accent-dark text-white font-semibold px-9 py-4 rounded-xl text-lg inline-flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                     0151 212 65 333
                 </a>
-                <a href="#kontakt" class="cta-btn border-2 border-white/30 hover:border-accent text-white font-semibold px-8 py-3.5 rounded-md text-lg">
+                <a href="#kontakt" class="cta-btn border-2 border-white/20 hover:border-accent text-white font-semibold px-9 py-4 rounded-xl text-lg">
                     Kontakt aufnehmen
                 </a>
             </div>
@@ -263,22 +446,29 @@
     </section>
 
     <!-- Über uns -->
-    <section id="ueber-uns" class="py-20 md:py-28 bg-warm">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="flex justify-center">
-                    <img src="https://rolandmetz.de/wp-content/uploads/2016/10/RolandMetz_2937-591x630.jpg" alt="Roland Metz – Malermeister" class="rounded-lg shadow-lg max-w-sm w-full">
+    <section id="ueber-uns" class="py-24 md:py-32 bg-warm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-accent/10 rounded-2xl -rotate-3"></div>
+                        <img src="https://rolandmetz.de/wp-content/uploads/2016/10/RolandMetz_2937-591x630.jpg" alt="Roland Metz – Malermeister" class="relative rounded-2xl shadow-2xl shadow-primary/10 max-w-sm w-full object-cover">
+                    </div>
                 </div>
-                <div>
+                <div class="reveal reveal-delay-2">
                     <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-3">Malermeister</p>
-                    <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary mb-6">Roland Metz</h2>
-                    <blockquote class="text-primary/70 text-lg leading-relaxed border-l-4 border-accent pl-6 mb-6">
-                        „Wir bringen Farbe und Leben ins Haus."
-                    </blockquote>
-                    <p class="text-primary/60 leading-relaxed mb-4">
+                    <div class="accent-line mb-6"></div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Roland Metz</h2>
+                    <div class="relative mb-8">
+                        <span class="quote-mark">&ldquo;</span>
+                        <blockquote class="relative text-primary/70 text-xl leading-relaxed font-light italic pl-4">
+                            Wir bringen Farbe und Leben ins Haus.
+                        </blockquote>
+                    </div>
+                    <p class="text-primary/50 leading-relaxed mb-5">
                         Von modernen Wandgestaltungstechniken mit innovativen Materialien über puristische Spachtelböden bis hin zu klassischen Maler- und Lackierarbeiten: Es gibt unzählige Möglichkeiten, Ihre Wände und Böden – innen wie außen, im Zuhause ebenso wie im Büro – individuell zu gestalten.
                     </p>
-                    <p class="text-primary/60 leading-relaxed">
+                    <p class="text-primary/50 leading-relaxed">
                         Dabei steht eine fundierte Beratung für uns immer am Beginn jedes Projektes. Mit hochwertigen Materialien, viel Know-how und Liebe zum Handwerk setzen wir dann das Projekt in die Tat um. Natürlich in hervorragender Qualität, termingerecht, sauber und zuverlässig. Eben Malermeister-Qualität.
                     </p>
                 </div>
@@ -287,74 +477,80 @@
     </section>
 
     <!-- Zitat -->
-    <section class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <blockquote class="text-2xl md:text-3xl font-heading font-light text-primary/40 italic">
-                „Bunt ist meine Lieblingsfarbe."
-            </blockquote>
-            <p class="text-primary/30 mt-4 text-sm">Walter Gropius – Architekt, Gründer des Bauhauses</p>
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+            <div class="reveal relative">
+                <span class="quote-mark" style="left: 50%; transform: translateX(-50%); top: -30px;">&ldquo;</span>
+                <blockquote class="relative text-2xl md:text-4xl font-heading font-light text-primary/30 italic leading-relaxed">
+                    Bunt ist meine Lieblingsfarbe.
+                </blockquote>
+                <div class="flex justify-center mt-6 mb-3"><div class="accent-line"></div></div>
+                <p class="text-primary/25 text-sm font-medium tracking-wide">Walter Gropius – Architekt, Gründer des Bauhauses</p>
+            </div>
         </div>
     </section>
 
     <!-- Kontakt -->
-    <section id="kontakt" class="py-20 md:py-28 bg-warm">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
+    <section id="kontakt" class="py-24 md:py-32 bg-warm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+                <div class="reveal">
                     <p class="text-accent font-semibold text-sm tracking-widest uppercase mb-3">Sprechen Sie uns an</p>
-                    <h2 class="font-heading font-bold text-3xl md:text-4xl text-primary mb-6">Kontakt</h2>
-                    <p class="text-primary/60 text-lg leading-relaxed mb-8">
+                    <div class="accent-line mb-6"></div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-primary mb-6 tracking-tight">Kontakt</h2>
+                    <p class="text-primary/50 text-lg leading-relaxed mb-10">
                         Sprechen Sie uns an, unser Team ist gerne für Sie da!
                     </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <div class="space-y-6">
+                        <a href="tel:015121265333" class="flex items-center gap-5 group">
+                            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                                <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                             </div>
                             <div>
-                                <p class="text-sm text-primary/40">Telefon</p>
-                                <a href="tel:015121265333" class="text-primary font-semibold hover:text-accent-dark">0151 212 65 333</a>
+                                <p class="text-xs text-primary/35 font-medium uppercase tracking-wider">Telefon</p>
+                                <p class="text-primary font-semibold text-lg group-hover:text-accent-dark transition-colors">0151 212 65 333</p>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+                        </a>
+                        <a href="mailto:hallo@rolandmetz.de" class="flex items-center gap-5 group">
+                            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                                <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
                             </div>
                             <div>
-                                <p class="text-sm text-primary/40">E-Mail</p>
-                                <a href="mailto:hallo@rolandmetz.de" class="text-primary font-semibold hover:text-accent-dark">hallo@rolandmetz.de</a>
+                                <p class="text-xs text-primary/35 font-medium uppercase tracking-wider">E-Mail</p>
+                                <p class="text-primary font-semibold text-lg group-hover:text-accent-dark transition-colors">hallo@rolandmetz.de</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <div>
-                    <form class="bg-white rounded-lg p-8 shadow-sm space-y-5">
+                <div class="reveal reveal-delay-2">
+                    <form class="bg-white rounded-2xl p-8 lg:p-10 shadow-xl shadow-primary/5 border border-primary/5 space-y-5">
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-primary/60 mb-1.5">Vorname / Name *</label>
-                                <input type="text" required class="w-full border border-primary/15 rounded-md px-4 py-2.5 text-primary focus:outline-none focus:border-accent bg-transparent">
+                                <label class="block text-xs font-semibold text-primary/40 uppercase tracking-wider mb-2">Name *</label>
+                                <input type="text" required class="w-full border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:border-accent bg-warm/50 transition-all">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-primary/60 mb-1.5">Telefon *</label>
-                                <input type="tel" required class="w-full border border-primary/15 rounded-md px-4 py-2.5 text-primary focus:outline-none focus:border-accent bg-transparent">
+                                <label class="block text-xs font-semibold text-primary/40 uppercase tracking-wider mb-2">Telefon *</label>
+                                <input type="tel" required class="w-full border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:border-accent bg-warm/50 transition-all">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-primary/60 mb-1.5">E-Mail *</label>
-                            <input type="email" required class="w-full border border-primary/15 rounded-md px-4 py-2.5 text-primary focus:outline-none focus:border-accent bg-transparent">
+                            <label class="block text-xs font-semibold text-primary/40 uppercase tracking-wider mb-2">E-Mail *</label>
+                            <input type="email" required class="w-full border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:border-accent bg-warm/50 transition-all">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-primary/60 mb-1.5">Nachricht *</label>
-                            <textarea rows="4" required class="w-full border border-primary/15 rounded-md px-4 py-2.5 text-primary focus:outline-none focus:border-accent bg-transparent resize-none"></textarea>
+                            <label class="block text-xs font-semibold text-primary/40 uppercase tracking-wider mb-2">Nachricht *</label>
+                            <textarea rows="4" required class="w-full border border-primary/10 rounded-xl px-4 py-3 text-primary focus:outline-none focus:border-accent bg-warm/50 resize-none transition-all"></textarea>
                         </div>
                         <div class="flex items-start gap-3">
-                            <input type="checkbox" required class="mt-1 accent-accent">
-                            <label class="text-xs text-primary/40 leading-relaxed">
-                                Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden.
+                            <input type="checkbox" required class="mt-1 accent-accent w-4 h-4">
+                            <label class="text-xs text-primary/35 leading-relaxed">
+                                Ich stimme zu, dass meine Angaben zur Beantwortung meiner Anfrage erhoben und verarbeitet werden. <a href="https://rolandmetz.de/landingpage/datenschutzerklaerung/" class="underline hover:text-accent-dark">Datenschutzerklärung</a>
                             </label>
                         </div>
-                        <button type="submit" class="cta-btn w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 rounded-md text-lg">
+                        <button type="submit" class="cta-btn w-full bg-accent hover:bg-accent-dark text-white font-semibold py-4 rounded-xl text-lg inline-flex items-center justify-center gap-2">
                             Nachricht senden
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 12L3.269 3.126A59.768 59.768 0 0 1 21.485 12 59.77 59.77 0 0 1 3.27 20.876L5.999 12zm0 0h7.5"/></svg>
                         </button>
                     </form>
                 </div>
@@ -363,20 +559,55 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary py-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <img src="https://rolandmetz.de/wp-content/uploads/2016/10/logo_rolandmetz.png" alt="Roland Metz" class="h-8 brightness-0 invert opacity-60">
-                <p class="text-white/30 text-sm text-center">
-                    Roland Metz – Malermeister &bull; Westerwald &bull; <a href="tel:015121265333" class="hover:text-accent">0151 212 65 333</a> &bull; <a href="mailto:hallo@rolandmetz.de" class="hover:text-accent">hallo@rolandmetz.de</a>
-                </p>
-                <div class="flex gap-6 text-white/30 text-sm">
-                    <a href="https://rolandmetz.de/landingpage/datenschutzerklaerung/" class="hover:text-accent">Datenschutz</a>
-                    <a href="https://rolandmetz.de/landingpage/impressum/" class="hover:text-accent">Impressum</a>
+    <footer class="bg-primary py-14">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-6">
+                    <img src="https://rolandmetz.de/wp-content/uploads/2016/10/logo_rolandmetz.png" alt="Roland Metz" class="h-8 brightness-0 invert opacity-50">
+                    <div class="hidden md:block w-px h-8 bg-white/10"></div>
+                    <p class="text-white/25 text-sm">Malermeister im Westerwald</p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-white/25 text-sm">
+                    <a href="tel:015121265333" class="hover:text-accent transition-colors">0151 212 65 333</a>
+                    <a href="mailto:hallo@rolandmetz.de" class="hover:text-accent transition-colors">hallo@rolandmetz.de</a>
+                    <span class="hidden sm:inline text-white/10">|</span>
+                    <a href="https://rolandmetz.de/landingpage/datenschutzerklaerung/" class="hover:text-accent transition-colors">Datenschutz</a>
+                    <a href="https://rolandmetz.de/landingpage/impressum/" class="hover:text-accent transition-colors">Impressum</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll animations & nav behavior -->
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Nav shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+    </script>
 
 </body>
 </html>
