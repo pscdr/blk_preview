@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM-Plastomed – Innovative Kunststoffprodukte für Medizin & Technik</title>
+    <meta name="description" content="Ihr Partner für innovative Kunststoffprodukte und Systeme für Medizin und Technik. Seit 1985 am Standort Deutschland.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sem-red': '#BD0B30',
+                        'sem-red-dark': '#9A0927',
+                        'sem-gray': '#565F66',
+                        'sem-gray-light': '#F5F6F7',
+                        'sem-dark': '#2A2E32',
+                    },
+                    fontFamily: {
+                        'condensed': ['"Roboto Condensed"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Roboto Condensed', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .grid-line { background: repeating-linear-gradient(90deg, transparent, transparent calc(100% / 12 - 1px), rgba(189,11,48,0.04) calc(100% / 12 - 1px), rgba(189,11,48,0.04) calc(100% / 12)); }
+    </style>
+</head>
+<body class="bg-white text-sem-gray antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="#hero">
+                    <img src="https://www.plastomed.de/img/sem-plastomed.svg" alt="SEM-Plastomed GmbH" class="h-8 lg:h-10">
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider">
+                    <a href="#medizintechnik" class="hover:text-sem-red transition-colors duration-200">Medizintechnik</a>
+                    <a href="#technische-produkte" class="hover:text-sem-red transition-colors duration-200">Technische Produkte</a>
+                    <a href="#unternehmen" class="hover:text-sem-red transition-colors duration-200">Unternehmen</a>
+                    <a href="#kontakt" class="bg-sem-red text-white px-5 py-2.5 hover:bg-sem-red-dark transition-colors duration-200">Kontakt</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menü">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
+            <div class="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider">
+                <a href="#medizintechnik" class="hover:text-sem-red">Medizintechnik</a>
+                <a href="#technische-produkte" class="hover:text-sem-red">Technische Produkte</a>
+                <a href="#unternehmen" class="hover:text-sem-red">Unternehmen</a>
+                <a href="#kontakt" class="bg-sem-red text-white px-5 py-2.5 text-center hover:bg-sem-red-dark">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="pt-20 lg:pt-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-0 min-h-[80vh] items-center">
+                <div class="lg:col-span-7 py-16 lg:py-24 lg:pr-16">
+                    <div class="w-16 h-1 bg-sem-red mb-8"></div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-sem-dark leading-tight tracking-tight mb-6">
+                        Innovative Kunststoff&shy;produkte und Systeme
+                    </h1>
+                    <p class="text-xl lg:text-2xl font-light text-sem-gray leading-relaxed mb-4">
+                        für Medizin und Technik
+                    </p>
+                    <p class="text-base text-sem-gray/80 leading-relaxed max-w-xl mb-10">
+                        Seit 1985 steht die SEM-Plastomed GmbH für innovative Lösungen und Dienstleistungen im Bereich der Kunststoffverarbeitung — am deutschen Standort in Obererbach im Westerwald.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#medizintechnik" class="bg-sem-red text-white px-8 py-3.5 font-bold uppercase text-sm tracking-wider hover:bg-sem-red-dark transition-colors duration-200">
+                            Leistungen entdecken
+                        </a>
+                        <a href="https://www.plastomed.de/produktionsanfrage/" class="border-2 border-sem-gray text-sem-gray px-8 py-3.5 font-bold uppercase text-sm tracking-wider hover:bg-sem-gray hover:text-white transition-colors duration-200">
+                            Produktionsanfrage
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative">
+                    <div class="aspect-[4/5] bg-sem-gray-light overflow-hidden">
+                        <img src="https://www.plastomed.de/img/start/medizintechnik.jpg" alt="SEM-Plastomed Medizintechnik" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-sem-red text-white p-6 hidden lg:block">
+                        <span class="text-4xl font-bold block">1985</span>
+                        <span class="text-sm uppercase tracking-wider">Gegründet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="border-t border-gray-200 my-0"></div>
+    </div>
+
+    <!-- Medizintechnik -->
+    <section id="medizintechnik" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="lg:col-span-5">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://www.plastomed.de/img/start/medizintechnik.jpg" alt="Medizintechnik" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-1 bg-sem-red"></div>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">01</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">Medizintechnik</h2>
+                    <p class="text-sem-gray/80 mb-8 leading-relaxed">Sie suchen einen zuverlässigen Partner für medizinische Komponenten? SEM-Plastomed bietet Ihnen:</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Zuverlässige Fertigung Ihrer medizinischen Komponenten</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Lohnherstellung nach Ihren Bedürfnissen und Spezifikationen</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Konfektionierung, Verpackung und Sterilisation Ihrer Komponenten</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Lieferung auf dem Markt befindlicher Medizinprodukte</span>
+                        </li>
+                    </ul>
+                    <a href="https://www.plastomed.de/medizintechnik/" class="inline-flex items-center gap-2 text-sem-red font-bold uppercase text-sm tracking-wider hover:gap-4 transition-all duration-200">
+                        Mehr erfahren
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technische Produkte -->
+    <section id="technische-produkte" class="py-20 lg:py-28 bg-sem-gray-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="lg:col-span-7 order-2 lg:order-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-1 bg-sem-red"></div>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">02</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">Technische Produkte / Spunde</h2>
+                    <p class="text-sem-gray/80 mb-8 leading-relaxed">Sie suchen einen kompetenten Partner für technische Kunststoffprodukte? Wir bieten Ihnen:</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Werkzeugerstellung und Produktion Ihrer Bauteile</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Montage und Veredelung Ihrer Bauteile</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Verlagerung vorhandener Spritzgießwerkzeuge</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                            <span>Neue Bauteile, Baugruppen und Unterstützung bei der Bauteilauslegung</span>
+                        </li>
+                    </ul>
+                    <a href="https://www.plastomed.de/technische-produkte/" class="inline-flex items-center gap-2 text-sem-red font-bold uppercase text-sm tracking-wider hover:gap-4 transition-all duration-200">
+                        Mehr erfahren
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+                <div class="lg:col-span-5 order-1 lg:order-2">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://www.plastomed.de/img/start/technische-produkte.jpg" alt="Technische Produkte" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unternehmen -->
+    <section id="unternehmen" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+                <div class="lg:col-span-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-1 bg-sem-red"></div>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Über uns</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-8 tracking-tight">
+                        Hochwertige und individuelle Lösungen aus Kunststoff
+                    </h2>
+                    <p class="text-lg text-sem-gray/80 leading-relaxed mb-6">
+                        Bereits seit 1985 steht die SEM-Plastomed GmbH für innovative Lösungen und Dienstleistungen im Bereich der Kunststoffverarbeitung und fertigt seine Produkte am deutschen Standort in Obererbach bei Altenkirchen im Westerwald.
+                    </p>
+                    <p class="text-sem-gray/80 leading-relaxed mb-6">
+                        Kunden aus den unterschiedlichsten Branchen vertrauen auf technisch anspruchsvolle Spritzgussteile, Schläuche und Profile sowie medizinische Komponenten, Baugruppen und sterile/unsterile Medizinprodukte.
+                    </p>
+                    <p class="text-sem-gray/80 leading-relaxed">
+                        Die in enger Kooperation mit unseren Kunden entwickelten Produkte werden auf deren individuelle Bedürfnisse abgestimmt. Dank kürzester Reaktionszeiten ist eine schnelle Umsetzung gegeben. Dies gilt auch für die Übernahme von bereits laufenden Produktionen mit bestehenden Werkzeugen.
+                    </p>
+                </div>
+                <div class="lg:col-span-4">
+                    <div class="bg-sem-dark text-white p-8 lg:p-10">
+                        <h3 class="text-xl font-bold mb-8 uppercase tracking-wider">Dafür stehen wir</h3>
+                        <ul class="space-y-5">
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                                <span class="text-white/90">Innovative und qualitativ hochwertige Produkte</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                                <span class="text-white/90">Schnelle, flexible und transparente Umsetzung</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                                <span class="text-white/90">Individuelle Betreuung und Beratung</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                                <span class="text-white/90">Kompetenz, Erfahrung und Glaubwürdigkeit</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 bg-sem-red mt-2 flex-shrink-0"></div>
+                                <span class="text-white/90">Höchste Flexibilität, Qualität und Zuverlässigkeit</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kennzahlen -->
+    <section class="bg-sem-red py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center">
+                <div>
+                    <span class="text-4xl lg:text-5xl font-bold block mb-2">1985</span>
+                    <span class="text-sm uppercase tracking-wider text-white/70">Gegründet</span>
+                </div>
+                <div>
+                    <span class="text-4xl lg:text-5xl font-bold block mb-2">DE</span>
+                    <span class="text-sm uppercase tracking-wider text-white/70">Standort Deutschland</span>
+                </div>
+                <div>
+                    <span class="text-4xl lg:text-5xl font-bold block mb-2">2</span>
+                    <span class="text-sm uppercase tracking-wider text-white/70">Geschäftsbereiche</span>
+                </div>
+                <div>
+                    <span class="text-4xl lg:text-5xl font-bold block mb-2">40+</span>
+                    <span class="text-sm uppercase tracking-wider text-white/70">Jahre Erfahrung</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Karriere -->
+    <section class="py-20 lg:py-28 bg-sem-gray-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-1 bg-sem-red"></div>
+                    <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Karriere</span>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">
+                    Arbeiten bei SEM-Plastomed
+                </h2>
+                <p class="text-sem-gray/80 leading-relaxed mb-8">
+                    Sie sind auf der Suche nach einem attraktiven Arbeitsplatz oder einer Ausbildungsstelle? Als innovatives Unternehmen sind wir immer auf der Suche nach engagierten und fachlich versierten Mitarbeiterinnen und Mitarbeitern, die ihre Talente in der Medizin- und Kunststofftechnik einsetzen möchten!
+                </p>
+                <a href="https://www.plastomed.de/stellenangebote/" class="inline-flex items-center gap-2 text-sem-red font-bold uppercase text-sm tracking-wider hover:gap-4 transition-all duration-200">
+                    Aktuelle Stellenangebote
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-1 bg-sem-red"></div>
+                        <span class="text-sm font-bold uppercase tracking-widest text-sem-red">Kontakt</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-sem-dark mb-6 tracking-tight">
+                        Nutzen Sie unser Know-how
+                    </h2>
+                    <p class="text-sem-gray/80 leading-relaxed mb-6">
+                        Nutzen Sie die Möglichkeit einer schnellen Produktionsanfrage und senden Sie uns anschließend die Zeichnungen in einer separaten E-Mail.
+                    </p>
+                    <p class="text-sem-gray/80 leading-relaxed mb-10">
+                        Für ausführliche Informationen, eine optimale und individuelle Beratung bitten wir um Kontaktaufnahme per Telefon oder via E-Mail.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://www.plastomed.de/kontakt/" class="bg-sem-red text-white px-8 py-3.5 font-bold uppercase text-sm tracking-wider hover:bg-sem-red-dark transition-colors duration-200">
+                            Kontaktübersicht
+                        </a>
+                        <a href="https://www.plastomed.de/produktionsanfrage/" class="border-2 border-sem-gray text-sem-gray px-8 py-3.5 font-bold uppercase text-sm tracking-wider hover:bg-sem-gray hover:text-white transition-colors duration-200">
+                            Produktionsanfrage
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://www.plastomed.de/img/start/kontakt.jpg" alt="Kontakt" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sem-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-4">
+                    <img src="https://www.plastomed.de/img/sem-plastomed.svg" alt="SEM-Plastomed GmbH" class="h-8 brightness-0 invert mb-4">
+                    <p class="text-white/50 text-sm">Medizin- und Kunststofftechnik</p>
+                </div>
+                <div class="lg:col-span-4">
+                    <p class="text-white/50 text-sm leading-relaxed">
+                        SEM-Plastomed GmbH<br>
+                        Schulstraße 6<br>
+                        57612 Obererbach (Westerwald)
+                    </p>
+                </div>
+                <div class="lg:col-span-4 lg:text-right">
+                    <div class="flex flex-wrap gap-4 lg:justify-end text-sm text-white/50">
+                        <a href="https://www.plastomed.de/impressum/" class="hover:text-white transition-colors">Impressum</a>
+                        <a href="https://www.plastomed.de/datenschutz/" class="hover:text-white transition-colors">Datenschutz</a>
+                        <a href="https://www.plastomed.de/sitemap/" class="hover:text-white transition-colors">Sitemap</a>
+                    </div>
+                    <p class="text-white/30 text-sm mt-4">&copy; 2026 SEM-Plastomed GmbH</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

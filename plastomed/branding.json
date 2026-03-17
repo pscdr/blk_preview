@@ -1,0 +1,48 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Roboto Condensed",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#BD0B30",
+    "accent": "#565F66",
+    "background": "#FFFFFF",
+    "textPrimary": "#565F66",
+    "link": "#565F66"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto Condensed",
+      "heading": "Roboto Condensed"
+    },
+    "fontStacks": {
+      "heading": ["Roboto Condensed", "sans-serif"],
+      "body": ["Roboto Condensed", "sans-serif"]
+    }
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#565F66",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#EFEFEF",
+      "textColor": "#262626",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.plastomed.de/img/sem-plastomed.svg",
+    "favicon": "https://www.plastomed.de/apple-touch-icon.png",
+    "logoAlt": "SEM-Plastomed GmbH"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "medical and technical professionals"
+  }
+}
