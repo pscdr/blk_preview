@@ -8,18 +8,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <link rel="icon" href="https://www.gsh-direkt.de/template/GSH/favicon.ico">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'gsh-blue': '#2663BE',
-                        'gsh-navy': '#002C73',
-                        'gsh-accent': '#4A90D9',
-                        'gsh-bg': '#F8F8F8',
-                        'gsh-light': '#EDF2F7',
+                        'navy': '#002C73',
+                        'blue': '#2663BE',
+                        'sky': '#4A90D9',
+                        'ice': '#E8F0FE',
+                        'off': '#F5F7FA',
                     },
                     fontFamily: {
                         'sans': ['Nunito Sans', 'Arial', 'Helvetica', 'sans-serif'],
@@ -30,520 +30,410 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Nunito Sans', Arial, Helvetica, sans-serif; }
+        body { font-family: 'Nunito Sans', sans-serif; }
 
-        /* Hero animated grid */
-        .hero-grid {
-            position: absolute;
-            inset: 0;
+        /* Subtle grid bg */
+        .grid-bg {
             background-image:
-                linear-gradient(rgba(38,99,190,0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(38,99,190,0.08) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridShift 20s linear infinite;
-        }
-        @keyframes gridShift {
-            0% { background-position: 0 0; }
-            100% { background-position: 60px 60px; }
+                linear-gradient(rgba(0,44,115,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,44,115,0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
         }
 
-        /* Floating geometric accents */
-        .geo-accent {
-            position: absolute;
-            border: 2px solid rgba(38,99,190,0.12);
-            animation: float 8s ease-in-out infinite;
-        }
-        .geo-accent:nth-child(2) { animation-delay: -2s; animation-duration: 10s; }
-        .geo-accent:nth-child(3) { animation-delay: -4s; animation-duration: 12s; }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(3deg); }
-        }
+        /* Reveal on scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Reveal animation */
-        .hero-reveal { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .hero-reveal-delay-1 { animation-delay: 0.15s; }
-        .hero-reveal-delay-2 { animation-delay: 0.3s; }
-        .hero-reveal-delay-3 { animation-delay: 0.45s; }
-        .hero-reveal-delay-4 { animation-delay: 0.6s; }
-        @keyframes revealUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Hero stagger */
+        .hero-in { animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both; }
+        .d1 { animation-delay: .1s } .d2 { animation-delay: .25s } .d3 { animation-delay: .4s } .d4 { animation-delay: .55s }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(40px) } to { opacity:1; transform:translateY(0) } }
 
-        /* Pulse line */
-        .pulse-line {
-            width: 80px;
-            height: 3px;
-            background: #2663BE;
-            position: relative;
-            overflow: hidden;
-        }
-        .pulse-line::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            animation: pulseSweep 3s ease-in-out infinite;
-        }
-        @keyframes pulseSweep {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
-        }
+        /* Scroll cue */
+        .scroll-cue { animation: bob 2.5s ease-in-out infinite; }
+        @keyframes bob { 0%,100%{transform:translateY(0);opacity:.4} 50%{transform:translateY(10px);opacity:1} }
 
-        /* Scroll indicator */
-        .scroll-indicator {
-            animation: scrollBounce 2s ease-in-out infinite;
+        /* Image placeholder */
+        .img-placeholder {
+            background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; position: relative; overflow: hidden;
         }
-        @keyframes scrollBounce {
-            0%, 100% { transform: translateY(0); opacity: 0.5; }
-            50% { transform: translateY(8px); opacity: 1; }
+        .img-placeholder::before {
+            content: ''; position: absolute; inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 21px);
         }
+        .img-placeholder svg, .img-placeholder p { position: relative; z-index: 1; }
+
+        /* Horizontal scroll for specs */
+        .spec-scroll { display: flex; gap: 1px; }
+        .spec-scroll > div { min-width: 200px; flex: 1; }
+
+        /* Counter animation placeholder */
+        .big-num { font-size: clamp(4rem, 10vw, 8rem); font-weight: 900; line-height: 1; }
     </style>
 </head>
-<body class="bg-gsh-bg text-gsh-navy">
+<body class="bg-off text-navy">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#hero">
-                <img src="https://www.gsh-direkt.de/template/GSH/pix/logo.png" alt="Logo GSH" class="h-10">
-            </a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
-                <a href="#spezialgebiete" class="hover:text-gsh-blue transition-colors duration-200">Leistungen</a>
-                <a href="#werkzeugbau" class="hover:text-gsh-blue transition-colors duration-200">Werkzeugbau</a>
-                <a href="#unternehmen" class="hover:text-gsh-blue transition-colors duration-200">Unternehmen</a>
-                <a href="#qualitaet" class="hover:text-gsh-blue transition-colors duration-200">Qualität</a>
-                <a href="#kontakt" class="bg-gsh-blue text-white px-5 py-2 text-xs tracking-widest hover:bg-blue-800 transition-colors duration-200">Kontakt</a>
+    <!-- Nav -->
+    <nav class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#top"><img src="https://www.gsh-direkt.de/template/GSH/pix/logo.png" alt="GSH" class="h-9"></a>
+            <div class="hidden md:flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] uppercase">
+                <a href="#leistungen" class="hover:text-blue transition-colors">Leistungen</a>
+                <a href="#automotive" class="hover:text-blue transition-colors">Automotive</a>
+                <a href="#werkzeugbau" class="hover:text-blue transition-colors">Werkzeugbau</a>
+                <a href="#unternehmen" class="hover:text-blue transition-colors">Unternehmen</a>
+                <a href="#kontakt" class="bg-navy text-white px-5 py-2 hover:bg-blue transition-colors">Kontakt</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-gsh-bg">
-        <!-- Animated grid background -->
-        <div class="hero-grid"></div>
-
-        <!-- Floating geometric accents -->
-        <div class="geo-accent w-32 h-32 rounded-full top-[15%] right-[10%] hidden lg:block"></div>
-        <div class="geo-accent w-20 h-20 top-[65%] right-[25%] hidden lg:block" style="border-radius: 4px; transform: rotate(45deg);"></div>
-        <div class="geo-accent w-48 h-48 rounded-full top-[35%] left-[-4%] hidden lg:block" style="border-color: rgba(38,99,190,0.08);"></div>
-
-        <!-- Content -->
-        <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-24 w-full">
-            <div class="max-w-3xl">
-                <!-- Overline -->
-                <div class="hero-reveal flex items-center gap-4 mb-8">
-                    <div class="pulse-line"></div>
-                    <p class="text-xs font-bold tracking-[0.25em] uppercase text-gsh-blue">Gebrüder Schneider GmbH</p>
-                </div>
-
-                <!-- Main headline -->
-                <h1 class="hero-reveal hero-reveal-delay-1 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-900 leading-[0.95] tracking-tight text-gsh-navy mb-8">
-                    Innovation<br>
-                    <span class="text-gsh-blue">und Präzision</span><br>
-                    <span class="text-gsh-navy/30">seit über</span>
-                    <span class="text-gsh-blue"> 100 Jahren</span>
-                </h1>
-
-                <!-- Subline -->
-                <p class="hero-reveal hero-reveal-delay-2 text-lg md:text-xl text-gsh-navy/60 leading-relaxed max-w-xl mb-12 font-light">
-                    Entdecken Sie die hohe Qualität und das technische Know-How der Gebrüder Schneider GmbH in der Welt des Werkzeugbaus.
-                </p>
-
-                <!-- CTA row -->
-                <div class="hero-reveal hero-reveal-delay-3 flex flex-wrap items-center gap-6">
-                    <a href="#spezialgebiete" class="group inline-flex items-center gap-3 bg-gsh-navy text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-gsh-blue transition-colors duration-300">
-                        Unsere Leistungen
-                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
-                    <a href="#unternehmen" class="text-sm font-semibold text-gsh-navy/50 tracking-widest uppercase hover:text-gsh-navy transition-colors duration-300 border-b border-gsh-navy/20 hover:border-gsh-navy pb-1">
-                        Über uns
-                    </a>
-                </div>
-
-                <!-- Stats bar -->
-                <div class="hero-reveal hero-reveal-delay-4 mt-20 flex items-center gap-12 border-t border-gsh-navy/10 pt-8">
-                    <div>
-                        <p class="text-3xl md:text-4xl font-900 text-gsh-blue">4</p>
-                        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gsh-navy/40 mt-1">Spezialgebiete</p>
+    <!-- ============ HERO ============ -->
+    <section id="top" class="relative min-h-screen flex items-end pb-20 pt-32 overflow-hidden grid-bg">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+                <!-- Left: Text -->
+                <div class="lg:col-span-7">
+                    <p class="hero-in d1 text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-6">Elektronische Spezialfabrik seit 1799</p>
+                    <h1 class="hero-in d2 text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black leading-[0.92] tracking-tight mb-8">
+                        Wir bauen,<br>
+                        <span class="text-blue">was andere</span><br>
+                        nicht können.
+                    </h1>
+                    <p class="hero-in d3 text-lg md:text-xl text-navy/50 max-w-lg leading-relaxed font-light mb-10">
+                        Werkzeugbau, Automobilzulieferung und Industrieleuchten — mit über 200 Jahren Erfahrung und absoluter Präzision.
+                    </p>
+                    <div class="hero-in d4 flex flex-wrap gap-4">
+                        <a href="#leistungen" class="group inline-flex items-center gap-3 bg-navy text-white pl-8 pr-6 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:bg-blue transition-all duration-300">
+                            Leistungen entdecken
+                            <svg class="w-4 h-4 group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#unternehmen" class="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-navy/40 hover:text-navy transition-colors py-4 px-4">
+                            Über GSH
+                        </a>
                     </div>
-                    <div class="w-px h-10 bg-gsh-navy/10"></div>
-                    <div>
-                        <p class="text-3xl md:text-4xl font-900 text-gsh-blue">100+</p>
-                        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gsh-navy/40 mt-1">Jahre Erfahrung</p>
+                </div>
+                <!-- Right: Key figures stacked -->
+                <div class="lg:col-span-5 flex flex-col gap-4 hero-in d4">
+                    <div class="bg-navy text-white p-8">
+                        <p class="big-num text-blue">227</p>
+                        <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/40 mt-2">Jahre Unternehmensgeschichte</p>
                     </div>
-                    <div class="w-px h-10 bg-gsh-navy/10"></div>
-                    <div>
-                        <p class="text-3xl md:text-4xl font-900 text-gsh-blue">GSH</p>
-                        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gsh-navy/40 mt-1">Direkt</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white border border-gray-200 p-6">
+                            <p class="text-3xl font-900 text-navy">4.000</p>
+                            <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-navy/40 mt-1">KN Presskraft</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 p-6">
+                            <p class="text-3xl font-900 text-navy">50%+</p>
+                            <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-navy/40 mt-1">Exportquote</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
-            <svg class="w-5 h-5 text-gsh-navy/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-cue">
+            <svg class="w-5 h-5 text-navy/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </div>
     </section>
 
-    <!-- Tagline Bar -->
-    <div class="bg-gsh-blue py-5">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-white text-sm md:text-base font-semibold tracking-widest uppercase">
-                Ihr Partner für anspruchsvolle Lösungen — von Automobilteilen bis zu spezialisierten Leuchten
-            </p>
-        </div>
-    </div>
-
-    <!-- Spezialgebiete -->
-    <section id="spezialgebiete" class="py-24 md:py-32">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="mb-16">
-                <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Produktüberblick</p>
-                <h2 class="text-3xl md:text-4xl font-900 tracking-tight">Unsere Spezialgebiete</h2>
-                <div class="w-12 h-0.5 bg-gsh-navy mt-4"></div>
+    <!-- ============ LEISTUNGEN – Full-width cards ============ -->
+    <section id="leistungen" class="bg-navy py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-4">
+                <div>
+                    <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-3">Was wir tun</p>
+                    <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight">Vier Spezialgebiete.<br>Eine Philosophie.</h2>
+                </div>
+                <p class="text-sm text-white/40 max-w-sm leading-relaxed">Jede Lösung beginnt mit dem Verständnis für Ihre Anforderungen — und endet mit Perfektion.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
-                <!-- Automobilbereich -->
-                <a href="#automotive" class="bg-white p-8 group hover:bg-gsh-navy transition-colors duration-300 block">
-                    <div class="w-10 h-10 border-2 border-gsh-blue flex items-center justify-center mb-6 group-hover:border-white transition-colors duration-300">
-                        <svg class="w-5 h-5 text-gsh-blue group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10 M17 16V8a1 1 0 00-1-1h-2l-3 9"></path>
-                        </svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
+                <a href="#automotive" class="group bg-navy hover:bg-blue/20 transition-all duration-500 p-10 md:p-12 block">
+                    <div class="flex items-start justify-between mb-8">
+                        <span class="text-6xl font-black text-white/10 group-hover:text-blue/30 transition-colors">01</span>
+                        <svg class="w-5 h-5 text-white/20 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
-                    <h3 class="text-lg font-800 mb-3 group-hover:text-white transition-colors duration-300">Automobilbereich</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-                        Stanztechnik, Biegearbeiten und Schweißtechnik für komplexe und robuste Teile.
-                    </p>
+                    <h3 class="text-2xl font-800 text-white mb-3">Automobilbereich</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">Stanztechnik, Biegearbeiten und Schweißtechnik — komplexe Metall&shy;verarbeitung für die Fahrzeugindustrie.</p>
                 </a>
-
-                <!-- Werkzeugbau -->
-                <a href="#werkzeugbau" class="bg-white p-8 group hover:bg-gsh-navy transition-colors duration-300 block">
-                    <div class="w-10 h-10 border-2 border-gsh-blue flex items-center justify-center mb-6 group-hover:border-white transition-colors duration-300">
-                        <svg class="w-5 h-5 text-gsh-blue group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17l-5.59-5.59a2 2 0 010-2.83l.83-.83a2 2 0 012.83 0l5.59 5.59m-5.59-5.59L4.83 12.76m6.59-3.59l6.59 6.59a2 2 0 010 2.83l-.83.83a2 2 0 01-2.83 0L8.76 13.83"></path>
-                        </svg>
+                <a href="#werkzeugbau" class="group bg-navy hover:bg-blue/20 transition-all duration-500 p-10 md:p-12 block">
+                    <div class="flex items-start justify-between mb-8">
+                        <span class="text-6xl font-black text-white/10 group-hover:text-blue/30 transition-colors">02</span>
+                        <svg class="w-5 h-5 text-white/20 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
-                    <h3 class="text-lg font-800 mb-3 group-hover:text-white transition-colors duration-300">Werkzeugbau</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-                        Vom Prototypenbau bis zur Großserie aus allen handelsüblichen Werkstoffen.
-                    </p>
+                    <h3 class="text-2xl font-800 text-white mb-3">Werkzeugbau</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">Vom Prototyp zur Großserie — modernste Fertigungs&shy;technik nach Muster, Modell oder Zeichnung.</p>
                 </a>
-
-                <!-- Lehrenbau -->
-                <a href="#lehrenbau" class="bg-white p-8 group hover:bg-gsh-navy transition-colors duration-300 block">
-                    <div class="w-10 h-10 border-2 border-gsh-blue flex items-center justify-center mb-6 group-hover:border-white transition-colors duration-300">
-                        <svg class="w-5 h-5 text-gsh-blue group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
+                <a href="#lehrenbau" class="group bg-navy hover:bg-blue/20 transition-all duration-500 p-10 md:p-12 block">
+                    <div class="flex items-start justify-between mb-8">
+                        <span class="text-6xl font-black text-white/10 group-hover:text-blue/30 transition-colors">03</span>
+                        <svg class="w-5 h-5 text-white/20 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
-                    <h3 class="text-lg font-800 mb-3 group-hover:text-white transition-colors duration-300">Lehrenbau</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-                        ISO-zertifizierter Präzisions-Lehrenbau auf höchstem Niveau.
-                    </p>
+                    <h3 class="text-2xl font-800 text-white mb-3">Präzisions-Lehrenbau</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">ISO-zertifizierte Qualitäts&shy;sicherung auf höchstem Niveau — durchgängig und kompromisslos.</p>
                 </a>
-
-                <!-- Leuchten -->
-                <a href="#leuchten" class="bg-white p-8 group hover:bg-gsh-navy transition-colors duration-300 block">
-                    <div class="w-10 h-10 border-2 border-gsh-blue flex items-center justify-center mb-6 group-hover:border-white transition-colors duration-300">
-                        <svg class="w-5 h-5 text-gsh-blue group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
+                <a href="#leuchten" class="group bg-navy hover:bg-blue/20 transition-all duration-500 p-10 md:p-12 block">
+                    <div class="flex items-start justify-between mb-8">
+                        <span class="text-6xl font-black text-white/10 group-hover:text-blue/30 transition-colors">04</span>
+                        <svg class="w-5 h-5 text-white/20 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
-                    <h3 class="text-lg font-800 mb-3 group-hover:text-white transition-colors duration-300">Leuchten</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
-                        Leuchtende Ideen maßgeschneidert — für Industrie, Handwerk und Baustellen.
-                    </p>
+                    <h3 class="text-2xl font-800 text-white mb-3">Industrieleuchten</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">Einer der größten Handleuchten-Hersteller Deutschlands — maßgeschneidert für jeden Einsatzzweck.</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Automobilbereich -->
+    <!-- ============ AUTOMOTIVE – Bold asymmetric ============ -->
     <section id="automotive" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <div>
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Automotive</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight mb-6">Stanztechnik, Biegearbeiten &amp; Schweißtechnik</h2>
-                    <div class="w-12 h-0.5 bg-gsh-navy mb-8"></div>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Die Individualität unserer Produkte erfordert einen vielseitigen, modernen Maschinenpark, der absolute Perfektion in der Be- und Verarbeitung von Metall ermöglicht. Erst unsere jahrzehntelange Erfahrung in Konstruktion und Fertigung von Draht- und Stanzteilen zeichnet uns als Ihr zuverlässiger Partner aus.
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-700 mb-8">
-                        Die Bearbeitung erfolgt nach den neuesten Erkenntnissen und modernsten Verfahren. Bei uns wird <strong class="text-gsh-navy font-700">Flexibilität groß geschrieben</strong>. Die systematische Weiterbildung unserer Mitarbeiter ist ein Qualitätsfaktor, der in der Unternehmensphilosophie von GSH Direkt schon aus Tradition einen hohen Stellenwert besitzt.
-                    </p>
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Big statement -->
+            <div class="mb-20">
+                <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">Automotive</p>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[0.95] max-w-4xl">
+                    Absolute Perfektion in der Verarbeitung von <span class="text-blue">Metall.</span>
+                </h2>
+            </div>
 
-                    <!-- 3 Technologien -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="border border-gray-200 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Stanztechnik</p>
-                            <p class="text-sm text-gray-600">Bis 4.000 KN Presskraft, Blechstärke bis 6 mm</p>
-                        </div>
-                        <div class="border border-gray-200 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Biegetechnik</p>
-                            <p class="text-sm text-gray-600">CNC-Drahtbiege&shy;automat, 3D bis &oslash; 8 mm</p>
-                        </div>
-                        <div class="border border-gray-200 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Schweißtechnik</p>
-                            <p class="text-sm text-gray-600">Stumpf- &amp; Punkt&shy;schweiß&shy;maschinen, ZSB</p>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Big image placeholder -->
+                <div class="lg:col-span-7 img-placeholder aspect-[16/10] rounded-none">
+                    <svg class="w-14 h-14 text-gray-400/60 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-xs text-gray-400 font-semibold tracking-[0.2em] uppercase">Produktionshalle / Maschinenpark</p>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-gray-200 aspect-square flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Stanzteile</p>
+                <!-- Side column: specs -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <div class="bg-navy p-8 flex-1">
+                        <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-6">Leistungsdaten</p>
+                        <div class="space-y-5">
+                            <div class="flex items-baseline gap-3">
+                                <p class="text-4xl font-900 text-white">4.000</p>
+                                <p class="text-xs text-white/40">KN Presskraft</p>
+                            </div>
+                            <div class="h-px bg-white/10"></div>
+                            <div class="flex items-baseline gap-3">
+                                <p class="text-4xl font-900 text-white">&oslash; 8mm</p>
+                                <p class="text-xs text-white/40">3D CNC-Drahtbiege</p>
+                            </div>
+                            <div class="h-px bg-white/10"></div>
+                            <div class="flex items-baseline gap-3">
+                                <p class="text-4xl font-900 text-white">6mm</p>
+                                <p class="text-xs text-white/40">max. Blechstärke</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-200 aspect-square flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Biegeteile</p>
-                    </div>
-                    <div class="bg-gray-200 aspect-square flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Schweißtechnik</p>
-                    </div>
-                    <div class="bg-gray-200 aspect-square flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Maschinenpark</p>
+                    <div class="grid grid-cols-3 gap-px bg-gray-200">
+                        <div class="bg-off p-5 text-center">
+                            <p class="text-xs font-bold tracking-widest uppercase text-blue">Stanzen</p>
+                        </div>
+                        <div class="bg-off p-5 text-center">
+                            <p class="text-xs font-bold tracking-widest uppercase text-blue">Biegen</p>
+                        </div>
+                        <div class="bg-off p-5 text-center">
+                            <p class="text-xs font-bold tracking-widest uppercase text-blue">Schweißen</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Maschinenpark Tabelle -->
-            <div class="mt-16 border border-gray-200">
-                <div class="bg-gsh-navy px-6 py-3">
-                    <p class="text-xs font-bold tracking-widest uppercase text-white">Maschinenpark Stanztechnik</p>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr class="bg-gray-50 text-left">
-                                <th class="px-6 py-3 font-bold text-gsh-navy text-xs tracking-widest uppercase">Maschine</th>
-                                <th class="px-6 py-3 font-bold text-gsh-navy text-xs tracking-widest uppercase">Presskraft</th>
-                                <th class="px-6 py-3 font-bold text-gsh-navy text-xs tracking-widest uppercase">Tischgröße</th>
-                                <th class="px-6 py-3 font-bold text-gsh-navy text-xs tracking-widest uppercase">Bandbreite</th>
-                                <th class="px-6 py-3 font-bold text-gsh-navy text-xs tracking-widest uppercase">Blechstärke</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            <tr><td class="px-6 py-3 text-gray-700">Stanzautomat</td><td class="px-6 py-3 text-gray-700 font-semibold">4.000 KN</td><td class="px-6 py-3 text-gray-600">2600 &times; 1400</td><td class="px-6 py-3 text-gray-600">800 mm</td><td class="px-6 py-3 text-gray-600">Bis 6,00 mm</td></tr>
-                            <tr><td class="px-6 py-3 text-gray-700">Stanzautomat</td><td class="px-6 py-3 text-gray-700 font-semibold">3.500 KN</td><td class="px-6 py-3 text-gray-600">2250 &times; 1200</td><td class="px-6 py-3 text-gray-600">600 mm</td><td class="px-6 py-3 text-gray-600">Bis 5,00 mm</td></tr>
-                            <tr><td class="px-6 py-3 text-gray-700">Stanzautomat</td><td class="px-6 py-3 text-gray-700 font-semibold">2.000 KN</td><td class="px-6 py-3 text-gray-600">1250 &times; 950</td><td class="px-6 py-3 text-gray-600">600 mm</td><td class="px-6 py-3 text-gray-600">Bis 5,00 mm</td></tr>
-                            <tr><td class="px-6 py-3 text-gray-700">Stanzautomat</td><td class="px-6 py-3 text-gray-700 font-semibold">1.300 KN</td><td class="px-6 py-3 text-gray-600">950 &times; 650</td><td class="px-6 py-3 text-gray-600">320 mm</td><td class="px-6 py-3 text-gray-600">Bis 4,00 mm</td></tr>
-                            <tr><td class="px-6 py-3 text-gray-700">Stanzautomat</td><td class="px-6 py-3 text-gray-700 font-semibold">1.000 KN</td><td class="px-6 py-3 text-gray-600">950 &times; 600</td><td class="px-6 py-3 text-gray-600">300 mm</td><td class="px-6 py-3 text-gray-600">Bis 3,00 mm</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <!-- Second row: small images + text -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+                <div class="img-placeholder aspect-square"><svg class="w-8 h-8 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Stanzteile</p></div>
+                <div class="img-placeholder aspect-square"><svg class="w-8 h-8 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Biegeteile</p></div>
+                <div class="img-placeholder aspect-square"><svg class="w-8 h-8 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Schweißgruppe</p></div>
+                <div class="img-placeholder aspect-square"><svg class="w-8 h-8 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Fertigteile</p></div>
+            </div>
+
+            <!-- Inline description -->
+            <div class="mt-16 max-w-3xl">
+                <p class="text-base leading-relaxed text-gray-600">
+                    Die Individualität unserer Produkte erfordert einen vielseitigen, modernen Maschinenpark, der absolute Perfektion in der Be- und Verarbeitung von Metall ermöglicht. Erst unsere <strong class="text-navy font-700">jahrzehntelange Erfahrung</strong> in Konstruktion und Fertigung zeichnet uns als Ihr zuverlässiger Partner aus. Die systematische Weiterbildung unserer Mitarbeiter ist ein Qualitätsfaktor, der bei GSH Direkt schon aus Tradition einen hohen Stellenwert besitzt.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Werkzeugbau -->
-    <section id="werkzeugbau" class="py-24 md:py-32 bg-gsh-bg">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <div class="order-2 lg:order-1">
-                    <div class="bg-gray-200 aspect-[4/3] flex flex-col items-center justify-center text-center p-6">
-                        <svg class="w-12 h-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-xs text-gray-400 font-semibold tracking-widest uppercase">Werkzeugbau &amp; Fertigung</p>
-                    </div>
-                </div>
-                <div class="order-1 lg:order-2">
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Fertigung</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight mb-6">Werkzeugbau in Hachenburg</h2>
-                    <div class="w-12 h-0.5 bg-gsh-navy mb-8"></div>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        An unserer Produktionsstätte in Hachenburg fertigen wir Ihre Artikel vom <strong class="text-gsh-navy font-700">Prototypenbau</strong> über die Klein- bis hin zur <strong class="text-gsh-navy font-700">Großserie</strong> aus allen handelsüblichen Werkstoffen mit anschließender Oberflächenbehandlung.
+    <!-- ============ WERKZEUGBAU ============ -->
+    <section id="werkzeugbau" class="py-24 md:py-32 bg-off grid-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-5">
+                    <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">Werkzeugbau</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-[0.95] mb-8">
+                        Vom Prototyp zur <span class="text-blue">Großserie.</span>
+                    </h2>
+                    <p class="text-base leading-relaxed text-gray-600 mb-6">
+                        An unserer Produktionsstätte in Hachenburg fertigen wir Ihre Artikel vom <strong class="text-navy font-700">Prototypenbau</strong> über die Klein- bis hin zur <strong class="text-navy font-700">Großserie</strong> aus allen handelsüblichen Werkstoffen mit anschließender Oberflächenbehandlung.
                     </p>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Selbstverständlich gehören zu unserem Leistungsspektrum auch die Endenbearbeitung, das Prägen, Schweißen sowie Verpressen. Durch langjährige Partnerschaften werden wir oftmals bereits im <strong class="text-gsh-navy font-700">Entstehungsprozess neuer Produkte</strong> einbezogen.
+                    <p class="text-base leading-relaxed text-gray-600 mb-10">
+                        Durch langjährige Partnerschaften werden wir oftmals bereits im Entstehungsprozess neuer Produkte einbezogen und erfüllen Wünsche und Vorgaben auftragsbezogen, schnell, kompetent und hochqualitativ.
                     </p>
 
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-navy mb-4 mt-8">Branchen</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="flex items-center gap-3 text-sm text-gray-700">
-                            <div class="w-1.5 h-1.5 bg-gsh-blue rounded-full flex-shrink-0"></div>
-                            Automobilindustrie
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-700">
-                            <div class="w-1.5 h-1.5 bg-gsh-blue rounded-full flex-shrink-0"></div>
-                            Beleuchtungsindustrie
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-700">
-                            <div class="w-1.5 h-1.5 bg-gsh-blue rounded-full flex-shrink-0"></div>
-                            Tauchpumpenindustrie
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-700">
-                            <div class="w-1.5 h-1.5 bg-gsh-blue rounded-full flex-shrink-0"></div>
-                            Büromöbel / Büromaschinen
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-700">
-                            <div class="w-1.5 h-1.5 bg-gsh-blue rounded-full flex-shrink-0"></div>
-                            Dentalindustrie / Medizintechnik
-                        </div>
+                    <!-- Branchen as tags -->
+                    <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-navy/40 mb-4">Branchen</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="border border-navy/15 px-4 py-2 text-xs font-semibold text-navy/70">Automobilindustrie</span>
+                        <span class="border border-navy/15 px-4 py-2 text-xs font-semibold text-navy/70">Beleuchtung</span>
+                        <span class="border border-navy/15 px-4 py-2 text-xs font-semibold text-navy/70">Tauchpumpen</span>
+                        <span class="border border-navy/15 px-4 py-2 text-xs font-semibold text-navy/70">Büromöbel</span>
+                        <span class="border border-navy/15 px-4 py-2 text-xs font-semibold text-navy/70">Dental / Medizin</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="img-placeholder aspect-[4/3] mb-6">
+                        <svg class="w-14 h-14 text-gray-400/60 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <p class="text-xs text-gray-400 font-semibold tracking-[0.2em] uppercase">Werkzeugbau &amp; Fertigung</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="img-placeholder aspect-square"><svg class="w-7 h-7 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Detail</p></div>
+                        <div class="img-placeholder aspect-square"><svg class="w-7 h-7 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Produktion</p></div>
+                        <div class="img-placeholder aspect-square"><svg class="w-7 h-7 text-gray-400/60 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Ergebnis</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lehrenbau -->
-    <section id="lehrenbau" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Präzision</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight mb-6">Präzisions-Lehrenbau</h2>
-                    <div class="w-12 h-0.5 bg-gsh-navy mb-8"></div>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Sie suchen einen starken, erfahrenen und kompetenten Partner für den Bereich Lehrenbau — Sie haben ihn gefunden. Wir sind Ihr kompetenter <strong class="text-gsh-navy font-700">Berater und Partner</strong> im Bereich Lehrenbau.
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Durch die hohen technologischen Anforderungen und Qualitätsstandards ist es zwingend notwendig, eine durchgängige <strong class="text-gsh-navy font-700">Qualitätssicherung auf höchstem Niveau</strong> zu liefern.
-                    </p>
-                    <div class="bg-gsh-bg border-l-4 border-gsh-blue px-6 py-4">
-                        <p class="text-sm font-semibold text-gsh-navy">Präzision ist unser Handwerk — ISO-Zertifizierter Lehrenbau</p>
-                    </div>
+    <!-- ============ LEHRENBAU + LEUCHTEN – Side by side bold split ============ -->
+    <section id="lehrenbau" class="grid grid-cols-1 lg:grid-cols-2">
+        <!-- Lehrenbau -->
+        <div class="bg-white p-10 md:p-16 lg:p-20 flex flex-col justify-between min-h-[600px]">
+            <div>
+                <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">03 — Lehrenbau</p>
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[0.95] mb-6">Präzision ist unser Handwerk.</h2>
+                <div class="w-10 h-0.5 bg-navy mb-8"></div>
+                <p class="text-base leading-relaxed text-gray-600 mb-6">
+                    Sie suchen einen starken, erfahrenen und kompetenten Partner für den Bereich Lehrenbau — Sie haben ihn gefunden. Durch die hohen technologischen Anforderungen liefern wir durchgängige <strong class="text-navy font-700">Qualitätssicherung auf höchstem Niveau</strong>.
+                </p>
+            </div>
+            <div class="img-placeholder aspect-[2/1] mt-8">
+                <svg class="w-10 h-10 text-gray-400/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Lehrenbau / Präzisionsteile</p>
+            </div>
+        </div>
+        <!-- Leuchten -->
+        <div id="leuchten" class="bg-navy text-white p-10 md:p-16 lg:p-20 flex flex-col justify-between min-h-[600px]">
+            <div>
+                <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">04 — Leuchten</p>
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[0.95] mb-6">Leuchtende Ideen, maßgeschneidert.</h2>
+                <div class="w-10 h-0.5 bg-blue mb-8"></div>
+                <p class="text-base leading-relaxed text-white/60 mb-6">
+                    In unserem Portfolio finden Sie die richtige Leuchte für jedes Einsatzgebiet — von der ISO-Handleuchte über Infrarot-Wärmestrahler bis zum Halogenstrahler für Großbaustellen.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="border border-white/15 px-3 py-1.5 text-[10px] font-semibold text-white/50 tracking-widest uppercase">Handleuchten</span>
+                    <span class="border border-white/15 px-3 py-1.5 text-[10px] font-semibold text-white/50 tracking-widest uppercase">Wärmestrahler</span>
+                    <span class="border border-white/15 px-3 py-1.5 text-[10px] font-semibold text-white/50 tracking-widest uppercase">Baustellen</span>
+                    <span class="border border-white/15 px-3 py-1.5 text-[10px] font-semibold text-white/50 tracking-widest uppercase">Werkstatt</span>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-gray-200 aspect-[3/4] flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Lehrenbau</p>
-                    </div>
-                    <div class="bg-gray-200 aspect-[3/4] flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Präzisionsteile</p>
-                    </div>
-                </div>
+            </div>
+            <div class="img-placeholder aspect-[2/1] mt-8" style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,255,255,0.08);">
+                <svg class="w-10 h-10 text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <p class="text-[9px] text-white/20 font-semibold tracking-[0.15em] uppercase">Leuchtensortiment</p>
             </div>
         </div>
     </section>
 
-    <!-- Leuchten -->
-    <section id="leuchten" class="py-24 md:py-32 bg-gsh-navy">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="bg-white/5 border border-white/10 aspect-[4/3] flex flex-col items-center justify-center text-center p-6">
-                    <svg class="w-12 h-12 text-white/30 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <p class="text-xs text-white/30 font-semibold tracking-widest uppercase">Leuchtensortiment</p>
-                </div>
-                <div>
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Beleuchtung</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight text-white mb-6">Leuchtende Ideen maßgeschneidert</h2>
-                    <div class="w-12 h-0.5 bg-gsh-blue mb-8"></div>
-                    <p class="text-base leading-relaxed text-white/70 mb-6">
-                        In unserem Handleuchten-Portfolio finden Sie garantiert die richtige Leuchte für Ihr Einsatzgebiet. Als einer der größten Handleuchten-Hersteller in der Bundesrepublik exportieren wir über 50% unserer Produkte ins europäische Ausland.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
-                        <div class="border border-white/10 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Handleuchten</p>
-                            <p class="text-sm text-white/60">ISO-Handleuchte, Gummi-Handleuchte mit Makrolonhaube, bis 230V</p>
-                        </div>
-                        <div class="border border-white/10 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Wärmestrahler</p>
-                            <p class="text-sm text-white/60">Infrarot-Wärmestrahlgeräte für die Tieraufzucht</p>
-                        </div>
-                        <div class="border border-white/10 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Baustellen</p>
-                            <p class="text-sm text-white/60">Halogenstrahler und Arbeitsleuchten für Großbaustellen</p>
-                        </div>
-                        <div class="border border-white/10 p-4">
-                            <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-2">Werkstatt</p>
-                            <p class="text-sm text-white/60">Stableuchten und LED-Handleuchten für Werkstattbetriebe</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Unternehmen -->
+    <!-- ============ UNTERNEHMEN – Timeline + Big image ============ -->
     <section id="unternehmen" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <div>
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Über uns</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight mb-6">Durch Qualität überzeugen!</h2>
-                    <div class="w-12 h-0.5 bg-gsh-navy mb-8"></div>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Nach diesem Leitsatz handeln wir seit über 200 Jahren. Genauer gesagt seit <strong class="text-gsh-navy font-700">1799</strong>, als das Unternehmen von Herrn Wilhelm Schneider in Hachenburg gegründet wurde. Damit gehört die Gebr. Schneider GmbH zu den <strong class="text-gsh-navy font-700">ältesten Unternehmen</strong> in seiner Branche.
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-5">
+                    <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">Seit 1799</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-[0.95] mb-8">Durch Qualität <span class="text-blue">überzeugen.</span></h2>
+                    <p class="text-base leading-relaxed text-gray-600 mb-6">
+                        1799 als Drahtwarenfabrik von Wilhelm Schneider gegründet, gehört die Gebr. Schneider GmbH zu den <strong class="text-navy font-700">ältesten Unternehmen</strong> ihrer Branche. Heute fertigen rund 50 Mitarbeiter auf 12.000 qm — und exportieren über die Hälfte aller Produkte ins Ausland.
                     </p>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Die als "Drahtwarenfabrik" gegründete Firma stellt seit fast 100 Jahren elektrische Zweckleuchten her. Aufgrund der breitgestreuten Produktpalette gilt Gebr. Schneider als einer der <strong class="text-gsh-navy font-700">größten Handleuchten-Hersteller</strong> in der Bundesrepublik. Über <strong class="text-gsh-navy font-700">50% der Produkte</strong> werden in das europäische Ausland exportiert.
-                    </p>
-                    <p class="text-base leading-relaxed text-gray-700 mb-8">
-                        Durch die Erweiterung des Produktionsbereiches "Draht- und Metallverarbeitung" gelang es dem Unternehmen zusätzliche Umsatzträger zu etablieren. Es werden Stanz- und Biegeteile als Zulieferartikel für die Fahrzeug- und Büromöbelindustrie hergestellt.
+                    <p class="text-base leading-relaxed text-gray-600 mb-12">
+                        Die Erweiterung um Draht- und Metallverarbeitung erschloss neue Absatzmärkte. Es werden Stanz- und Biegeteile als Zulieferartikel für die Fahrzeug- und Büromöbelindustrie hergestellt.
                     </p>
 
-                    <div class="flex flex-wrap gap-8 border-t border-gray-200 pt-8">
-                        <div>
-                            <p class="text-3xl font-900 text-gsh-blue">1799</p>
-                            <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mt-1">Gegründet</p>
+                    <!-- Timeline -->
+                    <div class="border-l-2 border-navy/10 pl-8 space-y-8">
+                        <div class="relative">
+                            <div class="absolute -left-[2.56rem] top-1 w-3 h-3 bg-blue rounded-full border-2 border-white"></div>
+                            <p class="text-xl font-900 text-navy">1799</p>
+                            <p class="text-sm text-gray-500 mt-1">Gründung als Drahtwarenfabrik in Hachenburg</p>
                         </div>
-                        <div class="w-px h-12 bg-gray-200"></div>
-                        <div>
-                            <p class="text-3xl font-900 text-gsh-blue">12.000</p>
-                            <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mt-1">qm Gelände</p>
+                        <div class="relative">
+                            <div class="absolute -left-[2.56rem] top-1 w-3 h-3 bg-blue/40 rounded-full border-2 border-white"></div>
+                            <p class="text-xl font-900 text-navy">~1920</p>
+                            <p class="text-sm text-gray-500 mt-1">Beginn der Produktion elektrischer Zweckleuchten</p>
                         </div>
-                        <div class="w-px h-12 bg-gray-200"></div>
-                        <div>
-                            <p class="text-3xl font-900 text-gsh-blue">~50</p>
-                            <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mt-1">Mitarbeiter</p>
+                        <div class="relative">
+                            <div class="absolute -left-[2.56rem] top-1 w-3 h-3 bg-blue/40 rounded-full border-2 border-white"></div>
+                            <p class="text-xl font-900 text-navy">1976</p>
+                            <p class="text-sm text-gray-500 mt-1">Neubau des Betriebsgebäudes — 12.000 qm</p>
                         </div>
-                        <div class="w-px h-12 bg-gray-200"></div>
-                        <div>
-                            <p class="text-3xl font-900 text-gsh-blue">50%+</p>
-                            <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mt-1">Export</p>
+                        <div class="relative">
+                            <div class="absolute -left-[2.56rem] top-1 w-3 h-3 bg-navy rounded-full border-2 border-white"></div>
+                            <p class="text-xl font-900 text-navy">Heute</p>
+                            <p class="text-sm text-gray-500 mt-1">Elektronische Spezialfabrik, 50%+ Export, 4 Spezialgebiete</p>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="bg-gray-200 aspect-[4/3] flex flex-col items-center justify-center text-center p-6 mb-3">
-                        <svg class="w-12 h-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-xs text-gray-400 font-semibold tracking-widest uppercase">Firmengebäude</p>
+                <div class="lg:col-span-7 flex flex-col gap-6">
+                    <div class="img-placeholder aspect-[16/10]">
+                        <svg class="w-14 h-14 text-gray-400/60 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <p class="text-xs text-gray-400 font-semibold tracking-[0.2em] uppercase">Firmengebäude / Luftaufnahme</p>
                     </div>
-                    <div class="bg-gray-200 aspect-[3/1] flex flex-col items-center justify-center text-center p-4">
-                        <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <p class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Produktion</p>
+                    <!-- Stats row -->
+                    <div class="grid grid-cols-4 gap-px bg-gray-200">
+                        <div class="bg-off p-6 text-center">
+                            <p class="text-2xl md:text-3xl font-900 text-navy">1799</p>
+                            <p class="text-[9px] font-bold tracking-[0.2em] uppercase text-navy/30 mt-1">Gegründet</p>
+                        </div>
+                        <div class="bg-off p-6 text-center">
+                            <p class="text-2xl md:text-3xl font-900 text-navy">12k</p>
+                            <p class="text-[9px] font-bold tracking-[0.2em] uppercase text-navy/30 mt-1">qm Fläche</p>
+                        </div>
+                        <div class="bg-off p-6 text-center">
+                            <p class="text-2xl md:text-3xl font-900 text-navy">~50</p>
+                            <p class="text-[9px] font-bold tracking-[0.2em] uppercase text-navy/30 mt-1">Mitarbeiter</p>
+                        </div>
+                        <div class="bg-off p-6 text-center">
+                            <p class="text-2xl md:text-3xl font-900 text-navy">50%+</p>
+                            <p class="text-[9px] font-bold tracking-[0.2em] uppercase text-navy/30 mt-1">Export</p>
+                        </div>
+                    </div>
+                    <div class="img-placeholder aspect-[3/1]">
+                        <svg class="w-8 h-8 text-gray-400/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <p class="text-[9px] text-gray-400 font-semibold tracking-[0.15em] uppercase">Produktion / Team</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Qualitätssicherung -->
-    <section id="qualitaet" class="py-24 md:py-32 bg-gsh-bg">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="bg-gray-200 aspect-square flex flex-col items-center justify-center text-center p-6">
-                    <svg class="w-12 h-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <p class="text-xs text-gray-400 font-semibold tracking-widest uppercase">Qualitätssicherung &amp; Messsystem</p>
+    <!-- ============ QUALITÄT – Full-bleed statement ============ -->
+    <section id="qualitaet" class="bg-ice py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-6">
+                    <div class="img-placeholder aspect-square">
+                        <svg class="w-14 h-14 text-gray-400/60 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <p class="text-xs text-gray-400 font-semibold tracking-[0.2em] uppercase">Qualitätssicherung / COMET Messsystem</p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Zertifiziert</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight mb-6">Qualität hat höchste Priorität</h2>
-                    <div class="w-12 h-0.5 bg-gsh-navy mb-8"></div>
-                    <p class="text-base leading-relaxed text-gray-700 mb-6">
-                        Die Bedürfnisse unserer Kunden stehen im Mittelpunkt. Denn nur durch die kontinuierliche Weiterentwicklung unserer Qualitätssicherung sind wir in der Lage, alle Erwartungen unserer Kunden zu <strong class="text-gsh-navy font-700">übertreffen</strong>.
+                <div class="lg:col-span-6">
+                    <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">Qualität</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-[0.95] mb-8">Null Toleranz für Fehler.</h2>
+                    <p class="text-base leading-relaxed text-gray-600 mb-6">
+                        Die Bedürfnisse unserer Kunden stehen im Mittelpunkt. Nur durch kontinuierliche Weiterentwicklung unserer Qualitätssicherung übertreffen wir alle Erwartungen.
                     </p>
-                    <p class="text-base leading-relaxed text-gray-700 mb-8">
-                        Wir gewährleisten all unseren Kunden mit unserem <strong class="text-gsh-navy font-700">Qualitätsmanagementsystem (QMS) nach ISO 9001</strong>, dass wir unser Angebot in konstant hoher und weiter steigender Qualität erbringen.
+                    <p class="text-base leading-relaxed text-gray-600 mb-10">
+                        Unser <strong class="text-navy font-700">QMS nach ISO 9001</strong> garantiert konstant hohe und weiter steigende Qualität. Mit dem <strong class="text-navy font-700">COMET L3D 5M Messsystem</strong> erreichen wir höchste Messgenauigkeit.
                     </p>
 
                     <div class="flex items-center gap-6 bg-white p-6 border border-gray-200">
-                        <div class="w-14 h-14 bg-gsh-blue/10 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-7 h-7 text-gsh-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <div class="w-16 h-16 bg-navy flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         </div>
                         <div>
-                            <p class="text-sm font-bold text-gsh-navy">ISO 9001 Zertifiziert</p>
-                            <p class="text-xs text-gray-500 mt-1">COMET L3D 5M Messsystem für höchste Messgenauigkeit</p>
+                            <p class="text-lg font-800 text-navy">ISO 9001 Zertifiziert</p>
+                            <p class="text-sm text-gray-500 mt-1">TÜV Austria geprüft</p>
                         </div>
                     </div>
                 </div>
@@ -551,32 +441,30 @@
         </div>
     </section>
 
-    <!-- CTA / Kontakt -->
-    <section id="kontakt" class="bg-gsh-navy py-24 md:py-32">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="text-center lg:text-left">
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-3">Kontakt</p>
-                    <h2 class="text-3xl md:text-4xl font-900 tracking-tight text-white mb-6">Ihr Partner für anspruchsvolle Lösungen</h2>
-                    <div class="w-12 h-0.5 bg-gsh-blue mb-8 mx-auto lg:mx-0"></div>
-                    <p class="text-lg text-white/70 mb-10 font-light leading-relaxed">
+    <!-- ============ KONTAKT – Big CTA ============ -->
+    <section id="kontakt" class="bg-navy py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7">
+                    <p class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue mb-4">Kontakt</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[0.95] mb-8">Lassen Sie uns Ihre nächste Herausforderung lösen.</h2>
+                    <p class="text-lg text-white/50 max-w-lg leading-relaxed mb-10">
                         Von Automobilteilen bis zu spezialisierten Leuchten — wir bieten maßgeschneiderte Lösungen für Ihre spezifischen Bedürfnisse.
                     </p>
-                    <a href="https://www.gsh-direkt.de/de/kontakt.html" class="inline-block bg-gsh-blue text-white px-10 py-4 text-sm font-bold tracking-widest uppercase hover:bg-blue-800 transition-colors duration-200">
-                        Kontakt aufnehmen
+                    <a href="https://www.gsh-direkt.de/de/kontakt.html" class="group inline-flex items-center gap-3 bg-blue text-white pl-10 pr-8 py-5 text-sm font-bold tracking-[0.2em] uppercase hover:bg-sky transition-colors duration-300">
+                        Jetzt anfragen
+                        <svg class="w-5 h-5 group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 </div>
-                <div class="border border-white/10 p-8">
-                    <p class="text-xs font-bold tracking-widest uppercase text-gsh-blue mb-6">Anschrift</p>
-                    <p class="text-white font-bold text-lg mb-1">Gebrüder Schneider GmbH</p>
-                    <p class="text-white/50 text-sm mb-4">Elektronische Spezialfabrik</p>
-                    <div class="space-y-2 text-sm text-white/70">
-                        <p>Lindenstraße 51</p>
-                        <p>D-57627 Hachenburg</p>
-                        <div class="w-full h-px bg-white/10 my-4"></div>
-                        <p>Tel: <a href="tel:+4926629510" class="text-white hover:text-gsh-blue transition-colors">02662 - 95 10 0</a></p>
-                        <p>Fax: 02662 - 95 10 90</p>
-                        <p>E-Mail: <a href="mailto:info@gsh-direkt.de" class="text-white hover:text-gsh-blue transition-colors">info@gsh-direkt.de</a></p>
+                <div class="lg:col-span-5 border border-white/10 p-10">
+                    <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-6">Anschrift</p>
+                    <p class="text-xl font-800 text-white mb-1">Gebrüder Schneider GmbH</p>
+                    <p class="text-sm text-white/40 mb-6">Elektronische Spezialfabrik</p>
+                    <div class="space-y-3 text-sm">
+                        <p class="text-white/60">Lindenstraße 51, D-57627 Hachenburg</p>
+                        <div class="h-px bg-white/10"></div>
+                        <p class="text-white/60">Tel: <a href="tel:+4926629510" class="text-white font-semibold hover:text-blue transition-colors">02662 - 95 10 0</a></p>
+                        <p class="text-white/60">Mail: <a href="mailto:info@gsh-direkt.de" class="text-white font-semibold hover:text-blue transition-colors">info@gsh-direkt.de</a></p>
                     </div>
                 </div>
             </div>
@@ -584,18 +472,24 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gsh-navy border-t border-white/10 py-8">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <img src="https://www.gsh-direkt.de/template/GSH/pix/logo.png" alt="Logo GSH" class="h-8 brightness-0 invert opacity-60">
-            <p class="text-xs text-white/40 tracking-wide">
-                &copy; Gebrüder Schneider GmbH — Innovation und Präzision seit 1799
-            </p>
-            <div class="flex gap-6 text-xs text-white/40">
-                <a href="https://www.gsh-direkt.de/de/datenschutz.html" class="hover:text-white/70 transition-colors">Datenschutz</a>
-                <a href="https://www.gsh-direkt.de/de/impressum.html" class="hover:text-white/70 transition-colors">Impressum</a>
+    <footer class="bg-navy border-t border-white/5 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
+            <img src="https://www.gsh-direkt.de/template/GSH/pix/logo.png" alt="GSH" class="h-7 brightness-0 invert opacity-40">
+            <p class="text-[10px] text-white/25 tracking-wide">&copy; 2026 Gebrüder Schneider GmbH — Seit 1799</p>
+            <div class="flex gap-6 text-[10px] text-white/25">
+                <a href="https://www.gsh-direkt.de/de/datenschutz.html" class="hover:text-white/50 transition-colors">Datenschutz</a>
+                <a href="https://www.gsh-direkt.de/de/impressum.html" class="hover:text-white/50 transition-colors">Impressum</a>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll reveal -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
