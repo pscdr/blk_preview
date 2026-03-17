@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nies Herz Partner Steuerberatung – Ihr Steuerberater aus Bad Marienberg</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://nies-herz.de/wp-content/uploads/2022/04/cropped-Symbol-icon-32x32.png" type="image/png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8BBF44',
+                        'primary-dark': '#77A834',
+                        sage: '#F3F6F3',
+                        'sage-dark': '#E8EDE8',
+                        'text-dark': '#2D3B2D',
+                        'text-mid': '#4A5D4A',
+                        'text-light': '#6B7F6B',
+                    },
+                    fontFamily: {
+                        roboto: ['Roboto', 'Arial', 'Helvetica', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Roboto', Arial, Helvetica, sans-serif; }
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-sage text-text-dark">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-sage-dark">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero">
+                <img src="https://nies-herz.de/wp-content/uploads/2024/11/cropped-NHP_Logo-Final-200x97.png" alt="Nies Herz Partner Steuerberatung" class="h-12">
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-text-mid">
+                <a href="#leistungen" class="hover:text-primary-dark transition-colors">Leistungen</a>
+                <a href="#kanzlei" class="hover:text-primary-dark transition-colors">Kanzlei</a>
+                <a href="#digital" class="hover:text-primary-dark transition-colors">Digital</a>
+                <a href="#kontakt" class="bg-primary text-white px-5 py-2.5 rounded hover:bg-primary-dark transition-colors">Kontakt</a>
+            </div>
+            <button id="mobile-toggle" class="md:hidden text-text-mid">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sage-dark px-6 py-4 space-y-3 text-sm font-medium text-text-mid">
+            <a href="#leistungen" class="block hover:text-primary-dark">Leistungen</a>
+            <a href="#kanzlei" class="block hover:text-primary-dark">Kanzlei</a>
+            <a href="#digital" class="block hover:text-primary-dark">Digital</a>
+            <a href="#kontakt" class="block text-primary font-medium">Kontakt</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="pt-28 pb-20 md:pt-36 md:pb-28">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <p class="text-primary-dark font-medium tracking-widest text-sm mb-6">VERTRAULICH &middot; KOMPETENT &middot; DIGITAL</p>
+                    <h1 class="text-4xl md:text-5xl font-light text-text-dark leading-tight mb-6">
+                        Ihre Steuerberater aus <span class="font-medium">Bad Marienberg</span>
+                    </h1>
+                    <p class="text-lg text-text-mid leading-relaxed mb-8 max-w-lg">
+                        Ihr Partner für Lohn- und Finanzbuchhaltung, Steuererklärungen, steuerliche und betriebswirtschaftliche Beratung, Unternehmensübernahmen und -nachfolge sowie Existenzgründungen.
+                    </p>
+                    <p class="text-text-mid mb-10">Wir betreuen und beraten sowohl <strong>Unternehmen</strong> als auch <strong>Privatpersonen</strong>.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#kontakt" class="bg-primary text-white px-8 py-3.5 rounded font-medium hover:bg-primary-dark transition-colors">Kontakt aufnehmen</a>
+                        <a href="#leistungen" class="border border-primary-dark text-primary-dark px-8 py-3.5 rounded font-medium hover:bg-primary hover:text-white transition-colors">Unsere Leistungen</a>
+                    </div>
+                </div>
+                <div class="fade-in relative">
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Allgemein-58-1030x686.jpeg" alt="Nies Herz Partner Kanzlei" class="rounded-lg shadow-lg w-full object-cover">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-md hidden md:block">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/DATEV-Label_Digitale_Kanzlei-2025-768x728.png" alt="DATEV Digitale Kanzlei 2025" class="h-20">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-primary-dark font-medium tracking-widest text-sm mb-3">UNSERE LEISTUNGEN</p>
+                <h2 class="text-3xl md:text-4xl font-light text-text-dark">Umfassende Steuerberatung <span class="font-medium">für Sie</span></h2>
+            </div>
+
+            <!-- Service 1: Steuerliche Beratung -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div>
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Steuerliche Beratung</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Wir erarbeiten zielorientiert Lösungen für Ihre unterschiedlichsten Fragestellungen. Bei Themen wie etwa Existenzgründung, Wahl der Rechtsform (z.B. GbR, GmbH, GmbH & Co. KG oder AG), Finanzierungen, Vermögensübergabe oder Unternehmensnachfolge und Unternehmenstransaktionen sind wir Ihr kompetenter Ansprechpartner.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/08/Gross-sk_250818_nies_0001-2-1030x686.jpeg" alt="Steuerliche Beratung" class="rounded-lg shadow-md w-full object-cover">
+                </div>
+            </div>
+
+            <!-- Service 2: Finanzbuchhaltung -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div class="order-2 md:order-1">
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/08/Gross-sk_250818_nies_0003-1030x686.jpeg" alt="Finanzbuchhaltung" class="rounded-lg shadow-md w-full object-cover">
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Finanzbuchhaltung</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Bei der Finanzbuchhaltung werden alle Geschäftsvorfälle innerhalb eines bestimmten Abrechnungszeitraums erfasst, systematisch strukturiert abgebildet und analysiert. So ist es möglich Optimierungspotenziale aufzudecken und die Liquidität Ihres Unternehmens sicherzustellen.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service 3: Lohnbuchhaltung -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div>
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Lohnbuchhaltung</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Die Leistungen im Bereich der Lohnbuchführung umfassen die Erstellung der monatlichen Gehaltsabrechnungen inkl. Lohnsteuer-Anmeldungen, Meldungen zur Sozialversicherung und zur Berufsgenossenschaft, Abwicklung des gesamten elektronischen Zahlungsverkehrs. Daneben werden auch sämtliche Meldepflichten und Formulare etwa für Krankenkassen oder die Bundesagentur für Arbeit für Sie abgewickelt.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/08/Gross-sk_250818_nies_0005-1030x686.jpeg" alt="Lohnbuchhaltung" class="rounded-lg shadow-md w-full object-cover">
+                </div>
+            </div>
+
+            <!-- Service 4: Jahresabschluss -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div class="order-2 md:order-1">
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/08/Gross-sk_250818_nies_0007-686x1030.jpeg" alt="Jahresabschluss" class="rounded-lg shadow-md w-full object-cover aspect-[3/2]">
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Jahresabschluss</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Bei uns erhalten Sie einen umfassenden Jahresabschluss. Ob mit einer Einnahmen-Überschussrechnung für kleinere Unternehmen oder mit einem vollständigen Jahresabschluss für alle Rechtsformen setzen wir zuverlässig und auf Basis aktueller Richtlinien den Strich unter Ihr letztes Geschäftsjahr.
+                    </p>
+                    <p class="text-text-light italic mt-3">Denn nur wer weiß, wo er steht, kann sich neu ausrichten.</p>
+                </div>
+            </div>
+
+            <!-- Service 5: Steuererklärungen -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div>
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Steuererklärungen</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Wir erstellen Ihre Steuererklärungen. Sowohl für Unternehmen, Selbstständige, Freiberufler als auch für Privatpersonen erledigen wir Ihre steuerlichen Verpflichtungen. Dazu gehört die Ermittlung der laufenden steuerpflichtigen Einnahmen und die Berechnung der zu zahlenden Steuern für alle Ertragsteuern als auch die Erklärungen zu besonderen Anlässen wie beispielsweise Erbschaften oder Schenkungen.
+                    </p>
+                    <p class="text-primary-dark font-medium mt-3">Wir helfen Ihnen dabei Steuern zu gestalten und zu sparen.</p>
+                </div>
+                <div>
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/08/Gross-sk_250812_nies_0016-686x1030.jpeg" alt="Steuererklärungen" class="rounded-lg shadow-md w-full object-cover aspect-[3/2]">
+                </div>
+            </div>
+
+            <!-- Service 6: Unternehmensnachfolge -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div class="order-2 md:order-1">
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Jannik-17-773x1030.jpeg" alt="Jannik Herz – Fachberater für Unternehmensnachfolge" class="rounded-lg shadow-md w-full object-cover aspect-[3/4]">
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Unternehmensnachfolge</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Im Mittelpunkt der Unternehmensnachfolge oder -übernahme Beratung stehen Ihre persönlichen Vorstellungen, wie die konkrete Vermögensaufteilung, die Absicherung der Hinterbliebenen und der Fortbestand Ihres Unternehmens. Hierzu sollte frühzeitig ein Konzept entwickelt werden, um die Fortführung des Unternehmens sicherzustellen oder die steuerlich günstigste Gestaltung der Betriebsübertragung zu finden.
+                    </p>
+                    <p class="text-text-mid leading-relaxed mt-3">Wir helfen Ihnen, Ihre Ziele so genau wie möglich zu benennen und mit optimaler Gestaltung rechtzeitig zu sichern.</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/fachberater-unternehmensnachfolge-300x75.png" alt="Fachberater für Unternehmensnachfolge" class="h-8">
+                        <span class="text-sm text-text-light italic">Jannik Herz ist Fachberater für Unternehmensnachfolge (DStV e.V.)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 7: Existenzgründung -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+                <div>
+                    <div class="w-10 h-0.5 bg-primary mb-6"></div>
+                    <h3 class="text-2xl font-medium text-text-dark mb-4">Existenzgründung</h3>
+                    <p class="text-text-mid leading-relaxed">
+                        Die Gründung eines Unternehmens oder einer selbstständigen Tätigkeit sollte sorgfältig geplant werden. Schließlich geht es um die Wahl der Rechtsform und die Entwicklung eines Businessplans, um die Voraussetzungen für die Einwerbung von Fördermitteln und die Beantragung von Fördermitteln zu schaffen.
+                    </p>
+                    <p class="text-text-mid leading-relaxed mt-3">
+                        Die Nies Herz Partner Steuerberatung begleitet Sie in all diesen Phasen der Unternehmensgründung. Gerne unterstützen wir Sie auch bei der Einrichtung einer digitalen Buchhaltung und der Suche nach der besten Softwarelösung für Ihre persönlichen Bedürfnisse.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Allgemein-51-1030x686.jpeg" alt="Existenzgründung" class="rounded-lg shadow-md w-full object-cover">
+                </div>
+            </div>
+
+            <!-- Service 8: Treuhandservice -->
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <div class="w-10 h-0.5 bg-primary mb-6 mx-auto"></div>
+                <h3 class="text-2xl font-medium text-text-dark mb-4">Treuhandservice</h3>
+                <p class="text-text-mid leading-relaxed">
+                    Zur optimalen Sicherheit bei der Vertragsabwicklung bieten wir Ihnen unseren Treuhandservice an. Wir sichern als neutrale Person beiden Vertragsparteien eine verlässliche und geordnete Abwicklung zu.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kanzlei / Warum wir -->
+    <section id="kanzlei" class="py-20 bg-sage">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-primary-dark font-medium tracking-widest text-sm mb-3">UNSERE KANZLEI</p>
+                <h2 class="text-3xl md:text-4xl font-light text-text-dark">Warum Sie mit uns <span class="font-medium">zusammenarbeiten sollten</span></h2>
+                <p class="text-text-mid mt-4 max-w-xl mx-auto">Steuerbüros und Steuerberater gibt es viele – Wichtig ist nur, den Richtigen für sich zu finden!</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-lg fade-in">
+                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-dark mb-2">Pünktlich & Strukturiert</h3>
+                    <p class="text-text-mid text-sm leading-relaxed">Wir sind strukturiert und nehmen Termine ernst – Darum können Sie sich auf uns verlassen.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg fade-in">
+                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-dark mb-2">Erfahrung & Expertise</h3>
+                    <p class="text-text-mid text-sm leading-relaxed">Unser Team besteht aus vielen Steuerexperten mit unterschiedlichen Fachgebieten.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg fade-in">
+                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-dark mb-2">Fair & Transparent</h3>
+                    <p class="text-text-mid text-sm leading-relaxed">Bei uns gibt es keine Mondpreise – Wir rechnen immer fair und transparent mit Ihnen ab.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg fade-in">
+                    <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-dark mb-2">Persönlich & Vertraulich</h3>
+                    <p class="text-text-mid text-sm leading-relaxed">Jeder Mandant bekommt einen festen Ansprechpartner, welcher mit Ihrem Fall vertraut ist.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital -->
+    <section id="digital" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <img src="https://nies-herz.de/wp-content/uploads/2025/07/DATEV-Label_Digitale_Kanzlei-2025-768x728.png" alt="DATEV Digitale Kanzlei 2025" class="w-64 mx-auto md:mx-0">
+                </div>
+                <div class="fade-in">
+                    <p class="text-primary-dark font-medium tracking-widest text-sm mb-3">DIGITALE BUCHHALTUNG</p>
+                    <h2 class="text-3xl md:text-4xl font-light text-text-dark mb-6">Wir sind digital – <span class="font-medium">Werden Sie es auch!</span></h2>
+                    <p class="text-text-mid leading-relaxed mb-6">
+                        Unserer Kanzlei wurde von der DATEV eG das Label „Digitale Kanzlei" verliehen. Wir werden damit für eine konsequente digitale Strategie und deren Umsetzung in den Bereichen Rechnungswesen, Steuern und Lohn ausgezeichnet.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></div>
+                            <p class="text-text-mid text-sm leading-relaxed"><strong>Alle Dokumente</strong> vom Rechnungseingang, Bewegungen der Bank und der Kasse bis zu Ihren Ausgangsrechnungen werden digital übermittelt.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></div>
+                            <p class="text-text-mid text-sm leading-relaxed"><strong>Belege</strong> werden per Scanner oder Handy digitalisiert und in die Belegverwaltung online übertragen.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></div>
+                            <p class="text-text-mid text-sm leading-relaxed"><strong>Automatische Rechnungserkennung</strong> identifiziert relevante Informationen und übernimmt sie ins Rechnungsbuch.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></div>
+                            <p class="text-text-mid text-sm leading-relaxed"><strong>Zahlungen</strong> können aus den Rechnungsbüchern erstellt und digital an die Bank gesendet werden.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt / CTA -->
+    <section id="kontakt" class="py-20 bg-primary-dark">
+        <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-light text-white mb-4">Sie haben Fragen oder möchten Ihren <span class="font-medium">Steuerberater wechseln?</span></h2>
+            <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+                Als Ihr Steuerberater aus Bad Marienberg stehen wir Ihnen gerne zur Verfügung. Vereinbaren Sie mit uns einen unverbindlichen Termin.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://nies-herz.de/kontakt" class="bg-white text-primary-dark px-8 py-3.5 rounded font-medium hover:bg-sage transition-colors">Zum Kontaktformular</a>
+                <a href="https://nies-herz.de/steuerberaterwechsel" class="border border-white text-white px-8 py-3.5 rounded font-medium hover:bg-white/10 transition-colors">Steuerberaterwechsel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-text-dark text-white/60">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <img src="https://nies-herz.de/wp-content/uploads/2024/11/cropped-NHP_Logo-Final-200x97.png" alt="Nies Herz Partner" class="h-8 brightness-200">
+                <span class="text-sm">Nies Herz Partner Steuerberatung</span>
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="https://nies-herz.de/impressum/" class="hover:text-white transition-colors">Impressum</a>
+                <a href="https://nies-herz.de/datenschutz/" class="hover:text-white transition-colors">Datenschutz</a>
+                <a href="https://apps.datev.de/mydatev/" class="hover:text-white transition-colors">myDATEV Portal</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle
+        document.getElementById('mobile-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

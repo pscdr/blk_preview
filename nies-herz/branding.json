@@ -1,0 +1,47 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Roboto",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#8BBF44",
+    "accent": "#77A834",
+    "background": "#F3F6F3",
+    "textPrimary": "#77A834",
+    "link": "#77A834"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "heading": "Roboto"
+    },
+    "fontStacks": {
+      "heading": ["Arial", "Helvetica", "Verdana", "sans-serif"],
+      "body": ["Arial", "Helvetica", "Verdana", "sans-serif"],
+      "paragraph": ["Arial", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "28px",
+      "h2": "27px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "2px"
+  },
+  "images": {
+    "logo": "https://nies-herz.de/wp-content/uploads/2024/11/cropped-NHP_Logo-Final-200x97.png",
+    "favicon": "https://nies-herz.de/wp-content/uploads/2022/04/cropped-Symbol-icon-32x32.png",
+    "logoHref": "https://nies-herz.de/",
+    "logoAlt": "Nies Herz Partner Steuerberatung"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals seeking tax advisory services"
+  }
+}
