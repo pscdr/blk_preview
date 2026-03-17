@@ -108,11 +108,11 @@
         }
 
         /* Image hover */
-        .img-reveal {
+        .reveal scale-in {
             clip-path: inset(0 100% 0 0);
             transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .img-reveal.visible {
+        .reveal scale-in.visible {
             clip-path: inset(0 0% 0 0);
         }
 
@@ -434,17 +434,17 @@
             <div class="relative overflow-hidden aspect-[4/3]">
                 <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL01Rehamed--2-.jpg"
                      alt="Empfang Rehamed"
-                     class="img-reveal w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                     class="reveal scale-in w-full h-full object-cover hover:scale-105 transition-transform duration-700">
             </div>
             <div class="relative overflow-hidden hidden md:block aspect-[4/3]">
                 <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL58Rehamed_a.jpg"
                      alt="Wassergymnastik"
-                     class="img-reveal w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="transition-delay: 200ms">
+                     class="reveal scale-in w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="transition-delay: 200ms">
             </div>
             <div class="relative overflow-hidden hidden md:block aspect-[4/3]">
                 <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL31Rehamed_a.jpg"
                      alt="Training"
-                     class="img-reveal w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="transition-delay: 400ms">
+                     class="reveal scale-in w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="transition-delay: 400ms">
             </div>
         </div>
     </section>
@@ -738,7 +738,7 @@
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.reveal, .fancy-underline, .img-reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .fancy-underline, .reveal scale-in').forEach(el => observer.observe(el));
 
         // === Animated counter ===
         const counterEls = document.querySelectorAll('[data-count]');
