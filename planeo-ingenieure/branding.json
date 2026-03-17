@@ -1,0 +1,48 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Open Sans",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#666977",
+    "accent": "#2E5B66",
+    "background": "#FFFFFF",
+    "textPrimary": "#2E5B66",
+    "link": "#2E5B66"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Open Sans"
+    },
+    "fontSizes": {
+      "h1": "48px",
+      "h2": "32px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#2E5B66",
+      "textColor": "#FFFFFF",
+      "borderColor": "#2E5B66",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.planeo-ingenieure.de/customers/planeo_ingenieure/logo_favicon/logo-planeo-ingenieure-hachenburg.svg",
+    "favicon": "https://www.planeo-ingenieure.de/customers/planeo_ingenieure/favicon/web-app-manifest-512x512.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "engineering professionals"
+  }
+}
