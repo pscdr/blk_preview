@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -16,29 +16,31 @@
                     colors: {
                         maroon: {
                             DEFAULT: '#800000',
-                            50: '#fdf2f2',
-                            100: '#f9e0e0',
-                            200: '#f0bfbf',
+                            50: '#fef5f5',
+                            100: '#fde8e8',
+                            200: '#f5c4c4',
                             300: '#e09999',
-                            400: '#c06060',
+                            400: '#b34040',
                             500: '#800000',
-                            600: '#700000',
-                            700: '#5a0000',
-                            800: '#400000',
-                            900: '#2d0000',
+                            600: '#6b0000',
+                            700: '#520000',
+                            800: '#3d0000',
+                            900: '#2a0000',
+                            950: '#1a0000',
                         },
-                        warm: {
-                            DEFAULT: '#FFFFAE',
-                            50: '#FFFFF0',
-                            100: '#FFFFE0',
-                            200: '#FFFFCC',
-                            300: '#FFFFAE',
-                            400: '#FFFF90',
+                        cream: {
+                            DEFAULT: '#FFF9E6',
+                            50: '#FFFDF5',
+                            100: '#FFFBEB',
+                            200: '#FFF9E6',
+                            300: '#FFF3CC',
+                            400: '#FFECAD',
+                            500: '#FFE58A',
                         },
                     },
                     fontFamily: {
-                        heading: ['Lora', 'Georgia', 'serif'],
-                        body: ['Source Sans 3', 'system-ui', 'sans-serif'],
+                        display: ['Playfair Display', 'Georgia', 'serif'],
+                        body: ['Inter', 'system-ui', 'sans-serif'],
                     },
                 }
             }
@@ -46,378 +48,583 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Source Sans 3', system-ui, sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Lora', Georgia, serif; }
+        body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        /* Hero parallax overlay */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(128,0,0,0.92) 0%, rgba(128,0,0,0.7) 40%, rgba(128,0,0,0.3) 100%);
         }
-        .fade-in.visible {
+
+        /* Animated underline */
+        .fancy-underline {
+            background-image: linear-gradient(90deg, #FFECAD, #FFE58A);
+            background-size: 0% 6px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            transition: background-size 0.6s ease;
+        }
+        .fancy-underline.visible {
+            background-size: 100% 6px;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.from-bottom { transform: translateY(60px); }
+        .reveal.from-left { transform: translateX(-60px); }
+        .reveal.from-right { transform: translateX(60px); }
+        .reveal.scale-in { transform: scale(0.9); }
+        .reveal.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Stagger children */
+        .stagger-children .reveal:nth-child(1) { transition-delay: 0ms; }
+        .stagger-children .reveal:nth-child(2) { transition-delay: 100ms; }
+        .stagger-children .reveal:nth-child(3) { transition-delay: 200ms; }
+        .stagger-children .reveal:nth-child(4) { transition-delay: 300ms; }
+        .stagger-children .reveal:nth-child(5) { transition-delay: 400ms; }
+        .stagger-children .reveal:nth-child(6) { transition-delay: 500ms; }
+
+        /* Floating shape */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+        .float-delayed { animation: float 7s ease-in-out 1.5s infinite; }
+
+        /* Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 25s linear infinite;
+        }
+
+        /* Image hover */
+        .img-reveal {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-reveal.visible {
+            clip-path: inset(0 0% 0 0);
+        }
+
+        /* Counter */
+        .counter-box {
+            background: linear-gradient(135deg, #800000 0%, #520000 100%);
+        }
+
+        /* Organic blob */
+        .blob {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+        }
+
+        /* Nav glassmorphism */
+        .nav-glass {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Scroll progress */
+        #scrollProgress {
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.1s linear;
+        }
+
+        /* Service card hover */
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(128,0,0,0.15);
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+            background-color: #800000;
+            color: white;
+        }
+        .service-icon {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Team member pulse */
+        .team-pulse::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #800000, #FFECAD, #800000);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .team-pulse:hover::before {
+            opacity: 1;
         }
     </style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-maroon-400 via-maroon to-maroon-700 z-[60]"></div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#hero">
-                <img src="https://www.rehamed-hachenburg.de/gallery/Rehamed1_iusodu7l_7eizrs6c.png" alt="REHAMED Hachenburg Logo" class="h-12">
+    <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
+            <a href="#hero" class="relative z-10">
+                <img src="https://www.rehamed-hachenburg.de/gallery/Rehamed1_iusodu7l_7eizrs6c.png" alt="REHAMED Hachenburg Logo" class="h-10 md:h-12 transition-all duration-300">
             </a>
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-                <a href="#leistungen" class="hover:text-maroon transition-colors">Leistungen</a>
-                <a href="#ueber-uns" class="hover:text-maroon transition-colors">Über uns</a>
-                <a href="#team" class="hover:text-maroon transition-colors">Team</a>
-                <a href="#kontakt" class="hover:text-maroon transition-colors">Kontakt</a>
-                <a href="tel:02662940880" class="bg-maroon text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-maroon-700 transition-colors">
-                    Jetzt anrufen
+            <div class="hidden lg:flex items-center gap-10 text-sm tracking-wide">
+                <a href="#leistungen" class="nav-link font-medium transition-colors duration-300">Leistungen</a>
+                <a href="#ueber-uns" class="nav-link font-medium transition-colors duration-300">Über uns</a>
+                <a href="#team" class="nav-link font-medium transition-colors duration-300">Team</a>
+                <a href="#kontakt" class="nav-link font-medium transition-colors duration-300">Kontakt</a>
+                <a href="tel:02662940880" class="bg-maroon text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-maroon-700 hover:scale-105 transition-all duration-300 shadow-lg shadow-maroon/20">
+                    02662 / 94 08 80
                 </a>
             </div>
-            <!-- Mobile Menu Button -->
-            <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-label="Menü öffnen">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
+            <button id="menuBtn" class="lg:hidden relative z-10 p-2" aria-label="Menü">
+                <div id="hamburger" class="flex flex-col gap-1.5 transition-all">
+                    <span class="w-6 h-0.5 bg-current transition-all duration-300 origin-center" id="bar1"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all duration-300" id="bar2"></span>
+                    <span class="w-4 h-0.5 bg-current transition-all duration-300 origin-center" id="bar3"></span>
+                </div>
             </button>
         </div>
-        <!-- Mobile Nav -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
-            <div class="flex flex-col gap-4 text-sm font-medium text-gray-600">
-                <a href="#leistungen" class="hover:text-maroon transition-colors py-2">Leistungen</a>
-                <a href="#ueber-uns" class="hover:text-maroon transition-colors py-2">Über uns</a>
-                <a href="#team" class="hover:text-maroon transition-colors py-2">Team</a>
-                <a href="#kontakt" class="hover:text-maroon transition-colors py-2">Kontakt</a>
-                <a href="tel:02662940880" class="bg-maroon text-white px-5 py-3 rounded-full text-sm font-semibold text-center hover:bg-maroon-700 transition-colors">
+        <!-- Mobile fullscreen menu -->
+        <div id="mobileMenu" class="fixed inset-0 bg-maroon z-40 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+            <div class="flex flex-col items-center gap-8 text-2xl font-display text-white">
+                <a href="#leistungen" class="mobile-link hover:text-cream-400 transition-colors">Leistungen</a>
+                <a href="#ueber-uns" class="mobile-link hover:text-cream-400 transition-colors">Über uns</a>
+                <a href="#team" class="mobile-link hover:text-cream-400 transition-colors">Team</a>
+                <a href="#kontakt" class="mobile-link hover:text-cream-400 transition-colors">Kontakt</a>
+                <a href="tel:02662940880" class="mt-4 bg-white text-maroon px-8 py-4 rounded-full text-lg font-body font-semibold">
                     Jetzt anrufen
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="hero" class="pt-24 md:pt-32 pb-16 md:pb-24">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <div class="inline-block bg-warm-200 text-maroon text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
-                        Seit 1997 im Westerwald
-                    </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-maroon leading-tight mb-6">
-                        Ihre Tagesklinik für Ambulante Rehabilitation
-                    </h1>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
-                        Ambulante Rehabilitation, Physiotherapie und Ergotherapie — umfassende Versorgung unter einem Dach auf 1.900 qm in Hachenburg.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="tel:02662940880" class="bg-maroon text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-maroon-700 transition-colors text-center">
-                            02662 / 94 08 80
-                        </a>
-                        <a href="#leistungen" class="border-2 border-maroon text-maroon px-8 py-4 rounded-full text-base font-semibold hover:bg-maroon-50 transition-colors text-center">
-                            Unsere Leistungen
-                        </a>
-                    </div>
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://www.rehamed-hachenburg.de/images/180506-REHAMED-0040a.jpg"
+                 alt="REHAMED Hachenburg Gebäude"
+                 class="w-full h-full object-cover scale-110" id="heroImg">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        <!-- Floating decorative shapes -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-cream-400/10 blob float hidden lg:block"></div>
+        <div class="absolute bottom-32 left-10 w-48 h-48 bg-cream-400/5 blob float-delayed hidden lg:block"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 md:py-0 w-full">
+            <div class="max-w-3xl">
+                <div class="reveal from-bottom inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-cream-200 text-sm font-medium px-5 py-2 rounded-full mb-8 border border-white/20">
+                    <span class="w-2 h-2 bg-cream-400 rounded-full animate-pulse"></span>
+                    Seit 1997 in Hachenburg im Westerwald
                 </div>
-                <div class="fade-in">
-                    <img src="https://www.rehamed-hachenburg.de/images/180506-REHAMED-0040a.jpg"
-                         alt="Ambulantes Rehazentrum REHAMED Hachenburg"
-                         class="rounded-3xl shadow-lg w-full object-cover aspect-[4/3]">
+                <h1 class="reveal from-bottom text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] mb-8">
+                    Zurück in<br>
+                    <span class="italic text-cream-400">Bewegung.</span><br>
+                    Zurück ins<br>
+                    <span class="italic text-cream-400">Leben.</span>
+                </h1>
+                <p class="reveal from-bottom text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-xl font-light">
+                    Ambulante Rehabilitation, Physiotherapie und Ergotherapie — umfassende Versorgung unter einem Dach auf 1.900 qm.
+                </p>
+                <div class="reveal from-bottom flex flex-col sm:flex-row gap-4">
+                    <a href="tel:02662940880" class="group bg-white text-maroon px-8 py-4 rounded-full text-base font-bold hover:bg-cream-200 transition-all duration-300 text-center inline-flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+                        Termin vereinbaren
+                    </a>
+                    <a href="#leistungen" class="border-2 border-white/40 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-white/10 hover:border-white/60 transition-all duration-300 text-center">
+                        Mehr erfahren
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-xs tracking-widest uppercase">
+            <span>Scroll</span>
+            <div class="w-px h-12 bg-gradient-to-b from-white/50 to-transparent animate-pulse"></div>
+        </div>
+    </section>
+
+    <!-- ==================== MARQUEE BAND ==================== -->
+    <div class="bg-maroon py-4 overflow-hidden">
+        <div class="marquee-track flex items-center gap-12 whitespace-nowrap text-sm font-medium text-cream-300 tracking-widest uppercase">
+            <span>Ambulante Rehabilitation</span>
+            <span class="text-cream-500">✦</span>
+            <span>Physiotherapie</span>
+            <span class="text-cream-500">✦</span>
+            <span>Ergotherapie</span>
+            <span class="text-cream-500">✦</span>
+            <span>EAP (BG)</span>
+            <span class="text-cream-500">✦</span>
+            <span>Nachsorge</span>
+            <span class="text-cream-500">✦</span>
+            <span>Rehasport</span>
+            <span class="text-cream-500">✦</span>
+            <span>Orthopädie</span>
+            <span class="text-cream-500">✦</span>
+            <span>Traumatologie</span>
+            <span class="text-cream-500">✦</span>
+            <span>Ambulante Rehabilitation</span>
+            <span class="text-cream-500">✦</span>
+            <span>Physiotherapie</span>
+            <span class="text-cream-500">✦</span>
+            <span>Ergotherapie</span>
+            <span class="text-cream-500">✦</span>
+            <span>EAP (BG)</span>
+            <span class="text-cream-500">✦</span>
+            <span>Nachsorge</span>
+            <span class="text-cream-500">✦</span>
+            <span>Rehasport</span>
+            <span class="text-cream-500">✦</span>
+            <span>Orthopädie</span>
+            <span class="text-cream-500">✦</span>
+            <span>Traumatologie</span>
+            <span class="text-cream-500">✦</span>
+        </div>
+    </div>
+
+    <!-- ==================== INTRO / ZAHLEN ==================== -->
+    <section class="py-24 md:py-32 relative overflow-hidden">
+        <!-- Decorative background -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cream-100 rounded-full -translate-y-1/2 translate-x-1/3 opacity-60"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div>
+                    <h2 class="reveal from-left text-4xl md:text-5xl lg:text-6xl font-bold text-maroon leading-tight mb-8">
+                        Ihre Gesundheit ist unser
+                        <span class="fancy-underline italic">Handwerk</span>
+                    </h2>
+                    <p class="reveal from-left text-gray-600 text-lg md:text-xl leading-relaxed mb-6">
+                        Die REHAMED Hachenburg GmbH ist Ihre Tagesklinik für die Ambulante Rehabilitation, Physiotherapie und Ergotherapie, die 1997 in Hachenburg im Gewerbegebiet Saynstraße eröffnet wurde.
+                    </p>
+                    <p class="reveal from-left text-gray-600 text-lg leading-relaxed mb-10">
+                        Auf insgesamt 1.900 qm bieten wir die Möglichkeit der wohnortnahen ambulanten Rehabilitation für alle Kosten- und Leistungsträger — für alle Krankenkassen und die Deutsche Rentenversicherung. Dies gilt für alle muskuloskeletalen Erkrankungen im gesamten Rehabilitationsbereich der Orthopädie und Traumatologie.
+                    </p>
+                </div>
+                <div class="reveal from-right">
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="counter-box rounded-3xl p-8 text-white">
+                            <div class="text-5xl md:text-6xl font-display font-bold mb-2" data-count="1900">0</div>
+                            <div class="text-cream-300 text-sm font-medium">Quadratmeter Fläche</div>
+                        </div>
+                        <div class="bg-cream-200 rounded-3xl p-8">
+                            <div class="text-5xl md:text-6xl font-display font-bold text-maroon mb-2">1997</div>
+                            <div class="text-maroon/60 text-sm font-medium">Gegründet</div>
+                        </div>
+                        <div class="bg-cream-100 rounded-3xl p-8 col-span-2">
+                            <div class="text-3xl md:text-4xl font-display font-bold text-maroon mb-2">Alles unter einem Dach</div>
+                            <div class="text-maroon/60 text-sm font-medium">Rehabilitation · Physiotherapie · Ergotherapie · Sportmedizin</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leistungen -->
-    <section id="leistungen" class="py-16 md:py-24 bg-stone-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-maroon mb-4">Unsere Leistungen</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+    <!-- ==================== LEISTUNGEN ==================== -->
+    <section id="leistungen" class="py-24 md:py-32 bg-gradient-to-b from-cream-50 to-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div>
+                    <span class="reveal from-bottom text-maroon/50 text-sm font-semibold tracking-[0.2em] uppercase block mb-4">Was wir bieten</span>
+                    <h2 class="reveal from-bottom text-4xl md:text-5xl lg:text-6xl font-bold text-maroon leading-tight">
+                        Unsere<br><span class="italic">Leistungen</span>
+                    </h2>
+                </div>
+                <p class="reveal from-bottom text-gray-500 text-lg max-w-md leading-relaxed">
                     Ganzheitliche Versorgung für den gesamten Rehabilitationsbereich der Orthopädie und Traumatologie.
                 </p>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service Cards -->
-                <a href="https://www.rehamed-hachenburg.de/ambulante-reha.html" class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all fade-in">
-                    <div class="w-12 h-12 bg-warm-200 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342"/>
-                        </svg>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+                <a href="https://www.rehamed-hachenburg.de/ambulante-reha.html" class="service-card reveal from-bottom bg-white border border-gray-100 p-8 lg:p-10 rounded-3xl group cursor-pointer">
+                    <div class="service-icon w-16 h-16 bg-cream-200 text-maroon rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-maroon mb-2 group-hover:text-maroon-700 transition-colors">Ambulante Reha</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Wohnortnahe ambulante Rehabilitation für alle Kosten- und Leistungsträger — Krankenkassen und Deutsche Rentenversicherung.</p>
+                    <h3 class="text-2xl font-display font-bold text-maroon mb-3">Ambulante Reha</h3>
+                    <p class="text-gray-500 leading-relaxed">Wohnortnahe ambulante Rehabilitation für alle Kosten- und Leistungsträger — Krankenkassen und Deutsche Rentenversicherung.</p>
+                    <div class="mt-6 flex items-center gap-2 text-maroon font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>Mehr erfahren</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    </div>
                 </a>
 
-                <a href="https://www.rehamed-hachenburg.de/physiotherapie.html" class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all fade-in">
-                    <div class="w-12 h-12 bg-warm-200 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
-                        </svg>
+                <a href="https://www.rehamed-hachenburg.de/physiotherapie.html" class="service-card reveal from-bottom bg-white border border-gray-100 p-8 lg:p-10 rounded-3xl group cursor-pointer">
+                    <div class="service-icon w-16 h-16 bg-cream-200 text-maroon rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-maroon mb-2 group-hover:text-maroon-700 transition-colors">Physiotherapie</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Physiotherapeutische Grundversorgung durch Heilmittelverordnungen für muskuloskeletale Erkrankungen.</p>
+                    <h3 class="text-2xl font-display font-bold text-maroon mb-3">Physiotherapie</h3>
+                    <p class="text-gray-500 leading-relaxed">Physiotherapeutische Grundversorgung durch Heilmittelverordnungen für muskuloskeletale Erkrankungen.</p>
+                    <div class="mt-6 flex items-center gap-2 text-maroon font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>Mehr erfahren</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    </div>
                 </a>
 
-                <a href="https://www.rehamed-hachenburg.de/ergotherapie.html" class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all fade-in">
-                    <div class="w-12 h-12 bg-warm-200 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/>
-                        </svg>
+                <a href="https://www.rehamed-hachenburg.de/ergotherapie.html" class="service-card reveal from-bottom bg-white border border-gray-100 p-8 lg:p-10 rounded-3xl group cursor-pointer">
+                    <div class="service-icon w-16 h-16 bg-cream-200 text-maroon rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-maroon mb-2 group-hover:text-maroon-700 transition-colors">Ergotherapie</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Ergotherapeutische Behandlungen zur Wiederherstellung und Verbesserung der Handlungsfähigkeit im Alltag.</p>
+                    <h3 class="text-2xl font-display font-bold text-maroon mb-3">Ergotherapie</h3>
+                    <p class="text-gray-500 leading-relaxed">Ergotherapeutische Behandlungen zur Wiederherstellung und Verbesserung der Handlungsfähigkeit im Alltag.</p>
+                    <div class="mt-6 flex items-center gap-2 text-maroon font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>Mehr erfahren</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    </div>
                 </a>
 
-                <a href="https://www.rehamed-hachenburg.de/eap--bg-.html" class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all fade-in">
-                    <div class="w-12 h-12 bg-warm-200 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
-                        </svg>
+                <a href="https://www.rehamed-hachenburg.de/eap--bg-.html" class="service-card reveal from-bottom bg-white border border-gray-100 p-8 lg:p-10 rounded-3xl group cursor-pointer">
+                    <div class="service-icon w-16 h-16 bg-cream-200 text-maroon rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-maroon mb-2 group-hover:text-maroon-700 transition-colors">EAP (BG)</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Erweiterte Ambulante Physiotherapie im Auftrag der Berufsgenossenschaften.</p>
+                    <h3 class="text-2xl font-display font-bold text-maroon mb-3">EAP (BG)</h3>
+                    <p class="text-gray-500 leading-relaxed">Erweiterte Ambulante Physiotherapie im Auftrag der Berufsgenossenschaften.</p>
+                    <div class="mt-6 flex items-center gap-2 text-maroon font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>Mehr erfahren</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    </div>
                 </a>
 
-                <a href="https://www.rehamed-hachenburg.de/nachsorge.html" class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all fade-in">
-                    <div class="w-12 h-12 bg-warm-200 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>
-                        </svg>
+                <a href="https://www.rehamed-hachenburg.de/nachsorge.html" class="service-card reveal from-bottom bg-white border border-gray-100 p-8 lg:p-10 rounded-3xl group cursor-pointer">
+                    <div class="service-icon w-16 h-16 bg-cream-200 text-maroon rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-maroon mb-2 group-hover:text-maroon-700 transition-colors">Nachsorge</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Nachsorge-Programme zur langfristigen Sicherung des Rehabilitationserfolgs.</p>
+                    <h3 class="text-2xl font-display font-bold text-maroon mb-3">Nachsorge</h3>
+                    <p class="text-gray-500 leading-relaxed">Nachsorge-Programme zur langfristigen Sicherung des Rehabilitationserfolgs.</p>
+                    <div class="mt-6 flex items-center gap-2 text-maroon font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>Mehr erfahren</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    </div>
                 </a>
 
-                <a href="https://www.rehamed-hachenburg.de/rehasport-e.v..html" class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all fade-in">
-                    <div class="w-12 h-12 bg-warm-200 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-6 h-6 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-                        </svg>
+                <a href="https://www.rehamed-hachenburg.de/rehasport-e.v..html" class="service-card reveal from-bottom bg-white border border-gray-100 p-8 lg:p-10 rounded-3xl group cursor-pointer">
+                    <div class="service-icon w-16 h-16 bg-cream-200 text-maroon rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-maroon mb-2 group-hover:text-maroon-700 transition-colors">Rehasport e.V.</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Rehabilitationssport in der Gruppe für nachhaltigen Therapieerfolg.</p>
+                    <h3 class="text-2xl font-display font-bold text-maroon mb-3">Rehasport e.V.</h3>
+                    <p class="text-gray-500 leading-relaxed">Rehabilitationssport in der Gruppe für nachhaltigen Therapieerfolg.</p>
+                    <div class="mt-6 flex items-center gap-2 text-maroon font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>Mehr erfahren</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Über uns -->
-    <section id="ueber-uns" class="py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in order-2 md:order-1">
-                    <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL58Rehamed_a.jpg"
-                         alt="Wassergymnastik in der REHAMED"
-                         class="rounded-3xl shadow-lg w-full object-cover aspect-[4/3]">
-                </div>
-                <div class="fade-in order-1 md:order-2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-maroon mb-6">Umfassende Versorgung unter einem Dach</h2>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        Die REHAMED Hachenburg GmbH ist Ihre Tagesklinik für die Ambulante Rehabilitation, Physiotherapie und Ergotherapie, die 1997 in Hachenburg im Gewerbegebiet Saynstraße eröffnet wurde.
-                    </p>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                        Auf insgesamt 1.900 qm bieten wir neben der physio- und ergotherapeutischen Grundversorgung auch die Möglichkeit der wohnortnahen ambulanten Rehabilitation für alle Kosten- und Leistungsträger — für alle Krankenkassen und die Deutsche Rentenversicherung. Dies gilt für alle muskuloskeletalen Erkrankungen im gesamten Rehabilitationsbereich der Orthopädie und Traumatologie.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-warm-50 rounded-2xl p-5">
-                            <div class="text-3xl font-bold text-maroon mb-1">1.900</div>
-                            <div class="text-sm text-gray-600">Quadratmeter Fläche</div>
-                        </div>
-                        <div class="bg-warm-50 rounded-2xl p-5">
-                            <div class="text-3xl font-bold text-maroon mb-1">Seit 1997</div>
-                            <div class="text-sm text-gray-600">Im Westerwald</div>
-                        </div>
-                    </div>
-                </div>
+    <!-- ==================== BILD-BAND ==================== -->
+    <section id="ueber-uns" class="relative overflow-hidden">
+        <div class="grid md:grid-cols-3 h-[500px] md:h-[600px]">
+            <div class="relative overflow-hidden">
+                <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL01Rehamed--2-.jpg"
+                     alt="Empfang Rehamed"
+                     class="img-reveal w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="relative overflow-hidden hidden md:block">
+                <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL58Rehamed_a.jpg"
+                     alt="Wassergymnastik"
+                     class="img-reveal w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="transition-delay: 200ms">
+            </div>
+            <div class="relative overflow-hidden hidden md:block">
+                <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL31Rehamed_a.jpg"
+                     alt="Training"
+                     class="img-reveal w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="transition-delay: 400ms">
             </div>
         </div>
     </section>
 
-    <!-- Team -->
-    <section id="team" class="py-16 md:py-24 bg-maroon">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Unser interdisziplinäres Team</h2>
-                <p class="text-maroon-200 text-lg max-w-2xl mx-auto">
-                    Ein starkes Team für Ihre Genesung — umfassende Rundumversorgung durch Spezialisten verschiedenster Fachrichtungen.
+    <!-- ==================== TEAM ==================== -->
+    <section id="team" class="py-24 md:py-32 bg-maroon-950 relative overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cream-400/30 to-transparent"></div>
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-maroon-800 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-maroon-900 rounded-full blur-3xl opacity-50"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <div class="text-center mb-20">
+                <span class="reveal from-bottom text-cream-400/60 text-sm font-semibold tracking-[0.2em] uppercase block mb-4">Wer hinter REHAMED steht</span>
+                <h2 class="reveal from-bottom text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    Ein Team, das<br><span class="italic text-cream-400">zusammenwirkt</span>
+                </h2>
+            </div>
+
+            <p class="reveal from-bottom text-center text-cream-300/70 text-lg max-w-3xl mx-auto mb-16 leading-relaxed">
+                Zum personellen Team der REHAMED gehören neben Physiotherapeuten, Ergotherapeuten und Masseuren auch Fachärzte, Sportwissenschaftler, Psychologen, Sozialarbeiter und Ernährungswissenschaftler. Abgerundet wird das Team durch Organisations- und Verwaltungskräfte sowie den hauseigenen Fahrdienst.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 stagger-children">
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Fachärzte</h3>
+                    <p class="text-cream-300/50 text-sm">Medizinische Leitung</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Therapeuten</h3>
+                    <p class="text-cream-300/50 text-sm">Physio · Ergo · Massage</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Sportwissenschaftler</h3>
+                    <p class="text-cream-300/50 text-sm">Training & Therapie</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Psychologen</h3>
+                    <p class="text-cream-300/50 text-sm">Psychologische Betreuung</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Sozialarbeiter</h3>
+                    <p class="text-cream-300/50 text-sm">Beratung & Hilfe</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m18-4.5-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0L3 12"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Ernährungsberater</h3>
+                    <p class="text-cream-300/50 text-sm">Ernährungswissenschaft</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0H21M3.375 14.25h3.75L9 7.5h6l1.875 6.75h3.75"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Fahrdienst</h3>
+                    <p class="text-cream-300/50 text-sm">Hauseigener Transport</p>
+                </div>
+                <div class="reveal from-bottom text-center group">
+                    <div class="team-pulse relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cream-300 to-cream-500 rounded-full mx-auto mb-5 flex items-center justify-center">
+                        <svg class="w-10 h-10 md:w-12 md:h-12 text-maroon" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15"/></svg>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Verwaltung</h3>
+                    <p class="text-cream-300/50 text-sm">Organisation & Service</p>
+                </div>
+            </div>
+
+            <div class="reveal from-bottom text-center mt-16">
+                <p class="text-cream-300/80 text-xl font-display italic">
+                    „Somit gewährleistet die REHAMED für Sie eine umfassende Rundumversorgung."
                 </p>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 fade-in">
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Fachärzte</h3>
-                    <p class="text-maroon-200 text-sm">Medizinische Leitung & Diagnostik</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Therapeuten</h3>
-                    <p class="text-maroon-200 text-sm">Physio-, Ergo- & Masseure</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Sportwissenschaftler</h3>
-                    <p class="text-maroon-200 text-sm">Training & Sporttherapie</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Psychologen</h3>
-                    <p class="text-maroon-200 text-sm">Psychologische Betreuung</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Sozialarbeiter</h3>
-                    <p class="text-maroon-200 text-sm">Soziale Beratung & Hilfe</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Ernährungsberater</h3>
-                    <p class="text-maroon-200 text-sm">Ernährungswissenschaft</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0H21M3.375 14.25h3.75L9 7.5h6l1.875 6.75h3.75"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Fahrdienst</h3>
-                    <p class="text-maroon-200 text-sm">Hauseigener Transport</p>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div class="w-14 h-14 bg-warm-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-white font-semibold mb-1">Verwaltung</h3>
-                    <p class="text-maroon-200 text-sm">Organisation & Service</p>
-                </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BAND ==================== -->
+    <section class="relative py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-cream-200"></div>
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 20% 50%, rgba(128,0,0,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(128,0,0,0.04) 0%, transparent 50%);"></div>
+
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="reveal scale-in text-4xl md:text-5xl lg:text-6xl font-display font-bold text-maroon leading-tight mb-8">
+                Der erste Schritt<br>zur <span class="italic">Genesung</span>
+            </h2>
+            <p class="reveal from-bottom text-maroon/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Durch die verkehrstechnische Anbindung sind wir leicht zu erreichen. Wir freuen uns auf Sie.
+            </p>
+            <div class="reveal from-bottom flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:02662940880" class="group bg-maroon text-white px-10 py-5 rounded-full text-lg font-bold hover:bg-maroon-700 transition-all duration-300 shadow-xl shadow-maroon/20 hover:shadow-2xl hover:shadow-maroon/30 hover:-translate-y-1 inline-flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+                    02662 / 94 08 80
+                </a>
+                <a href="mailto:info@rehamed-hachenburg.de" class="border-2 border-maroon text-maroon px-10 py-5 rounded-full text-lg font-bold hover:bg-maroon hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+                    E-Mail schreiben
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Galerie -->
-    <section class="py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-6 fade-in">
-                <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL01Rehamed--2-.jpg"
-                     alt="Empfang Rehamed" class="rounded-2xl shadow-md w-full object-cover aspect-square">
-                <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL58Rehamed_a.jpg"
-                     alt="Wassergymnastik" class="rounded-2xl shadow-md w-full object-cover aspect-square">
-                <img src="https://www.rehamed-hachenburg.de/images/Fotostudio_OEHL31Rehamed_a.jpg"
-                     alt="Training in der Rehamed" class="rounded-2xl shadow-md w-full object-cover aspect-square">
-            </div>
-        </div>
-    </section>
+    <!-- ==================== KONTAKT ==================== -->
+    <section id="kontakt" class="py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+                <!-- Left column: Info -->
+                <div class="lg:col-span-3">
+                    <span class="reveal from-left text-maroon/50 text-sm font-semibold tracking-[0.2em] uppercase block mb-4">So erreichen Sie uns</span>
+                    <h2 class="reveal from-left text-4xl md:text-5xl font-bold text-maroon leading-tight mb-12">
+                        Kontakt &<br><span class="italic">Öffnungszeiten</span>
+                    </h2>
 
-    <!-- Kontakt -->
-    <section id="kontakt" class="py-16 md:py-24 bg-stone-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="fade-in">
-                    <h2 class="text-3xl md:text-4xl font-bold text-maroon mb-6">Kontakt & Anfahrt</h2>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                        Durch die verkehrstechnische Anbindung sind wir leicht zu erreichen. Wir freuen uns auf Sie.
-                    </p>
-
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-warm-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                                <svg class="w-5 h-5 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
-                                </svg>
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <div class="reveal from-left">
+                            <div class="w-14 h-14 bg-cream-200 rounded-2xl flex items-center justify-center mb-5">
+                                <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
                             </div>
-                            <div>
-                                <h3 class="font-semibold text-maroon mb-1">Adresse</h3>
-                                <p class="text-gray-600">Saynstraße 38<br>D-57627 Hachenburg</p>
-                            </div>
+                            <h3 class="font-display text-xl font-bold text-maroon mb-2">Adresse</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                REHAMED Hachenburg GmbH<br>
+                                Saynstraße 38<br>
+                                D-57627 Hachenburg
+                            </p>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-warm-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                                <svg class="w-5 h-5 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
-                                </svg>
+                        <div class="reveal from-left">
+                            <div class="w-14 h-14 bg-cream-200 rounded-2xl flex items-center justify-center mb-5">
+                                <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
                             </div>
-                            <div>
-                                <h3 class="font-semibold text-maroon mb-1">Telefon</h3>
-                                <p class="text-gray-600">
-                                    <a href="tel:02662940880" class="hover:text-maroon transition-colors font-semibold">0 26 62 / 94 08 80</a><br>
-                                    <span class="text-sm">Fax: 0 26 62 / 94 08 82</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-warm-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                                <svg class="w-5 h-5 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-maroon mb-1">E-Mail</h3>
-                                <p class="text-gray-600">
-                                    <a href="mailto:info@rehamed-hachenburg.de" class="hover:text-maroon transition-colors">info@rehamed-hachenburg.de</a>
-                                </p>
-                            </div>
+                            <h3 class="font-display text-xl font-bold text-maroon mb-2">Telefon & E-Mail</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                <a href="tel:02662940880" class="font-bold text-maroon hover:text-maroon-700 transition-colors text-lg">02662 / 94 08 80</a><br>
+                                Fax: 02662 / 94 08 82<br>
+                                <a href="mailto:info@rehamed-hachenburg.de" class="text-maroon hover:text-maroon-700 transition-colors">info@rehamed-hachenburg.de</a>
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="fade-in">
-                    <div class="bg-white rounded-2xl shadow-sm p-8">
-                        <h3 class="text-xl font-semibold text-maroon mb-6">Öffnungszeiten</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center py-3 border-b border-gray-100">
-                                <span class="text-gray-700 font-medium">Montag – Donnerstag</span>
-                                <span class="text-maroon font-semibold">7:30 – 19:30 Uhr</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3 border-b border-gray-100">
-                                <span class="text-gray-700 font-medium">Freitag</span>
-                                <span class="text-maroon font-semibold">7:30 – 15:00 Uhr</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3">
-                                <span class="text-gray-700 font-medium">Samstag & Sonntag</span>
-                                <span class="text-gray-400">geschlossen</span>
+                <!-- Right column: Öffnungszeiten card -->
+                <div class="lg:col-span-2 reveal from-right">
+                    <div class="bg-maroon rounded-3xl p-8 md:p-10 text-white h-full flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-cream-300 mb-8">Öffnungszeiten</h3>
+                            <div class="space-y-5">
+                                <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                    <span class="text-white/80">Montag – Donnerstag</span>
+                                    <span class="font-bold text-cream-300 text-lg">7:30 – 19:30</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                    <span class="text-white/80">Freitag</span>
+                                    <span class="font-bold text-cream-300 text-lg">7:30 – 15:00</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white/40">Samstag & Sonntag</span>
+                                    <span class="text-white/40">geschlossen</span>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="mt-8 pt-6 border-t border-gray-100">
-                            <a href="tel:02662940880" class="w-full bg-maroon text-white py-4 rounded-full text-center font-semibold hover:bg-maroon-700 transition-colors block">
-                                Jetzt Termin vereinbaren
+                        <div class="mt-10 pt-8 border-t border-white/10 space-y-3">
+                            <a href="tel:02662940880" class="block w-full bg-white text-maroon py-4 rounded-full text-center font-bold hover:bg-cream-200 transition-all duration-300 text-lg">
+                                Termin vereinbaren
                             </a>
-                        </div>
-
-                        <div class="mt-4">
-                            <a href="https://www.rehamed-hachenburg.de/jobs.html" class="w-full border-2 border-maroon text-maroon py-4 rounded-full text-center font-semibold hover:bg-maroon-50 transition-colors block">
+                            <a href="https://www.rehamed-hachenburg.de/jobs.html" class="block w-full border-2 border-white/30 text-white py-4 rounded-full text-center font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300">
                                 Aktuelle Jobangebote
                             </a>
                         </div>
@@ -427,47 +634,137 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-maroon-900 text-maroon-200 py-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-3">
-                    <img src="https://www.rehamed-hachenburg.de/gallery/Rehamed1_iusodu7l_7eizrs6c.png" alt="REHAMED Logo" class="h-8 brightness-200">
-                    <span class="text-white font-heading font-semibold">REHAMED Hachenburg GmbH</span>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-maroon-950 text-white/50 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-4">
+                    <img src="https://www.rehamed-hachenburg.de/gallery/Rehamed1_iusodu7l_7eizrs6c.png" alt="REHAMED Logo" class="h-8 brightness-200 opacity-60">
+                    <div class="text-sm">
+                        <span class="text-white/70 font-semibold">REHAMED Hachenburg GmbH</span><br>
+                        Saynstraße 38 · 57627 Hachenburg
+                    </div>
                 </div>
-                <div class="flex gap-6 text-sm">
+                <div class="flex items-center gap-8 text-sm">
                     <a href="https://www.rehamed-hachenburg.de/datenschutz.html" class="hover:text-white transition-colors">Datenschutz</a>
                     <a href="https://www.rehamed-hachenburg.de/anfahrt.html" class="hover:text-white transition-colors">Anfahrt</a>
+                    <a href="https://www.rehamed-hachenburg.de/jobs.html" class="hover:text-white transition-colors">Jobs</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll Animation Script -->
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // Mobile menu toggle
+        // === Mobile menu ===
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+        let menuOpen = false;
+
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100');
+                bar1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+                bar2.style.opacity = '0';
+                bar3.style.transform = 'rotate(-45deg) translate(3px, -3px)';
+                bar3.style.width = '1.5rem';
+                menuBtn.style.color = 'white';
+            } else {
+                closeMenu();
+            }
         });
 
-        // Fade-in on scroll
+        function closeMenu() {
+            menuOpen = false;
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100');
+            bar1.style.transform = '';
+            bar2.style.opacity = '1';
+            bar3.style.transform = '';
+            bar3.style.width = '';
+            menuBtn.style.color = '';
+        }
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // === Nav style on scroll ===
+        const nav = document.getElementById('mainNav');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateNav() {
+            const scrolled = window.scrollY > 80;
+            if (scrolled) {
+                nav.classList.add('nav-glass', 'shadow-sm');
+                nav.style.padding = '';
+                navLinks.forEach(l => { l.style.color = '#4b5563'; });
+                menuBtn.style.color = menuOpen ? 'white' : '#4b5563';
+            } else {
+                nav.classList.remove('nav-glass', 'shadow-sm');
+                navLinks.forEach(l => { l.style.color = 'rgba(255,255,255,0.85)'; });
+                if (!menuOpen) menuBtn.style.color = 'white';
+            }
+        }
+        updateNav();
+
+        // === Scroll progress ===
+        const progressBar = document.getElementById('scrollProgress');
+
+        // === Parallax hero image ===
+        const heroImg = document.getElementById('heroImg');
+
+        window.addEventListener('scroll', () => {
+            updateNav();
+            // Progress bar
+            const h = document.documentElement;
+            const progress = window.scrollY / (h.scrollHeight - h.clientHeight);
+            progressBar.style.transform = `scaleX(${progress})`;
+            // Parallax
+            if (window.scrollY < window.innerHeight) {
+                heroImg.style.transform = `scale(1.1) translateY(${window.scrollY * 0.15}px)`;
+            }
+        }, { passive: true });
+
+        // === Intersection Observer for reveals ===
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .fancy-underline, .img-reveal').forEach(el => observer.observe(el));
+
+        // === Animated counter ===
+        const counterEls = document.querySelectorAll('[data-count]');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.count);
+                    let current = 0;
+                    const step = Math.ceil(target / 60);
+                    const interval = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(interval);
+                        }
+                        el.textContent = current.toLocaleString('de-DE');
+                    }, 20);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counterEls.forEach(el => counterObserver.observe(el));
     </script>
 </body>
 </html>
