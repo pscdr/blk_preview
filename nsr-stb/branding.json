@@ -1,0 +1,33 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Raleway", "role": "heading" },
+    { "family": "PT Sans", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#002DB7",
+    "accent": "#4465C8",
+    "background": "#F4F4F4",
+    "textPrimary": "#333333",
+    "link": "#4465C8"
+  },
+  "typography": {
+    "fontFamilies": { "primary": "PT Sans", "heading": "Raleway" },
+    "fontSizes": { "h1": "34px", "h2": "20px", "body": "15px" }
+  },
+  "spacing": { "baseUnit": 4, "borderRadius": "4px" },
+  "images": {
+    "logo": "https://nsr-stb.de/wp-content/uploads/nsr-Logo-website.jpg",
+    "favicon": "https://nsr-stb.de/wp-content/uploads/Profilbild_facebook.jpg",
+    "heroSlide1": "https://nsr-stb.com/wp-content/uploads/revslider/slider9/denken.jpg",
+    "heroSlide2": "https://nsr-stb.com/wp-content/uploads/revslider/slider9/light_bg26.jpg",
+    "heroSlide3": "https://nsr-stb.com/wp-content/uploads/revslider/slider9/hand.jpg",
+    "digitaleBadge": "https://i1.wp.com/nsr-stb.de/wp-content/uploads/digitale-kanzlei2023.png?resize=300%2C284&ssl=1",
+    "software": "https://i2.wp.com/nsr-stb.de/wp-content/uploads/software-steuerberater-nsr.jpg?resize=1101%2C346&ssl=1"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "businesses and individuals seeking tax advisory services"
+  }
+}
