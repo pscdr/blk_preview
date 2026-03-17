@@ -8,22 +8,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="icon" href="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/favicon/web-app-manifest-512x512.png">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        cyan: '#00B5E5',
-                        'cyan-dark': '#0097c1',
-                        cream: '#FFFAED',
-                        'cream-dark': '#FFF5DB',
-                        plum: '#4D454E',
-                        'plum-light': '#6B616C',
+                        ocean: { 50: '#edfaff', 100: '#d6f3ff', 200: '#b5ecff', 300: '#83e2ff', 400: '#48ceff', 500: '#00B5E5', 600: '#0093c8', 700: '#0075a2', 800: '#006286', 900: '#00516f', dark: '#003d54' },
+                        sand: { 50: '#FFFAED', 100: '#FFF5DB', 200: '#FFEAB8', 300: '#FFDA85' },
+                        ink: { DEFAULT: '#1a1a2e', light: '#4D454E', muted: '#7a7180', faint: '#b0a8b4' },
                     },
                     fontFamily: {
-                        sans: ['"Open Sans"', 'sans-serif'],
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        serif: ['"DM Serif Display"', 'serif'],
                     },
                 }
             }
@@ -31,179 +29,338 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Animated gradient background for hero */
+        .hero-gradient {
+            background: linear-gradient(135deg, #003d54 0%, #00516f 30%, #0075a2 60%, #00B5E5 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 12s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Wave separator */
+        .wave-top { position: relative; }
+        .wave-top::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1440,30 L1440,60 L0,60 Z' fill='%23FFFAED'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        /* Reveal animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-60px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(60px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.92); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.25s; }
+        .stagger-3 { transition-delay: 0.4s; }
+
+        /* Parallax image wrapper */
+        .parallax-img { transition: transform 0.1s linear; will-change: transform; }
+
+        /* Horizontal scroll for services on mobile */
+        .services-scroll { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+        .services-scroll > * { scroll-snap-align: center; }
+
+        /* Glowing CTA */
+        .glow-btn {
+            box-shadow: 0 0 0 0 rgba(0,181,229,0.4);
+            animation: glowPulse 2.5s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,181,229,0.4); }
+            50% { box-shadow: 0 0 24px 6px rgba(0,181,229,0.25); }
+        }
+
+        /* Counter animation */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* Floating nav style */
+        .nav-scrolled {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+        }
+
+        /* Card tilt hover */
+        .tilt-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+        .tilt-card:hover { transform: translateY(-8px) rotateX(2deg); box-shadow: 0 20px 60px -12px rgba(0,0,0,0.15); }
+
+        /* Person card */
+        .person-card .person-img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease; }
+        .person-card:hover .person-img { transform: scale(1.05); }
+        .person-card .person-overlay { opacity: 0; transition: opacity 0.4s ease; }
+        .person-card:hover .person-overlay { opacity: 1; }
+
+        /* Marquee */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-track { animation: marquee 30s linear infinite; }
+
+        /* Large quote mark */
+        .quote-mark { font-size: 12rem; line-height: 0.6; color: rgba(0,181,229,0.08); font-family: 'DM Serif Display', serif; }
     </style>
 </head>
-<body class="bg-white text-plum font-sans antialiased">
+<body class="bg-white text-ink font-sans antialiased overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#hero">
-                <img src="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/favicon/web-app-manifest-512x512.png" alt="Steuermann Westerwald" class="h-10 w-10">
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <img src="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/favicon/web-app-manifest-512x512.png" alt="Steuermann Westerwald" class="h-10 w-10 group-hover:scale-110 transition-transform">
+                <span id="nav-brand" class="text-white font-serif text-lg hidden sm:block transition-colors">Steuermann</span>
             </a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-plum-light">
-                <a href="#leistungen" class="hover:text-cyan transition-colors">Leistungen</a>
-                <a href="#digital" class="hover:text-cyan transition-colors">Digital</a>
-                <a href="#team" class="hover:text-cyan transition-colors">Team</a>
-                <a href="#kontakt" class="hover:text-cyan transition-colors">Kontakt</a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#leistungen" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-ocean-500 after:transition-all hover:after:w-full">Leistungen</a>
+                <a href="#digital" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-ocean-500 after:transition-all hover:after:w-full">Digital</a>
+                <a href="#team" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-ocean-500 after:transition-all hover:after:w-full">Team</a>
+                <a href="#kontakt" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-ocean-500 after:transition-all hover:after:w-full">Kontakt</a>
             </div>
-            <a href="#kontakt" class="hidden md:inline-block bg-cyan text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-cyan-dark transition-colors">
+            <a href="#kontakt" class="hidden md:inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-semibold px-6 py-2.5 rounded-full border border-white/25 hover:bg-white hover:text-ocean-800 transition-all duration-300">
                 Beratung vereinbaren
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <!-- Mobile menu button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menü öffnen">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-white" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
-            <div class="flex flex-col gap-4 text-sm font-medium text-plum-light">
-                <a href="#leistungen" class="hover:text-cyan transition-colors">Leistungen</a>
-                <a href="#digital" class="hover:text-cyan transition-colors">Digital</a>
-                <a href="#team" class="hover:text-cyan transition-colors">Team</a>
-                <a href="#kontakt" class="hover:text-cyan transition-colors">Kontakt</a>
-                <a href="#kontakt" class="bg-cyan text-white text-center font-semibold px-5 py-2.5 rounded-full hover:bg-cyan-dark transition-colors">
-                    Beratung vereinbaren
-                </a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl px-6 py-6 mx-4 rounded-2xl shadow-2xl">
+            <div class="flex flex-col gap-4 text-base font-medium text-ink">
+                <a href="#leistungen" class="hover:text-ocean-500 transition-colors py-2">Leistungen</a>
+                <a href="#digital" class="hover:text-ocean-500 transition-colors py-2">Digital</a>
+                <a href="#team" class="hover:text-ocean-500 transition-colors py-2">Team</a>
+                <a href="#kontakt" class="hover:text-ocean-500 transition-colors py-2">Kontakt</a>
+                <a href="#kontakt" class="bg-ocean-500 text-white text-center font-semibold px-6 py-3 rounded-full mt-2">Beratung vereinbaren</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="hero" class="relative min-h-screen flex items-center pt-20">
-        <div class="absolute inset-0 z-0">
-            <img src="https://www.steuermann-westerwald.de/customers/_processed_/d/3/csm_Fotolia_3962379_XXL_KI_73479997f6.webp" alt="Steuerberatung im Westerwald" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40"></div>
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="hero-gradient relative min-h-screen flex items-center overflow-hidden">
+        <!-- Animated background shapes -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-ocean-400/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-1/3 -left-1/4 w-[600px] h-[600px] bg-ocean-300/10 rounded-full blur-3xl"></div>
+            <!-- Subtle grid overlay -->
+            <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
         </div>
-        <div class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+        <!-- Hero image as accent -->
+        <div class="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block">
+            <img src="https://www.steuermann-westerwald.de/customers/_processed_/d/3/csm_Fotolia_3962379_XXL_KI_73479997f6.webp" alt="" class="w-full h-full object-cover parallax-img" style="mask-image: linear-gradient(to right, transparent 0%, black 30%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);">
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-ocean-dark/80"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-32 md:py-40 w-full">
             <div class="max-w-2xl">
-                <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-4">Schmid & Kretz Partnerschaftsgesellschaft MBB</p>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light text-plum leading-tight mb-6">
-                    Ihre Steuerberater <br>
-                    <span class="font-semibold">im Westerwald</span>
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 reveal stagger-1">
+                    <span class="w-2 h-2 bg-ocean-300 rounded-full animate-pulse"></span>
+                    <span class="text-ocean-200 text-sm font-medium">Schmid & Kretz Partnerschaftsgesellschaft MBB</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95] mb-8 reveal stagger-2">
+                    <span class="font-serif italic">Ihre</span><br>
+                    <span class="font-sans font-bold tracking-tight">Steuer&shy;berater</span><br>
+                    <span class="font-serif italic text-ocean-200">im Westerwald</span>
                 </h1>
-                <p class="text-lg md:text-xl text-plum-light leading-relaxed mb-8 max-w-xl">
-                    Wir sind nicht nur Steuererklärer, sondern Ihre zuverlässige <strong class="font-semibold text-plum">Steuercrew</strong> – digital, vorausschauend und persönlich für Sie da.
+                <p class="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-lg reveal stagger-3">
+                    Wir sind nicht nur Steuererkl&auml;rer, sondern Ihre zuverl&auml;ssige <strong class="text-white font-semibold">Steuercrew</strong> &ndash; digital, vorausschauend und pers&ouml;nlich f&uuml;r Sie da.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#leistungen" class="bg-cyan text-white font-semibold px-8 py-3.5 rounded-full hover:bg-cyan-dark transition-colors text-center">
-                        Unsere Leistungen
+                <div class="flex flex-col sm:flex-row gap-4 reveal stagger-3">
+                    <a href="#leistungen" class="glow-btn inline-flex items-center justify-center gap-2 bg-ocean-500 text-white font-semibold px-8 py-4 rounded-full hover:bg-ocean-400 transition-colors text-base">
+                        Unsere Leistungen entdecken
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="#kontakt" class="bg-cream text-plum font-semibold px-8 py-3.5 rounded-full hover:bg-cream-dark transition-colors text-center border border-cream-dark">
-                        Beratungsgespräch vereinbaren
+                    <a href="#kontakt" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full border border-white/20 hover:bg-white/20 transition-all text-base">
+                        Beratungsgespr&auml;ch vereinbaren
                     </a>
                 </div>
             </div>
         </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 reveal">
+            <span class="text-xs font-medium tracking-widest uppercase">Scrollen</span>
+            <div class="w-[1px] h-10 bg-gradient-to-b from-white/40 to-transparent animate-bounce"></div>
+        </div>
+
+        <!-- Wave bottom -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full"><path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="white"/></svg>
+        </div>
     </section>
 
-    <!-- Quote Divider -->
-    <div class="bg-cream py-12">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <blockquote class="text-xl md:text-2xl font-light text-plum italic leading-relaxed">
-                &bdquo;Wer seine Zahlen kennt, hält das Steuer fest in der Hand – auch bei rauer See.&ldquo;
-            </blockquote>
+    <!-- ==================== QUOTE MARQUEE ==================== -->
+    <div class="bg-white py-10 overflow-hidden border-b border-gray-100">
+        <div class="flex whitespace-nowrap marquee-track">
+            <span class="text-4xl md:text-5xl font-serif italic text-ink/[0.04] px-8">&bdquo;Wer seine Zahlen kennt, h&auml;lt das Steuer fest in der Hand &ndash; auch bei rauer See.&ldquo;</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ocean-500/[0.08] px-8">&bull;</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ink/[0.04] px-8">Digital &middot; Vorausschauend &middot; Pers&ouml;nlich</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ocean-500/[0.08] px-8">&bull;</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ink/[0.04] px-8">&bdquo;Wer seine Zahlen kennt, h&auml;lt das Steuer fest in der Hand &ndash; auch bei rauer See.&ldquo;</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ocean-500/[0.08] px-8">&bull;</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ink/[0.04] px-8">Digital &middot; Vorausschauend &middot; Pers&ouml;nlich</span>
+            <span class="text-4xl md:text-5xl font-serif italic text-ocean-500/[0.08] px-8">&bull;</span>
         </div>
     </div>
 
-    <!-- Team Intro -->
-    <section class="py-20 md:py-28">
-        <div class="max-w-6xl mx-auto px-6 fade-in">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Unsere Kanzlei</p>
-                    <h2 class="text-3xl md:text-4xl font-light text-plum mb-6 leading-tight">
-                        Die <span class="font-semibold">Steuercrew</span> von Schmid & Kretz
+    <!-- ==================== TEAM INTRO / KANZLEI ==================== -->
+    <section class="py-24 md:py-36 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-5 reveal-left">
+                    <span class="inline-block text-ocean-500 font-semibold text-xs tracking-[0.2em] uppercase mb-4 py-1 px-3 bg-ocean-50 rounded-full">Unsere Kanzlei</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+                        <span class="font-serif italic text-ink">Die</span><br>
+                        <span class="font-bold text-ink tracking-tight">Steuercrew</span><br>
+                        <span class="font-serif italic text-ocean-500">von Schmid & Kretz</span>
                     </h2>
-                    <p class="text-plum-light leading-relaxed text-lg">
-                        Unser erfahrenes Team garantiert Klarheit, Kontinuität und maßgeschneiderte Lösungen für Ihre steuerlichen Belange.
+                    <p class="text-ink-muted leading-relaxed text-lg mb-8">
+                        Unser erfahrenes Team garantiert Klarheit, Kontinuit&auml;t und ma&szlig;geschneiderte L&ouml;sungen f&uuml;r Ihre steuerlichen Belange.
                     </p>
+                    <div class="flex items-center gap-8 text-sm">
+                        <div>
+                            <span class="block text-3xl font-bold text-ink counter" data-target="2">2</span>
+                            <span class="text-ink-muted">Standorte</span>
+                        </div>
+                        <div class="w-px h-10 bg-gray-200"></div>
+                        <div>
+                            <span class="block text-3xl font-bold text-ink counter">100%</span>
+                            <span class="text-ink-muted">Digital</span>
+                        </div>
+                        <div class="w-px h-10 bg-gray-200"></div>
+                        <div>
+                            <span class="block text-3xl font-bold text-ink counter">DATEV</span>
+                            <span class="text-ink-muted">Zertifiziert</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/1/csm_Schmid-Kretz_Team_2024-02_komp_b1286a2d25.webp" alt="Das Team von Schmid & Kretz" class="w-full h-auto">
+                <div class="lg:col-span-7 reveal-right">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-br from-ocean-100 to-sand-100 rounded-3xl -z-10 rotate-1"></div>
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/1/csm_Schmid-Kretz_Team_2024-02_komp_b1286a2d25.webp" alt="Das Team von Schmid & Kretz" class="w-full h-auto rounded-2xl shadow-2xl">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leistungen -->
-    <section id="leistungen" class="bg-gray-50 py-20 md:py-28">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Was wir für Sie tun</p>
-                <h2 class="text-3xl md:text-4xl font-light text-plum">
-                    Unsere <span class="font-semibold">Leistungen</span>
+    <!-- ==================== LEISTUNGEN ==================== -->
+    <section id="leistungen" class="bg-sand-50 py-24 md:py-36 relative">
+        <div class="absolute top-0 left-0 right-0">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full"><path d="M0,0 L1440,0 L1440,30 C1200,60 720,0 0,60 Z" fill="white"/></svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="max-w-2xl mb-16 reveal">
+                <span class="inline-block text-ocean-500 font-semibold text-xs tracking-[0.2em] uppercase mb-4 py-1 px-3 bg-white rounded-full">Was wir f&uuml;r Sie tun</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+                    <span class="font-serif italic text-ink">Unsere</span><br>
+                    <span class="font-bold text-ink tracking-tight">Leistungen</span>
                 </h2>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
                 <!-- Klassiker -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow fade-in">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/8/d/csm_steuerrad_s-und-k_3a1ceb364b.webp" alt="Die Klassiker – Steuerrad" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                <div class="tilt-card bg-white rounded-3xl overflow-hidden reveal stagger-1 group">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/8/d/csm_steuerrad_s-und-k_3a1ceb364b.webp" alt="Die Klassiker" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ocean-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-ocean-700 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">01</span>
                     </div>
-                    <div class="p-6">
-                        <div class="w-10 h-1 bg-cyan rounded-full mb-4"></div>
-                        <h3 class="text-xl font-semibold text-plum mb-2">Die Klassiker</h3>
-                        <p class="text-plum-light leading-relaxed">Ihr solides Fundament im Steueralltag.</p>
+                    <div class="p-8">
+                        <div class="w-12 h-1 bg-gradient-to-r from-ocean-500 to-ocean-300 rounded-full mb-5"></div>
+                        <h3 class="text-2xl font-bold text-ink mb-3">Die Klassiker</h3>
+                        <p class="text-ink-muted leading-relaxed text-base">Ihr solides Fundament im Steueralltag.</p>
                     </div>
                 </div>
+
                 <!-- Tuning -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow fade-in">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/3/f/csm_Fotolia_20004243_XL_0f94afa723.webp" alt="Tuning-Werkzeuge – Motorboot" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                <div class="tilt-card bg-white rounded-3xl overflow-hidden reveal stagger-2 group md:translate-y-8">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/3/f/csm_Fotolia_20004243_XL_0f94afa723.webp" alt="Tuning-Werkzeuge" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ocean-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-ocean-700 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">02</span>
                     </div>
-                    <div class="p-6">
-                        <div class="w-10 h-1 bg-cyan rounded-full mb-4"></div>
-                        <h3 class="text-xl font-semibold text-plum mb-2">Tuning-Werkzeuge</h3>
-                        <p class="text-plum-light leading-relaxed">Gestaltungsideen für Ihre Unternehmerreise.</p>
+                    <div class="p-8">
+                        <div class="w-12 h-1 bg-gradient-to-r from-ocean-500 to-ocean-300 rounded-full mb-5"></div>
+                        <h3 class="text-2xl font-bold text-ink mb-3">Tuning-Werkzeuge</h3>
+                        <p class="text-ink-muted leading-relaxed text-base">Gestaltungsideen f&uuml;r Ihre Unternehmerreise.</p>
                     </div>
                 </div>
+
                 <!-- Kompass -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow fade-in">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/b/csm_E57E22BD-E5C8-4473-85E8-91A967E6E23B_266425dd54.webp" alt="Unternehmer-Kompass" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                <div class="tilt-card bg-white rounded-3xl overflow-hidden reveal stagger-3 group">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/b/csm_E57E22BD-E5C8-4473-85E8-91A967E6E23B_266425dd54.webp" alt="Unternehmer-Kompass" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ocean-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-ocean-700 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">03</span>
                     </div>
-                    <div class="p-6">
-                        <div class="w-10 h-1 bg-cyan rounded-full mb-4"></div>
-                        <h3 class="text-xl font-semibold text-plum mb-2">Unternehmer-Kompass</h3>
-                        <p class="text-plum-light leading-relaxed">Von der Gründung bis zur Nachfolgeplanung.</p>
+                    <div class="p-8">
+                        <div class="w-12 h-1 bg-gradient-to-r from-ocean-500 to-ocean-300 rounded-full mb-5"></div>
+                        <h3 class="text-2xl font-bold text-ink mb-3">Unternehmer-Kompass</h3>
+                        <p class="text-ink-muted leading-relaxed text-base">Von der Gr&uuml;ndung bis zur Nachfolgeplanung.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Digital -->
-    <section id="digital" class="py-20 md:py-28">
-        <div class="max-w-6xl mx-auto px-6 fade-in">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://www.steuermann-westerwald.de/customers/_processed_/8/5/csm_1E15A9FE-D50E-4985-8B08-8149C3C69274_ff185bcf9c.webp" alt="Digitale Zusammenarbeit" class="w-full h-auto">
+    <!-- ==================== DIGITAL / ZUSAMMENARBEIT ==================== -->
+    <section id="digital" class="py-24 md:py-36 bg-white relative overflow-hidden">
+        <!-- Large decorative quote mark -->
+        <div class="absolute top-12 right-12 quote-mark select-none pointer-events-none hidden lg:block">&bdquo;</div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div class="reveal-left">
+                    <div class="relative">
+                        <!-- Decorative frame -->
+                        <div class="absolute -inset-3 border-2 border-ocean-200 rounded-3xl -rotate-2"></div>
+                        <div class="absolute -inset-3 border-2 border-sand-200 rounded-3xl rotate-1"></div>
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/8/5/csm_1E15A9FE-D50E-4985-8B08-8149C3C69274_ff185bcf9c.webp" alt="Digitale Zusammenarbeit" class="w-full h-auto rounded-2xl relative z-10 shadow-xl">
+                    </div>
                 </div>
-                <div class="order-1 md:order-2">
-                    <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Unsere Arbeitsweise</p>
-                    <h2 class="text-3xl md:text-4xl font-light text-plum mb-6 leading-tight">
-                        Schnell, effizient, flexibel, <span class="font-semibold">rechtssicher – digital</span>
+                <div class="reveal-right">
+                    <span class="inline-block text-ocean-500 font-semibold text-xs tracking-[0.2em] uppercase mb-4 py-1 px-3 bg-ocean-50 rounded-full">Unsere Arbeitsweise</span>
+                    <h2 class="text-4xl md:text-5xl leading-[1.05] mb-8">
+                        <span class="font-bold text-ink tracking-tight">Schnell, effizient,</span><br>
+                        <span class="font-serif italic text-ocean-500">rechtssicher &ndash; digital</span>
                     </h2>
-                    <p class="text-plum-light leading-relaxed text-lg mb-6">
-                        Die Digitalisierung prägt die Zusammenarbeit mit Ihnen als Mandant. Sie reduziert administrative Tätigkeiten in Ihrem und unserem Unternehmen – und stellt die effizienteste Möglichkeit beim Datenaustausch und bei der Erledigung der eigentlichen Aufgaben und Tätigkeiten dar.
+                    <p class="text-ink-muted leading-relaxed text-lg mb-6">
+                        Die Digitalisierung pr&auml;gt die Zusammenarbeit mit Ihnen als Mandant. Sie reduziert administrative T&auml;tigkeiten in Ihrem und unserem Unternehmen &ndash; und stellt die effizienteste M&ouml;glichkeit beim Datenaustausch und bei der Erledigung der eigentlichen Aufgaben und T&auml;tigkeiten dar.
                     </p>
-                    <p class="text-plum font-semibold leading-relaxed mb-8">
-                        Die umfassende digitale Zusammenarbeit ist deshalb Bedingung für eine Geschäftsbeziehung mit unserer Kanzlei.
+                    <p class="text-ink font-semibold leading-relaxed text-lg mb-10 pl-5 border-l-4 border-ocean-500">
+                        Die umfassende digitale Zusammenarbeit ist deshalb Bedingung f&uuml;r eine Gesch&auml;ftsbeziehung mit unserer Kanzlei.
                     </p>
-                    <div class="bg-cream rounded-xl p-6">
-                        <h3 class="font-semibold text-plum mb-3">Schnelle Navigationshilfe</h3>
-                        <p class="text-plum-light text-sm mb-4">TÜV-zertifizierte Fernbetreuung via DATEV – direkt am Bildschirm, sicher und ohne Umwege.</p>
+
+                    <!-- Remote support card -->
+                    <div class="bg-gradient-to-br from-ocean-dark to-ocean-900 rounded-2xl p-8 text-white">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-ocean-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Schnelle Navigationshilfe</h3>
+                                <p class="text-white/60 text-sm">T&Uuml;V-zertifizierte Fernbetreuung via DATEV</p>
+                            </div>
+                        </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://www.datev.de/web/de/service-und-support/software-bereitstellung/download-bereich/it-loesungen-und-security/mandanten-fernbetreuung/mandanten-fernbetreuung-kunden-modul-fuer-windows/" class="text-cyan text-sm font-semibold hover:underline" target="_blank" rel="noopener">
-                                Download für Windows &rarr;
+                            <a href="https://www.datev.de/web/de/service-und-support/software-bereitstellung/download-bereich/it-loesungen-und-security/mandanten-fernbetreuung/mandanten-fernbetreuung-kunden-modul-fuer-windows/" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors" target="_blank" rel="noopener">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Windows
                             </a>
-                            <a href="https://www.datev.de/web/de/service-und-support/software-bereitstellung/download-bereich/it-loesungen-und-security/mandanten-fernbetreuung/mandanten-fernbetreuung-kunden-modul-fuer-macos/" class="text-cyan text-sm font-semibold hover:underline" target="_blank" rel="noopener">
-                                Download für MacOS &rarr;
+                            <a href="https://www.datev.de/web/de/service-und-support/software-bereitstellung/download-bereich/it-loesungen-und-security/mandanten-fernbetreuung/mandanten-fernbetreuung-kunden-modul-fuer-macos/" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors" target="_blank" rel="noopener">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                MacOS
                             </a>
                         </div>
                     </div>
@@ -212,144 +369,226 @@
         </div>
     </section>
 
-    <!-- Team -->
-    <section id="team" class="bg-gray-50 py-20 md:py-28">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-6 fade-in">
-                <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Persönlich für Sie da</p>
-                <h2 class="text-3xl md:text-4xl font-light text-plum">
-                    Ihre <span class="font-semibold">Ansprechpersonen</span>
+    <!-- ==================== TEAM ==================== -->
+    <section id="team" class="py-24 md:py-36 bg-sand-50 relative">
+        <div class="absolute top-0 left-0 right-0">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full"><path d="M0,0 L1440,0 L1440,30 C1080,60 360,0 0,60 Z" fill="white"/></svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+                <span class="inline-block text-ocean-500 font-semibold text-xs tracking-[0.2em] uppercase mb-4 py-1 px-3 bg-white rounded-full">Pers&ouml;nlich f&uuml;r Sie da</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-6">
+                    <span class="font-serif italic text-ink">Ihre</span> <span class="font-bold text-ink tracking-tight">Ansprechpersonen</span>
                 </h2>
+                <p class="text-ink-muted text-lg leading-relaxed">
+                    Mit Erfahrung, Leidenschaft und Pr&auml;zision setzen wir uns t&auml;glich f&uuml;r Ihre steuerlichen Belange ein &ndash; zuverl&auml;ssig, vorausschauend und auf Augenh&ouml;he.
+                </p>
             </div>
-            <p class="text-center text-plum-light max-w-2xl mx-auto mb-16 fade-in leading-relaxed">
-                Wir stehen stellvertretend für unser gesamtes Kanzleiteam. Mit Erfahrung, Leidenschaft und Präzision setzen wir uns täglich für Ihre steuerlichen Belange ein – zuverlässig, vorausschauend und auf Augenhöhe.
-            </p>
-            <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
                 <!-- Burkhard Schmid -->
-                <div class="text-center fade-in">
-                    <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 shadow-md">
-                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/d/1/csm_Burkhard_Schmid_Steuerberater_0a4dd43718.webp" alt="Burkhard Schmid" class="w-full h-full object-cover">
+                <div class="person-card group reveal stagger-1">
+                    <div class="relative rounded-3xl overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/d/1/csm_Burkhard_Schmid_Steuerberater_0a4dd43718.webp" alt="Burkhard Schmid" class="person-img w-full h-full object-cover">
+                        <div class="person-overlay absolute inset-0 bg-gradient-to-t from-ocean-dark/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white/80 text-sm font-medium">Kanzleif&uuml;hrung</span>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-semibold text-plum">Burkhard Schmid</h3>
-                    <p class="text-cyan font-medium text-sm">Kanzleiführung</p>
+                    <h3 class="text-xl font-bold text-ink">Burkhard Schmid</h3>
+                    <p class="text-ocean-500 font-medium text-sm mt-1">Steuerberater &middot; Kanzleif&uuml;hrung</p>
                 </div>
+
                 <!-- Peter Kretz -->
-                <div class="text-center fade-in">
-                    <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 shadow-md">
-                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/c/csm_Peter_Kretz_Steuerberater_2dc90976e3.webp" alt="Peter Kretz" class="w-full h-full object-cover">
+                <div class="person-card group reveal stagger-2 md:translate-y-8">
+                    <div class="relative rounded-3xl overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/c/csm_Peter_Kretz_Steuerberater_2dc90976e3.webp" alt="Peter Kretz" class="person-img w-full h-full object-cover">
+                        <div class="person-overlay absolute inset-0 bg-gradient-to-t from-ocean-dark/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white/80 text-sm font-medium">Kanzleif&uuml;hrung</span>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-semibold text-plum">Peter Kretz</h3>
-                    <p class="text-cyan font-medium text-sm">Kanzleiführung</p>
+                    <h3 class="text-xl font-bold text-ink">Peter Kretz</h3>
+                    <p class="text-ocean-500 font-medium text-sm mt-1">Steuerberater &middot; Kanzleif&uuml;hrung</p>
                 </div>
+
                 <!-- Diana Kaiser -->
-                <div class="text-center fade-in">
-                    <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 shadow-md">
-                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/f/f/csm_Diana_Kaiser_ADGL_1d7b11313c.webp" alt="Diana Kaiser" class="w-full h-full object-cover">
+                <div class="person-card group reveal stagger-3">
+                    <div class="relative rounded-3xl overflow-hidden mb-6 aspect-[3/4]">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/f/f/csm_Diana_Kaiser_ADGL_1d7b11313c.webp" alt="Diana Kaiser" class="person-img w-full h-full object-cover">
+                        <div class="person-overlay absolute inset-0 bg-gradient-to-t from-ocean-dark/80 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white/80 text-sm font-medium">Assistenz der Kanzleif&uuml;hrung</span>
+                        </div>
                     </div>
-                    <h3 class="text-lg font-semibold text-plum">Diana Kaiser</h3>
-                    <p class="text-cyan font-medium text-sm">Assistentin der Kanzleiführung</p>
+                    <h3 class="text-xl font-bold text-ink">Diana Kaiser</h3>
+                    <p class="text-ocean-500 font-medium text-sm mt-1">Assistentin der Kanzleif&uuml;hrung</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Karriere -->
-    <section class="py-20 md:py-28">
-        <div class="max-w-6xl mx-auto px-6 fade-in">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Werden Sie Teil der Crew</p>
-                    <h2 class="text-3xl md:text-4xl font-light text-plum mb-6 leading-tight">
-                        Ihre <span class="font-semibold">Karriere</span> bei Schmid & Kretz
+    <!-- ==================== KARRIERE + CTA ==================== -->
+    <section class="relative py-24 md:py-36 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://www.steuermann-westerwald.de/customers/_processed_/f/8/csm_Schmid-Kretz_Eingangsbereich_2018-11_5023f45719.webp" alt="" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-ocean-dark/90 via-ocean-dark/80 to-ocean-dark/60"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-left">
+                    <span class="inline-block text-ocean-300 font-semibold text-xs tracking-[0.2em] uppercase mb-4 py-1 px-3 bg-white/10 rounded-full">Werden Sie Teil der Crew</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-6">
+                        <span class="font-serif italic text-ocean-200">Ihre Karriere</span><br>
+                        <span class="font-bold tracking-tight">bei Schmid & Kretz</span>
                     </h2>
-                    <p class="text-plum-light leading-relaxed text-lg mb-8">
-                        Wir freuen uns auf Sie.
+                    <p class="text-white/70 text-lg leading-relaxed mb-10">
+                        Wir freuen uns auf Sie. Gestalten Sie mit uns die Zukunft der digitalen Steuerberatung im Westerwald.
                     </p>
-                    <a href="https://www.steuermann-westerwald.de/karriere/" class="inline-block bg-cyan text-white font-semibold px-8 py-3.5 rounded-full hover:bg-cyan-dark transition-colors" target="_blank" rel="noopener">
+                    <a href="https://www.steuermann-westerwald.de/karriere/" class="inline-flex items-center gap-3 bg-white text-ocean-dark font-bold px-8 py-4 rounded-full hover:bg-ocean-100 transition-colors text-base group" target="_blank" rel="noopener">
                         Zu den Stellenangeboten
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://www.steuermann-westerwald.de/customers/_processed_/f/8/csm_Schmid-Kretz_Eingangsbereich_2018-11_5023f45719.webp" alt="Eingangsbereich Schmid & Kretz" class="w-full h-auto">
+                <div class="reveal-right hidden lg:block">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                            <div class="text-4xl font-bold text-white mb-2">100%</div>
+                            <div class="text-white/60 text-sm">Digital & modern</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 translate-y-6">
+                            <div class="text-4xl font-bold text-white mb-2">2</div>
+                            <div class="text-white/60 text-sm">Standorte</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                            <div class="text-4xl font-bold text-ocean-300 mb-2">DATEV</div>
+                            <div class="text-white/60 text-sm">Zertifizierte Kanzlei</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 translate-y-6">
+                            <div class="text-4xl font-bold text-white mb-2">T&Uuml;V</div>
+                            <div class="text-white/60 text-sm">Gepr&uuml;fte Fernbetreuung</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Elements -->
-    <div class="bg-cream py-12">
-        <div class="max-w-4xl mx-auto px-6">
-            <img src="https://www.steuermann-westerwald.de/customers/_processed_/9/d/csm_trust-elements-footer_transparent_wide_b776db2864.webp" alt="Zertifizierungen und Mitgliedschaften" class="w-full h-auto">
+    <!-- ==================== TRUST ELEMENTS ==================== -->
+    <div class="bg-sand-50 py-16">
+        <div class="max-w-4xl mx-auto px-6 reveal-scale">
+            <img src="https://www.steuermann-westerwald.de/customers/_processed_/9/d/csm_trust-elements-footer_transparent_wide_b776db2864.webp" alt="Zertifizierungen und Mitgliedschaften" class="w-full h-auto opacity-80">
         </div>
     </div>
 
-    <!-- Kontakt / Footer -->
-    <footer id="kontakt" class="bg-plum text-white py-20">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12 mb-16">
-                <div>
-                    <img src="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/Logo/Steuerberater_schmidundkretz_weisse-schrift.svg" alt="Schmid & Kretz Logo" class="h-12 mb-6">
-                    <p class="text-white/70 leading-relaxed text-sm">
-                        Steuerberater Schmid & Kretz<br>
-                        Partnerschaftsgesellschaft MBB
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-sm tracking-wide uppercase mb-4 text-white/50">Kontakt</h3>
-                    <div class="space-y-3">
-                        <a href="tel:+49262697040" class="block text-white/80 hover:text-cyan transition-colors">
-                            Telefon: 02626 / 9704-0
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="kontakt" class="bg-ink text-white relative overflow-hidden">
+        <!-- Decorative top wave -->
+        <div class="absolute top-0 left-0 right-0">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full"><path d="M0,0 L1440,0 L1440,30 C1200,60 720,10 0,50 Z" fill="#FFFAED"/></svg>
+        </div>
+
+        <div class="pt-32 pb-12">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <!-- CTA Banner -->
+                <div class="bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-3xl p-10 md:p-16 mb-20 text-center reveal-scale relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 50%, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 relative z-10">Bereit f&uuml;r klare Sicht?</h2>
+                    <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto relative z-10">Vereinbaren Sie jetzt Ihr pers&ouml;nliches Beratungsgespr&auml;ch mit unserer Crew.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                        <a href="tel:+49262697040" class="inline-flex items-center justify-center gap-3 bg-white text-ocean-700 font-bold px-8 py-4 rounded-full hover:bg-ocean-50 transition-colors text-base">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            02626 / 9704-0
                         </a>
-                        <a href="mailto:info@steuermann-westerwald.de" class="block text-white/80 hover:text-cyan transition-colors">
-                            info@steuermann-westerwald.de
+                        <a href="mailto:info@steuermann-westerwald.de" class="inline-flex items-center justify-center gap-3 bg-white/15 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-full border border-white/25 hover:bg-white/25 transition-colors text-base">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            E-Mail schreiben
                         </a>
                     </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-sm tracking-wide uppercase mb-4 text-white/50">Standorte</h3>
-                    <div class="space-y-4 text-white/80 text-sm leading-relaxed">
-                        <div>
-                            <p class="font-semibold text-white/90 mb-1">Hauptsitz</p>
-                            <p>Amtsstraße 9<br>56242 Selters (Westerwald)</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-white/90 mb-1">Beratungsstelle</p>
-                            <p>Gehlerter Weg 3<br>57627 Hachenburg</p>
-                        </div>
+
+                <!-- Footer grid -->
+                <div class="grid md:grid-cols-4 gap-12 mb-16">
+                    <div class="md:col-span-2">
+                        <img src="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/Logo/Steuerberater_schmidundkretz_weisse-schrift.svg" alt="Schmid & Kretz Logo" class="h-10 mb-6">
+                        <p class="text-white/50 leading-relaxed text-sm max-w-sm">
+                            Zuverl&auml;ssige Steuerberatung im Westerwald: digital, pers&ouml;nlich und vorausschauend. Ihre Steuercrew f&uuml;r alle Lebenslagen.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xs tracking-[0.15em] uppercase mb-5 text-white/30">Hauptsitz</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Amtsstra&szlig;e 9<br>56242 Selters<br>(Westerwald)
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xs tracking-[0.15em] uppercase mb-5 text-white/30">Beratungsstelle</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Gehlerter Weg 3<br>57627 Hachenburg
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
-                <p>&copy; 2026 Steuerberater Schmid & Kretz &middot; Partnerschaftsgesellschaft MBB</p>
-                <div class="flex gap-6">
-                    <a href="https://www.steuermann-westerwald.de/impressum/" class="hover:text-white/70 transition-colors" target="_blank" rel="noopener">Impressum</a>
-                    <a href="https://www.steuermann-westerwald.de/datenschutz/" class="hover:text-white/70 transition-colors" target="_blank" rel="noopener">Datenschutz</a>
+
+                <!-- Bottom bar -->
+                <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+                    <p>&copy; 2026 Steuerberater Schmid & Kretz &middot; Partnerschaftsgesellschaft MBB</p>
+                    <div class="flex gap-8">
+                        <a href="https://www.steuermann-westerwald.de/impressum/" class="hover:text-white/60 transition-colors" target="_blank" rel="noopener">Impressum</a>
+                        <a href="https://www.steuermann-westerwald.de/datenschutz/" class="hover:text-white/60 transition-colors" target="_blank" rel="noopener">Datenschutz</a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll Animation -->
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        // Nav scroll behavior
+        const nav = document.getElementById('main-nav');
+        const brand = document.getElementById('nav-brand');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                nav.classList.add('nav-scrolled');
+                brand.classList.remove('text-white');
+                brand.classList.add('text-ink');
+                navLinks.forEach(l => { l.classList.remove('text-white/80'); l.classList.add('text-ink-muted'); });
+            } else {
+                nav.classList.remove('nav-scrolled');
+                brand.classList.add('text-white');
+                brand.classList.remove('text-ink');
+                navLinks.forEach(l => { l.classList.add('text-white/80'); l.classList.remove('text-ink-muted'); });
+            }
+        });
+
+        // Mobile menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
         });
-        // Fade-in on scroll
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+
+        // Reveal on scroll
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Subtle parallax on hero image
+        const heroImg = document.querySelector('.parallax-img');
+        if (heroImg) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                if (scrolled < window.innerHeight) {
+                    heroImg.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
+                }
+            }, { passive: true });
+        }
     </script>
 
 </body>
