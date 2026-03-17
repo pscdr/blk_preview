@@ -132,6 +132,7 @@
                 </a>
                 <div class="hidden lg:flex items-center gap-10">
                     <a href="#leistungen" class="text-sm font-medium text-text-mid link-underline hover:text-text-dark transition-colors">Leistungen</a>
+                    <a href="#team" class="text-sm font-medium text-text-mid link-underline hover:text-text-dark transition-colors">Team</a>
                     <a href="#kanzlei" class="text-sm font-medium text-text-mid link-underline hover:text-text-dark transition-colors">Kanzlei</a>
                     <a href="#digital" class="text-sm font-medium text-text-mid link-underline hover:text-text-dark transition-colors">Digital</a>
                     <a href="#kontakt" class="text-sm font-semibold text-white bg-dark px-6 py-2.5 rounded-full hover:bg-primary-dark transition-all duration-300">Termin vereinbaren</a>
@@ -147,6 +148,7 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white/95 nav-blur border-t border-sage-mid/50">
             <div class="max-w-7xl mx-auto px-6 py-8 space-y-6">
                 <a href="#leistungen" class="block text-2xl font-display text-text-dark">Leistungen</a>
+                <a href="#team" class="block text-2xl font-display text-text-dark">Team</a>
                 <a href="#kanzlei" class="block text-2xl font-display text-text-dark">Kanzlei</a>
                 <a href="#digital" class="block text-2xl font-display text-text-dark">Digital</a>
                 <a href="#kontakt" class="block text-lg font-semibold text-white bg-dark px-6 py-3 rounded-full text-center mt-4">Termin vereinbaren</a>
@@ -246,8 +248,35 @@
         </div>
     </section>
 
+    <!-- Stats Band -->
+    <section class="py-16 bg-white border-y border-sage-mid">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                <div class="text-center reveal">
+                    <span class="font-display text-5xl md:text-6xl text-primary-dark font-bold counter" data-target="25">0</span>
+                    <span class="font-display text-5xl md:text-6xl text-primary-dark/30 font-bold">+</span>
+                    <p class="text-text-mid text-sm mt-2 font-medium">Teammitglieder</p>
+                </div>
+                <div class="text-center reveal reveal-delay-1">
+                    <span class="font-display text-5xl md:text-6xl text-primary-dark font-bold counter" data-target="5">0</span>
+                    <p class="text-text-mid text-sm mt-2 font-medium">Steuerberater</p>
+                </div>
+                <div class="text-center reveal reveal-delay-2">
+                    <span class="font-display text-5xl md:text-6xl text-primary-dark font-bold counter" data-target="3">0</span>
+                    <p class="text-text-mid text-sm mt-2 font-medium">Bilanzbuchhalter</p>
+                </div>
+                <div class="text-center reveal reveal-delay-3">
+                    <div class="flex justify-center">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/DATEV-Label_Digitale_Kanzlei-2025-768x728.png" alt="DATEV Digitale Kanzlei" class="h-16 md:h-20">
+                    </div>
+                    <p class="text-text-mid text-sm mt-2 font-medium">Zertifiziert 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Leistungen: Bento Grid -->
-    <section id="leistungen" class="pb-24 md:pb-32">
+    <section id="leistungen" class="py-24 md:py-32">
         <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="flex items-end justify-between mb-16">
                 <div class="reveal">
@@ -469,6 +498,156 @@
         </div>
     </section>
 
+    <!-- Team Section -->
+    <section id="team" class="py-24 md:py-32 bg-sage">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-16">
+                <span class="text-primary-dark font-semibold text-sm tracking-[0.2em] uppercase block mb-3 reveal">Unser Team</span>
+                <h2 class="font-display text-4xl md:text-5xl text-text-dark reveal reveal-delay-1">Die Menschen hinter <em>Ihrem Erfolg</em></h2>
+                <p class="text-text-mid text-lg mt-4 max-w-2xl mx-auto reveal reveal-delay-2">Ein junges, engagiertes Team aus über 25 Experten — bei dem Herzlichkeit und Kompetenz Hand in Hand gehen.</p>
+            </div>
+
+            <!-- Steuerberater Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Alexander Nies -->
+                <div class="group bg-white rounded-2xl overflow-hidden bento-card reveal">
+                    <div class="img-zoom aspect-[4/5]">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Alexander-23-e1752504108129.jpeg" alt="Alexander Nies" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl text-text-dark">Alexander Nies</h3>
+                        <p class="text-primary-dark font-medium text-sm">Steuerberater</p>
+                        <p class="text-text-soft text-sm">Diplom-Kaufmann</p>
+                    </div>
+                </div>
+                <!-- Jannik Herz -->
+                <div class="group bg-white rounded-2xl overflow-hidden bento-card reveal reveal-delay-1">
+                    <div class="img-zoom aspect-[4/5]">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Jannik-17-e1752504124293.jpeg" alt="Jannik Herz" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl text-text-dark">Jannik Herz</h3>
+                        <p class="text-primary-dark font-medium text-sm">Steuerberater</p>
+                        <p class="text-text-soft text-sm">Master of Arts (Taxation) · Fachberater Unternehmensnachfolge</p>
+                    </div>
+                </div>
+                <!-- Catja Knoll -->
+                <div class="group bg-white rounded-2xl overflow-hidden bento-card reveal reveal-delay-2">
+                    <div class="img-zoom aspect-[4/5]">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Catja-24.jpeg" alt="Catja Knoll" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl text-text-dark">Catja Knoll</h3>
+                        <p class="text-primary-dark font-medium text-sm">Steuerberaterin</p>
+                        <p class="text-text-soft text-sm">Betriebswirtin (VWA)</p>
+                    </div>
+                </div>
+                <!-- Tamara Krause -->
+                <div class="group bg-white rounded-2xl overflow-hidden bento-card reveal">
+                    <div class="img-zoom aspect-[4/5]">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Tamara-40.jpeg" alt="Tamara Krause" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl text-text-dark">Tamara Krause</h3>
+                        <p class="text-primary-dark font-medium text-sm">Steuerberaterin</p>
+                        <p class="text-text-soft text-sm">Master of Science (B.A.)</p>
+                    </div>
+                </div>
+                <!-- Clara Schmidt -->
+                <div class="group bg-white rounded-2xl overflow-hidden bento-card reveal reveal-delay-1">
+                    <div class="img-zoom aspect-[4/5]">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Clara-8.jpeg" alt="Clara Schmidt" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl text-text-dark">Clara Schmidt</h3>
+                        <p class="text-primary-dark font-medium text-sm">Steuerberaterin</p>
+                        <p class="text-text-soft text-sm">Master of Science</p>
+                    </div>
+                </div>
+                <!-- Fabian Göbel -->
+                <div class="group bg-white rounded-2xl overflow-hidden bento-card reveal reveal-delay-2">
+                    <div class="img-zoom aspect-[4/5]">
+                        <img src="https://nies-herz.de/wp-content/uploads/2025/07/Gross-Fabian-4.jpeg" alt="Fabian Göbel" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl text-text-dark">Fabian Göbel</h3>
+                        <p class="text-primary-dark font-medium text-sm">Kanzleimanager</p>
+                        <p class="text-text-soft text-sm">Staatlich geprüfter Betriebswirt</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rest of team hint -->
+            <div class="mt-10 text-center reveal">
+                <p class="text-text-soft text-sm">Unterstützt von einem engagierten Team aus Bilanzbuchhaltern, Steuerfachangestellten und kaufmännischen Mitarbeitern — und Bürohund Thor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steuerberaterwechsel: 6 Steps -->
+    <section id="wechsel" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-5 gap-16 items-start">
+                <div class="lg:col-span-2 lg:sticky lg:top-28">
+                    <span class="text-primary-dark font-semibold text-sm tracking-[0.2em] uppercase block mb-3 reveal">Steuerberaterwechsel</span>
+                    <h2 class="font-display text-4xl md:text-5xl text-text-dark leading-tight reveal reveal-delay-1">Wir machen den Wechsel <em class="text-primary-dark">leicht</em></h2>
+                    <p class="text-text-mid text-lg mt-4 reveal reveal-delay-2">
+                        Der Steuerberater ist für das Unternehmen, was der Hausarzt für die Privatperson ist. In nur 6 Schritten übernehmen wir — reibungslos und diskret.
+                    </p>
+                    <a href="https://nies-herz.de/steuerberaterwechsel" class="inline-flex items-center gap-3 mt-8 group reveal reveal-delay-3">
+                        <span class="bg-primary text-dark font-semibold px-6 py-3 rounded-full group-hover:bg-primary-dark group-hover:text-white transition-all duration-300">Jetzt wechseln</span>
+                    </a>
+                </div>
+                <div class="lg:col-span-3">
+                    <div class="space-y-0">
+                        <div class="border-t border-sage-mid py-8 reveal flex gap-6">
+                            <span class="text-primary font-display text-2xl font-bold shrink-0 w-10">01</span>
+                            <div>
+                                <h3 class="font-semibold text-text-dark text-lg">Kennenlerngespräch</h3>
+                                <p class="text-text-mid text-sm mt-1">Wir schauen uns Ihren IST-Zustand an und besprechen die künftige Zusammenarbeit.</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-sage-mid py-8 reveal reveal-delay-1 flex gap-6">
+                            <span class="text-primary font-display text-2xl font-bold shrink-0 w-10">02</span>
+                            <div>
+                                <h3 class="font-semibold text-text-dark text-lg">Kündigung</h3>
+                                <p class="text-text-mid text-sm mt-1">Sie kündigen beim bisherigen Berater — oder wir übernehmen das für Sie.</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-sage-mid py-8 reveal reveal-delay-2 flex gap-6">
+                            <span class="text-primary font-display text-2xl font-bold shrink-0 w-10">03</span>
+                            <div>
+                                <h3 class="font-semibold text-text-dark text-lg">Vollmacht & Vertrag</h3>
+                                <p class="text-text-mid text-sm mt-1">Vollmacht für das Finanzamt und Unterzeichnung des Steuerberatervertrags.</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-sage-mid py-8 reveal flex gap-6">
+                            <span class="text-primary font-display text-2xl font-bold shrink-0 w-10">04</span>
+                            <div>
+                                <h3 class="font-semibold text-text-dark text-lg">Datenübertrag</h3>
+                                <p class="text-text-mid text-sm mt-1">Reibungsloser und vollständiger Übertrag aller Daten vom Vorberater.</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-sage-mid py-8 reveal reveal-delay-1 flex gap-6">
+                            <span class="text-primary font-display text-2xl font-bold shrink-0 w-10">05</span>
+                            <div>
+                                <h3 class="font-semibold text-text-dark text-lg">Unterlagen</h3>
+                                <p class="text-text-mid text-sm mt-1">Verträge, Jahresabschlüsse und Steuerbescheide der Vorjahre zusammenstellen.</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-b border-sage-mid py-8 reveal reveal-delay-2 flex gap-6">
+                            <span class="text-primary font-display text-2xl font-bold shrink-0 w-10">06</span>
+                            <div>
+                                <h3 class="font-semibold text-text-dark text-lg">Start der Zusammenarbeit</h3>
+                                <p class="text-text-mid text-sm mt-1">Einrichtung der digitalen Lohn- und Finanzbuchhaltung mit DATEV. Auf Wunsch inkl. Schulung.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Digital Section -->
     <section id="digital" class="py-24 md:py-32 bg-cream relative overflow-hidden">
         <!-- Decorative circles -->
@@ -595,6 +774,25 @@
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => menu.classList.add('hidden'));
         });
+
+        // Counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    let current = 0;
+                    const step = Math.max(1, Math.floor(target / 30));
+                    const interval = setInterval(() => {
+                        current += step;
+                        if (current >= target) { current = target; clearInterval(interval); }
+                        el.textContent = current;
+                    }, 40);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
         // Navbar background on scroll
         const nav = document.querySelector('nav');
