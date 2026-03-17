@@ -1,0 +1,50 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    { "family": "Open Sans", "role": "body" },
+    { "family": "Roboto", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#4A525F",
+    "accent": "#BFD72F",
+    "background": "#222222",
+    "textPrimary": "#000000",
+    "link": "#BFD72F"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Roboto"
+    },
+    "fontStacks": {
+      "heading": ["Roboto", "Helvetica", "Arial", "sans-serif"],
+      "body": ["Open Sans", "Helvetica", "Arial", "sans-serif"]
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#BFD72F",
+      "textColor": "#FFFFFF",
+      "borderRadius": "6px"
+    },
+    "buttonSecondary": {
+      "background": "#F9F9F9",
+      "textColor": "#333333",
+      "borderRadius": "6px"
+    }
+  },
+  "images": {
+    "logo": "https://rolandmetz.de/wp-content/uploads/2016/10/logo_rolandmetz.png",
+    "favicon": "https://rolandmetz.de/wp-content/uploads/2016/10/fav_rolandmetz.png",
+    "logoAlt": "Roland Metz"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "homeowners and businesses seeking painting services"
+  }
+}
