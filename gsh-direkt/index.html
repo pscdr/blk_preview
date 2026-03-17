@@ -31,6 +31,91 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Nunito Sans', Arial, Helvetica, sans-serif; }
+
+        /* Hero animated grid */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(38,99,190,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(38,99,190,0.08) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridShift 20s linear infinite;
+        }
+        @keyframes gridShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        /* Animated counter */
+        .hero-number {
+            font-size: clamp(8rem, 22vw, 18rem);
+            font-weight: 900;
+            line-height: 0.85;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(38,99,190,0.18);
+            position: absolute;
+            right: -2%;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Floating geometric accents */
+        .geo-accent {
+            position: absolute;
+            border: 2px solid rgba(38,99,190,0.12);
+            animation: float 8s ease-in-out infinite;
+        }
+        .geo-accent:nth-child(2) { animation-delay: -2s; animation-duration: 10s; }
+        .geo-accent:nth-child(3) { animation-delay: -4s; animation-duration: 12s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        /* Reveal animation */
+        .hero-reveal { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .hero-reveal-delay-1 { animation-delay: 0.15s; }
+        .hero-reveal-delay-2 { animation-delay: 0.3s; }
+        .hero-reveal-delay-3 { animation-delay: 0.45s; }
+        .hero-reveal-delay-4 { animation-delay: 0.6s; }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Green pulse line */
+        .pulse-line {
+            width: 80px;
+            height: 3px;
+            background: #338800;
+            position: relative;
+            overflow: hidden;
+        }
+        .pulse-line::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: pulseSweep 3s ease-in-out infinite;
+        }
+        @keyframes pulseSweep {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(8px); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-gsh-bg text-gsh-navy">
@@ -50,24 +135,74 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center pt-20">
-        <div class="absolute inset-0">
-            <img src="https://www.gsh-direkt.de/temp/c9da3943a811eaefab2300fa0da3b3c9.png" alt="Gebrüder Schneider Werkzeugbau" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gsh-navy/70"></div>
-        </div>
-        <div class="relative max-w-6xl mx-auto px-6 py-24">
-            <div class="max-w-2xl">
-                <div class="w-16 h-0.5 bg-gsh-green mb-8"></div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-900 leading-tight text-white mb-6 tracking-tight">
-                    Innovation und Präzision seit über 100&nbsp;Jahren
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-gsh-bg">
+        <!-- Animated grid background -->
+        <div class="hero-grid"></div>
+
+        <!-- Floating geometric accents -->
+        <div class="geo-accent w-32 h-32 rounded-full top-[15%] right-[10%] hidden lg:block"></div>
+        <div class="geo-accent w-20 h-20 top-[65%] right-[25%] hidden lg:block" style="border-radius: 4px; transform: rotate(45deg);"></div>
+        <div class="geo-accent w-48 h-48 rounded-full top-[35%] left-[-4%] hidden lg:block" style="border-color: rgba(51,136,0,0.1);"></div>
+
+        <!-- Giant background number -->
+        <div class="hero-number hidden lg:block" aria-hidden="true">100+</div>
+
+        <!-- Content -->
+        <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-24 w-full">
+            <div class="max-w-3xl">
+                <!-- Overline -->
+                <div class="hero-reveal flex items-center gap-4 mb-8">
+                    <div class="pulse-line"></div>
+                    <p class="text-xs font-bold tracking-[0.25em] uppercase text-gsh-blue">Gebrüder Schneider GmbH</p>
+                </div>
+
+                <!-- Main headline -->
+                <h1 class="hero-reveal hero-reveal-delay-1 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-900 leading-[0.95] tracking-tight text-gsh-navy mb-8">
+                    Innovation<br>
+                    <span class="text-gsh-blue">und Präzision</span><br>
+                    <span class="text-gsh-navy/30">seit über</span>
+                    <span class="text-gsh-green"> 100 Jahren</span>
                 </h1>
-                <p class="text-lg md:text-xl text-white/80 leading-relaxed mb-10 font-light">
+
+                <!-- Subline -->
+                <p class="hero-reveal hero-reveal-delay-2 text-lg md:text-xl text-gsh-navy/60 leading-relaxed max-w-xl mb-12 font-light">
                     Entdecken Sie die hohe Qualität und das technische Know-How der Gebrüder Schneider GmbH in der Welt des Werkzeugbaus.
                 </p>
-                <a href="#spezialgebiete" class="inline-block bg-gsh-green text-white px-8 py-3 text-sm font-bold tracking-widest uppercase hover:bg-green-700 transition-colors duration-200">
-                    Unsere Leistungen
-                </a>
+
+                <!-- CTA row -->
+                <div class="hero-reveal hero-reveal-delay-3 flex flex-wrap items-center gap-6">
+                    <a href="#spezialgebiete" class="group inline-flex items-center gap-3 bg-gsh-navy text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-gsh-blue transition-colors duration-300">
+                        Unsere Leistungen
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                    <a href="#unternehmen" class="text-sm font-semibold text-gsh-navy/50 tracking-widest uppercase hover:text-gsh-navy transition-colors duration-300 border-b border-gsh-navy/20 hover:border-gsh-navy pb-1">
+                        Über uns
+                    </a>
+                </div>
+
+                <!-- Stats bar -->
+                <div class="hero-reveal hero-reveal-delay-4 mt-20 flex items-center gap-12 border-t border-gsh-navy/10 pt-8">
+                    <div>
+                        <p class="text-3xl md:text-4xl font-900 text-gsh-blue">4</p>
+                        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gsh-navy/40 mt-1">Spezialgebiete</p>
+                    </div>
+                    <div class="w-px h-10 bg-gsh-navy/10"></div>
+                    <div>
+                        <p class="text-3xl md:text-4xl font-900 text-gsh-blue">100+</p>
+                        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gsh-navy/40 mt-1">Jahre Erfahrung</p>
+                    </div>
+                    <div class="w-px h-10 bg-gsh-navy/10"></div>
+                    <div>
+                        <p class="text-3xl md:text-4xl font-900 text-gsh-green">GSH</p>
+                        <p class="text-[10px] font-bold tracking-[0.2em] uppercase text-gsh-navy/40 mt-1">Direkt</p>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+            <svg class="w-5 h-5 text-gsh-navy/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
     </section>
 
