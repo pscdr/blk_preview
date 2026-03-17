@@ -1,0 +1,52 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Rubik", "role": "body" },
+    { "family": "Coda", "role": "heading" },
+    { "family": "Rajdhani", "role": "display" }
+  ],
+  "colors": {
+    "primary": "#354B6A",
+    "accent": "#3C763D",
+    "background": "#F6F6F6",
+    "textPrimary": "#2D2D2D",
+    "link": "#3C763D"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Rubik",
+      "heading": "Coda"
+    },
+    "fontStacks": {
+      "heading": ["Rajdhani", "sans-serif"],
+      "body": ["Rubik", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "45px",
+      "h2": "30px",
+      "body": "13px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#FFFFFF",
+      "textColor": "#FFFFFF",
+      "borderColor": "#354B6A",
+      "borderRadius": "4px"
+    }
+  },
+  "images": {
+    "logo": "https://infra-tec.de/wp-content/uploads/2018/10/infra_tec_logo_neu.svg",
+    "favicon": "https://infra-tec.de/wp-content/uploads/2018/10/cropped-infra_fav_icon-32x32.png",
+    "ogImage": "https://infra-tec.de/wp-content/uploads/2019/11/Signalausleger_Zapfendorf_VDE_2017-1-scaled.jpg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial and infrastructure sectors"
+  }
+}
