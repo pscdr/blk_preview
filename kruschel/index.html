@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kruschel Heizung-Sanitär GmbH | Ihr Partner im Westerwald</title>
+    <meta name="description" content="Ihr zuverlässiger Partner im Bereich Sanitär und Heizung im Westerwald | Kruschel Heizung-Sanitär GmbH | Kontaktieren Sie uns unter ☎ +49 2661–98 27 0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #69C5D3;
+            --primary-light: #e8f6f8;
+            --primary-dark: #4AABB9;
+            --accent: #75D69C;
+            --accent-light: #e6f8ee;
+            --text: #2A2A2A;
+            --text-light: #5A5A5A;
+            --bg: #FFFFFF;
+            --bg-warm: #FAFAF8;
+            --bg-teal: #f0fafb;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.3;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-slide {
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            position: absolute;
+            inset: 0;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: #5ec387;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary-dark);
+            padding: 12px 32px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .service-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0ee;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(105, 197, 211, 0.12);
+        }
+        .divider {
+            width: 48px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        nav a {
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu { display: none; }
+            .mobile-menu.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-filter" style="backdrop-filter: blur(8px);">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#">
+            <img src="https://kruschel.info/wp-content/uploads/2018/05/Kruschel_Logo.png" alt="Kruschel Heizung-Sanitär GmbH" class="h-10 md:h-12">
+        </a>
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium" style="font-family: 'Montserrat', sans-serif;">
+            <a href="#leistungen" class="text-gray-600 hover:text-gray-900 transition">Leistungen</a>
+            <a href="#nachhaltigkeit" class="text-gray-600 hover:text-gray-900 transition">Nachhaltigkeit</a>
+            <a href="#meisterbetrieb" class="text-gray-600 hover:text-gray-900 transition">Meisterbetrieb</a>
+            <a href="#ausstellung" class="text-gray-600 hover:text-gray-900 transition">Ausstellung</a>
+            <a href="#kontakt" class="btn-primary text-sm" style="padding: 10px 24px;">Kontakt</a>
+        </nav>
+        <button id="menuToggle" class="md:hidden p-2" aria-label="Menü öffnen">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu md:hidden flex-col bg-white border-t px-6 py-4 space-y-3" style="font-family: 'Montserrat', sans-serif;">
+        <a href="#leistungen" class="text-gray-700 font-medium py-2">Leistungen</a>
+        <a href="#nachhaltigkeit" class="text-gray-700 font-medium py-2">Nachhaltigkeit</a>
+        <a href="#meisterbetrieb" class="text-gray-700 font-medium py-2">Meisterbetrieb</a>
+        <a href="#ausstellung" class="text-gray-700 font-medium py-2">Ausstellung</a>
+        <a href="#kontakt" class="btn-primary text-center text-sm mt-2">Kontakt</a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="relative h-screen min-h-screen overflow-hidden">
+    <div class="hero-slide active">
+        <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Modern.jpg" alt="Modernes Badezimmer von Kruschel" class="w-full h-full object-cover">
+        <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 50%, rgba(0,0,0,0.1) 100%);"></div>
+    </div>
+    <div class="hero-slide">
+        <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Skandinavisch.jpg" alt="Skandinavisches Badezimmer von Kruschel" class="w-full h-full object-cover">
+        <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 50%, rgba(0,0,0,0.1) 100%);"></div>
+    </div>
+    <div class="hero-slide">
+        <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Zeitlos.jpg" alt="Zeitloses Badezimmer von Kruschel" class="w-full h-full object-cover">
+        <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 50%, rgba(0,0,0,0.1) 100%);"></div>
+    </div>
+    <div class="absolute inset-0 flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full">
+            <div class="max-w-xl">
+                <div class="divider mb-6"></div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="color: var(--text);">
+                    Wir gestalten Ihr <span style="color: var(--primary);">Wohlfühlbad</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 font-light" style="color: var(--text-light);">
+                    Modernes Design und innovative Badplanung — Ihr Meisterbetrieb für Heizung & Sanitär im Westerwald.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#kontakt" class="btn-primary">Beratungstermin vereinbaren</a>
+                    <a href="#leistungen" class="btn-outline">Unsere Leistungen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slide indicators -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        <button class="slide-dot w-2.5 h-2.5 rounded-full transition-all duration-300" style="background: var(--primary);" data-index="0"></button>
+        <button class="slide-dot w-2.5 h-2.5 rounded-full bg-white bg-opacity-50 transition-all duration-300" data-index="1"></button>
+        <button class="slide-dot w-2.5 h-2.5 rounded-full bg-white bg-opacity-50 transition-all duration-300" data-index="2"></button>
+    </div>
+</section>
+
+<!-- Intro -->
+<section class="py-24 md:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ihr Profi für Heizung, Sanitär & Bad</h2>
+        <div class="divider mx-auto mb-8"></div>
+        <p class="text-lg leading-relaxed" style="color: var(--text-light);">
+            Herzlich willkommen bei Ihrem Heizungs- und Sanitär-Profi im Westerwald. Wir sind Ihr Partner für innovative Heiztechnik und Bäder zum Wohlfühlen für die gesamte Region. Lassen Sie sich in unserer Badausstellung für Ihre Badmodernisierung inspirieren oder optimieren Sie noch heute die Wärmeversorgung in Ihrem Zuhause.
+        </p>
+    </div>
+</section>
+
+<!-- Leistungen -->
+<section id="leistungen" class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Unsere Leistungen</h2>
+            <div class="divider mx-auto mb-6"></div>
+            <p class="text-lg max-w-2xl mx-auto" style="color: var(--text-light);">Wärme, Wasser, Luft, Strom und Umwelttechnik — alles aus einer Hand.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 fade-in">
+            <div class="service-card text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: var(--primary-light);">
+                    <svg class="w-8 h-8" style="color: var(--primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Heizungstechnik</h3>
+                <p style="color: var(--text-light);">Planung, Installation und Wartung Ihrer Heizanlage — effizient, nachhaltig und passgenau auf Ihre Bedürfnisse abgestimmt.</p>
+            </div>
+            <div class="service-card text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: var(--primary-light);">
+                    <svg class="w-8 h-8" style="color: var(--primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Badsanierung</h3>
+                <p style="color: var(--text-light);">Ihr Komplettbad aus einer Hand — von der individuellen Planung bis zur professionellen Umsetzung Ihres Traumbadezimmers.</p>
+            </div>
+            <div class="service-card text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: var(--accent-light);">
+                    <svg class="w-8 h-8" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Umwelttechnik</h3>
+                <p style="color: var(--text-light);">Umweltbewusste Heizmethoden und nachhaltige Lösungen — für einen klimabewussten Lebensstil und spürbar niedrigere Heizkosten.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nachhaltigkeit -->
+<section id="nachhaltigkeit" class="py-24 md:py-32" style="background: var(--bg-teal);">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Nachhaltigkeit aus Überzeugung</h2>
+                <div class="divider mb-8"></div>
+                <p class="text-lg mb-6" style="color: var(--text-light);">
+                    Eine nachhaltige Heizlösung ist gut für unsere Erde und bedeutet gleichzeitig eine Senkung der Heizkosten. Mit der Planung und Montage einer effizienten Heizungsanlage schaffen wir für unsere Kunden nicht nur eine komfortable Heizlösung, sondern einen echten ökonomischen Mehrwert.
+                </p>
+                <p class="text-lg mb-8" style="color: var(--text-light);">
+                    Wir beraten Sie dazu, wie Sie verschiedene Maßnahmen kombinieren können, um eine umweltbewusste Optimierung der Wärme- und Warmwasserversorgung zu erreichen. Vieles wird dabei vom Staat subventioniert — auch zu den verschiedenen Fördermöglichkeiten informieren wir Sie gerne.
+                </p>
+                <a href="#kontakt" class="btn-primary">Förderberatung anfragen</a>
+            </div>
+            <div class="fade-in">
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Skandinavisch.jpg" alt="Nachhaltiges Badezimmer Design" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Meisterbetrieb -->
+<section id="meisterbetrieb" class="py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 fade-in">
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Zeitlos.jpg" alt="Zeitlose Badgestaltung" class="w-full h-auto">
+                </div>
+            </div>
+            <div class="order-1 md:order-2 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ihr Meisterbetrieb im Westerwald</h2>
+                <div class="divider mb-8"></div>
+                <p class="text-lg mb-6" style="color: var(--text-light);">
+                    Das Team von Kruschel hat sich im Laufe der Jahre auf nachhaltige und individuelle Lösungen im Heizungs- und Sanitär-Bereich spezialisiert und steht Ihnen als „Problemlöser" rund um die Themen Energie, Trinkwasser und Luft beratend und ausführend zur Seite.
+                </p>
+                <p class="text-lg mb-6" style="color: var(--text-light);">
+                    In einem technikorientierten Bereich wie der Heizungs- und Sanitär-Branche muss ein Dienstleister in der Lage sein, mit der Zeit zu gehen. Wir sind bereit, jeden Tag Neues zu lernen und uns auf die sich wandelnden Bedürfnisse unserer Kunden einzustellen.
+                </p>
+                <div class="flex flex-wrap gap-4 mt-8">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 rounded-full" style="background: var(--primary);"></div>
+                        <span class="text-sm font-medium">Meisterbetrieb</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 rounded-full" style="background: var(--accent);"></div>
+                        <span class="text-sm font-medium">Regionale Expertise</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 rounded-full" style="background: var(--primary);"></div>
+                        <span class="text-sm font-medium">Nachhaltige Lösungen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ausstellung -->
+<section id="ausstellung" class="py-24 md:py-32" style="background: var(--bg-warm);">
+    <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Besuchen Sie unsere Badausstellung</h2>
+        <div class="divider mx-auto mb-8"></div>
+        <p class="text-lg mb-6" style="color: var(--text-light);">
+            In unserer Sanitär-Ausstellung in Neunkhausen im Westerwald können Sie sich einen ersten Eindruck unserer Arbeit verschaffen und Inspirationen für Ihr neues Traumbadezimmer sammeln. Gestaltungs- und Einrichtungsideen zum Erleben und Anfassen.
+        </p>
+        <p class="text-lg mb-10" style="color: var(--text-light);">
+            Die Produkte im Rahmen von lebensnahen Umsetzungsbeispielen zu sehen, verschafft Ihnen einen realistischen Eindruck ihrer möglichen Wirkung auch in Ihrem Badezimmer.
+        </p>
+        <div class="grid grid-cols-3 gap-4 mb-10 rounded-lg overflow-hidden">
+            <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Modern.jpg" alt="Modernes Bad" class="w-full h-48 object-cover rounded-lg">
+            <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Skandinavisch.jpg" alt="Skandinavisches Bad" class="w-full h-48 object-cover rounded-lg">
+            <img src="https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Zeitlos.jpg" alt="Zeitloses Bad" class="w-full h-48 object-cover rounded-lg">
+        </div>
+        <a href="#kontakt" class="btn-primary">Besuch vereinbaren</a>
+    </div>
+</section>
+
+<!-- Kontakt -->
+<section id="kontakt" class="py-24 md:py-32">
+    <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Lassen Sie uns gemeinsam planen</h2>
+        <div class="divider mx-auto mb-8"></div>
+        <p class="text-lg mb-10" style="color: var(--text-light);">
+            Bei Fragen oder Wünschen — zu Bad oder Heizung — können Sie sich jederzeit an unser erfahrenes Team wenden. Gemeinsam erarbeiten wir eine maßgeschneiderte Lösung, passend zu Ihren Vorstellungen.
+        </p>
+        <div class="inline-flex flex-col sm:flex-row gap-6 items-center justify-center">
+            <a href="tel:+4926619827-0" class="flex items-center space-x-3 text-lg font-semibold" style="color: var(--primary-dark);">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                <span>+49 2661–98 27 0</span>
+            </a>
+            <a href="https://www.kruschel.info/kontakt/" class="btn-primary">Beratungstermin vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 border-t" style="border-color: #f0f0ee;">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-4">
+                <img src="https://kruschel.info/wp-content/uploads/2018/05/Kruschel_Logo.png" alt="Kruschel Logo" class="h-8">
+                <span class="text-sm" style="color: var(--text-light);">Kruschel Heizung-Sanitär GmbH</span>
+            </div>
+            <div class="flex items-center space-x-6 text-sm" style="color: var(--text-light);">
+                <span>Neunkhausen im Westerwald</span>
+                <span>·</span>
+                <a href="tel:+4926619827-0" class="hover:underline">+49 2661–98 27 0</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Hero slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.slide-dot');
+    let current = 0;
+    function showSlide(i) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => { d.style.background = 'rgba(255,255,255,0.5)'; });
+        slides[i].classList.add('active');
+        dots[i].style.background = '#69C5D3';
+        current = i;
+    }
+    dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.index))));
+    setInterval(() => showSlide((current + 1) % slides.length), 5000);
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Mobile menu
+    document.getElementById('menuToggle').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('open');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('mobileMenu').classList.remove('open');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

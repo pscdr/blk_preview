@@ -1,0 +1,36 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Open Sans", "role": "body" },
+    { "family": "Montserrat", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#69C5D3",
+    "accent": "#75D69C",
+    "background": "#FFFFFF",
+    "textPrimary": "#2A2A2A",
+    "link": "#75D69C"
+  },
+  "typography": {
+    "fontFamilies": { "primary": "Open Sans", "heading": "Montserrat" },
+    "fontStacks": {
+      "heading": ["Montserrat", "serif"],
+      "body": ["Open Sans", "sans-serif"]
+    },
+    "fontSizes": { "h1": "40.6px", "h2": "22.4px", "body": "14px" }
+  },
+  "spacing": { "baseUnit": 4, "borderRadius": "5px" },
+  "images": {
+    "logo": "https://kruschel.info/wp-content/uploads/2018/05/Kruschel_Logo.png",
+    "heroImages": [
+      "https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Modern.jpg",
+      "https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Skandinavisch.jpg",
+      "https://www.kruschel.info/wp-content/uploads/2017/11/Badezimmer_Kruschel_Zeitlos.jpg"
+    ]
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "homeowners and businesses in need of heating and plumbing services"
+  }
+}
