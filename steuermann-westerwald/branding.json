@@ -1,0 +1,59 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Open Sans",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#00B5E5",
+    "accent": "#00B5E5",
+    "background": "#FFFFFF",
+    "textPrimary": "#4D454E",
+    "link": "#FFFAED"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Open Sans"
+    },
+    "fontStacks": {
+      "heading": ["Open Sans", "sans-serif"],
+      "body": ["Open Sans", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "48px",
+      "h2": "40px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#00B5E5",
+      "textColor": "#FFFFFF",
+      "borderColor": "#00B5E5",
+      "borderRadius": "30px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#FFFAED",
+      "textColor": "#4D454E",
+      "borderRadius": "0px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://www.steuermann-westerwald.de/customers/steuermannwesterwald/Logo/Steuerberater_schmidundkretz_weisse-schrift.svg",
+    "favicon": "https://www.steuermann-westerwald.de/customers/steuermannwesterwald/favicon/web-app-manifest-512x512.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals and individuals seeking tax services"
+  }
+}

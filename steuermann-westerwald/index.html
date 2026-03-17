@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steuermann Westerwald – Ihre digitalen Steuerexperten in Selters & Hachenburg</title>
+    <meta name="description" content="Zuverlässige Steuerberatung im Westerwald: digital, persönlich und vorausschauend. Jetzt Beratungsgespräch vereinbaren!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/favicon/web-app-manifest-512x512.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: '#00B5E5',
+                        'cyan-dark': '#0097c1',
+                        cream: '#FFFAED',
+                        'cream-dark': '#FFF5DB',
+                        plum: '#4D454E',
+                        'plum-light': '#6B616C',
+                    },
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-white text-plum font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero">
+                <img src="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/favicon/web-app-manifest-512x512.png" alt="Steuermann Westerwald" class="h-10 w-10">
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-plum-light">
+                <a href="#leistungen" class="hover:text-cyan transition-colors">Leistungen</a>
+                <a href="#digital" class="hover:text-cyan transition-colors">Digital</a>
+                <a href="#team" class="hover:text-cyan transition-colors">Team</a>
+                <a href="#kontakt" class="hover:text-cyan transition-colors">Kontakt</a>
+            </div>
+            <a href="#kontakt" class="hidden md:inline-block bg-cyan text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-cyan-dark transition-colors">
+                Beratung vereinbaren
+            </a>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menü öffnen">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
+            <div class="flex flex-col gap-4 text-sm font-medium text-plum-light">
+                <a href="#leistungen" class="hover:text-cyan transition-colors">Leistungen</a>
+                <a href="#digital" class="hover:text-cyan transition-colors">Digital</a>
+                <a href="#team" class="hover:text-cyan transition-colors">Team</a>
+                <a href="#kontakt" class="hover:text-cyan transition-colors">Kontakt</a>
+                <a href="#kontakt" class="bg-cyan text-white text-center font-semibold px-5 py-2.5 rounded-full hover:bg-cyan-dark transition-colors">
+                    Beratung vereinbaren
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://www.steuermann-westerwald.de/customers/_processed_/d/3/csm_Fotolia_3962379_XXL_KI_73479997f6.webp" alt="Steuerberatung im Westerwald" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40"></div>
+        </div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+            <div class="max-w-2xl">
+                <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-4">Schmid & Kretz Partnerschaftsgesellschaft MBB</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light text-plum leading-tight mb-6">
+                    Ihre Steuerberater <br>
+                    <span class="font-semibold">im Westerwald</span>
+                </h1>
+                <p class="text-lg md:text-xl text-plum-light leading-relaxed mb-8 max-w-xl">
+                    Wir sind nicht nur Steuererklärer, sondern Ihre zuverlässige <strong class="font-semibold text-plum">Steuercrew</strong> – digital, vorausschauend und persönlich für Sie da.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#leistungen" class="bg-cyan text-white font-semibold px-8 py-3.5 rounded-full hover:bg-cyan-dark transition-colors text-center">
+                        Unsere Leistungen
+                    </a>
+                    <a href="#kontakt" class="bg-cream text-plum font-semibold px-8 py-3.5 rounded-full hover:bg-cream-dark transition-colors text-center border border-cream-dark">
+                        Beratungsgespräch vereinbaren
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Divider -->
+    <div class="bg-cream py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <blockquote class="text-xl md:text-2xl font-light text-plum italic leading-relaxed">
+                &bdquo;Wer seine Zahlen kennt, hält das Steuer fest in der Hand – auch bei rauer See.&ldquo;
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Team Intro -->
+    <section class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 fade-in">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Unsere Kanzlei</p>
+                    <h2 class="text-3xl md:text-4xl font-light text-plum mb-6 leading-tight">
+                        Die <span class="font-semibold">Steuercrew</span> von Schmid & Kretz
+                    </h2>
+                    <p class="text-plum-light leading-relaxed text-lg">
+                        Unser erfahrenes Team garantiert Klarheit, Kontinuität und maßgeschneiderte Lösungen für Ihre steuerlichen Belange.
+                    </p>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/1/csm_Schmid-Kretz_Team_2024-02_komp_b1286a2d25.webp" alt="Das Team von Schmid & Kretz" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="bg-gray-50 py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Was wir für Sie tun</p>
+                <h2 class="text-3xl md:text-4xl font-light text-plum">
+                    Unsere <span class="font-semibold">Leistungen</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Klassiker -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/8/d/csm_steuerrad_s-und-k_3a1ceb364b.webp" alt="Die Klassiker – Steuerrad" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-1 bg-cyan rounded-full mb-4"></div>
+                        <h3 class="text-xl font-semibold text-plum mb-2">Die Klassiker</h3>
+                        <p class="text-plum-light leading-relaxed">Ihr solides Fundament im Steueralltag.</p>
+                    </div>
+                </div>
+                <!-- Tuning -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/3/f/csm_Fotolia_20004243_XL_0f94afa723.webp" alt="Tuning-Werkzeuge – Motorboot" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-1 bg-cyan rounded-full mb-4"></div>
+                        <h3 class="text-xl font-semibold text-plum mb-2">Tuning-Werkzeuge</h3>
+                        <p class="text-plum-light leading-relaxed">Gestaltungsideen für Ihre Unternehmerreise.</p>
+                    </div>
+                </div>
+                <!-- Kompass -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow fade-in">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/b/csm_E57E22BD-E5C8-4473-85E8-91A967E6E23B_266425dd54.webp" alt="Unternehmer-Kompass" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-1 bg-cyan rounded-full mb-4"></div>
+                        <h3 class="text-xl font-semibold text-plum mb-2">Unternehmer-Kompass</h3>
+                        <p class="text-plum-light leading-relaxed">Von der Gründung bis zur Nachfolgeplanung.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital -->
+    <section id="digital" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 fade-in">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 rounded-2xl overflow-hidden shadow-lg">
+                    <img src="https://www.steuermann-westerwald.de/customers/_processed_/8/5/csm_1E15A9FE-D50E-4985-8B08-8149C3C69274_ff185bcf9c.webp" alt="Digitale Zusammenarbeit" class="w-full h-auto">
+                </div>
+                <div class="order-1 md:order-2">
+                    <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Unsere Arbeitsweise</p>
+                    <h2 class="text-3xl md:text-4xl font-light text-plum mb-6 leading-tight">
+                        Schnell, effizient, flexibel, <span class="font-semibold">rechtssicher – digital</span>
+                    </h2>
+                    <p class="text-plum-light leading-relaxed text-lg mb-6">
+                        Die Digitalisierung prägt die Zusammenarbeit mit Ihnen als Mandant. Sie reduziert administrative Tätigkeiten in Ihrem und unserem Unternehmen – und stellt die effizienteste Möglichkeit beim Datenaustausch und bei der Erledigung der eigentlichen Aufgaben und Tätigkeiten dar.
+                    </p>
+                    <p class="text-plum font-semibold leading-relaxed mb-8">
+                        Die umfassende digitale Zusammenarbeit ist deshalb Bedingung für eine Geschäftsbeziehung mit unserer Kanzlei.
+                    </p>
+                    <div class="bg-cream rounded-xl p-6">
+                        <h3 class="font-semibold text-plum mb-3">Schnelle Navigationshilfe</h3>
+                        <p class="text-plum-light text-sm mb-4">TÜV-zertifizierte Fernbetreuung via DATEV – direkt am Bildschirm, sicher und ohne Umwege.</p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://www.datev.de/web/de/service-und-support/software-bereitstellung/download-bereich/it-loesungen-und-security/mandanten-fernbetreuung/mandanten-fernbetreuung-kunden-modul-fuer-windows/" class="text-cyan text-sm font-semibold hover:underline" target="_blank" rel="noopener">
+                                Download für Windows &rarr;
+                            </a>
+                            <a href="https://www.datev.de/web/de/service-und-support/software-bereitstellung/download-bereich/it-loesungen-und-security/mandanten-fernbetreuung/mandanten-fernbetreuung-kunden-modul-fuer-macos/" class="text-cyan text-sm font-semibold hover:underline" target="_blank" rel="noopener">
+                                Download für MacOS &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="bg-gray-50 py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-6 fade-in">
+                <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Persönlich für Sie da</p>
+                <h2 class="text-3xl md:text-4xl font-light text-plum">
+                    Ihre <span class="font-semibold">Ansprechpersonen</span>
+                </h2>
+            </div>
+            <p class="text-center text-plum-light max-w-2xl mx-auto mb-16 fade-in leading-relaxed">
+                Wir stehen stellvertretend für unser gesamtes Kanzleiteam. Mit Erfahrung, Leidenschaft und Präzision setzen wir uns täglich für Ihre steuerlichen Belange ein – zuverlässig, vorausschauend und auf Augenhöhe.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Burkhard Schmid -->
+                <div class="text-center fade-in">
+                    <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 shadow-md">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/d/1/csm_Burkhard_Schmid_Steuerberater_0a4dd43718.webp" alt="Burkhard Schmid" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-semibold text-plum">Burkhard Schmid</h3>
+                    <p class="text-cyan font-medium text-sm">Kanzleiführung</p>
+                </div>
+                <!-- Peter Kretz -->
+                <div class="text-center fade-in">
+                    <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 shadow-md">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/b/c/csm_Peter_Kretz_Steuerberater_2dc90976e3.webp" alt="Peter Kretz" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-semibold text-plum">Peter Kretz</h3>
+                    <p class="text-cyan font-medium text-sm">Kanzleiführung</p>
+                </div>
+                <!-- Diana Kaiser -->
+                <div class="text-center fade-in">
+                    <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 shadow-md">
+                        <img src="https://www.steuermann-westerwald.de/customers/_processed_/f/f/csm_Diana_Kaiser_ADGL_1d7b11313c.webp" alt="Diana Kaiser" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-semibold text-plum">Diana Kaiser</h3>
+                    <p class="text-cyan font-medium text-sm">Assistentin der Kanzleiführung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Karriere -->
+    <section class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 fade-in">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-cyan font-semibold text-sm tracking-wide uppercase mb-3">Werden Sie Teil der Crew</p>
+                    <h2 class="text-3xl md:text-4xl font-light text-plum mb-6 leading-tight">
+                        Ihre <span class="font-semibold">Karriere</span> bei Schmid & Kretz
+                    </h2>
+                    <p class="text-plum-light leading-relaxed text-lg mb-8">
+                        Wir freuen uns auf Sie.
+                    </p>
+                    <a href="https://www.steuermann-westerwald.de/karriere/" class="inline-block bg-cyan text-white font-semibold px-8 py-3.5 rounded-full hover:bg-cyan-dark transition-colors" target="_blank" rel="noopener">
+                        Zu den Stellenangeboten
+                    </a>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <img src="https://www.steuermann-westerwald.de/customers/_processed_/f/8/csm_Schmid-Kretz_Eingangsbereich_2018-11_5023f45719.webp" alt="Eingangsbereich Schmid & Kretz" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Elements -->
+    <div class="bg-cream py-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <img src="https://www.steuermann-westerwald.de/customers/_processed_/9/d/csm_trust-elements-footer_transparent_wide_b776db2864.webp" alt="Zertifizierungen und Mitgliedschaften" class="w-full h-auto">
+        </div>
+    </div>
+
+    <!-- Kontakt / Footer -->
+    <footer id="kontakt" class="bg-plum text-white py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <img src="https://www.steuermann-westerwald.de/customers/steuermannwesterwald/Logo/Steuerberater_schmidundkretz_weisse-schrift.svg" alt="Schmid & Kretz Logo" class="h-12 mb-6">
+                    <p class="text-white/70 leading-relaxed text-sm">
+                        Steuerberater Schmid & Kretz<br>
+                        Partnerschaftsgesellschaft MBB
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-sm tracking-wide uppercase mb-4 text-white/50">Kontakt</h3>
+                    <div class="space-y-3">
+                        <a href="tel:+49262697040" class="block text-white/80 hover:text-cyan transition-colors">
+                            Telefon: 02626 / 9704-0
+                        </a>
+                        <a href="mailto:info@steuermann-westerwald.de" class="block text-white/80 hover:text-cyan transition-colors">
+                            info@steuermann-westerwald.de
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-sm tracking-wide uppercase mb-4 text-white/50">Standorte</h3>
+                    <div class="space-y-4 text-white/80 text-sm leading-relaxed">
+                        <div>
+                            <p class="font-semibold text-white/90 mb-1">Hauptsitz</p>
+                            <p>Amtsstraße 9<br>56242 Selters (Westerwald)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white/90 mb-1">Beratungsstelle</p>
+                            <p>Gehlerter Weg 3<br>57627 Hachenburg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
+                <p>&copy; 2026 Steuerberater Schmid & Kretz &middot; Partnerschaftsgesellschaft MBB</p>
+                <div class="flex gap-6">
+                    <a href="https://www.steuermann-westerwald.de/impressum/" class="hover:text-white/70 transition-colors" target="_blank" rel="noopener">Impressum</a>
+                    <a href="https://www.steuermann-westerwald.de/datenschutz/" class="hover:text-white/70 transition-colors" target="_blank" rel="noopener">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        // Fade-in on scroll
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+    </script>
+
+</body>
+</html>
