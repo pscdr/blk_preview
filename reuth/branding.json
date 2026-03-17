@@ -1,0 +1,51 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Raleway", "role": "heading" },
+    { "family": "Dosis", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#1ABC9C",
+    "accent": "#EF7900",
+    "background": "#F6F6F6",
+    "textPrimary": "#262626",
+    "link": "#EF7900"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Dosis",
+      "heading": "Raleway"
+    },
+    "fontSizes": {
+      "h1": "40px",
+      "h2": "27px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#EF7900",
+      "textColor": "#FFFFFF",
+      "borderRadius": "4px"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#1A1A1A",
+      "borderRadius": "4px"
+    }
+  },
+  "images": {
+    "logo": "https://reuth.de/wp-content/uploads/2019/10/Reuth-logo-svg.svg",
+    "logoWhite": "https://reuth.de/wp-content/uploads/2018/03/reuth_weiss_300pxh.png",
+    "favicon": "https://reuth.de/wp-content/uploads/2018/03/cropped-favicon.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  }
+}
