@@ -1,0 +1,51 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Nunito Sans", "role": "body" },
+    { "family": "Arial", "role": "fallback" },
+    { "family": "Helvetica", "role": "fallback" }
+  ],
+  "colors": {
+    "primary": "#2663BE",
+    "accent": "#338800",
+    "background": "#F8F8F8",
+    "textPrimary": "#002C73",
+    "link": "#002C73"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Nunito Sans",
+      "heading": "Nunito Sans"
+    },
+    "fontSizes": {
+      "h1": "40px",
+      "h2": "36px",
+      "body": "19.2px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "2px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#338800",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#BBBBBB",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.gsh-direkt.de/template/GSH/pix/logo.png",
+    "favicon": "https://www.gsh-direkt.de/template/GSH/favicon.ico"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals"
+  }
+}
