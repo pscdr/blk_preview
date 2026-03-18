@@ -1,0 +1,48 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Titillium Web",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#183252",
+    "accent": "#EC6912",
+    "background": "#FFFFFF",
+    "textPrimary": "#EC6912",
+    "link": "#EC6912"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Titillium Web",
+      "heading": "Titillium Web"
+    },
+    "fontSizes": {
+      "h1": "60px",
+      "h2": "18px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#EC6912",
+      "textColor": "#FFFFFF",
+      "borderRadius": "5px"
+    }
+  },
+  "images": {
+    "logo": "https://sww-stahlbau.de/wp-content/uploads/2025/02/SSW_Logoslider_1323x200px.png",
+    "favicon": "https://sww-stahlbau.de/wp-content/uploads/2025/02/IBC_Icon_32px.png",
+    "logoAlt": "SWW - Stahlbau Westerwald"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  }
+}

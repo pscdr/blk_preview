@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWW Stahlbau Westerwald – Hallenbau, Stahlbau, Industriebau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://sww-stahlbau.de/wp-content/uploads/2025/02/IBC_Icon_32px.png" type="image/png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#183252',
+                        orange: '#EC6912',
+                        'navy-light': '#1e3f66',
+                        'orange-light': '#f5841a',
+                        'gray-warm': '#f7f7f7',
+                    },
+                    fontFamily: {
+                        titillium: ['"Titillium Web"', 'Arial', 'Helvetica', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        * { font-family: 'Titillium Web', Arial, Helvetica, sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-white text-navy">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#">
+                <img src="https://sww-stahlbau.de/wp-content/uploads/2025/02/SSW_Logoslider_1323x200px.png" alt="SWW - Stahlbau Westerwald" class="h-10">
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
+                <a href="#leistungen" class="text-navy hover:text-orange transition-colors">Leistungen</a>
+                <a href="#ueber-uns" class="text-navy hover:text-orange transition-colors">Unternehmen</a>
+                <a href="#kontakt" class="bg-orange text-white px-5 py-2.5 rounded hover:bg-orange-light transition-colors">Anfragen</a>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden text-navy" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
+            <a href="#leistungen" class="block py-2 text-navy font-semibold">Leistungen</a>
+            <a href="#ueber-uns" class="block py-2 text-navy font-semibold">Unternehmen</a>
+            <a href="#kontakt" class="block py-2 text-orange font-semibold">Anfragen</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-navy min-h-[90vh] flex items-center pt-20">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 right-0 w-1/2 h-full" style="background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 61px);"></div>
+            <div class="absolute top-0 left-0 w-full h-full" style="background: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 61px);"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <p class="text-orange font-semibold tracking-widest uppercase text-sm mb-4">Hallenbau vom Experten</p>
+                <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    Stahlbau, der Zukunft formt
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
+                    Ihr Experte im Stahlhallenbau. Durchdachte, langlebige und wirtschaftliche Lösungen – Stahl, Dach und Wand aus einer Hand.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#leistungen" class="bg-orange text-white font-semibold px-8 py-3.5 rounded hover:bg-orange-light transition-colors text-lg">
+                        Leistungen entdecken
+                    </a>
+                    <a href="#kontakt" class="border-2 border-white/30 text-white font-semibold px-8 py-3.5 rounded hover:border-orange hover:text-orange transition-colors text-lg">
+                        Unverbindlich anfragen
+                    </a>
+                </div>
+            </div>
+            <div class="hidden lg:block">
+                <img src="https://sww-stahlbau.de/wp-content/uploads/2025/03/foto_homepage-1.png" alt="Bau von Lagerhallen" class="rounded-lg shadow-2xl w-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-orange text-3xl md:text-4xl font-bold">500+</div>
+                <div class="text-navy/60 text-sm font-semibold uppercase tracking-wide mt-1">Hallenbauprojekte</div>
+            </div>
+            <div class="text-center">
+                <div class="text-orange text-3xl md:text-4xl font-bold">200+</div>
+                <div class="text-navy/60 text-sm font-semibold uppercase tracking-wide mt-1">Sonderkonstruktionen</div>
+            </div>
+            <div class="text-center">
+                <div class="text-orange text-3xl md:text-4xl font-bold">1000+</div>
+                <div class="text-navy/60 text-sm font-semibold uppercase tracking-wide mt-1">Stahlbau-Projekte</div>
+            </div>
+            <div class="text-center">
+                <div class="text-orange text-3xl md:text-4xl font-bold">30+</div>
+                <div class="text-navy/60 text-sm font-semibold uppercase tracking-wide mt-1">Jahre Expertise</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="ueber-uns" class="bg-gray-warm">
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="max-w-3xl">
+                <p class="text-orange font-semibold tracking-widest uppercase text-sm mb-3">Unternehmen</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">Bauen mit Stahl – das ist unsere Welt</h2>
+                <p class="text-navy/70 text-lg leading-relaxed mb-4">
+                    Die SWW steht für durchdachte, langlebige und wirtschaftliche Lösungen in den Bereichen Hallenbau, Stahlbau und Industriebau. Wir begleiten Sie von der ersten Idee über die Planung bis hin zur Fertigung und Montage – zuverlässig, effizient und termintreu.
+                </p>
+                <p class="text-navy/70 text-lg leading-relaxed">
+                    Ob funktionale Industriehallen, maßgeschneiderte Stahlkonstruktionen oder komplexe Bauprojekte – wir liefern Qualität, die trägt. Besonders im Stahlhallenbau setzen wir auf ein bewährtes Komplettsystem: Stahl, Dach und Wand aus einer Hand. Auch Tragwerke mit Spannweiten von über 50 Metern sind bei uns in den besten Händen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="leistungen" class="bg-white">
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="mb-16">
+                <p class="text-orange font-semibold tracking-widest uppercase text-sm mb-3">Leistungen</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy">Hallenbau mit Stahl, Dach und Wand</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1: Hallenbau -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21h18M3 21V8l9-5 9 5v13M9 21V12h6v9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Hallenbau</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Stahlhallenbau mit Gebäudehülle. Von der Produktionshalle bis zur Freizeithalle – maßgeschneiderte und wirtschaftlich optimale Lösungen.</p>
+                </div>
+
+                <!-- Service 2: Stahlbau -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Stahlbau</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Industrieller Stahlbau auf höchstem Niveau. Anspruchsvolle Stahl-Aufgaben im Anlagenbau und Kraftwerksbau.</p>
+                </div>
+
+                <!-- Service 3: Korrosionsschutz -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Korrosionsschutz</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Langlebige Stahlkonstruktionen durch Zinküberzug oder organische Beschichtungen – kostengünstig und technisch optimal.</p>
+                </div>
+
+                <!-- Service 4: Bauindustrie -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Bauindustrie</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Unterkonstruktionen, Bühnenbau, Technikbühnen, Einhausungen, Treppenanlagen und Verbindungsgänge.</p>
+                </div>
+
+                <!-- Service 5: Dach & Fassade -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Dach & Fassade</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Komplettlösungen für Dacheindeckung und Fassadenverkleidung. Schutz, Erscheinungsbild und Energieeffizienz.</p>
+                </div>
+
+                <!-- Service 6: Infrastrukturbau -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Infrastrukturbau</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">PV-Carports, Parkhäuser, Bahnsteigüberdachungen – innovative Stahlbau-Lösungen für die Zukunft.</p>
+                </div>
+
+                <!-- Service 7: Stahlbau-Montage -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Stahlbau-Montage</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Schnelle, sichere und präzise Montage. Effiziente und fachgerechte Ausführung auf höchstem Qualitätsniveau.</p>
+                </div>
+
+                <!-- Service 8: Ingenieur-Dienstleistung -->
+                <div class="group bg-gray-warm p-8 rounded-lg border border-gray-100 hover:border-orange/30 transition-colors">
+                    <div class="w-12 h-12 bg-navy rounded flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Ingenieur-Dienstleistung</h3>
+                    <p class="text-navy/60 text-sm leading-relaxed">Planung, statische Berechnung, Detailkonstruktion und Ausführungsplanung mit modernster Technik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact Section -->
+    <section id="kontakt" class="bg-navy">
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-orange font-semibold tracking-widest uppercase text-sm mb-3">Kontakt</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ihr Projekt ist bei uns in guten Händen</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-10">
+                    Von der ersten Idee über die Planung bis hin zur Fertigung und Montage – zuverlässig, effizient und termintreu. Sprechen Sie uns an.
+                </p>
+                <a href="https://sww-stahlbau.de/kontakt/" class="inline-block bg-orange text-white font-bold px-10 py-4 rounded text-lg hover:bg-orange-light transition-colors">
+                    Unverbindlich anfragen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <img src="https://sww-stahlbau.de/wp-content/uploads/2025/02/SSW_Logoslider_1323x200px.png" alt="SWW - Stahlbau Westerwald" class="h-8 brightness-0 invert opacity-60">
+            <p class="text-white/40 text-sm">SWW Stahlbau Westerwald – Hallenbau, Stahlbau, Industriebau</p>
+        </div>
+    </footer>
+
+</body>
+</html>
