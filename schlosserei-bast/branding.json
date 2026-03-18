@@ -1,0 +1,31 @@
+{
+  "company": "Schlosserei Bast",
+  "industry": "Schlosserei / Metallbau",
+  "location": "Wirges, Westerwald",
+  "logo": "https://www.schlosserei-bast.de/images/schlosserei-bast-wirges-schlosser-westerwald-metallbau-westerwald-logo.jpg",
+  "colors": {
+    "primary": "#1a1a1a",
+    "secondary": "#c8102e",
+    "accent": "#d4a843",
+    "background": "#ffffff",
+    "text": "#333333",
+    "note": "Derived from site analysis: dark tones (metal/industrial), red accent from CTA buttons, warm gold accent"
+  },
+  "fonts": {
+    "heading": "sans-serif (site uses system/Helix3 template defaults)",
+    "body": "sans-serif"
+  },
+  "personality": {
+    "tone": "Professionell, vertrauenswürdig, traditionsbewusst, handwerklich",
+    "values": ["Qualität", "Tradition", "Zertifizierung DIN EN 1090", "Meisterbetrieb", "2. Generation", "Individuelle Lösungen"],
+    "target": "Privat, Gewerbe, Industrie, öffentlicher Bereich"
+  },
+  "usps": [
+    "Meisterbetrieb in 2. Generation",
+    "DIN EN 1090 zertifiziert",
+    "Ausschließlich ausgebildete Spezialisten",
+    "Vom Aufmaß bis zur Montage",
+    "Regional und überregional",
+    "Individuelle Garagentore"
+  ]
+}
