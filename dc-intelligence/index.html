@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCI Data Center Intelligence – Beratung & Planung für Rechenzentren</title>
+    <meta name="description" content="Ihr Partner für zukunftssichere Rechenzentren. DCI Data Center Intelligence ist Ihr Top Consultant für Planung, Steuerung & Zertifizierung. Neutral & erfahren.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://dc-intelligence.com/dci-wAssets/img/Logos/Favicon.svg" type="image/svg+xml">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#004E78',
+                        blue: '#207CB5',
+                        'blue-light': '#e8f4fa',
+                        'blue-lighter': '#f0f8fc',
+                        'gray-warm': '#f7f8fa',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center">
+                    <img src="https://dc-intelligence.com/dci-wGlobal/wGlobal/layout/images/datacenter_intelligence_rgb_gradient_ORIGINAL.png" alt="DCI Logo" class="h-10">
+                </a>
+                <div class="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
+                    <a href="#leistungen" class="text-gray-600 hover:text-navy transition-colors">Leistungen</a>
+                    <a href="#referenzen" class="text-gray-600 hover:text-navy transition-colors">Referenzen</a>
+                    <a href="#aktuelles" class="text-gray-600 hover:text-navy transition-colors">Aktuelles</a>
+                    <a href="#kontakt" class="bg-navy text-white px-5 py-2.5 rounded hover:bg-blue transition-colors">Kontakt</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-navy" aria-label="Menü">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
+            <a href="#leistungen" class="block text-gray-600 hover:text-navy text-sm font-medium">Leistungen</a>
+            <a href="#referenzen" class="block text-gray-600 hover:text-navy text-sm font-medium">Referenzen</a>
+            <a href="#aktuelles" class="block text-gray-600 hover:text-navy text-sm font-medium">Aktuelles</a>
+            <a href="#kontakt" class="block bg-navy text-white px-5 py-2.5 rounded text-sm font-medium text-center">Kontakt</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 lg:pt-44 lg:pb-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <p class="text-blue font-semibold text-sm tracking-widest uppercase mb-4">Seit 30 Jahren Ihr Partner</p>
+                    <h1 class="text-4xl lg:text-6xl font-800 text-navy leading-tight tracking-tight mb-6">
+                        Zukunftssichere<br>Rechenzentren.
+                    </h1>
+                    <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xl mb-10">
+                        Von der Beratung und Planung über die Projektsteuerung bis zur Zertifizierung — wir machen komplexe IT-Infrastrukturen einfach.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#leistungen" class="bg-navy text-white px-8 py-3.5 rounded font-semibold text-sm hover:bg-blue transition-colors">Unsere Leistungen</a>
+                        <a href="#kontakt" class="border-2 border-navy text-navy px-8 py-3.5 rounded font-semibold text-sm hover:bg-navy hover:text-white transition-colors">Kontakt aufnehmen</a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="bg-blue-lighter rounded-lg p-8 lg:p-10 border border-blue-light">
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-navy/10 rounded flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-navy text-sm">Top Consultant 2025</p>
+                                    <p class="text-gray-500 text-sm">Zum dritten Mal ausgezeichnet</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-navy/10 rounded flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-navy text-sm">Unternehmen der Zukunft</p>
+                                    <p class="text-gray-500 text-sm">DUP & Unternehmens Award</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-navy/10 rounded flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-navy text-sm">30 Jahre Erfahrung</p>
+                                    <p class="text-gray-500 text-sm">Leidenschaft und Marktexpertise</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="py-20 lg:py-28 bg-gray-warm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16">
+                <p class="text-blue font-semibold text-sm tracking-widest uppercase mb-3">Was wir tun</p>
+                <h2 class="text-3xl lg:text-4xl font-800 text-navy tracking-tight">Vier Säulen für Ihr Rechenzentrum</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Beratung -->
+                <div class="bg-white rounded-lg overflow-hidden group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Beraten-Banner-2e88fd2a-6e4e3d30@1163ll.png" alt="RZ-Beratung" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-8 h-0.5 bg-blue mb-4"></div>
+                        <h3 class="text-lg font-700 text-navy mb-2">RZ-Beratung</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Beratung ist Vertrauenssache! Mit Workshops, Risikoanalysen und Sicherheitskonzepten optimieren wir die Planung Ihres Rechenzentrums.</p>
+                    </div>
+                </div>
+                <!-- Planung -->
+                <div class="bg-white rounded-lg overflow-hidden group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Banner-Planung-2-a9c08486-6e4e3d30@1163ll.png" alt="RZ-Planung" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-8 h-0.5 bg-blue mb-4"></div>
+                        <h3 class="text-lg font-700 text-navy mb-2">RZ-Planung</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Wir entwickeln Ihre IT-Strategie aus der Unternehmensstrategie und planen Ihr Rechenzentrum. Von Pflichtenheft bis Ausschreibungsbegleitung.</p>
+                    </div>
+                </div>
+                <!-- Steuerung -->
+                <div class="bg-white rounded-lg overflow-hidden group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Banner-Management-fe568258-6e4e3d30@1163ll.png" alt="RZ-Steuerung" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-8 h-0.5 bg-blue mb-4"></div>
+                        <h3 class="text-lg font-700 text-navy mb-2">RZ-Steuerung</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Die Optimierung oder der Bau eines Rechenzentrums ist komplex. Wir steuern Ihr Projekt effizient und binden alle relevanten Gewerke ein.</p>
+                    </div>
+                </div>
+                <!-- Zertifizierung -->
+                <div class="bg-white rounded-lg overflow-hidden group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Banner-Zertifizieren-bc8a7d35-6e4e3d30@1163ll.png" alt="RZ-Zertifizierung" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-8 h-0.5 bg-blue mb-4"></div>
+                        <h3 class="text-lg font-700 text-navy mb-2">RZ-Zertifizierung</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Wir helfen, wichtige Normen und Standards zu identifizieren, und unterstützen bei der Anpassung an steigende Anforderungen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Claim -->
+    <section class="py-20 lg:py-24 bg-navy">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <p class="text-2xl lg:text-3xl text-white font-300 leading-relaxed max-w-3xl mx-auto">
+                Wir machen komplexe IT-Infrastrukturen einfach und verlieren nie den Blick für das Wesentliche —<br>
+                <span class="font-600">ein Rechenzentrum muss einfach funktionieren.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Referenzen -->
+    <section id="referenzen" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16">
+                <p class="text-blue font-semibold text-sm tracking-widest uppercase mb-3">Branchenexpertise</p>
+                <h2 class="text-3xl lg:text-4xl font-800 text-navy tracking-tight">Referenzen aus allen Branchen</h2>
+                <p class="text-gray-600 mt-4 leading-relaxed">30 Jahre Erfahrung, Leidenschaft und Marktexpertise, aufgebaut auf einer engen Zusammenarbeit mit Kunden aller Branchen.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <!-- Gesundheitswesen -->
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/8.Gesundheitswesen-268a7dcf-6e4e3d30@379ll.jpg" alt="Gesundheitswesen" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-1">Gesundheitswesen</p>
+                        <p class="text-white font-600 text-sm">Städtische Kliniken setzen auf Hochverfügbarkeit</p>
+                    </div>
+                </div>
+                <!-- Energieversorgung -->
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/6.Energieversorgung-f12c9ea4-6e4e3d30@379ll.jpg" alt="Energieversorgung" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-1">Energieversorgung</p>
+                        <p class="text-white font-600 text-sm">Die Vorteile der KRITIS-Verordnung tragen sichtbare Früchte</p>
+                    </div>
+                </div>
+                <!-- Staat & Verwaltung -->
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/16.Verwaltung-dcbf9f7a-6e4e3d30@379ll.jpg" alt="Verwaltung" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-1">Staat & Verwaltung</p>
+                        <p class="text-white font-600 text-sm">Effizienz & Hochverfügbarkeit nach BSI-Standard</p>
+                    </div>
+                </div>
+                <!-- Industrie -->
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/2.Autoindustrie-655a70e6-6e4e3d30@379ll.jpg" alt="Industrie" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-1">Industrie</p>
+                        <p class="text-white font-600 text-sm">Verfügbarkeit und Standards für IT-Standorte</p>
+                    </div>
+                </div>
+                <!-- Ernährung -->
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/10.Handel-95f20a84-6e4e3d30@379ll.jpg" alt="Ernährung" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-1">Ernährung</p>
+                        <p class="text-white font-600 text-sm">Marktführer setzt auf High-Tech-Datacenter</p>
+                    </div>
+                </div>
+                <!-- Finanzwesen -->
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/4.Finanzen-5ed117ba-6e4e3d30@378ll.jpg" alt="Finanzwesen" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-1">Finanzwesen</p>
+                        <p class="text-white font-600 text-sm">Hochverfügbarkeit und Operation am offenen Herzen</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kundenlogos -->
+            <div class="border-t border-gray-100 pt-12">
+                <p class="text-xs text-gray-400 font-semibold tracking-widest uppercase mb-8 text-center">Unsere Referenzen sprechen für unsere Qualität</p>
+                <div class="flex flex-wrap justify-center items-center gap-6 opacity-60">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/1-6ce98304-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/2-ffe1c73c-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/3-8f2086b9-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/4-8e66d17d-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/5-c5c2224d-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/6-edc043f0-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/7-ec793f86-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/8-54a34359-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/9-d6a91fa4-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/10-250f0937-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/11-29d92134-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/12-40109bf1-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/13-994ca81e-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/14-f2c0402a-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/15-a5ed7d12-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/16-0e2dad2d-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/17-57077b3b-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/18-aa293775-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/19-e9ea054b-087fa72a@132ll.png" alt="Referenz" class="h-8 grayscale">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/20-1f4e330d-087fa72a@132ll.jpg" alt="Referenz" class="h-8 grayscale">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="py-20 lg:py-24 bg-blue-lighter">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/DRK-Logo-500-x-250-px-500-x-200-px-8d96b77e-6e4e3d30@500ll.png" alt="DRK Kliniken Berlin" class="h-12 mx-auto mb-8">
+                <blockquote class="text-lg lg:text-xl text-navy leading-relaxed font-300 mb-6">
+                    „Die DCI hat bei der Umsetzung unserer Projekte hervorragende Arbeit geleistet und sich durch eine sehr professionelle und freundliche Kommunikation ausgezeichnet. Auch in schwierigen Situationen reagierte DCI immer schnell und lösungsorientiert, wodurch wir uns stets gut aufgehoben fühlten."
+                </blockquote>
+                <div class="w-12 h-0.5 bg-blue mx-auto mb-4"></div>
+                <p class="text-navy font-600 text-sm">Herr Sorek</p>
+                <p class="text-gray-500 text-sm">DRK Kliniken Berlin</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auszeichnungen -->
+    <section class="py-16 lg:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-blue font-semibold text-sm tracking-widest uppercase mb-3">Ausgezeichnet</p>
+                    <h2 class="text-3xl lg:text-4xl font-800 text-navy tracking-tight mb-4">Mehrfach prämiert</h2>
+                    <p class="text-gray-600 leading-relaxed mb-4">DCI wurde bei der Verleihung der DUP & Unternehmens Awards gleich zweifach ausgezeichnet: <strong>Unternehmen der Zukunft</strong> und <strong>Unternehmer der Zukunft</strong>.</p>
+                    <p class="text-gray-600 leading-relaxed mb-6">Nach 2021 und 2023 wurde DCI auch 2025 wieder mit dem TOP CONSULTANT-Siegel ausgezeichnet.</p>
+                    <blockquote class="border-l-2 border-blue pl-4 text-gray-600 italic">
+                        „Beratung ist für uns kein Produkt. Es ist Verantwortung."
+                        <span class="block not-italic text-navy font-600 text-sm mt-2">— Markus Schäfer, Geschäftsführer</span>
+                    </blockquote>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 items-center">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/DIIND_SIEGEL_Unternehmen_der_Zukunft_DCI-Data-Center-Intelligence-GmbH-424a9c97-6e4e3d30@444ll.png" alt="Unternehmen der Zukunft Siegel" class="h-36">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/Ausgezeichnet-1-8ce6b452-c46486e8@719w.png" alt="Top Consultant Auszeichnung" class="h-36">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aktuelles -->
+    <section id="aktuelles" class="py-20 lg:py-28 bg-gray-warm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16">
+                <p class="text-blue font-semibold text-sm tracking-widest uppercase mb-3">Neuigkeiten</p>
+                <h2 class="text-3xl lg:text-4xl font-800 text-navy tracking-tight">Aktuelles</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <article class="bg-white rounded-lg overflow-hidden">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/ff9187e1-f5a2cb1b@707w.png" alt="Doppelerfolg für DCI" class="w-full aspect-[16/10] object-cover">
+                    <div class="p-5">
+                        <time class="text-xs text-gray-400 font-medium">19.02.2026</time>
+                        <h3 class="text-sm font-600 text-navy mt-2 leading-snug">Doppelerfolg für DCI als Unternehmen der Zukunft</h3>
+                    </div>
+                </article>
+                <article class="bg-white rounded-lg overflow-hidden">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/9413c981-f5a2cb1b@707w.png" alt="KI und Rechenzentren" class="w-full aspect-[16/10] object-cover">
+                    <div class="p-5">
+                        <time class="text-xs text-gray-400 font-medium">26.01.2026</time>
+                        <h3 class="text-sm font-600 text-navy mt-2 leading-snug">Herausforderungen für die Energieinfrastruktur: KI und Rechenzentren</h3>
+                    </div>
+                </article>
+                <article class="bg-white rounded-lg overflow-hidden">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/Screenshot-2025-11-17-121502-f86f5317-f5a2cb1b@707w.png" alt="SWR bei DCI" class="w-full aspect-[16/10] object-cover">
+                    <div class="p-5">
+                        <time class="text-xs text-gray-400 font-medium">17.11.2025</time>
+                        <h3 class="text-sm font-600 text-navy mt-2 leading-snug">SWR bei DCI: Hochsicherheits-IT aus dem Westerwald</h3>
+                    </div>
+                </article>
+                <article class="bg-white rounded-lg overflow-hidden">
+                    <img src="https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/Indien-Partnerschaft-eac08e33-f5a2cb1b@707w.jpg" alt="Partnerschaft Indien" class="w-full aspect-[16/10] object-cover">
+                    <div class="p-5">
+                        <time class="text-xs text-gray-400 font-medium">22.09.2025</time>
+                        <h3 class="text-sm font-600 text-navy mt-2 leading-snug">DCI und Pancharatna Ventures: Strategische RZ-Partnerschaft in Indien</h3>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-5">
+                    <p class="text-blue font-semibold text-sm tracking-widest uppercase mb-3">Kontakt</p>
+                    <h2 class="text-3xl lg:text-4xl font-800 text-navy tracking-tight mb-6">Jetzt gemeinsam den ersten Schritt wagen</h2>
+                    <div class="flex items-start gap-5 mb-8">
+                        <img src="https://dc-intelligence.com/dci-wAssets/img/persons/weblication/wThumbnails/B2S_2053bearbeitet-b44de114-66d49f74@239ll.jpg" alt="Markus Schäfer" class="w-20 h-20 rounded-full object-cover">
+                        <div>
+                            <p class="font-600 text-navy">Markus Schäfer</p>
+                            <p class="text-gray-500 text-sm">Geschäftsführer</p>
+                            <p class="text-gray-500 text-sm mt-2">DCI Data Center Intelligence GmbH</p>
+                            <p class="text-gray-500 text-sm">Poststr. 3, 57580 Elben</p>
+                            <a href="tel:+4927479150000" class="text-blue text-sm font-medium mt-2 inline-block">+49 2747 91500-0</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7">
+                    <form class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-navy tracking-wide uppercase mb-2">Name *</label>
+                                <input type="text" required class="w-full px-4 py-3 bg-gray-warm border border-gray-200 rounded text-sm focus:outline-none focus:border-blue focus:ring-1 focus:ring-blue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-navy tracking-wide uppercase mb-2">E-Mail *</label>
+                                <input type="email" required class="w-full px-4 py-3 bg-gray-warm border border-gray-200 rounded text-sm focus:outline-none focus:border-blue focus:ring-1 focus:ring-blue">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-navy tracking-wide uppercase mb-2">Telefon</label>
+                            <input type="tel" class="w-full px-4 py-3 bg-gray-warm border border-gray-200 rounded text-sm focus:outline-none focus:border-blue focus:ring-1 focus:ring-blue">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-navy tracking-wide uppercase mb-2">Mitteilung *</label>
+                            <textarea rows="5" required class="w-full px-4 py-3 bg-gray-warm border border-gray-200 rounded text-sm focus:outline-none focus:border-blue focus:ring-1 focus:ring-blue resize-none"></textarea>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" required class="mt-1 accent-blue">
+                            <label class="text-xs text-gray-500 leading-relaxed">Ich habe die Datenschutzerklärung gelesen und stimme der Speicherung und Verarbeitung meiner Daten zu.</label>
+                        </div>
+                        <button type="submit" class="bg-navy text-white px-8 py-3.5 rounded font-semibold text-sm hover:bg-blue transition-colors">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy py-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <img src="https://dc-intelligence.com/dci-wGlobal/wGlobal/layout/images/datacenter_intelligence_rgb_gradient_ORIGINAL.png" alt="DCI Logo" class="h-8 brightness-0 invert">
+                <p class="text-gray-400 text-xs">&copy; 2026 DCI Data Center Intelligence GmbH. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

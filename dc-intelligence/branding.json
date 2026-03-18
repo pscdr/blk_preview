@@ -1,0 +1,143 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Helvetica",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#004E78",
+    "accent": "#207CB5",
+    "background": "#FFFFFF",
+    "textPrimary": "#207CB5",
+    "link": "#207CB5"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Helvetica",
+      "heading": "Helvetica"
+    },
+    "fontStacks": {
+      "heading": ["Helvetica", "Arial", "sans-serif"],
+      "body": ["Helvetica", "Arial", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "25.5px",
+      "h2": "32.3px",
+      "body": "17px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {
+    "input": {
+      "background": "#DDDDDD",
+      "textColor": "#000000",
+      "borderColor": "#DDDDDD",
+      "borderRadius": "0px"
+    },
+    "buttonPrimary": {
+      "background": "#207CB5",
+      "textColor": "#FFFFFF",
+      "borderColor": "#207CB5",
+      "borderRadius": "5px"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#207CB5",
+      "borderColor": "#207CB5",
+      "borderRadius": "5px"
+    }
+  },
+  "images": {
+    "logo": "https://dc-intelligence.com/dci-wGlobal/wGlobal/layout/images/datacenter_intelligence_rgb_gradient_ORIGINAL.png",
+    "favicon": "https://dc-intelligence.com/dci-wAssets/img/Logos/Favicon.svg",
+    "logoAlt": "DCI Logo"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals"
+  },
+  "referenceLogos": [
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/40-e54089e7-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/39-b4e4cd12-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/38-61c06ad9-087fa72a@132ll.JPG",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/37-b0034e53-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/36-fa2bd6b1-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/35-a703afdd-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/34-20132033-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/33-62c2b9db-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/32-0623a220-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/31-86e606bd-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/30-2975b582-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/29-4e731b55-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/28-ff1711da-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/27-04c0df33-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/26-dfa51496-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/25-d2bf92eb-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/24-ede3144d-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/23-387842ec-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/22-536e00fe-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/21-cc1794c5-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/20-1f4e330d-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/19-e9ea054b-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/18-aa293775-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/17-57077b3b-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/16-0e2dad2d-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/15-a5ed7d12-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/14-f2c0402a-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/13-994ca81e-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/12-40109bf1-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/11-29d92134-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/10-250f0937-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/9-d6a91fa4-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/8-54a34359-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/7-ec793f86-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/6-edc043f0-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/5-c5c2224d-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/4-8e66d17d-087fa72a@132ll.jpg",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/3-8f2086b9-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/2-ffe1c73c-087fa72a@132ll.png",
+    "https://dc-intelligence.com/dci-wAssets/img/galleries/Referenzen-Logos/weblication/wThumbnails/1-6ce98304-087fa72a@132ll.png"
+  ],
+  "sectionImages": {
+    "banners": [
+      "https://dc-intelligence.com/dci-wAssets/img/slides/weblication/wThumbnails/Unternehmen-Banner-520ce682-927d8883@1904ll.png",
+      "https://dc-intelligence.com/dci-wAssets/img/slides/weblication/wThumbnails/6-9385046e-927d8883@0ll.png",
+      "https://dc-intelligence.com/dci-wAssets/img/slides/weblication/wThumbnails/Unternehmen-Banner-6-ae516652-927d8883@0ll.png",
+      "https://dc-intelligence.com/dci-wAssets/img/slides/weblication/wThumbnails/2-9cb74e4a-927d8883@0ll.png"
+    ],
+    "awards": [
+      "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/DIIND_SIEGEL_Unternehmen_der_Zukunft_DCI-Data-Center-Intelligence-GmbH-424a9c97-6e4e3d30@444ll.png",
+      "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/Ausgezeichnet-1-8ce6b452-c46486e8@719w.png"
+    ],
+    "services": {
+      "beratung": "https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Beraten-Banner-2e88fd2a-6e4e3d30@1163ll.png",
+      "planung": "https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Banner-Planung-2-a9c08486-6e4e3d30@1163ll.png",
+      "steuerung": "https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Banner-Management-fe568258-6e4e3d30@1163ll.png",
+      "zertifizierung": "https://dc-intelligence.com/dci/slides/dci-banner/weblication/wThumbnails/Banner-Zertifizieren-bc8a7d35-6e4e3d30@1163ll.png"
+    },
+    "referenzen": {
+      "gesundheitswesen": "https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/8.Gesundheitswesen-268a7dcf-6e4e3d30@379ll.jpg",
+      "energieversorgung": "https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/6.Energieversorgung-f12c9ea4-6e4e3d30@379ll.jpg",
+      "verwaltung": "https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/16.Verwaltung-dcbf9f7a-6e4e3d30@379ll.jpg",
+      "industrie": "https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/2.Autoindustrie-655a70e6-6e4e3d30@379ll.jpg",
+      "handel": "https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/10.Handel-95f20a84-6e4e3d30@379ll.jpg",
+      "finanzen": "https://dc-intelligence.com/dci-wAssets/img/Referenzbilder/weblication/wThumbnails/4.Finanzen-5ed117ba-6e4e3d30@378ll.jpg"
+    },
+    "persons": {
+      "markusSchaefer": "https://dc-intelligence.com/dci-wAssets/img/persons/weblication/wThumbnails/B2S_2053bearbeitet-b44de114-66d49f74@239ll.jpg"
+    },
+    "testimonialLogo": "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/DRK-Logo-500-x-250-px-500-x-200-px-8d96b77e-6e4e3d30@500ll.png",
+    "news": [
+      "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/ff9187e1-f5a2cb1b@707w.png",
+      "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/9413c981-f5a2cb1b@707w.png",
+      "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/Screenshot-2025-11-17-121502-f86f5317-f5a2cb1b@707w.png",
+      "https://dc-intelligence.com/dci-wAssets/img/weblication/wThumbnails/Indien-Partnerschaft-eac08e33-f5a2cb1b@707w.jpg"
+    ]
+  }
+}
