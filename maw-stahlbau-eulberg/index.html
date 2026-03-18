@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="https://maw-ste.de/wp-content/uploads/2016/07/favicon.jpg">
   <script>
     tailwind.config = {
@@ -17,301 +17,539 @@
             primary: '#2991D6',
             accent: '#0089F7',
             steel: '#444444',
+            dark: '#0C1220',
+            'dark-blue': '#0F1A2E',
             light: '#FCFCFC',
-            'steel-50': '#F0F7FC',
-            'steel-100': '#E1EFF9',
-            'steel-800': '#1A1A2E',
           },
           fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Poppins', 'sans-serif'],
           },
         },
       },
     }
   </script>
   <style>
-    * { font-family: 'Poppins', sans-serif; }
+    body { font-family: 'Poppins', sans-serif; }
+    h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Diagonal clip for hero */
+    .hero-clip {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    @media (min-width: 768px) {
+      .hero-clip {
+        clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+      }
+    }
+
+    /* Number watermark */
+    .watermark {
+      font-size: clamp(8rem, 20vw, 16rem);
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(41, 145, 214, 0.06);
+      position: absolute;
+      right: -2%;
+      top: -10%;
+      font-family: 'Space Grotesk', sans-serif;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Stat counter accent line */
+    .stat-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: #2991D6;
+    }
+
+    /* Grid overlay pattern */
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(41,145,214,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(41,145,214,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Service card hover */
+    .service-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #2991D6;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Image zoom on hover */
+    .img-zoom {
+      overflow: hidden;
+    }
+    .img-zoom img {
+      transition: transform 0.6s ease;
+    }
+    .img-zoom:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      animation: marquee 30s linear infinite;
+    }
+
+    /* CTA pulse ring */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.4; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    .pulse-ring::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid #2991D6;
+      border-radius: 4px;
+      animation: pulse-ring 2s ease-out infinite;
+    }
   </style>
 </head>
-<body class="bg-light text-steel">
+<body class="bg-light text-steel overflow-x-hidden">
 
   <!-- Header -->
-  <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b-4 border-primary">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#hero">
-        <img src="https://maw-ste.de/wp-content/uploads/2016/07/logo100.png" alt="MAW Stahlbau Eulberg" class="h-12">
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
-        <a href="#projektbau" class="hover:text-primary">Projektbau</a>
-        <a href="#stahlbau" class="hover:text-primary">Stahlbau</a>
-        <a href="#behaelterbau" class="hover:text-primary">Behälterbau</a>
-        <a href="#metallbau" class="hover:text-primary">Metallbau</a>
-        <a href="#kontakt" class="bg-primary text-white px-5 py-2 hover:bg-accent">Kontakt</a>
-      </nav>
-      <!-- Mobile menu button -->
-      <button id="menu-toggle" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5">
-        <span class="block w-6 h-0.5 bg-steel"></span>
-        <span class="block w-6 h-0.5 bg-steel"></span>
-        <span class="block w-6 h-0.5 bg-steel"></span>
-      </button>
+  <header class="fixed top-0 w-full z-50 bg-dark/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+        <a href="#hero" class="flex items-center gap-3">
+          <img src="https://maw-ste.de/wp-content/uploads/2016/07/logo100.png" alt="MAW Stahlbau Eulberg" class="h-11">
+        </a>
+        <nav class="hidden lg:flex items-center gap-10">
+          <a href="#leistungen" class="text-white/70 text-sm font-medium tracking-wide hover:text-white transition-colors">Leistungen</a>
+          <a href="#stahlbau" class="text-white/70 text-sm font-medium tracking-wide hover:text-white transition-colors">Stahlbau</a>
+          <a href="#behaelterbau" class="text-white/70 text-sm font-medium tracking-wide hover:text-white transition-colors">Behälterbau</a>
+          <a href="#metallbau" class="text-white/70 text-sm font-medium tracking-wide hover:text-white transition-colors">Metallbau</a>
+          <a href="#kontakt" class="relative bg-primary text-white px-7 py-3 text-sm font-semibold tracking-wide hover:bg-accent transition-colors">
+            Kontakt
+          </a>
+        </nav>
+        <button id="menu-toggle" class="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+          <span class="block w-6 h-0.5 bg-white"></span>
+          <span class="block w-6 h-0.5 bg-white"></span>
+          <span class="block w-4 h-0.5 bg-white ml-auto"></span>
+        </button>
+      </div>
     </div>
-    <!-- Mobile nav -->
-    <nav id="mobile-nav" class="hidden md:hidden bg-white border-t border-gray-100 px-6 pb-4">
-      <a href="#projektbau" class="block py-3 text-sm font-medium uppercase border-b border-gray-50">Projektbau</a>
-      <a href="#stahlbau" class="block py-3 text-sm font-medium uppercase border-b border-gray-50">Stahlbau</a>
-      <a href="#behaelterbau" class="block py-3 text-sm font-medium uppercase border-b border-gray-50">Behälterbau</a>
-      <a href="#metallbau" class="block py-3 text-sm font-medium uppercase border-b border-gray-50">Metallbau</a>
-      <a href="#kontakt" class="block py-3 text-sm font-medium uppercase text-primary">Kontakt</a>
+    <nav id="mobile-nav" class="hidden lg:hidden bg-dark border-t border-white/10 px-6 pb-6">
+      <a href="#leistungen" class="block py-3 text-white/70 text-sm font-medium">Leistungen</a>
+      <a href="#stahlbau" class="block py-3 text-white/70 text-sm font-medium">Stahlbau</a>
+      <a href="#behaelterbau" class="block py-3 text-white/70 text-sm font-medium">Behälterbau</a>
+      <a href="#metallbau" class="block py-3 text-white/70 text-sm font-medium">Metallbau</a>
+      <a href="#kontakt" class="block mt-2 bg-primary text-white text-center py-3 text-sm font-semibold">Kontakt</a>
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section id="hero" class="pt-24 md:pt-28">
-    <div class="relative">
-      <div class="h-[70vh] md:h-[85vh] overflow-hidden relative">
-        <img src="https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-9-1.jpg" alt="MAW Stahlbau Werk" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-steel-800/80 via-steel-800/50 to-transparent"></div>
-      </div>
-      <div class="absolute inset-0 flex items-center">
-        <div class="max-w-7xl mx-auto px-6 w-full">
-          <div class="max-w-2xl">
-            <!-- Bauhaus geometric accent -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-12 h-12 bg-primary"></div>
-              <div class="w-4 h-4 rounded-full bg-accent"></div>
-              <div class="w-8 h-1 bg-white"></div>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-              Ihr kompetenter Partner für Stahlbau
-            </h1>
-            <p class="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
-              Stahl- u. Hallenbau &middot; Projektbau &middot; Metallbau &middot; Behälter- u. Anlagenbau
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <a href="#kontakt" class="bg-primary text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-accent">
-                Kontakt aufnehmen
-              </a>
-              <a href="#projektbau" class="border-2 border-white text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-steel">
-                Leistungen
-              </a>
-            </div>
+  <!-- Hero – Full-impact -->
+  <section id="hero" class="relative min-h-screen bg-dark hero-clip">
+    <div class="absolute inset-0">
+      <img src="https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-9-1.jpg" alt="MAW Stahlbau Werk" class="w-full h-full object-cover opacity-30">
+      <div class="absolute inset-0 bg-gradient-to-b from-dark via-dark/60 to-dark"></div>
+    </div>
+
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 grid-pattern opacity-60"></div>
+
+    <!-- Large geometric accents -->
+    <div class="absolute top-32 right-10 w-40 h-40 border border-primary/20 rotate-12 hidden lg:block"></div>
+    <div class="absolute bottom-48 left-8 w-24 h-24 border border-primary/10 hidden lg:block"></div>
+    <div class="absolute top-1/2 right-1/3 w-3 h-3 bg-primary/40 rounded-full hidden lg:block"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 min-h-screen flex items-center">
+      <div class="w-full pt-28 pb-32">
+        <div class="max-w-4xl">
+          <!-- Tag line -->
+          <div class="flex items-center gap-4 mb-10">
+            <div class="w-12 h-[2px] bg-primary"></div>
+            <span class="text-primary text-sm font-semibold uppercase tracking-[0.25em]">Seit über 50 Jahren</span>
+          </div>
+
+          <!-- Main headline -->
+          <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-8">
+            Stahl ist<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">unser Handwerk.</span>
+          </h1>
+
+          <p class="text-xl md:text-2xl text-white/50 max-w-xl leading-relaxed mb-14 font-light">
+            Von der Planung bis zur Montage — Stahlbau, Hallenbau, Metallbau und Anlagenbau aus dem Westerwald.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap gap-5">
+            <a href="#kontakt" class="group relative bg-primary text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.15em] hover:bg-accent transition-colors">
+              Projekt besprechen
+              <span class="absolute bottom-0 left-0 w-full h-[2px] bg-white/30"></span>
+            </a>
+            <a href="#leistungen" class="group border border-white/20 text-white px-10 py-5 text-sm font-medium uppercase tracking-[0.15em] hover:border-primary hover:text-primary transition-colors">
+              Unsere Leistungen
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats floating right -->
+        <div class="hidden xl:flex flex-col gap-8 absolute right-10 top-1/2 -translate-y-1/2">
+          <div class="stat-line relative pl-6">
+            <div class="text-4xl font-display font-bold text-white">50+</div>
+            <div class="text-xs text-white/40 uppercase tracking-widest mt-1">Jahre Erfahrung</div>
+          </div>
+          <div class="stat-line relative pl-6">
+            <div class="text-4xl font-display font-bold text-white">4</div>
+            <div class="text-xs text-white/40 uppercase tracking-widest mt-1">Kernbereiche</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Competence Bar -->
-  <section class="bg-primary">
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
-      <a href="#projektbau" class="px-6 py-6 text-center text-white border-r border-white/20 hover:bg-accent">
-        <div class="text-2xl font-bold mb-1">01</div>
-        <div class="text-sm uppercase tracking-wider font-medium">Projektbau</div>
-      </a>
-      <a href="#stahlbau" class="px-6 py-6 text-center text-white border-r border-white/20 hover:bg-accent">
-        <div class="text-2xl font-bold mb-1">02</div>
-        <div class="text-sm uppercase tracking-wider font-medium">Stahlbau</div>
-      </a>
-      <a href="#behaelterbau" class="px-6 py-6 text-center text-white border-r border-white/20 hover:bg-accent">
-        <div class="text-2xl font-bold mb-1">03</div>
-        <div class="text-sm uppercase tracking-wider font-medium">Behälterbau</div>
-      </a>
-      <a href="#metallbau" class="px-6 py-6 text-center text-white hover:bg-accent">
-        <div class="text-2xl font-bold mb-1">04</div>
-        <div class="text-sm uppercase tracking-wider font-medium">Metallbau</div>
-      </a>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-3">
+      <span class="text-white/30 text-xs uppercase tracking-[0.3em]">Scroll</span>
+      <div class="w-[1px] h-10 bg-gradient-to-b from-white/40 to-transparent"></div>
     </div>
   </section>
 
-  <!-- Projektbau -->
-  <section id="projektbau" class="py-24 md:py-32">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
+  <!-- Running text marquee -->
+  <div class="bg-primary py-4 overflow-hidden">
+    <div class="marquee-track whitespace-nowrap flex items-center gap-12">
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Stahlbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Hallenbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Projektbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Metallbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Behälterbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Anlagenbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Schweißkonstruktionen</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Schlüsselfertig</span>
+      <span class="text-white/40">&#x2022;</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Stahlbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Hallenbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Projektbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Metallbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Behälterbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Anlagenbau</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Schweißkonstruktionen</span>
+      <span class="text-white/40">&#x2022;</span>
+      <span class="text-white/90 text-sm font-semibold uppercase tracking-[0.2em]">Schlüsselfertig</span>
+    </div>
+  </div>
+
+  <!-- Services Overview – 4-column cards -->
+  <section id="leistungen" class="py-28 md:py-36 relative grid-pattern">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-end justify-between mb-20">
         <div>
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-16 h-1 bg-primary"></div>
-            <span class="text-sm font-semibold uppercase tracking-widest text-primary">01 — Projektbau</span>
-          </div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Schlüsselfertige Lösungen aus einer Hand
+          <span class="text-primary text-sm font-semibold uppercase tracking-[0.25em] block mb-4">Was wir tun</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight">
+            Vier Disziplinen.<br>
+            <span class="text-primary">Eine Kompetenz.</span>
           </h2>
-          <p class="text-lg text-steel/70 leading-relaxed mb-8">
-            Zusammen mit erfahrenen Partnerunternehmen realisieren wir für Sie schlüsselfertige Lösungen. Wir geben Ihren Vorstellungen Raum — von der Planung bis zur Schlüsselübergabe.
+        </div>
+        <div class="hidden md:block w-24 h-[2px] bg-primary"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <a href="#projektbau" class="service-card group bg-white p-8 border border-gray-100 hover:border-primary/30 transition-colors">
+          <div class="text-6xl font-display font-bold text-primary/10 mb-4 group-hover:text-primary/20 transition-colors">01</div>
+          <h3 class="font-display text-xl font-bold mb-3">Projektbau</h3>
+          <p class="text-steel/60 text-sm leading-relaxed">Schlüsselfertige Lösungen von der Planung bis zur Übergabe.</p>
+        </a>
+        <!-- Card 2 -->
+        <a href="#stahlbau" class="service-card group bg-white p-8 border border-gray-100 hover:border-primary/30 transition-colors">
+          <div class="text-6xl font-display font-bold text-primary/10 mb-4 group-hover:text-primary/20 transition-colors">02</div>
+          <h3 class="font-display text-xl font-bold mb-3">Stahl- & Hallenbau</h3>
+          <p class="text-steel/60 text-sm leading-relaxed">Stahlhallen und Schweißsonderkonstruktionen nach Maß.</p>
+        </a>
+        <!-- Card 3 -->
+        <a href="#behaelterbau" class="service-card group bg-white p-8 border border-gray-100 hover:border-primary/30 transition-colors">
+          <div class="text-6xl font-display font-bold text-primary/10 mb-4 group-hover:text-primary/20 transition-colors">03</div>
+          <h3 class="font-display text-xl font-bold mb-3">Behälter- & Anlagenbau</h3>
+          <p class="text-steel/60 text-sm leading-relaxed">Druckbehälter, Rohrleitungen, Wärmetauscher und Anlagen.</p>
+        </a>
+        <!-- Card 4 -->
+        <a href="#metallbau" class="service-card group bg-white p-8 border border-gray-100 hover:border-primary/30 transition-colors">
+          <div class="text-6xl font-display font-bold text-primary/10 mb-4 group-hover:text-primary/20 transition-colors">04</div>
+          <h3 class="font-display text-xl font-bold mb-3">Metallbau</h3>
+          <p class="text-steel/60 text-sm leading-relaxed">Treppenanlagen, Geländer, Fassaden — seit über 50 Jahren.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projektbau – Big visual section -->
+  <section id="projektbau" class="relative bg-dark overflow-hidden">
+    <div class="grid lg:grid-cols-2 min-h-[80vh]">
+      <!-- Image side -->
+      <div class="img-zoom relative h-[50vh] lg:h-auto">
+        <img src="https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-9-1.jpg" alt="Projektbau" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-dark"></div>
+      </div>
+      <!-- Content side -->
+      <div class="relative flex items-center px-8 lg:px-16 py-16 lg:py-0">
+        <div class="watermark">01</div>
+        <div class="relative z-10 max-w-lg">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-10 h-[2px] bg-primary"></div>
+            <span class="text-primary text-xs font-semibold uppercase tracking-[0.3em]">Projektbau</span>
+          </div>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+            Schlüsselfertig.<br>Aus einer Hand.
+          </h2>
+          <p class="text-white/60 text-lg leading-relaxed mb-6">
+            Zusammen mit erfahrenen Partnerunternehmen realisieren wir für Sie schlüsselfertige Lösungen.
           </p>
-          <a href="#kontakt" class="inline-flex items-center gap-2 text-primary font-semibold uppercase text-sm tracking-wider hover:gap-4">
+          <p class="text-white/40 leading-relaxed mb-10">
+            Wir geben Ihren Vorstellungen Raum — von der Planung bis zur Schlüsselübergabe.
+          </p>
+          <a href="#kontakt" class="inline-flex items-center gap-3 text-primary text-sm font-semibold uppercase tracking-[0.15em] hover:gap-5 transition-all">
             Projekt anfragen
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
-        <div class="relative">
-          <!-- Bauhaus geometric frame -->
-          <div class="absolute -top-6 -left-6 w-24 h-24 border-4 border-primary z-0"></div>
-          <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-accent/20 z-0"></div>
-          <img src="https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-9-1.jpg" alt="Projektbau" class="relative z-10 w-full aspect-[4/3] object-cover">
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Stahlbau -->
-  <section id="stahlbau" class="py-24 md:py-32 bg-steel-800">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="order-2 md:order-1 relative">
-          <div class="absolute -top-6 -right-6 w-20 h-20 rounded-full border-4 border-primary z-0"></div>
-          <img src="https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-2-1.jpg" alt="Stahl- und Hallenbau" class="relative z-10 w-full aspect-[4/3] object-cover">
-        </div>
-        <div class="order-1 md:order-2">
+  <!-- Stahlbau – Reversed layout -->
+  <section id="stahlbau" class="relative bg-light overflow-hidden">
+    <div class="grid lg:grid-cols-2 min-h-[80vh]">
+      <!-- Content side -->
+      <div class="relative flex items-center px-8 lg:px-16 py-16 lg:py-0 order-2 lg:order-1">
+        <div class="watermark" style="left:-2%; right:auto;">02</div>
+        <div class="relative z-10 max-w-lg lg:ml-auto">
           <div class="flex items-center gap-4 mb-8">
-            <div class="w-16 h-1 bg-primary"></div>
-            <span class="text-sm font-semibold uppercase tracking-widest text-primary">02 — Stahlbau</span>
+            <div class="w-10 h-[2px] bg-primary"></div>
+            <span class="text-primary text-xs font-semibold uppercase tracking-[0.3em]">Stahl- & Hallenbau</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight text-white">
-            Schnell und flexibel. Bauen mit Stahl.
+          <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mb-8">
+            Schnell. Flexibel.<br>
+            <span class="text-primary">Bauen mit Stahl.</span>
           </h2>
-          <p class="text-lg text-white/70 leading-relaxed mb-6">
-            Wir fertigen und montieren Stahlhallen und Schweißsonderkonstruktionen nach Ihren Anforderungen aus C-Stählen und Edelstählen in roher, feuerverzinkter oder lackierter Ausführung.
+          <p class="text-steel/70 text-lg leading-relaxed mb-6">
+            Wir fertigen und montieren Stahlhallen und Schweißsonderkonstruktionen nach Ihren Anforderungen aus C-Stählen und Edelstählen.
           </p>
-          <p class="text-white/50 leading-relaxed mb-8">
+          <p class="text-steel/50 leading-relaxed mb-4">
+            In roher, feuerverzinkter oder lackierter Ausführung.
+          </p>
+          <p class="text-steel/50 leading-relaxed mb-10">
             Durch sorgsamen Umgang mit den Ressourcen und durch stetige Verbesserung aller Prozesse vermeiden wir Verschwendung und schonen die Umwelt.
           </p>
-          <a href="#kontakt" class="inline-flex items-center gap-2 text-primary font-semibold uppercase text-sm tracking-wider hover:gap-4">
+          <a href="#kontakt" class="inline-flex items-center gap-3 text-primary text-sm font-semibold uppercase tracking-[0.15em] hover:gap-5 transition-all">
             Anfrage stellen
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
       </div>
+      <!-- Image side -->
+      <div class="img-zoom relative h-[50vh] lg:h-auto order-1 lg:order-2">
+        <img src="https://maw-ste.de/wp-content/uploads/2016/07/Afflerbach-2-1.jpg" alt="Stahl- und Hallenbau" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-light via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-light"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement / Philosophy break -->
+  <section class="relative bg-dark py-28 md:py-36 overflow-hidden">
+    <!-- Large decorative typography -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+      <span class="font-display text-[12vw] font-bold text-white/[0.02] uppercase whitespace-nowrap">Stahl &middot; Ideen &middot; Lösungen</span>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center relative z-10">
+      <div class="inline-flex items-center gap-3 mb-12">
+        <div class="w-8 h-[2px] bg-primary"></div>
+        <div class="w-3 h-3 bg-primary rotate-45"></div>
+        <div class="w-8 h-[2px] bg-primary"></div>
+      </div>
+      <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-10">
+        Wir formen Ihre Ideen mit Ihnen.<br>
+        <span class="text-primary">Von der Planung bis zur Fertigung.</span>
+      </h2>
+      <p class="text-white/40 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+        MAW-Stahlbau Eulberg GmbH & Co.KG ist Ihr kompetenter Partner für hochwertige und durchdachte Lösungen, die wir für Ihr Unternehmen individuell planen und umsetzen.
+      </p>
     </div>
   </section>
 
   <!-- Behälterbau -->
-  <section id="behaelterbau" class="py-24 md:py-32">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div>
+  <section id="behaelterbau" class="relative overflow-hidden">
+    <div class="grid lg:grid-cols-2 min-h-[80vh]">
+      <!-- Image side -->
+      <div class="img-zoom relative h-[50vh] lg:h-auto">
+        <img src="https://maw-ste.de/wp-content/uploads/2015/04/hydro_gas.jpg" alt="Behälter- und Anlagenbau" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-blue via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-dark-blue"></div>
+      </div>
+      <!-- Content side -->
+      <div class="relative bg-dark-blue flex items-center px-8 lg:px-16 py-16 lg:py-0">
+        <div class="watermark">03</div>
+        <div class="relative z-10 max-w-lg">
           <div class="flex items-center gap-4 mb-8">
-            <div class="w-16 h-1 bg-primary"></div>
-            <span class="text-sm font-semibold uppercase tracking-widest text-primary">03 — Behälterbau</span>
+            <div class="w-10 h-[2px] bg-primary"></div>
+            <span class="text-primary text-xs font-semibold uppercase tracking-[0.3em]">Behälter- & Anlagenbau</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Behälter- und Anlagenbau
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+            Erfahrung, die<br>unter Druck<br>
+            <span class="text-primary">standhält.</span>
           </h2>
-          <p class="text-lg text-steel/70 leading-relaxed mb-4">
+          <p class="text-white/60 text-lg leading-relaxed mb-6">
             Behälter, Rohrleitungen, Wärmetauscher und Anlagen? – Wir haben die Erfahrung.
           </p>
-          <p class="text-steel/60 leading-relaxed mb-8">
+          <p class="text-white/40 leading-relaxed mb-10">
             Wir planen und fertigen drucklose und Druckbehälter, Rohrleitungen, Wärmetauscher und Anlagen, sowohl als eigenständige Funktionseinheiten, als auch als Komponenten.
           </p>
-          <a href="#kontakt" class="inline-flex items-center gap-2 text-primary font-semibold uppercase text-sm tracking-wider hover:gap-4">
+
+          <!-- Mini feature list -->
+          <div class="grid grid-cols-2 gap-4 mb-10">
+            <div class="border border-white/10 p-4">
+              <div class="text-primary font-display font-bold text-lg mb-1">Druckbehälter</div>
+              <div class="text-white/40 text-xs">Drucklos & Druck</div>
+            </div>
+            <div class="border border-white/10 p-4">
+              <div class="text-primary font-display font-bold text-lg mb-1">Rohrleitungen</div>
+              <div class="text-white/40 text-xs">Planung & Fertigung</div>
+            </div>
+            <div class="border border-white/10 p-4">
+              <div class="text-primary font-display font-bold text-lg mb-1">Wärmetauscher</div>
+              <div class="text-white/40 text-xs">Komponenten</div>
+            </div>
+            <div class="border border-white/10 p-4">
+              <div class="text-primary font-display font-bold text-lg mb-1">Anlagen</div>
+              <div class="text-white/40 text-xs">Funktionseinheiten</div>
+            </div>
+          </div>
+
+          <a href="#kontakt" class="inline-flex items-center gap-3 text-primary text-sm font-semibold uppercase tracking-[0.15em] hover:gap-5 transition-all">
             Mehr erfahren
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
-        <div class="relative">
-          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-steel-50 z-0"></div>
-          <div class="absolute top-4 right-4 w-8 h-8 bg-primary z-20"></div>
-          <img src="https://maw-ste.de/wp-content/uploads/2015/04/hydro_gas.jpg" alt="Behälter- und Anlagenbau" class="relative z-10 w-full aspect-[4/3] object-cover">
-        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Statement -->
-  <section class="py-20 bg-steel-50 border-y-4 border-primary">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <!-- Bauhaus circle accent -->
-      <div class="w-16 h-16 rounded-full border-4 border-primary mx-auto mb-8"></div>
-      <blockquote class="text-2xl md:text-3xl font-semibold leading-relaxed text-steel">
-        Wir formen Ihre Ideen mit Ihnen. Von der Planung bis zur Fertigung.
-      </blockquote>
-      <p class="mt-6 text-steel/60 text-lg">
-        MAW-Stahlbau Eulberg GmbH & Co.KG — Ihr kompetenter Partner für hochwertige und durchdachte Lösungen, die wir für Ihr Unternehmen individuell planen und umsetzen.
-      </p>
     </div>
   </section>
 
   <!-- Metallbau -->
-  <section id="metallbau" class="py-24 md:py-32">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="order-2 md:order-1 relative">
-          <div class="absolute -top-4 -left-4 w-full h-full border-2 border-primary/30 z-0"></div>
-          <img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_5.jpg" alt="Metallbau" class="relative z-10 w-full aspect-[4/3] object-cover">
-        </div>
-        <div class="order-1 md:order-2">
+  <section id="metallbau" class="relative bg-light overflow-hidden">
+    <div class="grid lg:grid-cols-2 min-h-[80vh]">
+      <!-- Content side -->
+      <div class="relative flex items-center px-8 lg:px-16 py-16 lg:py-0 order-2 lg:order-1">
+        <div class="watermark" style="left:-2%; right:auto;">04</div>
+        <div class="relative z-10 max-w-lg lg:ml-auto">
           <div class="flex items-center gap-4 mb-8">
-            <div class="w-16 h-1 bg-primary"></div>
-            <span class="text-sm font-semibold uppercase tracking-widest text-primary">04 — Metallbau</span>
+            <div class="w-10 h-[2px] bg-primary"></div>
+            <span class="text-primary text-xs font-semibold uppercase tracking-[0.3em]">Metallbau</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Metallbau mit über 50 Jahren Erfahrung
+          <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight mb-8">
+            50 Jahre<br>Metallbau-<br>
+            <span class="text-primary">Kompetenz.</span>
           </h2>
-          <p class="text-lg text-steel/70 leading-relaxed mb-8">
+          <p class="text-steel/70 text-lg leading-relaxed mb-10">
             Treppenanlagen, Geländer, Fassaden; mit der Erfahrung von über 50 Jahren planen, fertigen und montieren wir Metallbau.
           </p>
-          <a href="#kontakt" class="inline-flex items-center gap-2 text-primary font-semibold uppercase text-sm tracking-wider hover:gap-4">
-            Anfrage stellen
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+
+          <div class="flex items-center gap-6">
+            <a href="#kontakt" class="inline-flex items-center gap-3 text-primary text-sm font-semibold uppercase tracking-[0.15em] hover:gap-5 transition-all">
+              Anfrage stellen
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
         </div>
+      </div>
+      <!-- Image side -->
+      <div class="img-zoom relative h-[50vh] lg:h-auto order-1 lg:order-2">
+        <img src="https://maw-ste.de/wp-content/uploads/2016/07/Metallbau_5.jpg" alt="Metallbau" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-light via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-light"></div>
       </div>
     </div>
   </section>
 
-  <!-- Kontakt CTA -->
-  <section id="kontakt" class="py-24 md:py-32 bg-steel-800 relative overflow-hidden">
-    <!-- Bauhaus geometric background elements -->
-    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-    <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 translate-y-1/2 -translate-x-1/2"></div>
-    <div class="absolute top-1/2 right-1/4 w-8 h-8 bg-primary/30"></div>
+  <!-- CTA / Kontakt -->
+  <section id="kontakt" class="relative bg-dark py-32 md:py-44 overflow-hidden">
+    <!-- Big geometric background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/10 rotate-45"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/5 rotate-[30deg]"></div>
+      <div class="absolute top-20 right-20 w-4 h-4 bg-primary/20 rounded-full"></div>
+      <div class="absolute bottom-20 left-20 w-6 h-6 bg-primary/10"></div>
+    </div>
 
-    <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
-      <div class="flex items-center justify-center gap-3 mb-8">
-        <div class="w-8 h-1 bg-primary"></div>
-        <div class="w-4 h-4 bg-primary"></div>
-        <div class="w-8 h-1 bg-primary"></div>
-      </div>
-      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
-        Lassen Sie uns Ihr Projekt gemeinsam umsetzen
+    <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
+      <span class="text-primary text-sm font-semibold uppercase tracking-[0.3em] block mb-8">Kontakt</span>
+      <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
+        Lassen Sie uns Ihr<br>nächstes Projekt<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">gemeinsam bauen.</span>
       </h2>
-      <p class="text-lg text-white/70 mb-10 leading-relaxed">
+      <p class="text-white/40 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-14">
         Von der ersten Idee bis zur fertigen Konstruktion — wir freuen uns über Ihre Kontaktaufnahme.
       </p>
-      <a href="https://maw-ste.de/kontakt/" class="inline-block bg-primary text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-accent">
+      <a href="https://maw-ste.de/kontakt/" class="relative inline-block bg-primary text-white px-14 py-6 text-sm font-bold uppercase tracking-[0.2em] hover:bg-accent transition-colors pulse-ring">
         Jetzt Kontakt aufnehmen
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-steel-800 border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-12">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-4">
+  <footer class="bg-dark border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex items-center gap-5">
           <img src="https://maw-ste.de/wp-content/uploads/2016/07/logo100.png" alt="MAW Stahlbau Eulberg" class="h-10 brightness-200">
-          <span class="text-white/60 text-sm">MAW-Stahlbau Eulberg GmbH & Co.KG</span>
+          <div>
+            <div class="text-white/70 text-sm font-medium">MAW-Stahlbau Eulberg GmbH & Co.KG</div>
+            <div class="text-white/30 text-xs mt-1">Die Stahlbau Profis aus dem Westerwald</div>
+          </div>
         </div>
-        <div class="text-white/40 text-sm">
-          Die Stahlbau Profis aus dem Westerwald
+        <div class="flex items-center gap-8 text-white/30 text-xs uppercase tracking-wider">
+          <a href="#leistungen" class="hover:text-white/60 transition-colors">Leistungen</a>
+          <a href="#kontakt" class="hover:text-white/60 transition-colors">Kontakt</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
     const toggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
-    toggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('hidden');
-    });
-    // Close mobile nav on link click
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.add('hidden');
-      });
-    });
+    toggle.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+    mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileNav.classList.add('hidden')));
   </script>
 
 </body>
