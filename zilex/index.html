@@ -109,6 +109,41 @@
             width: 1px;
             background: linear-gradient(to bottom, transparent, rgba(35,160,140,0.4), transparent);
         }
+
+        /* Why tabs */
+        .why-tab {
+            background: rgba(255,255,255,0.02);
+            cursor: pointer;
+        }
+        .why-tab:hover {
+            background: rgba(255,255,255,0.04);
+        }
+        .why-tab-active {
+            background: rgba(35,160,140,0.06) !important;
+        }
+        .why-tab-active .why-tab-indicator {
+            background: #23A08C !important;
+        }
+        .why-tab-active div > div:first-child {
+            color: rgba(35,160,140,0.5);
+        }
+        .why-tab-active div > div > div:first-child {
+            color: #fff !important;
+        }
+        .why-tab-active div > div > div:last-child {
+            color: rgba(255,255,255,0.35) !important;
+        }
+
+        /* Why panels */
+        .why-panel {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .why-panel-active {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="bg-white text-slate">
@@ -233,108 +268,146 @@
         <div class="bg-zilex-deep diagonal-slice pb-32">
             <div class="pt-24 pb-8">
                 <div class="max-w-7xl mx-auto px-6 lg:px-10">
-                    <div class="grid lg:grid-cols-12 gap-16 items-start">
-                        <div class="lg:col-span-5">
-                            <div class="inline-flex items-center gap-3 mb-6">
-                                <div class="w-10 h-[2px] bg-teal"></div>
-                                <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Why ZILEX</span>
-                            </div>
-                            <h2 class="font-heading font-black text-4xl lg:text-5xl xl:text-6xl text-white leading-[1.05] mb-6">
-                                THE INDUSTRY<br>
-                                IS <span class="text-teal">BROKEN.</span><br>
-                                WE FIX IT.
-                            </h2>
-                            <p class="text-white/40 text-lg leading-relaxed font-light">
-                                For decades, sourcing heat exchangers has been slow, fragmented, and error-prone. ZILEX transforms every pain point into a competitive advantage.
-                            </p>
+                    <!-- Header -->
+                    <div class="text-center mb-16">
+                        <div class="inline-flex items-center gap-3 mb-6">
+                            <div class="w-10 h-[2px] bg-teal"></div>
+                            <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Why ZILEX</span>
+                            <div class="w-10 h-[2px] bg-teal"></div>
+                        </div>
+                        <h2 class="font-heading font-black text-4xl lg:text-5xl xl:text-6xl text-white leading-[1.05] mb-6">
+                            THE INDUSTRY IS <span class="text-teal">BROKEN.</span> WE FIX IT.
+                        </h2>
+                        <p class="text-white/40 text-lg leading-relaxed font-light max-w-2xl mx-auto">
+                            For decades, sourcing heat exchangers has been slow, fragmented, and error-prone. Click each challenge to see how ZILEX solves it.
+                        </p>
+                    </div>
+
+                    <!-- Interactive tabs -->
+                    <div class="grid lg:grid-cols-12 gap-0 items-stretch max-w-6xl mx-auto" id="why-tabs">
+                        <!-- Left: Tab buttons -->
+                        <div class="lg:col-span-4 flex flex-col">
+                            <button onclick="setTab(0)" data-tab="0" class="why-tab why-tab-active text-left p-6 lg:p-8 border border-white/[0.06] border-b-0 transition-all duration-300 relative">
+                                <div class="absolute left-0 top-0 w-[3px] h-full bg-teal why-tab-indicator transition-all duration-300"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="font-heading font-black text-3xl text-teal/30">01</div>
+                                    <div>
+                                        <div class="font-heading font-bold text-white text-base lg:text-lg">Multiple Processes</div>
+                                        <div class="text-white/25 text-xs mt-0.5">Fragmented workflows</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button onclick="setTab(1)" data-tab="1" class="why-tab text-left p-6 lg:p-8 border border-white/[0.06] border-b-0 transition-all duration-300 relative">
+                                <div class="absolute left-0 top-0 w-[3px] h-full bg-transparent why-tab-indicator transition-all duration-300"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="font-heading font-black text-3xl text-teal/30">02</div>
+                                    <div>
+                                        <div class="font-heading font-bold text-white/50 text-base lg:text-lg">Slow & Complex</div>
+                                        <div class="text-white/15 text-xs mt-0.5">Weeks of precision work</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button onclick="setTab(2)" data-tab="2" class="why-tab text-left p-6 lg:p-8 border border-white/[0.06] border-b-0 transition-all duration-300 relative">
+                                <div class="absolute left-0 top-0 w-[3px] h-full bg-transparent why-tab-indicator transition-all duration-300"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="font-heading font-black text-3xl text-teal/30">03</div>
+                                    <div>
+                                        <div class="font-heading font-bold text-white/50 text-base lg:text-lg">Transparency Gap</div>
+                                        <div class="text-white/15 text-xs mt-0.5">Hidden costs & rationales</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button onclick="setTab(3)" data-tab="3" class="why-tab text-left p-6 lg:p-8 border border-white/[0.06] transition-all duration-300 relative">
+                                <div class="absolute left-0 top-0 w-[3px] h-full bg-transparent why-tab-indicator transition-all duration-300"></div>
+                                <div class="flex items-center gap-4">
+                                    <div class="font-heading font-black text-3xl text-teal/30">04</div>
+                                    <div>
+                                        <div class="font-heading font-bold text-white/50 text-base lg:text-lg">Risk of Errors</div>
+                                        <div class="text-white/15 text-xs mt-0.5">Manual data handling</div>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
 
-                        <div class="lg:col-span-7 space-y-4">
-                            <!-- Pair 1 -->
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                        <!-- Right: Content panel with Challenge → Solution transition -->
+                        <div class="lg:col-span-8 border border-white/[0.06] border-l-0 relative overflow-hidden min-h-[400px]">
+                            <!-- Panel 0 -->
+                            <div class="why-panel why-panel-active absolute inset-0 flex flex-col" data-panel="0">
+                                <div class="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-white/[0.02]">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">The Challenge</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Multiple Processes</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Technical specification, supplier inquiry, commercial evaluation, and internal approvals — all fragmented.</p>
-                                </div>
-                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    <p class="text-white/50 text-base leading-relaxed mb-8">Technical specification, supplier inquiry, commercial evaluation, and internal approvals — all running as separate, fragmented processes that slow everything down.</p>
+
+                                    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-teal/40 to-transparent mb-8"></div>
+
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">ZILEX Solution</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Streamlined Process</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">One unified platform. Real-time data. A unique algorithm that explores all possibilities instantly.</p>
+                                    <h3 class="font-heading font-bold text-2xl lg:text-3xl text-white mb-3">Streamlined Process</h3>
+                                    <p class="text-white/50 text-base leading-relaxed">One unified platform where all stakeholders access real-time data. A unique algorithm explores all theoretical possibilities and instantly presents the most suitable solutions.</p>
                                 </div>
                             </div>
 
-                            <!-- Pair 2 -->
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                            <!-- Panel 1 -->
+                            <div class="why-panel absolute inset-0 flex flex-col" data-panel="1">
+                                <div class="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-white/[0.02]">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">The Challenge</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Slow & Complex</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Thermodynamic analysis, strength calculations, material selection — weeks of technical precision.</p>
-                                </div>
-                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    <p class="text-white/50 text-base leading-relaxed mb-8">Thermodynamic analysis, strength calculations, and careful material selection require weeks of technical precision and multiple layers of approval.</p>
+
+                                    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-teal/40 to-transparent mb-8"></div>
+
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">ZILEX Solution</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Speed & Simplicity</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Automated workflows eliminate delays. Minutes instead of weeks, with zero complexity for the user.</p>
+                                    <h3 class="font-heading font-bold text-2xl lg:text-3xl text-white mb-3">Speed & Simplicity</h3>
+                                    <p class="text-white/50 text-base leading-relaxed">Automated workflows eliminate every delay. What took weeks now takes minutes — with zero complexity for the user and integrated approvals.</p>
                                 </div>
                             </div>
 
-                            <!-- Pair 3 -->
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                            <!-- Panel 2 -->
+                            <div class="why-panel absolute inset-0 flex flex-col" data-panel="2">
+                                <div class="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-white/[0.02]">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">The Challenge</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Transparency Gap</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Unclear design rationales, hidden costs, limited visibility into supplier competencies.</p>
-                                </div>
-                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    <p class="text-white/50 text-base leading-relaxed mb-8">Unclear design rationales, hidden cost structures, and limited visibility into supplier competencies make informed decision-making nearly impossible.</p>
+
+                                    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-teal/40 to-transparent mb-8"></div>
+
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">ZILEX Solution</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Full Transparency</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Complete visibility into design rationale, pricing, and supplier capabilities. Every decision documented.</p>
+                                    <h3 class="font-heading font-bold text-2xl lg:text-3xl text-white mb-3">Full Transparency</h3>
+                                    <p class="text-white/50 text-base leading-relaxed">Complete visibility into design rationale, pricing, and supplier capabilities. Every decision is documented and traceable — no hidden costs, no surprises.</p>
                                 </div>
                             </div>
 
-                            <!-- Pair 4 -->
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                            <!-- Panel 3 -->
+                            <div class="why-panel absolute inset-0 flex flex-col" data-panel="3">
+                                <div class="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-white/[0.02]">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">The Challenge</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Risk of Errors</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Manual data handling, fragmented communication — costly redesigns and performance failures.</p>
-                                </div>
-                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
-                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    <p class="text-white/50 text-base leading-relaxed mb-8">Manual data handling and fragmented communication increase the risk of costly redesigns, specification errors, and performance failures.</p>
+
+                                    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-teal/40 to-transparent mb-8"></div>
+
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">ZILEX Solution</span>
                                     </div>
-                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Zero Errors</h3>
-                                    <p class="text-white/35 text-sm leading-relaxed">Automated calculations, integrated quality checks. Every specification validated in real-time.</p>
+                                    <h3 class="font-heading font-bold text-2xl lg:text-3xl text-white mb-3">Zero Errors</h3>
+                                    <p class="text-white/50 text-base leading-relaxed">Automated calculations, customized designs, and integrated quality checks. Every specification is validated in real-time — guaranteed ready to order.</p>
                                 </div>
                             </div>
                         </div>
@@ -940,8 +1013,8 @@
         </div>
     </footer>
 
-    <!-- Nav scroll behavior -->
     <script>
+        // Nav scroll behavior
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -949,6 +1022,42 @@
             } else {
                 nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
             }
+        });
+
+        // Why ZILEX interactive tabs
+        function setTab(index) {
+            // Update tabs
+            document.querySelectorAll('.why-tab').forEach(tab => {
+                const isActive = parseInt(tab.dataset.tab) === index;
+                tab.classList.toggle('why-tab-active', isActive);
+                const indicator = tab.querySelector('.why-tab-indicator');
+                if (indicator) indicator.style.background = isActive ? '#23A08C' : 'transparent';
+                // Update text colors
+                const title = tab.querySelector('.flex > div > div:first-child');
+                const subtitle = tab.querySelector('.flex > div > div:last-child');
+                if (title) title.style.color = isActive ? '#fff' : 'rgba(255,255,255,0.5)';
+                if (subtitle) subtitle.style.color = isActive ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.15)';
+            });
+            // Update panels
+            document.querySelectorAll('.why-panel').forEach(panel => {
+                const isActive = parseInt(panel.dataset.panel) === index;
+                panel.classList.toggle('why-panel-active', isActive);
+            });
+        }
+
+        // Auto-rotate tabs every 5 seconds
+        let currentTab = 0;
+        let autoRotate = setInterval(() => {
+            currentTab = (currentTab + 1) % 4;
+            setTab(currentTab);
+        }, 5000);
+
+        // Stop auto-rotate on manual click
+        document.querySelectorAll('.why-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                clearInterval(autoRotate);
+                currentTab = parseInt(tab.dataset.tab);
+            });
         });
     </script>
 
