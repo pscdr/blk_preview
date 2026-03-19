@@ -1,0 +1,43 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Univia W01 Book", "role": "body" },
+    { "family": "Univia W01 Medium", "role": "heading" },
+    { "family": "Roboto", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#017299",
+    "accent": "#017299",
+    "background": "#FFFFFF",
+    "textPrimary": "#017299",
+    "link": "#017299"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Univia W01 Book",
+      "heading": "Univia W01 Medium"
+    },
+    "fontStacks": {
+      "heading": ["Univia W01 Medium", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+      "body": ["Univia W01 Book", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "14px",
+      "h2": "36px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "images": {
+    "logo": "https://www.innofriction.com/_assets/68648e9d242917223964c0fe036054ea/images/inno-friction.svg",
+    "favicon": "https://www.innofriction.com/_assets/68648e9d242917223964c0fe036054ea/images/favicon.ico"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial professionals"
+  }
+}
