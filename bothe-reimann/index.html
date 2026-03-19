@@ -285,74 +285,70 @@
                 </div>
             </div>
 
-            <!-- Produkt-Grid mit Bildern -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Sektionaltore -->
-                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-orange/20 transition-all duration-300">
-                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
-                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/Tor1.png" alt="Sektionaltor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Sektionaltore</h3>
-                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
-                            Platzsparend, geräuscharm, strapazierfähig. Mit Panoramatoren, attraktiven Verglasungen und integrierbaren Schlupftüren. Auch als innovative 60mm-Serie mit Dreifachverglasung und hervorragender Wärmedämmung.
+            <!-- Sektionaltore — Full-width hero showcase -->
+            <div class="relative rounded-2xl overflow-hidden mb-4 group">
+                <div class="aspect-[21/9] md:aspect-[3/1]">
+                    <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/Tor1.png" alt="Sektionaltor" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-neutral-900/90 via-neutral-900/60 to-transparent"></div>
+                <div class="absolute inset-0 flex items-end p-8 lg:p-12">
+                    <div class="max-w-lg">
+                        <p class="text-brand-orange font-black text-[13px] tracking-widest uppercase mb-3">Flaggschiff</p>
+                        <h3 class="text-3xl lg:text-4xl font-black text-white tracking-tight mb-3">Sektionaltore</h3>
+                        <p class="text-white/70 text-[15px] leading-relaxed hidden md:block">
+                            Platzsparend, geräuscharm, strapazierfähig. Auch als innovative 60mm-Serie mit Dreifachverglasung und hervorragender Wärmedämmung.
                         </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">Panoramatore</span>
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">60mm Serie</span>
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Verglasungen</span>
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schnelllauftore + Rolltore — asymmetrisch -->
+            <div class="grid md:grid-cols-5 gap-4 mb-4">
+                <!-- Schnelllauftore: Bild-dominant -->
+                <div class="md:col-span-3 relative rounded-2xl overflow-hidden group">
+                    <div class="aspect-[4/3] md:aspect-auto md:h-full">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/1.png" alt="Schnelllauftor" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+                        <h3 class="text-2xl lg:text-3xl font-black text-white tracking-tight mb-2">Schnelllauftore</h3>
+                        <p class="text-white/60 text-[15px] leading-relaxed max-w-md">
+                            Optimieren Arbeitsabläufe, senken Energiekosten. Sturmsicher auch bei Windbelastung.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Schnelllauftore -->
-                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-blue/20 transition-all duration-300">
-                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
-                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/1.png" alt="Schnelllauftor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Schnelllauftore</h3>
-                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
-                            Optimieren Arbeitsabläufe, verkürzen Wartezeiten und senken Energiekosten. Minimierter Luftdurchzug reduziert Wärme- und Kälteverlust — mit Sturmsicherung auch bei Windbelastung stabil.
+                <!-- Rolltore: Text-dominant, dunkler Block -->
+                <div class="md:col-span-2 bg-neutral-900 rounded-2xl p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-8 -bottom-8 text-[12rem] font-black text-white/[0.03] leading-none select-none rotate-12">R</div>
+                    <div class="relative">
+                        <div class="w-10 h-1 bg-brand-blue rounded-full mb-8"></div>
+                        <h3 class="text-2xl font-black text-white tracking-tight mb-4">Rolltore</h3>
+                        <p class="text-neutral-400 text-[15px] leading-relaxed">
+                            Einfach, robust, platzsparend. Ein- und doppelwandige Profile aus verzinktem Stahl mit PU-Schaumfüllung.
                         </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">Energieersparnis</span>
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Sturmsicher</span>
-                        </div>
+                    </div>
+                    <div class="relative mt-8">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/02582a55-692e-4548-8b20-fac3bbbe61d6-2.jpg" alt="Rolltor" class="w-full aspect-[16/9] object-cover rounded-lg">
                     </div>
                 </div>
+            </div>
 
-                <!-- Rolltore -->
-                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-blue/20 transition-all duration-300">
-                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
-                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/02582a55-692e-4548-8b20-fac3bbbe61d6-2.jpg" alt="Rolltor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <!-- Helix — Highlight-Strip mit Stat -->
+            <div class="bg-brand-orange rounded-2xl overflow-hidden">
+                <div class="grid lg:grid-cols-12 items-center">
+                    <div class="lg:col-span-5 aspect-[4/3] lg:aspect-auto lg:h-full">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/1446915224.jpg" alt="Helix Spiraltor" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Rolltore</h3>
-                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
-                            Einfach, robust, platzsparend. Ein- und doppelwandige Profile aus verzinktem Stahl mit PU-Schaumfüllung. Minimaler Platzbedarf am Sturz, komfortable Bedienung per Handsender oder Radar.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">Robust</span>
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Platzsparend</span>
+                    <div class="lg:col-span-7 p-10 lg:p-14">
+                        <div class="flex items-baseline gap-4 mb-6">
+                            <span class="text-7xl lg:text-8xl font-black text-white/20 leading-none">6x</span>
+                            <span class="text-white font-bold text-lg">schneller</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Helix -->
-                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-orange/20 transition-all duration-300">
-                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
-                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/1446915224.jpg" alt="Helix Spiraltor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Helix Spiraltor</h3>
-                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
-                            6x schneller als ein herkömmliches Sektionaltor — das ideale Torsystem für stark frequentierte Öffnungen wie Logistikcenter. Vereint Isolation und Geschwindigkeit in einem Produkt.
+                        <h3 class="text-3xl lg:text-4xl font-black text-white tracking-tight mb-4">Helix Spiraltor</h3>
+                        <p class="text-white/80 text-[15px] leading-relaxed max-w-md">
+                            Das ideale Torsystem für stark frequentierte Öffnungen wie Logistikcenter. Vereint Isolation und Geschwindigkeit in einem Produkt.
                         </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">6x schneller</span>
-                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">Hochisolierend</span>
-                        </div>
                     </div>
                 </div>
             </div>
