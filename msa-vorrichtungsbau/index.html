@@ -14,7 +14,7 @@
                 extend: {
                     colors: {
                         navy: { 50: '#E8EBF3', 100: '#C5CCE1', 200: '#8A99C3', 300: '#4F66A5', 400: '#253F8A', DEFAULT: '#1D3374', 600: '#172A5F', 700: '#11204A', 800: '#0C1635', 900: '#060B1A' },
-                        green: { 50: '#EDFCEF', 100: '#D2F8D9', 200: '#A5F1B3', 300: '#78EA8D', 400: '#4BD963', DEFAULT: '#4BD963', 600: '#3AB84F', 700: '#2C973D', 800: '#1E762B', 900: '#105519' },
+                        green: { 50: '#EBF0FA', 100: '#D0DCFA', 200: '#A1B9F5', 300: '#7296EF', 400: '#5B8DEF', DEFAULT: '#5B8DEF', 600: '#4A73D4', 700: '#3A5AB9', 800: '#2B429E', 900: '#1C2B83' },
                         steel: '#727777',
                     },
                     fontFamily: {
@@ -39,17 +39,17 @@
         /* Blueprint grid */
         .blueprint-grid {
             background-image:
-                linear-gradient(rgba(75,217,99,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(75,217,99,0.06) 1px, transparent 1px),
-                linear-gradient(rgba(75,217,99,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(75,217,99,0.03) 1px, transparent 1px);
+                linear-gradient(rgba(91,141,239,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(91,141,239,0.06) 1px, transparent 1px),
+                linear-gradient(rgba(91,141,239,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(91,141,239,0.03) 1px, transparent 1px);
             background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
         }
         /* Technical crosshair markers */
         .crosshair::before, .crosshair::after {
             content: '';
             position: absolute;
-            background: rgba(75,217,99,0.3);
+            background: rgba(91,141,239,0.3);
         }
         .crosshair::before { width: 1px; height: 20px; }
         .crosshair::after { width: 20px; height: 1px; top: 10px; left: -10px; }
@@ -66,23 +66,23 @@
             position: absolute;
             top: 0; left: 0;
             width: 30px; height: 30px;
-            border-top: 2px solid rgba(75,217,99,0.4);
-            border-left: 2px solid rgba(75,217,99,0.4);
+            border-top: 2px solid rgba(91,141,239,0.4);
+            border-left: 2px solid rgba(91,141,239,0.4);
         }
         .corner-brackets::after {
             content: '';
             position: absolute;
             bottom: 0; right: 0;
             width: 30px; height: 30px;
-            border-bottom: 2px solid rgba(75,217,99,0.4);
-            border-right: 2px solid rgba(75,217,99,0.4);
+            border-bottom: 2px solid rgba(91,141,239,0.4);
+            border-right: 2px solid rgba(91,141,239,0.4);
         }
         /* Measurement line */
         .measure-line {
             background: repeating-linear-gradient(
                 90deg,
-                rgba(75,217,99,0.2) 0px,
-                rgba(75,217,99,0.2) 2px,
+                rgba(91,141,239,0.2) 0px,
+                rgba(91,141,239,0.2) 2px,
                 transparent 2px,
                 transparent 8px
             );
@@ -129,21 +129,21 @@
         <svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <pattern id="hero-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(75,217,99,0.15)" stroke-width="0.5"/>
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(91,141,239,0.15)" stroke-width="0.5"/>
                 </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#hero-grid)"/>
             <!-- Large geometric shapes -->
-            <polygon points="900,50 1100,200 1000,400 800,350 750,150" fill="none" stroke="rgba(75,217,99,0.12)" stroke-width="1"/>
+            <polygon points="900,50 1100,200 1000,400 800,350 750,150" fill="none" stroke="rgba(91,141,239,0.12)" stroke-width="1"/>
             <polygon points="1100,300 1300,250 1400,450 1200,500" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-            <rect x="1050" y="100" width="200" height="200" fill="none" stroke="rgba(75,217,99,0.08)" stroke-width="1" transform="rotate(35 1150 200)"/>
-            <line x1="0" y1="400" x2="600" y2="200" stroke="rgba(75,217,99,0.05)" stroke-width="1"/>
+            <rect x="1050" y="100" width="200" height="200" fill="none" stroke="rgba(91,141,239,0.08)" stroke-width="1" transform="rotate(35 1150 200)"/>
+            <line x1="0" y1="400" x2="600" y2="200" stroke="rgba(91,141,239,0.05)" stroke-width="1"/>
             <line x1="800" y1="600" x2="1400" y2="100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
             <!-- Precision markers -->
-            <circle cx="300" cy="150" r="3" fill="rgba(75,217,99,0.2)"/>
-            <circle cx="300" cy="150" r="8" fill="none" stroke="rgba(75,217,99,0.1)" stroke-width="0.5"/>
-            <circle cx="1200" cy="400" r="3" fill="rgba(75,217,99,0.2)"/>
-            <circle cx="1200" cy="400" r="8" fill="none" stroke="rgba(75,217,99,0.1)" stroke-width="0.5"/>
+            <circle cx="300" cy="150" r="3" fill="rgba(91,141,239,0.2)"/>
+            <circle cx="300" cy="150" r="8" fill="none" stroke="rgba(91,141,239,0.1)" stroke-width="0.5"/>
+            <circle cx="1200" cy="400" r="3" fill="rgba(91,141,239,0.2)"/>
+            <circle cx="1200" cy="400" r="8" fill="none" stroke="rgba(91,141,239,0.1)" stroke-width="0.5"/>
         </svg>
 
         <!-- Diagonal accent line -->
@@ -166,7 +166,7 @@
                         <span class="relative inline-block">
                             <span class="text-green">einer Hand.</span>
                             <svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 300 12" preserveAspectRatio="none">
-                                <path d="M0,6 Q75,0 150,6 Q225,12 300,6" stroke="rgba(75,217,99,0.3)" fill="none" stroke-width="2"/>
+                                <path d="M0,6 Q75,0 150,6 Q225,12 300,6" stroke="rgba(91,141,239,0.3)" fill="none" stroke-width="2"/>
                             </svg>
                         </span>
                     </h1>
@@ -356,7 +356,7 @@
 
         <!-- Large geometric shapes -->
         <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <rect x="60%" y="5%" width="300" height="300" fill="none" stroke="rgba(75,217,99,0.05)" stroke-width="1" transform="rotate(20, 800, 150)"/>
+            <rect x="60%" y="5%" width="300" height="300" fill="none" stroke="rgba(91,141,239,0.05)" stroke-width="1" transform="rotate(20, 800, 150)"/>
             <polygon points="100,500 250,420 200,600" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
         </svg>
 
@@ -525,7 +525,7 @@
     <section class="relative py-24 bg-navy overflow-hidden">
         <div class="absolute inset-0 blueprint-grid"></div>
         <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <rect x="75%" y="10%" width="250" height="250" fill="none" stroke="rgba(75,217,99,0.05)" stroke-width="1" transform="rotate(25, 1000, 200)"/>
+            <rect x="75%" y="10%" width="250" height="250" fill="none" stroke="rgba(91,141,239,0.05)" stroke-width="1" transform="rotate(25, 1000, 200)"/>
         </svg>
 
         <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -732,9 +732,9 @@
 
         <!-- Large geometric accent -->
         <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <rect x="5%" y="10%" width="200" height="200" fill="none" stroke="rgba(75,217,99,0.06)" stroke-width="1" transform="rotate(15, 100, 150)"/>
+            <rect x="5%" y="10%" width="200" height="200" fill="none" stroke="rgba(91,141,239,0.06)" stroke-width="1" transform="rotate(15, 100, 150)"/>
             <rect x="80%" y="60%" width="150" height="150" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" transform="rotate(-20, 1100, 400)"/>
-            <circle cx="90%" cy="20%" r="80" fill="none" stroke="rgba(75,217,99,0.04)" stroke-width="1"/>
+            <circle cx="90%" cy="20%" r="80" fill="none" stroke="rgba(91,141,239,0.04)" stroke-width="1"/>
         </svg>
 
         <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
