@@ -1,0 +1,45 @@
+{
+  "colors": {
+    "primary": "#1D3374",
+    "accent": "#4BD963",
+    "background": "#FFFFFF",
+    "textPrimary": "#727777",
+    "link": "#4BD963"
+  },
+  "fonts": {
+    "heading": "Geometrica Bold",
+    "body": "Geometrica Light"
+  },
+  "typography": {
+    "fontSizes": {
+      "h1": "28px",
+      "h2": "28px",
+      "body": "15px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#1D3374",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#F0F0F0",
+      "textColor": "#1D3374",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.msa-vorrichtungsbau.de/assets/images/5/header-logo_2020-d58492fd.png",
+    "favicon": "https://www.msa-vorrichtungsbau.de/files/Bilder/favicon.ico"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial professionals"
+  }
+}
