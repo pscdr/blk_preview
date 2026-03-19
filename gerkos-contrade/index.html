@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GerKos ConTrade GmbH | Rohrverformung, Stahlbau, Schweißtechnik</title>
+    <meta name="description" content="GerKos ConTrade GmbH – Fachleute in Rohrverformungstechnik, Wärmeträger- und Erhitzerfertigung, Stahlbau und Schweißtechnik. Bad Marienberg.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            brand: '#2D2D83',
+                            light: '#3E3EA0',
+                            dark: '#1A1A5E',
+                            deeper: '#0F0F3D',
+                        },
+                        amber: {
+                            brand: '#D4890A',
+                            light: '#F0A52A',
+                            warm: '#E89B2D',
+                        },
+                        steel: {
+                            50: '#F7F7F9',
+                            100: '#EDEDF1',
+                            200: '#D5D5DD',
+                            300: '#A8A8B8',
+                            400: '#6E6E82',
+                            500: '#4A4A5E',
+                            600: '#2A2A3E',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Droid Sans"', 'sans-serif'],
+                        body: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Roboto', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Droid Sans', sans-serif; }
+
+        /* Bauhaus geometric decorations */
+        .bauhaus-circle {
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            border: 3px solid rgba(45, 45, 131, 0.12);
+            position: absolute;
+            pointer-events: none;
+        }
+        .bauhaus-square {
+            width: 120px; height: 120px;
+            border: 3px solid rgba(212, 137, 10, 0.15);
+            transform: rotate(45deg);
+            position: absolute;
+            pointer-events: none;
+        }
+        .bauhaus-triangle {
+            width: 0; height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86px solid rgba(45, 45, 131, 0.06);
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* Diagonal section divider */
+        .diagonal-top {
+            clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 100%);
+        }
+        .diagonal-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+        }
+
+        /* Hero text outline effect */
+        .text-outline {
+            -webkit-text-stroke: 2px #2D2D83;
+            color: transparent;
+        }
+
+        /* Grid pattern overlay */
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(45, 45, 131, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(45, 45, 131, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Service card hover */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: #2D2D83;
+            transition: height 0.4s ease;
+        }
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        /* Number counter styling */
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-steel-500">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-steel-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="https://www.gerkos-contrade.com/images/66d943a3b7864acf3c858644_germany.png" alt="GerKos ConTrade GmbH" class="h-10">
+                <div class="hidden sm:block">
+                    <span class="font-heading font-bold text-indigo-brand text-lg block leading-tight">GerKos ConTrade</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-steel-300 font-medium">Stahlbau &amp; Schweißtechnik</span>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#ueber-uns" class="text-steel-400 hover:text-indigo-brand transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full">Über uns</a>
+                <a href="#leistungen" class="text-steel-400 hover:text-indigo-brand transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full">Leistungen</a>
+                <a href="#beratung" class="text-steel-400 hover:text-indigo-brand transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full">Beratung</a>
+                <a href="#produkte" class="text-steel-400 hover:text-indigo-brand transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-indigo-brand after:transition-all hover:after:w-full">Produkte</a>
+                <a href="#kontakt" class="bg-indigo-brand text-white px-6 py-2.5 font-medium hover:bg-indigo-light transition-all hover:shadow-lg hover:shadow-indigo-brand/20">Kontakt</a>
+            </div>
+            <!-- Mobile menu button -->
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5">
+                <span class="w-6 h-0.5 bg-indigo-brand"></span>
+                <span class="w-6 h-0.5 bg-indigo-brand"></span>
+                <span class="w-4 h-0.5 bg-indigo-brand"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-indigo-deeper z-[60] p-8 pt-20 md:hidden">
+        <button onclick="document.getElementById('mobileMenu').classList.remove('open')" class="absolute top-6 right-6 text-white text-2xl">&times;</button>
+        <div class="flex flex-col gap-6">
+            <a href="#ueber-uns" onclick="document.getElementById('mobileMenu').classList.remove('open')" class="text-white/80 hover:text-white text-lg font-heading">Über uns</a>
+            <a href="#leistungen" onclick="document.getElementById('mobileMenu').classList.remove('open')" class="text-white/80 hover:text-white text-lg font-heading">Leistungen</a>
+            <a href="#beratung" onclick="document.getElementById('mobileMenu').classList.remove('open')" class="text-white/80 hover:text-white text-lg font-heading">Beratung</a>
+            <a href="#produkte" onclick="document.getElementById('mobileMenu').classList.remove('open')" class="text-white/80 hover:text-white text-lg font-heading">Produkte</a>
+            <a href="#kontakt" onclick="document.getElementById('mobileMenu').classList.remove('open')" class="text-amber-brand hover:text-amber-light text-lg font-heading">Kontakt</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-20 min-h-screen flex items-center relative overflow-hidden grid-pattern">
+        <!-- Bauhaus geometric decorations -->
+        <div class="bauhaus-circle" style="top: 10%; right: -80px;"></div>
+        <div class="bauhaus-circle" style="bottom: 15%; left: -140px; width: 400px; height: 400px;"></div>
+        <div class="bauhaus-square" style="top: 20%; right: 15%;"></div>
+        <div class="bauhaus-triangle" style="bottom: 25%; right: 10%;"></div>
+        <div class="absolute top-32 left-8 w-1 h-32 bg-indigo-brand/20"></div>
+        <div class="absolute top-32 left-12 w-1 h-20 bg-amber-brand/20"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <!-- Text Column -->
+                <div class="lg:col-span-6 xl:col-span-5">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-3 h-3 bg-amber-brand rotate-45"></div>
+                        <div class="w-16 h-[2px] bg-indigo-brand"></div>
+                        <span class="text-xs font-bold text-indigo-brand uppercase tracking-[0.25em]">Bad Marienberg, Deutschland</span>
+                    </div>
+
+                    <h1 class="font-heading font-bold text-indigo-dark leading-[0.95] mb-8">
+                        <span class="text-5xl md:text-6xl xl:text-7xl block">Fachleute</span>
+                        <span class="text-5xl md:text-6xl xl:text-7xl block mt-1">in <span class="text-indigo-brand">Stahl</span></span>
+                        <span class="text-5xl md:text-6xl xl:text-7xl block mt-1">&amp; Schweiß-</span>
+                        <span class="text-5xl md:text-6xl xl:text-7xl block mt-1">technik</span>
+                    </h1>
+
+                    <p class="text-lg text-steel-400 max-w-md mb-10 leading-relaxed border-l-2 border-steel-200 pl-5">
+                        Rohrverformung, Wärmeträger, Erhitzer, Stahlbau — wir setzen auf modernste Technologien und innovative Lösungen.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#leistungen" class="group bg-indigo-brand text-white px-8 py-4 font-medium hover:bg-indigo-light transition-all hover:shadow-xl hover:shadow-indigo-brand/25 inline-flex items-center gap-3">
+                            Leistungen entdecken
+                            <svg class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                        <a href="#kontakt" class="border-2 border-indigo-brand text-indigo-brand px-8 py-4 font-medium hover:bg-indigo-brand hover:text-white transition-all">
+                            Kontakt
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                <div class="lg:col-span-6 xl:col-span-7 relative">
+                    <!-- Main image with geometric frame -->
+                    <div class="relative">
+                        <!-- Decorative frame -->
+                        <div class="absolute -top-6 -right-6 w-2/3 h-2/3 border-[3px] border-indigo-brand/15 z-0"></div>
+                        <div class="absolute -bottom-6 -left-6 w-1/2 h-1/2 bg-amber-brand/8 z-0"></div>
+
+                        <!-- Main hero image -->
+                        <div class="relative z-10">
+                            <img src="https://www.gerkos-contrade.com/images/66d94f61ce6ff65c684db129_AdobeStock_522545829.webp"
+                                 alt="Schweißen, Rohrschweißen, WIG Schweißen"
+                                 class="w-full aspect-[5/4] object-cover shadow-2xl">
+
+                            <!-- Overlapping secondary image -->
+                            <div class="absolute -bottom-12 -left-8 w-48 h-48 md:w-56 md:h-56 z-20 shadow-xl border-4 border-white">
+                                <img src="https://www.gerkos-contrade.com/images/66d94f610be9a3205d591f68_AdobeStock_768532054.webp"
+                                     alt="QC-Inspektor bei der Messung"
+                                     class="w-full h-full object-cover">
+                            </div>
+
+                            <!-- Amber accent block -->
+                            <div class="absolute -top-4 -left-4 w-20 h-20 bg-amber-brand z-20 flex items-center justify-center">
+                                <div class="text-center">
+                                    <span class="text-white font-heading font-bold text-2xl block leading-none">QS</span>
+                                    <span class="text-white/80 text-[9px] uppercase tracking-wider">Geprüft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom geometric strip -->
+        <div class="absolute bottom-0 left-0 right-0 h-1 flex">
+            <div class="flex-1 bg-indigo-brand"></div>
+            <div class="w-32 bg-amber-brand"></div>
+            <div class="flex-[2] bg-indigo-brand/20"></div>
+            <div class="w-20 bg-amber-brand/40"></div>
+            <div class="flex-1 bg-indigo-dark"></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-indigo-deeper py-16 relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-30"></div>
+        <!-- Geometric accents -->
+        <div class="absolute top-1/2 right-10 w-40 h-40 border-2 border-white/5 rounded-full -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-20 w-20 h-20 bg-amber-brand/10 rotate-45"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-white/10">
+                <div class="text-center lg:px-8">
+                    <div class="stat-number text-white mb-2">QS</div>
+                    <div class="w-8 h-[2px] bg-amber-brand mx-auto mb-3"></div>
+                    <p class="text-white/50 text-sm">Qualitätssicherung<br>&amp; Management</p>
+                </div>
+                <div class="text-center lg:px-8">
+                    <div class="stat-number text-amber-brand mb-2">ISO</div>
+                    <div class="w-8 h-[2px] bg-amber-brand mx-auto mb-3"></div>
+                    <p class="text-white/50 text-sm">9001 &amp; 14001<br>Standards</p>
+                </div>
+                <div class="text-center lg:px-8">
+                    <div class="stat-number text-white mb-2">ASME</div>
+                    <div class="w-8 h-[2px] bg-amber-brand mx-auto mb-3"></div>
+                    <p class="text-white/50 text-sm">Sec. VIII Div 1<br>Zertifizierung</p>
+                </div>
+                <div class="text-center lg:px-8">
+                    <div class="stat-number text-amber-brand mb-2">CAD</div>
+                    <div class="w-8 h-[2px] bg-amber-brand mx-auto mb-3"></div>
+                    <p class="text-white/50 text-sm">Konstruktion nach<br>Ihren Spezifikationen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why GerKos Section -->
+    <section id="ueber-uns" class="py-28 relative overflow-hidden">
+        <div class="bauhaus-circle" style="top: -100px; right: -100px; width: 350px; height: 350px;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <!-- Left: Headline & Image -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 border-[3px] border-indigo-brand flex items-center justify-center">
+                            <div class="w-5 h-5 bg-amber-brand rotate-45"></div>
+                        </div>
+                    </div>
+                    <h2 class="font-heading font-bold text-4xl lg:text-5xl text-indigo-dark leading-tight mb-6">
+                        Warum<br>GerKos<br>ConTrade?
+                    </h2>
+                    <p class="text-steel-400 leading-relaxed mb-8 text-lg">
+                        Vertrauen Sie auf unsere Expertise und unser Engagement für exzellente Ergebnisse in der Industrietechnik.
+                    </p>
+                    <div class="relative">
+                        <img src="https://www.gerkos-contrade.com/images/66d94f61e846e7471ab1863a_AdobeStock_821269172.webp"
+                             alt="Ingenieurteam bei der Prüfung von Plänen"
+                             class="w-full aspect-[4/3] object-cover">
+                        <div class="absolute bottom-0 right-0 w-24 h-24 bg-indigo-brand flex items-center justify-center">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Feature Cards -->
+                <div class="lg:col-span-7">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div class="bg-steel-50 p-8 border-l-4 border-indigo-brand hover:shadow-lg transition-shadow group">
+                            <div class="w-10 h-10 bg-indigo-brand/10 flex items-center justify-center mb-5 group-hover:bg-indigo-brand/20 transition-colors">
+                                <div class="w-3 h-3 bg-indigo-brand"></div>
+                            </div>
+                            <h3 class="font-heading font-bold text-indigo-dark text-lg mb-3">Erfahrung &amp; Kompetenz</h3>
+                            <p class="text-sm text-steel-400 leading-relaxed">Langjährige Erfahrung in der Herstellung und Prüfung von Rohrschlangensystemen, Wärmeträgeranlagen und Stahlbauteilen. Schweißtechnische Dokumentationen inkl. Schweiß- und Prüfplänen.</p>
+                        </div>
+
+                        <div class="bg-steel-50 p-8 border-l-4 border-amber-brand hover:shadow-lg transition-shadow group">
+                            <div class="w-10 h-10 bg-amber-brand/10 flex items-center justify-center mb-5 group-hover:bg-amber-brand/20 transition-colors">
+                                <div class="w-3 h-3 bg-amber-brand rotate-45"></div>
+                            </div>
+                            <h3 class="font-heading font-bold text-indigo-dark text-lg mb-3">Qualität &amp; Zuverlässigkeit</h3>
+                            <p class="text-sm text-steel-400 leading-relaxed">Hohe Qualitätsstandards und zuverlässige Lieferketten garantieren Ihnen Produkte, auf die Sie sich verlassen können. Qualitätsabnahmen und Bauüberwachung.</p>
+                        </div>
+
+                        <div class="bg-steel-50 p-8 border-l-4 border-amber-brand hover:shadow-lg transition-shadow group">
+                            <div class="w-10 h-10 bg-amber-brand/10 flex items-center justify-center mb-5 group-hover:bg-amber-brand/20 transition-colors">
+                                <div class="w-3 h-3 bg-amber-brand rounded-full"></div>
+                            </div>
+                            <h3 class="font-heading font-bold text-indigo-dark text-lg mb-3">Kundenorientierte Lösungen</h3>
+                            <p class="text-sm text-steel-400 leading-relaxed">Individuell abgestimmte Lösungen, die exakt auf Ihre Bedürfnisse und Anforderungen zugeschnitten sind. Transparente und partnerschaftliche Kommunikation.</p>
+                        </div>
+
+                        <div class="bg-steel-50 p-8 border-l-4 border-indigo-brand hover:shadow-lg transition-shadow group">
+                            <div class="w-10 h-10 bg-indigo-brand/10 flex items-center justify-center mb-5 group-hover:bg-indigo-brand/20 transition-colors">
+                                <div class="w-3 h-3 bg-indigo-brand rotate-45"></div>
+                            </div>
+                            <h3 class="font-heading font-bold text-indigo-dark text-lg mb-3">Breites Sortiment</h3>
+                            <p class="text-sm text-steel-400 leading-relaxed">Vielfältige Auswahl an Stahlprofilen, Stahlbauteilen, Baugruppen und Sonderkonstruktionen — passende Lösungen für jede Herausforderung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Leistungen -->
+    <section id="leistungen" class="py-28 bg-steel-50 relative overflow-hidden">
+        <div class="bauhaus-square" style="bottom: 40px; right: -40px;"></div>
+        <div class="absolute top-0 left-0 w-full h-1 flex">
+            <div class="w-1/3 bg-indigo-brand"></div>
+            <div class="w-16 bg-amber-brand"></div>
+            <div class="flex-1"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end gap-6 mb-20">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-indigo-brand rounded-full"></div>
+                        <div class="w-8 h-[2px] bg-steel-300"></div>
+                        <span class="text-xs font-bold text-steel-300 uppercase tracking-[0.2em]">Kernkompetenzen</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-4xl lg:text-5xl text-indigo-dark">Dienstleistungen</h2>
+                </div>
+                <div class="flex-1 h-px bg-steel-200 hidden md:block mb-3"></div>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- QS/QM Card -->
+                <div class="bg-white group hover:shadow-2xl transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://www.gerkos-contrade.com/images/66d94f61ce7ca6393e27cf8d_AdobeStock_786715332.webp"
+                             alt="Schweißaufsichtsperson prüft Schweißnähte"
+                             class="w-full aspect-[2/1] object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-deeper/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <span class="bg-indigo-brand text-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider">QS / QM &amp; Schweißtechnik</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading font-bold text-xl text-indigo-dark mb-5">Qualitätssicherung, Qualitätsmanagement &amp; Fertigung</h3>
+                        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Externe Schweißaufsicht</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Schweiß- &amp; Prüfpläne</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Schweißanweisungen (WPS)</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Verfahrensprüfungen (PQR)</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Produktionskontrolle</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">ASME Sec. VIII Div 1</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Qualitätsabnahmen</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-indigo-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Interne &amp; externe Audits</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projektmanagement Card -->
+                <div class="bg-white group hover:shadow-2xl transition-all duration-300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://www.gerkos-contrade.com/images/66d94f61091ceed9318e5c18_AdobeStock_220486954.webp"
+                             alt="Projektmanagement"
+                             class="w-full aspect-[2/1] object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigo-deeper/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <span class="bg-amber-brand text-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider">Projektmanagement</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading font-bold text-xl text-indigo-dark mb-5">Projektmanagement, Kalkulation &amp; Logistik</h3>
+                        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Projektberatung &amp; -abwicklung</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Kalkulationen &amp; Angebote</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Terminplanung &amp; -sicherung</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Transportlogistik</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Lieferantenauswahl &amp; Einkauf</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Controlling &amp; Reporting</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Risikomanagement</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-1.5 h-1.5 bg-amber-brand mt-2 shrink-0 rotate-45"></div>
+                                <span class="text-sm text-steel-400">Nachkalkulationen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full-width Image Break with geometric overlay -->
+    <section class="relative h-[420px] overflow-hidden">
+        <img src="https://www.gerkos-contrade.com/images/66d94f61152f13a8e380450d_AdobeStock_363903409.webp"
+             alt="Stahlrohre"
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-indigo-deeper/70"></div>
+
+        <!-- Geometric overlay pattern -->
+        <div class="absolute inset-0" style="background-image: linear-gradient(45deg, rgba(45,45,131,0.3) 25%, transparent 25%), linear-gradient(-45deg, rgba(45,45,131,0.3) 25%, transparent 25%); background-size: 80px 80px;"></div>
+
+        <div class="absolute inset-0 flex items-center justify-center relative z-10">
+            <div class="text-center">
+                <div class="w-16 h-[2px] bg-amber-brand mx-auto mb-8"></div>
+                <p class="font-heading font-bold text-3xl md:text-5xl text-white leading-tight">Modernste Technologien.</p>
+                <p class="font-heading font-bold text-3xl md:text-5xl text-amber-brand leading-tight mt-2">Innovative Lösungen.</p>
+                <div class="w-16 h-[2px] bg-amber-brand mx-auto mt-8"></div>
+                <p class="text-white/60 mt-6 text-lg max-w-xl mx-auto">Effizienz und Nachhaltigkeit in der Rohrverformung, Wärmeträgertechnik und im Stahlbau.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beratung Section -->
+    <section id="beratung" class="py-28 bg-indigo-brand relative overflow-hidden">
+        <!-- Geometric decorations -->
+        <div class="absolute top-0 right-0 w-64 h-64 border-[3px] border-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-10 left-10 w-32 h-32 border-[3px] border-white/5 rotate-45"></div>
+        <div class="absolute top-1/2 right-1/4 w-4 h-4 bg-amber-brand/30 rotate-45"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end gap-6 mb-20">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 border-2 border-white rounded-full"></div>
+                        <div class="w-8 h-[2px] bg-white/30"></div>
+                        <span class="text-xs font-bold text-white/40 uppercase tracking-[0.2em]">Expertise</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-4xl lg:text-5xl text-white">Beratungsdienstleistungen</h2>
+                </div>
+                <div class="flex-1 h-px bg-white/10 hidden md:block mb-3"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 bg-white/10 flex items-center justify-center mb-6 group-hover:bg-amber-brand/20 transition-colors">
+                        <img src="https://www.gerkos-contrade.com/images/66b47c896e094bd39fb55697_quality-assurance.avif" alt="QM" class="w-8 h-8 brightness-0 invert">
+                    </div>
+                    <h3 class="font-heading font-bold text-white text-lg mb-4">Qualitäts&shy;management</h3>
+                    <div class="w-8 h-[2px] bg-amber-brand mb-4"></div>
+                    <p class="text-sm text-white/60 leading-relaxed">Durchführung und Begleitung von Audits nach ISO 9001, ISO 14001 und branchenspezifischen Standards.</p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 bg-white/10 flex items-center justify-center mb-6 group-hover:bg-amber-brand/20 transition-colors">
+                        <img src="https://www.gerkos-contrade.com/images/66b47c8812f6608368e3380e_production.avif" alt="Fertigung" class="w-8 h-8 brightness-0 invert">
+                    </div>
+                    <h3 class="font-heading font-bold text-white text-lg mb-4">Fertigung</h3>
+                    <div class="w-8 h-[2px] bg-amber-brand mb-4"></div>
+                    <p class="text-sm text-white/60 leading-relaxed">Fachkundige Beratung zur Fertigung von Rohrschlangen, Thermalölerhitzern und Stahlbau gemäß Spezifikationen.</p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 bg-white/10 flex items-center justify-center mb-6 group-hover:bg-amber-brand/20 transition-colors">
+                        <img src="https://www.gerkos-contrade.com/images/66b47c89fb228bcda592c5b2_quality.avif" alt="QS" class="w-8 h-8 brightness-0 invert">
+                    </div>
+                    <h3 class="font-heading font-bold text-white text-lg mb-4">Qualitäts&shy;sicherung</h3>
+                    <div class="w-8 h-[2px] bg-amber-brand mb-4"></div>
+                    <p class="text-sm text-white/60 leading-relaxed">Wareneingangs- und Warenausgangsprüfungen, NDT-Kontrollen, detaillierte Prüfberichte und Dokumentation.</p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 hover:bg-white/10 transition-all group">
+                    <div class="w-14 h-14 bg-white/10 flex items-center justify-center mb-6 group-hover:bg-amber-brand/20 transition-colors">
+                        <img src="https://www.gerkos-contrade.com/images/66b47c88d51cc6ed5d0499af_welding.avif" alt="Schweißtechnik" class="w-8 h-8 brightness-0 invert">
+                    </div>
+                    <h3 class="font-heading font-bold text-white text-lg mb-4">Schweiß&shy;technik</h3>
+                    <div class="w-8 h-[2px] bg-amber-brand mb-4"></div>
+                    <p class="text-sm text-white/60 leading-relaxed">Beratung zu Schweißverfahren, Schweißdokumentation, Verfahrensprüfungen (WPS, PQR) und Schweißnahtprüfung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produkte / Handel -->
+    <section id="produkte" class="py-28 relative overflow-hidden">
+        <div class="bauhaus-circle" style="top: -50px; left: -150px; width: 300px; height: 300px;"></div>
+        <div class="absolute top-0 left-0 w-full h-1 flex">
+            <div class="flex-1"></div>
+            <div class="w-16 bg-amber-brand"></div>
+            <div class="w-1/3 bg-indigo-brand"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row md:items-end gap-6 mb-20">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-amber-brand rotate-45"></div>
+                        <div class="w-8 h-[2px] bg-steel-300"></div>
+                        <span class="text-xs font-bold text-steel-300 uppercase tracking-[0.2em]">Produkte</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-4xl lg:text-5xl text-indigo-dark">Handel &amp; Stahlbau</h2>
+                </div>
+                <div class="flex-1 h-px bg-steel-200 hidden md:block mb-3"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-10 items-start">
+                <!-- Images Column -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative">
+                        <img src="https://www.gerkos-contrade.com/images/66d94f61d8594db52fe2a2df_AdobeStock_867891826.webp"
+                             alt="Industriearbeiter bei der Inspektion großer Stahlrohre"
+                             class="w-full aspect-[3/4] object-cover">
+                        <div class="absolute -bottom-4 -right-4 w-full h-full border-[3px] border-indigo-brand/10 -z-10"></div>
+                    </div>
+                    <!-- Small secondary image -->
+                    <div class="absolute -bottom-8 -left-8 w-40 h-40 shadow-xl border-4 border-white z-10 hidden lg:block">
+                        <img src="https://www.gerkos-contrade.com/images/66d94f616d939e7db8ff6843_AdobeStock_725967623.webp"
+                             alt="Technischer Support"
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Content Column -->
+                <div class="lg:col-span-7 lg:pl-8">
+                    <!-- Stahlbau -->
+                    <div class="mb-12">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://www.gerkos-contrade.com/images/66b48114a3813a8d34267bb7_steel%20%281%29.avif" alt="" class="w-10 h-10">
+                            <h3 class="font-heading font-bold text-2xl text-indigo-dark">Stahlbau &amp; Sonderkonstruktionen</h3>
+                        </div>
+                        <p class="text-steel-400 leading-relaxed mb-6">
+                            Entwicklung und Bereitstellung maßgeschneiderter Stahlbau- und Stahlbausonderkonstruktionen. CAD-Konstruktion gemäß Ihren Vorgaben und Spezifikationen. Projektspezifische Beratung und Unterstützung.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="flex items-center gap-3 bg-steel-50 px-5 py-3">
+                                <div class="w-2 h-2 bg-indigo-brand rotate-45 shrink-0"></div>
+                                <span class="text-sm text-steel-500 font-medium">Stahlbau &amp; Stahlbaugruppen</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-steel-50 px-5 py-3">
+                                <div class="w-2 h-2 bg-indigo-brand rotate-45 shrink-0"></div>
+                                <span class="text-sm text-steel-500 font-medium">Sonderkonstruktionen</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-steel-50 px-5 py-3">
+                                <div class="w-2 h-2 bg-indigo-brand rotate-45 shrink-0"></div>
+                                <span class="text-sm text-steel-500 font-medium">Fördertechnik</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-steel-50 px-5 py-3">
+                                <div class="w-2 h-2 bg-indigo-brand rotate-45 shrink-0"></div>
+                                <span class="text-sm text-steel-500 font-medium">Montierte Baugruppen</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="flex items-center gap-4 my-10">
+                        <div class="flex-1 h-px bg-steel-200"></div>
+                        <div class="w-3 h-3 bg-amber-brand rotate-45"></div>
+                        <div class="flex-1 h-px bg-steel-200"></div>
+                    </div>
+
+                    <!-- Profile aus Stahl -->
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://www.gerkos-contrade.com/images/66b481143f3175cf91b1da1d_steel.avif" alt="" class="w-10 h-10">
+                            <h3 class="font-heading font-bold text-2xl text-indigo-dark">Profile aus Stahl</h3>
+                        </div>
+                        <p class="text-steel-400 leading-relaxed mb-4">
+                            Umfassendes Angebot an Stahlprofilen in verschiedenen Formen und Größen — Quadrat- und Rechteckrohre, Träger. Umfangreiche Qualitätsprüfungen und Zertifizierungen. Schnelle Verfügbarkeit dank gut sortierter Lager und effizienter Logistik.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="py-28 bg-steel-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 flex">
+            <div class="w-1/4 bg-indigo-brand"></div>
+            <div class="w-12 bg-amber-brand"></div>
+            <div class="flex-1"></div>
+        </div>
+        <div class="bauhaus-square" style="top: 30px; right: 60px; border-color: rgba(45,45,131,0.08);"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <!-- Left: Content -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-indigo-brand"></div>
+                        <div class="w-8 h-[2px] bg-steel-300"></div>
+                        <span class="text-xs font-bold text-steel-300 uppercase tracking-[0.2em]">Kontakt</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-4xl lg:text-5xl text-indigo-dark mb-6 leading-tight">
+                        Sprechen<br>Sie uns an.
+                    </h2>
+                    <p class="text-steel-400 leading-relaxed mb-10 text-lg max-w-md">
+                        Wir legen großen Wert auf transparente und partnerschaftliche Kommunikation. Kontaktieren Sie uns — wir freuen uns auf Ihre Anfrage.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-indigo-brand flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-indigo-dark text-lg">Anschrift</p>
+                                <p class="text-steel-400 mt-1">GerKos ConTrade GmbH<br>Am Wald 8<br>56470 Bad Marienberg</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-indigo-brand flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-indigo-dark text-lg">Telefon</p>
+                                <a href="tel:026619368734" class="text-indigo-brand hover:text-indigo-light transition-colors text-lg mt-1 block">02661 9368734</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-amber-brand flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-indigo-dark text-lg">E-Mail</p>
+                                <a href="mailto:info@gerkos-contrade.com" class="text-indigo-brand hover:text-indigo-light transition-colors text-lg mt-1 block">info@gerkos-contrade.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Image Composition -->
+                <div class="lg:col-span-7 relative">
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="col-span-7">
+                            <img src="https://www.gerkos-contrade.com/images/66d94f61e846e7471ab1863a_AdobeStock_821269172.webp"
+                                 alt="Ingenieurteam bei der Prüfung von Plänen"
+                                 class="w-full aspect-[3/4] object-cover shadow-lg">
+                        </div>
+                        <div class="col-span-5 flex flex-col gap-4">
+                            <div class="bg-indigo-brand p-8 flex-1 flex flex-col justify-center">
+                                <p class="text-white/60 text-sm uppercase tracking-wider mb-2">Ihr Partner für</p>
+                                <p class="text-white font-heading font-bold text-xl leading-tight">Industrielle Qualität &amp; Präzision</p>
+                                <div class="w-8 h-[2px] bg-amber-brand mt-4"></div>
+                            </div>
+                            <img src="https://www.gerkos-contrade.com/images/66d94f61ce6ff65c684db129_AdobeStock_522545829.webp"
+                                 alt="Schweißtechnik"
+                                 class="w-full aspect-square object-cover shadow-lg">
+                        </div>
+                    </div>
+                    <!-- Decorative corner -->
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 border-[3px] border-amber-brand/20 -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-deeper text-white">
+        <!-- Geometric top border -->
+        <div class="h-1 flex">
+            <div class="flex-1 bg-indigo-brand"></div>
+            <div class="w-24 bg-amber-brand"></div>
+            <div class="flex-[3] bg-indigo-dark"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+            <div class="grid md:grid-cols-3 gap-12 items-start">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://www.gerkos-contrade.com/images/66d943a3b7864acf3c858644_germany.png" alt="GerKos ConTrade GmbH" class="h-10">
+                        <div>
+                            <span class="font-heading font-bold text-lg block leading-tight">GerKos ConTrade</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-white/40">GmbH</span>
+                        </div>
+                    </div>
+                    <p class="text-white/40 text-sm leading-relaxed mt-4">Fachleute in der Rohrverformungstechnik, Wärmeträger- und Erhitzerfertigung, Stahlbau und Schweißtechnik.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider mb-4">Navigation</h4>
+                    <div class="w-8 h-[2px] bg-amber-brand mb-4"></div>
+                    <div class="space-y-2">
+                        <a href="#ueber-uns" class="block text-white/50 hover:text-white transition-colors text-sm">Über uns</a>
+                        <a href="#leistungen" class="block text-white/50 hover:text-white transition-colors text-sm">Leistungen</a>
+                        <a href="#beratung" class="block text-white/50 hover:text-white transition-colors text-sm">Beratung</a>
+                        <a href="#produkte" class="block text-white/50 hover:text-white transition-colors text-sm">Produkte</a>
+                        <a href="#kontakt" class="block text-white/50 hover:text-white transition-colors text-sm">Kontakt</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-sm uppercase tracking-wider mb-4">Kontakt</h4>
+                    <div class="w-8 h-[2px] bg-amber-brand mb-4"></div>
+                    <div class="space-y-2 text-sm text-white/50">
+                        <p>Am Wald 8, 56470 Bad Marienberg</p>
+                        <p><a href="tel:026619368734" class="hover:text-white transition-colors">02661 9368734</a></p>
+                        <p><a href="mailto:info@gerkos-contrade.com" class="hover:text-white transition-colors">info@gerkos-contrade.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-white/30">&copy; 2024 GerKos ConTrade GmbH. Alle Rechte vorbehalten.</p>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="https://www.gerkos-contrade.com/impressum.html" class="hover:text-white/60 transition-colors">Impressum</a>
+                    <a href="https://www.gerkos-contrade.com/datenschutz.html" class="hover:text-white/60 transition-colors">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

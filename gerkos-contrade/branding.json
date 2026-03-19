@@ -1,0 +1,41 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Roboto", "role": "body" },
+    { "family": "Droid Sans", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#0000EE",
+    "accent": "#2D2D83",
+    "background": "#FFFFFF",
+    "textPrimary": "#2D2D83",
+    "link": "#2D2D83"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "heading": "Droid Sans"
+    },
+    "fontStacks": {
+      "heading": ["Droid Sans", "sans-serif"],
+      "body": ["Roboto", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "32px",
+      "h2": "32px",
+      "body": "14px"
+    }
+  },
+  "images": {
+    "logo": "https://www.gerkos-contrade.com/images/66d943a3b7864acf3c858644_germany.png",
+    "favicon": "https://www.gerkos-contrade.com/apple-touch-icon.png",
+    "ogImage": "https://www.gerkos-contrade.com/ILD_uploadTool/icons/4e34a2f8056f4252a3f8e1e8c19bad16.png",
+    "heroImage1": "https://www.gerkos-contrade.com/images/66d94f61ce6ff65c684db129_AdobeStock_522545829.webp",
+    "heroImage2": "https://www.gerkos-contrade.com/images/66d94f61e846e7471ab1863a_AdobeStock_821269172.webp"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals"
+  }
+}
