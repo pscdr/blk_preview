@@ -1,0 +1,49 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Roboto",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#02213A",
+    "accent": "#66C634",
+    "background": "#FFFFFF",
+    "textPrimary": "#707880",
+    "link": "#707880",
+    "logoBluePart": "#1288C9"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "heading": "Roboto"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#66C634",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#707880",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "SVG with blue (#1288C9) and green (#66C633) paths",
+    "favicon": "https://ms-electronics.de/files/favicon/apple-touch-icon.png",
+    "logoHref": "https://ms-electronics.de"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals interested in robotics and cobots"
+  }
+}

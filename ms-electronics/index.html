@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS-Electronics GmbH – Ihr Robotik / Cobot Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#02213A',
+                        'navy-light': '#0a3254',
+                        signal: '#66C634',
+                        'signal-dark': '#4da828',
+                        bridge: '#1288C9',
+                        steel: '#707880',
+                        'steel-light': '#9ca3ab',
+                        slate: '#f7f8f9',
+                    },
+                    fontFamily: {
+                        roboto: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .ls-tight { letter-spacing: -0.02em; }
+        .ls-swiss { letter-spacing: 0.08em; }
+        .ls-wide { letter-spacing: 0.18em; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #02213A 0%, #0a3254 40%, #1288C9 100%);
+        }
+        .grid-line {
+            background-image: linear-gradient(to right, rgba(102,198,52,0.15) 1px, transparent 1px);
+            background-size: 60px 100%;
+        }
+        .card-hover {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 32px 64px -16px rgba(2,33,58,0.15);
+        }
+        .number-outline {
+            -webkit-text-stroke: 1.5px #66C634;
+            color: transparent;
+        }
+        .accent-bar {
+            position: relative;
+        }
+        .accent-bar::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #66C634, #1288C9);
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #66C634;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stat-card:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body class="bg-white text-navy antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-navy/5">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="flex items-center justify-between h-[72px]">
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <div class="w-11 h-11 bg-navy flex items-center justify-center">
+                            <span class="text-signal font-black text-base ls-tight">MS</span>
+                        </div>
+                        <div class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-signal pulse-dot"></div>
+                    </div>
+                    <div class="leading-none">
+                        <span class="font-bold text-navy text-[13px] ls-swiss block">MS-ELECTRONICS</span>
+                        <span class="text-[9px] text-steel ls-wide uppercase block mt-0.5">Automation & Robotik</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#leistungen" class="text-[11px] ls-wide uppercase text-steel hover:text-navy transition-colors duration-300">Leistungen</a>
+                    <a href="#expertise" class="text-[11px] ls-wide uppercase text-steel hover:text-navy transition-colors duration-300">Expertise</a>
+                    <a href="#partner" class="text-[11px] ls-wide uppercase text-steel hover:text-navy transition-colors duration-300">Partner</a>
+                    <a href="#kontakt" class="text-[11px] ls-wide uppercase bg-navy text-white px-6 py-3 hover:bg-signal transition-colors duration-300 ml-2">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-gradient min-h-screen relative overflow-hidden">
+        <!-- Grid overlay -->
+        <div class="absolute inset-0 grid-line opacity-30"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-black/20 to-transparent"></div>
+
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
+            <div class="grid grid-cols-12 gap-6 min-h-screen items-center pt-[72px]">
+                <div class="col-span-12 lg:col-span-6 py-16 lg:py-0">
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-16 h-[1px] bg-signal"></div>
+                        <span class="text-[10px] ls-wide uppercase text-signal font-medium">Seit 1999 — Hachenburg, Deutschland</span>
+                    </div>
+
+                    <h1 class="text-[clamp(2.5rem,5.5vw,5.5rem)] font-black leading-[0.95] ls-tight text-white mb-8">
+                        High-Tech<br>
+                        auf hohem<br>
+                        <span class="relative inline-block">
+                            Niveau
+                            <div class="absolute -bottom-2 left-0 w-full h-1 bg-signal"></div>
+                        </span>
+                    </h1>
+
+                    <p class="text-lg text-white/60 max-w-md leading-relaxed mb-12 font-light">
+                        Komplexe Projekte in der Automatisierungstechnik und dem Sondermaschinenbau. Branchenübergreifend schaffen wir „Ideal"-Lösungen.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-start gap-4">
+                        <a href="#leistungen" class="group bg-signal text-navy text-[11px] ls-wide uppercase font-bold px-8 py-4 hover:bg-white transition-colors duration-300 flex items-center gap-3">
+                            Leistungen entdecken
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#kontakt" class="text-[11px] ls-wide uppercase text-white/70 font-medium px-4 py-4 hover:text-signal transition-colors duration-300 border-b border-white/20 hover:border-signal">
+                            Kontakt aufnehmen
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-6 relative">
+                    <div class="relative lg:ml-8">
+                        <!-- Main image -->
+                        <div class="relative">
+                            <img src="https://ms-electronics.de/files/images/p_entry_roboter_sm.jpg" alt="Roboterautomation" class="w-full aspect-[3/4] lg:aspect-[4/5] object-cover">
+                            <!-- Overlay corner accent -->
+                            <div class="absolute top-0 left-0 w-20 h-20 border-t-[3px] border-l-[3px] border-signal"></div>
+                            <div class="absolute bottom-0 right-0 w-20 h-20 border-b-[3px] border-r-[3px] border-signal/40"></div>
+                        </div>
+                        <!-- Floating label -->
+                        <div class="absolute -bottom-4 -left-4 lg:-left-8 bg-white px-6 py-4 shadow-2xl shadow-navy/20">
+                            <span class="text-[10px] ls-wide uppercase text-steel block">Kernkompetenz</span>
+                            <span class="text-navy font-bold text-sm block mt-1">Roboterautomation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom stats bar -->
+        <div class="absolute bottom-0 left-0 right-0 bg-navy/80 backdrop-blur-sm border-t border-white/10">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+                <div class="grid grid-cols-2 md:grid-cols-4">
+                    <div class="stat-card py-6 px-4 border-r border-white/10">
+                        <span class="text-3xl md:text-4xl font-black text-white">25+</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Jahre Erfahrung</span>
+                    </div>
+                    <div class="stat-card py-6 px-4 border-r border-white/10">
+                        <span class="text-3xl md:text-4xl font-black text-signal">3</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Kernbereiche</span>
+                    </div>
+                    <div class="stat-card py-6 px-4 border-r border-white/10">
+                        <span class="text-3xl md:text-4xl font-black text-white">100%</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Individuell</span>
+                    </div>
+                    <div class="stat-card py-6 px-4">
+                        <span class="text-3xl md:text-4xl font-black text-bridge">DE</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Hachenburg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="py-28 lg:py-36">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <!-- Section header -->
+            <div class="grid grid-cols-12 gap-6 mb-20">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-[80px] lg:text-[120px] font-black number-outline leading-none">01</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black ls-tight leading-[1.05]">
+                        Unsere<br>Kern&shy;bereiche
+                    </h2>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end pb-2">
+                    <p class="text-steel text-lg leading-relaxed font-light">
+                        Jedes Projekt basiert auf individuellen Anforderungen und Spezifikationen. Unsere auf jahrzehntelanger Erfahrung basierende Expertise macht uns zum idealen Partner.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Industrieautomation -->
+                <div class="card-hover group bg-white border border-gray-100">
+                    <div class="relative overflow-hidden">
+                        <img src="https://ms-electronics.de/files/images/p_entry_automation_sm.jpg" alt="Industrieautomation" class="w-full aspect-[5/4] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-5">
+                            <span class="text-[10px] ls-wide uppercase text-white/70 font-medium">Bereich 01</span>
+                        </div>
+                    </div>
+                    <div class="p-7 lg:p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-[2px] bg-signal"></div>
+                            <div class="w-8 h-[2px] bg-signal/30"></div>
+                        </div>
+                        <h3 class="text-xl font-bold ls-tight mb-3">Industrie&shy;automation</h3>
+                        <p class="text-steel text-sm leading-relaxed font-light">
+                            Komplexe Automatisierungslösungen für Fördertechnik, Logistik und Verfahrenstechnik — maßgeschneidert für Ihre Prozesse.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Roboterautomation -->
+                <div class="card-hover group bg-white border border-gray-100">
+                    <div class="relative overflow-hidden">
+                        <img src="https://ms-electronics.de/files/images/p_entry_roboter_sm.jpg" alt="Roboterautomation" class="w-full aspect-[5/4] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-5">
+                            <span class="text-[10px] ls-wide uppercase text-white/70 font-medium">Bereich 02</span>
+                        </div>
+                    </div>
+                    <div class="p-7 lg:p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-[2px] bg-signal"></div>
+                            <div class="w-8 h-[2px] bg-signal/30"></div>
+                        </div>
+                        <h3 class="text-xl font-bold ls-tight mb-3">Roboter&shy;automation</h3>
+                        <p class="text-steel text-sm leading-relaxed font-light">
+                            Robotik- und Cobot-Lösungen für Maschinen- und Anlagenbau mit höchster Präzision und Zuverlässigkeit.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Produkte -->
+                <div class="card-hover group bg-white border border-gray-100">
+                    <div class="relative overflow-hidden">
+                        <img src="https://ms-electronics.de/files/images/p_entry_produkte_sm.jpg" alt="Produkte und Peripherie" class="w-full aspect-[5/4] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-5">
+                            <span class="text-[10px] ls-wide uppercase text-white/70 font-medium">Bereich 03</span>
+                        </div>
+                    </div>
+                    <div class="p-7 lg:p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-[2px] bg-signal"></div>
+                            <div class="w-8 h-[2px] bg-signal/30"></div>
+                        </div>
+                        <h3 class="text-xl font-bold ls-tight mb-3">Produkte &amp; Peripherie</h3>
+                        <p class="text-steel text-sm leading-relaxed font-light">
+                            Ausgewählte Produkte und Peripheriegeräte für Ihre Automatisierungsprojekte — erprobt und bewährt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" class="relative">
+        <!-- Split background -->
+        <div class="absolute inset-0 grid grid-cols-2">
+            <div class="bg-navy"></div>
+            <div class="bg-slate hidden lg:block"></div>
+        </div>
+
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="grid grid-cols-12">
+                <!-- Left: Dark panel -->
+                <div class="col-span-12 lg:col-span-6 bg-navy px-6 lg:px-16 py-28 lg:py-36">
+                    <div class="flex items-center gap-4 mb-10">
+                        <span class="text-[80px] lg:text-[100px] font-black leading-none" style="-webkit-text-stroke: 1.5px rgba(102,198,52,0.4); color: transparent;">02</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black ls-tight text-white leading-[1.1] mb-8">
+                        Branchen&shy;übergreifende<br>Expertise
+                    </h2>
+                    <p class="text-white/50 text-lg leading-relaxed font-light mb-12 max-w-md">
+                        Dank unseres außergewöhnlich schnellen Verständnisses für technische Zusammenhänge, äußerster Flexibilität und einem direkten Draht zum Kunden schaffen wir „Ideal"-Lösungen.
+                    </p>
+
+                    <div class="relative">
+                        <img src="https://ms-electronics.de/files/images/p_entry_unternehmen_sm.jpg" alt="Unternehmen" class="w-full aspect-[16/10] object-cover">
+                        <div class="absolute top-0 right-0 w-16 h-16 border-t-[3px] border-r-[3px] border-signal -mt-3 -mr-3"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Light panel with list -->
+                <div class="col-span-12 lg:col-span-6 bg-slate px-6 lg:px-16 py-28 lg:py-36">
+                    <span class="text-[10px] ls-wide uppercase text-steel block mb-10">Unsere Branchen</span>
+
+                    <div class="space-y-0">
+                        <div class="group border-b border-navy/10 py-7 hover:pl-4 transition-all duration-500 cursor-default">
+                            <div class="flex items-start justify-between gap-6">
+                                <div>
+                                    <span class="text-signal font-bold text-xs ls-wide">01</span>
+                                    <h3 class="font-bold text-xl ls-tight mt-2 group-hover:text-bridge transition-colors duration-300">Fördertechnik & Logistik</h3>
+                                    <p class="text-steel text-sm leading-relaxed font-light mt-2 max-w-sm">Automatisierte Förder- und Logistiksysteme für maximale Effizienz in Ihren Prozessen.</p>
+                                </div>
+                                <svg class="w-5 h-5 text-signal/0 group-hover:text-signal transition-colors mt-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="group border-b border-navy/10 py-7 hover:pl-4 transition-all duration-500 cursor-default">
+                            <div class="flex items-start justify-between gap-6">
+                                <div>
+                                    <span class="text-signal font-bold text-xs ls-wide">02</span>
+                                    <h3 class="font-bold text-xl ls-tight mt-2 group-hover:text-bridge transition-colors duration-300">Maschinen- & Anlagenbau</h3>
+                                    <p class="text-steel text-sm leading-relaxed font-light mt-2 max-w-sm">Individuelle Lösungen für den Sondermaschinenbau mit jahrzehntelanger Erfahrung.</p>
+                                </div>
+                                <svg class="w-5 h-5 text-signal/0 group-hover:text-signal transition-colors mt-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="group border-b border-navy/10 py-7 hover:pl-4 transition-all duration-500 cursor-default">
+                            <div class="flex items-start justify-between gap-6">
+                                <div>
+                                    <span class="text-signal font-bold text-xs ls-wide">03</span>
+                                    <h3 class="font-bold text-xl ls-tight mt-2 group-hover:text-bridge transition-colors duration-300">Verfahrenstechnik</h3>
+                                    <p class="text-steel text-sm leading-relaxed font-light mt-2 max-w-sm">Prozessautomation und verfahrenstechnische Lösungen für das verarbeitende Gewerbe.</p>
+                                </div>
+                                <svg class="w-5 h-5 text-signal/0 group-hover:text-signal transition-colors mt-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="group py-7 hover:pl-4 transition-all duration-500 cursor-default">
+                            <div class="flex items-start justify-between gap-6">
+                                <div>
+                                    <span class="text-signal font-bold text-xs ls-wide">04</span>
+                                    <h3 class="font-bold text-xl ls-tight mt-2 group-hover:text-bridge transition-colors duration-300">Prozessautomation</h3>
+                                    <p class="text-steel text-sm leading-relaxed font-light mt-2 max-w-sm">Komplexe Steuerungen und Automatisierungstechnik mit höchster Präzision.</p>
+                                </div>
+                                <svg class="w-5 h-5 text-signal/0 group-hover:text-signal transition-colors mt-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner / Roboter Section -->
+    <section id="partner" class="py-28 lg:py-36 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="grid grid-cols-12 gap-8 lg:gap-16 items-center">
+                <div class="col-span-12 lg:col-span-5 order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="bg-slate p-8 lg:p-12">
+                            <img src="https://ms-electronics.de/files/content/fruitcore/HORST_Rendering_800x800.jpg" alt="HORST Roboter" class="w-full">
+                        </div>
+                        <!-- Corner accents -->
+                        <div class="absolute -top-3 -left-3 w-12 h-12 border-t-[3px] border-l-[3px] border-signal"></div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-[3px] border-r-[3px] border-navy/20"></div>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-[80px] lg:text-[100px] font-black number-outline leading-none">03</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black ls-tight leading-[1.1] mb-6">
+                        Idealer Partner<br>für Ihre Projekte
+                    </h2>
+                    <p class="text-steel text-lg leading-relaxed font-light mb-10 max-w-md">
+                        Unsere auf jahrzehntelanger Erfahrung basierende Expertise macht uns zum idealen Partner für Ingenieurbüros und Unternehmen.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="accent-bar pl-5 py-3">
+                            <span class="text-sm font-medium text-navy">Schnelles Verständnis</span>
+                            <span class="block text-xs text-steel font-light mt-0.5">für technische Zusammenhänge</span>
+                        </div>
+                        <div class="accent-bar pl-5 py-3">
+                            <span class="text-sm font-medium text-navy">Äußerste Flexibilität</span>
+                            <span class="block text-xs text-steel font-light mt-0.5">bei individuellen Anforderungen</span>
+                        </div>
+                        <div class="accent-bar pl-5 py-3">
+                            <span class="text-sm font-medium text-navy">Direkter Draht</span>
+                            <span class="block text-xs text-steel font-light mt-0.5">zum Kunden</span>
+                        </div>
+                        <div class="accent-bar pl-5 py-3">
+                            <span class="text-sm font-medium text-navy">„Ideal"-Lösungen</span>
+                            <span class="block text-xs text-steel font-light mt-0.5">branchenübergreifend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prozess -->
+    <section class="py-28 lg:py-36 bg-slate">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="grid grid-cols-12 gap-6 mb-16">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-[80px] lg:text-[100px] font-black number-outline leading-none">04</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black ls-tight leading-[1.1]">
+                        So arbeiten wir
+                    </h2>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end pb-2">
+                    <p class="text-steel text-lg leading-relaxed font-light">
+                        Jedes Projekt erfordert ein umfassendes Briefing. Wir agieren stets nach einem definierten Projektmanagement — stringent und zuverlässig.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-8 border border-gray-100 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-signal font-black text-2xl">01</span>
+                        <div class="flex-1 h-[1px] bg-signal/20"></div>
+                    </div>
+                    <h3 class="font-bold text-lg ls-tight mb-2">Analyse & Beratung</h3>
+                    <p class="text-steel text-sm leading-relaxed font-light">Detaillierte Analyse und Systemerfassung. Gemeinsam entwickeln wir erste Lösungsvorschläge.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-100 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-signal font-black text-2xl">02</span>
+                        <div class="flex-1 h-[1px] bg-signal/20"></div>
+                    </div>
+                    <h3 class="font-bold text-lg ls-tight mb-2">Konzeptentwicklung</h3>
+                    <p class="text-steel text-sm leading-relaxed font-light">Konkretes Konzept unter Berücksichtigung aller systemrelevanten Komponenten und Integrationsleitfaden.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-100 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-signal font-black text-2xl">03</span>
+                        <div class="flex-1 h-[1px] bg-signal/20"></div>
+                    </div>
+                    <h3 class="font-bold text-lg ls-tight mb-2">Sicherheit & Risiko</h3>
+                    <p class="text-steel text-sm leading-relaxed font-light">Detaillierte Risikobewertung gemeinsam mit Ihren Verantwortlichen für Anwendungssicherheit.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-100 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-signal font-black text-2xl">04</span>
+                        <div class="flex-1 h-[1px] bg-signal/20"></div>
+                    </div>
+                    <h3 class="font-bold text-lg ls-tight mb-2">Programmierung & IBN</h3>
+                    <p class="text-steel text-sm leading-relaxed font-light">Umsetzung in die Praxis — Komponenten programmiert und unter strenger Qualitätskontrolle in Betrieb genommen.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-100 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-signal font-black text-2xl">05</span>
+                        <div class="flex-1 h-[1px] bg-signal/20"></div>
+                    </div>
+                    <h3 class="font-bold text-lg ls-tight mb-2">Qualitätssicherung</h3>
+                    <p class="text-steel text-sm leading-relaxed font-light">Konsequentes Prozess-Monitoring und Auswertung prozessrelevanter Daten.</p>
+                </div>
+
+                <div class="bg-white p-8 border border-gray-100 card-hover">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-signal font-black text-2xl">06</span>
+                        <div class="flex-1 h-[1px] bg-signal/20"></div>
+                    </div>
+                    <h3 class="font-bold text-lg ls-tight mb-2">24/7 Service</h3>
+                    <p class="text-steel text-sm leading-relaxed font-light">Schulung, Remote-Support und Vor-Ort-Service für nachhaltige Systemanwendung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zertifizierungen & Partner -->
+    <section class="py-20 bg-navy">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="text-center mb-14">
+                <span class="text-[10px] ls-wide uppercase text-signal font-medium">Zertifizierter Systemintegrator & Vertriebspartner</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[1px]">
+                <div class="bg-navy-light/50 p-6 flex flex-col items-center justify-center text-center hover:bg-navy-light transition-colors">
+                    <span class="text-white font-bold text-sm">Universal Robots</span>
+                    <span class="text-white/30 text-[10px] ls-wide uppercase mt-1">Seit 2014</span>
+                </div>
+                <div class="bg-navy-light/50 p-6 flex flex-col items-center justify-center text-center hover:bg-navy-light transition-colors">
+                    <span class="text-white font-bold text-sm">Robotiq</span>
+                    <span class="text-white/30 text-[10px] ls-wide uppercase mt-1">Seit 2016</span>
+                </div>
+                <div class="bg-navy-light/50 p-6 flex flex-col items-center justify-center text-center hover:bg-navy-light transition-colors">
+                    <span class="text-white font-bold text-sm">Pick-it</span>
+                    <span class="text-white/30 text-[10px] ls-wide uppercase mt-1">Seit 2017</span>
+                </div>
+                <div class="bg-navy-light/50 p-6 flex flex-col items-center justify-center text-center hover:bg-navy-light transition-colors">
+                    <span class="text-white font-bold text-sm">OnRobot</span>
+                    <span class="text-white/30 text-[10px] ls-wide uppercase mt-1">Seit 2019</span>
+                </div>
+                <div class="bg-navy-light/50 p-6 flex flex-col items-center justify-center text-center hover:bg-navy-light transition-colors">
+                    <span class="text-white font-bold text-sm">Kawasaki Robotics</span>
+                    <span class="text-white/30 text-[10px] ls-wide uppercase mt-1">Seit 2021</span>
+                </div>
+                <div class="bg-navy-light/50 p-6 flex flex-col items-center justify-center text-center hover:bg-navy-light transition-colors">
+                    <span class="text-white font-bold text-sm">Dobot Robotics</span>
+                    <span class="text-white/30 text-[10px] ls-wide uppercase mt-1">Seit 2023</span>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-white/30 text-xs font-light">Weitere Partner: Smart Robotics (NL) · Cambrian AI · Global AGV · Made 4CNC</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen Industrieautomation -->
+    <section class="py-28 lg:py-36 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="grid grid-cols-12 gap-6 mb-16">
+                <div class="col-span-12 lg:col-span-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-[80px] lg:text-[100px] font-black number-outline leading-none">05</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black ls-tight leading-[1.1]">
+                        Industrieautomation<br>im Detail
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[1px] bg-gray-200">
+                <div class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://ms-electronics.de/assets/images/7/IAT-Schaltplanerstellung-9aa5ceed.jpg" alt="Schaltplanerstellung" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <div class="w-4 h-[2px] bg-signal mb-3"></div>
+                        <span class="text-sm font-bold ls-tight block">Schaltplan&shy;erstellung</span>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://ms-electronics.de/assets/images/2/IAT-Schaltanlagenbau-2afe943f.jpg" alt="Schaltanlagenbau" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <div class="w-4 h-[2px] bg-signal mb-3"></div>
+                        <span class="text-sm font-bold ls-tight block">Schaltanlagen&shy;bau</span>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://ms-electronics.de/assets/images/2/IAT-Elektromontage-a420bc3e.jpg" alt="Elektromontage" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <div class="w-4 h-[2px] bg-signal mb-3"></div>
+                        <span class="text-sm font-bold ls-tight block">Elektro&shy;montage</span>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://ms-electronics.de/assets/images/c/IAT-Softwareentwicklung-11236a16.jpg" alt="Software-Entwicklung" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <div class="w-4 h-[2px] bg-signal mb-3"></div>
+                        <span class="text-sm font-bold ls-tight block">Software-Entwicklung</span>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://ms-electronics.de/assets/images/9/IAT-Prozessvisualisierung-82d74238.jpg" alt="Prozessvisualisierung" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <div class="w-4 h-[2px] bg-signal mb-3"></div>
+                        <span class="text-sm font-bold ls-tight block">Prozess&shy;visualisierung</span>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://ms-electronics.de/assets/images/1/IAT-Inbetriebnahme-7208e346.jpg" alt="Inbetriebnahme & Service" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <div class="w-4 h-[2px] bg-signal mb-3"></div>
+                        <span class="text-sm font-bold ls-tight block">Inbetrieb&shy;nahme & Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unternehmenswerte -->
+    <section class="py-20 bg-slate border-t border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="grid grid-cols-12 gap-8 items-center">
+                <div class="col-span-12 lg:col-span-5">
+                    <span class="text-[10px] ls-wide uppercase text-steel block mb-4">Unsere Philosophie</span>
+                    <p class="text-xl md:text-2xl font-bold ls-tight leading-snug">
+                        Intelligente Technik, professionelle Arbeit, absolute Termintreue und ein gutes Preis-/Leistungsverhältnis.
+                    </p>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8">
+                    <div class="flex items-start gap-5">
+                        <img src="https://ms-electronics.de/files/content/Hausmesse%202019/E-Mobilit%C3%A4t/Forschung_und_Entwicklung_2020_print.png" alt="Stifterverband Forschung und Entwicklung" class="w-24 h-auto flex-shrink-0">
+                        <div>
+                            <span class="text-sm font-medium text-navy block">Ausgezeichnet vom Stifterverband</span>
+                            <span class="text-xs text-steel font-light block mt-1">Forschung & Entwicklung — ein junges Unternehmen mit traditioneller Philosophie, gegründet 1999, GmbH seit 2012.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Kontakt -->
+    <section id="kontakt" class="relative overflow-hidden">
+        <div class="hero-gradient py-28 lg:py-36 relative">
+            <!-- Grid overlay -->
+            <div class="absolute inset-0 grid-line opacity-20"></div>
+
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-12 lg:col-span-8">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-16 h-[1px] bg-signal"></div>
+                            <span class="text-[10px] ls-wide uppercase text-signal font-medium">Kontakt</span>
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white ls-tight leading-[1.05] mb-8">
+                            Lassen Sie uns<br>Ihr Projekt gemeinsam<br>
+                            <span class="relative inline-block">
+                                realisieren.
+                                <div class="absolute -bottom-2 left-0 w-full h-1 bg-signal"></div>
+                            </span>
+                        </h2>
+
+                        <p class="text-white/50 text-lg leading-relaxed font-light mb-12 max-w-lg">
+                            Jede Anlage und Maschine basiert auf individuellen Anforderungen. Sprechen Sie mit uns über Ihre Spezifikationen.
+                        </p>
+
+                        <a href="mailto:info@ms-electronics.de" class="group inline-flex items-center gap-3 bg-signal text-navy text-[11px] ls-wide uppercase font-bold px-10 py-5 hover:bg-white transition-colors duration-300">
+                            Kontakt aufnehmen
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+
+                    <div class="col-span-12 lg:col-span-3 lg:col-start-10 flex items-end">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-[10px] ls-wide uppercase text-white/30 block mb-1">Standort</span>
+                                <span class="text-white font-medium text-sm">Hachenburg</span>
+                                <span class="block text-white/40 text-sm font-light">Rheinland-Pfalz</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] ls-wide uppercase text-white/30 block mb-1">Gegründet</span>
+                                <span class="text-white font-medium text-sm">1999</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] ls-wide uppercase text-white/30 block mb-1">Spezialisierung</span>
+                                <span class="text-white font-medium text-sm">Automation & Robotik</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy border-t border-white/5 py-8">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-white/5 flex items-center justify-center">
+                        <span class="text-signal font-bold text-[10px]">MS</span>
+                    </div>
+                    <span class="text-white/30 text-xs ls-swiss">MS-Electronics GmbH</span>
+                </div>
+                <span class="text-white/20 text-[10px] ls-swiss">© 2024 MS-Electronics GmbH — Alle Rechte vorbehalten</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
