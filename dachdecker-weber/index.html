@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dachdecker Weber | Ihr Partner für wind- und wetterfeste Gebäude</title>
+    <meta name="description" content="Entdecken Sie professionelle Dach-, Fassaden- und Bauarbeiten mit Dachdecker Weber GmbH – Ihr Partner für Qualität und Zuverlässigkeit.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/logo_rot.svg" type="image/svg+xml">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'weber-blue': '#386992',
+                        'weber-blue-dark': '#2a5070',
+                        'weber-red': '#F53100',
+                        'weber-dark': '#0f0f0f',
+                        'weber-gray': '#f7f7f5',
+                        'weber-warm': '#fafaf8',
+                    },
+                    fontFamily: {
+                        'heading': ['"Archivo Black"', 'sans-serif'],
+                        'body': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Poppins', sans-serif; }
+        .font-heading { font-family: 'Archivo Black', sans-serif; }
+
+        .hero-img {
+            clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+        .service-card:hover .service-number {
+            transform: translateY(-8px);
+            color: #F53100;
+        }
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .stat-block {
+            position: relative;
+        }
+        .stat-block::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: rgba(56, 105, 146, 0.15);
+        }
+        .stat-block:last-child::after {
+            display: none;
+        }
+
+        .partner-track {
+            display: flex;
+            gap: 5rem;
+            width: max-content;
+        }
+    </style>
+</head>
+<body class="bg-white text-weber-dark antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex items-center justify-between h-20 border-b border-gray-100">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/logo_rot.svg" alt="Dachdecker Weber" class="h-9">
+                </a>
+                <div class="hidden md:flex items-center">
+                    <a href="#leistungen" class="text-[13px] font-medium tracking-[0.15em] uppercase text-weber-dark/70 hover:text-weber-dark px-5 py-2 transition-colors">Leistungen</a>
+                    <a href="#vorteile" class="text-[13px] font-medium tracking-[0.15em] uppercase text-weber-dark/70 hover:text-weber-dark px-5 py-2 transition-colors">Vorteile</a>
+                    <a href="#partner" class="text-[13px] font-medium tracking-[0.15em] uppercase text-weber-dark/70 hover:text-weber-dark px-5 py-2 transition-colors">Partner</a>
+                    <div class="w-px h-5 bg-gray-200 mx-4"></div>
+                    <a href="#kontakt" class="bg-weber-red text-white text-[13px] font-semibold tracking-[0.15em] uppercase px-7 py-3 hover:bg-red-700 transition-colors">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 w-full">
+            <div class="grid grid-cols-12 gap-4 lg:gap-8 items-center">
+                <!-- Left: Content -->
+                <div class="col-span-12 lg:col-span-5 py-16 lg:py-0 relative z-10">
+                    <div class="flex items-center gap-3 mb-10">
+                        <div class="w-12 h-px bg-weber-red"></div>
+                        <span class="text-[11px] font-semibold tracking-[0.35em] uppercase text-weber-blue">Seit über 50 Jahren</span>
+                    </div>
+                    <h1 class="font-heading text-[3.2rem] lg:text-[4.5rem] xl:text-[5.5rem] leading-[0.92] text-weber-dark mb-8 tracking-tight">
+                        Qualität<br>
+                        <span class="text-weber-blue">aufs Dach</span><br>
+                        gebracht.
+                    </h1>
+                    <p class="text-[17px] text-gray-500 leading-[1.8] max-w-[400px] mb-12">
+                        Unser Familienunternehmen bietet eine breite Palette von Dienstleistungen an — von traditionellem Dachdecken bis hin zu modernen Isolierlösungen.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <a href="#kontakt" class="group bg-weber-red text-white font-semibold px-9 py-4 text-[13px] tracking-[0.15em] uppercase hover:bg-red-700 transition-all inline-flex items-center gap-3">
+                            Projekt anfragen
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#leistungen" class="text-[13px] font-semibold tracking-[0.1em] uppercase text-weber-dark hover:text-weber-blue transition-colors border-b-2 border-weber-dark hover:border-weber-blue pb-1">Leistungen</a>
+                    </div>
+                </div>
+
+                <!-- Right: Image Composition -->
+                <div class="col-span-12 lg:col-span-7 relative">
+                    <div class="relative">
+                        <!-- Main image -->
+                        <div class="hero-img aspect-[4/3] lg:aspect-[5/4] overflow-hidden">
+                            <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/64f35b91-c909-4bb0-a87a-5bd556148c37.jpg.webp" alt="Bedachung" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Stats overlay -->
+                        <div class="absolute -bottom-8 -left-4 lg:-left-16 bg-weber-blue text-white py-8 px-10 shadow-2xl shadow-weber-blue/20">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-heading text-[4rem] leading-none">50</span>
+                                <span class="font-heading text-2xl text-white/60">+</span>
+                            </div>
+                            <div class="text-[11px] tracking-[0.3em] uppercase text-white/60 mt-1">Jahre Erfahrung</div>
+                        </div>
+                        <!-- Decorative grid line -->
+                        <div class="hidden lg:block absolute -top-6 -right-6 w-32 h-32 border-2 border-weber-blue/10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Vertical side text -->
+        <div class="hidden xl:block absolute right-10 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
+            <span class="text-[10px] tracking-[0.5em] uppercase text-gray-300 font-medium">Dachdecker · Fassaden · Isolierung</span>
+        </div>
+    </section>
+
+    <!-- Stat Bar -->
+    <section class="bg-weber-warm border-y border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-200/60">
+                <div class="stat-block py-12 lg:py-16 px-6 lg:px-10 text-center">
+                    <span class="font-heading text-[2.5rem] text-weber-blue block leading-none mb-2">50+</span>
+                    <span class="text-[12px] tracking-[0.2em] uppercase text-gray-400 font-medium">Jahre Erfahrung</span>
+                </div>
+                <div class="stat-block py-12 lg:py-16 px-6 lg:px-10 text-center">
+                    <span class="font-heading text-[2.5rem] text-weber-blue block leading-none mb-2">3</span>
+                    <span class="text-[12px] tracking-[0.2em] uppercase text-gray-400 font-medium">Kernkompetenzen</span>
+                </div>
+                <div class="stat-block py-12 lg:py-16 px-6 lg:px-10 text-center">
+                    <span class="font-heading text-[2.5rem] text-weber-blue block leading-none mb-2">5</span>
+                    <span class="text-[12px] tracking-[0.2em] uppercase text-gray-400 font-medium">Starke Partner</span>
+                </div>
+                <div class="stat-block py-12 lg:py-16 px-6 lg:px-10 text-center">
+                    <span class="font-heading text-[2.5rem] text-weber-blue block leading-none mb-2">100%</span>
+                    <span class="text-[12px] tracking-[0.2em] uppercase text-gray-400 font-medium">Familienunternehmen</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="leistungen" class="py-28 lg:py-40">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <!-- Header with asymmetric grid -->
+            <div class="grid grid-cols-12 gap-6 mb-20 lg:mb-28">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-px bg-weber-red"></div>
+                        <span class="text-[11px] font-semibold tracking-[0.35em] uppercase text-weber-red">Leistungen</span>
+                    </div>
+                    <h2 class="font-heading text-4xl lg:text-[3.2rem] text-weber-dark leading-[1.05]">Unsere<br>Kern&shy;kompetenzen</h2>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
+                    <p class="text-gray-500 text-[17px] leading-[1.8]">
+                        Wir sind stolz darauf, individuelle Lösungen anzubieten, die genau auf die Bedürfnisse unserer Kunden zugeschnitten sind.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Cards — staggered grid -->
+            <div class="grid grid-cols-12 gap-x-6 gap-y-10 lg:gap-x-8">
+                <!-- Bedachung -->
+                <div class="col-span-12 md:col-span-4 service-card cursor-default">
+                    <div class="aspect-[3/4] overflow-hidden mb-8 relative bg-gray-100">
+                        <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/64f35b91-c909-4bb0-a87a-5bd556148c37.jpg.webp" alt="Bedachung" class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="service-overlay absolute inset-0 bg-gradient-to-t from-weber-blue/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 flex items-end p-8">
+                            <span class="text-white text-sm font-medium tracking-wide">Neubau · Sanierung · Reparatur</span>
+                        </div>
+                    </div>
+                    <span class="service-number font-heading text-[2.5rem] text-weber-blue/15 block leading-none mb-3 transition-all duration-300">01</span>
+                    <h3 class="font-heading text-[1.6rem] text-weber-dark mb-3">Bedachung</h3>
+                    <p class="text-gray-500 leading-[1.75] text-[15px]">Wir bieten umfassende Lösungen für Neubau, Sanierung und Reparatur Ihres Daches.</p>
+                </div>
+
+                <!-- Fassaden — staggered down -->
+                <div class="col-span-12 md:col-span-4 service-card cursor-default lg:mt-16">
+                    <div class="aspect-[3/4] overflow-hidden mb-8 relative bg-gray-100">
+                        <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/3df16541-468a-4b90-9a2b-0136d74b2197.jpg.webp" alt="Fassaden" class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="service-overlay absolute inset-0 bg-gradient-to-t from-weber-blue/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 flex items-end p-8">
+                            <span class="text-white text-sm font-medium tracking-wide">Schutz · Gestaltung · Sanierung</span>
+                        </div>
+                    </div>
+                    <span class="service-number font-heading text-[2.5rem] text-weber-blue/15 block leading-none mb-3 transition-all duration-300">02</span>
+                    <h3 class="font-heading text-[1.6rem] text-weber-dark mb-3">Fassaden</h3>
+                    <p class="text-gray-500 leading-[1.75] text-[15px]">Schützen und verschönern Sie Ihr Gebäude mit unseren professionellen Fassadenlösungen.</p>
+                </div>
+
+                <!-- Isolierung -->
+                <div class="col-span-12 md:col-span-4 service-card cursor-default">
+                    <div class="aspect-[3/4] overflow-hidden mb-8 relative bg-gray-100">
+                        <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/isolierung.jpg.webp" alt="Isolierung" class="w-full h-full object-cover transition-transform duration-700">
+                        <div class="service-overlay absolute inset-0 bg-gradient-to-t from-weber-blue/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 flex items-end p-8">
+                            <span class="text-white text-sm font-medium tracking-wide">Energieeffizienz · Komfort · Wärme</span>
+                        </div>
+                    </div>
+                    <span class="service-number font-heading text-[2.5rem] text-weber-blue/15 block leading-none mb-3 transition-all duration-300">03</span>
+                    <h3 class="font-heading text-[1.6rem] text-weber-dark mb-3">Isolierung</h3>
+                    <p class="text-gray-500 leading-[1.75] text-[15px]">Verbessern Sie Energieeffizienz und Komfort durch hochwertige Isolierlösungen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us — Bold split layout -->
+    <section id="vorteile" class="relative">
+        <div class="grid grid-cols-12 min-h-[80vh]">
+            <!-- Left: Blue panel with image -->
+            <div class="col-span-12 lg:col-span-5 bg-weber-blue relative overflow-hidden">
+                <div class="absolute inset-0">
+                    <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/3df16541-468a-4b90-9a2b-0136d74b2197.jpg.webp" alt="Fassadenarbeit" class="w-full h-full object-cover opacity-20">
+                </div>
+                <div class="relative z-10 p-10 lg:p-16 flex flex-col justify-center h-full">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-px bg-white/40"></div>
+                        <span class="text-[11px] font-semibold tracking-[0.35em] uppercase text-white/50">Warum Weber</span>
+                    </div>
+                    <h2 class="font-heading text-4xl lg:text-[3.2rem] text-white leading-[1.05] mb-8">
+                        Ihr Partner<br>für jedes<br>Projekt.
+                    </h2>
+                    <p class="text-white/50 text-[16px] leading-[1.8] max-w-sm">
+                        Seit über 50 Jahren steht Dachdecker Weber für Qualität, Zuverlässigkeit und Fachkompetenz im Baugewerbe.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Advantages list -->
+            <div class="col-span-12 lg:col-span-7 bg-weber-warm flex items-center">
+                <div class="w-full py-16 lg:py-0 px-6 lg:px-16 xl:px-24">
+                    <div class="border-t border-gray-200/80">
+                        <div class="py-9 lg:py-10 border-b border-gray-200/80 grid grid-cols-12 gap-4 items-center group hover:bg-white/50 -mx-6 px-6 transition-colors">
+                            <span class="col-span-2 lg:col-span-1 font-heading text-[1.8rem] text-weber-red/20 group-hover:text-weber-red/50 transition-colors">01</span>
+                            <div class="col-span-10 lg:col-span-11">
+                                <h3 class="font-semibold text-[17px] text-weber-dark mb-1">Maßgeschneiderte Lösungen</h3>
+                                <p class="text-gray-400 text-[14px] leading-relaxed">Individuelle Konzepte, exakt auf Ihre Anforderungen zugeschnitten.</p>
+                            </div>
+                        </div>
+                        <div class="py-9 lg:py-10 border-b border-gray-200/80 grid grid-cols-12 gap-4 items-center group hover:bg-white/50 -mx-6 px-6 transition-colors">
+                            <span class="col-span-2 lg:col-span-1 font-heading text-[1.8rem] text-weber-red/20 group-hover:text-weber-red/50 transition-colors">02</span>
+                            <div class="col-span-10 lg:col-span-11">
+                                <h3 class="font-semibold text-[17px] text-weber-dark mb-1">Hochwertige Materialien</h3>
+                                <p class="text-gray-400 text-[14px] leading-relaxed">Nur erstklassige Materialien und sorgfältige Verarbeitung.</p>
+                            </div>
+                        </div>
+                        <div class="py-9 lg:py-10 border-b border-gray-200/80 grid grid-cols-12 gap-4 items-center group hover:bg-white/50 -mx-6 px-6 transition-colors">
+                            <span class="col-span-2 lg:col-span-1 font-heading text-[1.8rem] text-weber-red/20 group-hover:text-weber-red/50 transition-colors">03</span>
+                            <div class="col-span-10 lg:col-span-11">
+                                <h3 class="font-semibold text-[17px] text-weber-dark mb-1">Breites Leistungsspektrum</h3>
+                                <p class="text-gray-400 text-[14px] leading-relaxed">Von Dachdecken über Fassaden bis zu Isolierung — alles aus einer Hand.</p>
+                            </div>
+                        </div>
+                        <div class="py-9 lg:py-10 border-b border-gray-200/80 grid grid-cols-12 gap-4 items-center group hover:bg-white/50 -mx-6 px-6 transition-colors">
+                            <span class="col-span-2 lg:col-span-1 font-heading text-[1.8rem] text-weber-red/20 group-hover:text-weber-red/50 transition-colors">04</span>
+                            <div class="col-span-10 lg:col-span-11">
+                                <h3 class="font-semibold text-[17px] text-weber-dark mb-1">Kundenzentrierter Service</h3>
+                                <p class="text-gray-400 text-[14px] leading-relaxed">Persönliche Beratung und Betreuung in jedem Projektschritt.</p>
+                            </div>
+                        </div>
+                        <div class="py-9 lg:py-10 grid grid-cols-12 gap-4 items-center group hover:bg-white/50 -mx-6 px-6 transition-colors">
+                            <span class="col-span-2 lg:col-span-1 font-heading text-[1.8rem] text-weber-red/20 group-hover:text-weber-red/50 transition-colors">05</span>
+                            <div class="col-span-10 lg:col-span-11">
+                                <h3 class="font-semibold text-[17px] text-weber-dark mb-1">Fachkompetenz & Erfahrung</h3>
+                                <p class="text-gray-400 text-[14px] leading-relaxed">Über 50 Jahre Expertise im Baugewerbe — Ihr Dach in besten Händen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partner" class="py-24 lg:py-32 bg-white border-t border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-12 gap-6 items-center">
+                <div class="col-span-12 lg:col-span-3 mb-10 lg:mb-0">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-px bg-weber-red"></div>
+                        <span class="text-[11px] font-semibold tracking-[0.35em] uppercase text-weber-red">Partner</span>
+                    </div>
+                    <h2 class="font-heading text-3xl text-weber-dark leading-tight">Unsere starken Partner</h2>
+                </div>
+                <div class="col-span-12 lg:col-span-8 lg:col-start-5">
+                    <div class="flex items-center justify-between flex-wrap gap-y-8 gap-x-6 lg:gap-x-4">
+                        <div class="flex-1 min-w-[100px] flex justify-center px-4 py-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                            <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/braas.svg" alt="Braas" class="h-8 lg:h-10 max-w-full object-contain">
+                        </div>
+                        <div class="flex-1 min-w-[100px] flex justify-center px-4 py-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                            <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/vedag.svg" alt="Vedag" class="h-8 lg:h-10 max-w-full object-contain">
+                        </div>
+                        <div class="flex-1 min-w-[100px] flex justify-center px-4 py-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                            <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/icopal.svg" alt="Icopal" class="h-8 lg:h-10 max-w-full object-contain">
+                        </div>
+                        <div class="flex-1 min-w-[100px] flex justify-center px-4 py-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                            <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/velux.svg" alt="Velux" class="h-8 lg:h-10 max-w-full object-contain">
+                        </div>
+                        <div class="flex-1 min-w-[100px] flex justify-center px-4 py-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                            <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/05/roto.svg" alt="Roto" class="h-8 lg:h-10 max-w-full object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="kontakt" class="relative overflow-hidden">
+        <div class="bg-weber-dark py-28 lg:py-36 relative">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-weber-blue/5"></div>
+            <div class="absolute top-12 right-12 w-48 h-48 border border-weber-blue/10 hidden lg:block"></div>
+            <div class="absolute bottom-12 right-48 w-24 h-24 border border-weber-red/10 hidden lg:block"></div>
+
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+                <div class="max-w-3xl">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-px bg-weber-red"></div>
+                        <span class="text-[11px] font-semibold tracking-[0.35em] uppercase text-gray-500">Nächster Schritt</span>
+                    </div>
+                    <h2 class="font-heading text-4xl lg:text-[3.5rem] xl:text-[4rem] text-white leading-[1.05] mb-8">
+                        Ihr nächstes<br>Bauprojekt<br><span class="text-weber-red">beginnt hier.</span>
+                    </h2>
+                    <p class="text-gray-500 text-[17px] leading-[1.8] max-w-lg mb-12">
+                        Entdecken Sie, wie wir Ihnen helfen können, Ihr nächstes Bauprojekt erfolgreich umzusetzen. Kontaktieren Sie uns für eine persönliche Beratung.
+                    </p>
+                    <a href="https://www.dachdecker-weber.de/" class="group inline-flex items-center gap-4 bg-weber-red text-white font-semibold px-10 py-5 text-[13px] tracking-[0.15em] uppercase hover:bg-red-700 transition-all">
+                        Jetzt Kontakt aufnehmen
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-weber-dark border-t border-white/5">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-12">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div class="flex items-center gap-6">
+                    <img src="https://www.dachdecker-weber.de/wp-content/uploads/2024/02/logo_weiss.svg" alt="Dachdecker Weber" class="h-7 opacity-60">
+                    <div class="w-px h-5 bg-white/10"></div>
+                    <span class="text-gray-600 text-[13px]">Ihr Partner für wind- und wetterfeste Gebäude.</span>
+                </div>
+                <div class="flex items-center gap-8">
+                    <a href="https://www.dachdecker-weber.de/impressum" class="text-gray-600 text-[13px] hover:text-white transition-colors">Impressum</a>
+                    <a href="https://www.dachdecker-weber.de/datenschutzerklaerung/" class="text-gray-600 text-[13px] hover:text-white transition-colors">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

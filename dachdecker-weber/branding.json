@@ -1,0 +1,55 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Poppins", "role": "body" },
+    { "family": "Archivo Black", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#386992",
+    "accent": "#F53100",
+    "background": "#FFFFFF",
+    "textPrimary": "#F53100",
+    "link": "#F53100"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Poppins",
+      "heading": "Archivo Black"
+    },
+    "fontStacks": {
+      "heading": ["Archivo Black", "sans-serif"],
+      "body": ["Poppins", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "47.776px",
+      "h2": "39.808px",
+      "body": "17.6px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "8px"
+  },
+  "images": {
+    "logo": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/logo_rot.svg",
+    "logoWhite": "https://www.dachdecker-weber.de/wp-content/uploads/2024/02/logo_weiss.svg",
+    "favicon": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/logo_rot.svg"
+  },
+  "serviceImages": {
+    "bedachung": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/64f35b91-c909-4bb0-a87a-5bd556148c37.jpg.webp",
+    "fassaden": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/3df16541-468a-4b90-9a2b-0136d74b2197.jpg.webp",
+    "isolierung": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/isolierung.jpg.webp"
+  },
+  "partnerLogos": {
+    "braas": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/braas.svg",
+    "vedag": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/vedag.svg",
+    "icopal": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/icopal.svg",
+    "velux": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/velux.svg",
+    "roto": "https://www.dachdecker-weber.de/wp-content/uploads/2024/05/roto.svg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "homeowners and businesses looking for roofing services"
+  }
+}
