@@ -1,0 +1,53 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "OpenSans", "role": "body" },
+    { "family": "Helvetica Neue", "role": "body" },
+    { "family": "Arial", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#D94E00",
+    "accent": "#FF5C00",
+    "background": "#FFFFFF",
+    "textPrimary": "#FF5C00",
+    "link": "#FF5C00"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "OpenSans",
+      "heading": "OpenSans"
+    },
+    "fontSizes": {
+      "h1": "60px",
+      "h2": "47.9997px",
+      "body": "12.8px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#FF5C00",
+      "textColor": "#FFFFFF",
+      "borderColor": "#FF5C00",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#3B3B3B",
+      "textColor": "#FFFFFF",
+      "borderColor": "#3B3B3B",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.werit.eu/_assets/0867f30304ab808c5ca19df6dc996869/Images/werit.svg",
+    "favicon": "https://www.werit.eu/favicon/favicon-96x96.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  }
+}
