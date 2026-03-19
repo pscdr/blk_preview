@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZILEX — The Future of Engineering</title>
+    <meta name="description" content="ZILEX automates the entire heat exchanger design and ordering process. From fluid specs to final quote, everything happens in one place.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Semi+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'zilex': '#003854',
+                        'zilex-dark': '#012A3F',
+                        'zilex-deep': '#001C2B',
+                        'teal': '#23A08C',
+                        'teal-light': '#2BB89F',
+                        'teal-glow': '#34D4B5',
+                        'teal-dark': '#1C8A77',
+                        'slate': '#013B53',
+                    },
+                    fontFamily: {
+                        'heading': ['"Barlow Semi Condensed"', 'sans-serif'],
+                        'body': ['"Barlow"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Barlow Semi Condensed', sans-serif; }
+
+        /* Animated geometric grid */
+        .hero-geo {
+            background-image:
+                linear-gradient(rgba(35,160,140,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(35,160,140,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Hexagonal tessellation pattern */
+        .hex-tessellation {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='115' viewBox='0 0 100 115' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z' fill='none' stroke='%2323A08C' stroke-width='0.4' opacity='0.08'/%3E%3C/svg%3E");
+        }
+
+        /* Diagonal slice */
+        .diagonal-slice {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 0 100%);
+        }
+
+        .diagonal-slice-reverse {
+            clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
+        }
+
+        /* Chamfered corners */
+        .chamfer {
+            clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
+        }
+
+        .chamfer-lg {
+            clip-path: polygon(40px 0, calc(100% - 40px) 0, 100% 40px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 40px 100%, 0 calc(100% - 40px), 0 40px);
+        }
+
+        /* Gradient mesh overlay */
+        .gradient-mesh {
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(35,160,140,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0,56,84,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(35,160,140,0.04) 0%, transparent 50%);
+        }
+
+        /* Precision line decoration */
+        .precision-line::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 1px solid rgba(35,160,140,0.15);
+            pointer-events: none;
+        }
+
+        /* Counter style */
+        .counter-box {
+            position: relative;
+        }
+        .counter-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, #23A08C, transparent);
+        }
+
+        /* Scroll indicator */
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, #23A08C, transparent);
+        }
+
+        /* Stat separator */
+        .stat-divider {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(35,160,140,0.4), transparent);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex items-center justify-between h-20">
+                <img src="https://zilex.de/images/logo.png" alt="ZILEX" class="h-7">
+                <div class="hidden lg:flex items-center gap-10">
+                    <a href="#why" class="text-sm font-medium text-zilex/80 hover:text-teal transition-colors tracking-wide">Why ZILEX</a>
+                    <a href="#services" class="text-sm font-medium text-zilex/80 hover:text-teal transition-colors tracking-wide">Services</a>
+                    <a href="#products" class="text-sm font-medium text-zilex/80 hover:text-teal transition-colors tracking-wide">Products</a>
+                    <a href="#advantages" class="text-sm font-medium text-zilex/80 hover:text-teal transition-colors tracking-wide">Advantages</a>
+                </div>
+                <a href="https://app.zilex.de/login" class="bg-teal text-white px-7 py-3 font-heading font-bold text-sm tracking-wide hover:bg-teal-dark transition-all">
+                    START NOW
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background layers -->
+        <div class="absolute inset-0 hero-geo"></div>
+        <div class="absolute inset-0 gradient-mesh"></div>
+
+        <!-- Large geometric accent - right side -->
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.04]">
+            <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="300,20 560,170 560,430 300,580 40,430 40,170" stroke="#003854" stroke-width="1.5"/>
+                <polygon points="300,70 510,195 510,405 300,530 90,405 90,195" stroke="#23A08C" stroke-width="1"/>
+                <polygon points="300,120 460,220 460,380 300,480 140,380 140,220" stroke="#003854" stroke-width="0.8"/>
+                <polygon points="300,170 410,245 410,355 300,430 190,355 190,245" stroke="#23A08C" stroke-width="0.5"/>
+                <line x1="300" y1="20" x2="300" y2="580" stroke="#003854" stroke-width="0.3"/>
+                <line x1="40" y1="300" x2="560" y2="300" stroke="#003854" stroke-width="0.3"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10 pt-20">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Left: Content -->
+                <div class="lg:col-span-6">
+                    <div class="inline-flex items-center gap-3 mb-8 bg-zilex/[0.04] px-5 py-2.5">
+                        <div class="w-2 h-2 bg-teal"></div>
+                        <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">The Future of Engineering</span>
+                    </div>
+
+                    <h1 class="font-heading font-black text-[3.5rem] lg:text-[4.5rem] xl:text-[5.5rem] text-zilex leading-[0.95] mb-8 tracking-tight">
+                        DESIGN.<br>
+                        <span class="text-teal">CONFIGURE.</span><br>
+                        ORDER.
+                    </h1>
+
+                    <p class="text-lg lg:text-xl text-slate/60 max-w-md mb-12 leading-relaxed font-light">
+                        From fluid specs to final quote — the entire heat exchanger workflow in one platform. Fast, accurate, accessible.
+                    </p>
+
+                    <!-- Stat bar -->
+                    <div class="flex items-center gap-8 mb-12">
+                        <div>
+                            <div class="font-heading font-black text-3xl text-zilex">100<span class="text-teal">%</span></div>
+                            <div class="text-xs text-slate/50 font-medium tracking-wide mt-1">AUTOMATED</div>
+                        </div>
+                        <div class="stat-divider h-12"></div>
+                        <div>
+                            <div class="font-heading font-black text-3xl text-zilex">0</div>
+                            <div class="text-xs text-slate/50 font-medium tracking-wide mt-1">ERRORS</div>
+                        </div>
+                        <div class="stat-divider h-12"></div>
+                        <div>
+                            <div class="font-heading font-black text-3xl text-zilex">AI<span class="text-teal">+</span></div>
+                            <div class="text-xs text-slate/50 font-medium tracking-wide mt-1">POWERED</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://app.zilex.de/login" class="group bg-teal text-white pl-8 pr-6 py-4 font-heading font-bold text-base tracking-wide hover:bg-teal-dark transition-all inline-flex items-center gap-3">
+                            START NOW
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#why" class="border-2 border-zilex/20 text-zilex px-8 py-4 font-heading font-bold text-base tracking-wide hover:border-zilex hover:bg-zilex hover:text-white transition-all">
+                            EXPLORE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Product visual -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative">
+                        <!-- Geometric frame -->
+                        <div class="absolute -inset-4 border border-teal/10"></div>
+                        <div class="absolute -inset-8 border border-zilex/5"></div>
+
+                        <!-- Main image -->
+                        <div class="relative bg-gradient-to-br from-zilex/[0.02] to-teal/[0.03] p-3">
+                            <img src="https://zilex.de/images/covering1.png" alt="ZILEX Platform" class="w-full shadow-[0_40px_80px_-20px_rgba(0,56,84,0.25)]">
+                        </div>
+
+                        <!-- Floating secondary images -->
+                        <div class="absolute -bottom-8 -left-8 w-40 shadow-xl border-2 border-white">
+                            <img src="https://zilex.de/images/covering.png" alt="ZILEX Detail" class="w-full">
+                        </div>
+                        <div class="absolute -top-6 -right-6 w-32 shadow-xl border-2 border-white">
+                            <img src="https://zilex.de/images/covering2.png" alt="ZILEX Detail" class="w-full">
+                        </div>
+
+                        <!-- Geometric accent -->
+                        <div class="absolute top-1/2 -right-16 w-24 h-24 border border-teal/20 -translate-y-1/2 rotate-45"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="hidden lg:flex flex-col items-center mt-16 gap-3">
+                <span class="text-[10px] text-slate/30 tracking-[0.3em] uppercase">Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- WHY ZILEX — Challenge / Solution -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="why" class="relative">
+        <!-- Dark diagonal section -->
+        <div class="bg-zilex-deep diagonal-slice pb-32">
+            <div class="pt-24 pb-8">
+                <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                    <div class="grid lg:grid-cols-12 gap-16 items-start">
+                        <div class="lg:col-span-5">
+                            <div class="inline-flex items-center gap-3 mb-6">
+                                <div class="w-10 h-[2px] bg-teal"></div>
+                                <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Why ZILEX</span>
+                            </div>
+                            <h2 class="font-heading font-black text-4xl lg:text-5xl xl:text-6xl text-white leading-[1.05] mb-6">
+                                THE INDUSTRY<br>
+                                IS <span class="text-teal">BROKEN.</span><br>
+                                WE FIX IT.
+                            </h2>
+                            <p class="text-white/40 text-lg leading-relaxed font-light">
+                                For decades, sourcing heat exchangers has been slow, fragmented, and error-prone. ZILEX transforms every pain point into a competitive advantage.
+                            </p>
+                        </div>
+
+                        <div class="lg:col-span-7 space-y-4">
+                            <!-- Pair 1 -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Multiple Processes</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Technical specification, supplier inquiry, commercial evaluation, and internal approvals — all fragmented.</p>
+                                </div>
+                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Streamlined Process</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">One unified platform. Real-time data. A unique algorithm that explores all possibilities instantly.</p>
+                                </div>
+                            </div>
+
+                            <!-- Pair 2 -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Slow & Complex</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Thermodynamic analysis, strength calculations, material selection — weeks of technical precision.</p>
+                                </div>
+                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Speed & Simplicity</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Automated workflows eliminate delays. Minutes instead of weeks, with zero complexity for the user.</p>
+                                </div>
+                            </div>
+
+                            <!-- Pair 3 -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Transparency Gap</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Unclear design rationales, hidden costs, limited visibility into supplier competencies.</p>
+                                </div>
+                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Full Transparency</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Complete visibility into design rationale, pricing, and supplier capabilities. Every decision documented.</p>
+                                </div>
+                            </div>
+
+                            <!-- Pair 4 -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-400/60 to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-red-400/70" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-red-400/70">Challenge</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Risk of Errors</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Manual data handling, fragmented communication — costly redesigns and performance failures.</p>
+                                </div>
+                                <div class="bg-teal/[0.08] backdrop-blur-sm border border-teal/[0.15] p-7 relative overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-transparent"></div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-teal">Solution</span>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-white text-lg mb-2">Zero Errors</h3>
+                                    <p class="text-white/35 text-sm leading-relaxed">Automated calculations, integrated quality checks. Every specification validated in real-time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SERVICES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="services" class="py-28 relative">
+        <div class="absolute inset-0 hex-tessellation"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16">
+                <div>
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="w-10 h-[2px] bg-teal"></div>
+                        <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Services</span>
+                    </div>
+                    <h2 class="font-heading font-black text-4xl lg:text-5xl text-zilex leading-tight">
+                        TECHNICAL DESIGN<br>INFORMATION — <span class="text-teal">INSTANTLY.</span>
+                    </h2>
+                </div>
+                <p class="text-slate/50 max-w-sm mt-4 lg:mt-0 font-light text-lg leading-relaxed">
+                    Easy access to the engineering data you need, right when you need it.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl">
+                <!-- Quick PED -->
+                <div class="group relative bg-white border border-zilex/[0.08] p-10 hover:border-teal/30 transition-all duration-300">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-teal/0 group-hover:bg-teal transition-all duration-300"></div>
+                    <div class="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-teal/[0.03] to-transparent"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-start justify-between mb-6">
+                            <img src="https://zilex.de/images/ikonas1.png" alt="Quick PED" class="w-16 h-16">
+                            <span class="font-heading font-black text-5xl text-zilex/[0.06]">01</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Quick PED</h3>
+                        <p class="text-slate/50 text-sm leading-relaxed mb-8">Classify pressure vessels per the Pressure Equipment Directive. Guides through pressure, volume, medium, and temperature for accurate categorization and EU compliance.</p>
+                        <a href="https://app.zilex.de/ped/" class="group/link inline-flex items-center gap-3 text-teal font-heading font-bold text-sm tracking-wide">
+                            START NOW
+                            <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fluid Properties -->
+                <div class="group relative bg-white border border-zilex/[0.08] p-10 hover:border-teal/30 transition-all duration-300">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-teal/0 group-hover:bg-teal transition-all duration-300"></div>
+                    <div class="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-teal/[0.03] to-transparent"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-start justify-between mb-6">
+                            <img src="https://zilex.de/images/ikonas2.svg" alt="Fluid Properties" class="w-16 h-16">
+                            <span class="font-heading font-black text-5xl text-zilex/[0.06]">02</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Fluid Properties</h3>
+                        <p class="text-slate/50 text-sm leading-relaxed mb-8">Material Property Lookup for thermophysical data — density, viscosity, thermal conductivity, specific heat capacity, and vapor pressure from temperature/pressure input.</p>
+                        <span class="inline-flex items-center gap-2 text-slate/30 font-heading font-bold text-sm tracking-wide">
+                            <div class="w-2 h-2 bg-slate/20 rounded-full"></div>
+                            COMING SOON
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PRODUCTS -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="products" class="py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <!-- Background geometric -->
+        <div class="absolute -right-20 top-1/3 w-[400px] h-[400px] opacity-[0.03]">
+            <svg viewBox="0 0 400 400" fill="none">
+                <polygon points="200,10 390,110 390,290 200,390 10,290 10,110" stroke="#003854" stroke-width="2"/>
+                <polygon points="200,50 350,130 350,270 200,350 50,270 50,130" stroke="#23A08C" stroke-width="1.5"/>
+                <polygon points="200,90 310,150 310,250 200,310 90,250 90,150" stroke="#003854" stroke-width="1"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-10 h-[2px] bg-teal"></div>
+                    <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Products</span>
+                    <div class="w-10 h-[2px] bg-teal"></div>
+                </div>
+                <h2 class="font-heading font-black text-4xl lg:text-5xl text-zilex">
+                    CONFIGURE TECHNICAL PRODUCTS
+                </h2>
+            </div>
+
+            <!-- Product cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="relative bg-white p-8 group border border-transparent hover:border-teal/20 transition-all">
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-teal to-teal-light"></div>
+                    <div class="flex items-center justify-between mb-8">
+                        <img src="https://zilex.de/images/ikona.svg" alt="Gaskets" class="w-14 h-14">
+                        <div class="w-8 h-8 bg-teal/10 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Gaskets</h3>
+                    <p class="text-slate/50 text-sm leading-relaxed mb-6">Specify flat gaskets for heat exchangers and pipelines with instant price and delivery time information.</p>
+                    <a href="https://app.zilex.de/gaskets/" class="text-teal font-heading font-bold text-sm tracking-wide">START NOW →</a>
+                </div>
+
+                <div class="relative bg-white p-8 group border border-transparent hover:border-zilex/10 transition-all opacity-80">
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-zilex/20 to-zilex/5"></div>
+                    <div class="flex items-center justify-between mb-8">
+                        <img src="https://zilex.de/images/ikona1.svg" alt="Tubes" class="w-14 h-14">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Tubes</h3>
+                    <p class="text-slate/50 text-sm leading-relaxed mb-6">Generate bending plans and tube bundles for straight and U-tubes with transparent pricing and scheduling.</p>
+                    <span class="text-slate/30 font-heading font-bold text-sm tracking-wide">COMING SOON</span>
+                </div>
+
+                <div class="relative bg-white p-8 group border border-transparent hover:border-zilex/10 transition-all opacity-80">
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-zilex/20 to-zilex/5"></div>
+                    <div class="flex items-center justify-between mb-8">
+                        <img src="https://zilex.de/images/ikona2.svg" alt="Tubesheets" class="w-14 h-14">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Tubesheets</h3>
+                    <p class="text-slate/50 text-sm leading-relaxed mb-6">Create custom tube sheets with material selection, thickness, tube layout, and procurement details.</p>
+                    <span class="text-slate/30 font-heading font-bold text-sm tracking-wide">COMING SOON</span>
+                </div>
+            </div>
+
+            <!-- Three pillars -->
+            <div class="grid md:grid-cols-3 gap-0 border border-zilex/[0.08]">
+                <div class="p-8 border-r border-zilex/[0.08] relative">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                    <div class="font-heading font-black text-4xl text-teal/20 mb-4">01</div>
+                    <h4 class="font-heading font-bold text-lg text-zilex mb-2">All-in-One Software</h4>
+                    <p class="text-slate/50 text-sm leading-relaxed">Design, strength check, and pricing — from start to finish in one seamless workflow.</p>
+                </div>
+                <div class="p-8 border-r border-zilex/[0.08] relative">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                    <div class="font-heading font-black text-4xl text-teal/20 mb-4">02</div>
+                    <h4 class="font-heading font-bold text-lg text-zilex mb-2">Automated Processing</h4>
+                    <p class="text-slate/50 text-sm leading-relaxed">Input to output in minutes, not weeks — powered by our unique technical-commercial algorithm.</p>
+                </div>
+                <div class="p-8 relative">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                    <div class="font-heading font-black text-4xl text-teal/20 mb-4">03</div>
+                    <h4 class="font-heading font-bold text-lg text-zilex mb-2">Digital Workflow</h4>
+                    <p class="text-slate/50 text-sm leading-relaxed">Respond faster, win more leads, and close deals with just a few clicks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- TARGET AUDIENCES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="py-28 bg-zilex-deep relative overflow-hidden">
+        <div class="absolute inset-0 hex-tessellation opacity-40"></div>
+
+        <!-- Decorative geometric -->
+        <div class="absolute left-10 top-1/2 -translate-y-1/2 opacity-[0.04]">
+            <svg width="200" height="200" viewBox="0 0 200 200"><polygon points="100,5 195,55 195,145 100,195 5,145 5,55" fill="none" stroke="#23A08C" stroke-width="1.5"/></svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-black text-4xl lg:text-6xl text-white leading-tight">
+                    ONE TOOL.<br><span class="text-teal">FOR ALL OF YOU.</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="relative p-8 bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] group hover:border-teal/30 transition-all">
+                    <div class="absolute top-0 left-0 w-12 h-12">
+                        <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                        <div class="absolute top-0 left-0 w-[2px] h-full bg-teal"></div>
+                    </div>
+                    <div class="font-heading font-black text-6xl text-teal/10 mb-2">01</div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">Engineers &<br>Designers</h3>
+                    <p class="text-white/30 text-sm leading-relaxed">Define complete heat exchanger designs — thermal sizing, mechanical checks, material selection — in your browser.</p>
+                </div>
+
+                <div class="relative p-8 bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] group hover:border-teal/30 transition-all">
+                    <div class="absolute top-0 left-0 w-12 h-12">
+                        <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                        <div class="absolute top-0 left-0 w-[2px] h-full bg-teal"></div>
+                    </div>
+                    <div class="font-heading font-black text-6xl text-teal/10 mb-2">02</div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">Procurement &<br>Purchasing</h3>
+                    <p class="text-white/30 text-sm leading-relaxed">Instant access to pricing, specs, and design documents. Confident decisions and streamlined comparisons.</p>
+                </div>
+
+                <div class="relative p-8 bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] group hover:border-teal/30 transition-all">
+                    <div class="absolute top-0 left-0 w-12 h-12">
+                        <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                        <div class="absolute top-0 left-0 w-[2px] h-full bg-teal"></div>
+                    </div>
+                    <div class="font-heading font-black text-6xl text-teal/10 mb-2">03</div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">Sales &<br>Consultants</h3>
+                    <p class="text-white/30 text-sm leading-relaxed">Accurate technical quotes in record time. Be the first to respond and win more projects.</p>
+                </div>
+
+                <div class="relative p-8 bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] group hover:border-teal/30 transition-all">
+                    <div class="absolute top-0 left-0 w-12 h-12">
+                        <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                        <div class="absolute top-0 left-0 w-[2px] h-full bg-teal"></div>
+                    </div>
+                    <div class="font-heading font-black text-6xl text-teal/10 mb-2">04</div>
+                    <h3 class="font-heading font-bold text-xl text-white mb-3">Manufacturers &<br>Project Managers</h3>
+                    <p class="text-white/30 text-sm leading-relaxed">Budget and technical specs from day one. No costly redesigns, accelerated project execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ADVANTAGES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="advantages" class="py-28 relative overflow-hidden">
+        <div class="absolute inset-0 gradient-mesh"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                <!-- Left: Laptop mockup -->
+                <div class="lg:col-span-5 relative order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="absolute -inset-6 border border-teal/10 -z-10"></div>
+                        <img src="https://zilex.de/images/computer.png" alt="ZILEX Platform" class="w-full relative z-10">
+
+                        <!-- Geometric accents -->
+                        <div class="absolute -bottom-3 -right-3 w-20 h-20 border border-teal/20"></div>
+                        <div class="absolute -top-3 -left-3 w-12 h-12 bg-teal/5"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Advantages list -->
+                <div class="lg:col-span-7 order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <div class="w-10 h-[2px] bg-teal"></div>
+                        <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Advantages</span>
+                    </div>
+                    <h2 class="font-heading font-black text-4xl lg:text-5xl text-zilex mb-12 leading-tight">
+                        SIX REASONS<br>TO CHOOSE <span class="text-teal">ZILEX.</span>
+                    </h2>
+
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-8">
+                        <div class="counter-box pb-4">
+                            <div class="font-heading font-black text-3xl text-teal/20 mb-2">01</div>
+                            <h4 class="font-heading font-bold text-zilex mb-1">Real-Time Generation</h4>
+                            <p class="text-slate/50 text-sm leading-relaxed">Instantly creates products from a range of possibilities.</p>
+                        </div>
+                        <div class="counter-box pb-4">
+                            <div class="font-heading font-black text-3xl text-teal/20 mb-2">02</div>
+                            <h4 class="font-heading font-bold text-zilex mb-1">Sustainable Design</h4>
+                            <p class="text-slate/50 text-sm leading-relaxed">Tailored, resource-efficient solutions for every project.</p>
+                        </div>
+                        <div class="counter-box pb-4">
+                            <div class="font-heading font-black text-3xl text-teal/20 mb-2">03</div>
+                            <h4 class="font-heading font-bold text-zilex mb-1">Custom Proposals</h4>
+                            <p class="text-slate/50 text-sm leading-relaxed">Complete offers with datasheets, prices, delivery times, and 3D models.</p>
+                        </div>
+                        <div class="counter-box pb-4">
+                            <div class="font-heading font-black text-3xl text-teal/20 mb-2">04</div>
+                            <h4 class="font-heading font-bold text-zilex mb-1">Product Comparisons</h4>
+                            <p class="text-slate/50 text-sm leading-relaxed">Compare shell-and-tube with plate heat exchangers side by side.</p>
+                        </div>
+                        <div class="counter-box pb-4">
+                            <div class="font-heading font-black text-3xl text-teal/20 mb-2">05</div>
+                            <h4 class="font-heading font-bold text-zilex mb-1">No Expertise Needed</h4>
+                            <p class="text-slate/50 text-sm leading-relaxed">Simplifies complex calculations for all users.</p>
+                        </div>
+                        <div class="counter-box pb-4">
+                            <div class="font-heading font-black text-3xl text-teal/20 mb-2">06</div>
+                            <h4 class="font-heading font-bold text-zilex mb-1">AI Assistance</h4>
+                            <p class="text-slate/50 text-sm leading-relaxed">ZILO, our AI specialist, guides you through every step.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- VISION & MISSION -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="relative p-10 bg-white border border-zilex/[0.08] group">
+                    <div class="absolute top-0 left-0 w-16 h-16">
+                        <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                        <div class="absolute top-0 left-0 w-[2px] h-full bg-teal"></div>
+                    </div>
+                    <img src="https://zilex.de/images/torch.png" alt="Vision" class="w-12 h-12 mb-5">
+                    <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Our Vision</h3>
+                    <p class="text-slate/50 text-base leading-relaxed">We will be the go-to global hub for thermal process engineering.</p>
+                </div>
+                <div class="relative p-10 bg-white border border-zilex/[0.08] group">
+                    <div class="absolute top-0 left-0 w-16 h-16">
+                        <div class="absolute top-0 left-0 w-full h-[2px] bg-teal"></div>
+                        <div class="absolute top-0 left-0 w-[2px] h-full bg-teal"></div>
+                    </div>
+                    <img src="https://zilex.de/images/mission.png" alt="Mission" class="w-12 h-12 mb-5">
+                    <h3 class="font-heading font-bold text-2xl text-zilex mb-3">Our Mission</h3>
+                    <p class="text-slate/50 text-base leading-relaxed">We sync thermal process engineering with intelligent automation to optimize energy efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- COMPETITOR COMPARISON -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="py-28 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-10 h-[2px] bg-teal"></div>
+                    <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Comparison</span>
+                    <div class="w-10 h-[2px] bg-teal"></div>
+                </div>
+                <h2 class="font-heading font-black text-4xl lg:text-5xl text-zilex mb-4">HOW ZILEX <span class="text-teal">COMPARES.</span></h2>
+                <p class="text-slate/50 max-w-lg mx-auto">See how ZILEX stacks up against traditional heat exchanger software at a glance.</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-zilex/10">
+                            <th class="py-4 pr-4 font-heading font-bold text-zilex text-base w-48">Feature</th>
+                            <th class="py-4 px-4 font-heading font-bold text-teal text-base text-center bg-teal/[0.04]">ZILEX</th>
+                            <th class="py-4 px-4 font-heading font-bold text-zilex/50 text-base text-center">Traditional Software</th>
+                            <th class="py-4 px-4 font-heading font-bold text-zilex/50 text-base text-center">Manufacturer Tools</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate/60">
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">Cost</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04] font-semibold text-teal">Free</td>
+                            <td class="py-3.5 px-4 text-center">Expensive license</td>
+                            <td class="py-3.5 px-4 text-center">Partners only</td>
+                        </tr>
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">Browser-Based</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04]"><svg class="w-5 h-5 text-teal mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center">Varies</td>
+                        </tr>
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">Heat Exchanger Types</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04] font-semibold text-teal">All types</td>
+                            <td class="py-3.5 px-4 text-center">All types</td>
+                            <td class="py-3.5 px-4 text-center">Plate only</td>
+                        </tr>
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">Direct Comparison</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04]"><svg class="w-5 h-5 text-teal mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">3D Model</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04] font-semibold text-teal">.stp file</td>
+                            <td class="py-3.5 px-4 text-center">Partial</td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">Online Ordering</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04]"><svg class="w-5 h-5 text-teal mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center">Varies</td>
+                        </tr>
+                        <tr class="border-b border-zilex/[0.06]">
+                            <td class="py-3.5 pr-4 font-medium text-zilex">AI Guidance</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04] font-semibold text-teal">ZILO AI</td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                            <td class="py-3.5 px-4 text-center"><svg class="w-5 h-5 text-red-300 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 pr-4 font-medium text-zilex">Ease of Use</td>
+                            <td class="py-3.5 px-4 text-center bg-teal/[0.04] font-semibold text-teal">Intuitive</td>
+                            <td class="py-3.5 px-4 text-center">Expert-level</td>
+                            <td class="py-3.5 px-4 text-center">Average</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-slate/25 text-xs mt-6 max-w-lg">Based on publicly available information and internal research as of June 2025. All trademarks belong to their respective owners.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- TESTIMONIAL -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="testimonials" class="py-28 bg-gray-50 relative">
+        <div class="max-w-5xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <div class="w-10 h-[2px] bg-teal"></div>
+                    <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Testimonials</span>
+                    <div class="w-10 h-[2px] bg-teal"></div>
+                </div>
+                <h2 class="font-heading font-black text-4xl lg:text-5xl text-zilex">CUSTOMER SUCCESS</h2>
+            </div>
+
+            <div class="relative bg-zilex-deep p-12 lg:p-16 overflow-hidden">
+                <!-- Geometric background -->
+                <div class="absolute top-0 right-0 w-64 h-64 opacity-[0.04]">
+                    <svg viewBox="0 0 200 200"><polygon points="100,5 195,55 195,145 100,195 5,145 5,55" fill="none" stroke="#23A08C" stroke-width="1.5"/></svg>
+                </div>
+
+                <!-- Quote mark -->
+                <div class="absolute top-8 left-10 font-heading font-black text-[120px] leading-none text-teal/[0.06] select-none">"</div>
+
+                <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+                    <div class="flex-shrink-0">
+                        <div class="relative">
+                            <img src="https://zilex.de/images/customer.png" alt="Adrienne Brown" class="w-28 h-28 rounded-full border-2 border-teal/40">
+                            <div class="absolute -inset-3 border border-teal/10 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <blockquote class="text-xl lg:text-2xl font-light text-white/90 leading-relaxed mb-8">
+                            "I was already excited about it at the expo, and now that I've had a chance to explore it more for heat exchanger design, I'm even more impressed. Last year, I worked on a project where ZILEX would have been a huge help – but I'm glad I'll have it ready for the next one!"
+                        </blockquote>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-[2px] bg-teal"></div>
+                            <div>
+                                <p class="font-heading font-bold text-white text-lg">Adrienne Brown</p>
+                                <p class="text-white/35 text-sm">Managing Director, ADDrienne — Engineering Company for Ships</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- BLOG -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="py-28">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="w-10 h-[2px] bg-teal"></div>
+                        <span class="text-teal font-bold text-xs tracking-[0.2em] uppercase">Blog</span>
+                    </div>
+                    <h2 class="font-heading font-black text-4xl text-zilex">LATEST UPDATES</h2>
+                </div>
+                <a href="https://zilex.de/blogs" class="hidden md:inline-flex items-center gap-2 text-teal font-heading font-bold text-sm tracking-wide hover:gap-3 transition-all">
+                    VIEW ALL
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="https://zilex.de/blog/zilex-launch" class="group">
+                    <div class="aspect-[4/3] overflow-hidden mb-5 bg-gray-100">
+                        <img src="https://zilex.de/storage/blogs/thumbnails/W4GQ6V02zk6kOjNcUsWstbOajr8hX88YIsBBNnce.jpg" alt="ZILEX Launch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-teal bg-teal/10 px-3 py-1">Products</span>
+                        <span class="text-xs text-slate/30">Dec 12, 2025</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-zilex group-hover:text-teal transition-colors">ZILEX Launch</h3>
+                </a>
+
+                <a href="https://zilex.de/blog/zilex-in-vdi-with-ai-from-concept-to-heat-exchanger-in-two-minutes" class="group">
+                    <div class="aspect-[4/3] overflow-hidden mb-5 bg-gray-100">
+                        <img src="https://zilex.de/storage/blogs/thumbnails/IZti0VqtX9FyYbqvBiPzDed2KLHEkEWWtYBfIb5o.jpg" alt="ZILEX in VDI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-teal bg-teal/10 px-3 py-1">Updates</span>
+                        <span class="text-xs text-slate/30">Dec 11, 2025</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-zilex group-hover:text-teal transition-colors">ZILEX in VDI: AI-Driven Heat Exchanger Design in Two Minutes</h3>
+                </a>
+
+                <a href="https://zilex.de/blog/our-german-accelerator-journey-from-germany-to-silicon-valley-new-york" class="group">
+                    <div class="aspect-[4/3] overflow-hidden mb-5 bg-gray-100">
+                        <img src="https://zilex.de/storage/blogs/thumbnails/7fR88sIphoVlIwOLsZcfA5hMnBQY3eRKZKADoSpm.jpg" alt="German Accelerator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-teal bg-teal/10 px-3 py-1">Updates</span>
+                        <span class="text-xs text-slate/30">Dec 11, 2025</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-zilex group-hover:text-teal transition-colors">German Accelerator: From Germany to Silicon Valley & New York</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CTA -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="relative overflow-hidden">
+        <div class="bg-zilex-deep py-28 relative">
+            <div class="absolute inset-0 hex-tessellation opacity-30"></div>
+
+            <!-- Large geometric accent -->
+            <div class="absolute right-0 top-0 h-full w-1/3 opacity-[0.03]">
+                <svg viewBox="0 0 400 600" fill="none" class="h-full">
+                    <polygon points="200,20 380,120 380,480 200,580 20,480 20,120" stroke="#23A08C" stroke-width="2"/>
+                    <polygon points="200,80 330,155 330,445 200,520 70,445 70,155" stroke="#23A08C" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
+                <h2 class="font-heading font-black text-4xl lg:text-6xl text-white mb-6 leading-tight">
+                    READY TO TRANSFORM<br>
+                    YOUR <span class="text-teal">ENGINEERING?</span>
+                </h2>
+                <p class="text-white/35 text-lg max-w-xl mx-auto mb-12 font-light leading-relaxed">
+                    Design, configure, and order heat exchangers — all in one platform. Join the future of engineering.
+                </p>
+                <a href="https://app.zilex.de/login" class="group inline-flex items-center gap-4 bg-teal text-white pl-10 pr-8 py-5 font-heading font-bold text-xl tracking-wide hover:bg-teal-dark transition-all">
+                    START NOW
+                    <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FOOTER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer class="bg-zilex-deep border-t border-white/[0.05]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <img src="https://zilex.de/images/logo.png" alt="ZILEX" class="h-6 opacity-40">
+            <p class="text-white/20 text-sm tracking-wide">&copy; 2025 ZILEX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Nav scroll behavior -->
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+            }
+        });
+    </script>
+
+</body>
+</html>

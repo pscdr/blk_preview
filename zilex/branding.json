@@ -1,0 +1,51 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Barlow", "role": "body" },
+    { "family": "Barlow Semi Condensed SemiBold", "role": "heading" }
+  ],
+  "colors": {
+    "primary": "#003854",
+    "accent": "#23A08C",
+    "background": "#FFFFFF",
+    "textPrimary": "#013B53",
+    "link": "#013B53"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Barlow",
+      "heading": "Barlow Semi Condensed SemiBold"
+    },
+    "fontSizes": {
+      "h1": "40px",
+      "h2": "40px",
+      "body": "20px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#23A08C",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#013B53",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://zilex.de/images/logo.png",
+    "favicon": "https://zilex.de/images/zilex.webp",
+    "ogImage": "https://zilex.de/images/imagelogo.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals"
+  }
+}
