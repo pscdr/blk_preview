@@ -120,84 +120,66 @@
 
     <!-- Hero -->
     <section class="bg-navy min-h-screen relative overflow-hidden">
-        <!-- Massive background number -->
-        <div class="absolute top-1/2 right-0 -translate-y-1/2 select-none pointer-events-none" aria-hidden="true">
-            <span class="text-[40vw] lg:text-[35vw] font-black leading-none text-white/[0.02] block -mr-[5vw]">25</span>
+        <!-- Subtle geometric accents -->
+        <div class="absolute top-[72px] right-0 w-[40%] h-full hidden lg:block">
+            <div class="absolute inset-0 bg-gradient-to-bl from-bridge/6 via-transparent to-transparent"></div>
         </div>
-
-        <!-- Geometric accent shapes -->
-        <div class="absolute top-[72px] right-0 w-[45%] h-full hidden lg:block">
-            <div class="absolute inset-0 bg-gradient-to-bl from-signal/8 via-bridge/5 to-transparent"></div>
-            <div class="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-signal/20 to-transparent"></div>
-        </div>
-
-        <!-- Grid lines -->
-        <div class="absolute inset-0 grid-line opacity-15"></div>
-
-        <!-- Animated accent line -->
-        <div class="absolute top-[30%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-signal/10 to-transparent"></div>
-        <div class="absolute top-[70%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-bridge/10 to-transparent"></div>
+        <div class="absolute inset-0 grid-line opacity-10"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
-            <div class="min-h-screen flex flex-col justify-center pt-[72px] pb-32">
+            <div class="min-h-screen flex flex-col justify-center pt-[72px] pb-36">
 
                 <!-- Top tagline -->
-                <div class="flex items-center gap-4 mb-12 lg:mb-16">
-                    <div class="w-20 h-[1px] bg-signal"></div>
-                    <span class="text-[10px] ls-wide uppercase text-signal font-medium">Seit 1999 — Automation & Robotik aus dem Westerwald</span>
+                <div class="flex items-center gap-4 mb-14">
+                    <div class="w-16 h-[1px] bg-signal"></div>
+                    <span class="text-[11px] ls-wide uppercase text-signal/80 font-normal">Seit 1999 — Automation & Robotik aus dem Westerwald</span>
                 </div>
 
-                <!-- Main headline - massive, typographic-driven -->
+                <!-- Main headline -->
                 <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-12 lg:col-span-8">
-                        <h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.88] ls-tight text-white mb-0">
-                            High-Tech
+                    <div class="col-span-12 lg:col-span-9">
+                        <h1 class="text-[clamp(2.8rem,6.5vw,7rem)] font-bold leading-[0.95] ls-tight text-white">
+                            High-Tech auf hohem<br>
+                            <span class="text-signal">Niveau.</span>
                         </h1>
-                        <h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.88] ls-tight text-white mb-0">
-                            auf hohem
-                        </h1>
-                        <div class="flex items-end gap-6 lg:gap-10">
-                            <h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.88] ls-tight text-transparent" style="-webkit-text-stroke: 2px #66C634;">
-                                Niveau.
-                            </h1>
-                        </div>
-                    </div>
-
-                    <!-- Right side info block -->
-                    <div class="col-span-12 lg:col-span-3 lg:col-start-10 flex flex-col justify-end">
-                        <div class="space-y-6 lg:pb-2">
-                            <div class="border-l-2 border-signal/40 pl-5">
-                                <span class="text-[10px] ls-wide uppercase text-white/30 block">Kernkompetenz</span>
-                                <span class="text-white font-medium text-sm mt-1 block">Industrieautomation</span>
-                            </div>
-                            <div class="border-l-2 border-signal/40 pl-5">
-                                <span class="text-[10px] ls-wide uppercase text-white/30 block">Kernkompetenz</span>
-                                <span class="text-white font-medium text-sm mt-1 block">Roboterautomation</span>
-                            </div>
-                            <div class="border-l-2 border-signal/40 pl-5">
-                                <span class="text-[10px] ls-wide uppercase text-white/30 block">Kernkompetenz</span>
-                                <span class="text-white font-medium text-sm mt-1 block">Produkte & Peripherie</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Subline + CTAs -->
-                <div class="grid grid-cols-12 gap-6 mt-12 lg:mt-16">
-                    <div class="col-span-12 lg:col-span-5">
-                        <p class="text-lg text-white/45 leading-relaxed font-light">
+                <!-- Subline + CTAs + Info -->
+                <div class="grid grid-cols-12 gap-6 mt-10 lg:mt-14">
+                    <div class="col-span-12 lg:col-span-4">
+                        <p class="text-base text-white/50 leading-relaxed font-light">
                             Komplexe Projekte in der Automatisierungstechnik und dem Sondermaschinenbau. Branchenübergreifend schaffen wir „Ideal"-Lösungen für Ingenieurbüros und Unternehmen.
                         </p>
-                    </div>
-                    <div class="col-span-12 lg:col-span-5 lg:col-start-7 flex items-end">
-                        <div class="flex flex-col sm:flex-row items-start gap-4">
-                            <a href="#leistungen" class="group bg-signal text-navy text-[11px] ls-wide uppercase font-bold px-8 py-4 hover:bg-white transition-colors duration-300 flex items-center gap-3">
+                        <div class="flex flex-col sm:flex-row items-start gap-4 mt-10">
+                            <a href="#leistungen" class="group bg-signal text-navy text-[11px] ls-wide uppercase font-medium px-7 py-3.5 hover:bg-white transition-colors duration-300 flex items-center gap-3">
                                 Leistungen entdecken
                                 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                             </a>
-                            <a href="#kontakt" class="text-[11px] ls-wide uppercase text-white/50 font-medium px-4 py-4 hover:text-signal transition-colors duration-300 border-b border-white/15 hover:border-signal">
+                            <a href="#kontakt" class="text-[11px] ls-wide uppercase text-white/50 font-normal px-4 py-3.5 hover:text-signal transition-colors duration-300 border-b border-white/15 hover:border-signal">
                                 Kontakt aufnehmen
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: three competencies -->
+                    <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-start">
+                        <div class="grid grid-cols-3 gap-5 w-full">
+                            <div>
+                                <div class="w-full h-[2px] bg-signal/50 mb-4"></div>
+                                <span class="text-[10px] ls-wide uppercase text-white/35 block mb-1">01</span>
+                                <span class="text-white text-sm font-normal block leading-snug">Industrie&shy;automation</span>
+                            </div>
+                            <div>
+                                <div class="w-full h-[2px] bg-signal/30 mb-4"></div>
+                                <span class="text-[10px] ls-wide uppercase text-white/35 block mb-1">02</span>
+                                <span class="text-white text-sm font-normal block leading-snug">Roboter&shy;automation</span>
+                            </div>
+                            <div>
+                                <div class="w-full h-[2px] bg-signal/20 mb-4"></div>
+                                <span class="text-[10px] ls-wide uppercase text-white/35 block mb-1">03</span>
+                                <span class="text-white text-sm font-normal block leading-snug">Produkte & Peripherie</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,24 +187,24 @@
         </div>
 
         <!-- Bottom stats bar -->
-        <div class="absolute bottom-0 left-0 right-0 bg-white/[0.03] backdrop-blur-sm border-t border-white/[0.06]">
+        <div class="absolute bottom-0 left-0 right-0 border-t border-white/[0.08]">
             <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
                 <div class="grid grid-cols-2 md:grid-cols-4">
-                    <div class="stat-card py-6 px-4 border-r border-white/[0.06]">
-                        <span class="text-3xl md:text-4xl font-black text-white">25+</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Jahre Erfahrung</span>
+                    <div class="stat-card py-5 px-4 border-r border-white/[0.08]">
+                        <span class="text-2xl md:text-3xl font-bold text-white">25+</span>
+                        <span class="block text-[11px] ls-swiss uppercase text-white/50 mt-1 font-normal">Jahre Erfahrung</span>
                     </div>
-                    <div class="stat-card py-6 px-4 border-r border-white/[0.06]">
-                        <span class="text-3xl md:text-4xl font-black text-signal">3</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Kernbereiche</span>
+                    <div class="stat-card py-5 px-4 border-r border-white/[0.08]">
+                        <span class="text-2xl md:text-3xl font-bold text-signal">3</span>
+                        <span class="block text-[11px] ls-swiss uppercase text-white/50 mt-1 font-normal">Kernbereiche</span>
                     </div>
-                    <div class="stat-card py-6 px-4 border-r border-white/[0.06]">
-                        <span class="text-3xl md:text-4xl font-black text-white">100%</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Individuell</span>
+                    <div class="stat-card py-5 px-4 border-r border-white/[0.08]">
+                        <span class="text-2xl md:text-3xl font-bold text-white">100%</span>
+                        <span class="block text-[11px] ls-swiss uppercase text-white/50 mt-1 font-normal">Individuell</span>
                     </div>
-                    <div class="stat-card py-6 px-4">
-                        <span class="text-3xl md:text-4xl font-black text-bridge">DE</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Hachenburg</span>
+                    <div class="stat-card py-5 px-4">
+                        <span class="text-2xl md:text-3xl font-bold text-bridge">DE</span>
+                        <span class="block text-[11px] ls-swiss uppercase text-white/50 mt-1 font-normal">Hachenburg</span>
                     </div>
                 </div>
             </div>
