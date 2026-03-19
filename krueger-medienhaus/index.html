@@ -15,10 +15,9 @@
             theme: {
                 extend: {
                     colors: {
-                        gold: { 50: '#FFF9E6', 100: '#FFF0BF', 200: '#FFE08A', 400: '#FEA406', 500: '#E89300', 600: '#CC8000' },
-                        steel: { 50: '#EEF2F7', 100: '#D5DEE9', 400: '#446084', 500: '#3A5270', 600: '#2E4159', 700: '#1E2D3D', 800: '#162233', 900: '#0E1620' },
-                        ivory: '#FFFDF7',
-                        parchment: '#FBF7EF',
+                        gold: '#FEA406',
+                        steel: { DEFAULT: '#446084', dark: '#1E2D3D', light: '#5A7A9E' },
+                        warm: { 50: '#FAFAF8', 100: '#F5F4F0', 200: '#ECEAE4' },
                     },
                     fontFamily: {
                         lato: ['Lato', 'sans-serif'],
@@ -30,552 +29,324 @@
     <style>
         * { font-family: 'Lato', sans-serif; }
         html { scroll-behavior: smooth; }
-
-        /* ── Art Deco Ornamental Elements ── */
-
-        /* Fan/sunburst SVG ornament */
-        .deco-fan {
-            width: 80px; height: 40px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40'%3E%3Cpath d='M40 40 L10 0 L20 0 L40 30 L60 0 L70 0 Z' fill='%23FEA406' opacity='0.15'/%3E%3Cpath d='M40 40 L25 0 L30 0 L40 25 L50 0 L55 0 Z' fill='%23FEA406' opacity='0.3'/%3E%3Cpath d='M40 40 L35 0 L40 0 L40 20 L40 0 L45 0 Z' fill='%23FEA406' opacity='0.5'/%3E%3C/svg%3E") no-repeat center;
-        }
-
-        /* Diamond separator */
-        .deco-sep {
-            display: flex; align-items: center; gap: 12px;
-        }
-        .deco-sep::before, .deco-sep::after {
-            content: ''; flex: 1; height: 1px;
-            background: linear-gradient(90deg, transparent, #FEA406 50%, transparent);
-        }
-        .deco-sep .diamond {
-            width: 10px; height: 10px; background: #FEA406; transform: rotate(45deg); flex-shrink: 0;
-        }
-        .deco-sep .diamond-outline {
-            width: 14px; height: 14px; border: 1.5px solid #FEA406; transform: rotate(45deg); flex-shrink: 0;
-        }
-
-        /* Triple-line separator */
-        .deco-triple {
-            display: flex; flex-direction: column; gap: 3px; align-items: center;
-        }
-        .deco-triple span { display: block; height: 1px; background: #FEA406; }
-        .deco-triple span:nth-child(1) { width: 60px; }
-        .deco-triple span:nth-child(2) { width: 100px; }
-        .deco-triple span:nth-child(3) { width: 60px; }
-
-        /* Chevron zigzag border */
-        .chevron-top {
-            background: linear-gradient(135deg, #FEA406 33.33%, transparent 33.33%) 0 0,
-                        linear-gradient(225deg, #FEA406 33.33%, transparent 33.33%) 0 0;
-            background-size: 24px 12px;
-            height: 12px;
-        }
-        .chevron-bottom {
-            background: linear-gradient(315deg, #FEA406 33.33%, transparent 33.33%) 0 0,
-                        linear-gradient(45deg, #FEA406 33.33%, transparent 33.33%) 0 0;
-            background-size: 24px 12px;
-            height: 12px;
-        }
-
-        /* Geometric corner ornaments */
-        .corner-ornament { position: relative; }
-        .corner-ornament::before, .corner-ornament::after {
-            content: ''; position: absolute; width: 40px; height: 40px;
-            border: 2px solid rgba(254,164,6,0.4);
-        }
-        .corner-ornament::before { top: -8px; left: -8px; border-right: none; border-bottom: none; }
-        .corner-ornament::after { bottom: -8px; right: -8px; border-left: none; border-top: none; }
-
-        /* Double-frame for images */
-        .art-frame {
-            position: relative; padding: 6px;
-            border: 2px solid #FEA406;
-        }
-        .art-frame::before {
-            content: ''; position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid rgba(254,164,6,0.25);
-            pointer-events: none;
-        }
-        .art-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
-
-        /* Card hover effect */
-        .lift-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
-        .lift-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(254,164,6,0.12), 0 8px 20px rgba(0,0,0,0.06);
-        }
-
-        /* Gold gradient text */
-        .text-gold-gradient {
-            background: linear-gradient(135deg, #FEA406, #FFD166, #FEA406);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Subtle radial glow behind hero */
-        .hero-glow {
-            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(254,164,6,0.08), transparent);
-        }
-
-        /* Number badge for services */
-        .num-badge {
-            width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
-            border: 2px solid #FEA406; transform: rotate(45deg); font-weight: 900; color: #FEA406;
-            font-size: 16px; flex-shrink: 0;
-        }
-        .num-badge span { transform: rotate(-45deg); }
-
-        /* Stepped geometric pattern for section dividers */
-        .stepped-divider {
-            height: 20px;
-            background:
-                linear-gradient(135deg, transparent 40%, #FEA406 40%, #FEA406 42%, transparent 42%),
-                linear-gradient(225deg, transparent 40%, #FEA406 40%, #FEA406 42%, transparent 42%);
-            background-size: 40px 20px;
-            opacity: 0.15;
-        }
-
-        /* Stat card inner glow */
-        .stat-card {
-            background: linear-gradient(135deg, #FFFDF7, #FFF8E7);
-            border: 1px solid rgba(254,164,6,0.15);
-            position: relative; overflow: hidden;
-        }
-        .stat-card::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, transparent, #FEA406, transparent);
-        }
+        .rule { height: 2px; background: #FEA406; }
+        .rule-thin { height: 1px; background: #ECEAE4; }
+        .rule-thin-dark { height: 1px; background: rgba(68,96,132,0.15); }
     </style>
 </head>
-<body class="bg-ivory text-gray-700">
+<body class="bg-white text-gray-700 antialiased">
 
-    <!-- ═══════════════ NAVIGATION ═══════════════ -->
-    <nav class="bg-white/95 backdrop-blur-md border-b border-gold-400/15 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10">
-            <div class="flex items-center justify-between h-20">
-                <a href="#top" class="flex-shrink-0">
-                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/01/firmenlogo-krueger-medienhaus-2025.png" alt="Krüger Medienhaus" class="h-14">
+    <!-- NAV -->
+    <nav class="border-b border-warm-200 sticky top-0 z-50 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between h-[72px]">
+                <a href="#top">
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/01/firmenlogo-krueger-medienhaus-2025.png" alt="Krüger Medienhaus" class="h-11">
                 </a>
-                <div class="hidden lg:flex items-center gap-10">
-                    <a href="#leistungen" class="text-[13px] font-bold tracking-[0.15em] uppercase text-steel-600 hover:text-gold-400 transition-colors">Leistungen</a>
-                    <a href="#team" class="text-[13px] font-bold tracking-[0.15em] uppercase text-steel-600 hover:text-gold-400 transition-colors">Team</a>
-                    <a href="#geschichte" class="text-[13px] font-bold tracking-[0.15em] uppercase text-steel-600 hover:text-gold-400 transition-colors">Geschichte</a>
-                    <a href="#aktuelles" class="text-[13px] font-bold tracking-[0.15em] uppercase text-steel-600 hover:text-gold-400 transition-colors">Aktuelles</a>
-                    <a href="#kontakt" class="text-[13px] font-bold tracking-[0.15em] uppercase text-steel-600 border-2 border-gold-400 px-6 py-2.5 hover:bg-gold-400 hover:text-white transition-all">Kontakt</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#leistungen" class="text-[13px] font-bold tracking-wide text-steel hover:text-gold transition-colors">Leistungen</a>
+                    <a href="#team" class="text-[13px] font-bold tracking-wide text-steel hover:text-gold transition-colors">Team</a>
+                    <a href="#geschichte" class="text-[13px] font-bold tracking-wide text-steel hover:text-gold transition-colors">Geschichte</a>
+                    <a href="#kontakt" class="text-[13px] font-bold tracking-wide bg-steel text-white px-5 py-2 hover:bg-steel-dark transition-colors">Kontakt</a>
                 </div>
-                <!-- Mobile: phone -->
-                <a href="tel:026621067" class="lg:hidden text-gold-400 font-black text-lg">02662–1067</a>
+                <a href="tel:026621067" class="md:hidden text-steel font-black">02662–1067</a>
             </div>
         </div>
     </nav>
 
-    <!-- ═══════════════ HERO ═══════════════ -->
-    <section id="top" class="relative overflow-hidden bg-steel-800">
-        <!-- Layered background -->
-        <div class="absolute inset-0 hero-glow"></div>
-        <div class="absolute inset-0" style="background-image: url('https://krueger-medienhaus.de/wp-content/uploads/2024/02/tshirtdruck-westerwald-1400x420.jpg'); background-size: cover; background-position: center; opacity: 0.12;"></div>
-
-        <div class="relative max-w-5xl mx-auto px-6 pt-20 pb-24 md:pt-32 md:pb-36 text-center text-white">
-            <!-- Top ornament -->
-            <div class="flex justify-center mb-6">
-                <div class="deco-fan"></div>
-            </div>
-            <div class="deco-sep max-w-md mx-auto mb-10">
-                <div class="diamond-outline"></div>
-                <div class="diamond"></div>
-                <div class="diamond-outline"></div>
-            </div>
-
-            <p class="tracking-[0.4em] uppercase text-gold-400 text-[13px] font-bold mb-5">Seit 1947 · Hachenburg im Westerwald</p>
-
-            <h1 class="text-[2.75rem] md:text-[4.25rem] lg:text-[5.5rem] font-black leading-[1.05] mb-8">
-                Ihre schnelle<br>
-                <span class="text-gold-gradient">Druckerei</span><br class="md:hidden"> in Hachenburg
-            </h1>
-
-            <p class="text-lg md:text-xl text-white/65 max-w-xl mx-auto mb-12 leading-relaxed font-light">
-                Drucksachen aller Art – schnell, günstig und termingerecht.<br class="hidden md:inline"> Von der Visitenkarte bis zum Katalog. Alles aus einer Hand.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#leistungen" class="inline-block bg-gold-400 hover:bg-gold-500 text-white px-10 py-4 font-bold tracking-[0.2em] uppercase text-[13px] transition-colors shadow-lg shadow-gold-400/20">
-                    Unsere Leistungen
-                </a>
-                <a href="#kontakt" class="inline-block border-2 border-white/30 hover:border-gold-400 text-white hover:text-gold-400 px-10 py-4 font-bold tracking-[0.2em] uppercase text-[13px] transition-all">
-                    Jetzt anfragen
-                </a>
-            </div>
-
-            <!-- Bottom ornament -->
-            <div class="deco-sep max-w-md mx-auto mt-14">
-                <div class="diamond-outline"></div>
-                <div class="diamond"></div>
-                <div class="diamond-outline"></div>
+    <!-- HERO -->
+    <section id="top" class="bg-warm-50">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-32">
+            <div class="max-w-3xl">
+                <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-6">Druckerei in Hachenburg · Seit 1947</p>
+                <h1 class="text-[2.5rem] md:text-[3.75rem] lg:text-[4.5rem] font-black text-steel-dark leading-[1.08] mb-8">
+                    Ihre schnelle Druckerei in Hachenburg
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 leading-relaxed max-w-xl mb-10">
+                    Drucksachen aller Art – schnell, günstig und termingerecht. Von der Visitenkarte bis zum Katalog. Alles aus einer Hand.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#leistungen" class="bg-gold text-white px-8 py-3.5 font-bold text-[13px] tracking-wide hover:bg-amber-500 transition-colors">
+                        Unsere Leistungen
+                    </a>
+                    <a href="tel:026621067" class="border-2 border-steel text-steel px-8 py-3.5 font-bold text-[13px] tracking-wide hover:bg-steel hover:text-white transition-all">
+                        02662–1067
+                    </a>
+                </div>
             </div>
         </div>
-
-        <div class="chevron-top"></div>
+        <div class="rule"></div>
     </section>
 
-    <!-- ═══════════════ TRUST STRIP ═══════════════ -->
-    <section class="bg-parchment border-b border-gold-400/10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-            <div class="grid md:grid-cols-3 gap-10 md:gap-0">
-                <div class="text-center md:pr-10">
-                    <p class="text-gold-400 text-4xl font-black mb-2">77+</p>
-                    <h3 class="font-black text-steel-700 text-[15px] tracking-wide uppercase mb-2">Zuverlässig seit 1947</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Seit über 77 Jahren produzieren wir hochwertige Druckprodukte. Von der Visitenkarte bis zum Katalog.</p>
+    <!-- TRUST STRIP -->
+    <section class="bg-white border-b border-warm-200">
+        <div class="max-w-6xl mx-auto px-6 py-14">
+            <div class="grid md:grid-cols-3 gap-10">
+                <div>
+                    <p class="text-gold text-[2.5rem] font-black leading-none mb-2">77+</p>
+                    <p class="font-black text-steel-dark text-[15px] mb-1">Zuverlässig seit 1947</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Seit über 77 Jahren produzieren wir hochwertige Druckprodukte. Von der Visitenkarte bis zum Katalog.</p>
                 </div>
-                <div class="text-center md:border-x border-gold-400/15 md:px-10">
-                    <p class="text-gold-400 text-4xl font-black mb-2">100%</p>
-                    <h3 class="font-black text-steel-700 text-[15px] tracking-wide uppercase mb-2">Liebe zum Detail</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Mit Herz und Sachverstand widmen sich unsere Mitarbeiter täglich der Produktion Ihrer Drucksachen.</p>
+                <div class="md:border-l md:pl-10 border-warm-200">
+                    <p class="text-gold text-[2.5rem] font-black leading-none mb-2">100%</p>
+                    <p class="font-black text-steel-dark text-[15px] mb-1">Liebe zum Detail</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Mit Herz und Sachverstand widmen sich unsere Mitarbeiter täglich der Produktion Ihrer Drucksachen.</p>
                 </div>
-                <div class="text-center md:pl-10">
-                    <p class="text-gold-400 text-4xl font-black mb-2">660t</p>
-                    <h3 class="font-black text-steel-700 text-[15px] tracking-wide uppercase mb-2">CO₂ kompensiert</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Seit 2018 komplette Produktion klimaoptimiert. Rund 660.000 kg CO₂ durch Klimaprojekte ausgeglichen.</p>
+                <div class="md:border-l md:pl-10 border-warm-200">
+                    <p class="text-gold text-[2.5rem] font-black leading-none mb-2">660t</p>
+                    <p class="font-black text-steel-dark text-[15px] mb-1">CO₂ kompensiert</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Seit 2018 komplette Produktion klimaoptimiert. Rund 660.000 kg CO₂ durch Klimaprojekte ausgeglichen.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ INHABER ═══════════════ -->
-    <section id="ueber-uns" class="py-24 md:py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-5 gap-14 lg:gap-20 items-center">
-                <!-- Bild: 2 Spalten -->
-                <div class="lg:col-span-2">
-                    <div class="art-frame">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/gut-beraten-1400x420.jpg" alt="David Mies – Geschäftsführer und Inhaber" class="h-72 lg:h-80">
-                    </div>
+    <!-- INHABER -->
+    <section id="ueber-uns" class="bg-warm-50">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div>
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/gut-beraten-1400x420.jpg" alt="David Mies – Geschäftsführer und Inhaber" class="w-full h-auto">
                 </div>
-                <!-- Text: 3 Spalten -->
-                <div class="lg:col-span-3">
-                    <div class="deco-triple mb-6">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <p class="text-gold-400 tracking-[0.3em] uppercase text-[11px] font-bold mb-3">Ihr Ansprechpartner</p>
-                    <h2 class="text-3xl md:text-[2.75rem] font-black text-steel-700 leading-tight mb-6">
-                        Hallo, ich bin<br>David Mies.
-                    </h2>
-                    <p class="text-gray-500 leading-[1.8] text-[15px] mb-8 max-w-lg">
-                        Als Inhaber des Krüger Medienhauses freue ich mich Sie hier begrüßen zu dürfen. Mein Team und ich stehen Ihnen in unserer Druckerei bei der Produktion von <strong class="text-steel-600">Drucksachen aller Art</strong> jederzeit gerne zur Seite. Fragen? Zögern Sie nicht:
+                <div>
+                    <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Ihr Ansprechpartner</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-steel-dark leading-tight mb-6">David Mies</h2>
+                    <div class="rule-thin mb-6"></div>
+                    <p class="text-gray-500 leading-[1.85] text-[15px] mb-8">
+                        Als Inhaber des Krüger Medienhauses freue ich mich Sie hier begrüßen zu dürfen. Mein Team und ich stehen Ihnen in unserer Druckerei bei der Produktion von Drucksachen aller Art jederzeit gerne zur Seite. Fragen? Zögern Sie nicht:
                     </p>
-                    <a href="tel:026621067" class="inline-flex items-center gap-3 bg-steel-700 hover:bg-steel-800 text-white px-8 py-4 font-bold tracking-wider transition-colors">
-                        <span class="text-gold-400 text-xl">&#9742;</span>
-                        <span class="text-lg tracking-widest">02662–1067</span>
+                    <a href="tel:026621067" class="inline-flex items-center gap-3 text-steel-dark font-black text-xl hover:text-gold transition-colors">
+                        <span class="text-gold">&#9742;</span> 02662–1067
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ GESCHICHTE ═══════════════ -->
-    <section id="geschichte" class="py-24 md:py-28 bg-parchment">
-        <div class="max-w-5xl mx-auto px-6 lg:px-10">
-            <div class="text-center mb-16">
-                <div class="deco-sep max-w-xs mx-auto mb-6">
-                    <div class="diamond"></div>
-                </div>
-                <p class="text-gold-400 tracking-[0.4em] uppercase text-[11px] font-bold mb-3">Vier Generationen Druck</p>
-                <h2 class="text-3xl md:text-5xl font-black text-steel-700">Unsere Geschichte</h2>
-            </div>
+    <!-- LEISTUNGEN -->
+    <section id="leistungen" class="bg-white">
+        <div class="rule"></div>
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Was wir für Sie tun</p>
+            <h2 class="text-3xl md:text-[2.75rem] font-black text-steel-dark leading-tight mb-16">Unsere Leistungen</h2>
 
-            <div class="relative">
-                <!-- Vertical timeline line -->
-                <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gold-400/20 md:-translate-x-px"></div>
-
-                <!-- 1947 -->
-                <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-12">
-                    <div class="md:text-right md:pr-12">
-                        <p class="text-gold-400 font-black text-2xl mb-1">1947</p>
-                        <h3 class="font-black text-steel-700 text-lg">Gründung</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mt-2">Wilhelm Krüger, gelernter Schweizerdegen, gründet die Druckerei in den Nachkriegsjahren in Hachenburg.</p>
-                    </div>
-                    <div class="hidden md:block"></div>
-                    <div class="absolute left-6 md:left-1/2 top-1 w-3 h-3 bg-gold-400 rounded-full -translate-x-1/2 ring-4 ring-parchment"></div>
+            <!-- 01 Offsetdruck -->
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 pb-16 border-b border-warm-200">
+                <div>
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/offserdruck-druckerei-hachenburg.jpg" alt="Offsetdruck Druckerei Hachenburg" class="w-full h-auto">
                 </div>
-
-                <!-- 1964 -->
-                <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-12">
-                    <div class="hidden md:block"></div>
-                    <div class="md:pl-12">
-                        <p class="text-gold-400 font-black text-2xl mb-1">1964</p>
-                        <h3 class="font-black text-steel-700 text-lg">Zweite Generation</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mt-2">Hannah Bäcker, geb. Krüger, steigt in die Geschäftsführung ein. Aus dem Einzelunternehmen wird eine oHG.</p>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 top-1 w-3 h-3 bg-gold-400 rounded-full -translate-x-1/2 ring-4 ring-parchment"></div>
-                </div>
-
-                <!-- 2001 -->
-                <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-12">
-                    <div class="md:text-right md:pr-12">
-                        <p class="text-gold-400 font-black text-2xl mb-1">2001</p>
-                        <h3 class="font-black text-steel-700 text-lg">Vierte Generation</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mt-2">David Mies, Ur-Enkel des Gründers, übernimmt die Geschäftsführung und modernisiert den Betrieb konsequent.</p>
-                    </div>
-                    <div class="hidden md:block"></div>
-                    <div class="absolute left-6 md:left-1/2 top-1 w-3 h-3 bg-gold-400 rounded-full -translate-x-1/2 ring-4 ring-parchment"></div>
-                </div>
-
-                <!-- 2018 -->
-                <div class="relative grid md:grid-cols-2 gap-6 md:gap-12 mb-12">
-                    <div class="hidden md:block"></div>
-                    <div class="md:pl-12">
-                        <p class="text-gold-400 font-black text-2xl mb-1">2018</p>
-                        <h3 class="font-black text-steel-700 text-lg">Klimaneutrale Produktion</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mt-2">Die gesamte Produktion wird klimaoptimiert. Partnerschaft mit ClimatePartner für finanziellen Klimabeitrag.</p>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 top-1 w-3 h-3 bg-gold-400 rounded-full -translate-x-1/2 ring-4 ring-parchment"></div>
-                </div>
-
-                <!-- 2024 -->
-                <div class="relative grid md:grid-cols-2 gap-6 md:gap-12">
-                    <div class="md:text-right md:pr-12">
-                        <p class="text-gold-400 font-black text-2xl mb-1">2024</p>
-                        <h3 class="font-black text-steel-700 text-lg">KI & Innovation</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mt-2">Einführung KI-gestützter Produktionsabwicklung. Modernste Technik trifft auf über 77 Jahre Druckerfahrung.</p>
-                    </div>
-                    <div class="hidden md:block"></div>
-                    <div class="absolute left-6 md:left-1/2 top-1 w-3 h-3 bg-gold-400 rounded-full -translate-x-1/2 ring-4 ring-parchment"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════ LEISTUNGEN ═══════════════ -->
-    <section id="leistungen" class="bg-ivory">
-        <div class="stepped-divider"></div>
-        <div class="py-24 md:py-32">
-            <div class="max-w-7xl mx-auto px-6 lg:px-10">
-                <!-- Section header -->
-                <div class="text-center mb-20">
-                    <div class="flex justify-center mb-4">
-                        <div class="deco-fan"></div>
-                    </div>
-                    <p class="text-gold-400 tracking-[0.4em] uppercase text-[11px] font-bold mb-3">Was wir für Sie tun</p>
-                    <h2 class="text-3xl md:text-5xl font-black text-steel-700">Unsere Leistungen</h2>
-                </div>
-
-                <!-- Service 01: Offsetdruck -->
-                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
-                    <div class="art-frame order-2 lg:order-1">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/offserdruck-druckerei-hachenburg.jpg" alt="Offsetdruck Druckerei Hachenburg" class="h-72 lg:h-80">
-                    </div>
-                    <div class="order-1 lg:order-2">
-                        <div class="flex items-start gap-5 mb-5">
-                            <div class="num-badge"><span>01</span></div>
-                            <div>
-                                <h3 class="text-2xl md:text-3xl font-black text-steel-700 leading-tight">Brillanter<br>Offsetdruck</h3>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 leading-[1.8] text-[15px] ml-0 lg:ml-[68px]">
-                            In unserer Hachenburger Druckerei ist der Offsetdruck die erste Wahl, wenn es um brillante und detailreiche Drucksachen in hoher Auflage geht. Auch die scheinbar unbegrenzte Auswahl an Bedruckstoffen ist ein großer Vorteil des Offsetdrucks.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 02: Digitaldruck -->
-                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
-                    <div>
-                        <div class="flex items-start gap-5 mb-5">
-                            <div class="num-badge"><span>02</span></div>
-                            <div>
-                                <h3 class="text-2xl md:text-3xl font-black text-steel-700 leading-tight">Flexibler<br>Digitaldruck</h3>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 leading-[1.8] text-[15px] ml-0 lg:ml-[68px]">
-                            Der Digitaldruck hat den großen Vorteil der Flexibilität. Ob Prospekte in kleinen Auflagen, personalisierte Drucksachen oder individuelle Etiketten. Unser Digitaldruck ist oft die unschlagbare Alternative wenn es um Preis und Schnelligkeit geht.
-                        </p>
-                    </div>
-                    <div class="art-frame">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/digitaldruck-druckerei-hachenburg.jpg" alt="Digitaldruck Druckerei Hachenburg" class="h-72 lg:h-80">
-                    </div>
-                </div>
-
-                <!-- Service 03: Textildruck -->
-                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
-                    <div class="art-frame order-2 lg:order-1">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/tshirt-druck-druckerei-hachenburg.jpg" alt="Textildruck Druckerei Hachenburg" class="h-72 lg:h-80">
-                    </div>
-                    <div class="order-1 lg:order-2">
-                        <div class="flex items-start gap-5 mb-5">
-                            <div class="num-badge"><span>03</span></div>
-                            <div>
-                                <h3 class="text-2xl md:text-3xl font-black text-steel-700 leading-tight">Starker<br>Textildruck</h3>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 leading-[1.8] text-[15px] ml-0 lg:ml-[68px]">
-                            Ob Basecap, T-Shirt, Polohemd oder Laufshirt, Fußballtrikot, Hoody oder Fleecejacke. In unserer Druckerei in Hachenburg bringen wir Ihre Werbebotschaft oder Ihr Vereinslogo dauerhaft auf Textil. Auch im edlen und langlebigen Stickverfahren.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Service 04: Werbemittel -->
-                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    <div>
-                        <div class="flex items-start gap-5 mb-5">
-                            <div class="num-badge"><span>04</span></div>
-                            <div>
-                                <h3 class="text-2xl md:text-3xl font-black text-steel-700 leading-tight">Hochwertige<br>Werbemittel</h3>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 leading-[1.8] text-[15px] ml-0 lg:ml-[68px]">
-                            Ob Kugelschreiber, Tasse oder hochwertige Textilien. Lassen Sie sich von unserer großen Auswahl an Werbemitteln inspirieren. Begeistern Sie Ihre Kunden, Mitarbeiter und Geschäftspartner mit einem individuellen zeitgemäßen Werbegeschenk.
-                        </p>
-                    </div>
-                    <div class="art-frame">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/kugelschreiber-mit-werbung.jpg" alt="Werbemittel Kugelschreiber" class="h-72 lg:h-80">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Weitere Leistungen: Full-Service Überblick -->
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-8">
-            <div class="deco-sep max-w-xs mx-auto mb-10">
-                <div class="diamond"></div>
-            </div>
-            <p class="text-gold-400 tracking-[0.4em] uppercase text-[11px] font-bold mb-3 text-center">Alles aus einer Hand</p>
-            <h3 class="text-2xl md:text-3xl font-black text-steel-700 text-center mb-10">Weitere Leistungen</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="stat-card p-5 text-center">
-                    <p class="font-black text-steel-700 text-[14px] mb-1">Druckveredelung</p>
-                    <p class="text-gray-400 text-xs leading-relaxed">Spotlackierung, Cellophanierung, Heißfolienprägung, UV-Siebdrucklack</p>
-                </div>
-                <div class="stat-card p-5 text-center">
-                    <p class="font-black text-steel-700 text-[14px] mb-1">Mailing & Lettershop</p>
-                    <p class="text-gray-400 text-xs leading-relaxed">Personalisierte Mailings, portooptimierter Versand, Fulfillment</p>
-                </div>
-                <div class="stat-card p-5 text-center">
-                    <p class="font-black text-steel-700 text-[14px] mb-1">Druckvorstufe</p>
-                    <p class="text-gray-400 text-xs leading-relaxed">Druckdatenerstellung, Reinzeichnung, Bildbearbeitung, CTP</p>
-                </div>
-                <div class="stat-card p-5 text-center">
-                    <p class="font-black text-steel-700 text-[14px] mb-1">Logistik & Versand</p>
-                    <p class="text-gray-400 text-xs leading-relaxed">Lagerung, Konfektionierung, bundesweite Zustellung</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="stepped-divider" style="transform: scaleY(-1);"></div>
-    </section>
-
-    <!-- ═══════════════ REFERENZPROJEKT ═══════════════ -->
-    <section class="py-20 md:py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-                <div class="lg:col-span-2">
-                    <div class="art-frame">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/08/fot-neu-Holografic-Karte-600x800.jpg" alt="Veredelte Einladungskarte mit Soft-Touch-Folie und UV-Siebdrucklack" class="h-80 lg:h-96">
-                    </div>
-                </div>
-                <div class="lg:col-span-3">
-                    <p class="text-gold-400 tracking-[0.3em] uppercase text-[11px] font-bold mb-3">Aus der Praxis</p>
-                    <h3 class="text-2xl md:text-3xl font-black text-steel-700 leading-tight mb-5">Einladung zum 100-jährigen Firmenjubiläum</h3>
-                    <p class="text-gray-500 leading-[1.8] text-[15px] mb-6">
-                        Für dieses außergewöhnliche Jubiläum produzierten wir eine Einladungskarte mit <strong class="text-steel-600">Soft-Touch-Folie</strong> für samtige Haptik und <strong class="text-steel-600">UV-Siebdrucklack</strong> für eindrucksvolle Kontraste zwischen Matt und Glanz. Ein haptisches Erlebnis, das sofort Aufmerksamkeit erzeugt.
+                <div class="lg:pt-2">
+                    <p class="text-gold font-black text-sm mb-2">01</p>
+                    <h3 class="text-2xl font-black text-steel-dark mb-4">Brillanter Offsetdruck</h3>
+                    <p class="text-gray-500 leading-[1.85] text-[15px]">
+                        In unserer Hachenburger Druckerei ist der Offsetdruck die erste Wahl, wenn es um brillante und detailreiche Drucksachen in hoher Auflage geht. Auch die scheinbar unbegrenzte Auswahl an Bedruckstoffen ist ein großer Vorteil des Offsetdrucks.
                     </p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="text-[11px] tracking-wider uppercase font-bold text-gold-400 bg-gold-50 px-3 py-1.5">Soft-Touch</span>
-                        <span class="text-[11px] tracking-wider uppercase font-bold text-gold-400 bg-gold-50 px-3 py-1.5">UV-Siebdrucklack</span>
-                        <span class="text-[11px] tracking-wider uppercase font-bold text-gold-400 bg-gold-50 px-3 py-1.5">Druckveredelung</span>
+                </div>
+            </div>
+
+            <!-- 02 Digitaldruck -->
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 pb-16 border-b border-warm-200">
+                <div class="lg:order-2">
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/digitaldruck-druckerei-hachenburg.jpg" alt="Digitaldruck Druckerei Hachenburg" class="w-full h-auto">
+                </div>
+                <div class="lg:pt-2 lg:order-1">
+                    <p class="text-gold font-black text-sm mb-2">02</p>
+                    <h3 class="text-2xl font-black text-steel-dark mb-4">Flexibler Digitaldruck</h3>
+                    <p class="text-gray-500 leading-[1.85] text-[15px]">
+                        Der Digitaldruck hat den großen Vorteil der Flexibilität. Ob Prospekte in kleinen Auflagen, personalisierte Drucksachen oder individuelle Etiketten. Unser Digitaldruck ist oft die unschlagbare Alternative wenn es um Preis und Schnelligkeit geht.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 03 Textildruck -->
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 pb-16 border-b border-warm-200">
+                <div>
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/tshirt-druck-druckerei-hachenburg.jpg" alt="Textildruck Druckerei Hachenburg" class="w-full h-auto">
+                </div>
+                <div class="lg:pt-2">
+                    <p class="text-gold font-black text-sm mb-2">03</p>
+                    <h3 class="text-2xl font-black text-steel-dark mb-4">Starker Textildruck</h3>
+                    <p class="text-gray-500 leading-[1.85] text-[15px]">
+                        Ob Basecap, T-Shirt, Polohemd oder Laufshirt, Fußballtrikot, Hoody oder Fleecejacke. In unserer Druckerei in Hachenburg bringen wir Ihre Werbebotschaft oder Ihr Vereinslogo dauerhaft auf Textil. Auch im edlen und langlebigen Stickverfahren.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 04 Werbemittel -->
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 pb-16 border-b border-warm-200">
+                <div class="lg:order-2">
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/02/kugelschreiber-mit-werbung.jpg" alt="Werbemittel Kugelschreiber" class="w-full h-auto">
+                </div>
+                <div class="lg:pt-2 lg:order-1">
+                    <p class="text-gold font-black text-sm mb-2">04</p>
+                    <h3 class="text-2xl font-black text-steel-dark mb-4">Hochwertige Werbemittel</h3>
+                    <p class="text-gray-500 leading-[1.85] text-[15px]">
+                        Ob Kugelschreiber, Tasse oder hochwertige Textilien. Lassen Sie sich von unserer großen Auswahl an Werbemitteln inspirieren. Begeistern Sie Ihre Kunden, Mitarbeiter und Geschäftspartner mit einem individuellen zeitgemäßen Werbegeschenk.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Weitere Leistungen -->
+            <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-6">Alles aus einer Hand</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-warm-200">
+                <div class="bg-white p-6">
+                    <p class="font-black text-steel-dark text-[14px] mb-1">Druckveredelung</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Spotlackierung, Cellophanierung, Heißfolienprägung, UV-Siebdrucklack</p>
+                </div>
+                <div class="bg-white p-6">
+                    <p class="font-black text-steel-dark text-[14px] mb-1">Mailing & Lettershop</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Personalisierte Mailings, portooptimierter Versand, Fulfillment</p>
+                </div>
+                <div class="bg-white p-6">
+                    <p class="font-black text-steel-dark text-[14px] mb-1">Druckvorstufe</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Druckdatenerstellung, Reinzeichnung, Bildbearbeitung, CTP</p>
+                </div>
+                <div class="bg-white p-6">
+                    <p class="font-black text-steel-dark text-[14px] mb-1">Logistik & Versand</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Lagerung, Konfektionierung, bundesweite Zustellung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REFERENZPROJEKT -->
+    <section class="bg-warm-50 border-y border-warm-200">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-24">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div>
+                    <img src="https://krueger-medienhaus.de/wp-content/uploads/2024/08/fot-neu-Holografic-Karte-600x800.jpg" alt="Veredelte Einladungskarte" class="w-full max-w-sm h-auto">
+                </div>
+                <div>
+                    <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Aus der Praxis</p>
+                    <h3 class="text-2xl md:text-3xl font-black text-steel-dark leading-tight mb-5">Einladung zum 100-jährigen Firmenjubiläum</h3>
+                    <div class="rule-thin mb-5"></div>
+                    <p class="text-gray-500 leading-[1.85] text-[15px] mb-6">
+                        Für dieses außergewöhnliche Jubiläum produzierten wir eine Einladungskarte mit Soft-Touch-Folie für samtige Haptik und UV-Siebdrucklack für eindrucksvolle Kontraste zwischen Matt und Glanz. Ein haptisches Erlebnis, das sofort Aufmerksamkeit erzeugt.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[11px] tracking-wider uppercase font-bold text-steel bg-warm-200 px-3 py-1.5">Soft-Touch</span>
+                        <span class="text-[11px] tracking-wider uppercase font-bold text-steel bg-warm-200 px-3 py-1.5">UV-Siebdrucklack</span>
+                        <span class="text-[11px] tracking-wider uppercase font-bold text-steel bg-warm-200 px-3 py-1.5">Druckveredelung</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ TEAM ═══════════════ -->
-    <section id="team" class="py-24 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10">
-            <div class="text-center mb-16">
-                <div class="flex justify-center mb-4">
-                    <div class="deco-fan"></div>
-                </div>
-                <p class="text-gold-400 tracking-[0.4em] uppercase text-[11px] font-bold mb-3">Immer gut beraten</p>
-                <h2 class="text-3xl md:text-5xl font-black text-steel-700">Unser Experten-Team</h2>
-                <p class="text-gray-500 text-[15px] mt-4 max-w-lg mx-auto">Für jeden Fachbereich steht Ihnen ein persönlicher Ansprechpartner zur Seite.</p>
-            </div>
+    <!-- TEAM -->
+    <section id="team" class="bg-white">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Immer gut beraten</p>
+            <h2 class="text-3xl md:text-[2.75rem] font-black text-steel-dark leading-tight mb-4">Unser Experten-Team</h2>
+            <p class="text-gray-400 text-[15px] mb-12 max-w-lg">Für jeden Fachbereich steht Ihnen ein persönlicher Ansprechpartner zur Seite.</p>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- David Mies -->
-                <div class="lift-card bg-ivory p-6 text-center border border-gold-400/10">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-steel-700 rounded-full flex items-center justify-center text-gold-400 font-black text-xl">DM</div>
-                    <h3 class="font-black text-steel-700 text-[15px]">David Mies</h3>
-                    <p class="text-gold-400 text-xs tracking-wider uppercase font-bold mt-1">Geschäftsführer</p>
-                    <p class="text-gray-400 text-xs mt-3 leading-relaxed italic">&bdquo;Als Bandenchef bin ich bei Fragen rund um unsere Produkte gerne für Sie da.&ldquo;</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-warm-200 border border-warm-200">
+                <div class="bg-white p-6">
+                    <p class="text-gold font-black text-2xl mb-3">DM</p>
+                    <p class="font-black text-steel-dark text-[15px]">David Mies</p>
+                    <p class="text-gray-400 text-xs tracking-wide uppercase font-bold mt-0.5 mb-3">Geschäftsführer</p>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">&bdquo;Als Bandenchef bin ich bei Fragen rund um unsere Produkte gerne für Sie da.&ldquo;</p>
                 </div>
-
-                <!-- Matthias Becker -->
-                <div class="lift-card bg-ivory p-6 text-center border border-gold-400/10">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-steel-700 rounded-full flex items-center justify-center text-gold-400 font-black text-xl">MB</div>
-                    <h3 class="font-black text-steel-700 text-[15px]">Matthias Becker</h3>
-                    <p class="text-gold-400 text-xs tracking-wider uppercase font-bold mt-1">Firmenkunden</p>
-                    <p class="text-gray-400 text-xs mt-3 leading-relaxed italic">&bdquo;Auch für komplexe Probleme gibt es oft eine einfache Lösung.&ldquo;</p>
+                <div class="bg-white p-6">
+                    <p class="text-gold font-black text-2xl mb-3">MB</p>
+                    <p class="font-black text-steel-dark text-[15px]">Matthias Becker</p>
+                    <p class="text-gray-400 text-xs tracking-wide uppercase font-bold mt-0.5 mb-3">Firmenkunden</p>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">&bdquo;Auch für komplexe Probleme gibt es oft eine einfache Lösung.&ldquo;</p>
                 </div>
-
-                <!-- Natalie Klasen -->
-                <div class="lift-card bg-ivory p-6 text-center border border-gold-400/10">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-steel-700 rounded-full flex items-center justify-center text-gold-400 font-black text-xl">NK</div>
-                    <h3 class="font-black text-steel-700 text-[15px]">Natalie Klasen</h3>
-                    <p class="text-gold-400 text-xs tracking-wider uppercase font-bold mt-1">Großformat & POS</p>
-                    <p class="text-gray-400 text-xs mt-3 leading-relaxed italic">&bdquo;Ob Messe, PoS oder Showroom: Für Großformatdruck bin ich gerne für Sie da.&ldquo;</p>
+                <div class="bg-white p-6">
+                    <p class="text-gold font-black text-2xl mb-3">NK</p>
+                    <p class="font-black text-steel-dark text-[15px]">Natalie Klasen</p>
+                    <p class="text-gray-400 text-xs tracking-wide uppercase font-bold mt-0.5 mb-3">Großformat & POS</p>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">&bdquo;Ob Messe, PoS oder Showroom: Für Großformatdruck bin ich gerne da.&ldquo;</p>
                 </div>
-
-                <!-- Bianka von Minden -->
-                <div class="lift-card bg-ivory p-6 text-center border border-gold-400/10">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-steel-700 rounded-full flex items-center justify-center text-gold-400 font-black text-xl">BM</div>
-                    <h3 class="font-black text-steel-700 text-[15px]">Bianka von Minden</h3>
-                    <p class="text-gold-400 text-xs tracking-wider uppercase font-bold mt-1">Werbeartikel</p>
-                    <p class="text-gray-400 text-xs mt-3 leading-relaxed italic">&bdquo;Lassen Sie uns gemeinsam Ihre Kunden mit Werbemitteln begeistern.&ldquo;</p>
+                <div class="bg-white p-6">
+                    <p class="text-gold font-black text-2xl mb-3">BM</p>
+                    <p class="font-black text-steel-dark text-[15px]">Bianka von Minden</p>
+                    <p class="text-gray-400 text-xs tracking-wide uppercase font-bold mt-0.5 mb-3">Werbeartikel</p>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">&bdquo;Lassen Sie uns gemeinsam Ihre Kunden mit Werbemitteln begeistern.&ldquo;</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ AKTUELLES ═══════════════ -->
-    <section id="aktuelles" class="py-24 md:py-32 bg-parchment">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10">
-            <div class="text-center mb-16">
-                <div class="deco-sep max-w-xs mx-auto mb-6">
-                    <div class="diamond"></div>
-                </div>
-                <p class="text-gold-400 tracking-[0.4em] uppercase text-[11px] font-bold mb-3">Neuigkeiten</p>
-                <h2 class="text-3xl md:text-5xl font-black text-steel-700">Aus unserer Druckerei</h2>
-            </div>
+    <!-- GESCHICHTE -->
+    <section id="geschichte" class="bg-warm-50 border-t border-warm-200">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Vier Generationen Druck</p>
+            <h2 class="text-3xl md:text-[2.75rem] font-black text-steel-dark leading-tight mb-14">Unsere Geschichte</h2>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Blog 1 -->
-                <article class="lift-card bg-white overflow-hidden group">
-                    <div class="overflow-hidden h-60">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/04/IMG_0260-286x400.jpg" alt="Personalisierte Gläser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="space-y-0">
+                <div class="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-warm-200">
+                    <p class="text-gold font-black text-2xl md:text-3xl">1947</p>
+                    <div>
+                        <p class="font-black text-steel-dark mb-1">Gründung</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Wilhelm Krüger, gelernter Schweizerdegen, gründet die Druckerei in den Nachkriegsjahren in Hachenburg.</p>
                     </div>
-                    <div class="p-7 border-t-2 border-gold-400">
-                        <h3 class="font-black text-steel-700 text-lg mb-2 leading-snug">Unvergesslicher Eindruck garantiert</h3>
+                </div>
+                <div class="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-warm-200">
+                    <p class="text-gold font-black text-2xl md:text-3xl">1964</p>
+                    <div>
+                        <p class="font-black text-steel-dark mb-1">Zweite Generation</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Hannah Bäcker, geb. Krüger, steigt in die Geschäftsführung ein. Aus dem Einzelunternehmen wird eine oHG.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-warm-200">
+                    <p class="text-gold font-black text-2xl md:text-3xl">2001</p>
+                    <div>
+                        <p class="font-black text-steel-dark mb-1">Vierte Generation</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">David Mies, Ur-Enkel des Gründers, übernimmt die Geschäftsführung und modernisiert den Betrieb konsequent.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-warm-200">
+                    <p class="text-gold font-black text-2xl md:text-3xl">2018</p>
+                    <div>
+                        <p class="font-black text-steel-dark mb-1">Klimaneutrale Produktion</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Die gesamte Produktion wird klimaoptimiert. Partnerschaft mit ClimatePartner für finanziellen Klimabeitrag.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-b border-warm-200">
+                    <p class="text-gold font-black text-2xl md:text-3xl">2024</p>
+                    <div>
+                        <p class="font-black text-steel-dark mb-1">KI & Innovation</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Einführung KI-gestützter Produktionsabwicklung. Modernste Technik trifft auf über 77 Jahre Druckerfahrung.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AKTUELLES -->
+    <section id="aktuelles" class="bg-white">
+        <div class="rule"></div>
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Neuigkeiten</p>
+            <h2 class="text-3xl md:text-[2.75rem] font-black text-steel-dark leading-tight mb-12">Aus unserer Druckerei</h2>
+
+            <div class="grid md:grid-cols-3 gap-px bg-warm-200 border border-warm-200">
+                <article class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/04/IMG_0260-286x400.jpg" alt="Personalisierte Gläser" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-black text-steel-dark text-[15px] mb-2 leading-snug">Unvergesslicher Eindruck garantiert</h3>
                         <p class="text-gray-400 text-sm leading-relaxed">Personalisierte Gläser, Tassen und Teller mit Logo – stilvoll graviert oder bedruckt für einen bleibenden Eindruck.</p>
                     </div>
                 </article>
-
-                <!-- Blog 2 -->
-                <article class="lift-card bg-white overflow-hidden group">
-                    <div class="overflow-hidden h-60">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/02/20241022_113830-edited-533x400.jpg" alt="Besondere Mailings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <article class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/02/20241022_113830-edited-533x400.jpg" alt="Besondere Mailings" class="w-full h-56 object-cover">
                     </div>
-                    <div class="p-7 border-t-2 border-gold-400">
-                        <h3 class="font-black text-steel-700 text-lg mb-2 leading-snug">Mit Mailings direkt zu deinem Erfolg!</h3>
+                    <div class="p-6">
+                        <h3 class="font-black text-steel-dark text-[15px] mb-2 leading-snug">Mit Mailings direkt zu deinem Erfolg!</h3>
                         <p class="text-gray-400 text-sm leading-relaxed">Hochwertige Mailings von Krüger Medienhaus: Kommunikation mit Stil und Präzision.</p>
                     </div>
                 </article>
-
-                <!-- Blog 3 -->
-                <article class="lift-card bg-white overflow-hidden group">
-                    <div class="overflow-hidden h-60">
-                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/01/christian-sander-vormals-braun-network-533x400.jpg" alt="Willkommen Christian Sander" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <article class="bg-white group">
+                    <div class="overflow-hidden">
+                        <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/01/christian-sander-vormals-braun-network-533x400.jpg" alt="Willkommen Christian Sander" class="w-full h-56 object-cover">
                     </div>
-                    <div class="p-7 border-t-2 border-gold-400">
-                        <h3 class="font-black text-steel-700 text-lg mb-2 leading-snug">Willkommen, Christian!</h3>
+                    <div class="p-6">
+                        <h3 class="font-black text-steel-dark text-[15px] mb-2 leading-snug">Willkommen, Christian!</h3>
                         <p class="text-gray-400 text-sm leading-relaxed">Von Neunkirchen nach Hachenburg – neues Teammitglied Christian Sander verstärkt unser Team.</p>
                     </div>
                 </article>
@@ -583,63 +354,39 @@
         </div>
     </section>
 
-    <!-- ═══════════════ KONTAKT CTA ═══════════════ -->
-    <section id="kontakt" class="relative overflow-hidden bg-steel-800 text-white">
-        <div class="chevron-bottom"></div>
-
-        <!-- Decorative background -->
-        <div class="absolute inset-0 hero-glow"></div>
-        <div class="absolute top-0 left-0 w-64 h-64 border border-gold-400/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 border border-gold-400/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
-
-        <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
-            <div class="flex justify-center mb-6">
-                <div class="deco-fan"></div>
-            </div>
-            <div class="deco-sep max-w-sm mx-auto mb-10">
-                <div class="diamond-outline"></div>
-                <div class="diamond"></div>
-                <div class="diamond-outline"></div>
-            </div>
-
-            <p class="text-gold-400 tracking-[0.4em] uppercase text-[11px] font-bold mb-4">Wir freuen uns auf Sie</p>
-            <h2 class="text-3xl md:text-[3.25rem] font-black leading-tight mb-6">
-                Haben Sie ein<br><span class="text-gold-gradient">Druckprojekt?</span>
-            </h2>
-            <p class="text-white/50 text-lg mb-12 max-w-md mx-auto leading-relaxed">
-                Unser Experten-Team steht Ihnen jederzeit gerne zur Seite. Von der Angebotserstellung bis zur Zustellung.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                <a href="tel:026621067" class="bg-gold-400 hover:bg-gold-500 text-white px-14 py-5 font-black tracking-[0.15em] uppercase text-xl transition-colors shadow-xl shadow-gold-400/20">
-                    &#9742; 02662–1067
-                </a>
-                <a href="mailto:info@krueger-medienhaus.de" class="border-2 border-white/25 hover:border-gold-400 hover:text-gold-400 px-10 py-4 font-bold tracking-wider uppercase text-[13px] transition-all">
-                    E-Mail senden
-                </a>
-            </div>
-
-            <div class="deco-sep max-w-sm mx-auto mt-14">
-                <div class="diamond-outline"></div>
-                <div class="diamond"></div>
-                <div class="diamond-outline"></div>
+    <!-- KONTAKT -->
+    <section id="kontakt" class="bg-steel-dark text-white">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <div class="max-w-2xl">
+                <p class="text-gold font-bold text-[13px] tracking-widest uppercase mb-4">Wir freuen uns auf Sie</p>
+                <h2 class="text-3xl md:text-[2.75rem] font-black leading-tight mb-6">Haben Sie ein Druckprojekt?</h2>
+                <div class="w-16 h-0.5 bg-gold mb-8"></div>
+                <p class="text-white/50 text-lg leading-relaxed mb-10">
+                    Unser Experten-Team steht Ihnen jederzeit gerne zur Seite. Von der Angebotserstellung bis zur Zustellung. Alles aus einer Hand.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="tel:026621067" class="bg-gold text-white px-10 py-4 font-black text-lg tracking-wide hover:bg-amber-500 transition-colors">
+                        &#9742; 02662–1067
+                    </a>
+                    <a href="mailto:info@krueger-medienhaus.de" class="border-2 border-white/20 text-white px-8 py-4 font-bold text-[13px] tracking-wide hover:border-gold hover:text-gold transition-all">
+                        info@krueger-medienhaus.de
+                    </a>
+                </div>
             </div>
         </div>
-
-        <div class="chevron-top"></div>
     </section>
 
-    <!-- ═══════════════ FOOTER ═══════════════ -->
-    <footer class="bg-steel-900 text-steel-100/40 py-14">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/01/firmenlogo-krueger-medienhaus-2025.png" alt="Krüger Medienhaus" class="h-10 opacity-50 brightness-200">
-                <div class="flex gap-8 text-[13px] tracking-wider">
-                    <a href="https://www.facebook.com/Kruegermedienhaus" target="_blank" rel="noopener" class="hover:text-gold-400 transition-colors">Facebook</a>
-                    <a href="https://www.instagram.com/kruegermedienhaus" target="_blank" rel="noopener" class="hover:text-gold-400 transition-colors">Instagram</a>
-                    <a href="https://www.youtube.com/channel/UCbzYP8GVgfhs935hVdal3kg" target="_blank" rel="noopener" class="hover:text-gold-400 transition-colors">YouTube</a>
+    <!-- FOOTER -->
+    <footer class="bg-steel-dark border-t border-white/10 text-white/30 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <img src="https://krueger-medienhaus.de/wp-content/uploads/2025/01/firmenlogo-krueger-medienhaus-2025.png" alt="Krüger Medienhaus" class="h-8 opacity-40 brightness-200">
+                <div class="flex gap-6 text-[13px]">
+                    <a href="https://www.facebook.com/Kruegermedienhaus" target="_blank" rel="noopener" class="hover:text-gold transition-colors">Facebook</a>
+                    <a href="https://www.instagram.com/kruegermedienhaus" target="_blank" rel="noopener" class="hover:text-gold transition-colors">Instagram</a>
+                    <a href="https://www.youtube.com/channel/UCbzYP8GVgfhs935hVdal3kg" target="_blank" rel="noopener" class="hover:text-gold transition-colors">YouTube</a>
                 </div>
-                <p class="text-[11px] tracking-wider uppercase">&copy; Krüger Medienhaus &middot; Hachenburg</p>
+                <p class="text-[11px] tracking-wider uppercase">&copy; Krüger Medienhaus · Hachenburg</p>
             </div>
         </div>
     </footer>
