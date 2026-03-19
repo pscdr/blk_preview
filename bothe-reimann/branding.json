@@ -1,0 +1,52 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Inter",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#FF6622",
+    "accent": "#0097CE",
+    "background": "#FFFFFF",
+    "textPrimary": "#747474",
+    "link": "#0097CE"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Inter",
+      "heading": "Inter"
+    },
+    "fontSizes": {
+      "h1": "36px",
+      "h2": "36px",
+      "body": "32px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#FF6622",
+      "textColor": "#FFFFFF",
+      "borderRadius": "17px"
+    },
+    "buttonSecondary": {
+      "background": "#0097CE",
+      "textColor": "#747474",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.bothe-reimann.de/wp-content/uploads/2019/05/Bothe-Reimann_Logo_final_retina-300x111.png",
+    "favicon": "https://www.bothe-reimann.de/wp-content/uploads/2024/01/cropped-Logo-Icon-Bothe-Reimann-Tortechnik-32x32.jpg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "businesses and individuals seeking door technology solutions"
+  }
+}
