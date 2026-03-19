@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H+Z Die Kümmerer GmbH | Unterstützung im Alltag</title>
+    <meta name="description" content="Alter ist keine Krankheit! Wir unterstützen Dich im Alltag. ob im Haushalt, Garten oder in der Freizeit. Die Kümmerer - Deine Unterstützung im Alltag">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0057E1',
+                            'blue-dark': '#003DA0',
+                            'blue-light': '#E8F0FE',
+                            cream: '#FBF7F0',
+                            'cream-dark': '#F5EDE0',
+                            sand: '#E0D4C4',
+                            sage: '#A8BFA3',
+                            'sage-light': '#E8F0E6',
+                            stone: '#8B7E72',
+                            bark: '#5C4F42',
+                            warm: '#F7F2EA',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #FBF7F0 0%, #E8F0E6 50%, #E8F0FE 100%);
+        }
+        .quote-line {
+            border-left: 3px solid #0057E1;
+        }
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #0057E1;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .num {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(0, 87, 225, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-gray-800 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="https://static.wixstatic.com/media/e1b055_eab8f9ad733f45c4b1260f8d7d4645a1~mv2.jpg/v1/fill/w_98,h_100,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Die%20K%C3%BCmmerer%20blue.jpg" alt="Die Kümmerer Logo" class="h-12 w-auto">
+                </a>
+                <div class="hidden md:flex items-center gap-10 text-sm font-medium text-gray-500">
+                    <a href="#philosophie" class="hover:text-brand-blue transition-colors">Philosophie</a>
+                    <a href="#leistungen" class="hover:text-brand-blue transition-colors">Leistungen</a>
+                    <a href="#region" class="hover:text-brand-blue transition-colors">Standorte</a>
+                    <a href="#kontakt" class="hover:text-brand-blue transition-colors">Kontakt</a>
+                </div>
+                <a href="tel:+492661915309" class="bg-brand-blue text-white px-6 py-3 text-sm font-semibold hover:bg-brand-blue-dark transition-colors rounded-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                    <span class="hidden sm:inline">0 26 61 / 91 53 09</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-20">
+        <div class="hero-gradient">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-0 items-stretch min-h-[85vh]">
+                    <!-- Left: Text -->
+                    <div class="flex flex-col justify-center py-16 lg:py-24 lg:pr-16">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="h-px w-12 bg-brand-blue"></div>
+                            <span class="text-brand-blue font-semibold text-sm tracking-widest uppercase">Aus der Region — Für die Region</span>
+                        </div>
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
+                            Deine<br>
+                            <span class="font-bold text-brand-blue">Kümmerer</span><br>
+                            <span class="text-brand-stone">im Alltag.</span>
+                        </h1>
+                        <p class="mt-8 text-xl text-gray-600 leading-relaxed max-w-md font-light">
+                            Alter ist keine Krankheit. Wir begleiten Dich — im Haushalt, im Garten und in der Freizeit.
+                        </p>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                            <a href="tel:+492661915309" class="bg-brand-blue text-white px-10 py-4 text-center font-semibold hover:bg-brand-blue-dark transition-colors rounded-sm text-lg">
+                                Jetzt anrufen
+                            </a>
+                            <a href="#philosophie" class="border-2 border-brand-bark text-brand-bark px-10 py-4 text-center font-semibold hover:bg-brand-bark hover:text-white transition-colors rounded-sm text-lg">
+                                Mehr erfahren
+                            </a>
+                        </div>
+                        <!-- Trust badges -->
+                        <div class="mt-14 flex items-center gap-8 opacity-60">
+                            <img src="https://static.wixstatic.com/media/e1b055_d9200b4e5ba14578bd12fa50144d023b~mv2.png/v1/fill/w_220,h_98,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/W%C3%A4ller%20Helfen%20Keil%20nach%20rechts.png" alt="Wäller Helfen" class="h-12 w-auto">
+                            <img src="https://static.wixstatic.com/media/e1b055_5a3b0f88570e470ebd0260b25d759f5d~mv2.png/v1/fill/w_198,h_98,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Westerwald%20Wei%C3%9Fkeil%20links.png" alt="Westerwald" class="h-12 w-auto">
+                        </div>
+                    </div>
+                    <!-- Right: Hero Image -->
+                    <div class="relative hidden lg:block">
+                        <img src="https://static.wixstatic.com/media/11062b_bcf5e169a1fb4bbea6976cee93da92a7~mv2.jpg/v1/fill/w_1905,h_599,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_bcf5e169a1fb4bbea6976cee93da92a7~mv2.jpg" alt="Lächelnde ältere Frau" class="absolute inset-0 w-full h-full object-cover">
+                        <!-- Soft overlay from left -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-sage-light/60 via-transparent to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-white border-y border-brand-sand/40">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-3 divide-x divide-brand-sand/40">
+                <div class="py-8 text-center">
+                    <p class="text-3xl md:text-4xl font-bold text-brand-blue">14</p>
+                    <p class="text-sm text-gray-500 mt-1 font-medium">Standorte</p>
+                </div>
+                <div class="py-8 text-center">
+                    <p class="text-3xl md:text-4xl font-bold text-brand-blue">7–20</p>
+                    <p class="text-sm text-gray-500 mt-1 font-medium">Uhr erreichbar</p>
+                </div>
+                <div class="py-8 text-center">
+                    <p class="text-3xl md:text-4xl font-bold text-brand-blue">6</p>
+                    <p class="text-sm text-gray-500 mt-1 font-medium">Tage die Woche</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophie -->
+    <section id="philosophie" class="py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <!-- Section Header -->
+            <div class="max-w-3xl mb-20">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="h-px w-12 bg-brand-blue"></div>
+                    <span class="text-brand-blue font-semibold text-sm tracking-widest uppercase">Unsere Philosophie</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
+                    Was wir für Dich tun —<br>
+                    <span class="font-bold">und warum das wichtig ist</span>
+                </h2>
+            </div>
+
+            <!-- Three Pillars -->
+            <div class="grid lg:grid-cols-3 gap-0 border border-brand-sand/60">
+                <!-- Lebensleistung -->
+                <div class="p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-brand-sand/60">
+                    <div class="num">01</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-4 mb-5">Lebensleistung</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Senioren verdienen Respekt vor ihrer Lebensleistung. Herr Müller ist nicht als "Opa Hans" auf die Welt gekommen. Er hat seiner Familie ein Heim und seinen Kindern eine Ausbildung gegeben. Er war Abteilungsleiter, Handwerksmeister oder Beamter.
+                    </p>
+                    <div class="quote-line pl-5 mt-6">
+                        <p class="text-brand-blue font-medium italic">Wir hören zu und anerkennen diese Lebensleistung.</p>
+                    </div>
+                </div>
+
+                <!-- Unterstützen statt abnehmen -->
+                <div class="p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-brand-sand/60">
+                    <div class="num">02</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-4 mb-5">Unterstützen statt abnehmen</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Du bestimmst das was, wann und wie — es ist Dein Haus, es sind Deine Regeln. Wir unterstützen Dich dort, wo es manchmal zu viel, zu schwer oder einfach zu lästig ist.
+                    </p>
+                    <div class="quote-line pl-5 mt-6">
+                        <p class="text-brand-blue font-medium italic">Wir an Deiner Seite.</p>
+                    </div>
+                </div>
+
+                <!-- Selbstbestimmung -->
+                <div class="p-10 lg:p-12">
+                    <div class="num">03</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mt-4 mb-5">Hilfe zur Selbstbestimmung</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ob zum Einkauf, ins Museum oder zum Konzert — wir begleiten Dich und unterstützen so Deine Selbständigkeit, Deine Mobilität und letztlich Dein Selbstbestimmtsein.
+                    </p>
+                    <div class="quote-line pl-5 mt-6">
+                        <p class="text-brand-blue font-medium italic">"Ich will das selbst machen!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Putzen, Plaudern, Promenieren — Feature Section -->
+    <section class="relative overflow-hidden">
+        <div class="bg-brand-bark text-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-0">
+                    <!-- Left: Large Typography -->
+                    <div class="py-20 lg:py-28 lg:pr-16">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="h-px w-12 bg-brand-sage"></div>
+                            <span class="text-brand-sage font-semibold text-sm tracking-widest uppercase">Unser Ansatz</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+                            <span class="font-bold">Putzen.</span><br>
+                            <span class="font-bold">Plaudern.</span><br>
+                            <span class="font-bold text-brand-sage">Promenieren.</span>
+                        </h2>
+                    </div>
+                    <!-- Right: Text -->
+                    <div class="py-12 lg:py-28 lg:pl-16 lg:border-l border-white/10 flex flex-col justify-center">
+                        <p class="text-xl text-white/80 leading-relaxed font-light">
+                            Wenn die Kinder aus dem Haus sind, wird es still. So still, dass einen die Ruhe förmlich anschreit.
+                        </p>
+                        <p class="mt-6 text-lg text-white/60 leading-relaxed">
+                            Was hilft? Gesellschaft, Aktivität, Abwechslung.
+                        </p>
+                        <p class="mt-8 text-white/90 leading-relaxed">
+                            Wir sind keine Entertainer oder Animateure. Wir sind Zuhörer, Gesprächspartner, Begleiter und Unterstützer im Alltag, der sonst nur von Gameshows im Fernsehen übertüncht wird.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="py-28 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="max-w-3xl mb-16">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="h-px w-12 bg-brand-blue"></div>
+                    <span class="text-brand-blue font-semibold text-sm tracking-widest uppercase">Leistungsprogramm</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
+                    Wie wir Dich <span class="font-bold">unterstützen</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Spaziergänge -->
+                <div class="service-card bg-white p-8 lg:p-10 hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 rounded-full bg-brand-sage-light flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v13.5A1.5 1.5 0 003.75 21z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Raus an die frische Luft</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Wir begleiten bei Spaziergängen und anderen Aktivitäten im Freien — unkompliziert und mit Spaß.
+                    </p>
+                </div>
+
+                <!-- Putzen -->
+                <div class="service-card bg-white p-8 lg:p-10 hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 rounded-full bg-brand-blue-light flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Putzen</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Hausarbeit ist manchmal sehr anstrengend. Wir unterstützen dabei und helfen, dass das Heim weiter strahlt.
+                    </p>
+                </div>
+
+                <!-- Gartenarbeit -->
+                <div class="service-card bg-white p-8 lg:p-10 hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 rounded-full bg-brand-sage-light flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Gartenarbeit</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Unkraut jäten, Büsche schneiden, Rasenmähen — wir unterstützen dort, wo es zu anstrengend wird, ganz nach Deinen Wünschen.
+                    </p>
+                </div>
+
+                <!-- Arzt -->
+                <div class="service-card bg-white p-8 lg:p-10 hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 rounded-full bg-brand-blue-light flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Arzt und Apotheke</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Das kann ein Taxi — doch der Fahrer wartet nicht mit Dir; wir schon. Wir bringen und begleiten Dich, damit die Zeit nicht zu lang wird.
+                    </p>
+                </div>
+
+                <!-- Kultur -->
+                <div class="service-card bg-white p-8 lg:p-10 hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 rounded-full bg-brand-sage-light flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Kulturveranstaltungen</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Mal wieder ins Museum oder Theater? Klar, wir kommen mit. Unser Engel begleitet Dich gerne während Deines Besuches.
+                    </p>
+                </div>
+
+                <!-- Reden -->
+                <div class="service-card bg-white p-8 lg:p-10 hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 rounded-full bg-brand-blue-light flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Einfach mal reden</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Einfach mal Reden und Gehört werden. Wir hören zu, fragen aktiv nach — bei einem gemütlichen Kaffee oder Tee.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Region / Standorte -->
+    <section id="region" class="py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-5 gap-16 items-center">
+                <!-- Left: Map + visual (2 cols) -->
+                <div class="lg:col-span-2 flex flex-col items-center">
+                    <div class="bg-brand-cream p-10 w-full flex justify-center">
+                        <img src="https://static.wixstatic.com/media/e1b055_19baa56a08a3411695e9625de32c698a~mv2.png/v1/fill/w_246,h_236,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Westerwald%20mit%20Standorten.png" alt="Westerwald Standorte" class="max-w-[280px] w-full">
+                    </div>
+                </div>
+                <!-- Right: Text (3 cols) -->
+                <div class="lg:col-span-3">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="h-px w-12 bg-brand-blue"></div>
+                        <span class="text-brand-blue font-semibold text-sm tracking-widest uppercase">Regional verwurzelt</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-light text-gray-900 leading-tight mb-8">
+                        <span class="font-bold">14 Standorte</span><br>im Westerwald
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-10 max-w-lg">
+                        Aus der Region — Für die Region. Wir sind dort, wo Du uns brauchst. Mit 14 Standorten im Westerwald sind wir immer in Deiner Nähe.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-blue-light flex items-center justify-center flex-shrink-0 rounded-full">
+                                <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Hauptsitz</p>
+                                <p class="text-gray-500 text-sm mt-1">Hauptstr. 9<br>57648 Unnau</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-sage-light flex items-center justify-center flex-shrink-0 rounded-full">
+                                <svg class="w-5 h-5 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Erreichbarkeit</p>
+                                <p class="text-gray-500 text-sm mt-1">Mo – Sa<br>07:00 – 20:00 Uhr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Engel -->
+    <section id="kontakt" class="relative overflow-hidden">
+        <div class="bg-brand-blue">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-0 items-center">
+                    <!-- Left: CTA -->
+                    <div class="py-20 lg:py-28 lg:pr-16">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+                            Engel<br>
+                            <span class="font-bold">gefällig?</span>
+                        </h2>
+                        <p class="mt-8 text-xl text-blue-100 leading-relaxed max-w-md font-light">
+                            Ruf uns an oder schreib uns eine E-Mail. Wir nehmen uns Zeit für Dich und finden gemeinsam heraus, wie wir Dich am besten unterstützen können.
+                        </p>
+
+                        <div class="mt-10 space-y-5">
+                            <a href="tel:+492661915309" class="flex items-center gap-5 group">
+                                <div class="w-14 h-14 bg-white/15 flex items-center justify-center rounded-full group-hover:bg-white/25 transition-colors">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-white/60 text-sm">Telefon</p>
+                                    <p class="text-white text-2xl font-bold">0 26 61 / 91 53 09</p>
+                                </div>
+                            </a>
+                            <a href="mailto:info@diekuemmerer.org" class="flex items-center gap-5 group">
+                                <div class="w-14 h-14 bg-white/15 flex items-center justify-center rounded-full group-hover:bg-white/25 transition-colors">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-white/60 text-sm">E-Mail</p>
+                                    <p class="text-white text-lg font-semibold">info@diekuemmerer.org</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Social -->
+                        <div class="mt-12 pt-8 border-t border-white/15">
+                            <p class="text-white/50 text-sm font-medium mb-4">Folge uns</p>
+                            <div class="flex gap-3">
+                                <a href="https://www.facebook.com/profile.php?id=61561116160392" target="_blank" rel="noopener" class="w-11 h-11 bg-white/15 flex items-center justify-center rounded-full hover:bg-white/25 transition-colors">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </a>
+                                <a href="https://www.linkedin.com/company/h-z-die-kuemmerer-gmbh/" target="_blank" rel="noopener" class="w-11 h-11 bg-white/15 flex items-center justify-center rounded-full hover:bg-white/25 transition-colors">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                </a>
+                                <a href="https://www.instagram.com/diekuemmerer/" target="_blank" rel="noopener" class="w-11 h-11 bg-white/15 flex items-center justify-center rounded-full hover:bg-white/25 transition-colors">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Engel Image -->
+                    <div class="hidden lg:flex justify-center items-center py-16">
+                        <img src="https://static.wixstatic.com/media/e1b055_01f7200d3334420b93cced385796de37~mv2.png/v1/fill/w_706,h_492,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Engel%20mit%20ADD.png" alt="Die Kümmerer Engel" class="max-w-lg w-full drop-shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-bark text-white/50 py-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <img src="https://static.wixstatic.com/media/e1b055_eab8f9ad733f45c4b1260f8d7d4645a1~mv2.jpg/v1/fill/w_98,h_100,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Die%20K%C3%BCmmerer%20blue.jpg" alt="Die Kümmerer Logo" class="h-10 w-auto opacity-70">
+                    <span class="text-sm">&copy; 2024 H+Z Die Kümmerer GmbH</span>
+                </div>
+                <div class="flex items-center gap-6 text-sm">
+                    <span>Hauptstr. 9, 57648 Unnau</span>
+                    <span class="hidden md:inline">|</span>
+                    <a href="tel:+492661915309" class="hover:text-white transition-colors">0 26 61 / 91 53 09</a>
+                    <span class="hidden md:inline">|</span>
+                    <a href="mailto:info@diekuemmerer.org" class="hover:text-white transition-colors">info@diekuemmerer.org</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

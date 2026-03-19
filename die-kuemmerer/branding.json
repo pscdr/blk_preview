@@ -1,0 +1,50 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Open Sans", "role": "heading" },
+    { "family": "Arial", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#0000EE",
+    "accent": "#0057E1",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#0057E1"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Open Sans"
+    },
+    "fontSizes": {
+      "h1": "26px",
+      "h2": "42px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#000000",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#000000",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://static.wixstatic.com/media/e1b055_eab8f9ad733f45c4b1260f8d7d4645a1~mv2.jpg/v1/fill/w_98,h_100,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Die%20K%C3%BCmmerer%20blue.jpg",
+    "logoAlt": "Logo die Kümmerer. Wir unterstützen im Alltag und füllen die Lücke zwischen Pflege und Angehörigen"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "Seniors and their families seeking everyday support services"
+  }
+}
