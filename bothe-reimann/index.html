@@ -266,60 +266,122 @@
     <!-- Produktspektrum -->
     <section id="produkte" class="py-24 lg:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="accent-line"></div>
-                    <p class="text-brand-orange font-semibold text-[13px] tracking-widest uppercase">Unser Produktspektrum</p>
+            <div class="grid lg:grid-cols-12 gap-8 mb-16">
+                <div class="lg:col-span-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="accent-line"></div>
+                        <p class="text-brand-orange font-semibold text-[13px] tracking-widest uppercase">Unser Produktspektrum</p>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.05]">
+                        Herstellerunabhängig.<br>Lösungsorientiert.
+                    </h2>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.05]">
-                    Herstellerunabhängig.<br>Lösungsorientiert.
-                </h2>
+                <div class="lg:col-span-6 flex items-end">
+                    <p class="text-lg text-neutral-400 max-w-md">Verschiedene Tortypen und Ausstattungsvarianten — flexibel angepasst an Ihre betrieblichen Erfordernisse.</p>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Torsysteme -->
-                <div class="group relative bg-neutral-50 rounded-xl p-8 lg:p-10 border border-neutral-100 hover:border-brand-orange/20 transition-all duration-300">
-                    <div class="w-12 h-12 bg-brand-orange rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            <!-- Produkt-Grid mit Bildern -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Sektionaltore -->
+                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-orange/20 transition-all duration-300">
+                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/Tor1.png" alt="Sektionaltor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-900 mb-3">Torsysteme</h3>
-                    <p class="text-neutral-500 text-[15px] leading-relaxed mb-6">
-                        Sektionaltore in großer Auswahl — platzsparend, geräuscharm, strapazierfähig. Mit Panoramatoren, Verglasungen und integrierbaren Schlupftüren für jeden betrieblichen Zweck.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">Sektionaltore</span>
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">Panoramatore</span>
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Schlupftüren</span>
-                    </div>
-                </div>
-
-                <!-- Antriebe -->
-                <div class="group relative bg-neutral-50 rounded-xl p-8 lg:p-10 border border-neutral-100 hover:border-brand-blue/20 transition-all duration-300">
-                    <div class="w-12 h-12 bg-brand-blue rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-neutral-900 mb-3">Antriebe</h3>
-                    <p class="text-neutral-500 text-[15px] leading-relaxed mb-6">
-                        Als herstellerunabhängiger Servicepartner bieten wir für alle Fragen und Probleme in Sachen Torsysteme die richtige Antriebslösung aus einem breiten Produktspektrum.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">Herstellerunabhängig</span>
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Breites Spektrum</span>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Sektionaltore</h3>
+                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
+                            Platzsparend, geräuscharm, strapazierfähig. Mit Panoramatoren, attraktiven Verglasungen und integrierbaren Schlupftüren. Auch als innovative 60mm-Serie mit Dreifachverglasung und hervorragender Wärmedämmung.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">Panoramatore</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">60mm Serie</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Verglasungen</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Reparatur & Wartung -->
-                <div class="group relative bg-neutral-50 rounded-xl p-8 lg:p-10 border border-neutral-100 hover:border-brand-orange/20 transition-all duration-300">
-                    <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                <!-- Schnelllauftore -->
+                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-blue/20 transition-all duration-300">
+                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/1.png" alt="Schnelllauftor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-900 mb-3">Reparatur & Wartung</h3>
-                    <p class="text-neutral-500 text-[15px] leading-relaxed mb-6">
-                        Wir sind zur Stelle — wenn Ihr Tor quietscht, Scharniere kaputt sind, die Feder gebrochen ist oder ein Torantrieb ohne Funktion ist.
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Schnelllauftore</h3>
+                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
+                            Optimieren Arbeitsabläufe, verkürzen Wartezeiten und senken Energiekosten. Minimierter Luftdurchzug reduziert Wärme- und Kälteverlust — mit Sturmsicherung auch bei Windbelastung stabil.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">Energieersparnis</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Sturmsicher</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rolltore -->
+                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-blue/20 transition-all duration-300">
+                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/02582a55-692e-4548-8b20-fac3bbbe61d6-2.jpg" alt="Rolltor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Rolltore</h3>
+                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
+                            Einfach, robust, platzsparend. Ein- und doppelwandige Profile aus verzinktem Stahl mit PU-Schaumfüllung. Minimaler Platzbedarf am Sturz, komfortable Bedienung per Handsender oder Radar.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">Robust</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Platzsparend</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Helix -->
+                <div class="group rounded-xl overflow-hidden border border-neutral-100 hover:border-brand-orange/20 transition-all duration-300">
+                    <div class="aspect-[16/10] overflow-hidden bg-neutral-100">
+                        <img src="https://www.bothe-reimann.de/wp-content/uploads/2019/05/1446915224.jpg" alt="Helix Spiraltor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-2">Helix Spiraltor</h3>
+                        <p class="text-neutral-500 text-[15px] leading-relaxed mb-4">
+                            6x schneller als ein herkömmliches Sektionaltor — das ideale Torsystem für stark frequentierte Öffnungen wie Logistikcenter. Vereint Isolation und Geschwindigkeit in einem Produkt.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">6x schneller</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-blue bg-brand-blue/8 px-3 py-1 rounded-full">Hochisolierend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASR A1.7 Prüfung & Wartung -->
+    <section class="py-16 lg:py-20 bg-neutral-50 border-y border-neutral-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-brand-blue rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900">Prüfung nach ASR A1.7</h3>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <p class="text-neutral-500 leading-relaxed text-[15px]">
+                        Tore unterliegen sicherheitstechnischen Vorschriften. Die Arbeitsstättenrichtlinie <strong class="text-neutral-900">ASR A1.7</strong> schreibt eine jährliche Prüfung durch ein sachkundiges Unternehmen vor. Als fachkundiger Partner übernehmen wir diese Prüfung — für höchste Betriebssicherheit und längere Lebensdauer.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-brand-orange bg-brand-orange/8 px-3 py-1 rounded-full">Schnell vor Ort</span>
-                        <span class="text-[11px] font-semibold tracking-wide uppercase text-neutral-500 bg-neutral-200/60 px-3 py-1 rounded-full">Alle Hersteller</span>
+                </div>
+                <div class="lg:col-span-3 flex lg:justify-end">
+                    <div class="flex gap-6">
+                        <div class="text-center">
+                            <p class="text-3xl font-black text-brand-orange">1x</p>
+                            <p class="text-[11px] text-neutral-400 font-semibold tracking-wide uppercase mt-1">Jährlich</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-3xl font-black text-brand-blue">100%</p>
+                            <p class="text-[11px] text-neutral-400 font-semibold tracking-wide uppercase mt-1">Normkonform</p>
+                        </div>
                     </div>
                 </div>
             </div>
