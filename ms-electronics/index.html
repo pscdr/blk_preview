@@ -119,56 +119,85 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero-gradient min-h-screen relative overflow-hidden">
-        <!-- Grid overlay -->
-        <div class="absolute inset-0 grid-line opacity-30"></div>
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-black/20 to-transparent"></div>
+    <section class="bg-navy min-h-screen relative overflow-hidden">
+        <!-- Massive background number -->
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 select-none pointer-events-none" aria-hidden="true">
+            <span class="text-[40vw] lg:text-[35vw] font-black leading-none text-white/[0.02] block -mr-[5vw]">25</span>
+        </div>
+
+        <!-- Geometric accent shapes -->
+        <div class="absolute top-[72px] right-0 w-[45%] h-full hidden lg:block">
+            <div class="absolute inset-0 bg-gradient-to-bl from-signal/8 via-bridge/5 to-transparent"></div>
+            <div class="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-signal/20 to-transparent"></div>
+        </div>
+
+        <!-- Grid lines -->
+        <div class="absolute inset-0 grid-line opacity-15"></div>
+
+        <!-- Animated accent line -->
+        <div class="absolute top-[30%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-signal/10 to-transparent"></div>
+        <div class="absolute top-[70%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-bridge/10 to-transparent"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
-            <div class="grid grid-cols-12 gap-6 min-h-screen items-center pt-[72px]">
-                <div class="col-span-12 lg:col-span-6 py-16 lg:py-0">
-                    <div class="flex items-center gap-4 mb-10">
-                        <div class="w-16 h-[1px] bg-signal"></div>
-                        <span class="text-[10px] ls-wide uppercase text-signal font-medium">Seit 1999 — Hachenburg, Deutschland</span>
+            <div class="min-h-screen flex flex-col justify-center pt-[72px] pb-32">
+
+                <!-- Top tagline -->
+                <div class="flex items-center gap-4 mb-12 lg:mb-16">
+                    <div class="w-20 h-[1px] bg-signal"></div>
+                    <span class="text-[10px] ls-wide uppercase text-signal font-medium">Seit 1999 — Automation & Robotik aus dem Westerwald</span>
+                </div>
+
+                <!-- Main headline - massive, typographic-driven -->
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12 lg:col-span-8">
+                        <h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.88] ls-tight text-white mb-0">
+                            High-Tech
+                        </h1>
+                        <h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.88] ls-tight text-white mb-0">
+                            auf hohem
+                        </h1>
+                        <div class="flex items-end gap-6 lg:gap-10">
+                            <h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.88] ls-tight text-transparent" style="-webkit-text-stroke: 2px #66C634;">
+                                Niveau.
+                            </h1>
+                        </div>
                     </div>
 
-                    <h1 class="text-[clamp(2.5rem,5.5vw,5.5rem)] font-black leading-[0.95] ls-tight text-white mb-8">
-                        High-Tech<br>
-                        auf hohem<br>
-                        <span class="relative inline-block">
-                            Niveau
-                            <div class="absolute -bottom-2 left-0 w-full h-1 bg-signal"></div>
-                        </span>
-                    </h1>
-
-                    <p class="text-lg text-white/60 max-w-md leading-relaxed mb-12 font-light">
-                        Komplexe Projekte in der Automatisierungstechnik und dem Sondermaschinenbau. Branchenübergreifend schaffen wir „Ideal"-Lösungen.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row items-start gap-4">
-                        <a href="#leistungen" class="group bg-signal text-navy text-[11px] ls-wide uppercase font-bold px-8 py-4 hover:bg-white transition-colors duration-300 flex items-center gap-3">
-                            Leistungen entdecken
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                        <a href="#kontakt" class="text-[11px] ls-wide uppercase text-white/70 font-medium px-4 py-4 hover:text-signal transition-colors duration-300 border-b border-white/20 hover:border-signal">
-                            Kontakt aufnehmen
-                        </a>
+                    <!-- Right side info block -->
+                    <div class="col-span-12 lg:col-span-3 lg:col-start-10 flex flex-col justify-end">
+                        <div class="space-y-6 lg:pb-2">
+                            <div class="border-l-2 border-signal/40 pl-5">
+                                <span class="text-[10px] ls-wide uppercase text-white/30 block">Kernkompetenz</span>
+                                <span class="text-white font-medium text-sm mt-1 block">Industrieautomation</span>
+                            </div>
+                            <div class="border-l-2 border-signal/40 pl-5">
+                                <span class="text-[10px] ls-wide uppercase text-white/30 block">Kernkompetenz</span>
+                                <span class="text-white font-medium text-sm mt-1 block">Roboterautomation</span>
+                            </div>
+                            <div class="border-l-2 border-signal/40 pl-5">
+                                <span class="text-[10px] ls-wide uppercase text-white/30 block">Kernkompetenz</span>
+                                <span class="text-white font-medium text-sm mt-1 block">Produkte & Peripherie</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-span-12 lg:col-span-6 relative">
-                    <div class="relative lg:ml-8">
-                        <!-- Main image -->
-                        <div class="relative">
-                            <img src="https://ms-electronics.de/files/images/p_entry_roboter_sm.jpg" alt="Roboterautomation" class="w-full aspect-[3/4] lg:aspect-[4/5] object-cover">
-                            <!-- Overlay corner accent -->
-                            <div class="absolute top-0 left-0 w-20 h-20 border-t-[3px] border-l-[3px] border-signal"></div>
-                            <div class="absolute bottom-0 right-0 w-20 h-20 border-b-[3px] border-r-[3px] border-signal/40"></div>
-                        </div>
-                        <!-- Floating label -->
-                        <div class="absolute -bottom-4 -left-4 lg:-left-8 bg-white px-6 py-4 shadow-2xl shadow-navy/20">
-                            <span class="text-[10px] ls-wide uppercase text-steel block">Kernkompetenz</span>
-                            <span class="text-navy font-bold text-sm block mt-1">Roboterautomation</span>
+                <!-- Subline + CTAs -->
+                <div class="grid grid-cols-12 gap-6 mt-12 lg:mt-16">
+                    <div class="col-span-12 lg:col-span-5">
+                        <p class="text-lg text-white/45 leading-relaxed font-light">
+                            Komplexe Projekte in der Automatisierungstechnik und dem Sondermaschinenbau. Branchenübergreifend schaffen wir „Ideal"-Lösungen für Ingenieurbüros und Unternehmen.
+                        </p>
+                    </div>
+                    <div class="col-span-12 lg:col-span-5 lg:col-start-7 flex items-end">
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="#leistungen" class="group bg-signal text-navy text-[11px] ls-wide uppercase font-bold px-8 py-4 hover:bg-white transition-colors duration-300 flex items-center gap-3">
+                                Leistungen entdecken
+                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                            <a href="#kontakt" class="text-[11px] ls-wide uppercase text-white/50 font-medium px-4 py-4 hover:text-signal transition-colors duration-300 border-b border-white/15 hover:border-signal">
+                                Kontakt aufnehmen
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -176,24 +205,24 @@
         </div>
 
         <!-- Bottom stats bar -->
-        <div class="absolute bottom-0 left-0 right-0 bg-navy/80 backdrop-blur-sm border-t border-white/10">
+        <div class="absolute bottom-0 left-0 right-0 bg-white/[0.03] backdrop-blur-sm border-t border-white/[0.06]">
             <div class="max-w-[1400px] mx-auto px-6 lg:px-16">
                 <div class="grid grid-cols-2 md:grid-cols-4">
-                    <div class="stat-card py-6 px-4 border-r border-white/10">
+                    <div class="stat-card py-6 px-4 border-r border-white/[0.06]">
                         <span class="text-3xl md:text-4xl font-black text-white">25+</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Jahre Erfahrung</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Jahre Erfahrung</span>
                     </div>
-                    <div class="stat-card py-6 px-4 border-r border-white/10">
+                    <div class="stat-card py-6 px-4 border-r border-white/[0.06]">
                         <span class="text-3xl md:text-4xl font-black text-signal">3</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Kernbereiche</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Kernbereiche</span>
                     </div>
-                    <div class="stat-card py-6 px-4 border-r border-white/10">
+                    <div class="stat-card py-6 px-4 border-r border-white/[0.06]">
                         <span class="text-3xl md:text-4xl font-black text-white">100%</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Individuell</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Individuell</span>
                     </div>
                     <div class="stat-card py-6 px-4">
                         <span class="text-3xl md:text-4xl font-black text-bridge">DE</span>
-                        <span class="block text-[10px] ls-wide uppercase text-white/40 mt-1">Hachenburg</span>
+                        <span class="block text-[10px] ls-wide uppercase text-white/30 mt-1">Hachenburg</span>
                     </div>
                 </div>
             </div>
