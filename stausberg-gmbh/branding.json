@@ -1,0 +1,55 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "TeX Gyre Heros",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#2375BB",
+    "accent": "#2375BB",
+    "background": "#FFFFFF",
+    "textPrimary": "#303036",
+    "link": "#1ABC9C"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "TeX Gyre Heros",
+      "heading": "TeX Gyre Heros"
+    },
+    "fontStacks": {
+      "heading": ["tex_gyre_herosbold", "sans-serif"],
+      "body": ["tex_gyre_heros_cnregular", "sans-serif"],
+      "paragraph": ["tex_gyre_heros_cnregular"]
+    },
+    "fontSizes": {
+      "h1": "22px",
+      "h2": "26px",
+      "body": "20px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#2375BB",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://www.stausberg-gmbh.de/img/schweisstechnik-stausberg.svg",
+    "favicon": "https://www.stausberg-gmbh.de/apple-touch-icon.png",
+    "ogImage": "https://www.stausberg-gmbh.de/social-avatar.png",
+    "heroImage": "https://www.stausberg-gmbh.de/img/start/schweisstechnik-und-industriebedarf-kaufen.jpg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial professionals"
+  }
+}

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schweißtechnik Stausberg | Schweißgeräte, Service & mehr</title>
+    <meta name="description" content="Fachhandel für professionelle Schweißtechnik, Schneidtechnik, Umwelttechnik. Top Service und Beratung seit 1992.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            brand: '#2375BB',
+                            dark: '#1a5a94',
+                            deeper: '#143f6b',
+                            light: '#e8f2fb',
+                            50: '#f0f7ff',
+                        },
+                        teal: {
+                            brand: '#1ABC9C',
+                            dark: '#16a085',
+                            light: '#e8faf6',
+                        },
+                        dark: '#303036',
+                        slate: '#1a1a2e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 40%, #e8faf6 100%);
+        }
+        .diagonal-cut {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 0 100%);
+        }
+        .diagonal-cut-reverse {
+            clip-path: polygon(0 0, 100% 80px, 100% 100%, 0 100%);
+        }
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #2375BB, #1ABC9C);
+        }
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(35,117,187,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(35,117,187,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .glow-line {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #1ABC9C, #2375BB, transparent);
+        }
+        .feature-icon {
+            position: relative;
+        }
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(135deg, #2375BB, #1ABC9C) 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .feature-card:hover .feature-icon::after {
+            opacity: 1;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #2375BB, #1ABC9C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-white text-dark font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100/80">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="https://www.stausberg-gmbh.de/img/schweisstechnik-stausberg.svg" alt="Schweißtechnik Stausberg GmbH" class="h-10">
+                </a>
+                <div class="hidden md:flex items-center">
+                    <div class="flex items-center gap-1 mr-6">
+                        <a href="#leistungen" class="px-4 py-2 text-sm font-medium text-dark/60 hover:text-blue-brand rounded-lg hover:bg-blue-50/50 transition-all">Leistungen</a>
+                        <a href="#produkte" class="px-4 py-2 text-sm font-medium text-dark/60 hover:text-blue-brand rounded-lg hover:bg-blue-50/50 transition-all">Produkte & Service</a>
+                        <a href="#ueber-uns" class="px-4 py-2 text-sm font-medium text-dark/60 hover:text-blue-brand rounded-lg hover:bg-blue-50/50 transition-all">Über uns</a>
+                        <a href="#angebote" class="px-4 py-2 text-sm font-medium text-dark/60 hover:text-blue-brand rounded-lg hover:bg-blue-50/50 transition-all">Angebote</a>
+                    </div>
+                    <div class="flex items-center gap-3 pl-6 border-l border-gray-200">
+                        <a href="tel:+492741181430" class="text-sm font-semibold text-dark/70 hover:text-blue-brand transition-colors">02741 18143-0</a>
+                        <a href="#kontakt" class="bg-blue-brand text-white px-5 py-2.5 text-sm font-semibold hover:bg-blue-dark transition-all shadow-lg shadow-blue-brand/20">
+                            Kontakt aufnehmen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative hero-gradient pt-20 overflow-hidden">
+        <div class="grid-pattern absolute inset-0"></div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-32 lg:pt-24 lg:pb-40">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="glow-line w-12"></div>
+                        <span class="text-xs font-bold tracking-[0.2em] uppercase text-blue-brand/70">Innovationspartner seit 1992</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight text-dark">
+                        Der Fachhandel für<br>
+                        <span class="text-gradient">Schweißtechnik</span><br>
+                        <span class="text-dark/30 font-light">&</span> Industriebedarf
+                    </h1>
+                    <p class="mt-8 text-lg lg:text-xl text-dark/50 leading-relaxed max-w-lg">
+                        Ihr Service- und Innovationspartner für optimale Produktlösungen in der Anwendung neuester Schweiß-, Schneid- und Umwelttechnologien — alles zu attraktiven Preisen.
+                    </p>
+                    <div class="mt-10 flex flex-wrap items-center gap-4">
+                        <a href="#produkte" class="group bg-blue-brand text-white pl-8 pr-6 py-4 font-semibold text-lg hover:bg-blue-dark transition-all shadow-xl shadow-blue-brand/25 inline-flex items-center gap-3">
+                            Produktüberblick
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#kontakt" class="group text-dark/70 px-6 py-4 font-semibold text-lg hover:text-blue-brand transition-all inline-flex items-center gap-2">
+                            <span class="w-10 h-10 rounded-full border-2 border-teal-brand/30 flex items-center justify-center group-hover:border-teal-brand group-hover:bg-teal-light transition-all">
+                                <svg class="w-4 h-4 text-teal-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </span>
+                            Beratung anfragen
+                        </a>
+                    </div>
+                    <!-- Trust indicators -->
+                    <div class="mt-14 flex items-center gap-8 text-sm text-dark/30 font-medium">
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-teal-brand rounded-full"></div>
+                            Schweißen
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-teal-brand rounded-full"></div>
+                            Schneiden
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-teal-brand rounded-full"></div>
+                            Umwelttechnik
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 relative">
+                    <!-- Decorative frame -->
+                    <div class="absolute -top-6 -right-6 w-full h-full border-2 border-blue-brand/10"></div>
+                    <div class="absolute -bottom-6 -left-6 w-2/3 h-2/3 bg-teal-brand/5"></div>
+                    <div class="relative">
+                        <img src="https://www.stausberg-gmbh.de/img/start/schweisstechnik-und-industriebedarf-kaufen.jpg" alt="Schweißtechnik und Industriebedarf" class="w-full object-cover shadow-2xl">
+                        <!-- Overlay badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl border-l-4 border-teal-brand">
+                            <p class="text-3xl font-black text-blue-brand">30+</p>
+                            <p class="text-xs font-bold tracking-wider uppercase text-dark/40 mt-1">Jahre Erfahrung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Diagonal transition -->
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-white" style="clip-path: polygon(0 100%, 100% 0, 100% 100%)"></div>
+    </section>
+
+    <!-- Kernbereiche -->
+    <section id="leistungen" class="py-24 lg:py-32 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-4">
+                    <div class="lg:sticky lg:top-32">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="glow-line w-8"></div>
+                            <span class="text-xs font-bold tracking-[0.2em] uppercase text-teal-brand">Kernbereiche</span>
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+                            High-Tech-Produkte<br>
+                            <span class="text-dark/30">führender Hersteller</span>
+                        </h2>
+                        <p class="mt-4 text-dark/50 text-lg leading-relaxed">Zum Kaufen, Mieten oder Leasen — alles zu attraktiven Preisen.</p>
+                        <div class="mt-8 hidden lg:block">
+                            <a href="#produkte" class="text-blue-brand font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                                Alle Produkte entdecken
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 space-y-6">
+                    <!-- Schweißen -->
+                    <div class="feature-card group bg-white border border-gray-100 hover:border-blue-brand/20 p-8 lg:p-10 transition-all hover:shadow-xl hover:shadow-blue-brand/5">
+                        <div class="flex items-start gap-6">
+                            <div class="feature-icon w-16 h-16 bg-gradient-to-br from-blue-brand/10 to-blue-brand/5 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-2xl font-bold">Schweißen</h3>
+                                    <span class="text-xs font-bold tracking-wider uppercase text-teal-brand bg-teal-light px-3 py-1">Kernkompetenz</span>
+                                </div>
+                                <p class="text-dark/50 text-lg leading-relaxed">Von der einfachen Stromdüse bis zur komplexen Automatisierungs- und Robotics-Konzeption ganzer Fertigungsstraßen. Optimale und wirtschaftliche Lösungen für Ihren Betrieb.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Schneiden -->
+                    <div class="feature-card group bg-white border border-gray-100 hover:border-teal-brand/20 p-8 lg:p-10 transition-all hover:shadow-xl hover:shadow-teal-brand/5">
+                        <div class="flex items-start gap-6">
+                            <div class="feature-icon w-16 h-16 bg-gradient-to-br from-teal-brand/10 to-teal-brand/5 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-teal-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-2xl font-bold">Schneiden</h3>
+                                    <span class="text-xs font-bold tracking-wider uppercase text-blue-brand bg-blue-50 px-3 py-1">Präzision</span>
+                                </div>
+                                <p class="text-dark/50 text-lg leading-relaxed">Professionelle Plasma-Schneidtechnik für präzise Ergebnisse in Industrie und Handwerk. Modernste Geräte für jede Anforderung.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Umwelttechnik -->
+                    <div class="feature-card group bg-white border border-gray-100 hover:border-blue-brand/20 p-8 lg:p-10 transition-all hover:shadow-xl hover:shadow-blue-brand/5">
+                        <div class="flex items-start gap-6">
+                            <div class="feature-icon w-16 h-16 bg-gradient-to-br from-blue-brand/10 to-teal-brand/5 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-2xl font-bold">Umwelttechnik</h3>
+                                    <span class="text-xs font-bold tracking-wider uppercase text-teal-brand bg-teal-light px-3 py-1">Sicherheit</span>
+                                </div>
+                                <p class="text-dark/50 text-lg leading-relaxed">Moderne Absaugtechnik und umweltgerechte Lösungen für saubere und sichere Arbeitsplätze. Gesundheitsschutz und Effizienz vereint.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produkte & Service – Dramatic Split -->
+    <section id="produkte" class="relative">
+        <div class="grid lg:grid-cols-2">
+            <!-- Produkte – Dark Panel -->
+            <div class="bg-slate relative overflow-hidden">
+                <div class="absolute inset-0 opacity-5">
+                    <div class="grid-pattern w-full h-full"></div>
+                </div>
+                <div class="relative p-12 lg:p-20 xl:p-24">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-[3px] bg-teal-brand"></div>
+                        <span class="text-xs font-bold tracking-[0.2em] uppercase text-teal-brand">Produkte</span>
+                    </div>
+                    <h3 class="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight">
+                        High-Tech-Produkte<br>führender Hersteller
+                    </h3>
+                    <p class="text-white/50 text-lg leading-relaxed mb-10 max-w-md">
+                        Ob Schweißgeräte, Plasma-Schneidgeräte, Absaugtechnik oder Schweißhelme — wir bieten das komplette Sortiment zum Kaufen, Mieten oder Leasen.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://www.stausberg-gmbh.de/produkte/" class="group bg-white text-slate px-7 py-4 font-semibold hover:bg-teal-brand hover:text-white transition-all inline-flex items-center gap-3">
+                            Produktüberblick
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="https://www.stausberg-gmbh.de/file_download/142/SCHWEISSTECHNIK_STAUSBERG_Katalog_1_6_2026-2027.pdf" class="border border-white/20 text-white/70 px-7 py-4 font-semibold hover:border-teal-brand hover:text-teal-brand transition-all inline-flex items-center gap-3">
+                            Katalog 2026/27
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </a>
+                    </div>
+                    <!-- Decorative corner -->
+                    <div class="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-teal-brand/10"></div>
+                </div>
+            </div>
+            <!-- Service – Light Panel -->
+            <div class="bg-gray-50 relative overflow-hidden">
+                <div class="relative p-12 lg:p-20 xl:p-24">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-[3px] bg-blue-brand"></div>
+                        <span class="text-xs font-bold tracking-[0.2em] uppercase text-blue-brand">Service</span>
+                    </div>
+                    <h3 class="text-3xl lg:text-4xl font-black text-dark mb-6 leading-tight">
+                        Schweißtechnische<br>Beratung & Service
+                    </h3>
+                    <p class="text-dark/50 text-lg leading-relaxed mb-10 max-w-md">
+                        Zuverlässiger, schneller Kundenservice und kompetente Beratung für optimale und wirtschaftliche Lösungen für Ihren Betrieb.
+                    </p>
+                    <a href="https://www.stausberg-gmbh.de/service/" class="group bg-blue-brand text-white px-7 py-4 font-semibold hover:bg-blue-dark transition-all shadow-lg shadow-blue-brand/20 inline-flex items-center gap-3">
+                        Serviceüberblick
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <!-- Decorative corner -->
+                    <div class="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-blue-brand/10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns + Stats -->
+    <section id="ueber-uns" class="py-24 lg:py-32 relative">
+        <div class="grid-pattern absolute inset-0"></div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Stats bar -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div class="stat-card bg-white p-8 shadow-sm">
+                    <p class="text-4xl lg:text-5xl font-black text-gradient">30+</p>
+                    <p class="text-dark/40 text-sm mt-2 font-semibold tracking-wide uppercase">Jahre Know-how</p>
+                </div>
+                <div class="stat-card bg-white p-8 shadow-sm">
+                    <p class="text-4xl lg:text-5xl font-black text-gradient">1000+</p>
+                    <p class="text-dark/40 text-sm mt-2 font-semibold tracking-wide uppercase">Begeisterte Kunden</p>
+                </div>
+                <div class="stat-card bg-white p-8 shadow-sm">
+                    <p class="text-4xl lg:text-5xl font-black text-gradient">50+</p>
+                    <p class="text-dark/40 text-sm mt-2 font-semibold tracking-wide uppercase">Premium-Partner</p>
+                </div>
+                <div class="stat-card bg-white p-8 shadow-sm">
+                    <p class="text-4xl lg:text-5xl font-black text-gradient">2</p>
+                    <p class="text-dark/40 text-sm mt-2 font-semibold tracking-wide uppercase">Standorte</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="glow-line w-8"></div>
+                        <span class="text-xs font-bold tracking-[0.2em] uppercase text-teal-brand">Über Stausberg</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-5xl font-black tracking-tight leading-tight mb-8">
+                        Starke Produkte —<br>
+                        <span class="text-dark/30">starker Service</span>
+                    </h2>
+                    <div class="space-y-6">
+                        <p class="text-dark/50 text-lg leading-relaxed">
+                            Wir haben die Schweißtechnik zwar nicht erfunden, sind aber richtig gut darin. Denn bereits seit 1992 schaffen wir als innovativer Fachhändler und Servicepartner Lösungen mit außerordentlichem Mehrwert für unsere Kunden aus Industrie und Handwerk.
+                        </p>
+                        <p class="text-dark/50 text-lg leading-relaxed">
+                            Von der kleinen Schlosserei bis zum weltweit tätigen Maschinenbauer; von der einfachen Stromdüse bis zur komplexen Automatisierungs- und Robotics-Konzeption ganzer Fertigungsstraßen. Zuverlässig und partnerschaftlich steht Ihnen unsere Mannschaft mit Rat und Tat zur Seite.
+                        </p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-6">
+                        <a href="https://www.stausberg-gmbh.de/unternehmen/" class="group inline-flex items-center gap-2 text-blue-brand font-semibold hover:gap-3 transition-all">
+                            Mehr über uns
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="https://www.stausberg-gmbh.de/partner-und-lieferanten/" class="inline-flex items-center gap-2 text-dark/40 font-semibold hover:text-dark/70 transition-colors">
+                            Partner & Lieferanten
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="bg-blue-brand/5 p-10 lg:p-12 relative">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-teal-brand/10"></div>
+                        <h3 class="text-xl font-bold mb-6 relative">Unsere Standorte</h3>
+                        <div class="space-y-6 relative">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-blue-brand/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-5 h-5 text-blue-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Betzdorf</p>
+                                    <p class="text-dark/40 text-sm mt-1">Rheinland-Pfalz · Hauptsitz</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-teal-brand/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-5 h-5 text-teal-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Mülheim-Kärlich</p>
+                                    <p class="text-dark/40 text-sm mt-1">Rheinland-Pfalz · Zweigstelle</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glow-line w-full mt-8"></div>
+                        <p class="text-dark/40 text-sm mt-4 leading-relaxed">
+                            Von hier begeistern wir Auftraggeber in Rheinland-Pfalz, Nordrhein-Westfalen, Hessen und darüber hinaus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sonderangebote – Full-width dramatic banner -->
+    <section id="angebote" class="relative overflow-hidden">
+        <div class="bg-gradient-to-br from-slate via-blue-deeper to-blue-dark diagonal-cut pb-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7">
+                        <div class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-5 py-2.5 mb-8">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="absolute inline-flex h-full w-full rounded-full bg-teal-brand opacity-75" style="animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-brand"></span>
+                            </span>
+                            <span class="text-xs font-bold tracking-[0.15em] uppercase text-white/70">Aktuelle Aktion — bis 31.08.2026</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight mb-6">
+                            Hightech-Schweißtechnik<br>
+                            <span class="text-teal-brand">zum Top-Preis</span>
+                        </h2>
+                        <p class="text-white/40 text-lg lg:text-xl leading-relaxed mb-10 max-w-xl">
+                            Profitieren Sie jetzt von Sonderangeboten und Rabatten unserer Partner. Schweißtechnik auf höchstem Niveau — zu außergewöhnlichen Konditionen.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://www.stausberg-gmbh.de/file_download/143/Stausberg_A4_260226_vorlage_online-Einzelseiten_V1.pdf" class="group bg-teal-brand text-white pl-7 pr-5 py-4 font-semibold hover:bg-teal-dark transition-all shadow-lg shadow-teal-brand/25 inline-flex items-center gap-3">
+                                Prospekt herunterladen
+                                <svg class="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </a>
+                            <a href="https://www.stausberg-gmbh.de/partnerangebote/" class="border border-white/20 text-white/80 px-7 py-4 font-semibold hover:border-white/50 hover:text-white transition-all">
+                                Alle Partnerangebote
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-10 lg:p-12">
+                            <p class="text-teal-brand font-bold text-xs tracking-[0.2em] uppercase mb-3">Katalog 2026/2027</p>
+                            <p class="text-3xl font-black text-white mb-3">Komplettes Sortiment</p>
+                            <p class="text-white/40 leading-relaxed mb-8">Alle Produkte, Preise und technischen Daten auf einen Blick — jetzt als PDF herunterladen.</p>
+                            <a href="https://www.stausberg-gmbh.de/file_download/142/SCHWEISSTECHNIK_STAUSBERG_Katalog_1_6_2026-2027.pdf" class="group bg-white text-slate w-full py-4 font-semibold hover:bg-teal-brand hover:text-white transition-all inline-flex items-center justify-center gap-3">
+                                Katalog herunterladen
+                                <svg class="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vorführgeräte -->
+    <section class="diagonal-cut-reverse bg-gray-50 pt-32 pb-24 lg:pt-40 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="glow-line w-8"></div>
+                    <span class="text-xs font-bold tracking-[0.2em] uppercase text-teal-brand">Gebrauchte Technik</span>
+                    <div class="glow-line w-8"></div>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-black tracking-tight text-center mb-6">
+                    Vorführ- und Ausstellungsgeräte
+                </h2>
+                <p class="text-dark/50 text-lg lg:text-xl leading-relaxed text-center mb-10 max-w-2xl mx-auto">
+                    Besonders günstig — das ganze Jahr über! Ob Schweißgeräte, Plasma-Schneidgeräte, Absaugtechnik oder Schweißhelme: regelmäßig vorbeischauen lohnt sich! Alle Geräte wurden nur wenig gebraucht.
+                </p>
+                <div class="text-center">
+                    <a href="#kontakt" class="group bg-blue-brand text-white pl-8 pr-6 py-4 font-semibold text-lg hover:bg-blue-dark transition-all shadow-xl shadow-blue-brand/20 inline-flex items-center gap-3">
+                        Verfügbarkeit anfragen
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Karriere -->
+    <section class="py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="relative bg-blue-50/50 border-2 border-blue-brand/10 overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-teal-brand/5 to-transparent"></div>
+                <div class="relative p-10 lg:p-16 flex flex-col lg:flex-row items-center gap-10">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-[3px] bg-teal-brand"></div>
+                            <span class="text-xs font-bold tracking-[0.2em] uppercase text-teal-brand">Karriere</span>
+                        </div>
+                        <h2 class="text-2xl lg:text-3xl font-black tracking-tight mb-3">Auf der Suche nach einer neuen Tätigkeit?</h2>
+                        <p class="text-dark/50 text-lg">Werden Sie Teil unseres Teams — ob als erfahrene Fachkraft oder als Auszubildender.</p>
+                    </div>
+                    <a href="https://www.stausberg-gmbh.de/stellenangebote/" class="group bg-blue-brand text-white pl-8 pr-6 py-4 font-semibold hover:bg-blue-dark transition-all shadow-lg shadow-blue-brand/20 whitespace-nowrap inline-flex items-center gap-3">
+                        Stellenangebote ansehen
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt / Footer -->
+    <footer id="kontakt" class="bg-slate text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="grid-pattern w-full h-full"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-7">
+                    <img src="https://www.stausberg-gmbh.de/img/schweisstechnik-stausberg.svg" alt="Schweißtechnik Stausberg GmbH" class="h-12 brightness-0 invert mb-10">
+                    <h2 class="text-4xl lg:text-5xl font-black leading-tight mb-6">
+                        Ihr Innovationspartner<br>
+                        <span class="text-white/30">für Industrie und Handwerk</span>
+                    </h2>
+                    <p class="text-white/40 text-lg leading-relaxed max-w-lg">
+                        Nutzen Sie unsere jahrzehntelange Erfahrung für Ihren wirtschaftlichen Erfolg. Wir freuen uns auf Ihre Anfrage.
+                    </p>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-xs font-bold tracking-[0.2em] uppercase text-teal-brand mb-4">Jetzt Kontakt aufnehmen</p>
+                            <a href="tel:+492741181430" class="text-3xl lg:text-4xl font-black hover:text-teal-brand transition-colors block mb-3">02741 18143-0</a>
+                            <a href="mailto:info@stausberg-gmbh.de" class="text-white/50 hover:text-teal-brand transition-colors text-lg">info@stausberg-gmbh.de</a>
+                        </div>
+                        <div class="glow-line w-full"></div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-white/30 text-xs font-bold tracking-wider uppercase mb-2">Standort Betzdorf</p>
+                                <p class="text-white/60 text-sm">Hauptsitz</p>
+                                <p class="text-white/40 text-sm">Rheinland-Pfalz</p>
+                            </div>
+                            <div>
+                                <p class="text-white/30 text-xs font-bold tracking-wider uppercase mb-2">Standort Mülheim-Kärlich</p>
+                                <p class="text-white/60 text-sm">Zweigstelle</p>
+                                <p class="text-white/40 text-sm">Rheinland-Pfalz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 pt-8 border-t border-white/5 flex flex-col lg:flex-row items-center justify-between gap-4">
+                <p class="text-white/20 text-sm">&copy; 2026 Schweißtechnik Stausberg GmbH. Alle Rechte vorbehalten.</p>
+                <div class="flex items-center gap-6 text-white/20 text-sm">
+                    <a href="https://www.stausberg-gmbh.de/" class="hover:text-white/50 transition-colors">Originalseite</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
