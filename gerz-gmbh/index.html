@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GERZ GmbH – Vorsprung durch Innovation</title>
+    <meta name="description" content="Entwickeln Sie mit GERZ innovative Lösungen für Arbeits- und Outdoorbereiche. Industrietrennwände | Schweißschutzwände | Rollfenster® | Rolltore">
+    <link rel="icon" href="https://www.gerz-gmbh.de/customers/gerz_gmbh/favicon/web-app-manifest-512x512.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gerz': '#3A587D',
+                        'gerz-dark': '#2C4563',
+                        'gerz-deep': '#1E3A5F',
+                        'gerz-light': '#4A6B91',
+                        'slate': '#F5F5F5',
+                        'copper': '#B87333',
+                        'copper-light': '#D4943A',
+                    },
+                    fontFamily: {
+                        'sans': ['Open Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+        }
+
+        .counter-clip {
+            clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+            margin-top: -4vw;
+        }
+
+        .grid-line {
+            background-image: linear-gradient(to right, #3A587D 1px, transparent 1px);
+            background-size: 25% 100%;
+        }
+
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #B87333;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .logo-ticker {
+            display: flex;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-clip, .counter-clip {
+                clip-path: none;
+            }
+            .counter-clip {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-black antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-20 border-b border-gray-100">
+                <a href="#" class="flex items-center">
+                    <img src="https://www.gerz-gmbh.de/customers/gerz_gmbh/CI/gerz-logo-vektor-farbe.svg" alt="GERZ GmbH" class="h-9">
+                </a>
+                <div class="hidden lg:flex items-center">
+                    <div class="flex items-center gap-10 mr-10">
+                        <a href="#leistungen" class="text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 hover:text-gerz transition-colors">Leistungen</a>
+                        <a href="#unternehmen" class="text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 hover:text-gerz transition-colors">Unternehmen</a>
+                        <a href="#referenzen" class="text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 hover:text-gerz transition-colors">Referenzen</a>
+                        <a href="#produkte" class="text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 hover:text-gerz transition-colors">Produkte</a>
+                    </div>
+                    <a href="#kontakt" class="bg-gerz text-white px-7 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-gerz-dark transition-colors">
+                        Angebot anfordern
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen hero-clip bg-gerz-deep overflow-hidden">
+        <!-- Background image with overlay -->
+        <div class="absolute inset-0">
+            <img src="https://www.gerz-gmbh.de/customers/_processed_/4/e/csm_GERZHintergrundbild_25c6ea6505.webp" alt="" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-r from-gerz-deep via-gerz-deep/90 to-gerz-deep/60"></div>
+        </div>
+
+        <!-- Grid overlay for Swiss feel -->
+        <div class="absolute inset-0 grid-line opacity-[0.03]"></div>
+
+        <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-32 pb-40 min-h-screen flex items-center">
+            <div class="grid grid-cols-12 gap-6 w-full">
+                <div class="col-span-12 lg:col-span-8">
+                    <!-- Systematic label -->
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-12 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[11px] font-bold tracking-[0.3em] uppercase">Entwicklung · Fertigung · Vertrieb · Service</span>
+                    </div>
+
+                    <!-- Headline — massive, architectural -->
+                    <h1 class="text-white mb-8">
+                        <span class="block text-[clamp(3rem,8vw,7rem)] font-800 leading-[0.9] tracking-[-0.03em]">Vorsprung</span>
+                        <span class="block text-[clamp(3rem,8vw,7rem)] font-800 leading-[0.9] tracking-[-0.03em]">durch</span>
+                        <span class="block text-[clamp(3rem,8vw,7rem)] font-800 leading-[0.9] tracking-[-0.03em] text-copper-light">Innovation</span>
+                    </h1>
+
+                    <p class="text-white/60 text-lg lg:text-xl leading-relaxed max-w-xl mb-12 font-light">
+                        Ihr leistungsfähiger Partner für Industrie, Gewerbe, öffentliche Einrichtungen und Privathaushalte. Alles aus einer Hand — Made in Germany.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#kontakt" class="group inline-flex items-center gap-4 bg-copper text-white px-8 py-5 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-copper-light transition-colors">
+                            <span>Unverbindliches Angebot anfordern</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#leistungen" class="inline-flex items-center gap-4 border border-white/30 text-white/80 px-8 py-5 text-[11px] font-bold tracking-[0.2em] uppercase hover:border-white hover:text-white transition-colors">
+                            Leistungen entdecken
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right column: Stats strip -->
+                <div class="col-span-12 lg:col-span-3 lg:col-start-10 flex flex-row lg:flex-col gap-8 lg:justify-end lg:pb-8">
+                    <div class="border-l-2 border-copper pl-5">
+                        <p class="text-white/40 text-[10px] font-bold tracking-[0.3em] uppercase">Standort</p>
+                        <p class="text-white text-lg font-bold mt-1">Luckenbach, DE</p>
+                    </div>
+                    <div class="border-l-2 border-copper pl-5">
+                        <p class="text-white/40 text-[10px] font-bold tracking-[0.3em] uppercase">Fertigung</p>
+                        <p class="text-white text-lg font-bold mt-1">100% In-House</p>
+                    </div>
+                    <div class="border-l-2 border-copper pl-5">
+                        <p class="text-white/40 text-[10px] font-bold tracking-[0.3em] uppercase">Nachfolge</p>
+                        <p class="text-white text-lg font-bold mt-1">Gesichert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referenz-Logos Band -->
+    <div class="bg-white py-10 border-b border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex items-center gap-6">
+                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400 whitespace-nowrap flex-shrink-0">Vertrauen von</span>
+                <div class="flex items-center gap-10 overflow-hidden flex-1 justify-between">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/8/b/csm_gerz-gmbh-referenz-abus-4_ced827d1d3.webp" alt="ABUS" class="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all flex-shrink-0">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/a/7/csm_krauss-maffei-trennwaende-gerz-gmbh_6fca01fb55.webp" alt="KraussMaffei" class="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all flex-shrink-0 hidden sm:block">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/9/2/csm_logo-phoenix_00da8c3924.webp" alt="Phoenix" class="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all flex-shrink-0 hidden md:block">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/5/c/csm_riva-gmbh-engineering_fd59b36fad.webp" alt="Riva" class="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all flex-shrink-0 hidden lg:block">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/6/5/csm_holzapfel-metallveredelung-gmbh_5d88e59315.webp" alt="Holzapfel" class="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all flex-shrink-0 hidden lg:block">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/d/4/csm_diw-instandhaltung_20a165a945.webp" alt="DIW" class="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all flex-shrink-0 hidden xl:block">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leistungen / Zwei Bereiche -->
+    <section id="leistungen" class="py-28 lg:py-40 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <!-- Section Header — Swiss grid style -->
+            <div class="grid grid-cols-12 gap-6 mb-20">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-8 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Zwei Geschäftsbereiche</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-[3.5rem] font-800 tracking-[-0.02em] leading-[1.05]">
+                        Unsere<br>Expertise
+                    </h2>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
+                    <p class="text-gray-500 text-lg leading-relaxed font-light">
+                        Zwei Geschäftsbereiche, ein Qualitätsversprechen — von der industriellen Arbeitsplatzgestaltung bis zur Outdoor-Living-Lösung für Ihr Zuhause.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Two Areas — Dramatic cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                <!-- Outdoor Living -->
+                <div class="relative group overflow-hidden bg-black">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/1/3/csm_IMG-20240823-WA0008_bbc745ea3d.webp" alt="GERZ Outdoor-Living" class="w-full h-[560px] object-cover opacity-70 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                    <div class="absolute top-8 left-8">
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">01</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+                        <div class="w-10 h-[2px] bg-copper mb-5"></div>
+                        <h3 class="text-white text-3xl font-800 tracking-tight mb-4">Outdoor-Living</h3>
+                        <p class="text-white/60 mb-6 font-light">Produkte für Ihren Außenbereich</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-white/80 bg-white/10 px-4 py-2">Rollfenster</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-white/80 bg-white/10 px-4 py-2">Terrassenüberdachungen</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-white/80 bg-white/10 px-4 py-2">Outdoor-Küchen Schutz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arbeitsplatzgestaltung -->
+                <div class="relative group overflow-hidden bg-black">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/f/6/csm___SWA9838_a82efe7520.webp" alt="GERZ Arbeitsplatzgestalter" class="w-full h-[560px] object-cover opacity-70 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                    <div class="absolute top-8 left-8">
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">02</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+                        <div class="w-10 h-[2px] bg-copper mb-5"></div>
+                        <h3 class="text-white text-3xl font-800 tracking-tight mb-4">Der Arbeitsplatzgestalter</h3>
+                        <p class="text-white/60 mb-6 font-light">Industrielle Arbeitsplatz-Produkte</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-white/80 bg-white/10 px-4 py-2">Trennwände</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-white/80 bg-white/10 px-4 py-2">Schweißschutzwände</span>
+                            <span class="text-[11px] font-semibold tracking-wide uppercase text-white/80 bg-white/10 px-4 py-2">Schnelllauf- & Sonderrolltore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unternehmen — Asymmetric layout -->
+    <section id="unternehmen" class="bg-slate">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[700px]">
+                <!-- Image — bleeds to edge -->
+                <div class="col-span-12 lg:col-span-6 relative">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/f/d/csm_Bild_Firma_61e8b05328.webp" alt="GERZ Firmengebäude Luckenbach" class="w-full h-full min-h-[400px] lg:min-h-[700px] object-cover">
+                    <!-- Overlapping badge -->
+                    <div class="absolute bottom-8 right-8 bg-gerz text-white p-6">
+                        <p class="text-[10px] font-bold tracking-[0.3em] uppercase mb-1 text-white/60">Stammsitz</p>
+                        <p class="text-xl font-800">Luckenbach</p>
+                        <p class="text-sm text-white/70 mt-1">Deutschland</p>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-center px-6 lg:px-0 py-20 lg:py-28">
+                    <div>
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-8 h-[2px] bg-copper"></div>
+                            <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Das Unternehmen</span>
+                        </div>
+                        <h2 class="text-4xl lg:text-[3rem] font-800 tracking-[-0.02em] leading-[1.1] mb-8">
+                            Die Maxime unseres Handelns
+                        </h2>
+                        <div class="space-y-6 mb-12">
+                            <p class="text-gray-500 text-lg leading-relaxed font-light">
+                                Innovationskraft und eine hohe Fertigungstiefe an unserem Stammsitz in Deutschland sind die tragenden Säulen in der Beziehung zu unseren Kunden.
+                            </p>
+                            <p class="text-gray-500 text-lg leading-relaxed font-light">
+                                Verbindlichkeit und langfristige Servicegarantien sind Ausdruck gelebter Qualität jedes einzelnen GERZ-Mitarbeiters. Die abgeschlossene Unternehmensnachfolge gibt unseren Kunden die Sicherheit, auch langfristig die richtige Entscheidung getroffen zu haben.
+                            </p>
+                        </div>
+
+                        <!-- Value pillars — horizontal rule style -->
+                        <div class="grid grid-cols-1 gap-0">
+                            <div class="flex items-center justify-between py-5 border-t border-gray-300">
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Entwicklung</span>
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gerz">In-House</span>
+                            </div>
+                            <div class="flex items-center justify-between py-5 border-t border-gray-300">
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Fertigung</span>
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gerz">In-House</span>
+                            </div>
+                            <div class="flex items-center justify-between py-5 border-t border-gray-300">
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Vertrieb & Service</span>
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gerz">In-House</span>
+                            </div>
+                            <div class="flex items-center justify-between py-5 border-t border-b border-gray-300">
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">Unternehmensnachfolge</span>
+                                <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-copper">Gesichert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Geschichte / Timeline -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-12 gap-6 mb-16">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-8 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Seit 1987</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-[3rem] font-800 tracking-[-0.02em] leading-[1.05]">
+                        Mehr als 30 Jahre<br>Innovation
+                    </h2>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
+                    <p class="text-gray-500 text-lg leading-relaxed font-light">
+                        Von der Einzelunternehmung für Schweißkonstruktion zum innovativen Industrieunternehmen mit europaweitem Vertriebsnetz.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline — Swiss grid, horizontal -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border-t border-l border-gray-200">
+                <div class="p-6 border-r border-b border-gray-200">
+                    <span class="text-copper text-2xl font-800 block mb-3">1987</span>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Gründung als Einzelunternehmung für Schweißkonstruktion in Nistertal</p>
+                </div>
+                <div class="p-6 border-r border-b border-gray-200">
+                    <span class="text-copper text-2xl font-800 block mb-3">1991</span>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Gründung der Gerz Kunststoffbeschichtung GmbH</p>
+                </div>
+                <div class="p-6 border-r border-b border-gray-200">
+                    <span class="text-copper text-2xl font-800 block mb-3">2003</span>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Idee wird Realität: Das erste ROLLFENSTER® wird gebaut</p>
+                </div>
+                <div class="p-6 border-r border-b border-gray-200">
+                    <span class="text-copper text-2xl font-800 block mb-3">2014</span>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">CE-Zertifizierung der ROLLFENSTER® — Qualität bestätigt</p>
+                </div>
+                <div class="p-6 border-r border-b border-gray-200">
+                    <span class="text-copper text-2xl font-800 block mb-3">2021</span>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Umzug der Verwaltung in das neue Bürogebäude</p>
+                </div>
+                <div class="p-6 border-r border-b border-gray-200">
+                    <span class="text-copper text-2xl font-800 block mb-3">2023</span>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Eigene Pelletspresse zur CO₂-neutralen Energieversorgung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team — Familienunternehmen -->
+    <section class="py-24 lg:py-32 bg-slate">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-12 gap-6 mb-16">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-8 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Familienunternehmen</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-[3rem] font-800 tracking-[-0.02em] leading-[1.05]">
+                        Ihre Ansprechpartner
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white group">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/d/8/csm_marcel_2b392aef54.webp" alt="Marcel Gerz" class="w-full h-72 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="font-800 text-lg tracking-tight">Marcel Gerz</h3>
+                        <p class="text-copper text-[11px] font-bold tracking-[0.15em] uppercase mt-1">Geschäftsführender Gesellschafter</p>
+                        <p class="text-gray-400 text-sm font-light mt-3">Tel.: +49 (0) 2662 939027</p>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/9/9/csm___RM3319_fbaf353b77.webp" alt="Ann-Kathrin Gerz" class="w-full h-72 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="font-800 text-lg tracking-tight">Ann-Kathrin Gerz</h3>
+                        <p class="text-copper text-[11px] font-bold tracking-[0.15em] uppercase mt-1">Prokuristin · Leitung Buchhaltung</p>
+                        <p class="text-gray-400 text-sm font-light mt-3">Tel.: +49 (0) 2662 939027</p>
+                    </div>
+                </div>
+                <div class="bg-white group">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/b/c/csm___RM3214_5b77940bd5.webp" alt="Michael Gerz" class="w-full h-72 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="font-800 text-lg tracking-tight">Michael Gerz</h3>
+                        <p class="text-copper text-[11px] font-bold tracking-[0.15em] uppercase mt-1">Beratung + Verkauf</p>
+                        <p class="text-gray-400 text-sm font-light mt-3">Tel.: +49 (0) 2662 939027</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Europaweites Netz -->
+            <div class="mt-16 border-t border-gray-200 pt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="flex items-start gap-4">
+                    <span class="text-copper text-3xl font-800 flex-shrink-0">150+</span>
+                    <div>
+                        <p class="font-bold text-sm">Vertriebspartner europaweit</p>
+                        <p class="text-gray-400 text-sm font-light mt-1">Deutschland, Österreich, Schweiz & Benelux</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="text-copper text-3xl font-800 flex-shrink-0">9m</span>
+                    <div>
+                        <p class="font-bold text-sm">Pulverbeschichtung bis 9.000 mm</p>
+                        <p class="text-gray-400 text-sm font-light mt-1">Alle RAL-Farben ohne Aufpreis · QualiCoat-Labor</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="text-copper text-3xl font-800 flex-shrink-0">CE</span>
+                    <div>
+                        <p class="font-bold text-sm">Zertifizierte Produkte</p>
+                        <p class="text-gray-400 text-sm font-light mt-1">Rollfenster® und Schnelllauftore CE-zertifiziert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info-Mappe CTA — Bold strip -->
+    <section class="relative bg-gerz-deep overflow-hidden">
+        <div class="absolute inset-0 grid-line opacity-[0.04]"></div>
+        <div class="relative z-10 max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                <div class="col-span-12 lg:col-span-7 px-6 lg:px-12 py-20 lg:py-28">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-8 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Kostenlos anfordern</span>
+                    </div>
+                    <h2 class="text-white text-4xl lg:text-[3.5rem] font-800 tracking-[-0.02em] leading-[1.05] mb-6">
+                        Info-Mappe mit<br>Materialproben
+                    </h2>
+                    <p class="text-white/50 text-lg leading-relaxed max-w-lg mb-10 font-light">
+                        Überzeugen Sie sich und fordern Sie kostenlos unsere umfassende Informationsmappe mit Materialproben an — damit Sie die GERZ Qualität auch direkt fühlen können.
+                    </p>
+                    <a href="#kontakt" class="group inline-flex items-center gap-4 bg-copper text-white px-8 py-5 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-copper-light transition-colors">
+                        <span>Kostenfreie Info-Mappe anfordern</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+                <div class="col-span-12 lg:col-span-5">
+                    <img src="https://www.gerz-gmbh.de/fileadmin/_processed_/5/4/csm_20241214_092029_73f408120d.webp" alt="GERZ Info-Mappe mit Materialproben" class="w-full h-[400px] lg:h-[520px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produkte Grid -->
+    <section id="produkte" class="py-28 lg:py-40 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-12 gap-6 mb-16">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-8 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Produktportfolio</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-[3.5rem] font-800 tracking-[-0.02em] leading-[1.05]">
+                        Alles aus<br>einer Hand
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0 border-t border-l border-gray-200">
+                <div class="feature-card bg-white p-8 lg:p-7 border-r border-b border-gray-200 group cursor-default">
+                    <span class="text-copper text-[10px] font-bold tracking-[0.3em] block mb-5">01</span>
+                    <h3 class="font-800 text-lg tracking-tight mb-2 group-hover:text-gerz transition-colors">Rollfenster®</h3>
+                    <p class="text-sm text-gray-400 font-light">Das Original</p>
+                </div>
+                <div class="feature-card bg-white p-8 lg:p-7 border-r border-b border-gray-200 group cursor-default">
+                    <span class="text-copper text-[10px] font-bold tracking-[0.3em] block mb-5">02</span>
+                    <h3 class="font-800 text-lg tracking-tight mb-2 group-hover:text-gerz transition-colors">Industrietrennwände</h3>
+                    <p class="text-sm text-gray-400 font-light">Mobil & flexibel</p>
+                </div>
+                <div class="feature-card bg-white p-8 lg:p-7 border-r border-b border-gray-200 group cursor-default">
+                    <span class="text-copper text-[10px] font-bold tracking-[0.3em] block mb-5">03</span>
+                    <h3 class="font-800 text-lg tracking-tight mb-2 group-hover:text-gerz transition-colors">Schweißtrennwände</h3>
+                    <p class="text-sm text-gray-400 font-light">Schutz & Sicherheit</p>
+                </div>
+                <div class="feature-card bg-white p-8 lg:p-7 border-r border-b border-gray-200 group cursor-default">
+                    <span class="text-copper text-[10px] font-bold tracking-[0.3em] block mb-5">04</span>
+                    <h3 class="font-800 text-lg tracking-tight mb-2 group-hover:text-gerz transition-colors">Sondertore</h3>
+                    <p class="text-sm text-gray-400 font-light">Schnelllauf & Spezial</p>
+                </div>
+                <div class="feature-card bg-white p-8 lg:p-7 border-r border-b border-gray-200 group cursor-default">
+                    <span class="text-copper text-[10px] font-bold tracking-[0.3em] block mb-5">05</span>
+                    <h3 class="font-800 text-lg tracking-tight mb-2 group-hover:text-gerz transition-colors">Pulverbeschichtung</h3>
+                    <p class="text-sm text-gray-400 font-light">Veredelung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referenzen — Full width -->
+    <section id="referenzen" class="py-28 lg:py-32 bg-slate">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-8 h-[2px] bg-copper"></div>
+                    <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Referenzen</span>
+                    <div class="w-8 h-[2px] bg-copper"></div>
+                </div>
+                <h2 class="text-4xl lg:text-[3rem] font-800 tracking-[-0.02em]">Unsere Kunden vertrauen uns</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/d/4/csm_diw-instandhaltung_20a165a945.webp" alt="DIW Instandhaltung" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/8/b/csm_gerz-gmbh-referenz-abus-4_ced827d1d3.webp" alt="ABUS" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/6/5/csm_holzapfel-metallveredelung-gmbh_5d88e59315.webp" alt="Holzapfel" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/a/7/csm_krauss-maffei-trennwaende-gerz-gmbh_6fca01fb55.webp" alt="KraussMaffei" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/9/2/csm_logo-phoenix_00da8c3924.webp" alt="Phoenix" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/5/c/csm_riva-gmbh-engineering_fd59b36fad.webp" alt="Riva Engineering" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/d/a/csm_schahl-gmbh-rundschleifen-innen-aussen_465d6ff36d.webp" alt="Schahl" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div class="bg-white p-8 flex items-center justify-center h-28 hover:shadow-lg transition-shadow">
+                    <img src="https://www.gerz-gmbh.de/customers/_processed_/9/8/csm_sheros-europa-gmbh_2413fc63cf.webp" alt="Sheros Europa" class="max-h-14 max-w-full object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="py-28 lg:py-40 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                <!-- Left: Info -->
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-8 h-[2px] bg-copper"></div>
+                        <span class="text-copper text-[10px] font-bold tracking-[0.3em] uppercase">Kontakt aufnehmen</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-[3.5rem] font-800 tracking-[-0.02em] leading-[1.05] mb-6">
+                        Sprechen Sie<br>mit uns
+                    </h2>
+                    <p class="text-gray-500 text-lg leading-relaxed font-light mb-14">
+                        Rufen Sie uns an oder hinterlassen Sie eine Nachricht. Wir melden uns umgehend bei Ihnen.
+                    </p>
+
+                    <div class="space-y-10">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-gerz flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400 mb-1">Telefon</p>
+                                <p class="font-800 text-xl tracking-tight">+49 (0) 2662 / 939037</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-gerz flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400 mb-1">E-Mail</p>
+                                <p class="font-800 text-xl tracking-tight">info@gerz-gmbh.de</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-gerz flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400 mb-1">Adresse</p>
+                                <p class="font-bold">GERZ GmbH</p>
+                                <p class="text-gray-500 font-light">Leystraße 19, 57629 Luckenbach</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="col-span-12 lg:col-span-6 lg:col-start-7">
+                    <div class="bg-slate p-8 lg:p-12">
+                        <h3 class="text-xl font-800 tracking-tight mb-2">Nachricht senden</h3>
+                        <p class="text-gray-400 text-sm font-light mb-8">Alle mit * markierten Felder sind Pflichtfelder.</p>
+                        <form class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">Vor- & Nachname *</label>
+                                    <input type="text" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">Unternehmen</label>
+                                    <input type="text" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">E-Mail *</label>
+                                    <input type="email" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">Telefon *</label>
+                                    <input type="tel" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">Straße / Nr. *</label>
+                                    <input type="text" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">PLZ *</label>
+                                    <input type="text" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">Ort *</label>
+                                    <input type="text" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors font-light">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 block mb-2">Ihre Anfrage *</label>
+                                <textarea rows="4" class="w-full border-b-2 border-gray-300 bg-transparent px-0 py-3 text-sm focus:border-gerz focus:outline-none transition-colors resize-none font-light"></textarea>
+                            </div>
+                            <div class="flex items-start gap-3 pt-2">
+                                <input type="checkbox" id="infomappe" class="mt-1 accent-gerz">
+                                <label for="infomappe" class="text-sm text-gray-500 font-light">Ich möchte zusätzlich die kostenlose Info-Mappe erhalten</label>
+                            </div>
+                            <button type="submit" class="w-full bg-gerz text-white py-5 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-gerz-dark transition-colors mt-4">
+                                Nachricht senden
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gerz-deep text-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <!-- Main footer -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 py-20 border-b border-white/10">
+                <div class="col-span-12 md:col-span-4">
+                    <img src="https://www.gerz-gmbh.de/customers/gerz_gmbh/CI/gerz-logo-vektor-sw.svg" alt="GERZ GmbH" class="h-10 invert brightness-200 mb-6">
+                    <p class="text-white/40 text-sm leading-relaxed font-light max-w-xs">
+                        Entwicklung, Fertigung, Vertrieb & Service — alles aus einer Hand. Ihr leistungsfähiger Partner aus Luckenbach.
+                    </p>
+                </div>
+                <div class="col-span-6 md:col-span-3 md:col-start-6">
+                    <h4 class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-6">Produkte</h4>
+                    <ul class="space-y-3 text-sm text-white/50 font-light">
+                        <li>Rollfenster® — Das Original</li>
+                        <li>Industrietrennwände</li>
+                        <li>Schweißtrennwände</li>
+                        <li>Sondertore</li>
+                        <li>Pulverbeschichtung</li>
+                    </ul>
+                </div>
+                <div class="col-span-6 md:col-span-3 md:col-start-10">
+                    <h4 class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-6">Kontakt</h4>
+                    <ul class="space-y-3 text-sm text-white/50 font-light">
+                        <li>GERZ GmbH</li>
+                        <li>Leystraße 19</li>
+                        <li>57629 Luckenbach</li>
+                        <li class="pt-2">Tel.: +49 2662-939037</li>
+                        <li>info@gerz-gmbh.de</li>
+                    </ul>
+                    <div class="flex gap-5 mt-8">
+                        <a href="https://www.instagram.com/gerz_gmbh/" class="text-white/30 hover:text-copper transition-colors text-sm font-semibold">IG</a>
+                        <a href="https://www.linkedin.com/in/marcel-gerz-422596a0" class="text-white/30 hover:text-copper transition-colors text-sm font-semibold">LI</a>
+                        <a href="https://de.pinterest.com/gerzgmbh/" class="text-white/30 hover:text-copper transition-colors text-sm font-semibold">PI</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom bar -->
+            <div class="py-8 flex flex-col md:flex-row justify-between items-center text-[11px] text-white/20 tracking-wide">
+                <p>&copy; 2026 GERZ GmbH — Alle Rechte vorbehalten</p>
+                <div class="flex gap-8 mt-4 md:mt-0">
+                    <a href="https://www.gerz-gmbh.de/impressum/" class="hover:text-white/50 transition-colors">Impressum</a>
+                    <a href="https://www.gerz-gmbh.de/datenschutz/" class="hover:text-white/50 transition-colors">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

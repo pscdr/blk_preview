@@ -1,0 +1,53 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Open Sans",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#3A587D",
+    "accent": "#3A587D",
+    "background": "#F5F5F5",
+    "textPrimary": "#000000",
+    "link": "#666977"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Open Sans"
+    },
+    "fontSizes": {
+      "h1": "48px",
+      "h2": "40px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#3A587D",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    },
+    "buttonSecondary": {
+      "background": "#EEEEEE",
+      "textColor": "#000000",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.gerz-gmbh.de/customers/gerz_gmbh/CI/gerz-logo-vektor-farbe.svg",
+    "logoSW": "https://www.gerz-gmbh.de/customers/gerz_gmbh/CI/gerz-logo-vektor-sw.svg",
+    "favicon": "https://www.gerz-gmbh.de/customers/gerz_gmbh/favicon/web-app-manifest-512x512.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals"
+  }
+}
