@@ -1,0 +1,51 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    { "family": "Jura", "role": "heading" },
+    { "family": "Times New Roman", "role": "body" },
+    { "family": "Kanit", "role": "unknown" },
+    { "family": "Arial", "role": "body" }
+  ],
+  "colors": {
+    "primary": "#F7A600",
+    "accent": "#FFA725",
+    "background": "#FCFDFD",
+    "textPrimary": "#1A1A18",
+    "link": "#FFA725"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Times New Roman",
+      "heading": "Jura"
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "30px",
+      "body": "18px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#F7A600",
+      "textColor": "#1A1A18",
+      "borderRadius": "5px"
+    }
+  },
+  "images": {
+    "logo": "https://blc-lasercladding.de/.cm4all/uproc.php/0/_design/logo/.logo_blc-lasercladding_002.png/picture-1200?_=16c18b9f5c0",
+    "favicon": "https://blc-lasercladding.de/.cm4all/sysdb/favicon/icon-32x32_c10d620.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial clients"
+  },
+  "metadata": {
+    "description": "Die BLC Lasercladding GmbH aus Bad Marienberg (Westerwald) ist Ihr Spezialist für individuelle Leistungen rund ums Lasercladding.",
+    "title": "Lasercladding, LMD und Laserauftragschweißen | BLC Lasercladding GmbH"
+  }
+}
