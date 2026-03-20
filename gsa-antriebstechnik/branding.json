@@ -1,0 +1,57 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Nunito Sans",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#49A4DC",
+    "accent": "#49A4DC",
+    "background": "#F5F5F5",
+    "textPrimary": "#005387",
+    "link": "#005387"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Nunito Sans",
+      "heading": "Nunito Sans"
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "48px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#49A4DC",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/Logo-4c.svg",
+    "logoNegativ": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/Logo-negativ.svg",
+    "favicon": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/cropped-favicon-32x32.png",
+    "heroImage": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/slider-hintergrundbild.jpg",
+    "motorImage": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/startseite-motor.png",
+    "portraitAdrian": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/05/Adrian-Vetten.png"
+  },
+  "icons": {
+    "beratung": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/beratung-solid.svg",
+    "entwicklung": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/lightbulb-solid.svg",
+    "handel": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/cart-shopping-solid.svg",
+    "360grad": "https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/360-grad-icon.svg"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "industrial and engineering professionals"
+  }
+}

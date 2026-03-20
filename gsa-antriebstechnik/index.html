@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.S.A. Antriebstechnik – Mehr als ein Motor</title>
+    <meta name="description" content="G.S.A. Antriebstechnik – Ihr Partner für elektrische Antriebe, Elektromotoren, Frequenzumrichter, Steuerungen, Zeichnungsteile, industriellen 3D-Druck und Lean Consulting.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gsa-blue': '#49A4DC',
+                        'gsa-sky': '#7BC4ED',
+                        'gsa-navy': '#005387',
+                        'gsa-navy-deep': '#003A5C',
+                        'gsa-bg': '#F5F5F5',
+                        'gsa-warm': '#FAFAF8',
+                        'gsa-dark': '#0D1B2A',
+                        'gsa-slate': '#1B2D45',
+                    },
+                    fontFamily: {
+                        'sans': ['Nunito Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(13,27,42,0.95) 0%, rgba(0,83,135,0.75) 50%, rgba(73,164,220,0.3) 100%);
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #49A4DC, #005387);
+            transition: height 0.4s ease;
+        }
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .pillar-card {
+            position: relative;
+        }
+        .pillar-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #49A4DC;
+            transition: width 0.4s ease;
+        }
+        .pillar-card:hover::after {
+            width: 60%;
+        }
+
+        .stat-ring {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid rgba(73,164,220,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+        }
+        .stat-ring::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: calc(100% + 6px);
+            height: calc(100% + 6px);
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #49A4DC;
+            border-right-color: #49A4DC;
+        }
+
+        .blueprint-grid {
+            background-image:
+                linear-gradient(rgba(73,164,220,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(73,164,220,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glow-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #49A4DC, transparent);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gsa-bg">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex-shrink-0">
+                    <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/Logo-4c.svg" alt="G.S.A. Antriebstechnik" class="h-11">
+                </a>
+                <div class="hidden md:flex items-center gap-10">
+                    <a href="#leistungen" class="text-sm font-bold text-gsa-navy tracking-wide hover:text-gsa-blue transition-colors">Leistungen</a>
+                    <a href="#services" class="text-sm font-bold text-gsa-navy tracking-wide hover:text-gsa-blue transition-colors">Services</a>
+                    <a href="#ueber-uns" class="text-sm font-bold text-gsa-navy tracking-wide hover:text-gsa-blue transition-colors">Über uns</a>
+                    <a href="#kontakt" class="bg-gsa-navy text-white px-7 py-3 text-sm font-bold tracking-wide hover:bg-gsa-blue transition-all duration-300">
+                        Kontakt aufnehmen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/slider-hintergrundbild.jpg" alt="Industrielle Antriebstechnik" class="w-full h-full object-cover scale-105">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+
+        <!-- Decorative blueprint lines -->
+        <div class="absolute inset-0 blueprint-grid opacity-30"></div>
+
+        <!-- Decorative accent line -->
+        <div class="absolute top-1/3 right-0 w-1/3 h-px bg-gradient-to-l from-transparent via-gsa-blue/40 to-transparent"></div>
+        <div class="absolute bottom-1/4 left-0 w-1/4 h-px bg-gradient-to-r from-transparent via-gsa-sky/30 to-transparent"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-32 w-full">
+            <div class="max-w-3xl">
+                <!-- Tagline with line -->
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-12 h-px bg-gsa-blue"></div>
+                    <p class="text-gsa-sky font-bold text-xs tracking-[0.25em] uppercase">Seit 1995 – Antriebstechnik aus Leidenschaft</p>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl lg:text-[5.5rem] font-900 text-white leading-[1.05] mb-8 tracking-tight">
+                    Mehr als<br>ein Motor —<br>
+                    <span class="bg-gradient-to-r from-gsa-blue to-gsa-sky bg-clip-text text-transparent">die Lösung für Bewegung</span>
+                </h1>
+
+                <p class="text-xl text-gray-300/90 mb-12 max-w-xl leading-relaxed font-light">
+                    Maßgeschneiderte Lösungen in der elektrischen und mechanischen Antriebstechnik — präzise abgestimmt auf Ihre Bedürfnisse.
+                </p>
+
+                <div class="flex flex-wrap gap-5">
+                    <a href="#leistungen" class="group relative bg-gsa-blue text-white px-10 py-4.5 font-bold text-sm tracking-wider hover:bg-white hover:text-gsa-navy transition-all duration-300 overflow-hidden">
+                        Leistungen entdecken
+                    </a>
+                    <a href="#kontakt" class="border-2 border-white/20 text-white px-10 py-4.5 font-bold text-sm tracking-wider hover:border-gsa-blue hover:bg-gsa-blue/10 transition-all duration-300">
+                        Jetzt anfragen
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating motor image on the right for large screens -->
+            <div class="hidden xl:block absolute right-10 bottom-20 opacity-20">
+                <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/startseite-motor.png" alt="" class="w-96 drop-shadow-2xl" aria-hidden="true">
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+            <span class="text-white/40 text-xs font-semibold tracking-widest uppercase">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Three Pillars -->
+    <section id="leistungen" class="py-28 bg-white relative overflow-hidden">
+        <!-- Subtle decorative element -->
+        <div class="absolute top-0 left-0 w-full glow-line"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-20">
+                <div class="flex items-center justify-center gap-4 mb-5">
+                    <div class="w-8 h-px bg-gsa-blue"></div>
+                    <p class="text-gsa-blue font-bold text-xs tracking-[0.25em] uppercase">Unser Ansatz</p>
+                    <div class="w-8 h-px bg-gsa-blue"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-900 text-gsa-navy tracking-tight">
+                    360° Lösung für Ihre<br>Antriebstechnik
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="pillar-card group text-center p-12 bg-gsa-warm hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gsa-blue/15 to-gsa-navy/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/beratung-solid.svg" alt="Beratung" class="w-9 h-9">
+                    </div>
+                    <h3 class="text-2xl font-800 text-gsa-navy mb-4">Beratung</h3>
+                    <p class="text-gray-500 leading-relaxed">Präzise Analyse Ihrer Anforderungen und individuelle Beratung für optimale Antriebslösungen — von der ersten Idee bis zur Umsetzung.</p>
+                </div>
+
+                <div class="pillar-card group text-center p-12 bg-gsa-warm hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gsa-blue/15 to-gsa-navy/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/lightbulb-solid.svg" alt="Entwicklung" class="w-9 h-9">
+                    </div>
+                    <h3 class="text-2xl font-800 text-gsa-navy mb-4">Entwicklung</h3>
+                    <p class="text-gray-500 leading-relaxed">Innovative Konzepte und maßgeschneiderte Entwicklung für Ihre spezifischen Einsatzbereiche — technisch exzellent und zukunftssicher.</p>
+                </div>
+
+                <div class="pillar-card group text-center p-12 bg-gsa-warm hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-gsa-blue/15 to-gsa-navy/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/cart-shopping-solid.svg" alt="Handel" class="w-9 h-9">
+                    </div>
+                    <h3 class="text-2xl font-800 text-gsa-navy mb-4">Handel</h3>
+                    <p class="text-gray-500 leading-relaxed">Zuverlässige Beschaffung und Lieferung hochwertiger Antriebskomponenten — termingerecht und mit erstklassiger Qualität.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungsübersicht mit Bild — immersives Layout -->
+    <section class="py-28 bg-gsa-bg relative blueprint-grid">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-px bg-gsa-blue"></div>
+                        <p class="text-gsa-blue font-bold text-xs tracking-[0.25em] uppercase">Ganzheitlich gedacht</p>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-900 text-gsa-navy mb-8 tracking-tight leading-tight">
+                        Ihre Anforderungen<br>sind unser Antrieb
+                    </h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-gsa-blue to-gsa-sky mb-8"></div>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6 max-w-2xl">
+                        Jede Anwendung bringt ihre eigenen Herausforderungen mit sich. Mit unserer 360° Lösung betrachten wir Ihre Anforderungen ganzheitlich und entwickeln maßgeschneiderte Lösungen in der elektrischen und mechanischen Antriebstechnik — präzise abgestimmt auf Ihre Bedürfnisse und effizient in der Umsetzung.
+                    </p>
+                    <p class="text-gray-500 leading-relaxed max-w-2xl">
+                        Unser Leistungsspektrum umfasst die Beratung, die Entwicklung, den Handel und die Fertigung individueller Lösungen, die höchste Qualität und Zuverlässigkeit gewährleisten.
+                    </p>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <!-- Decorative frame -->
+                        <div class="absolute -inset-6 border border-gsa-blue/10"></div>
+                        <div class="absolute -inset-3 border border-gsa-blue/5"></div>
+                        <div class="relative bg-white p-8 shadow-2xl">
+                            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/startseite-motor.png" alt="Elektromotor – Präzision in Bewegung" class="w-full max-w-sm mx-auto">
+                        </div>
+                        <!-- Corner accents -->
+                        <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gsa-blue"></div>
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-gsa-blue"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Detail — staggered cards -->
+    <section id="services" class="py-28 bg-white relative">
+        <div class="absolute top-0 left-0 w-full glow-line"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                <!-- Left: heading sticks -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-px bg-gsa-blue"></div>
+                        <p class="text-gsa-blue font-bold text-xs tracking-[0.25em] uppercase">Services</p>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-900 text-gsa-navy tracking-tight leading-tight mb-6">
+                        Unsere<br>Leistungen
+                    </h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-gsa-blue to-gsa-sky mb-6"></div>
+                    <p class="text-gray-500 leading-relaxed">
+                        Von elektrischen Antrieben über additive Fertigung bis hin zu Prozessoptimierung — fünf Kompetenzfelder, ein Ziel: Ihre optimale Lösung.
+                    </p>
+                </div>
+
+                <!-- Right: service cards -->
+                <div class="lg:col-span-8 space-y-5">
+                    <div class="service-card group bg-gsa-bg hover:bg-white hover:shadow-lg transition-all duration-500 overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/leistung-elektrische-antriebe.jpg" alt="Elektrische Antriebe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-10">
+                            <div class="flex items-start gap-6">
+                                <span class="text-6xl font-900 text-gsa-blue/10 group-hover:text-gsa-blue/20 transition-colors leading-none">01</span>
+                                <div>
+                                    <h3 class="text-xl font-800 text-gsa-navy mb-3">Elektrische Antriebe</h3>
+                                    <p class="text-gray-500 leading-relaxed">Drehstrommotoren, Getriebemotoren, explosionsgeschützte Motoren und Gleichstrommotoren — mit individuellen Anpassungen wie Sonderwellen, Fremdlüfter, Bremsen, Kupplungen oder Drehgeber. Auch für USA & Canada mit CSA/UL-Zulassungen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card group bg-gsa-bg hover:bg-white hover:shadow-lg transition-all duration-500 overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/12/FrequenzumrichterWDC_ACCESSORIES_DRIVES_GLOBAL_1200Wx1200H-e1765554266934.jpg" alt="Frequenzumrichter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-10">
+                            <div class="flex items-start gap-6">
+                                <span class="text-6xl font-900 text-gsa-blue/10 group-hover:text-gsa-blue/20 transition-colors leading-none">02</span>
+                                <div>
+                                    <h3 class="text-xl font-800 text-gsa-navy mb-3">Frequenzumrichter, Softstarter & Steuerungen</h3>
+                                    <p class="text-gray-500 leading-relaxed">Leistungsstarke Frequenzumrichter und Softstarter für präzise Drehzahlregelung von Synchron- und Asynchronmotoren — maximale Energieeffizienz für Ihre Anlagen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card group bg-gsa-bg p-10 hover:bg-white hover:shadow-lg transition-all duration-500">
+                        <div class="flex items-start gap-6">
+                            <span class="text-6xl font-900 text-gsa-blue/10 group-hover:text-gsa-blue/20 transition-colors leading-none">03</span>
+                            <div>
+                                <h3 class="text-xl font-800 text-gsa-navy mb-3">Zeichnungsteile</h3>
+                                <p class="text-gray-500 leading-relaxed">Speziell gefertigte Zeichnungsteile aus Kunststoff oder Metall, abgestimmt auf Ihre individuellen Anforderungen. Termingerechte Lieferung hochwertiger Prototypen und Serien.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card group bg-gsa-bg hover:bg-white hover:shadow-lg transition-all duration-500 overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/leistung-3d-druck.jpg" alt="Industrieller 3D-Druck" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-10">
+                            <div class="flex items-start gap-6">
+                                <span class="text-6xl font-900 text-gsa-blue/10 group-hover:text-gsa-blue/20 transition-colors leading-none">04</span>
+                                <div>
+                                    <h3 class="text-xl font-800 text-gsa-navy mb-3">Industrieller 3D-Druck</h3>
+                                    <p class="text-gray-500 leading-relaxed">Additive Fertigung in Kunststoff und Metall: Prototypen, Funktionsmuster oder Kleinserien mit spezifischen Eigenschaften und Oberflächen. Schnell, flexibel, kosteneffizient.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card group bg-gsa-bg hover:bg-white hover:shadow-lg transition-all duration-500 overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/leistung-consulting.jpg" alt="Consulting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-10">
+                            <div class="flex items-start gap-6">
+                                <span class="text-6xl font-900 text-gsa-blue/10 group-hover:text-gsa-blue/20 transition-colors leading-none">05</span>
+                                <div>
+                                    <h3 class="text-xl font-800 text-gsa-navy mb-3">Consulting</h3>
+                                    <p class="text-gray-500 leading-relaxed">Lean- und Supply Chain Management: Gezielte Optimierung Ihrer Einkaufs-, Logistik- und Fertigungsprozesse. Verschwendung reduzieren, Wertschöpfung steigern.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Branchen — compact trust section -->
+    <section class="py-20 bg-gsa-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-14">
+                <div class="flex items-center justify-center gap-4 mb-5">
+                    <div class="w-8 h-px bg-gsa-blue"></div>
+                    <p class="text-gsa-blue font-bold text-xs tracking-[0.25em] uppercase">Branchen & Zielgruppen</p>
+                    <div class="w-8 h-px bg-gsa-blue"></div>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-900 text-gsa-navy tracking-tight">Ihr Partner in der Industrie</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-8 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-gsa-blue/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gsa-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                    </div>
+                    <p class="font-800 text-gsa-navy text-sm">Maschinenbau</p>
+                </div>
+                <div class="bg-white p-8 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-gsa-blue/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gsa-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <p class="font-800 text-gsa-navy text-sm">Sondermaschinenbau</p>
+                </div>
+                <div class="bg-white p-8 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-gsa-blue/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gsa-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                    </div>
+                    <p class="font-800 text-gsa-navy text-sm">Konstruktion</p>
+                </div>
+                <div class="bg-white p-8 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-gsa-blue/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gsa-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+                    </div>
+                    <p class="font-800 text-gsa-navy text-sm">Instandhaltung</p>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <p class="text-gray-400 text-sm">Internationale Projekte — Lieferung mit CSA/UL-Zulassungen für USA & Canada</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns — cinematic dark section -->
+    <section id="ueber-uns" class="relative py-28 bg-gsa-dark text-white overflow-hidden">
+        <!-- Subtle grid overlay -->
+        <div class="absolute inset-0 blueprint-grid opacity-20"></div>
+        <!-- Glow accent -->
+        <div class="absolute top-1/2 right-0 w-96 h-96 bg-gsa-blue/5 rounded-full blur-3xl -translate-y-1/2"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                <!-- Portrait with frame -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4">
+                            <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-gsa-blue/40"></div>
+                            <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-gsa-blue/40"></div>
+                        </div>
+                        <div class="relative overflow-hidden">
+                            <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/05/Adrian-Vetten.png" alt="Adrian Vetten – Inhaber G.S.A. Antriebstechnik" class="w-80 lg:w-96">
+                            <!-- Gradient overlay at bottom -->
+                            <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gsa-dark/80 to-transparent"></div>
+                            <div class="absolute bottom-4 left-6">
+                                <p class="text-white font-800 text-lg">Adrian Vetten</p>
+                                <p class="text-gsa-blue text-sm font-semibold">Inhaber & Geschäftsführer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-px bg-gsa-blue"></div>
+                        <p class="text-gsa-blue font-bold text-xs tracking-[0.25em] uppercase">Über uns</p>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-900 leading-[1.05] mb-8 tracking-tight">
+                        Tradition trifft<br>
+                        <span class="bg-gradient-to-r from-gsa-blue to-gsa-sky bg-clip-text text-transparent">neue Impulse</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-6 max-w-xl">
+                        Seit 1995 stehen wir für individuelle und innovative Lösungen in der elektrischen Antriebstechnik. 1995 von Günter Schnitgerhans gegründet und im Jahr 2025 von Adrian Vetten übernommen, verbinden wir Tradition mit neuen Impulsen.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-12 max-w-xl">
+                        Ob bei der Optimierung bestehender Systeme oder der Entwicklung neuer Konzepte — mit Leidenschaft und Präzision setzen wir alles daran, Ihre Systeme optimal zu gestalten und Ihre Anforderungen zuverlässig zu erfüllen.
+                    </p>
+
+                    <!-- Stats with rings -->
+                    <div class="flex flex-wrap items-center gap-10">
+                        <div class="stat-ring">
+                            <span class="text-2xl font-900 text-white">30+</span>
+                            <span class="text-[10px] text-gsa-blue uppercase tracking-wider font-bold">Jahre</span>
+                        </div>
+                        <div class="stat-ring">
+                            <span class="text-2xl font-900 text-white">360°</span>
+                            <span class="text-[10px] text-gsa-blue uppercase tracking-wider font-bold">Lösung</span>
+                        </div>
+                        <div class="stat-ring">
+                            <span class="text-2xl font-900 text-white">5</span>
+                            <span class="text-[10px] text-gsa-blue uppercase tracking-wider font-bold">Bereiche</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Promise Banner -->
+    <section class="py-16 bg-gsa-navy relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-gsa-navy-deep via-gsa-navy to-gsa-blue/20"></div>
+        <div class="relative max-w-5xl mx-auto px-6 lg:px-10 text-center">
+            <p class="text-3xl md:text-4xl font-800 text-white leading-snug tracking-tight">
+                &bdquo;Mehr als ein Motor —<br>
+                <span class="text-gsa-sky">die Lösung für Bewegung.&ldquo;</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Kontakt — asymmetric layout -->
+    <section id="kontakt" class="py-28 bg-gsa-warm relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <!-- Left content -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-px bg-gsa-blue"></div>
+                        <p class="text-gsa-blue font-bold text-xs tracking-[0.25em] uppercase">Kontakt</p>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-900 text-gsa-navy mb-8 tracking-tight leading-tight">
+                        Sprechen<br>Sie uns an
+                    </h2>
+                    <p class="text-gray-500 leading-relaxed mb-12 max-w-md">
+                        Ob Projektanfrage, technische Beratung oder einfach ein erster Austausch — wir freuen uns auf Ihre Nachricht.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-gsa-navy flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gsa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-800 text-gsa-navy text-lg">G.S.A. Antriebstechnik e.K.</p>
+                                <p class="text-gray-500 text-sm mt-1">Inhaber Adrian Vetten</p>
+                                <p class="text-gray-500 text-sm">Hachenburger Straße 13, 57629 Steinebach</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-gsa-navy flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gsa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-gsa-navy font-bold">+49 (0) 160-4401659</p>
+                                <p class="text-gray-500 text-sm">+49 (0) 2662-9643590</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-gsa-navy flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gsa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <a href="mailto:info@gsa-antriebstechnik.de" class="text-gsa-navy font-bold hover:text-gsa-blue transition-colors">info@gsa-antriebstechnik.de</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white p-10 lg:p-14 shadow-xl">
+                        <h3 class="text-2xl font-800 text-gsa-navy mb-8">Nachricht senden</h3>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-gsa-navy uppercase tracking-wider mb-3">Vor- und Nachname</label>
+                                    <input type="text" class="w-full px-0 py-3 bg-transparent border-b-2 border-gray-200 focus:border-gsa-blue focus:outline-none transition-colors text-gsa-navy font-semibold placeholder-gray-300" placeholder="Ihr Name">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gsa-navy uppercase tracking-wider mb-3">E-Mail Adresse</label>
+                                    <input type="email" class="w-full px-0 py-3 bg-transparent border-b-2 border-gray-200 focus:border-gsa-blue focus:outline-none transition-colors text-gsa-navy font-semibold placeholder-gray-300" placeholder="ihre@email.de">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gsa-navy uppercase tracking-wider mb-3">Ihre Nachricht</label>
+                                <textarea rows="5" class="w-full px-0 py-3 bg-transparent border-b-2 border-gray-200 focus:border-gsa-blue focus:outline-none transition-colors text-gsa-navy resize-none placeholder-gray-300" placeholder="Beschreiben Sie Ihr Anliegen..."></textarea>
+                            </div>
+                            <button type="submit" class="bg-gsa-navy text-white px-10 py-4 font-bold text-sm tracking-wider hover:bg-gsa-blue transition-all duration-300 mt-4">
+                                Nachricht senden
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gsa-dark text-gray-500 py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <img src="https://gsa-antriebstechnik.de/wp-content/uploads/2025/04/Logo-negativ.svg" alt="G.S.A. Antriebstechnik" class="h-9 opacity-60">
+                <p class="text-sm">&copy; 2025 G.S.A. Antriebstechnik e.K. — Alle Rechte vorbehalten.</p>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/adrian-vetten-209308198/" target="_blank" rel="noopener" class="text-sm font-semibold hover:text-gsa-blue transition-colors">LinkedIn</a>
+                    <a href="mailto:info@gsa-antriebstechnik.de" class="text-sm font-semibold hover:text-gsa-blue transition-colors">E-Mail</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
