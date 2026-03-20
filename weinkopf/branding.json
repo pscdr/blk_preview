@@ -1,0 +1,57 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    { "family": "Futura PT", "role": "body" },
+    { "family": "Titillium", "role": "unknown" }
+  ],
+  "colors": {
+    "primary": "#D39E46",
+    "accent": "#D39E46",
+    "background": "#2B2E31",
+    "textPrimary": "#2B2E31",
+    "link": "#1863DC"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Futura PT",
+      "heading": "Futura PT"
+    },
+    "fontStacks": {
+      "heading": ["futura-pt", "sans-serif"],
+      "body": ["futura-pt", "sans-serif"]
+    },
+    "fontSizes": {
+      "h1": "75px",
+      "h2": "29px",
+      "body": "18px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#D39E46",
+      "textColor": "#FFFFFF",
+      "borderColor": "#D39E46",
+      "borderRadius": "2px"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "borderRadius": "0px"
+    }
+  },
+  "images": {
+    "logo": "https://www.weinkopf.de/wp-content/uploads/2020/02/weinkopf-logo-hell.png",
+    "favicon": "https://www.weinkopf.de/wp-content/uploads/2020/04/cropped-weinkopf-icon_-e1586880071807-32x32.png",
+    "ogImage": "https://www.weinkopf.de/wp-content/uploads/2020/02/weinkopf.png"
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "homeowners and businesses interested in heating solutions"
+  }
+}
