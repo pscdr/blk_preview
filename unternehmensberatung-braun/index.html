@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unternehmensberatung Braun GmbH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/04/Fav.svg" type="image/svg+xml">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: { DEFAULT: '#00263E', 50: '#E6F0F7', 100: '#B3D4E8', 200: '#006B9F', 300: '#004D73', 400: '#003A5C', 500: '#00263E', 600: '#001D30', 700: '#001522' },
+                        accent: { DEFAULT: '#4054B2', light: '#5A6FCC', lighter: '#7B8FE0', dark: '#2E3F8F', 50: '#ECEFFE' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .hero-gradient {
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(64, 84, 178, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(90, 111, 204, 0.15) 0%, transparent 50%),
+                linear-gradient(160deg, #00263E 0%, #001D30 30%, #0A2E4A 50%, #162F5A 70%, #2C3F8A 90%, #4054B2 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #00263E 20%, #4054B2 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-light {
+            background: linear-gradient(135deg, #5A6FCC 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .service-card {
+            position: relative;
+            background: #FFFFFF;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, #00263E, #4054B2, #5A6FCC);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 38, 62, 0.12), 0 8px 24px rgba(64, 84, 178, 0.08);
+        }
+        .service-card:hover::before { opacity: 1; }
+
+        .stat-block {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .stat-block::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #4054B2, #5A6FCC);
+            border-radius: 2px;
+        }
+
+        .quote-card {
+            background: linear-gradient(160deg, #00263E 0%, #162F5A 60%, #2C3F8A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .quote-card::after {
+            content: '';
+            position: absolute;
+            top: -40%; right: -20%;
+            width: 60%; height: 100%;
+            background: radial-gradient(ellipse, rgba(90, 111, 204, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section {
+            background:
+                radial-gradient(ellipse 50% 80% at 30% 50%, rgba(64, 84, 178, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 80% 30%, rgba(90, 111, 204, 0.15) 0%, transparent 50%),
+                linear-gradient(135deg, #00263E 0%, #0A2E4A 30%, #1A3A6A 60%, #4054B2 100%);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        .divider-gradient {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #4054B2, transparent);
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .float-slow-delay { animation: float-slow 8s ease-in-out 3s infinite; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur bg-navy-500/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center group">
+                <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/ubb-logo_white.svg" alt="Unternehmensberatung Braun" class="h-9 transition-opacity group-hover:opacity-80">
+            </a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#leistungen" class="text-white/60 hover:text-white text-[13px] font-semibold tracking-wide uppercase transition-colors duration-300">Leistungen</a>
+                <a href="#ueber-uns" class="text-white/60 hover:text-white text-[13px] font-semibold tracking-wide uppercase transition-colors duration-300">Über uns</a>
+                <a href="#kontakt" class="text-white text-[13px] font-semibold tracking-wide uppercase px-6 py-2.5 rounded-full bg-accent/20 border border-accent-light/30 hover:bg-accent/40 transition-all duration-300">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+        <!-- Floating orbs -->
+        <div class="glow-orb w-[500px] h-[500px] bg-accent/20 top-[10%] right-[-5%] float-slow"></div>
+        <div class="glow-orb w-[300px] h-[300px] bg-accent-light/15 bottom-[15%] left-[5%] float-slow-delay"></div>
+        <div class="glow-orb w-[200px] h-[200px] bg-white/5 top-[60%] right-[30%]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-32 pb-24 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-accent-light"></span>
+                        <span class="text-white/60 text-xs font-semibold tracking-widest uppercase">Beratung aus dem Westerwald</span>
+                    </div>
+
+                    <h1 class="text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] font-800 text-white leading-[1.05] mb-8 tracking-tight">
+                        Persönlich.<br>
+                        Auf Augenhöhe.<br>
+                        <span class="text-gradient-light">Für Ihren Erfolg.</span>
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-white/50 leading-relaxed max-w-lg mb-12 font-light">
+                        Inhabergeführte Unternehmensberatung für den Mittelstand — mit Expertise in ÖPNV, Controlling und Unternehmensbewertung.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <a href="#leistungen" class="group inline-flex items-center gap-3 bg-white text-navy font-bold px-8 py-4 rounded-full hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                            Leistungen entdecken
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                        <a href="#kontakt" class="inline-flex items-center gap-2 text-white/70 hover:text-white font-medium px-6 py-4 transition-colors duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            Gespräch vereinbaren
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 hidden lg:block">
+                    <div class="relative">
+                        <!-- Abstract data visualization element -->
+                        <div class="bg-white/[0.03] border border-white/[0.08] rounded-3xl p-8 backdrop-blur-sm">
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-white/40 text-xs font-semibold uppercase tracking-wider">Kernbereiche</p>
+                                        <p class="text-white text-2xl font-800">4 Expertisen</p>
+                                    </div>
+                                </div>
+                                <div class="divider-gradient opacity-30"></div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-white/[0.04] rounded-xl p-4">
+                                        <p class="text-accent-light text-xs font-bold uppercase tracking-wider mb-1">ÖPNV</p>
+                                        <p class="text-white/60 text-[11px] leading-snug">Busunternehmen & Linienverkehr</p>
+                                    </div>
+                                    <div class="bg-white/[0.04] rounded-xl p-4">
+                                        <p class="text-accent-light text-xs font-bold uppercase tracking-wider mb-1">KMU</p>
+                                        <p class="text-white/60 text-[11px] leading-snug">Mittelstandsberatung</p>
+                                    </div>
+                                    <div class="bg-white/[0.04] rounded-xl p-4">
+                                        <p class="text-accent-light text-xs font-bold uppercase tracking-wider mb-1">Controlling</p>
+                                        <p class="text-white/60 text-[11px] leading-snug">Planung & Reporting</p>
+                                    </div>
+                                    <div class="bg-white/[0.04] rounded-xl p-4">
+                                        <p class="text-accent-light text-xs font-bold uppercase tracking-wider mb-1">Bewertung</p>
+                                        <p class="text-white/60 text-[11px] leading-snug">Verkauf, Nachfolge, Erbe</p>
+                                    </div>
+                                </div>
+                                <div class="divider-gradient opacity-30"></div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-accent/30 flex items-center justify-center">
+                                        <span class="text-white text-xs font-bold">MB</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-white/80 text-sm font-semibold">Markus Braun</p>
+                                        <p class="text-white/40 text-xs">Gründer & Geschäftsführer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom fade -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+    </section>
+
+    <!-- Services -->
+    <section id="leistungen" class="py-28 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-16 mb-20">
+                <div class="lg:col-span-5">
+                    <p class="text-accent text-xs font-bold tracking-[0.2em] uppercase mb-5">Unsere Expertise</p>
+                    <h2 class="text-4xl md:text-[3.2rem] font-800 text-gradient leading-tight">Beratung, die den Mittelstand versteht.</h2>
+                </div>
+                <div class="lg:col-span-7 flex items-end">
+                    <p class="text-gray-400 text-lg leading-relaxed max-w-xl">Integrität ist für uns nicht nur selbstverständlich, sondern Grundvoraussetzung für eine partnerschaftliche Zusammenarbeit. Unsere Beratungsansätze entsprechen den Grundsätzen der Branche.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <!-- ÖPNV -->
+                <div class="service-card shadow-sm border border-gray-100 overflow-hidden">
+                    <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/oepnv-beratung@2x.jpg" alt="ÖPNV-Beratung" class="w-full h-48 object-cover">
+                    <div class="p-10 pt-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-lg shadow-accent/20 -mt-12 relative z-10 border-4 border-white">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <span class="text-[11px] font-bold tracking-widest uppercase text-accent/40">01</span>
+                    </div>
+                    <h3 class="text-2xl font-800 text-navy mb-4">ÖPNV-Beratung</h3>
+                    <p class="text-gray-500 leading-relaxed">Eine unserer Kernkompetenzen liegt in der Beratung von privaten mittelständischen Busunternehmen. Die Beratung umfasst alle Geschäftsbereiche — vom klassischen Linienverkehr bis hin zum Reiseveranstalter.</p>
+                    </div>
+                </div>
+
+                <!-- KMU -->
+                <div class="service-card shadow-sm border border-gray-100 overflow-hidden">
+                    <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/KMU-beratung@2x.jpg" alt="KMU-Beratung" class="w-full h-48 object-cover">
+                    <div class="p-10 pt-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-lg shadow-accent/20 -mt-12 relative z-10 border-4 border-white">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <span class="text-[11px] font-bold tracking-widest uppercase text-accent/40">02</span>
+                    </div>
+                    <h3 class="text-2xl font-800 text-navy mb-4">KMU-Beratung</h3>
+                    <p class="text-gray-500 leading-relaxed">Ein Unternehmen im Mittelstand ist nicht mit einem Konzern zu vergleichen. Daher bringen die standardisierten, festgefahrenen Beratungsprozesse der großen Beratungsunternehmen oft nicht den gewünschten Erfolg. Mittelstand muss verstanden und gelebt werden.</p>
+                    </div>
+                </div>
+
+                <!-- Controlling -->
+                <div class="service-card shadow-sm border border-gray-100 overflow-hidden">
+                    <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/controlling@2x.jpg" alt="Controlling" class="w-full h-48 object-cover">
+                    <div class="p-10 pt-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-lg shadow-accent/20 -mt-12 relative z-10 border-4 border-white">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <span class="text-[11px] font-bold tracking-widest uppercase text-accent/40">03</span>
+                    </div>
+                    <h3 class="text-2xl font-800 text-navy mb-4">Controlling</h3>
+                    <p class="text-gray-500 leading-relaxed">Fundierte betriebswirtschaftliche Planungen auf Basis der Gewinn- und Verlustrechnung inklusive einer Liquiditätsplanung mit darauf aufbauendem, regelmäßigem Reporting gewinnen auch bei kleineren und mittelständischen Unternehmen immer mehr an Bedeutung.</p>
+                    </div>
+                </div>
+
+                <!-- Unternehmensbewertung -->
+                <div class="service-card shadow-sm border border-gray-100 overflow-hidden">
+                    <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/unternehmensberatung@2x.jpg" alt="Unternehmensbewertung" class="w-full h-48 object-cover">
+                    <div class="p-10 pt-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-lg shadow-accent/20 -mt-12 relative z-10 border-4 border-white">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <span class="text-[11px] font-bold tracking-widest uppercase text-accent/40">04</span>
+                    </div>
+                    <h3 class="text-2xl font-800 text-navy mb-4">Unternehmensbewertung</h3>
+                    <p class="text-gray-500 leading-relaxed">Im Rahmen der Unternehmensbewertung konzentrieren wir uns ebenfalls auf kleinere und mittelständische Unternehmen. Die Bewertung von Unternehmen ist in vielen Bereichen (Verkäufen, Nachfolge, Erbe etc.) maßgebend.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KMU Detail Strip -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4">
+                    <p class="text-accent text-xs font-bold tracking-[0.2em] uppercase mb-4">Betriebswirtschaftliche Beratung</p>
+                    <h3 class="text-2xl md:text-3xl font-800 text-navy leading-tight mb-4">Professionelle Begleitung für Ihren Erfolg</h3>
+                    <p class="text-gray-400 leading-relaxed">Steigender Wettbewerb, zunehmende Komplexität und engere Märkte erfordern zukunftsorientiertes Handeln. Nur wer die Zahlen kennt, kann rechtzeitig reagieren.</p>
+                </div>
+                <div class="lg:col-span-8">
+                    <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                        <div class="flex items-start gap-3 py-3 border-b border-gray-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+                            <p class="text-gray-600 text-sm">Unternehmensentwicklung & Existenzgründungsberatung</p>
+                        </div>
+                        <div class="flex items-start gap-3 py-3 border-b border-gray-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+                            <p class="text-gray-600 text-sm">Betriebsentwicklungsprognosen (Gewinn, Kapital, Liquidität)</p>
+                        </div>
+                        <div class="flex items-start gap-3 py-3 border-b border-gray-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+                            <p class="text-gray-600 text-sm">Finanzierungsalternativen (Kauf, Leasing, Darlehen, Factoring)</p>
+                        </div>
+                        <div class="flex items-start gap-3 py-3 border-b border-gray-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+                            <p class="text-gray-600 text-sm">Kosten-Nutzen-Analysen & Finanzanalysen</p>
+                        </div>
+                        <div class="flex items-start gap-3 py-3 border-b border-gray-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+                            <p class="text-gray-600 text-sm">Strategische Geschäftsentwicklung</p>
+                        </div>
+                        <div class="flex items-start gap-3 py-3 border-b border-gray-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+                            <p class="text-gray-600 text-sm">Liquiditätsplanung & Reporting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="divider-gradient"></div>
+    </div>
+
+    <!-- About / Gründer -->
+    <section id="ueber-uns" class="py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-6">
+                    <p class="text-accent text-xs font-bold tracking-[0.2em] uppercase mb-5">Über uns</p>
+                    <h2 class="text-4xl md:text-[3.2rem] font-800 leading-[1.1] mb-10">
+                        <span class="text-gradient">Inhabergeführt.</span><br>
+                        <span class="text-gradient">Partnerschaftlich.</span><br>
+                        <span class="text-gray-300">Mittelstand.</span>
+                    </h2>
+
+                    <div class="space-y-6 mb-12">
+                        <p class="text-gray-500 text-lg leading-relaxed">
+                            Unsere inhabergeführte Unternehmensberatung ist in 2019 vom Inhaber Markus Braun gegründet worden. Wir haben unseren Sitz in Hachenburg, mitten im schönen Westerwald.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Unser Ziel ist es, durch erstklassige Beratung die höchste Zufriedenheit unserer Kunden zu erreichen. Dabei entsprechen unsere Beratungsansätze den Grundsätzen der Branche. Integrität ist für uns nicht nur selbstverständlich, sondern Grundvoraussetzung für eine partnerschaftliche Zusammenarbeit.
+                        </p>
+                    </div>
+
+                    <div class="flex gap-10">
+                        <div class="stat-block">
+                            <p class="text-3xl font-800 text-navy">2019</p>
+                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wider mt-1">Gegründet</p>
+                        </div>
+                        <div class="stat-block">
+                            <p class="text-3xl font-800 text-navy">4</p>
+                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wider mt-1">Kernbereiche</p>
+                        </div>
+                        <div class="stat-block">
+                            <p class="text-3xl font-800 text-navy">KMU</p>
+                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wider mt-1">Fokus</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 lg:pt-12">
+                    <!-- Founder photo + bio -->
+                    <div class="rounded-3xl overflow-hidden mb-6">
+                        <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/06/Markus-Braun-3-190531-scaled.jpg" alt="Markus Braun – Gründer & Geschäftsführer" class="w-full h-64 object-cover object-top">
+                    </div>
+                    <div class="quote-card rounded-3xl p-10 lg:p-12">
+                        <div class="relative z-10">
+                            <p class="text-accent-light/60 text-xs font-bold tracking-[0.2em] uppercase mb-4">Gründerperson</p>
+                            <h3 class="text-2xl font-800 text-white mb-4">Markus Braun</h3>
+                            <p class="text-white/70 leading-relaxed text-sm mb-4">
+                                Diplom-Kaufmann mit Schwerpunkten Controlling und Finanz- und Bankmanagement. Nach einer kaufmännischen Ausbildung im Mittelstand arbeitete er fast 7 Jahre als Unternehmensberater im Bereich ÖPNV bei einem der führenden Beratungsunternehmen für mittelständische Busunternehmen.
+                            </p>
+                            <p class="text-white/50 leading-relaxed text-sm mb-6">
+                                Seine Kernkompetenzen: betriebswirtschaftliche Beratung, Externes Controlling, Angebotskalkulation öffentlicher Linienausschreibungen, Unternehmensbewertung, Vertragsmanagement und strategische Geschäftsentwicklung.
+                            </p>
+                            <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                                <p class="text-white/80 text-sm font-semibold">Gründer & Geschäftsführer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location hint -->
+                    <div class="mt-6 flex items-center gap-3 px-2">
+                        <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <p class="text-gray-300 text-sm">Nisterfeld 11 · 57629 Müschenbach · Westerwald</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Kooperation -->
+    <section class="py-16 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                <p class="text-xs font-bold tracking-[0.2em] uppercase text-gray-300">Kooperationspartner</p>
+                <div class="flex items-center gap-5 bg-white rounded-2xl px-8 py-5 border border-gray-100">
+                    <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/vdv_logo-300x300.jpg" alt="VDV Rheinland e.V." class="h-14 w-14 rounded-xl object-contain">
+                    <div>
+                        <p class="text-navy font-bold text-sm">VDV Rheinland e.V.</p>
+                        <p class="text-gray-400 text-xs leading-snug mt-1">Verbandsmitglieder profitieren von wertvollen Informationen und kostenvergünstigter Erstberatung.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="kontakt" class="cta-section py-28 relative overflow-hidden">
+        <div class="glow-orb w-[400px] h-[400px] bg-accent/15 top-[-10%] left-[10%]"></div>
+        <div class="glow-orb w-[300px] h-[300px] bg-white/5 bottom-[-10%] right-[5%]"></div>
+
+        <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
+            <p class="text-accent-light/60 text-xs font-bold tracking-[0.2em] uppercase mb-5">Nächster Schritt</p>
+            <h2 class="text-4xl md:text-[3.5rem] font-800 text-white leading-tight mb-6">
+                Lassen Sie uns<br>ins Gespräch kommen.
+            </h2>
+            <p class="text-xl text-white/40 mb-12 max-w-xl mx-auto font-light">Erstklassige Beratung beginnt mit einem persönlichen Gespräch. Wir freuen uns auf Sie.</p>
+
+            <a href="tel:+4926629643300" class="group inline-flex items-center gap-4 bg-white text-navy font-bold text-lg px-10 py-5 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                +49 2662 96433-0
+                <svg class="w-4 h-4 text-accent/50 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <div class="mt-16 pt-8 border-t border-white/10">
+                <p class="text-white/30 text-sm">Unternehmensberatung Braun GmbH · Nisterfeld 11 · 57629 Müschenbach</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-700 py-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <img src="https://www.unternehmensberatung-braun.de/wp-content/uploads/2021/05/ubb-logo_white.svg" alt="Unternehmensberatung Braun" class="h-7 opacity-40">
+            <p class="text-white/20 text-xs">&copy; 2024 Unternehmensberatung Braun GmbH</p>
+        </div>
+    </footer>
+
+</body>
+</html>
