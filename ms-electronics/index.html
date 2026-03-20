@@ -88,6 +88,50 @@
         .stat-card:hover::after {
             transform: scaleX(1);
         }
+
+        /* Hero animations */
+        @keyframes heroLineGrow {
+            0% { width: 0; }
+            100% { width: 4rem; }
+        }
+        .hero-line { width: 0; animation: heroLineGrow 0.8s ease-out 0.3s forwards; }
+
+        .hero-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeUp 0.7s ease-out forwards;
+            animation-delay: var(--delay, 0s);
+        }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .hero-shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(102,198,52,0.06) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .hero-float { animation: float 5s ease-in-out infinite; }
+        .hero-float-delay { animation: float 5s ease-in-out 1.5s infinite; }
+
+        @keyframes expandWidth {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes countUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-white text-navy antialiased">
@@ -119,96 +163,75 @@
     </nav>
 
     <!-- Hero -->
-    <section class="min-h-screen relative overflow-hidden bg-[#010d18]">
-        <!-- Background layers -->
-        <div class="absolute inset-0">
-            <!-- Dark gradient base -->
-            <div class="absolute inset-0 bg-gradient-to-br from-[#010d18] via-navy to-[#0a3254]"></div>
-            <!-- Radial glow behind robot -->
-            <div class="absolute top-1/2 right-[10%] -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-signal/[0.04] blur-[120px] hidden lg:block"></div>
-            <div class="absolute top-1/3 right-[15%] w-[400px] h-[400px] rounded-full bg-bridge/[0.06] blur-[100px] hidden lg:block"></div>
-        </div>
+    <section class="relative min-h-screen overflow-hidden" style="background: radial-gradient(ellipse at 30% 50%, #0a3254 0%, #02213A 50%, #010d18 100%);">
+        <!-- Animated shimmer layer -->
+        <div class="absolute inset-0 hero-shimmer"></div>
 
-        <!-- Diagonal accent stripe -->
-        <div class="absolute top-0 right-[38%] w-[1px] h-full bg-gradient-to-b from-transparent via-signal/15 to-transparent hidden lg:block" style="transform: rotate(-8deg); transform-origin: top center;"></div>
+        <!-- Subtle vertical line -->
+        <div class="hidden lg:block absolute top-0 bottom-0 left-[60%] w-[1px] bg-gradient-to-b from-transparent via-white/[0.05] to-transparent"></div>
 
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-16 relative z-10">
-            <div class="grid grid-cols-12 gap-6 min-h-screen items-center pt-[72px]">
+        <!-- Floating green glow -->
+        <div class="absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-signal/[0.03] blur-[150px] hero-float"></div>
+        <div class="absolute bottom-[10%] right-[20%] w-[400px] h-[400px] rounded-full bg-bridge/[0.04] blur-[120px] hero-float-delay"></div>
 
-                <!-- Left: Content -->
-                <div class="col-span-12 lg:col-span-6 py-20 lg:py-0">
-                    <div class="flex items-center gap-4 mb-10">
-                        <div class="w-12 h-[1px] bg-signal"></div>
-                        <span class="text-[11px] ls-wide uppercase text-white/50 font-normal">Seit 1999 — Hachenburg, Deutschland</span>
+        <!-- Content -->
+        <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16 pt-[72px] min-h-screen flex flex-col justify-center">
+            <div class="flex-1 flex items-center">
+                <div class="w-full py-16">
+
+                    <!-- Label with animated line -->
+                    <div class="hero-reveal flex items-center gap-4 mb-12" style="--delay: 0.2s">
+                        <div class="hero-line h-[2px] bg-signal/60"></div>
+                        <span class="text-white/50 text-[11px] font-medium ls-wide uppercase">Automatisierungstechnik · Robotik · Sondermaschinenbau</span>
                     </div>
 
-                    <h1 class="text-5xl md:text-6xl lg:text-[4.5rem] font-bold leading-[1.02] text-white mb-8" style="letter-spacing: -0.03em;">
-                        High-Tech auf<br>hohem <span class="text-signal">Niveau.</span>
+                    <!-- Headline — cinematic stagger -->
+                    <h1 class="mb-12">
+                        <span class="hero-reveal block text-[clamp(3rem,7.5vw,7rem)] font-bold leading-[0.92] tracking-[-0.03em] text-white" style="--delay: 0.35s">High-Tech auf</span>
+                        <span class="hero-reveal block text-[clamp(3rem,7.5vw,7rem)] font-bold leading-[0.92] tracking-[-0.03em] text-white/30" style="--delay: 0.5s">hohem</span>
+                        <span class="hero-reveal block text-[clamp(3rem,7.5vw,7rem)] font-bold leading-[0.92] tracking-[-0.03em] text-signal" style="--delay: 0.65s">Niveau.</span>
                     </h1>
 
-                    <p class="text-base text-white/45 leading-relaxed font-light max-w-md mb-10">
-                        Komplexe Projekte in der Automatisierungstechnik und dem Sondermaschinenbau. Branchenübergreifend schaffen wir „Ideal"-Lösungen.
-                    </p>
+                    <!-- Subline -->
+                    <div class="hero-reveal grid grid-cols-12 gap-6" style="--delay: 0.85s">
+                        <div class="col-span-12 lg:col-span-5">
+                            <p class="text-white/40 text-lg leading-relaxed font-light">
+                                Seit 1999 schaffen wir branchenübergreifend „Ideal"-Lösungen — für Ingenieurbüros und Unternehmen in Fördertechnik, Logistik und Anlagenbau.
+                            </p>
+                        </div>
+                    </div>
 
-                    <div class="flex items-center gap-5 mb-16">
-                        <a href="#leistungen" class="group bg-signal text-navy text-[11px] ls-wide uppercase font-medium px-7 py-3.5 hover:bg-white transition-colors duration-300 flex items-center gap-3">
-                            Leistungen entdecken
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    <!-- CTAs -->
+                    <div class="hero-reveal flex flex-col sm:flex-row gap-4 mt-10" style="--delay: 1.0s">
+                        <a href="#leistungen" class="group inline-flex items-center gap-4 bg-signal text-navy px-8 py-4.5 text-[11px] font-bold ls-wide uppercase hover:bg-white transition-colors duration-300">
+                            <span>Leistungen entdecken</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                         </a>
-                        <a href="#kontakt" class="text-[11px] ls-wide uppercase text-white/45 font-normal hover:text-signal transition-colors duration-300">
+                        <a href="#kontakt" class="inline-flex items-center gap-4 border border-white/20 text-white/60 px-8 py-4.5 text-[11px] font-medium ls-wide uppercase hover:border-signal hover:text-signal transition-all duration-300 backdrop-blur-sm">
                             Kontakt aufnehmen
                         </a>
                     </div>
-
-                    <!-- Stats row inline -->
-                    <div class="grid grid-cols-4 gap-6 border-t border-white/[0.08] pt-8">
-                        <div>
-                            <span class="text-2xl font-bold text-white block">25+</span>
-                            <span class="text-[11px] text-white/40 mt-0.5 block">Jahre</span>
-                        </div>
-                        <div>
-                            <span class="text-2xl font-bold text-signal block">3</span>
-                            <span class="text-[11px] text-white/40 mt-0.5 block">Bereiche</span>
-                        </div>
-                        <div>
-                            <span class="text-2xl font-bold text-white block">100%</span>
-                            <span class="text-[11px] text-white/40 mt-0.5 block">Individuell</span>
-                        </div>
-                        <div>
-                            <span class="text-2xl font-bold text-bridge block">24/7</span>
-                            <span class="text-[11px] text-white/40 mt-0.5 block">Service</span>
-                        </div>
-                    </div>
                 </div>
+            </div>
 
-                <!-- Right: Robot visual -->
-                <div class="col-span-12 lg:col-span-6 relative hidden lg:flex items-center justify-center">
-                    <div class="relative">
-                        <!-- Glow ring behind robot -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-[420px] h-[420px] rounded-full border border-signal/10"></div>
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-[520px] h-[520px] rounded-full border border-white/[0.03]"></div>
-                        </div>
-
-                        <!-- Robot image -->
-                        <img src="https://ms-electronics.de/files/content/fruitcore/HORST_Rendering_800x800.jpg" alt="HORST Industrieroboter" class="relative z-10 w-[420px] h-[420px] object-contain drop-shadow-2xl" style="filter: drop-shadow(0 0 60px rgba(102,198,52,0.12)) drop-shadow(0 25px 50px rgba(0,0,0,0.4));">
-
-                        <!-- Floating labels -->
-                        <div class="absolute top-8 right-0 z-20 bg-white/[0.06] backdrop-blur-md border border-white/[0.08] px-5 py-3">
-                            <span class="text-[10px] ls-wide uppercase text-white/40 block">Kernkompetenz</span>
-                            <span class="text-white text-sm font-medium block mt-0.5">Roboterautomation</span>
-                        </div>
-
-                        <div class="absolute bottom-12 -left-8 z-20 bg-white/[0.06] backdrop-blur-md border border-white/[0.08] px-5 py-3">
-                            <span class="text-[10px] ls-wide uppercase text-white/40 block">Zertifiziert</span>
-                            <span class="text-white text-sm font-medium block mt-0.5">Universal Robots · Dobot · Kawasaki</span>
-                        </div>
-
-                        <div class="absolute top-1/2 -left-16 z-20 -translate-y-1/2">
-                            <div class="w-[1px] h-24 bg-gradient-to-b from-transparent via-signal/40 to-transparent"></div>
-                        </div>
+            <!-- Bottom stats bar — anchored -->
+            <div class="hero-reveal border-t border-white/[0.08] py-8 mt-auto" style="--delay: 1.2s">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0">
+                    <div class="lg:border-r lg:border-white/[0.08] lg:pr-8">
+                        <p class="text-white/30 text-[10px] font-medium ls-wide uppercase mb-1">Gegründet</p>
+                        <p class="text-white text-2xl lg:text-3xl font-bold tracking-tight">1999</p>
+                    </div>
+                    <div class="lg:border-r lg:border-white/[0.08] lg:px-8">
+                        <p class="text-white/30 text-[10px] font-medium ls-wide uppercase mb-1">Standort</p>
+                        <p class="text-white text-2xl lg:text-3xl font-bold tracking-tight">Hachenburg</p>
+                    </div>
+                    <div class="lg:border-r lg:border-white/[0.08] lg:px-8">
+                        <p class="text-white/30 text-[10px] font-medium ls-wide uppercase mb-1">Projekte</p>
+                        <p class="text-white text-2xl lg:text-3xl font-bold tracking-tight">100% individuell</p>
+                    </div>
+                    <div class="lg:pl-8">
+                        <p class="text-white/30 text-[10px] font-medium ls-wide uppercase mb-1">Service</p>
+                        <p class="text-signal text-2xl lg:text-3xl font-bold tracking-tight">24/7 Support</p>
                     </div>
                 </div>
             </div>
